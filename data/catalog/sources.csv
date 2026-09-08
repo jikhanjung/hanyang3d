@@ -1,0 +1,8 @@
+id,title,institution,source_type,date_start,date_end,date_text,url,coverage,priority,verification_status,verified_at,notes,archive_number,relic_number,material_number,period_text,source_citation,detail_metadata_path,detail_retrieved_at
+src-0001,도성대지도,서울역사박물관,map,1753,1764,기관별 연대 해석 차이,https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=026d2d85-e2f5-4673-bf8d-5a9ed6163bee&fileSn=1098&type=C&upperNodeId=CTGRY780,한양 도성,P0,unverified,,원문 기재 연대; 원사료 재확인 필요,srd-415196,서14165,,18세기,"『소장유물자료집13 - 한양 명품선』, 서울역사박물관, 2022",data/maps/src-0001/detail-2026-09-08.json,2026-09-08
+src-0002,도성대지도 부분도 8,서울역사박물관,map,,,,https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=fe073a1b-2a35-41c6-98da-3c21d7a4ba20&fileSn=1100&type=C&upperNodeId=CTGRY780,운종가·청계천,P0,unverified,,부분도 전체 중 조사 시작 후보; 전체 도엽 목록은 미등록,,,,,,,
+src-0003,1908 한성부지적도,서울역사박물관,cadastral,1908,1908,,https://museum.seoul.go.kr/cgcm/board/NR_boardView.do?bbsCd=1012&seq=20150316095605491,한성부; 도엽별 범위 미확인,P0,unverified,,안내 페이지이며 다운로드 파일 URL 아님,,,,,,,
+src-0004,1912 경성부 지적원도,국가기록원,cadastral,1912,1912,,https://theme.archives.go.kr/next/acreage/,경성부; 파일럿 도엽 미선정,P0,unverified,,자료군 후보; 수집 시 개별 도엽 ID 추가,,,,,,,
+src-0005,광화문외제관아실측평면도,국가기록원,plan,1907,1909,추정 제작연대,https://theme.archives.go.kr/next/place/observatory.do?flag=02,광화문 앞 관아,P0,unverified,,해제 페이지; 원본 파일 미확보,,,,,,,
+src-0006,북궐도형,원소장처 미확인,plan,1907,1907,원문 S-MAP 소개 기준,https://smap.seoul.go.kr/,경복궁,P0,unverified,,선행 서비스 탐색 링크; 원사료 소장처와 연대 재확인 필요,,,,,,,
+src-0007,동궐도형,원소장처 미확인,plan,1907,,1907년 이후; 원문 소개 기준,https://dh.aks.ac.kr/hanyang2/wiki/index.php/%EB%8F%99%EA%B6%90%EB%8F%84%ED%98%95,창덕궁·창경궁,P0,unverified,,2차 설명 링크; 원사료 공개처 확인 필요,,,,,,,

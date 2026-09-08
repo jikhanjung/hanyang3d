@@ -1,0 +1,26 @@
+# Local environment
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+*.qgz~
+*.blend1
+*.blend2
+
+# Raw assets and generated artifacts: metadata stays in Git
+/data/maps/**
+/data/cadastral/**
+/data/archaeology/**
+/data/photos/**
+/data/plans/**
+/data/texts/**
+/data/terrain/**
+/gis/georeferenced/**
+/models/generated/**
+!/**/.gitkeep
+!/**/README.md
