@@ -1,0 +1,10 @@
+point_id,source_asset_id,target_asset_id,source_x,source_y,target_x,target_y,role,status,evidence_note
+b01,asset-0005,asset-0012,456,1072,493,1013,control,accepted,공통 방 경계 북쪽의 첫 짧은 계단 직전 뾰족한 꼭짓점; 독립 원본 확대 판독 약 ±3 px
+b02,asset-0005,asset-0012,627,1387,658,1321,control,accepted,중간 동향 돌출 끝에서 경계가 남서쪽으로 꺾이는 꼭짓점; 독립 원본 확대 판독 약 ±3 px
+b03,asset-0005,asset-0012,837,1468,872,1411,control,accepted,남쪽 큰 사각형 돌출의 북동 모서리; 두 도엽의 굴곡 순서와 양측 방명 일치; 약 ±3 px
+b04,asset-0005,asset-0012,1120,1604,1157,1549,control,accepted,남동부 작은 지그재그 다음의 넓은 북향 꼭짓점; 독립 원본 확대 판독 약 ±3 px
+b05,asset-0005,asset-0012,698,1513,735,1455,control,accepted,남쪽 큰 사각형 돌출의 북서 모서리; 독립 원본 확대 판독 약 ±3 px
+b06,asset-0005,asset-0012,513,1100,550,1037,check,accepted,북쪽 첫 계단 다음의 작은 북동 꼭짓점; 변환 계산에 사용하지 않음; 약 ±3 px
+b07,asset-0005,asset-0012,911,1644,945,1585,check,accepted,남쪽 큰 사각형 돌출의 남동 모서리; 변환 계산에 사용하지 않음; 약 ±3 px
+b08,asset-0005,asset-0012,995,1593,1029,1535,check,accepted,남쪽 사각형 다음 두 짧은 계단 직전 꼭짓점; 변환 계산에 사용하지 않음; 약 ±3 px
+b09,asset-0005,asset-0012,383,1106,423,1044,check,accepted,북서 대각 경계와 북쪽 계단 시작부의 교점; 변환 계산에 사용하지 않음; 약 ±3 px

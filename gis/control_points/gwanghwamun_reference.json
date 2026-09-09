@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-08",
+  "source_url": "https://www.openstreetmap.org/api/0.6/map?bbox=126.9755,37.5697,126.978,37.5711",
+  "local_snapshot": "data/terrain/osm/gwanghwamun-2026-09-08.osm",
+  "sha256": "c785c7e48ef2c7a9be3826ffdaf2a671a262780dbda5801e7b8c91651b609d88",
+  "license": "OpenStreetMap contributors, ODbL 1.0",
+  "nodes": [
+    {
+      "id": "414683338",
+      "version": "14",
+      "timestamp": "2023-06-11T05:00:31Z",
+      "lat": "37.5701365",
+      "lon": "126.9770645"
+    },
+    {
+      "id": "1553878346",
+      "version": "10",
+      "timestamp": "2025-07-19T17:51:30Z",
+      "lat": "37.5702804",
+      "lon": "126.9772272"
+    },
+    {
+      "id": "1945254921",
+      "version": "7",
+      "timestamp": "2022-08-07T10:59:34Z",
+      "lat": "37.5702803",
+      "lon": "126.9770763"
+    },
+    {
+      "id": "2697100729",
+      "version": "6",
+      "timestamp": "2025-07-19T17:51:30Z",
+      "lat": "37.5701400",
+      "lon": "126.9772128"
+    }
+  ],
+  "method": "Arithmetic mean of four carriageway junction nodes, rounded to 7 decimals; provisional intersection center, not survey control",
+  "lat": 37.5702093,
+  "lon": 126.9771452
+}

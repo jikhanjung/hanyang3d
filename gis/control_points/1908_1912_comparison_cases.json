@@ -1,0 +1,172 @@
+{
+  "packet_id": "gyeonghaeng-crossyear-002",
+  "date": "2026-09-08",
+  "source_reading": "gis/roads/1908_gyeonghaeng_reading.json",
+  "source_sha256": "61235ec3a36b050d0f23a4c1e7d5e9ad173a883e6a9f47fd7968373cb7776af7",
+  "coordinate_space": "source image pixels; windows are xmin,ymin,xmax,ymax",
+  "accepted_crossyear_points": 0,
+  "cases": [
+    {
+      "id": "gh-west-branch",
+      "title": "서쪽 골목·하수구 분기",
+      "source_asset_id": "asset-0012",
+      "source_window": [
+        700,
+        930,
+        1110,
+        1210
+      ],
+      "source_feature_ids": [
+        "r01",
+        "r02",
+        "d01",
+        "d02"
+      ],
+      "observations": [
+        "중앙 도로 서측에 골목과 푸른색 하수구가 나란히 보인다.",
+        "분기 서쪽에서 선이 꺾이며 인접 필지 경계와 만난다."
+      ],
+      "required_checks": [
+        "도로와 하수구를 같은 선으로 대응시키지 않는다.",
+        "분기 방향뿐 아니라 서쪽 굴곡과 양옆 필지 연결 순서를 함께 비교한다.",
+        "교량 또는 하수구 횡단 구조는 확대 판독 전 확정하지 않는다."
+      ],
+      "status": "unmatched_source_feature",
+      "geographic_crs": null,
+      "source_point": null,
+      "targets": [
+        {
+          "asset_id": "asset-0010",
+          "window": null,
+          "point": null,
+          "status": "hypothesis_not_accepted",
+          "review_record": "gis/control_points/1908_1912_branch_hypothesis.json",
+          "review_note": "두 분기점 가정 배치를 검토했으나 주변 필지와 도로·하수구 대응 근거 부족. 이 특정 배치만 미채택하며 도엽의 지리적 중첩 여부는 미확정."
+        },
+        {
+          "asset_id": "asset-0008",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        },
+        {
+          "asset_id": "asset-0009",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        },
+        {
+          "asset_id": "asset-0011",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "gh-east-branch",
+      "title": "동쪽 골목·붉은 구획 남측",
+      "source_asset_id": "asset-0012",
+      "source_window": [
+        1000,
+        1030,
+        1520,
+        1350
+      ],
+      "source_feature_ids": [
+        "r01",
+        "r03"
+      ],
+      "observations": [
+        "중앙 도로에서 동쪽으로 황토색 골목이 뻗는다.",
+        "골목 북쪽에 붉은 외곽선 구획의 남단이 놓인다."
+      ],
+      "required_checks": [
+        "골목의 분기와 붉은 구획 남단의 상대 위치를 함께 확인한다.",
+        "붉은색을 특정 소유자·학교·시설로 해석하지 않는다.",
+        "필지 경계가 다르면 변경 근거 없이 모서리를 같은 점으로 채택하지 않는다."
+      ],
+      "status": "unmatched_source_feature",
+      "geographic_crs": null,
+      "source_point": null,
+      "targets": [
+        {
+          "asset_id": "asset-0010",
+          "window": null,
+          "point": null,
+          "status": "hypothesis_not_accepted",
+          "review_record": "gis/control_points/1908_1912_branch_hypothesis.json",
+          "review_note": "두 분기점 가정 배치를 검토했으나 주변 필지와 도로·하수구 대응 근거 부족. 이 특정 배치만 미채택하며 도엽의 지리적 중첩 여부는 미확정."
+        },
+        {
+          "asset_id": "asset-0008",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        },
+        {
+          "asset_id": "asset-0009",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        },
+        {
+          "asset_id": "asset-0011",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "gh-boundary-step",
+      "title": "서남쪽 계단형 방 경계",
+      "source_asset_id": "asset-0012",
+      "source_window": [
+        600,
+        1320,
+        1100,
+        1660
+      ],
+      "source_feature_ids": [],
+      "observations": [
+        "1908 관인방도와의 연결에 사용한 계단형 경계 일부다.",
+        "1912년의 동 경계가 동일한 선인지는 확인되지 않았다."
+      ],
+      "required_checks": [
+        "1908 방 경계와 1912 동 경계를 자동으로 같은 경계로 취급하지 않는다.",
+        "경계 굴곡만이 아니라 연결된 필지 모서리·도로 위치를 함께 확인한다.",
+        "같은 해 도엽 연결의 RMSE를 시대 간 정합 근거로 전용하지 않는다."
+      ],
+      "status": "unmatched_source_feature",
+      "geographic_crs": null,
+      "source_point": null,
+      "targets": [
+        {
+          "asset_id": "asset-0010",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        },
+        {
+          "asset_id": "asset-0008",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        },
+        {
+          "asset_id": "asset-0009",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        },
+        {
+          "asset_id": "asset-0011",
+          "window": null,
+          "point": null,
+          "status": "unresolved"
+        }
+      ]
+    }
+  ]
+}

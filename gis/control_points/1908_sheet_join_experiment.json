@@ -1,0 +1,76 @@
+{
+  "experiment_id": "1908-gwanin-gyeonghaeng-001",
+  "review_date": "2026-09-08",
+  "source_asset_id": "asset-0005",
+  "target_asset_id": "asset-0012",
+  "points_path": "gis/control_points/1908_gwanin_gyeonghaeng_points.csv",
+  "point_selection_basis": "Matching sequence of distinctive shared administrative-boundary corners, with the reciprocal Gwanin/Gyeonghaeng labels on the two 1908 sheets",
+  "point_review_method": "Manual visual review of original-image corner patches; approximate reading uncertainty ±3 pixels; role assignment frozen before fitting",
+  "model": "affine",
+  "geographic_crs": null,
+  "predeclared_max_check_rmse_target_px": 20,
+  "threshold_purpose": "Coarse image join screening; same pixel screening threshold as the prior review; not a metric accuracy criterion",
+  "controls": [
+    "b01",
+    "b02",
+    "b03",
+    "b04",
+    "b05"
+  ],
+  "checks": [
+    "b06",
+    "b07",
+    "b08",
+    "b09"
+  ],
+  "limitations": [
+    "Controls and checks lie on a shared boundary rather than throughout both map interiors.",
+    "The two maps may share survey lineage, so agreement is not independent historical corroboration.",
+    "This does not resolve the 1908-to-1912 correspondence or establish a geographic CRS."
+  ],
+  "result": {
+    "matrix_source_to_target": [
+      [
+        1.0078849632448752,
+        -0.008155537426520284,
+        40.994722604613
+      ],
+      [
+        0.018626624533535672,
+        0.9875063033225573,
+        -55.324144622090216
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "metrics": {
+      "control": {
+        "count": 5,
+        "rmse_px": 3.509151972237779,
+        "max_px": 6.197962230220075
+      },
+      "check": {
+        "count": 4,
+        "rmse_px": 3.309765805907303,
+        "max_px": 5.005367543784899
+      }
+    },
+    "within_pixel_tolerance": true,
+    "points_sha256": "95f32a76dbcb92897f903579a329f8aa7567f200421b1cd8a18076ef273bb330",
+    "inputs": {
+      "source": {
+        "path": "data/cadastral/src-0010/asset-0005.jpg",
+        "sha256": "d052b9d1afa8f86735c5d22e6b86620b771baac539dcced41338a6bbca238e9f"
+      },
+      "target": {
+        "path": "data/cadastral/src-0017/asset-0012.jpg",
+        "sha256": "61235ec3a36b050d0f23a4c1e7d5e9ad173a883e6a9f47fd7968373cb7776af7"
+      }
+    },
+    "report_path": "gis/georeferenced/1908_gwanin_gyeonghaeng_affine.json",
+    "interpretation": "Shared-boundary pixel join supported by manual review; geographic accuracy and cross-year correspondence remain unverified."
+  }
+}

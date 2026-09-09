@@ -1,0 +1,31 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>도성 전도 × 현재 지형 | Hanyang 3D</title>
+<link rel="stylesheet" href="/webapp/static/vendor/leaflet/leaflet.css">
+<style>
+*{box-sizing:border-box}body{margin:0;color:#20332f;font:15px/1.6 system-ui;background:#f4f1e9}header{padding:12px 20px;background:#fffdf8;border-bottom:1px solid #ddd}h1{font-size:22px;margin:0}header a{float:right;color:#185c49}.layout{display:grid;grid-template-columns:300px 1fr;height:calc(100dvh - 94px);min-height:540px}aside{padding:18px;overflow:auto}#map{height:100%;background:#d9e1dc}.notice{color:#77481b;background:#fff1d7;padding:10px;border-radius:6px}label{display:block;margin:12px 0 3px}input[type=range]{width:100%}select,button{padding:8px;border:1px solid #bac8be;border-radius:5px;background:white;color:#20332f}select{width:100%}button{cursor:pointer;margin:4px 2px}a{color:#17644d}details{margin-top:18px;font-size:13px}.doseong-canvas{pointer-events:none}#status{font-size:13px}.leaflet-tooltip{font-family:system-ui}output{float:right;font-variant-numeric:tabular-nums}@media(max-width:700px){.layout{display:flex;flex-direction:column;height:auto}aside{order:2;overflow:visible}#map{height:62dvh;min-height:380px;order:1}header a{float:none}header{font-size:13px}}
+.warp-point span{display:block;width:24px;height:24px;border:2px solid white;border-radius:50%;background:#165ec2;color:white;text-align:center;font:13px/20px system-ui;box-shadow:0 1px 4px #555}#pointList{font-size:12px}#pointList button{padding:2px 6px;font-size:12px}#warpStatus{font-size:13px;color:#854013}</style>
+<header><a href="/">← GIS 작업 현황</a><h1>도성 전도 × 현재 지형</h1><span>도성대지도 전체도 · 서울역사박물관 · 18세기</span></header>
+<div class="layout"><aside>
+<div class="notice">초벌 배치 · 정밀 정합 미검증<br>성문·교차로 5곳의 대략적인 위치로 배치했습니다. 산과 도로가 모두 일치하지 않습니다.</div>
+<label for="base">현재 배경 지도</label><select id="base"><option value="topo">지형도 · OpenTopoMap</option><option value="osm">일반 지도 · OpenStreetMap</option><option value="none">배경 없이 원도 보기</option></select>
+<label for="opacity">옛 지도 불투명도 <output id="opacityValue">50%</output></label><input id="opacity" type="range" min="0" max="100" value="50">
+<button id="toggle">옛 지도 숨기기</button><button id="fit">전도 범위 보기</button>
+<label for="method">변형 방식</label><select id="method"><option value="affine">전체 배치 · 최초 성문 3점</option><option value="tps" selected>부분 변형 · Thin plate spline</option></select>
+<p style="font-size:13px">TPS에서는 파란 점을 끌어 목표 위치를 옮깁니다. 대응점을 추가하면 주변도 함께 휘어집니다. 3점만으로는 전체 변형과 같습니다.</p>
+<label for="pointName">새 대응점 이름</label><input id="pointName" maxlength="100" placeholder="광화문 / 광화문사거리" style="width:100%;padding:8px">
+<button id="addPoint">대응점 추가</button><button id="cancelPoint" hidden>추가 취소</button>
+<label><input id="grid" type="checkbox">변형 격자 표시</label>
+<p id="warpStatus" role="status"></p><div id="pointList"></div>
+<button id="resetPoints">대응점 초기화</button>
+<label for="east">동서 이동 <output id="eastValue">0 m</output></label><input id="east" type="range" min="-1500" max="1500" step="10" value="0">
+<label for="north">남북 이동 <output id="northValue">0 m</output></label><input id="north" type="range" min="-1500" max="1500" step="10" value="0">
+<label for="scale">크기 <output id="scaleValue">100%</output></label><input id="scale" type="range" min="60" max="160" value="100">
+<label for="rotation">회전 <output id="rotationValue">0°</output></label><input id="rotation" type="range" min="-30" max="30" step="0.5" value="0">
+<label><input id="anchors" type="checkbox" checked> 대응점 표시</label>
+<button id="reset">위치·크기 초기화</button><button id="save">배치 기록 저장</button>
+<label for="load">저장한 배치 불러오기</label><input id="load" type="file" accept=".json,application/json" style="max-width:100%">
+<p id="status" role="status">원도를 불러오는 중입니다.</p>
+<details><summary>출처와 비교 범위</summary><p>옛 지도: 서울역사박물관 서울역사아카이브, 도성대지도. 공공누리 제1유형. 이 화면의 배치·변형은 Hanyang 3D의 가공입니다.</p><p>현재 지형도는 OpenTopoMap의 공개 지도이며 실시간 지형 측량이 아닙니다. 배경 타일은 외부 서비스에서 불러오므로 인터넷 연결이 필요합니다.</p><p>참고 위치는 아래 공개 좌표를 사용했습니다. 철거·재건된 문을 포함하므로 검증된 지리 기준점으로 취급하지 않습니다.</p><ul>{% for point in experiment.landmarks %}<li><a href="{{ point.reference }}" target="_blank" rel="noopener">{{ point.name }}</a></li>{% endfor %}{% for point in experiment.suggested_anchors %}<li><a href="{{ point.reference }}" target="_blank" rel="noopener">{{ point.name }}</a></li>{% endfor %}</ul><p>독립 검사점은 0개입니다. 배치 조절은 화면에만 적용되며 원본과 기준점 기록은 바뀌지 않습니다. 저장한 JSON은 원본 체크섬·대응점·TPS 방식·조절값을 기록하며 다시 불러올 수 있습니다. TPS는 32×28 격자를 삼각형으로 나눠 화면에 근사 표시합니다. 격자 사이의 접힘이나 위치 정확도를 보증하지 않습니다.</p><a href="/gis/control_points/doseong_modern_preview.json">초벌 배치 근거 JSON</a></details>
+</aside><div id="map" aria-label="현재 지형과 도성대지도 겹침 지도"></div></div>
+{{ experiment|json_script:"experiment" }}
+<script src="/webapp/static/vendor/leaflet/leaflet.js"></script><script src="/webapp/static/tps.js"></script><script src="/webapp/static/doseong_overlay.js"></script></html>

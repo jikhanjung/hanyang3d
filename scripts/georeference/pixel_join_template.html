@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1908 관인방–경행방 도엽 연결 검토</title>
+<style>
+body{margin:24px auto;max-width:1200px;padding:0 16px;font:16px/1.6 system-ui;color:#172a35;background:#f5f3ed}
+h1{font-size:24px}canvas{width:100%;background:white;border:1px solid #aaa}button,input{margin:6px;vertical-align:middle}button{padding:8px}
+.bar{background:white;padding:12px}td,th{text-align:left;padding:4px 12px;border-bottom:1px solid #ccc}a{color:#00647b}
+</style>
+<h1>1908 관인방–경행방 도엽 연결 검토</h1>
+<p>공통 방 경계의 굴곡을 원본에서 판독해 연결했습니다. __PAIR__ · 기준점 5개 · 계산에서 제외한 검사점 4개.</p>
+<p id="metrics"></p>
+<div class="bar"><label>관인방도 불투명도 <input id="opacity" type="range" min="0" max="100" value="50"><span id="value">50%</span></label>
+<button id="targetOnly">경행방도</button><button id="sourceOnly">관인방도</button><button id="blend">겹쳐 보기</button>
+<label><input id="marks" type="checkbox" checked>대응점 표시</label><button id="extent">전체 도엽 보기</button></div>
+<p>청록: 기준점 · 주황: 검사점 · 원: 경행방도에서 판독한 위치 · 십자: 관인방도 좌표를 변환한 위치. 잔차는 실제 배율로 표시합니다.</p>
+<canvas id="map" width="1100" height="800" aria-label="도엽 겹침 비교"></canvas>
+<p id="status">이미지를 불러오는 중입니다.</p>
+<p>좌표는 경행방도 이미지의 픽셀입니다. 공통 경계 밖의 정확도, 1912년 지도와의 대응, 현대 지리 좌표는 검증하지 않았습니다. 전체 보기는 경행방도 이미지 범위로 제한됩니다.</p>
+<details><summary>점별 근거와 잔차</summary><table><thead><tr><th>점</th><th>역할</th><th>오차(px)</th><th>판독 근거</th></tr></thead><tbody id="rows"></tbody></table></details>
+<p><a href="point-crops.jpg">변형하지 않은 원본 대응점 확대 비교</a> · <a href="report.json">수치 결과 JSON</a></p>
+<p>출처: 서울역사박물관 서울역사아카이브, 한성부 중서 관인방도 사매지내 제1호 및 경행방도 오매지내 제3호 (1908). 공공누리 제1유형. 이 화면의 겹침·변환·표시는 Hanyang 3D의 검토용 가공입니다.</p>
+<script>
+const data=__DATA_JSON__;
+const $=id=>document.getElementById(id), canvas=$('map'), ctx=canvas.getContext('2d');
+const source=new Image(),target=new Image();let full=false,ready=false;
+const m=data.report.matrix_source_to_target, metric=data.report.metrics.check;
+$('metrics').textContent=`독립 검사점 RMSE ${metric.rmse_px.toFixed(2)} px · 최대 오차 ${metric.max_px.toFixed(2)} px. 지리 좌표 정합이 아닌 두 이미지 사이의 상대 정합입니다.`;
+for(const p of data.points){const tr=document.createElement('tr');for(const text of [p.point_id,p.role,data.report.residuals.find(r=>r.point_id===p.point_id).distance_px.toFixed(2),p.evidence_note]){const td=document.createElement('td');td.textContent=text;tr.append(td)}$('rows').append(tr)}
+function draw(){if(!ready)return;const box=full?[0,0,target.width,target.height]:[300,930,950,760];
+const scale=Math.min(canvas.width/box[2],canvas.height/box[3]);ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.setTransform(scale,0,0,scale,-box[0]*scale,-box[1]*scale);ctx.globalAlpha=1;ctx.drawImage(target,0,0);
+ctx.globalAlpha=Number($('opacity').value)/100;ctx.drawImage(source,0,0);ctx.globalAlpha=1;
+if($('marks').checked)for(const p of data.points){const x=Number(p.target_x),y=Number(p.target_y),sx=Number(p.source_x),sy=Number(p.source_y),tx=m[0][0]*sx+m[0][1]*sy+m[0][2],ty=m[1][0]*sx+m[1][1]*sy+m[1][2];ctx.strokeStyle=ctx.fillStyle=p.role==='control'?'#007f99':'#cb4a00';ctx.lineWidth=1.5/scale;ctx.beginPath();ctx.arc(x,y,6/scale,0,Math.PI*2);ctx.moveTo(x,y);ctx.lineTo(tx,ty);ctx.moveTo(tx-4/scale,ty);ctx.lineTo(tx+4/scale,ty);ctx.moveTo(tx,ty-4/scale);ctx.lineTo(tx,ty+4/scale);ctx.stroke();ctx.font=`${14/scale}px system-ui`;ctx.fillText(p.point_id,x+9/scale,y-9/scale)}}
+function opacity(value){$('opacity').value=value;$('value').textContent=value+'%';draw()}
+$('opacity').oninput=()=>opacity($('opacity').value);$('marks').onchange=draw;
+$('targetOnly').onclick=()=>opacity(0);$('sourceOnly').onclick=()=>opacity(100);$('blend').onclick=()=>opacity(50);
+$('extent').onclick=()=>{full=!full;$('extent').textContent=full?'공통 경계 확대':'전체 도엽 보기';draw()};
+Promise.all([source,target].map(im=>new Promise((resolve,reject)=>{im.onload=resolve;im.onerror=reject}))).then(()=>{ready=true;$('status').textContent='로컬 이미지 로드 완료';draw()}).catch(()=>{$('status').textContent='이미지 로드 실패: 생성된 폴더의 PNG와 JPG가 함께 있는지 확인하세요.'});
+source.src='source-warped.png';target.src='target.jpg';
+</script></html>

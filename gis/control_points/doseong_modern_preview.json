@@ -1,0 +1,119 @@
+{
+  "asset_id": "asset-0001",
+  "source_id": "src-0001",
+  "date": "2026-09-08",
+  "image_url": "/data/maps/src-0001/asset-0001.jpg",
+  "image_size": [
+    3124,
+    2743
+  ],
+  "input_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+  "status": "unvalidated_visual_preview",
+  "method": "affine through three approximate landmarks; no independent checks",
+  "target_crs": "EPSG:3857",
+  "reference_coordinate_crs": "EPSG:4326",
+  "pixel_axes": "origin upper-left; x right; y down",
+  "matrix_pixel_to_3857": [
+    [
+      2.5221381141506214,
+      -0.08250754250824734,
+      14132471.764210599
+    ],
+    [
+      0.11725981924143629,
+      -2.3334654432808444,
+      4522012.927193317
+    ]
+  ],
+  "landmarks": [
+    {
+      "name": "숭례문",
+      "pixel": [
+        998,
+        2004
+      ],
+      "lat": 37.56,
+      "lon": 126.97528,
+      "reference": "https://en.wikipedia.org/wiki/Sungnyemun",
+      "note": "성벽과 남향 도로 교차부의 문 기호를 육안 판독. 재건 이력이 있어 정밀 고정점으로 검증하지 않음.",
+      "status": "proposed_visual_anchor",
+      "target_3857": [
+        14134823.512933334,
+        4517453.687744585
+      ]
+    },
+    {
+      "name": "흥인지문",
+      "pixel": [
+        2495,
+        1408
+      ],
+      "lat": 37.5711528,
+      "lon": 127.0096389,
+      "reference": "https://en.wikipedia.org/wiki/Heunginjimun",
+      "note": "동향 대로 끝의 옹성 안 문 기호를 육안 판독. 기호 중심과 실측 문 중심의 동일성 미검증.",
+      "status": "proposed_visual_anchor",
+      "target_3857": [
+        14138648.328185553,
+        4519019.971098185
+      ]
+    },
+    {
+      "name": "돈의문 터",
+      "pixel": [
+        703,
+        1493
+      ],
+      "lat": 37.5682444,
+      "lon": 126.968975,
+      "reference": "https://en.wikipedia.org/wiki/Donuimun",
+      "note": "서쪽 성벽과 대로 교차부 문 기호를 육안 판독. 철거된 문의 터이며 현대 기준점의 정확도 미검증.",
+      "status": "proposed_visual_anchor",
+      "target_3857": [
+        14134121.643543882,
+        4518611.496939425
+      ]
+    }
+  ],
+  "check_count": 0,
+  "check_rmse_m": null,
+  "metric_accuracy_verified": false,
+  "suggested_anchors": [
+    {
+      "name": "광화문",
+      "pixel": [
+        1156,
+        1150
+      ],
+      "lat": 37.5760444,
+      "lon": 126.9770194,
+      "status": "proposed_visual_anchor",
+      "reference": "https://www.wikidata.org/wiki/Q485034",
+      "note": "경복궁 남쪽 담장 중앙의 문 기호. 재건 이력·원도 기호 중심의 동일성 미검증."
+    },
+    {
+      "name": "광화문사거리",
+      "pixel": [
+        1155,
+        1441
+      ],
+      "lat": 37.5702093,
+      "lon": 126.9771452,
+      "status": "proposed_visual_anchor",
+      "reference": "https://www.openstreetmap.org/#map=19/37.5702093/126.9771452",
+      "note": "원도 육조거리 남단과 동서 대로의 교차. 현대 세종대로·종로·새문안로 교차부 4개 OSM 차로 결절점의 평균 위치; 역사적 교차 중심 동일성 미검증.",
+      "reference_nodes": [
+        414683338,
+        1945254921,
+        2697100729,
+        1553878346
+      ]
+    }
+  ],
+  "limitations": [
+    "Reference coordinates are location hints, not survey control.",
+    "Three points determine the affine exactly; fit residuals cannot validate accuracy.",
+    "Northern mountains lie outside the anchor triangle; extrapolation is unverified.",
+    "This does not replace the staged cadastral/geographic registration workflow."
+  ]
+}

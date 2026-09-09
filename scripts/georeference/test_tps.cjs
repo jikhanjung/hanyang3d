@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {fitTPS,barycentric}=require('../../webapp/static/tps.js');
+const source=[[0,0],[1000,0],[0,1000],[1000,1000],[500,500]];
+const affine=(x,y)=>[14000000+2*x+0.3*y,4500000-0.2*x-3*y];
+const f=fitTPS(source,source.map(p=>affine(...p)));
+for(const p of [[200,350],[-500,1800],...source])f(...p).forEach((v,i)=>assert.ok(Math.abs(v-affine(...p)[i])<1e-7));
+const targets=source.map(p=>affine(...p));targets[4][0]+=200;
+const warp=fitTPS(source,targets);
+source.forEach((p,j)=>warp(...p).forEach((v,i)=>assert.ok(Math.abs(v-targets[j][i])<1e-7)));
+assert.ok(Math.abs(warp(400,500)[0]-affine(400,500)[0])>1);
+assert.throws(()=>fitTPS([[0,0],[1,1],[2,2]],[[0,0],[1,1],[2,2]]));
+assert.throws(()=>fitTPS([[0,0],[0,0],[1,1]],[[0,0],[1,1],[2,2]]));
+assert.throws(()=>fitTPS([[0,0],[1,0],[0,1]],[[0,0],[NaN,1],[2,2]]));
+assert.deepEqual(barycentric({x:0.25,y:0.25},{x:0,y:0},{x:1,y:0},{x:0,y:1}),[0.5,0.25,0.25]);
+console.log('TPS: affine reproduction, control interpolation, local bending, degeneracy and inverse triangle picking passed');

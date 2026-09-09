@@ -3,7 +3,9 @@
 | 문서 | 역할 |
 |---|---|
 | [초기 조사 원문](HANYANG_3D_RESEARCH_AND_SOURCE_ROADMAP.md) | 자료원과 연구 아이디어를 보존한 출발점 |
-| [실행 계획](plan.md) | 우선순위, 산출물, 의존성, 완료 기준 |
+| [실행 계획](plan.md) | 도성 전체 지도·3D 지형 우선순위, 산출물, 완료 기준 |
+| [현재 인계](handoff.md) | 2026-09-09 구현 상태, 실행·원본 보존·재개 절차 |
+| [도성 전체 개관 우선 결정](decisions/0002-citywide-map-first.md) | 사용자 요청에 따른 우선순위 변경과 3D 지형 목표 |
 | [범위](scope.md) | 파일럿과 제외 범위 |
 | [방법론](methodology.md) | 출처부터 검토까지의 공통 절차 |
 | [시간 모델](chronology.md) | 제작 시기와 객체 존속 시기 구분 |
@@ -19,3 +21,13 @@
 서울역사아카이브의 실제 폼 처리 및 기본 입력값은 [다운로드 절차](archive_download.md)에 기록합니다.
 
 [서버 인계 기록](handoff.md): 이 환경에서 마친 작업과 다른 서버에서 재개할 순서.
+
+[지적자료와 파일럿 검토](cadastral_pilot_review.md): 1908·1912 실제 취득 자료, 도엽·기록 색인과 정합 후보.
+
+[픽셀 정합 검토](pixel_registration_review.md): 도엽 비교 결과, 오프라인 대응점 검토 화면과 affine 계산 도구.
+
+- [1908 관인방–경행방 도엽 연결](1908_sheet_join.md)
+
+- [도성 전도·현재 지형 TPS 비교](doseong_terrain_overlay.md)
+
+- [1908 도로·하수구 판독과 1912 비교 재개](1908_road_drain_reading.md)

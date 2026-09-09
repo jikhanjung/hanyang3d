@@ -23,7 +23,7 @@
 
 ## 개별 파일: assets.csv
 
-한 사료에 스캔·PDF·부분 이미지 등 여러 asset이 연결됩니다. 같은 파일이 변경되면 새 asset ID를 부여합니다. 아직 등록된 파일은 없습니다.
+한 사료에 스캔·PDF·부분 이미지 등 여러 asset이 연결됩니다. 같은 파일이 변경되면 새 asset ID를 부여합니다. 2026-09-09 기준 지도 JPG 11건과 영인 도록 PDF 1건, 총 12건을 등록했습니다.
 
 | 필드 | 규칙 |
 |---|---|
@@ -85,3 +85,11 @@ sources.csv에 다음 열을 추가했습니다. 기관이 화면에 표시하�
 | `detail_retrieved_at` | 상세 페이지 취득일 |
 
 상세 JSON은 원문 항목명을 key로 보존하고 내용 전체를 저장합니다. 화면 공백만 정리하며 요약이나 번역으로 대체하지 않습니다. 원본 HTML 경로·SHA-256·출처 URL·취득일을 함께 기록합니다. 화면에 없는 항목은 추측하지 않고 비워 둡니다. 전체 HTML·설명 JSON은 원본 자료와 함께 로컬 보관하며 일반 Git에서 제외합니다. 카탈로그의 로컬 경로는 다른 체크아웃에 파일이 존재한다는 보장이 아닙니다.
+
+## 조사 색인
+
+- `1908_sheet_index.csv`: 공식 목록 29개 도엽과 도록에 따른 동명 수준 coverage. 등록한 도엽만 source_id를 연결한다.
+- `1912_jongno_record_index.csv`: 종로 자료군 22철의 건 항목 1,414행. docid와 뷰어를 연결하며 고유 이미지 수를 의미하지 않는다.
+- `cadastral_discovery_pages.csv`: 색인 작성에 사용한 목록·철 상세 HTML의 URL·로컬 경로·SHA-256·취득일.
+
+조사 색인은 sources/assets의 대체 테이블이 아니다. source_id가 빈 항목은 개별 사료 등록·취득 미완료다. 국가기록원 개별 사료의 archive_number는 docid/archiveEventId, material_number는 철 관리번호 mngno를 저장하며 각 행의 notes에 의미를 명시한다.

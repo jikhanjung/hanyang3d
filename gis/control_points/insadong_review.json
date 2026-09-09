@@ -1,0 +1,61 @@
+{
+  "review_id": "insadong-1908-1912-001",
+  "review_date": "2026-09-08",
+  "coordinate_space": "image pixels; origin upper-left; x right; y down",
+  "geographic_crs": null,
+  "source_asset_id": "asset-0005",
+  "source_review_window": {
+    "x_min": 200,
+    "y_min": 950,
+    "x_max": 1450,
+    "y_max": 2050
+  },
+  "target_asset_ids": [
+    "asset-0008",
+    "asset-0009",
+    "asset-0010",
+    "asset-0011"
+  ],
+  "status": "correspondence_unresolved",
+  "accepted_control_count": 0,
+  "accepted_check_count": 0,
+  "transform": null,
+  "predeclared_screening_criteria": {
+    "min_controls": 4,
+    "min_independent_checks": 2,
+    "max_check_rmse_target_px": 20,
+    "purpose": "Coarse image correspondence screening only; not a metric or reconstruction accuracy target",
+    "requires": "Independently justified correspondences, spatially distributed controls, and visual inspection of residuals before accepting an overlap"
+  },
+  "findings": [
+    "Earlier similarity observation did not establish point correspondence.",
+    "Insadong records span multiple containers; the first record is not a representative or identical sheet.",
+    "Additional viewer images show sheet 6 and sheet 13; insufficient verified common points at this review.",
+    "Sheet-7 container BJCA000148: two record viewers reported missing originals; this is not proof that every record or offline original is unavailable."
+  ],
+  "next_step": "Inspect original sheet index and higher-resolution 1908 map area; establish topological and label matches before marking controls accepted.",
+  "followup_2026_09_08": {
+    "source_asset_ids": [
+      "asset-0005",
+      "asset-0012"
+    ],
+    "target_asset_ids": [
+      "asset-0008",
+      "asset-0009",
+      "asset-0010",
+      "asset-0011"
+    ],
+    "status": "correspondence_unresolved",
+    "accepted_controls": 0,
+    "accepted_checks": 0,
+    "findings": [
+      "The newly joined 1908 Gyeonghaeng sheet extends the comparison area but does not establish a 1912 match.",
+      "The 2015 book p.192 explicitly identifies ochre roads and blue drains; they must not be conflated when comparing linework.",
+      "Book p.192 gives Gyeongun/Nagwon for Gyeonghaeng, agreeing with the archive description; p.7 says Gwanhun. The internal discrepancy is preserved.",
+      "CLAHE/SIFT exploratory matches with unique target features failed to yield a visually supported distributed correspondence set. No automatically matched points accepted.",
+      "A three-junction manual hypothesis required severe shear and did not align surrounding parcels; rejected before control-point acceptance."
+    ],
+    "reading_path": "gis/roads/1908_gyeonghaeng_reading.json",
+    "next_step": "Use the recorded road/drain branches and adjoining parcel patterns to check 1912 sheet coverage; do not fit TPS to force a cross-year match."
+  }
+}

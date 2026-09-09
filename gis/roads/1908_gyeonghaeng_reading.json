@@ -1,0 +1,224 @@
+{
+  "reading_id": "1908-gyeonghaeng-roads-001",
+  "date": "2026-09-08",
+  "asset_id": "asset-0012",
+  "source_id": "src-0017",
+  "source_sha256": "61235ec3a36b050d0f23a4c1e7d5e9ad173a883e6a9f47fd7968373cb7776af7",
+  "coordinate_space": "original image pixels; origin upper-left; x right; y down",
+  "geographic_crs": null,
+  "status": "proposed_manual_reading",
+  "survey_year": 1908,
+  "window": [
+    650,
+    700,
+    1500,
+    1560
+  ],
+  "symbol_reference": {
+    "source_id": "src-0008",
+    "locator": "printed page 192 (PDF page 192)",
+    "road": "황토색 도로",
+    "drain": "푸른색 하수구"
+  },
+  "features": [
+    {
+      "id": "r01",
+      "kind": "road_centerline_approx",
+      "label": "중앙 도로 판독선",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            884,
+            800
+          ],
+          [
+            936,
+            900
+          ],
+          [
+            984,
+            1000
+          ],
+          [
+            1028,
+            1100
+          ],
+          [
+            1068,
+            1180
+          ],
+          [
+            1113,
+            1280
+          ],
+          [
+            1175,
+            1380
+          ],
+          [
+            1224,
+            1480
+          ],
+          [
+            1260,
+            1540
+          ]
+        ]
+      },
+      "status": "proposed",
+      "evidence_note": "황토색 띠의 대략적인 중앙. 도로 경계·폭의 측량값이 아니다.",
+      "geometry_accuracy": "approximate manual trace; unmeasured",
+      "crossyear_correspondence": null
+    },
+    {
+      "id": "r02",
+      "kind": "road_centerline_approx",
+      "label": "서쪽 골목 판독선",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            775,
+            1104
+          ],
+          [
+            824,
+            1084
+          ],
+          [
+            884,
+            1056
+          ],
+          [
+            949,
+            1028
+          ]
+        ]
+      },
+      "status": "proposed",
+      "evidence_note": "중앙 도로 서측의 좁은 황토색 구간. 하수구 통과부의 연결 구조는 별도 판독 필요.",
+      "geometry_accuracy": "approximate manual trace; unmeasured",
+      "crossyear_correspondence": null
+    },
+    {
+      "id": "r03",
+      "kind": "road_centerline_approx",
+      "label": "동쪽 골목 판독선",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            1124,
+            1224
+          ],
+          [
+            1200,
+            1198
+          ],
+          [
+            1292,
+            1176
+          ],
+          [
+            1396,
+            1155
+          ],
+          [
+            1465,
+            1135
+          ]
+        ]
+      },
+      "status": "proposed",
+      "evidence_note": "붉은 외곽선 구획 남쪽의 황토색 분기. 도곽 밖까지 연장하지 않음.",
+      "geometry_accuracy": "approximate manual trace; unmeasured",
+      "crossyear_correspondence": null
+    },
+    {
+      "id": "d01",
+      "kind": "drain_alignment_approx",
+      "label": "중앙 도로 서측 하수구 판독선",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            856,
+            800
+          ],
+          [
+            909,
+            900
+          ],
+          [
+            956,
+            1000
+          ],
+          [
+            997,
+            1100
+          ],
+          [
+            1038,
+            1200
+          ],
+          [
+            1090,
+            1300
+          ],
+          [
+            1150,
+            1400
+          ],
+          [
+            1212,
+            1500
+          ]
+        ]
+      },
+      "status": "proposed",
+      "evidence_note": "푸른색 좁은 선을 따른 대략적인 선형. 자연하천으로 분류하지 않으며 유향·폭 미확정.",
+      "geometry_accuracy": "approximate manual trace; unmeasured",
+      "crossyear_correspondence": null
+    },
+    {
+      "id": "d02",
+      "kind": "drain_alignment_approx",
+      "label": "서쪽 분기 하수구 판독선",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            958,
+            1036
+          ],
+          [
+            886,
+            1068
+          ],
+          [
+            824,
+            1097
+          ],
+          [
+            775,
+            1115
+          ],
+          [
+            718,
+            1105
+          ]
+        ]
+      },
+      "status": "proposed",
+      "evidence_note": "골목 옆 푸른색 선. 합류점·교량 형태와 물 흐름 방향은 미확정.",
+      "geometry_accuracy": "approximate manual trace; unmeasured",
+      "crossyear_correspondence": null
+    }
+  ],
+  "limitations": [
+    "Image-space reading only; not RFC 7946 GeoJSON or geographic vector data.",
+    "No claim of complete road network, verified road widths, hydraulic connectivity, ownership, or survival to 1912.",
+    "Endpoints denote the selected reading window, not necessarily real road endpoints."
+  ]
+}
