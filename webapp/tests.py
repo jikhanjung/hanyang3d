@@ -48,3 +48,18 @@ class ReviewTests(SimpleTestCase):
     def test_read_only(self):
         self.assertEqual(self.client.post('/').status_code, 405)
         self.assertEqual(self.client.post('/data/catalog/assets.csv').status_code, 405)
+
+    def test_3d_scene_and_local_dependencies(self):
+        response = self.client.get('/gis/terrain/3d/')
+        self.assertContains(response, '기존 5점 배치')
+        self.assertContains(response, '고도')
+        self.assertEqual(self.client.post('/gis/terrain/3d/').status_code, 405)
+        for path in ('webapp/static/terrain3d.js',
+                     'webapp/static/vendor/three/three.module.js',
+                     'webapp/static/vendor/three/three.core.js',
+                     'webapp/static/vendor/three/OrbitControls.js',
+                     'gis/georeferenced/terrain3d/dem.json',
+                     'gis/control_points/seoul_terrain_manifest.json'):
+            response = self.client.get('/' + path)
+            self.assertEqual(response.status_code, 200, path)
+            response.close()

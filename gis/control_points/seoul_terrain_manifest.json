@@ -1,0 +1,42 @@
+{
+  "id": "seoul-terrarium-001",
+  "retrieved_at": "2026-09-09T00:54:31.370778+00:00",
+  "bounds_3857": [
+    14131000,
+    4514000,
+    14142000,
+    4525000
+  ],
+  "source_zoom": 12,
+  "tiles": [
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3492/1585.png",
+      "path": "data/terrain/terrarium/12-3492-1585.png",
+      "sha256": "3518bdf53748959bd66a783e6a4f8b72d12dd0b3e160f7eecc4860f1df8b5072"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3493/1585.png",
+      "path": "data/terrain/terrarium/12-3493-1585.png",
+      "sha256": "a7041a5c76d3f2d8220110cb4fec8ebffa50f4f9d3be9d1403fbc640ddfdf2f5"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3492/1586.png",
+      "path": "data/terrain/terrarium/12-3492-1586.png",
+      "sha256": "44a4b5dcc551c5e00fe94881ddffe678ab3b3f57814efe67a71f9ad73b787812"
+    },
+    {
+      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3493/1586.png",
+      "path": "data/terrain/terrarium/12-3493-1586.png",
+      "sha256": "ac5ae949b675cf2ac66bb59d57e364247316fb89b8cb8fb1a876fe37f94cda82"
+    }
+  ],
+  "output": "gis/georeferenced/terrain3d/dem.json",
+  "output_sha256": "f76a7f24d95c9e36a0f5238b9daaa40a32127504a5db94bbf3be347d084f514c",
+  "min_height_m": -6.382744517488316,
+  "max_height_m": 331.24911696236705,
+  "grid_size": 257,
+  "resampling": "bilinear from decoded Terrarium pixel centres",
+  "registry": "https://registry.opendata.aws/terrain-tiles/",
+  "attribution_reference": "https://github.com/tilezen/joerd/blob/master/docs/attribution.md",
+  "format_reference": "https://github.com/tilezen/joerd/blob/master/docs/formats.md"
+}

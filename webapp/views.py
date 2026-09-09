@@ -33,10 +33,21 @@ def terrain_overlay(request):
 
 
 @require_safe
+def terrain3d(request):
+    experiment = json.loads((settings.BASE_DIR / 'gis/control_points/doseong_modern_preview.json').read_text())
+    return render(request, 'terrain3d.html', {'experiment': experiment})
+
+
+@require_safe
 def resource(request, resource):
     # Only catalogued originals and selected review artifacts are web-accessible.
     allowed = {a['local_path'] for a in assets()}
     allowed.update({
+        'gis/georeferenced/terrain3d/dem.json',
+        'gis/control_points/seoul_terrain_manifest.json',
+        'webapp/static/terrain3d.js',
+        *('webapp/static/vendor/three/' + name for name in
+          ('three.module.js', 'three.core.js', 'OrbitControls.js', 'LICENSE')),
         'gis/roads/1908_gyeonghaeng_reading.json',
         'gis/georeferenced/readings/index.html',
         'gis/control_points/doseong_modern_preview.json',

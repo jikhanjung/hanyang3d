@@ -12,6 +12,8 @@
 
 ## 작업 기록
 
+- [012: 도성 전체 3D 지형 오버레이](20260909_012_citywide_terrain3d.md)
+
 - [011: 현황 문서 갱신과 도성 전체 개관 우선순위](20260909_011_status_docs_and_citywide_priority.md)
 
 - [010: 1908–1912 두 분기점 배치 가설 검토](20260909_010_crossyear_branch_hypothesis.md)

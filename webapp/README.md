@@ -30,3 +30,5 @@
 ```
 
 판독 데이터와 가설 기록은 저장소 파일로 관리합니다. 화면에서 대응점 CSV 또는 TPS 설정 JSON을 저장해도 서버의 기준점 파일이 자동으로 변경되지는 않습니다.
+
+`/gis/terrain/3d/`은 기존 5점 배치를 유지한 3D 지형 화면입니다. `.venv/bin/python scripts/terrain/build_dem.py`로 고도 격자를 준비합니다. [고도 출처·재현·검증](../docs/doseong_terrain3d.md)을 참고하세요.
