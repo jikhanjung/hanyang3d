@@ -14,7 +14,7 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
 - Docker Hub: `honestjung/hanyang3d:v0.0.19`
-- 배포 digest: `sha256:b3308c255b274658313d5f9e0f83a169c3ccea834c409df789bc6d0ef0bbc9a3`
+- 배포 digest: `sha256:df4d7b3c0e78fd0e174583ae77ceb65a3e630771b68bb038d59f66eaece59a3e`
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 
@@ -155,4 +155,4 @@ v0.0.19은 경덕궁·창덕궁·창경궁을 상자 대신 단순화한 궁궐 
 
 v0.0.19은 황토색을 밝고 연하게 바꾸고 모든 지도 이름의 글자 크기·굵기를 통일한다.
 
-v0.0.19는 창덕궁을 원도의 전각 지붕 자리로 옮기고 돈화문·홍화문 모형을 추가한다. 창경궁과 홍화문은 두 모형의 중간이 기존 위치와 맞도록 배치한다.
+최종 v0.0.19는 창덕궁을 원도의 전각 지붕 자리로 옮기고 돈화문·홍화문 모형을 추가한다. 창경궁과 홍화문은 두 모형의 중간이 기존 위치와 맞도록 배치한다.
