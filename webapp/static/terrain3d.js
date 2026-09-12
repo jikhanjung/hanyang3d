@@ -193,24 +193,34 @@ async function main(){
   return {building,tag,aspect:canvas.width/canvas.height};
  });
  const mountainNames=new THREE.Group();mountainNames.name='mountain-name-labels';scene.add(mountainNames);
- const mountainTags=exp.terrain_alignment.anchors.map(p=>{
-  const name=p.name.startsWith('백악')?'북악산':p.name.replace(' 능선',''),canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+ const districtNames=new THREE.Group();districtNames.name='district-name-labels';scene.add(districtNames);
+ function placeTag(name,x,y,group){
+  const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
   ctx.font='600 26px system-ui';canvas.width=Math.ceil(ctx.measureText(name).width)+12;canvas.height=40;
   ctx.font='600 26px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.lineWidth=4;ctx.strokeStyle='#fffdf3';ctx.strokeText(name,canvas.width/2,20);ctx.fillStyle='#38453b';ctx.fillText(name,canvas.width/2,20);
   const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
   const tag=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:true,depthWrite:false,sizeAttenuation:false}));
-  const [x,y]=alignTerrain?project(p.lon,p.lat):warp(...p.pixel);tag.userData={name,x,y,z:height(x,y)+20};tag.center.set(.5,0);tag.renderOrder=6;mountainNames.add(tag);
+  tag.userData={name,x,y,z:height(x,y)+20};tag.center.set(.5,0);tag.renderOrder=6;group.add(tag);
   return {tag,aspect:canvas.width/canvas.height};
+ }
+ const mountainTags=exp.terrain_alignment.anchors.map(p=>{
+  const name=p.name.startsWith('백악')?'북악산':p.name.replace(' 능선','');
+  const [x,y]=alignTerrain?project(p.lon,p.lat):warp(...p.pixel);return placeTag(name,x,y,mountainNames);
+ });
+ // Approximate area labels, not surveyed points or historical administrative boundaries.
+ // Area descriptions: hanok.seoul.go.kr/front/kor/town/town01.do and town02.do.
+ const districtTags=[{name:'북촌',lon:126.984,lat:37.582},{name:'서촌',lon:126.969,lat:37.5805}].map(p=>{
+  const [x,y]=project(p.lon,p.lat);return placeTag(p.name,x,y,districtNames);
  });
  function updateBuildingNames(){
   buildingNames.visible=buildings.visible&&el('names3d').checked;
-  mountainNames.visible=el('names3d').checked;
+  mountainNames.visible=el('names3d').checked;districtNames.visible=el('names3d').checked;
   const scale=24*2*Math.tan(camera.fov*Math.PI/360)/Math.max(1,el('scene').clientHeight); // 24px font on a 36px canvas yields ~16px text.
   for(const {building,tag,aspect} of nameTags){
    tag.position.copy(building.position);tag.position.y+=building.userData.boxHeight/2+4;
    tag.scale.set(scale*aspect,scale,1);
   }
-  for(const {tag,aspect} of mountainTags){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));tag.scale.set(scale*1.12*aspect,scale*1.12,1)}
+  for(const {tag,aspect} of [...mountainTags,...districtTags]){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));tag.scale.set(scale*1.12*aspect,scale*1.12,1)}
  }
  frameUpdate=()=>updateBuildingNames();
  await stage(3,'주요 건물·문 표시 완료 · 물길을 준비합니다');
@@ -647,6 +657,6 @@ async function main(){
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass};
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

@@ -2,6 +2,8 @@ import * as THREE from 'three';
 
 // Focus zoom on the visible ground instead of an arbitrary fixed-height orbit plane.
 export function setupOrbitNavigation(camera,controls,canvas,pickGround,isFirstPerson,groundAt){
+ controls.mouseButtons={LEFT:THREE.MOUSE.PAN,MIDDLE:THREE.MOUSE.ROTATE,RIGHT:THREE.MOUSE.DOLLY};
+ controls.screenSpacePanning=false;
  controls.minDistance=1;controls.zoomToCursor=true;controls.zoomSpeed=1.6;
  const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2(),forward=new THREE.Vector3(),touches=new Map();
  function updateNear(){
@@ -28,7 +30,7 @@ export function setupOrbitNavigation(camera,controls,canvas,pickGround,isFirstPe
  canvas.addEventListener('wheel',event=>focus(event.clientX,event.clientY),{capture:true,passive:true});
  canvas.addEventListener('pointerdown',event=>{
   if(event.pointerType==='touch')touches.set(event.pointerId,{x:event.clientX,y:event.clientY});
-  else if(event.button===1||event.button===2)focus(event.clientX,event.clientY);
+  else if(event.button===0||event.button===1||event.button===2)focus(event.clientX,event.clientY);
  },true);
  canvas.addEventListener('pointermove',event=>{
   if(!touches.has(event.pointerId))return;

@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [054: 업데이트 안내·지역 이름·반투명 패널](20260912_054_maintenance_and_map_labels.md)
 - [053: 수평 3D 나침반·모바일 햄버거 메뉴](20260912_053_3d_compass_and_hamburger.md)
 - [052: 육조거리 관청·연대 데이터·모바일 설정](20260912_052_yukjo_compounds_and_mobile_options.md)
 - [051: 반투명 모바일 조이스틱과 간소화](20260912_051_minimal_mobile_joystick.md)

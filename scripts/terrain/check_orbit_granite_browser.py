@@ -52,9 +52,9 @@ with sync_playwright() as p:
     box = page.locator('#scene > canvas').bounding_box()
     before_pan = page.evaluate('terrain3d.camera.position.toArray()')
     page.mouse.move(box['x']+box['width']/2,box['y']+box['height']/2)
-    page.mouse.down(button='right')
+    page.mouse.down(button='left')
     page.mouse.move(box['x']+box['width']/2+60,box['y']+box['height']/2,steps=3)
-    page.mouse.up(button='right')
+    page.mouse.up(button='left')
     after_pan = page.evaluate('terrain3d.camera.position.toArray()')
     assert sum((a-b)**2 for a,b in zip(before_pan,after_pan)) > .001
 

@@ -13,11 +13,19 @@ with sync_playwright() as p:
  assert {float(r['pitch']) for r in result}=={0,-30,-90,30},result
  assert page.locator('#first-person-compass').evaluate('(e)=>getComputedStyle(e).backgroundColor')=='rgba(0, 0, 0, 0)'
  assert page.locator('#first-person-compass canvas').count()==1
+ assert page.locator('#credits-link .credits-text').is_visible()
+ assert not page.locator('#credits-link .credits-symbol').is_visible()
+ assert page.evaluate("terrain3d.districtNames.children.map(t=>t.userData.name)")==['북촌','서촌']
+ for selector in ['#map-controls','#credits-link']:
+  assert page.locator(selector).evaluate('(e)=>getComputedStyle(e).backgroundColor')=='rgba(255, 253, 242, 0.7)'
  page.evaluate('terrain3d.renderer.render(terrain3d.scene,terrain3d.camera)');page.screenshot(path='/tmp/compass-desktop.png')
  page.set_viewport_size({'width':390,'height':844})
  assert not page.locator('#first-person3d').is_visible()
  assert not page.locator('#opacity3d').is_visible()
+ assert page.locator('#credits-link .credits-symbol').is_visible()
+ assert not page.locator('#credits-link .credits-text').is_visible()
  title=page.locator('.map-title').bounding_box();toggle=page.locator('#map-options-toggle').bounding_box()
+ assert toggle['x']+toggle['width']<=title['x']
  assert abs(title['y']+title['height']/2-toggle['y']-toggle['height']/2)<2
  assert page.locator('#map-controls').bounding_box()['height']<=50
  page.locator('#map-options-toggle').click();assert page.locator('#first-person3d').is_visible();assert page.locator('#opacity3d').is_visible()
@@ -27,4 +35,4 @@ with sync_playwright() as p:
  page.locator('#map-options-toggle').click();page.locator('#first-person3d').click();assert not page.evaluate('terrain3d.firstPerson.active')
  assert not page.locator('#first-person3d').is_visible()
  assert not errors,errors
- print('PC/mobile 3D compass: 16 yaw/pitch poses; fixed north/horizontal model; transparent background; compact menu and walking toggle passed',flush=True);b.close()
+ print('PC/mobile 3D compass: 16 yaw/pitch poses; fixed north/horizontal model; transparent background; left hamburger, translucent panels, mobile copyright symbol, district labels and walking toggle passed',flush=True);b.close()
