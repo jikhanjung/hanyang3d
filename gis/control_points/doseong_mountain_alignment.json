@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "experimental_source_mountains_to_modern_dem",
+  "flat_core_polygon": [
+    [
+      950,
+      1050
+    ],
+    [
+      1500,
+      1000
+    ],
+    [
+      2090,
+      1100
+    ],
+    [
+      2350,
+      1300
+    ],
+    [
+      2495,
+      1408
+    ],
+    [
+      2440,
+      1660
+    ],
+    [
+      2120,
+      1820
+    ],
+    [
+      1610,
+      1900
+    ],
+    [
+      1250,
+      1880
+    ],
+    [
+      998,
+      2004
+    ],
+    [
+      830,
+      1750
+    ],
+    [
+      766,
+      1481
+    ],
+    [
+      850,
+      1220
+    ]
+  ],
+  "transition_pixels": 220,
+  "anchors": [
+    {
+      "name": "남산 능선",
+      "pixel": [
+        1500,
+        2320
+      ],
+      "lat": 37.55192870289693,
+      "lon": 126.98802417046429,
+      "dem_height_m": 270.51,
+      "reference": "https://data.visitkorea.or.kr/linkedview/126535",
+      "reference_note": "남산서울타워 관광공사 좌표 주변 220 m 내 현대 DEM 최고 격자. 원도 봉우리 표현은 개략 판독."
+    },
+    {
+      "name": "인왕산 능선",
+      "pixel": [
+        650,
+        890
+      ],
+      "lat": 37.58497123280181,
+      "lon": 126.95791657226997,
+      "dem_height_m": 317.37,
+      "reference": "https://data.visitkorea.or.kr/linkedview/126479",
+      "reference_note": "관광공사 인왕산 좌표 주변 220 m 내 현대 DEM 최고 격자."
+    },
+    {
+      "name": "백악 능선",
+      "pixel": [
+        1080,
+        490
+      ],
+      "lat": 37.59322957477104,
+      "lon": 126.97335636621577,
+      "dem_height_m": 326.65,
+      "reference": "https://www.openstreetmap.org/node/2668271331",
+      "reference_note": "OSM 백악 정상 위치 주변 220 m 내 현대 DEM 최고 격자. 좌표는 Mapcarta의 OSM 재게시값으로 대조."
+    }
+  ],
+  "method": "평지 다각형 내부의 기존 5점 TPS는 정확히 유지. 경계 바깥부터 smoothstep으로 산지 TPS를 혼합. 산지 TPS는 평지 경계의 기존 위치와 3개 능선 대응점을 사용.",
+  "limitations": [
+    "평지 경계 및 원도 산 그림 대응점은 개략 가정.",
+    "용산·신촌 위치를 직접 판독한 정합이 아니라 산지 보정의 외삽이며 추가 검증 필요.",
+    "현대 DEM 봉우리는 조선시대 지형 실측점이 아님."
+  ]
+}

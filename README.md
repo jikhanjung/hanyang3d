@@ -51,6 +51,10 @@
 
 프로젝트 코드·문서의 배포 라이선스는 아직 결정하지 않았습니다. 외부 사료와 파생 데이터의 조건은 파일별로 관리합니다. [권리 관리 방침](docs/licensing.md)을 참고하세요. 정식 릴리스 전에는 저장소 주소, 커밋 해시, 참조 파일을 함께 기록해 인용합니다.
 
+## Docker 배포
+
+`honestjung/hanyang3d:v0.0.1` 이미지를 제공합니다. `bash deploy/build.sh v0.0.1`로 이미지와 별도 지도 데이터 묶음을 생성·검증합니다. dolfinid용 Compose 구성과 설치 절차는 [배포 안내](deploy/README.md)에 있습니다. 이미지 산출물은 `dist/`에 생성하며 Git에는 포함하지 않습니다.
+
 ## 지도 비교 도구
 
 웹서비스는 Django로 구성했습니다. `.venv/bin/python manage.py runserver 0.0.0.0:8000 --noreload`로 실행한 뒤 `http://localhost:8000/`에서 작업 현황과 지도 도구를 엽니다. [실행·검증 안내](webapp/README.md)를 참고하세요.

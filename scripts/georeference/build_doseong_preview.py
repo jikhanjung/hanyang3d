@@ -22,9 +22,9 @@ def main():
         dict(name='흥인지문', pixel=[2495, 1408], lat=37.5711528, lon=127.0096389,
              reference='https://en.wikipedia.org/wiki/Heunginjimun',
              note='동향 대로 끝의 옹성 안 문 기호를 육안 판독. 기호 중심과 실측 문 중심의 동일성 미검증.'),
-        dict(name='돈의문 터', pixel=[703, 1493], lat=37.5682444, lon=126.9689750,
+        dict(name='돈의문 터', pixel=[766, 1481], lat=37.5682444, lon=126.9689750,
              reference='https://en.wikipedia.org/wiki/Donuimun',
-             note='서쪽 성벽과 대로 교차부 문 기호를 육안 판독. 철거된 문의 터이며 현대 기준점의 정확도 미검증.'),
+             note='2026-09-10 재판독: 숭례문에서 이어지는 성벽과 대로 교차부 문 기호 (766, 1481). 기존 (703, 1493)은 문 서쪽의 잘못된 판독점으로 교정. 철거된 문의 터이며 현대 기준점의 정확도 미검증.'),
     ]
     for point in landmarks:
         point['status'] = 'proposed_visual_anchor'
@@ -34,7 +34,7 @@ def main():
     original = ROOT / 'data/maps/src-0001/asset-0001.jpg'
     sha = hashlib.sha256(original.read_bytes()).hexdigest()
     assert sha == 'f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0'
-    result = dict(asset_id='asset-0001', source_id='src-0001', date='2026-09-08',
+    result = dict(asset_id='asset-0001', source_id='src-0001', date='2026-09-10',
                   image_url='/data/maps/src-0001/asset-0001.jpg', image_size=[3124, 2743],
                   input_sha256=sha, status='unvalidated_visual_preview',
                   method='affine through three approximate landmarks; no independent checks',
@@ -55,6 +55,7 @@ def main():
                                'Three points determine the affine exactly; fit residuals cannot validate accuracy.',
                                'Northern mountains lie outside the anchor triangle; extrapolation is unverified.',
                                'This does not replace the staged cadastral/geographic registration workflow.'])
+    result['terrain_alignment'] = json.loads((ROOT / 'gis/control_points/doseong_mountain_alignment.json').read_text())
     path = ROOT / 'gis/control_points/doseong_modern_preview.json'
     path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     print(path)

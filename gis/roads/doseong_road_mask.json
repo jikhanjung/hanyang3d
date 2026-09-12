@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_asset_id": "asset-0001",
+  "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+  "image_size": [
+    3124,
+    2743
+  ],
+  "mask_url": "/gis/roads/doseong_road_mask.png",
+  "mask_sha256": "9cd22b3bcadc4a1ed873492273d66565cd2c614b9da6c921359392269399e970",
+  "method": "Red-ink colour contrast with local background correction, 3px closing and short-component removal. Visual review of source overlay.",
+  "masked_pixels": 188550,
+  "components": 322,
+  "display_color": "#8b6179",
+  "limitations": [
+    "붉은 길 표시의 색상 기반 추출이며 모든 골목의 완전한 판독이 아님.",
+    "희미하거나 접힌 부분은 끊길 수 있고 작은 붉은 기호가 일부 포함될 수 있음.",
+    "원도의 선폭을 사용하며 실측 도로 폭이 아님."
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "id": "seoul-terrarium-001",
-  "retrieved_at": "2026-09-09T00:54:31.370778+00:00",
+  "retrieved_at": "2026-09-11T04:47:42.155382+00:00",
   "bounds_3857": [
-    14131000,
-    4514000,
-    14142000,
-    4525000
+    14129500,
+    4513500,
+    14146500,
+    4526500
   ],
   "source_zoom": 12,
   "tiles": [
@@ -31,10 +31,10 @@
     }
   ],
   "output": "gis/georeferenced/terrain3d/dem.json",
-  "output_sha256": "f76a7f24d95c9e36a0f5238b9daaa40a32127504a5db94bbf3be347d084f514c",
-  "min_height_m": -6.382744517488316,
-  "max_height_m": 331.24911696236705,
-  "grid_size": 257,
+  "output_sha256": "c82ef2786d2adc5bff2ff41e428f827f6a3f90f7411e5628c8d436816db3bf5e",
+  "min_height_m": -22.538361209408475,
+  "max_height_m": 517.5351859731791,
+  "grid_size": 401,
   "resampling": "bilinear from decoded Terrarium pixel centres",
   "registry": "https://registry.opendata.aws/terrain-tiles/",
   "attribution_reference": "https://github.com/tilezen/joerd/blob/master/docs/attribution.md",

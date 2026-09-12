@@ -47,7 +47,7 @@ with sync_playwright() as p:
  page.locator('#base').select_option('osm');page.wait_for_function('!bases.osm.isLoading()',timeout=45000);page.wait_for_timeout(500)
  page.evaluate('map.setView([37.573,126.984],15)');page.wait_for_timeout(1000)
  page.screenshot(path='/tmp/doseong-tps-jongno.png')
- print('Segment length ratios:',page.evaluate('''()=>{const west=[703,1493],mid=[1155,1441],east=[2495,1408];return {west:projected(...west).distanceTo(projected(...mid))/raw(...west).distanceTo(raw(...mid)),east:projected(...east).distanceTo(projected(...mid))/raw(...east).distanceTo(raw(...mid))}}'''))
+ print('Segment length ratios:',page.evaluate('''()=>{const west=points.find(p=>p.name==='돈의문 터').pixel,mid=[1155,1441],east=[2495,1408];return {west:projected(...west).distanceTo(projected(...mid))/raw(...west).distanceTo(raw(...mid)),east:projected(...east).distanceTo(projected(...mid))/raw(...east).distanceTo(raw(...mid))}}'''))
  page.set_viewport_size({'width':390,'height':844});page.wait_for_timeout(500)
  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
  page.screenshot(path='/tmp/doseong-tps-mobile.png')

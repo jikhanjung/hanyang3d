@@ -1,0 +1,23 @@
+contract_version = 1
+instance = "hanyang3d"
+image = "honestjung/hanyang3d"
+version = "v0.0.1"
+platform = "linux/amd64"
+settings = "webapp.settings"
+has_database = false
+health_url = "/healthz"
+services = ["hanyang3d"]
+
+[verbs]
+build = "bash deploy/build.sh v0.0.1"
+deploy = "bash /srv/hanyang3d/deploy.sh v0.0.1"
+rollback = "bash /srv/hanyang3d/deploy.sh <previous-version>"
+
+[targets.prod]
+host = "dolfinid"
+ssh_user = "honestjung"
+hostname = "cdgts.paleobytes.info"
+root = "/srv/hanyang3d"
+expose = "127.0.0.1:8013"
+data = "/srv/hanyang3d/data/<version>"
+# A new public domain and nginx/TLS installation are a separate deployment choice.

@@ -14,8 +14,8 @@ ROOT = Path(__file__).resolve().parents[2]
 HALF = math.pi * 6378137
 ZOOM = 12
 # Covers the entire default warped map plus surrounding terrain; metres in EPSG:3857.
-BOUNDS = [14131000, 4514000, 14142000, 4525000]
-SIZE = 257
+BOUNDS = [14129500, 4513500, 14146500, 4526500]
+SIZE = 401
 
 
 def decode(rgb):

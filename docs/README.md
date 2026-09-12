@@ -33,3 +33,11 @@
 - [1908 도로·하수구 판독과 1912 비교 재개](1908_road_drain_reading.md)
 
 - [도성대지도·3D 지형 화면](doseong_terrain3d.md): 고도 출처·가공, 사용법, 재현·검증.
+
+- [도성대지도 청계천·다리](doseong_cheonggyecheon.md): 원도 판독, 3D 표시와 해석 범위.
+
+- [도성 성벽·다리 진입로·산기슭 정합](doseong_walls_and_mountains.md)
+
+- [옛길·하류 연장·성문 보완](doseong_roads_and_downstream.md)
+
+- [길 주변 주택·상가 추정 배치](doseong_settlement.md)

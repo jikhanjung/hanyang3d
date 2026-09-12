@@ -1,0 +1,484 @@
+{
+  "schema_version": 1,
+  "period": "18세기 중엽 개관; 정확한 기준연도 미확정",
+  "coordinate_crs": "EPSG:4326",
+  "position_method": "Approximate modern site locations manually entered for overview, not surveyed historical building centres or source-map readings.",
+  "geometry_status": "symbolic_boxes_not_reconstructed_footprints",
+  "features": [
+    {
+      "id": "changdeok",
+      "name": "창덕궁 · 인정전 일대",
+      "lat": 37.5794,
+      "lon": 126.991,
+      "category": "궁궐",
+      "reference": "https://royal.khs.go.kr/ROYAL/contents/R102010000.do",
+      "note": "동궐의 중심 궁궐. 박스는 인정전 일대를 가리키는 위치 표시입니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        30,
+        18,
+        24
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+    },
+    {
+      "id": "changgyeong",
+      "name": "창경궁 · 명정전 일대",
+      "lat": 37.5786,
+      "lon": 126.9949,
+      "category": "궁궐",
+      "reference": "https://royal.khs.go.kr/ROYAL/contents/R103010000.do",
+      "note": "창덕궁과 이어진 왕실 공간. 전각의 실제 외형은 표현하지 않았습니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        24,
+        12,
+        16
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+    },
+    {
+      "id": "gyeongdeok",
+      "name": "경덕궁 · 숭정전 일대",
+      "lat": 37.5714,
+      "lon": 126.9681,
+      "category": "궁궐",
+      "reference": "https://royal.khs.go.kr/ROYAL/contents/R110000000.do",
+      "note": "오늘날 경희궁. 1760년 이전 이름인 경덕궁으로 표시합니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        26,
+        13,
+        20
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+    },
+    {
+      "id": "jongmyo",
+      "name": "종묘 · 정전 일대",
+      "lat": 37.5746,
+      "lon": 126.9937,
+      "category": "제례",
+      "reference": "https://royal.khs.go.kr/ROYAL/contents/R105010000.do",
+      "note": "왕실 제례 공간. 당시 정전은 15칸이며 이 박스는 건물의 칸수나 길이를 재현하지 않습니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        80,
+        12,
+        18
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "당시 정전 15칸의 긴 평면을 참고한 개략값. 실측 치수 아님."
+    },
+    {
+      "id": "sajik",
+      "name": "사직단",
+      "lat": 37.5755,
+      "lon": 126.9686,
+      "category": "제례",
+      "reference": "https://royal.khs.go.kr/ROYAL/contents/R311030000.do",
+      "note": "토지와 곡식의 신에게 제사하던 제단. 건물 대신 낮은 위치 표시 박스를 사용합니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        7.65,
+        1,
+        7.65
+      ],
+      "size_status": "single_altar_reference_size",
+      "size_note": "사직단 두 제단 중 하나의 크기를 참고한 단일 박스. 실제 제단 배치는 미복원."
+    },
+    {
+      "id": "sungkyun",
+      "name": "문묘·성균관",
+      "lat": 37.5851,
+      "lon": 126.9958,
+      "category": "교육",
+      "reference": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101410000&ctptUid=13898859667928200187",
+      "note": "대성전·명륜당을 포함한 교육·제례 시설군의 대표 위치입니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        24,
+        10,
+        16
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+    },
+    {
+      "id": "uijeongbu",
+      "name": "의정부",
+      "lat": 37.5756,
+      "lon": 126.9787,
+      "category": "관청",
+      "reference": "https://history.seoul.go.kr/bbsctt/view.do?bbscttSn=2604300001&key=2210200020",
+      "note": "육조거리 동쪽 관청의 대표 위치. 개별 청사 배치는 미복원입니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        24,
+        9,
+        14
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+    },
+    {
+      "id": "sijeon",
+      "name": "운종가 · 시전 거리",
+      "lat": 37.57,
+      "lon": 126.9847,
+      "category": "상업",
+      "reference": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1182&seq=20221208151226671&sso=ok",
+      "note": "종로를 따라 이어진 시전의 대표 위치. 단일 건물이나 시전 전체 범위를 뜻하지 않습니다.",
+      "position_status": "approximate_site_hint",
+      "symbol_size_m": [
+        12,
+        5,
+        7
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "시전 전체 거리가 아닌 작은 상점 건물 1동의 개략 규모."
+    },
+    {
+      "id": "gwanghwamun",
+      "name": "광화문",
+      "lat": 37.5760444,
+      "lon": 126.9770194,
+      "category": "성문",
+      "reference": "https://www.wikidata.org/wiki/Q485034",
+      "note": "광화문 위치의 개념 모형입니다. 18세기 중엽은 소실 후 중건 전이며 이 모형이 당시 문루의 존재를 뜻하지 않습니다.",
+      "position_status": "existing_calibration_anchor",
+      "calibration_anchor": "광화문",
+      "symbol_size_m": [
+        36,
+        21,
+        15
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "주요 네 문을 다른 문보다 크게 표현한 개관용 치수. 역사적 실측 복원값 아님.",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "model_note": "석축 통로·문루·지붕을 단순화한 개념 모형. 1750년대 외형·재료·문 방향의 실측 복원 아님.",
+      "road_axis": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel_points": [
+          [
+            1156,
+            1150
+          ],
+          [
+            1155,
+            1250
+          ]
+        ],
+        "method": "manual_local_road_reading_then_current_tps",
+        "note": "원도에서 문 주변 진입로의 방향을 판독한 개략 축. 통로를 이 축에 평행하게 회전하며 기존 보정점 위치는 유지."
+      }
+    },
+    {
+      "id": "heunginjimun",
+      "name": "흥인지문",
+      "lat": 37.5711528,
+      "lon": 127.0096389,
+      "category": "성문",
+      "reference": "https://en.wikipedia.org/wiki/Heunginjimun",
+      "note": "기존 보정점 위치의 성문 개념 모형입니다. 통로·문루·지붕을 단순화했으며 당시 외형과 방향의 실측 복원은 아닙니다.",
+      "position_status": "existing_calibration_anchor",
+      "calibration_anchor": "흥인지문",
+      "symbol_size_m": [
+        32,
+        23,
+        15
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "주요 네 문을 다른 문보다 크게 표현한 개관용 치수. 역사적 실측 복원값 아님.",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "model_note": "석축 통로·문루·지붕을 단순화한 개념 모형. 1750년대 외형·재료·문 방향의 실측 복원 아님.",
+      "road_axis": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel_points": [
+          [
+            2435,
+            1410
+          ],
+          [
+            2495,
+            1408
+          ]
+        ],
+        "method": "manual_local_road_reading_then_current_tps",
+        "note": "원도에서 문 주변 진입로의 방향을 판독한 개략 축. 통로를 이 축에 평행하게 회전하며 기존 보정점 위치는 유지."
+      }
+    },
+    {
+      "id": "sungnyemun",
+      "name": "숭례문",
+      "lat": 37.56,
+      "lon": 126.97528,
+      "category": "성문",
+      "reference": "https://en.wikipedia.org/wiki/Sungnyemun",
+      "note": "기존 보정점 위치의 성문 개념 모형입니다. 통로·문루·지붕을 단순화했으며 당시 외형과 방향의 실측 복원은 아닙니다.",
+      "position_status": "existing_calibration_anchor",
+      "calibration_anchor": "숭례문",
+      "symbol_size_m": [
+        36,
+        25,
+        18
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "주요 네 문을 다른 문보다 크게 표현한 개관용 치수. 역사적 실측 복원값 아님.",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "model_note": "석축 통로·문루·지붕을 단순화한 개념 모형. 1750년대 외형·재료·문 방향의 실측 복원 아님.",
+      "road_axis": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel_points": [
+          [
+            948,
+            2019
+          ],
+          [
+            1068,
+            1974
+          ]
+        ],
+        "method": "manual_local_road_reading_then_current_tps",
+        "note": "원도에서 문 주변 진입로의 방향을 판독한 개략 축. 통로를 이 축에 평행하게 회전하며 기존 보정점 위치는 유지."
+      }
+    },
+    {
+      "id": "donuimun",
+      "name": "돈의문",
+      "category": "성문",
+      "reference": "https://en.wikipedia.org/wiki/Donuimun",
+      "note": "원도의 성벽·길 교차점으로 교정한 돈의문 보정점에 배치한 성문 개념 모형입니다. 실제 외형은 단순화했습니다.",
+      "position_status": "existing_calibration_anchor",
+      "symbol_size_m": [
+        28,
+        19,
+        13
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "주요 네 문을 다른 문보다 크게 표현한 개관용 치수. 역사적 실측 복원값 아님.",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "model_note": "석축 통로·문루·지붕을 단순화한 개념 모형. 1750년대 외형·재료·문 방향의 실측 복원 아님.",
+      "road_axis": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel_points": [
+          [
+            741,
+            1483
+          ],
+          [
+            796,
+            1478
+          ]
+        ],
+        "method": "manual_local_road_reading_then_current_tps",
+        "note": "성벽을 가로지르는 길의 개략 축. 교정한 돈의문 보정점에 배치."
+      },
+      "lat": 37.5682444,
+      "lon": 126.968975,
+      "source_reading": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          766,
+          1481
+        ],
+        "method": "manual_gate_at_wall_road_intersection"
+      },
+      "calibration_anchor": "돈의문 터"
+    },
+    {
+      "id": "changuimun",
+      "name": "창의문",
+      "category": "성문",
+      "symbol_size_m": [
+        16,
+        12,
+        9
+      ],
+      "gate_tiers": 1,
+      "source_position": {
+        "pixel": [
+          710,
+          670
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "road_axis": {
+        "pixel_points": [
+          [
+            692,
+            640
+          ],
+          [
+            727,
+            700
+          ]
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "method": "manual_local_road_reading_then_current_tps"
+      },
+      "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
+      "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
+      "size_status": "conceptual_relative_scale"
+    },
+    {
+      "id": "sukjeongmun",
+      "name": "숙정문",
+      "category": "성문",
+      "symbol_size_m": [
+        16,
+        12,
+        9
+      ],
+      "gate_tiers": 1,
+      "source_position": {
+        "pixel": [
+          1406,
+          556
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "road_axis": {
+        "pixel_points": [
+          [
+            1404,
+            530
+          ],
+          [
+            1408,
+            583
+          ]
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "method": "manual_local_road_reading_then_current_tps"
+      },
+      "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
+      "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
+      "size_status": "conceptual_relative_scale"
+    },
+    {
+      "id": "hyehwamun",
+      "name": "혜화문",
+      "category": "성문",
+      "symbol_size_m": [
+        16,
+        12,
+        9
+      ],
+      "gate_tiers": 1,
+      "source_position": {
+        "pixel": [
+          2352,
+          825
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "road_axis": {
+        "pixel_points": [
+          [
+            2315,
+            838
+          ],
+          [
+            2390,
+            810
+          ]
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "method": "manual_local_road_reading_then_current_tps"
+      },
+      "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
+      "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
+      "size_status": "conceptual_relative_scale"
+    },
+    {
+      "id": "gwanghuimun",
+      "name": "광희문",
+      "category": "성문",
+      "symbol_size_m": [
+        16,
+        12,
+        9
+      ],
+      "gate_tiers": 1,
+      "source_position": {
+        "pixel": [
+          2525,
+          1842
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "road_axis": {
+        "pixel_points": [
+          [
+            2488,
+            1831
+          ],
+          [
+            2560,
+            1855
+          ]
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "method": "manual_local_road_reading_then_current_tps"
+      },
+      "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
+      "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
+      "size_status": "conceptual_relative_scale"
+    },
+    {
+      "id": "souimun",
+      "name": "소의문",
+      "category": "성문",
+      "symbol_size_m": [
+        16,
+        12,
+        9
+      ],
+      "gate_tiers": 1,
+      "source_position": {
+        "pixel": [
+          867,
+          1765
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "road_axis": {
+        "pixel_points": [
+          [
+            832,
+            1767
+          ],
+          [
+            904,
+            1763
+          ]
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "method": "manual_local_road_reading_then_current_tps"
+      },
+      "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
+      "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
+      "size_status": "conceptual_relative_scale"
+    }
+  ],
+  "size_policy": "Representative single-building-scale approximate envelopes in metres, not compound bounds or measured historical reconstructions. Axis order: width, height, depth. Sizes are explicit modelling assumptions except the Sajik single-altar reference.",
+  "size_references": [
+    {
+      "url": "https://dh.aks.ac.kr/sillokwiki/index.php/정전(正殿)",
+      "basis": "궁궐 정전의 5칸 정면과 3~4칸 측면을 규모 비교에 사용. 칸의 폭·건물 높이는 실측으로 확정하지 않음."
+    },
+    {
+      "url": "https://www.heritage.go.kr/heri/cul/culGuidePostDetail.do?ccbaCpno=1331101210000&ccgbGbtype=UNI&ccgbGbtypeNo=2&pageNo=1_5_0_0",
+      "basis": "사직단 한 제단의 한 변 7.65m·높이 약 1m. 전체 시설군이 아닌 제단 하나의 규모 참고."
+    }
+  ]
+}

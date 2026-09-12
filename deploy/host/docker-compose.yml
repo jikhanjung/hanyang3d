@@ -1,0 +1,28 @@
+name: hanyang3d
+services:
+  hanyang3d:
+    image: honestjung/hanyang3d:${IMAGE_TAG:?Set IMAGE_TAG}
+    ports:
+      - "127.0.0.1:${HOST_PORT:-8013}:8000"
+    env_file:
+      - .env.django
+    volumes:
+      - type: bind
+        source: ./data/${DATA_VERSION:?Set DATA_VERSION}
+        target: /runtime
+        read_only: true
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

@@ -15,7 +15,7 @@ function transformed(p){const q=p.subtract(center),a=-state.rotation*Math.PI/180
 function undoGlobal(p){const a=state.rotation*Math.PI/180,s=state.scale/100,q=L.point(p.x-center.x-state.east*groundFactor,p.y-center.y-state.north*groundFactor);return L.point(center.x+(q.x*Math.cos(a)-q.y*Math.sin(a))/s,center.y+(q.x*Math.sin(a)+q.y*Math.cos(a))/s)}
 function projected(x,y){return el('method').value==='tps'?L.point(tps(x,y)):raw(x,y)}
 function position(x,y){return L.CRS.EPSG3857.unproject(transformed(projected(x,y)))}
-function rebuild(){tps=DoseongWarp.fitTPS(points.map(p=>p.pixel),points.map(p=>{const q=L.CRS.EPSG3857.project(L.latLng(p.lat,p.lon));return [q.x,q.y]}));mesh=[];for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){const x=width*i/cols,y=height*j/rows;mesh.push({x,y,p:projected(x,y)})}}
+function rebuild(){tps=DoseongWarp.fitTerrainTPS(points.map(p=>p.pixel),points.map(p=>{const q=L.CRS.EPSG3857.project(L.latLng(p.lat,p.lon));return [q.x,q.y]}),experiment.terrain_alignment);mesh=[];for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){const x=width*i/cols,y=height*j/rows;mesh.push({x,y,p:projected(x,y)})}}
 rebuild();
 function triangles(nodes){const result=[];for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const a=j*(cols+1)+i,b=a+1,c=a+cols+1,d=c+1;result.push([nodes[a],nodes[b],nodes[d]],[nodes[a],nodes[d],nodes[c]])}return result}
 function triangleDraw(ctx,tri,ratio){const [a,b,c]=tri,det=(b.x-a.x)*(c.y-a.y)-(c.x-a.x)*(b.y-a.y);
