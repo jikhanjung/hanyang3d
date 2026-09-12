@@ -34,3 +34,9 @@
 `check_first_person_browser.py`가 예전 화면을 기준으로 삼아 이번 작업 이전부터 실패하고 있었다. 사라진 `#compass-bearing` 대신 현재 나침반의 `data-yaw`를 읽고, 걷기에서 나와도 나침반이 계속 보이는 현재 동작에 맞췄다. 애니메이션 루프를 끈 검사이므로 나침반 값을 읽기 전에 `updateCompass()`를 호출한다.
 
 `scripts/terrain/check_buildings_browser.py`의 건물 17개·이름표 8개 상수는 이번에도 고치지 않았다. 별도 작업으로 남긴다.
+
+## 배포
+
+- v0.0.20으로 배포했다. Docker Hub digest: `sha256:2b7382d4d6f806e662db73a1c2301a89f4bc769b53f793fb13610c32cfaab285`.
+- 공개 healthz 정상: v0.0.20, resources 58.
+- 운영 화면에서 `deploy/check_public_browser.py`와 모바일 조이스틱 검사가 통과했다. 눈높이는 높이 배율·지도 투명도·도로 표시를 바꿔도 1.65 m를 유지한다.
