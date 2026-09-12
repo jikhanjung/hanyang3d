@@ -18,11 +18,11 @@ with sync_playwright() as p:
  page.set_viewport_size({'width':390,'height':844})
  assert not page.locator('#opacity3d').is_visible()
  assert not page.locator('#map-options a').is_visible()
- assert page.locator('#first-person3d').is_visible() and page.locator('#map-options-toggle').is_visible()
+ assert not page.locator('#first-person3d').is_visible() and page.locator('#map-options-toggle').is_visible()
  page.locator('#map-options-toggle').click();assert page.locator('#opacity3d').is_visible();assert page.locator('#map-options a').is_visible()
  assert page.locator('#map-options-toggle').get_attribute('aria-expanded')=='true'
  page.locator('#map-options-toggle').click();assert not page.locator('#opacity3d').is_visible()
- page.locator('#first-person3d').click();assert page.evaluate('terrain3d.firstPerson.active')
+ page.locator('#map-options-toggle').click();page.locator('#first-person3d').click();assert page.evaluate('terrain3d.firstPerson.active')
  page.locator('#map-options-toggle').click();assert page.evaluate('terrain3d.firstPerson.active')
  page.locator('#map-options-toggle').click()
  page.evaluate('terrain3d.updateCompass();terrain3d.renderer.render(terrain3d.scene,terrain3d.camera)');page.screenshot(path='/tmp/yukjo-mobile.png')

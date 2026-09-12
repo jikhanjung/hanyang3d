@@ -1,8 +1,7 @@
 <strong class="map-title">한양3D <small>{{ app_version }}</small></strong>
-<button id="first-person3d" aria-pressed="false">1인칭으로 걷기</button>
-<button id="map-options-toggle" aria-expanded="false" aria-controls="map-options">설정</button>
+<button id="map-options-toggle" aria-label="지도 메뉴" aria-expanded="false" aria-controls="map-options"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
 <div id="map-options">
+<button id="first-person3d" aria-pressed="false">1인칭으로 걷기</button>
 <label>옛지도 <input id="opacity3d" aria-label="옛 지도 불투명도" type="range" min="0" max="100" value="50"> <output id="opacity-value">50%</output></label>
 <label hidden><input id="anchors3d" type="checkbox">보정점</label>
-<a href="/gis/">기존 초기화면</a>
 </div>

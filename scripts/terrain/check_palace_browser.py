@@ -24,7 +24,7 @@ with sync_playwright() as p:
  assert result['ok'],result
  print('ground and opacity',result,flush=True)
  page.set_viewport_size({'width':390,'height':844});page.evaluate('''async()=>{await new Promise(requestAnimationFrame);terrain3d.renderer.render(terrain3d.scene,terrain3d.camera)}''');page.screenshot(path='/tmp/palace-mobile.png')
- assert page.locator('.map-title').is_visible() and page.locator('#first-person3d').is_visible()
+ assert page.locator('.map-title').is_visible() and page.locator('#map-options-toggle').is_visible()
  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
  page.goto(args.url.rstrip('/')+'/credits/');text=page.locator('main').inner_text()
  assert all(s in text for s in ['도성대지도','FABDEM','Three.js','15칸'])

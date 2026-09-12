@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [053: 수평 3D 나침반·모바일 햄버거 메뉴](20260912_053_3d_compass_and_hamburger.md)
 - [052: 육조거리 관청·연대 데이터·모바일 설정](20260912_052_yukjo_compounds_and_mobile_options.md)
 - [051: 반투명 모바일 조이스틱과 간소화](20260912_051_minimal_mobile_joystick.md)
 - [050: 모바일 조이스틱·상시 나침반·반투명 미니맵](20260912_050_mobile_joystick_and_compass.md)

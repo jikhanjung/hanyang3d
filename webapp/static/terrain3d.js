@@ -8,6 +8,7 @@ import {createCityWall} from './city_wall.js';
 import {createJongmyo} from './jongmyo.js';
 import {createWalkJoystick} from './walk_joystick.js';
 import {createYukjo,groundYukjo,heightYukjo} from './yukjo.js';
+import {createCompass3D} from './compass3d.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 
 const el=id=>document.getElementById(id),R=6378137,H=Math.PI*R;
@@ -25,16 +26,8 @@ async function main(){
  const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=1;controls.maxDistance=21000;controls.maxPolarAngle=Math.PI*.47;
  scene.add(new THREE.HemisphereLight(0xffffff,0x6a7864,1.6));const light=new THREE.DirectionalLight(0xfff5db,1.5);light.position.set(-4000,9000,3500);scene.add(light);
 
- const compassDirection=new THREE.Vector3();
- function updateCompass(){
-  camera.getWorldDirection(compassDirection);
-  if(Math.hypot(compassDirection.x,compassDirection.z)<1e-8)return;
-  const heading=(Math.atan2(compassDirection.x,-compassDirection.z)*180/Math.PI+360)%360;
-  const names=['북','북동','동','남동','남','남서','서','북서'];
-  el('compass-bearing').textContent=`${names[Math.round(heading/45)%8]} ${Math.round(heading)%360}°`;
-  el('compass-needle').style.transform=`rotate(${-heading}deg)`;
-  el('first-person-compass').setAttribute('aria-label',`시선 방향 ${el('compass-bearing').textContent}`);
- }
+ const compass=createCompass3D(el('first-person-compass'));
+ const updateCompass=()=>compass.update(camera);
  let renderDirty=true;controls.addEventListener('change',()=>{renderDirty=true});
  const resize=()=>{renderDirty=true;const box=el('scene');renderer.setSize(box.clientWidth,box.clientHeight);camera.aspect=box.clientWidth/box.clientHeight;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(el('scene'));resize();
  camera.position.set(0,6200,7600);controls.target.set(0,150,0);controls.update();
@@ -633,7 +626,7 @@ async function main(){
   canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY};canvas.setPointerCapture(event.pointerId)});
   canvas.addEventListener('pointermove',event=>{if(!active||!drag||drag.id!==event.pointerId)return;yaw-=(event.clientX-drag.x)*.003;pitch=Math.max(-Math.PI*.47,Math.min(Math.PI*.47,pitch-(event.clientY-drag.y)*.003));drag.x=event.clientX;drag.y=event.clientY;look()});
   const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
-  el('first-person3d').onclick=()=>active?exit():enter();
+  el('first-person3d').onclick=()=>{active?exit():enter();el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false')};
   el('first-person-exit').onclick=exit;
   document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['first-person3d','map-options-toggle'].includes(event.target.id))exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
@@ -654,6 +647,6 @@ async function main(){
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass};
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

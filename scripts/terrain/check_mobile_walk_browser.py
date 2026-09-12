@@ -19,10 +19,11 @@ with sync_playwright() as p:
     # Advance physics deterministically while driving actual browser touch input.
     page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
     assert page.locator('#first-person-compass').is_visible()
-    compass = page.evaluate("""()=>{const t=terrain3d,original=t.camera.quaternion.clone(),out=[];for(const yaw of [0,-Math.PI/2,-Math.PI,Math.PI/2]){t.camera.rotation.set(0,yaw,0,'YXZ');t.updateCompass();out.push(document.getElementById('compass-bearing').textContent)}t.camera.quaternion.copy(original);t.updateCompass();return out}""")
-    assert compass==['북 0°','동 90°','남 180°','서 270°'],compass
+    compass = page.evaluate("""()=>{const t=terrain3d,original=t.camera.quaternion.clone(),out=[];for(const yaw of [0,-Math.PI/2,-Math.PI,Math.PI/2]){t.camera.rotation.set(0,yaw,0,'YXZ');t.updateCompass();out.push(Math.round(Number(document.getElementById('first-person-compass').dataset.yaw))%360)}t.camera.quaternion.copy(original);t.updateCompass();return out}""")
+    assert compass==[0,90,180,270],compass
     controls=page.locator('#map-controls').bounding_box();compass_box=page.locator('#first-person-compass').bounding_box()
     assert controls['x']+controls['width']<=compass_box['x']
+    page.locator('#map-options-toggle').tap()
     page.locator('#first-person3d').tap()
     assert page.evaluate('terrain3d.firstPerson.active')
     assert not page.locator('#anchors3d').is_visible()
@@ -69,7 +70,7 @@ with sync_playwright() as p:
     before=position();advance()
     assert distance(before,position())>1, (distance(before,position()),page.evaluate('touchLog'))
     # Losing canvas focus does not cancel the finger held on the pad.
-    page.locator('#first-person3d').focus()
+    page.locator('#map-options-toggle').focus()
     before=position();advance()
     assert distance(before,position())>1, (distance(before,position()),page.evaluate('touchLog'))
     touch('touchEnd',[look])
@@ -83,7 +84,9 @@ with sync_playwright() as p:
     touch('touchStart',[forward]);page.evaluate('window.dispatchEvent(new Event("blur"))')
     stopped=position();advance();assert distance(stopped,position())<1e-6
     touch('touchEnd',[])
+    page.locator('#map-options-toggle').tap()
     page.locator('#first-person3d').tap()
+    page.locator('#map-options-toggle').tap()
     page.locator('#first-person3d').tap()
     stopped=position();advance();assert distance(stopped,position())<1e-6
     # Keyboard input still works after the pointer input separation.
