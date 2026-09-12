@@ -1493,7 +1493,7 @@
       "category": "집터",
       "reference": "https://encykorea.aks.ac.kr/Article/E0050380",
       "note": "조선 개국공신 정도전의 집이 있던 자리로 전해지는 곳입니다. 오늘날 종로구청 일대에 해당하며 건물은 남아 있지 않습니다.",
-      "position_status": "user_supplied_modern_point",
+      "position_status": "user_supplied_modern_point_shifted",
       "symbol_size_m": [
         90,
         8,
@@ -1522,11 +1522,21 @@
         "resolved_by": "what3words.com 공개 주소 페이지",
         "resolved_on": "2026-09-12",
         "precision_m": 3,
-        "note": "사용자가 알려 준 what3words 주소를 위경도로 변환한 값이다. 원도 판독이나 발굴 성과가 아니며, 종로구청 앞 표석 위치와는 약 100 m 차이가 있다."
+        "note": "사용자가 알려 준 what3words 주소를 위경도로 변환한 값이다. 원도 판독이나 발굴 성과가 아니며, 종로구청 앞 표석 위치와는 약 100 m 차이가 있다. 화면 배치는 이 지점에서 북동쪽으로 20 m 옮긴 source_position을 사용한다."
       },
       "display_model": "house_site",
-      "display_yaw_deg": 180,
-      "model_note": "담장과 마당, 기와집 세 채를 단순화한 개념 모형. 실제 가옥 배치를 복원한 것이 아니다."
+      "display_yaw_deg": 0,
+      "model_note": "담장과 마당, 남향 안채·사랑채·별당·행랑채, 남쪽 대문을 단순화한 개념 모형. 실제 가옥 배치를 복원한 것이 아니다.",
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1265,
+          1330
+        ],
+        "method": "w3w_point_shifted_20m_northeast",
+        "note": "what3words 주소로 얻은 지점에서 북동쪽으로 20 m 옮긴 화면 배치 좌표다. 육조거리 관청 담장과 모형이 맞붙어 보여 띄웠으며, 정수 픽셀로 반올림해 1 m 안팎의 차이가 있다. 위경도는 원래 지점을 그대로 둔다."
+      }
     },
     {
       "id": "songsiyeol_site",
@@ -1568,8 +1578,8 @@
         "note": "지정 소재지의 동 이름을 기준으로 잡은 개략 지점이다. 증주벽립 각자 바위의 실측 위치가 아니며 수백 m 오차가 있을 수 있다. 이 위경도를 원도 화면에 그대로 두면 성곽 밖으로 나가므로 화면 배치는 아래 source_position을 사용한다."
       },
       "display_model": "house_site",
-      "display_yaw_deg": 180,
-      "model_note": "담장과 마당, 기와집 세 채를 단순화한 개념 모형. 실제 가옥 배치를 복원한 것이 아니다.",
+      "display_yaw_deg": 0,
+      "model_note": "담장과 마당, 남향 안채·사랑채·별당·행랑채, 남쪽 대문을 단순화한 개념 모형. 실제 가옥 배치를 복원한 것이 아니다.",
       "source_position": {
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",

@@ -38,6 +38,27 @@ with sync_playwright() as p:
  assert placement['pixel']==SONGSIYEOL_PIXEL and placement['inside'],placement
  assert placement['east']>0 and placement['north']>0,placement
  assert 100<placement['metresFromSchool']<250,placement
+ # Houses face south: the gate side of each compound must lie south of its centre.
+ facing=page.evaluate('''async()=>{const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d;
+  t.scene.updateMatrixWorld(true);
+  return ['jeongdojeon_site','songsiyeol_site'].map(id=>{
+   const b=t.buildings.children.find(b=>b.userData.feature.id===id),d=b.userData.feature.symbol_size_m[2];
+   const gate=b.localToWorld(new T.Vector3(0,0,d/2)),back=b.localToWorld(new T.Vector3(0,0,-d/2));
+   return {id,yaw:b.userData.feature.display_yaw_deg,gateSouthOfCentre:gate.z-b.position.z,backNorthOfCentre:b.position.z-back.z};
+  })}''')
+ print(facing,flush=True)
+ for row in facing:
+  assert row['gateSouthOfCentre']>0 and row['backNorthOfCentre']>0,row
+ # The Jeong Dojeon compound sits 20 m north-east of its what3words point, clear of the office walls.
+ shift=page.evaluate('''()=>{const t=terrain3d,R=6378137,rad=Math.PI/180;
+  const project=(lon,lat)=>[R*lon*rad,R*Math.log(Math.tan(Math.PI/4+lat*Math.PI/360))];
+  const b=t.buildings.children.find(b=>b.userData.feature.id==='jeongdojeon_site'),f=b.userData.feature;
+  const point=project(f.lon,f.lat),warped=t.warp(...f.source_position.pixel);
+  const g=Math.cos(2*Math.atan(Math.exp(point[1]/R))-Math.PI/2);
+  return {east:(warped[0]-point[0])*g,north:(warped[1]-point[1])*g,
+   metres:Math.hypot(warped[0]-point[0],warped[1]-point[1])*g}}''')
+ print(shift,flush=True)
+ assert shift['east']>0 and shift['north']>0 and 18<shift['metres']<22,shift
  # Jeong Dojeon's compound is sized from the two office blocks beside it, as requested.
  sizing=page.evaluate('''()=>{const t=terrain3d,span=id=>{const b=t.buildings.children.find(b=>b.userData.feature.id===id);
    const [w,,d]=b.userData.feature.symbol_size_m,yaw=b.rotation.y;
