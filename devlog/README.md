@@ -12,6 +12,8 @@
 
 ## 작업 기록
 
+- [046 — 전체 FABDEM 지형과 출처·저작권](20260912_046_fabdem_and_credits.md)
+
 - [045 — 지도 조작 패널과 물길 범위](20260912_045_map_controls_and_river.md)
 
 - [044 — 첫 화면을 전체 화면 한양 3D로 변경](20260912_044_fullscreen_home.md)

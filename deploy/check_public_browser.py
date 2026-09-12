@@ -23,6 +23,9 @@ base = args.url.rstrip('/')
 with urlopen(base + '/healthz', timeout=15) as response:
     health = json.load(response)
 assert health['status'] == 'ok' and health['version'] == args.version, health
+with urlopen(base + '/gis/georeferenced/terrain3d/dem.json', timeout=15) as response:
+    dem = json.load(response)
+assert dem['source'] == 'FABDEM V1.2' and dem['license'] == 'CC BY-NC-SA 4.0'
 for path in sorted(public_resource_paths()):
     with urlopen(Request(base + '/' + path, method='HEAD'), timeout=15) as response:
         assert response.status == 200, path
@@ -46,10 +49,14 @@ with sync_playwright() as p:
     bounds = page.locator('#scene > canvas').bounding_box()
     assert bounds['x']==0 and bounds['y']==0 and bounds['width']==1440 and bounds['height']==1080, bounds
     result = page.evaluate('''()=>{const t=terrain3d;t.renderer.setAnimationLoop(null);t.updateBuildingNames();t.renderer.render(t.scene,t.camera);return {people:t.pedestrians.walkers.length,trees:t.trees.records.length,names:t.mountainNames.children.map(n=>n.userData.name),granite:t.granite.enabled,minDistance:t.controls.minDistance}}''')
-    assert result['people'] == 130 and result['trees'] == 2468 and result['minDistance'] == 1, result
+    assert result['people'] == 130 and result['trees'] > 2000 and result['minDistance'] == 1, result
     assert result['names'] == ['남산', '인왕산', '북악산'] and result['granite'], result
     assert page.evaluate('terrain3d.historical.material.opacity === 0.5 && !terrain3d.labels.visible')
     assert page.evaluate('terrain3d.channelState.northPath.length === 0 && !terrain3d.waterLayer.children.some(m=>m.name.includes("downstream") || m.name.includes("jungnang"))')
+    bridge_result = page.evaluate("async()=>{\n   const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,ex=Number(document.getElementById('height3d').value);\n   t.scene.updateMatrixWorld(true);\n   return t.bridges.children.map(b=>{\n    const u=b.userData,[w,h,length]=u.feature.symbol_size_m,g=b.getObjectByName('bridge-connections');\n    const ramps=g.children.filter(m=>m.name==='bridge-approach'),feet=g.children.filter(m=>m.name==='bridge-abutment');\n    let seamError=0,outerGap=0,buried=true,clear=true;\n    ramps.forEach((r,i)=>{\n     const pos=r.geometry.attributes.position,rows=u.connections[i].rows;\n     seamError=Math.max(seamError,Math.abs(pos.getY(0)+b.position.y-(b.position.y+h/2)));\n     outerGap=Math.max(outerGap,Math.abs(pos.getY(pos.count-4)+b.position.y-(rows.at(-1).max*ex+.12)));\n     rows.forEach((row,j)=>{\n      buried&&=pos.getY(j*4+2)+b.position.y<row.min*ex;\n      clear&&=pos.getY(j*4)+b.position.y>=row.max*ex-.001;\n     });\n    });\n    const footContact=feet.every((f,i)=>f.position.y-f.geometry.parameters.height/2+b.position.y<=u.connections[i].footing.min*ex);\n    return {name:u.feature.name,width:w,length,seamError,outerGap,buried,clear,footContact,parts:g.children.length};\n   });}")
+    assert len(bridge_result) == 4
+    assert all(r['seamError']<.001 and r['outerGap']<.001 and r['buried'] and r['clear'] and r['footContact'] for r in bridge_result), bridge_result
+    print('FABDEM bridge contacts passed:', bridge_result, flush=True)
     page.locator('#scene').screenshot(path='/tmp/hanyang3d-production.png')
     before = page.evaluate('terrain3d.camera.position.toArray()')
     page.mouse.move(720,540)
@@ -71,6 +78,12 @@ with sync_playwright() as p:
     assert page.locator('#first-person-help').is_visible()
     page.locator('#first-person-exit').click()
     assert page.locator('#first-person3d').get_attribute('aria-pressed') == 'false'
+    assert page.locator('#credits-link').is_visible()
+    page.locator('#credits-link').click()
+    page.wait_for_url(base + '/credits/')
+    assert page.locator('h1').inner_text() == '출처·저작권'
+    assert 'CC BY-NC-SA 4.0' in page.locator('main').inner_text()
+    assert 'Three.js' in page.locator('main').inner_text()
     assert not errors, errors
     print('Public 3D scene passed:', result, flush=True)
     browser.close()

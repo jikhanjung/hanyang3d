@@ -1,6 +1,6 @@
 # Hanyang 3D
 
-운영 화면: [한양 3D](https://hanyang3d.nopeoplestime.info/)
+운영 화면: [한양 3D](https://hanyang3d.nopeoplestime.info/) · [출처·저작권](https://hanyang3d.nopeoplestime.info/credits/)
 
 조선시대 한양의 거리·수계·필지·건축·지형을 **출처와 시간, 불확실성을 추적할 수 있는 GIS / 3D 데이터**로 재구성하는 프로젝트입니다.
 

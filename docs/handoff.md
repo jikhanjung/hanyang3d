@@ -96,3 +96,5 @@
 044: 운영 버전은 `honestjung/hanyang3d:v0.0.2`. 기본 `/`는 메뉴 없는 전체 화면 한양 3D이며 작업 현황은 `/gis/`, 도구 포함 뷰는 `/gis/terrain/3d/`다. [기록](../devlog/20260912_044_fullscreen_home.md).
 
 045: `v0.0.3`에서는 전체 화면 상단에 옛지도 슬라이더(기본 50%), 보정점(기본 꺼짐), 1인칭 걷기와 기존 초기화면 링크를 제공한다. 현대 하류·중랑천 연장을 제거하고 원도 물길 구간을 유지한다. [기록](../devlog/20260912_045_map_controls_and_river.md).
+
+046: `v0.0.4`는 전체 표시 지형을 FABDEM V1.2로 교체한다. 재생성은 `scripts/terrain/build_fabdem.py`, 원자료는 `data/terrain/fabdem-v1.2/full-coverage`에 보존한다. `/credits/`에서 고도·지도 출처와 라이선스를 안내한다. [기록](../devlog/20260912_046_fabdem_and_credits.md).

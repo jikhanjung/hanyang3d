@@ -1,42 +1,102 @@
 {
-  "id": "seoul-terrarium-001",
-  "retrieved_at": "2026-09-11T04:47:42.155382+00:00",
+  "id": "seoul-fabdem-v1.2",
+  "retrieved_at": "2026-09-12T02:38:49.628603+00:00",
   "bounds_3857": [
     14129500,
     4513500,
     14146500,
     4526500
   ],
-  "source_zoom": 12,
   "tiles": [
     {
-      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3492/1585.png",
-      "path": "data/terrain/terrarium/12-3492-1585.png",
-      "sha256": "3518bdf53748959bd66a783e6a4f8b72d12dd0b3e160f7eecc4860f1df8b5072"
+      "member": "N37E126_FABDEM_V1-2.tif",
+      "block": [
+        13,
+        5
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E126_FABDEM_V1-2.tif.13-5.deflate",
+      "sha256": "77ca254d8adf3c77ece31516073b23a33ab33093edcf387b12c7cab19be4156f"
     },
     {
-      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3493/1585.png",
-      "path": "data/terrain/terrarium/12-3493-1585.png",
-      "sha256": "a7041a5c76d3f2d8220110cb4fec8ebffa50f4f9d3be9d1403fbc640ddfdf2f5"
+      "member": "N37E126_FABDEM_V1-2.tif",
+      "block": [
+        14,
+        5
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E126_FABDEM_V1-2.tif.14-5.deflate",
+      "sha256": "407ec10cd4947e755c78b28dd1b665fbfffb7cf2056f3f9cb0e90fc08a02a99b"
     },
     {
-      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3492/1586.png",
-      "path": "data/terrain/terrarium/12-3492-1586.png",
-      "sha256": "44a4b5dcc551c5e00fe94881ddffe678ab3b3f57814efe67a71f9ad73b787812"
+      "member": "N37E126_FABDEM_V1-2.tif",
+      "block": [
+        13,
+        6
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E126_FABDEM_V1-2.tif.13-6.deflate",
+      "sha256": "6a6e3c5d0eae072cb3551e63ea06bb528d80f494794b5bd12c52d7ab58fe1414"
     },
     {
-      "url": "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/3493/1586.png",
-      "path": "data/terrain/terrarium/12-3493-1586.png",
-      "sha256": "ac5ae949b675cf2ac66bb59d57e364247316fb89b8cb8fb1a876fe37f94cda82"
+      "member": "N37E126_FABDEM_V1-2.tif",
+      "block": [
+        14,
+        6
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E126_FABDEM_V1-2.tif.14-6.deflate",
+      "sha256": "f5b4f5c14ae834c686071eca466c9732b7e474353fe8fd4965d216191eccc1e1"
+    },
+    {
+      "member": "N37E127_FABDEM_V1-2.tif",
+      "block": [
+        0,
+        5
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E127_FABDEM_V1-2.tif.0-5.deflate",
+      "sha256": "a7c98718d6ccd8d25c608472018d2c471dc6dde706887c5b387680932c5566c8"
+    },
+    {
+      "member": "N37E127_FABDEM_V1-2.tif",
+      "block": [
+        1,
+        5
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E127_FABDEM_V1-2.tif.1-5.deflate",
+      "sha256": "c899cd744f4c100a7d9c5fa9f7bb2547f0171a9be7b5e4704a9e37f077bad4a9"
+    },
+    {
+      "member": "N37E127_FABDEM_V1-2.tif",
+      "block": [
+        0,
+        6
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E127_FABDEM_V1-2.tif.0-6.deflate",
+      "sha256": "4f322b5e27f90b95a674c6104d6113d9d7378b39cf03ba3461c9d8739c6e3ced"
+    },
+    {
+      "member": "N37E127_FABDEM_V1-2.tif",
+      "block": [
+        1,
+        6
+      ],
+      "path": "data/terrain/fabdem-v1.2/full-coverage/N37E127_FABDEM_V1-2.tif.1-6.deflate",
+      "sha256": "24a9d0eb1bcf2455970b4e163ea97d2ed22052c591addd40e19b814a0044932c"
     }
   ],
+  "source_url": "https://data.bris.ac.uk/datasets/s5hqmjcdj8yo2ibzi9b4ew3sn/N30E120-N40E130_FABDEM_V1-2.zip",
+  "source_version": "V1.2",
+  "source_grid_arcseconds": 1,
+  "vertical_datum": "EGM2008",
+  "license": "CC BY-NC-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "output": "gis/georeferenced/terrain3d/dem.json",
-  "output_sha256": "c82ef2786d2adc5bff2ff41e428f827f6a3f90f7411e5628c8d436816db3bf5e",
-  "min_height_m": -22.538361209408475,
-  "max_height_m": 517.5351859731791,
+  "output_sha256": "055d9e73e16e57794d13f4437af97a040e110d477206b86e6ee53ed439c66110",
   "grid_size": 401,
-  "resampling": "bilinear from decoded Terrarium pixel centres",
-  "registry": "https://registry.opendata.aws/terrain-tiles/",
-  "attribution_reference": "https://github.com/tilezen/joerd/blob/master/docs/attribution.md",
-  "format_reference": "https://github.com/tilezen/joerd/blob/master/docs/formats.md"
+  "min_height_m": 3.0,
+  "max_height_m": 523.6237455999567,
+  "resampling": "bilinear from PixelIsPoint lattice across E127; no smoothing or gap filling",
+  "e127_adjacent_columns_delta_m": {
+    "median": 1.5,
+    "max": 10.639999389648438
+  },
+  "verification": "Complete display bounds; compressed blocks decoded by libtiff and SHA256 recorded; full ZIP CRC not verified",
+  "attribution_reference": "https://research-information.bris.ac.uk/en/datasets/fabdem-v1-2/"
 }

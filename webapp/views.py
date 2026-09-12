@@ -64,3 +64,13 @@ def healthz(request):
     response = JsonResponse(report, status=200 if report['status'] == 'ok' else 503)
     response['Cache-Control'] = 'no-store'
     return response
+
+
+@require_safe
+def credits(request):
+    vendor = settings.BASE_DIR / 'webapp/static/vendor'
+    return render(request, 'credits.html', {
+        'records': assets(),
+        'three_license': (vendor / 'three/LICENSE').read_text(),
+        'leaflet_license': (vendor / 'leaflet/LICENSE').read_text(),
+    })
