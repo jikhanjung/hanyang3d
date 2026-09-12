@@ -69,3 +69,34 @@ export function createPedestrians(data,sourceSurface){
  document.getElementById('people3d').onchange=e=>{group.visible=e.target.checked};
  return {group,routes,walkers,update,updateGround,setHeight,setMapVisible,setRoadVisible,get elapsed(){return elapsed}};
 }
+
+// Single non-instanced walker for the player's own character in walk mode.
+export function createWalker(){
+ const group=new THREE.Group();group.name='player-walker';
+ const mat=color=>new THREE.MeshStandardMaterial({color,roughness:1});
+ const jacket=mat('#d8cdb2'),skin=mat(0xc5a17e),hair=mat(0x302b28),trouser=mat('#c8c2b1'),trim=mat('#f1e9d5'),sash=mat('#9b8c76'),pupil=mat(0x292522);
+ const add=(parent,geometry,material,x,y,z,roll=0)=>{const mesh=new THREE.Mesh(geometry,material);mesh.position.set(x,y,z);if(roll)mesh.rotation.z=roll;parent.add(mesh);return mesh};
+ add(group,new THREE.BoxGeometry(.43,.65,.28),jacket,0,1.075,0).name='walker-body';
+ add(group,new THREE.SphereGeometry(.145,10,8),skin,0,1.56,0).name='walker-head';
+ add(group,new THREE.SphereGeometry(.152,10,6,0,Math.PI*2,0,1.25),hair,0,1.56,0);
+ add(group,new THREE.SphereGeometry(.07,8,6),hair,0,1.725,-.025);
+ for(const side of [-1,1])add(group,new THREE.SphereGeometry(.018,6,4),pupil,side*.05,1.585,.137);
+ add(group,new THREE.BoxGeometry(.035,.04,.04),skin,0,1.55,.148);
+ for(const side of [-1,1])add(group,new THREE.BoxGeometry(.04,.23,.018),trim,side*.048,1.315,.152,-side*.48);
+ add(group,new THREE.BoxGeometry(.027,.19,.02),sash,.055,1.13,.16,-.16);
+ add(group,new THREE.BoxGeometry(.027,.15,.02),sash,.095,1.15,.162,.28);
+ // Limbs hang from hip and shoulder pivots so the walk cycle is a single rotation each.
+ const limbs=[-1,1].map(side=>{
+  const leg=new THREE.Group();leg.position.set(side*.115,1.1,0);add(leg,new THREE.BoxGeometry(.19,.7,.22),trouser,0,-.35,0);
+  const arm=new THREE.Group();arm.position.set(side*.285,1.35,0);add(arm,new THREE.BoxGeometry(.2,.55,.24),jacket,0,-.275,0);
+  group.add(leg);group.add(arm);return {side,leg,arm};
+ });
+ let swing=0;
+ function update(distance,moving){
+  // Ease the stride out when the walker stops so the pose settles upright.
+  swing=moving?Math.sin(distance*1.9)*.45:swing*.82;
+  for(const {side,leg,arm} of limbs){leg.rotation.x=swing*side;arm.rotation.x=-swing*side}
+ }
+ update(0,false);
+ return {group,update};
+}

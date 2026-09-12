@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {createGranite} from './granite.js';
 import {setupOrbitNavigation} from './orbit_navigation.js';
 import {createTrees} from './trees.js';
-import {createPedestrians} from './pedestrians.js';
+import {createPedestrians,createWalker} from './pedestrians.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
@@ -573,10 +573,10 @@ async function main(){
    }
    ready=true;
   }
-  function update(yaw){
+  function update(yaw,at=camera.position){
    const heading=(((-yaw*180/Math.PI)%360)+360)%360;
    ctx.clearRect(0,0,size,size);ctx.fillStyle='#e9e2cb';ctx.fillRect(0,0,size,size);
-   const x=camera.position.x,z=camera.position.z;
+   const x=at.x,z=at.z;
    ctx.drawImage(baked,(x-span/2-minX)*scale,(z-span/2-minZ)*scale,span*scale,span*scale,0,0,size,size);
    ctx.save();ctx.translate(size/2,size/2);ctx.rotate(-yaw);
    ctx.fillStyle='#1686b84d';ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,47,-Math.PI/2-.6,-Math.PI/2+.6);ctx.closePath();ctx.fill();
@@ -585,11 +585,12 @@ async function main(){
    ctx.fillStyle='#fffdf2dd';ctx.fillRect(9,210,68,23);ctx.fillStyle='#24372e';ctx.fillRect(15,216,200/span*size,2);ctx.font='11px system-ui';ctx.fillText('200 m',15,230);
    map.dataset.worldX=x;map.dataset.worldZ=z;map.dataset.heading=heading;
   }
-  return {show(yaw){bake();panel.hidden=false;update(yaw)},hide(){panel.hidden=true},update};
+  return {show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
  })();
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  firstPerson=(()=>{
-  let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null;
+  let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null,walked=0,view=4.5,walker=null;
+  const eye=new THREE.Vector3(),boom=new THREE.Vector3();
   const keys=new Set(),touchKeys=new Map(),canvas=renderer.domElement,hud=el('first-person-help');canvas.tabIndex=0;
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
   const held=code=>keys.has(code)||[...touchKeys.values()].some(button=>button.dataset.walk===code);
@@ -600,7 +601,19 @@ async function main(){
    // Include the raised road overlay so eye height matches the surface walkers stand on.
    try{const s=cityWall.supportAt(x,z,.3,.3,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible&&s.road?s.road.max*exaggeration:-Infinity)}catch{return null}
   }
-  function look(){camera.rotation.set(pitch,yaw,0,'YXZ');if(active)navigation.update(yaw)}
+  function place(){
+   // Third-person boom: the eye stays at walking height and the camera pulls back along the view.
+   boom.set(0,0,1).applyEuler(camera.rotation).multiplyScalar(view);
+   // Lift with the boom so the character sits low in frame instead of blocking the view.
+   camera.position.copy(eye).add(boom);camera.position.y+=view*.22;
+   const ground=groundAt(camera.position.x,camera.position.z);
+   if(ground!==null)camera.position.y=Math.max(camera.position.y,ground+.6);
+   if(walker){
+    walker.group.visible=view>=.8;
+    walker.group.position.set(eye.x,eye.y-1.65,eye.z);walker.group.rotation.y=yaw+Math.PI;
+   }
+  }
+  function look(){camera.rotation.set(pitch,yaw,0,'YXZ');place();if(active)navigation.update(yaw,eye)}
   function enter(){
    if(active)return;clearHover();press=null;
    saved={position:camera.position.clone(),quaternion:camera.quaternion.clone(),target:controls.target.clone(),fov:camera.fov,near:camera.near};
@@ -608,11 +621,13 @@ async function main(){
    yaw=Math.atan2(-(q.x-p.x),-(q.z-p.z));pitch=0;
    const ground=groundAt(p.x,p.z);if(ground===null)return;
    controls.enabled=false;active=true;clearInput();lastGround=ground;
-   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();camera.position.set(p.x,ground+1.65,p.z);look();
-   navigation.show(yaw);hud.hidden=false;el('first-person3d').textContent='전체 지도 시점';el('first-person3d').setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});
+   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();eye.set(p.x,ground+1.65,p.z);
+   if(!walker){walker=createWalker();scene.add(walker.group)}
+   walked=0;walker.update(0,false);look();
+   navigation.show(yaw,eye);hud.hidden=false;el('first-person3d').textContent='전체 지도 시점';el('first-person3d').setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});
   }
   function exit(){
-   if(!active)return;active=false;clearInput();hud.hidden=true;navigation.hide();
+   if(!active)return;active=false;clearInput();hud.hidden=true;navigation.hide();if(walker)walker.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
    el('first-person3d').textContent='1인칭으로 걷기';el('first-person3d').setAttribute('aria-pressed','false');
   }
@@ -620,14 +635,16 @@ async function main(){
    if(!active)return;
    const forward=Number(held('KeyW')||held('ArrowUp'))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
    const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
-   const speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?4:1.5)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
+   const speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?8:3)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
+   let moved=false;
    if(dx||dz){
-    const x=camera.position.x+dx,z=camera.position.z+dz,ground=groundAt(x,z);
+    const x=eye.x+dx,z=eye.z+dz,ground=groundAt(x,z);
     // Avoid walking off abrupt terrain steps or out of the prepared region.
-    if(ground!==null&&Math.abs(ground-lastGround)<.7){camera.position.x=x;camera.position.z=z;lastGround=ground}
+    if(ground!==null&&Math.abs(ground-lastGround)<.7){eye.x=x;eye.z=z;lastGround=ground;walked+=Math.hypot(dx,dz);moved=true}
    }
-   const ground=groundAt(camera.position.x,camera.position.z);if(ground!==null){lastGround=ground;camera.position.y=ground+1.65}
+   const ground=groundAt(eye.x,eye.z);if(ground!==null){lastGround=ground;eye.y=ground+1.65}
+   walker?.update(walked,moved);
    look();
   }
   const movement=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
@@ -641,6 +658,10 @@ async function main(){
   canvas.addEventListener('blur',()=>{keys.clear();drag=null});window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInput()});
   canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY};canvas.setPointerCapture(event.pointerId)});
   canvas.addEventListener('pointermove',event=>{if(!active||!drag||drag.id!==event.pointerId)return;yaw-=(event.clientX-drag.x)*.003;pitch=Math.max(-Math.PI*.47,Math.min(Math.PI*.47,pitch-(event.clientY-drag.y)*.003));drag.x=event.clientX;drag.y=event.clientY;look()});
+  canvas.addEventListener('wheel',event=>{
+   if(!active)return;event.preventDefault();
+   view=Math.max(0,Math.min(12,view+Math.sign(event.deltaY)*.6));look();
+  },{passive:false});
   const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   el('first-person3d').onclick=()=>{active?exit():enter();el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false')};
   el('first-person-exit').onclick=exit;
@@ -652,7 +673,7 @@ async function main(){
    for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,event=>{touchKeys.delete(event.pointerId);if(![...touchKeys.values()].includes(button))button.classList.remove('pressed')});
    button.addEventListener('contextmenu',event=>event.preventDefault());
   }
-  return {get active(){return active},get ground(){return lastGround},enter,exit,update};
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get view(){return view},get walker(){return walker},enter,exit,update};
  })();
  const orbitNavigation=setupOrbitNavigation(camera,controls,renderer.domElement,ray=>cityWall.raycastGround(ray,true),()=>!!firstPerson?.active,(x,z)=>{
   try{const s=cityWall.supportAt(x,z,.2,.2,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible?s.road.max*exaggeration:-Infinity)}catch{return null}

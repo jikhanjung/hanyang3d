@@ -49,12 +49,12 @@ with sync_playwright() as p:
         touch('touchStart',[point(key)])
         advance()
         results[key] = distance(before,position())
-        assert results[key]>1, results
+        assert results[key]>2, results
         touch('touchEnd',[])
         stopped = position();advance()
         assert distance(stopped,position())<1e-6
     # Centre dead zone, analogue speed and diagonal speed limit.
-    for key,strength,low,high in [('centre',1,0,0.001),('KeyW',.5,.5,.9),('diagonal',1,1.4,1.6)]:
+    for key,strength,low,high in [('centre',1,0,0.001),('KeyW',.5,1.1,1.7),('diagonal',1,2.8,3.2)]:
         before=position();touch('touchStart',[point(key,strength=strength)]);advance()
         travelled=distance(before,position());assert low<=travelled<=high,(key,travelled)
         touch('touchEnd',[])

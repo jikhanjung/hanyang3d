@@ -84,13 +84,15 @@ with sync_playwright() as p:
     assert not page.evaluate('terrain3d.labels.visible')
     page.locator('#first-person3d').click()
     assert page.locator('#first-person3d').get_attribute('aria-pressed') == 'true'
+    assert page.evaluate('terrain3d.firstPerson.walker.group.visible && terrain3d.firstPerson.view > 1')
+    assert page.evaluate('terrain3d.camera.position.distanceTo(terrain3d.firstPerson.eye) > 1')
     assert page.locator('#first-person-help').is_visible()
     page.locator('#map-options-toggle').click()
     for scale, opacity, road in [('1','50',True),('1.5','50',True),('2','50',True),('2','0',True),('2','0',False),('1','50',True)]:
         page.locator('#height3d').select_option(scale, force=True)
         page.locator('#opacity3d').fill(opacity)
         page.evaluate("value=>{const e=document.getElementById('roads3d');e.checked=value;e.onchange();terrain3d.firstPerson.update(0)}", road)
-        eye = page.evaluate("""async()=>{const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,o=t.camera.position.clone();o.y=10000;t.scene.updateMatrixWorld(true);const meshes=[t.terrain,t.mapGround];if(t.roadLayer.visible)meshes.push(t.roadLayer);const hits=new T.Raycaster(o,new T.Vector3(0,-1,0)).intersectObjects(meshes,false);return t.camera.position.y-hits[0].point.y}""")
+        eye = page.evaluate("""async()=>{const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,e=t.firstPerson.eye,o=e.clone();o.y=10000;t.scene.updateMatrixWorld(true);const meshes=[t.terrain,t.mapGround];if(t.roadLayer.visible)meshes.push(t.roadLayer);const hits=new T.Raycaster(o,new T.Vector3(0,-1,0)).intersectObjects(meshes,false);return e.y-hits[0].point.y}""")
         assert page.evaluate(coincident) == 0
         assert abs(eye-1.65)<.08, (scale, opacity, road, eye)
         print('Eye height above displayed surface:', scale, opacity, road, eye, flush=True)
