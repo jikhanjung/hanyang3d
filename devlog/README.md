@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [050: 모바일 조이스틱·상시 나침반·반투명 미니맵](20260912_050_mobile_joystick_and_compass.md)
 - [049: 경복궁 담장·종묘 정전, 제목과 출처 정리](20260912_049_palace_models_and_map_title.md)
 - [048 — 지면·지도·도로 높이 통일](20260912_048_unified_ground_surface.md)
 

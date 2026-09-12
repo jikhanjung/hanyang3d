@@ -6,6 +6,7 @@ import {createPedestrians} from './pedestrians.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
 import {createJongmyo} from './jongmyo.js';
+import {createWalkJoystick} from './walk_joystick.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 
 const el=id=>document.getElementById(id),R=6378137,H=Math.PI*R;
@@ -22,11 +23,21 @@ async function main(){
  const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=1;controls.maxDistance=21000;controls.maxPolarAngle=Math.PI*.47;
  scene.add(new THREE.HemisphereLight(0xffffff,0x6a7864,1.6));const light=new THREE.DirectionalLight(0xfff5db,1.5);light.position.set(-4000,9000,3500);scene.add(light);
 
+ const compassDirection=new THREE.Vector3();
+ function updateCompass(){
+  camera.getWorldDirection(compassDirection);
+  if(Math.hypot(compassDirection.x,compassDirection.z)<1e-8)return;
+  const heading=(Math.atan2(compassDirection.x,-compassDirection.z)*180/Math.PI+360)%360;
+  const names=['북','북동','동','남동','남','남서','서','북서'];
+  el('compass-bearing').textContent=`${names[Math.round(heading/45)%8]} ${Math.round(heading)%360}°`;
+  el('compass-needle').style.transform=`rotate(${-heading}deg)`;
+  el('first-person-compass').setAttribute('aria-label',`시선 방향 ${el('compass-bearing').textContent}`);
+ }
  let renderDirty=true;controls.addEventListener('change',()=>{renderDirty=true});
  const resize=()=>{renderDirty=true;const box=el('scene');renderer.setSize(box.clientWidth,box.clientHeight);camera.aspect=box.clientWidth/box.clientHeight;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(el('scene'));resize();
  camera.position.set(0,6200,7600);controls.target.set(0,150,0);controls.update();
  let lastFrame=performance.now();
- renderer.setAnimationLoop(now=>{const dt=Math.max(0,(now-lastFrame)/1000);lastFrame=now;if(!firstPerson?.active)controls.update();frameUpdate(dt);if(loading.ready||renderDirty){renderer.render(scene,camera);renderDirty=false}});
+ renderer.setAnimationLoop(now=>{const dt=Math.max(0,(now-lastFrame)/1000);lastFrame=now;if(!firstPerson?.active)controls.update();frameUpdate(dt);updateCompass();if(loading.ready||renderDirty){renderer.render(scene,camera);renderDirty=false}});
  Object.assign(loading,{renderer,scene,camera,controls});
  const yieldPaint=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0)));
  async function stage(number,message){
@@ -522,7 +533,7 @@ async function main(){
  };
  // Bake the same warped image triangles once; the HUD only crops this 2D map.
  const navigation=(()=>{
-  const panel=el('first-person-map'),map=el('walking-minimap'),ctx=map.getContext('2d'),compass=el('first-person-compass');
+  const panel=el('first-person-map'),map=el('walking-minimap'),ctx=map.getContext('2d');
   const size=240,span=1800,baked=document.createElement('canvas');baked.width=baked.height=2048;
   let ready=false,minX=Infinity,minZ=Infinity,maxX=-Infinity,maxZ=-Infinity;
   for(let i=0;i<sourceImagePositions.count;i++){const x=sourceImagePositions.getX(i),z=sourceImagePositions.getZ(i);minX=Math.min(minX,x);maxX=Math.max(maxX,x);minZ=Math.min(minZ,z);maxZ=Math.max(maxZ,z)}
@@ -545,10 +556,6 @@ async function main(){
   }
   function update(yaw){
    const heading=(((-yaw*180/Math.PI)%360)+360)%360;
-   const names=['북','북동','동','남동','남','남서','서','북서'];
-   el('compass-bearing').textContent=`${names[Math.round(heading/45)%8]} ${Math.round(heading)%360}°`;
-   el('compass-needle').style.transform=`rotate(${-heading}deg)`;
-   compass.setAttribute('aria-label',`시선 방향 ${el('compass-bearing').textContent}`);
    ctx.clearRect(0,0,size,size);ctx.fillStyle='#e9e2cb';ctx.fillRect(0,0,size,size);
    const x=camera.position.x,z=camera.position.z;
    ctx.drawImage(baked,(x-span/2-minX)*scale,(z-span/2-minZ)*scale,span*scale,span*scale,0,0,size,size);
@@ -559,12 +566,15 @@ async function main(){
    ctx.fillStyle='#fffdf2dd';ctx.fillRect(9,210,68,23);ctx.fillStyle='#24372e';ctx.fillRect(15,216,200/span*size,2);ctx.font='11px system-ui';ctx.fillText('200 m',15,230);
    map.dataset.worldX=x;map.dataset.worldZ=z;map.dataset.heading=heading;
   }
-  return {show(yaw){bake();panel.hidden=false;compass.hidden=false;update(yaw)},hide(){panel.hidden=true;compass.hidden=true},update};
+  return {show(yaw){bake();panel.hidden=false;update(yaw)},hide(){panel.hidden=true},update};
  })();
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  firstPerson=(()=>{
   let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null;
-  const keys=new Set(),canvas=renderer.domElement,hud=el('first-person-help');canvas.tabIndex=0;
+  const keys=new Set(),touchKeys=new Map(),canvas=renderer.domElement,hud=el('first-person-help');canvas.tabIndex=0;
+  const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
+  const held=code=>keys.has(code)||[...touchKeys.values()].some(button=>button.dataset.walk===code);
+  function clearInput(){joystick.reset();keys.clear();touchKeys.clear();hud.querySelectorAll('[data-walk]').forEach(b=>b.classList.remove('pressed'));drag=null}
   function groundAt(x,z){
    // Clamp exploration to the prepared map; support queries outside it have no triangles.
    // Terrain/map positions are already scaled; road support stores unscaled heights.
@@ -578,20 +588,20 @@ async function main(){
    const path=pedestrians.routes[0].points,index=Math.floor(path.length*.42),p=path[index],q=path[index+1];
    yaw=Math.atan2(-(q.x-p.x),-(q.z-p.z));pitch=0;
    const ground=groundAt(p.x,p.z);if(ground===null)return;
-   controls.enabled=false;active=true;keys.clear();lastGround=ground;
+   controls.enabled=false;active=true;clearInput();lastGround=ground;
    camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();camera.position.set(p.x,ground+1.65,p.z);look();
    navigation.show(yaw);hud.hidden=false;el('first-person3d').textContent='전체 지도 시점';el('first-person3d').setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});
   }
   function exit(){
-   if(!active)return;active=false;keys.clear();drag=null;hud.hidden=true;navigation.hide();
+   if(!active)return;active=false;clearInput();hud.hidden=true;navigation.hide();
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
    el('first-person3d').textContent='1인칭으로 걷기';el('first-person3d').setAttribute('aria-pressed','false');
   }
   function update(dt){
    if(!active)return;
-   const forward=Number(keys.has('KeyW')||keys.has('ArrowUp'))-Number(keys.has('KeyS')||keys.has('ArrowDown'));
-   const side=Number(keys.has('KeyD')||keys.has('ArrowRight'))-Number(keys.has('KeyA')||keys.has('ArrowLeft'));
-   const speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?4:1.5)*Math.min(dt,.1),norm=Math.hypot(forward,side)||1;
+   const forward=Number(held('KeyW')||held('ArrowUp'))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
+   const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
+   const speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?4:1.5)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
    if(dx||dz){
     const x=camera.position.x+dx,z=camera.position.z+dz,ground=groundAt(x,z);
@@ -608,18 +618,20 @@ async function main(){
    if(movement.has(event.code)){event.preventDefault();keys.add(event.code)}
   });
   document.addEventListener('keyup',event=>keys.delete(event.code));
-  canvas.addEventListener('blur',()=>{keys.clear();drag=null});window.addEventListener('blur',()=>{keys.clear();drag=null});document.addEventListener('visibilitychange',()=>{if(document.hidden){keys.clear();drag=null}});
-  canvas.addEventListener('pointerdown',event=>{if(!active)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY};canvas.setPointerCapture(event.pointerId)});
+  // Moving focus to a touch control must not cancel a held direction.
+  canvas.addEventListener('blur',()=>{keys.clear();drag=null});window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInput()});
+  canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY};canvas.setPointerCapture(event.pointerId)});
   canvas.addEventListener('pointermove',event=>{if(!active||!drag||drag.id!==event.pointerId)return;yaw-=(event.clientX-drag.x)*.003;pitch=Math.max(-Math.PI*.47,Math.min(Math.PI*.47,pitch-(event.clientY-drag.y)*.003));drag.x=event.clientX;drag.y=event.clientY;look()});
-  const release=()=>{drag=null};canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);
+  const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   el('first-person3d').onclick=()=>active?exit():enter();
   el('first-person-exit').onclick=exit;
   document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&event.target.id!=='first-person3d')exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Touch buttons allow the same walk controls without a hardware keyboard.
   for(const button of hud.querySelectorAll('[data-walk]')){
-   button.addEventListener('pointerdown',event=>{event.preventDefault();button.setPointerCapture(event.pointerId);keys.add(button.dataset.walk)});
-   for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,()=>keys.delete(button.dataset.walk));
+   button.addEventListener('pointerdown',event=>{if(!active)return;event.preventDefault();button.setPointerCapture(event.pointerId);touchKeys.set(event.pointerId,button);button.classList.add('pressed')});
+   for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,event=>{touchKeys.delete(event.pointerId);if(![...touchKeys.values()].includes(button))button.classList.remove('pressed')});
+   button.addEventListener('contextmenu',event=>event.preventDefault());
   }
   return {get active(){return active},get ground(){return lastGround},enter,exit,update};
  })();
@@ -632,6 +644,6 @@ async function main(){
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation};
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});
