@@ -19,6 +19,7 @@ def public_resource_paths():
         'gis/walls/doseong_city_wall.json',
         'webapp/static/city_wall.js',
         'webapp/static/jongmyo.js',
+        'webapp/static/palace.js',
         'webapp/static/yukjo.js',
         'webapp/static/compass3d.js',
         'webapp/static/ground_colors.js',

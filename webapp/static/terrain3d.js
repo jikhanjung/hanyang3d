@@ -5,6 +5,7 @@ import {createTrees} from './trees.js';
 import {createPedestrians} from './pedestrians.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
+import {createPalace} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
 import {createWalkJoystick} from './walk_joystick.js';
 import {createYukjo,groundYukjo,heightYukjo} from './yukjo.js';
@@ -75,7 +76,7 @@ async function main(){
   const positions=[],uv=[],indices=[],heights=[],colors=[];let folded=0;
   for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){
    const [x,y]=location(i/cols,j/rows),z=height(x,y);positions.push(...world(x,y,z));heights.push(z);uv.push(i/cols,1-j/rows);
-   const color=new THREE.Color('#b88a4c').multiplyScalar(1-Math.min(z/2400,.18));colors.push(color.r,color.g,color.b);
+   const color=new THREE.Color('#c4aa7f').multiplyScalar(1-Math.min(z/2400,.18));colors.push(color.r,color.g,color.b);
   }
   for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
    const a=j*(cols+1)+i,b=a+1,c=a+cols+1,d=c+1;
@@ -155,7 +156,7 @@ async function main(){
   }else [x,y]=project(feature.lon,feature.lat);
   let [w,h,d]=feature.symbol_size_m;
   const [wx,,wz]=world(x,y,0);
-  let yaw=0;
+  let yaw=(feature.display_yaw_deg??0)*Math.PI/180;
   if(feature.source_plot){
    const plot=feature.source_plot,a=sourceSurface(...plot.near_start),b=sourceSurface(...plot.near_end),back=sourceSurface(...plot.back);
    const nx=(a.x+b.x)/2-back.x,nz=(a.z+b.z)/2-back.z;
@@ -176,33 +177,34 @@ async function main(){
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
+  if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
   buildings.add(box);
  }
  // Transparent text sprites live above the models in the 3D scene.
- const buildingNames=new THREE.Group();buildingNames.name='building-name-labels';scene.add(buildingNames);
- const nameTags=buildings.children.map(building=>{
-  const name=building.userData.feature.name.split(' · ')[0],canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+ function nameSprite(name){
+  const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
   ctx.font='500 24px system-ui';canvas.width=Math.ceil(ctx.measureText(name).width)+8;canvas.height=36;
   ctx.font='500 24px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
   ctx.strokeStyle='rgba(255,253,243,.9)';ctx.lineWidth=3;ctx.strokeText(name,canvas.width/2,18);
   ctx.fillStyle='#25362f';ctx.fillText(name,canvas.width/2,18);
   const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
   const tag=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:true,depthWrite:false,sizeAttenuation:false}));
-  tag.center.set(.5,0);tag.renderOrder=5;tag.userData={name,featureId:building.userData.feature.id};buildingNames.add(tag);
-  return {building,tag,aspect:canvas.width/canvas.height};
+  tag.center.set(.5,0);return {tag,aspect:canvas.width/canvas.height};
+ }
+ const buildingNames=new THREE.Group();buildingNames.name='building-name-labels';scene.add(buildingNames);
+ const nameTags=buildings.children.map(building=>{
+  const name=building.userData.feature.name.split(' · ')[0],{tag,aspect}=nameSprite(name);
+  tag.renderOrder=5;tag.userData={name,featureId:building.userData.feature.id};buildingNames.add(tag);
+  return {building,tag,aspect};
  });
  const mountainNames=new THREE.Group();mountainNames.name='mountain-name-labels';scene.add(mountainNames);
  const districtNames=new THREE.Group();districtNames.name='district-name-labels';scene.add(districtNames);
  function placeTag(name,x,y,group){
-  const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
-  ctx.font='600 26px system-ui';canvas.width=Math.ceil(ctx.measureText(name).width)+12;canvas.height=40;
-  ctx.font='600 26px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.lineWidth=4;ctx.strokeStyle='#fffdf3';ctx.strokeText(name,canvas.width/2,20);ctx.fillStyle='#38453b';ctx.fillText(name,canvas.width/2,20);
-  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
-  const tag=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:true,depthWrite:false,sizeAttenuation:false}));
-  tag.userData={name,x,y,z:height(x,y)+20};tag.center.set(.5,0);tag.renderOrder=6;group.add(tag);
-  return {tag,aspect:canvas.width/canvas.height};
+  const {tag,aspect}=nameSprite(name);
+  tag.userData={name,x,y,z:height(x,y)+20};tag.renderOrder=6;group.add(tag);
+  return {tag,aspect};
  }
  const mountainTags=exp.terrain_alignment.anchors.map(p=>{
   const name=p.name.startsWith('백악')?'북악산':p.name.replace(' 능선','');
@@ -222,7 +224,7 @@ async function main(){
    tag.position.copy(building.position);tag.position.y+=building.userData.boxHeight/2+4;
    tag.scale.set(scale*aspect,scale,1);
   }
-  for(const {tag,aspect} of [...mountainTags,...districtTags]){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));tag.scale.set(scale*1.12*aspect,scale*1.12,1)}
+  for(const {tag,aspect} of [...mountainTags,...districtTags]){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));tag.scale.set(scale*aspect,scale,1)}
  }
  frameUpdate=()=>updateBuildingNames();
  await stage(3,'주요 건물·문 표시 완료 · 물길을 준비합니다');

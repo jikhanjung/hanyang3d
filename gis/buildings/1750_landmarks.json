@@ -34,7 +34,12 @@
           "status": "undated_concept"
         },
         "sources": []
-      }
+      },
+      "display_model": "palace_compound",
+      "palace_roof_tiers": 2,
+      "display_yaw_deg": 0,
+      "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0055393"
     },
     {
       "id": "changgyeong",
@@ -65,7 +70,12 @@
           "status": "undated_concept"
         },
         "sources": []
-      }
+      },
+      "display_model": "palace_compound",
+      "palace_roof_tiers": 1,
+      "display_yaw_deg": 90,
+      "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0055322"
     },
     {
       "id": "gyeongdeok",
@@ -106,7 +116,12 @@
         ],
         "method": "manual_site_inside_drawn_enclosure",
         "note": "원도의 나무와 담장 안에 표시한 개략 시설 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
-      }
+      },
+      "display_model": "palace_compound",
+      "palace_roof_tiers": 1,
+      "display_yaw_deg": 0,
+      "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0032098"
     },
     {
       "id": "jongmyo",

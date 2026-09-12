@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [057: 경덕궁·창덕궁·창경궁 모형](20260912_057_palace_models.md)
 - [056: 공통 가이드 연결과 적용 검토](20260912_056_shared_guides_review.md)
 - [055: 지역·시설 위치 보정과 황토색 지면·암반 수목](20260912_055_seochon_label_position.md)
 - [054: 업데이트 안내·지역 이름·반투명 패널](20260912_054_maintenance_and_map_labels.md)
