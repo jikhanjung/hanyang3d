@@ -20,3 +20,8 @@
 
 - `scripts/terrain/check_site_markers_browser.py`: 남향 배치, 북동 20 m 이동, 기존 크기 규칙과 성곽 안 배치, 설정 전환을 모두 확인한다.
 - Django 11개 테스트 통과.
+
+## 배포
+
+- v0.0.23으로 배포했다. Docker Hub digest: `sha256:f37e5045007b107e0f28deb7420419b7e4d63bf07854bf2ef56ee56b75b5a266`.
+- 공개 healthz 정상: v0.0.23, resources 59. 운영 화면에서 집터 검사와 `deploy/check_public_browser.py`가 통과했다.
