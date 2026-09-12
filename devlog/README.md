@@ -12,6 +12,12 @@
 
 ## 작업 기록
 
+- [045 — 지도 조작 패널과 물길 범위](20260912_045_map_controls_and_river.md)
+
+- [044 — 첫 화면을 전체 화면 한양 3D로 변경](20260912_044_fullscreen_home.md)
+
+- [043 — Docker Hub 게시와 dolfinid HTTPS 배포](20260912_043_production_deploy.md)
+
 - [042 — dolfinid용 Docker v0.0.1](20260912_042_docker_release.md)
 
 - [041 — 근거리 확대와 화강암·산 이름](20260912_041_close_orbit_and_mountains.md)

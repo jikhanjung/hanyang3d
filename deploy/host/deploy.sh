@@ -26,6 +26,6 @@ if ! docker compose up -d --wait --wait-timeout 60; then
     echo 'Deployment failed; inspect logs.' >&2
     exit 1
 fi
-docker compose exec -T hanyang3d python /app/deploy/healthcheck.py
+docker compose exec -T hanyang3d python /app/deploy/healthcheck.py </dev/null
 docker compose ps
 echo "Deployed $version. Rollback uses the same command with the previous version."

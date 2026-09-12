@@ -85,10 +85,10 @@ async function main(){
  await stage(1,'지형 표시 완료 · 도성대지도를 불러오는 중입니다');
  const texture=await new THREE.TextureLoader().loadAsync(exp.image_url);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
  const [iw,ih]=exp.image_size;
- const historical=new THREE.Mesh(grid(128,112,(u,v)=>warp(u*iw,v*ih),true),new THREE.MeshStandardMaterial({map:texture,transparent:true,opacity:.9,roughness:1,side:THREE.DoubleSide,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2}));historical.renderOrder=1;scene.add(historical);
+ const historical=new THREE.Mesh(grid(128,112,(u,v)=>warp(u*iw,v*ih),true),new THREE.MeshStandardMaterial({map:texture,transparent:true,opacity:Number(el('opacity3d').value)/100,roughness:1,side:THREE.DoubleSide,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2}));historical.renderOrder=1;scene.add(historical);
  const sourceImagePositions=historical.geometry.attributes.position.clone();
  await stage(2,'지도 표시 완료 · 주요 건물과 문을 준비합니다');
- const labels=new THREE.Group();scene.add(labels);
+ const labels=new THREE.Group();labels.visible=el('anchors3d').checked;scene.add(labels);
  const dotCanvas=document.createElement('canvas');dotCanvas.width=32;dotCanvas.height=32;
  const dotContext=dotCanvas.getContext('2d');dotContext.beginPath();dotContext.arc(16,16,12,0,Math.PI*2);dotContext.fillStyle='#167bb5';dotContext.fill();dotContext.strokeStyle='#ffffff';dotContext.lineWidth=4;dotContext.stroke();
  const dotTexture=new THREE.CanvasTexture(dotCanvas);
@@ -381,38 +381,9 @@ async function main(){
   const centre=sourceSurface(...p),edges=banksAt(waterData.centerline,i);
   return {x:centre.x,z:centre.z,height:height(cx+centre.x/ground,cy-centre.z/ground),width:Math.hypot(edges[0].x-edges[1].x,edges[0].z-edges[1].z)/2};
  });
- const downstream=waterData.downstream;
- const modernNodes=(line,width)=>line.map(([lon,lat])=>{const [x,y]=project(lon,lat),p=world(x,y,height(x,y));return {x:p[0],z:p[2],height:p[1],width}});
- const lowerNodes=modernNodes(downstream.cheonggye_lonlat,downstream.half_widths_m.cheonggye);
- const southNodes=modernNodes(downstream.south_lonlat,downstream.half_widths_m.jungnang);
- // A shared confluence vertex prevents a water-level step between the two rivers.
- lowerNodes[lowerNodes.length-1].width=southNodes[0].width;
- const mainPath=ChannelTerrain.profile([...historicNodes,...lowerNodes,...southNodes.slice(1)]);
- const joinIndex=historicNodes.length+lowerNodes.length-1,join=mainPath[joinIndex];
- const northNodes=modernNodes(downstream.north_lonlat,downstream.half_widths_m.jungnang);
- // Linear approach to the shared level, with the same minimum downstream grade.
- let northDistance=0;const northPath=northNodes.map(p=>({...p}));
- for(let i=northPath.length-1;i>=0;i--){if(i<northPath.length-1)northDistance+=Math.hypot(northPath[i].x-northPath[i+1].x,northPath[i].z-northPath[i+1].z);northPath[i].level=join.level+northDistance*.0003;}
- // Break marker excludes a fictitious segment from the mouth back to the northern arm.
- northPath[0].breakBefore=true;
- const channelPath=[...mainPath,...northPath];
- function addModernWater(path,name){
-  const dense=[];
-  for(let i=0;i<path.length-1;i++){
-   const a=path[i],b=path[i+1],steps=Math.ceil(Math.hypot(b.x-a.x,b.z-a.z)/12);
-   for(let k=0;k<steps;k++){const t=k/steps;dense.push({x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t,width:a.width+(b.width-a.width)*t});}
-  }
-  dense.push(path.at(-1));
-  const pairs=dense.map((p,i)=>{const a=dense[Math.max(0,i-1)],b=dense[Math.min(dense.length-1,i+1)],len=Math.hypot(b.x-a.x,b.z-a.z),nx=-(b.z-a.z)/len*p.width,nz=(b.x-a.x)/len*p.width;
-   return [-1,1].map(sign=>{const x=p.x+sign*nx,z=p.z+sign*nz;return new THREE.Vector3(x,height(cx+x/ground,cy-z/ground)+4,z)});
-  });
-  // Exact seam at the final source-map cross section.
-  if(name==='downstream-water')pairs[0]=riverEdges.at(-1).map(p=>p.clone());
-  const mesh=ribbon(pairs,0x278fb0,.35);mesh.name=name;
- }
- addModernWater(mainPath.slice(historicNodes.length-1),'downstream-water');
- addModernWater(northPath,'jungnang-north-water');
- el('downstream-focus').onclick=()=>{const target=new THREE.Vector3(join.x,join.level,join.z);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(1300,2300,2500));controls.update()};
+ // Display only the source-map river; omit the later modern downstream extension.
+ const mainPath=ChannelTerrain.profile(historicNodes),northPath=[],joinIndex=mainPath.length-1;
+ const channelPath=mainPath;
  await stage(4,'물길 표시 완료 · 하천 주변 지형을 계산합니다');
  const surfaceBaselines=[];
  for(const mesh of [terrain,historical]){

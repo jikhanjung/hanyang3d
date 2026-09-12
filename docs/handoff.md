@@ -91,4 +91,8 @@
 
 ## Docker 배포 준비 (042)
 
-`honestjung/hanyang3d:v0.0.1`, linux/amd64. Gunicorn 비-root 컨테이너와 읽기 전용 지도 데이터 묶음을 생성했다. `/healthz`로 이미지·데이터 버전과 제공 파일을 확인하며 시작 시 해시를 검사한다. dolfinid의 기본 배포 경로는 `/srv/hanyang3d`, 포트는 `127.0.0.1:8013`이다. 현재 단계는 로컬 빌드·검증이며 서버 설치 명령과 공개 도메인 설정은 [배포 안내](../deploy/README.md)를 따른다.
+`honestjung/hanyang3d:v0.0.1`, linux/amd64. Gunicorn 비-root 컨테이너와 읽기 전용 지도 데이터 묶음을 생성했다. `/healthz`로 이미지·데이터 버전과 제공 파일을 확인하며 시작 시 해시를 검사한다. dolfinid의 기본 배포 경로는 `/srv/hanyang3d`, 포트는 `127.0.0.1:8013`이다. 2026-09-12 Docker Hub push와 dolfinid 설치를 완료했다. 운영 도메인은 https://hanyang3d.nopeoplestime.info 이며 HTTPS 인증서 자동 갱신을 설정했다. 서버 설치·점검 명령은 [배포 안내](../deploy/README.md)를 따른다.
+
+044: 운영 버전은 `honestjung/hanyang3d:v0.0.2`. 기본 `/`는 메뉴 없는 전체 화면 한양 3D이며 작업 현황은 `/gis/`, 도구 포함 뷰는 `/gis/terrain/3d/`다. [기록](../devlog/20260912_044_fullscreen_home.md).
+
+045: `v0.0.3`에서는 전체 화면 상단에 옛지도 슬라이더(기본 50%), 보정점(기본 꺼짐), 1인칭 걷기와 기존 초기화면 링크를 제공한다. 현대 하류·중랑천 연장을 제거하고 원도 물길 구간을 유지한다. [기록](../devlog/20260912_045_map_controls_and_river.md).

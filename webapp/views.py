@@ -29,13 +29,14 @@ def terrain_overlay(request):
 
 
 @require_safe
-def terrain3d(request):
+def terrain3d(request, canvas_only=False):
     experiment = json.loads((settings.BASE_DIR / 'gis/control_points/doseong_modern_preview.json').read_text())
     buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())
     water = json.loads((settings.BASE_DIR / 'gis/waterways/doseong_cheonggyecheon.json').read_text())
     wall = json.loads((settings.BASE_DIR / 'gis/walls/doseong_city_wall.json').read_text())
     return render(request, 'terrain3d.html', {
         'experiment': experiment, 'buildings': buildings, 'water': water, 'wall': wall,
+        'canvas_only': canvas_only,
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),
     })

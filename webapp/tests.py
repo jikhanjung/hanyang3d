@@ -47,10 +47,18 @@ class ReviewTests(SimpleTestCase):
             response.close()
 
     def test_dashboard(self):
-        for url in ('/', '/gis/', '/gis/index.html'):
+        for url in ('/gis/', '/gis/index.html'):
             response = self.client.get(url)
             self.assertContains(response, '도엽 연결 보기')
             self.assertContains(response, '3.31')
+
+    def test_home_opens_fullscreen_3d(self):
+        response = self.client.get('/')
+        self.assertContains(response, '<body class="canvas-only">')
+        self.assertContains(response, 'id="scene"')
+        self.assertContains(response, '/webapp/static/terrain3d.js')
+        self.assertNotContains(response, '도엽 연결 보기')
+        self.assertNotContains(self.client.get('/gis/terrain/3d/'), '<body class="canvas-only">')
 
     def test_review_and_map_resources(self):
         for url in ('/gis/georeferenced/1908_join/index.html',
