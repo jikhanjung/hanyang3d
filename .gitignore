@@ -27,3 +27,6 @@ Thumbs.db
 /models/generated/**
 !/**/.gitkeep
 !/**/README.md
+
+# Private shared guides: local sibling checkout only
+/.guides

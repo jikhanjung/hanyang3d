@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 
-export function createTrees(data,sourceSurface,landmarks,settlement,channelPath,wall){
+export function createTrees(data,sourceSurface,landmarks,settlement,channelPath,wall,granite=null){
  const group=new THREE.Group();group.name='map-woodland';
+ let rockThinned=0;
  const records=[],cells=new Map(),obstacles=new Map(),cellSize=24;
  const key=(x,z)=>Math.floor(x/cellSize)+','+Math.floor(z/cellSize);
  const add=(map,r)=>{const k=key(r.x,r.z);if(!map.has(k))map.set(k,[]);map.get(k).push(r)};
@@ -17,6 +18,9 @@ export function createTrees(data,sourceSurface,landmarks,settlement,channelPath,
   const p=sourceSurface(px,py),water=ChannelTerrain.nearest(p.x,p.z,channelPath);
   if(water.distance<water.width+radius+8||clashes(obstacles,p,radius)||clashes(cells,p,radius))continue;
   if(landmarks.children.some(b=>Math.hypot(p.x-b.position.x,p.z-b.position.z)<Math.hypot(b.userData.feature.symbol_size_m[0],b.userData.feature.symbol_size_m[2])/2+radius+10))continue;
+  // Stable sampling keeps the same sparse trees through reloads and height changes.
+  const sample=Math.sin(px*12.9898+py*78.233)*43758.5453;
+  if(sample-Math.floor(sample)>(granite?.treeProbability(p)??1)){rockThinned++;continue}
   const r={x:p.x,z:p.z,h,radius,pine:!!pine,tint,region,pixel:[px,py]};records.push(r);add(cells,r);
  }
  const make=(geometry,color,name)=>{const m=new THREE.InstancedMesh(geometry,new THREE.MeshStandardMaterial({color,roughness:1,flatShading:true}),records.length);m.name=name;group.add(m);return m};
@@ -43,5 +47,5 @@ export function createTrees(data,sourceSurface,landmarks,settlement,channelPath,
  function updateGround(supportAt){for(const r of records)r.support=supportAt(r.x,r.z,.6,.6,0)}
  function setMapVisible(value){mapVisible=value;updateHeights()}
  document.getElementById('trees3d').onchange=e=>{group.visible=e.target.checked};
- return {group,records,updateGround,updateHeights,setMapVisible};
+ return {group,records,rockThinned,updateGround,updateHeights,setMapVisible};
 }

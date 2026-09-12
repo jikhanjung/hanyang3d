@@ -12,6 +12,8 @@
 
 ## 작업 기록
 
+- [056: 공통 가이드 연결과 적용 검토](20260912_056_shared_guides_review.md)
+- [055: 지역·시설 위치 보정과 황토색 지면·암반 수목](20260912_055_seochon_label_position.md)
 - [054: 업데이트 안내·지역 이름·반투명 패널](20260912_054_maintenance_and_map_labels.md)
 - [053: 수평 3D 나침반·모바일 햄버거 메뉴](20260912_053_3d_compass_and_hamburger.md)
 - [052: 육조거리 관청·연대 데이터·모바일 설정](20260912_052_yukjo_compounds_and_mobile_options.md)

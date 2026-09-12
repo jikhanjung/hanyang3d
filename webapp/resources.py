@@ -21,6 +21,7 @@ def public_resource_paths():
         'webapp/static/jongmyo.js',
         'webapp/static/yukjo.js',
         'webapp/static/compass3d.js',
+        'webapp/static/ground_colors.js',
         'webapp/static/walk_joystick.js',
         'gis/walls/gyeongbokgung_wall.json',
         'webapp/static/settlement.js',

@@ -75,7 +75,7 @@
       "category": "궁궐",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R110000000.do",
       "note": "오늘날 경희궁. 1760년 이전 이름인 경덕궁으로 표시합니다.",
-      "position_status": "approximate_site_hint",
+      "position_status": "manual_source_enclosure_hint",
       "symbol_size_m": [
         26,
         13,
@@ -96,6 +96,16 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          880,
+          1380
+        ],
+        "method": "manual_site_inside_drawn_enclosure",
+        "note": "원도의 나무와 담장 안에 표시한 개략 시설 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
       }
     },
     {
@@ -144,7 +154,7 @@
       "category": "제례",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R311030000.do",
       "note": "토지와 곡식의 신에게 제사하던 제단. 건물 대신 낮은 위치 표시 박스를 사용합니다.",
-      "position_status": "approximate_site_hint",
+      "position_status": "manual_source_enclosure_hint",
       "symbol_size_m": [
         7.65,
         1,
@@ -165,6 +175,16 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          820,
+          1200
+        ],
+        "method": "manual_site_inside_drawn_enclosure",
+        "note": "원도의 나무와 담장 안에 표시한 개략 시설 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
       }
     },
     {
@@ -175,7 +195,7 @@
       "category": "교육",
       "reference": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101410000&ctptUid=13898859667928200187",
       "note": "대성전·명륜당을 포함한 교육·제례 시설군의 대표 위치입니다.",
-      "position_status": "approximate_site_hint",
+      "position_status": "manual_source_enclosure_hint",
       "symbol_size_m": [
         24,
         10,
@@ -196,6 +216,16 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          2010,
+          770
+        ],
+        "method": "manual_site_inside_drawn_enclosure",
+        "note": "원도의 문묘·성균관 건물과 담장 안 개략 대표 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
       }
     },
     {

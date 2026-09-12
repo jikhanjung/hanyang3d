@@ -41,3 +41,5 @@
 - [옛길·하류 연장·성문 보완](doseong_roads_and_downstream.md)
 
 - [길 주변 주택·상가 추정 배치](doseong_settlement.md)
+
+[공통 가이드 적용 검토](guide_adoption_review.md): 로컬 가이드 연결, 이미 충족한 운영 항목과 후속 보완 우선순위.

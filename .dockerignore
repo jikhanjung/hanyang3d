@@ -30,3 +30,4 @@ gis/georeferenced/
 .venv/
 .build/
 dist/
+.guides

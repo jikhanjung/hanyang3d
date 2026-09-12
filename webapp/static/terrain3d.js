@@ -8,6 +8,7 @@ import {createCityWall} from './city_wall.js';
 import {createJongmyo} from './jongmyo.js';
 import {createWalkJoystick} from './walk_joystick.js';
 import {createYukjo,groundYukjo,heightYukjo} from './yukjo.js';
+import {createGroundColors} from './ground_colors.js';
 import {createCompass3D} from './compass3d.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 
@@ -74,7 +75,7 @@ async function main(){
   const positions=[],uv=[],indices=[],heights=[],colors=[];let folded=0;
   for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){
    const [x,y]=location(i/cols,j/rows),z=height(x,y);positions.push(...world(x,y,z));heights.push(z);uv.push(i/cols,1-j/rows);
-   const color=new THREE.Color().setHSL(.25-Math.min(z/1000,.12),.13, .64-Math.min(z/2200,.25));colors.push(color.r,color.g,color.b);
+   const color=new THREE.Color('#b88a4c').multiplyScalar(1-Math.min(z/2400,.18));colors.push(color.r,color.g,color.b);
   }
   for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
    const a=j*(cols+1)+i,b=a+1,c=a+cols+1,d=c+1;
@@ -208,9 +209,10 @@ async function main(){
   const [x,y]=alignTerrain?project(p.lon,p.lat):warp(...p.pixel);return placeTag(name,x,y,mountainNames);
  });
  // Approximate area labels, not surveyed points or historical administrative boundaries.
+ // Seochon follows the drawn palace wall and upstream channel, not a historical center.
  // Area descriptions: hanok.seoul.go.kr/front/kor/town/town01.do and town02.do.
- const districtTags=[{name:'북촌',lon:126.984,lat:37.582},{name:'서촌',lon:126.969,lat:37.5805}].map(p=>{
-  const [x,y]=project(p.lon,p.lat);return placeTag(p.name,x,y,districtNames);
+ const districtTags=[{name:'북촌',pixel:[1445,965]},{name:'서촌',pixel:[1042,1085]}].map(p=>{
+  const [x,y]=warp(...p.pixel);return placeTag(p.name,x,y,districtNames);
  });
  function updateBuildingNames(){
   buildingNames.visible=buildings.visible&&el('names3d').checked;
@@ -515,7 +517,8 @@ async function main(){
  if(!treeResponse.ok)throw Error('수목 배치 자료를 불러오지 못했습니다.');
  const treeData=await treeResponse.json();
  if(treeData.source_sha256!==exp.input_sha256)throw Error('수목 배치 원도가 현재 지도와 다릅니다.');
- trees=createTrees(treeData,sourceSurface,buildings,settlement,channelPath,{segments:[...cityWall.segments,...palaceWall.segments]});trees.updateGround(cityWall.supportAt);trees.updateHeights(exaggeration);scene.add(trees.group);
+ trees=createTrees(treeData,sourceSurface,buildings,settlement,channelPath,{segments:[...cityWall.segments,...palaceWall.segments]},granite);trees.updateGround(cityWall.supportAt);trees.updateHeights(exaggeration);scene.add(trees.group);
+ const groundColors=createGroundColors(surfaceMaterial,terrain.geometry,trees.records);
  await yieldPaint();
  el('trees-focus').onclick=()=>{const r=trees.records.find(r=>r.region==='gyeongbok');if(!r)return;controls.target.set(r.x,r.floor,r.z);camera.position.copy(controls.target).add(new THREE.Vector3(120,240,320));controls.update()};
  const walkingData=await(await fetch('/gis/roads/doseong_walking_routes.json')).json();
@@ -657,6 +660,6 @@ async function main(){
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass};
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

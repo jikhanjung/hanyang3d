@@ -62,5 +62,15 @@ export function createGranite(materials,sourceSurface){
   };
   material.customProgramCacheKey=()=> 'doseong-granite-v2';material.needsUpdate=true;
  }
- return {patches,setHeight:value=>{uniforms.rockHeightScale.value=value},setEnabled:value=>{uniforms.rockEnabled.value=value?1:0},get enabled(){return !!uniforms.rockEnabled.value}};
+ function treeProbability(point){
+  let mask=0;
+  for(const patch of patches){
+   const x=point.x-patch.centre.x,z=point.z-patch.centre.z,v=patch.inverse;
+   const radius=Math.hypot(v.x*x+v.y*z,v.z*x+v.w*z);
+   mask=Math.max(mask,1-THREE.MathUtils.smoothstep(radius,.5,1.05));
+  }
+  mask*=THREE.MathUtils.smoothstep(point.y,150,240);
+  return 1-.75*mask;
+ }
+ return {patches,treeProbability,setHeight:value=>{uniforms.rockHeightScale.value=value},setEnabled:value=>{uniforms.rockEnabled.value=value?1:0},get enabled(){return !!uniforms.rockEnabled.value}};
 }
