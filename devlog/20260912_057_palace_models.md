@@ -25,3 +25,11 @@
 황토색을 `#b88a4c`에서 밝고 채도가 낮은 `#c4aa7f`로 완화했다. 건물·문·산·지역 이름은 같은 nameSprite 생성 함수를 사용해 500 24px 글꼴, 36px 캔버스, 외곽선과 화면 배율을 통일했다. 산·지역 이름의 추가 1.12배 확대를 제거했다. v0.0.16 게시 진행 후 추가 요청이므로 최종 릴리스는 v0.0.17이다.
 
 최종 브라우저 확인: 모든 지도 이름이 동일한 500 24px 글꼴·36px 캔버스·화면 배율을 사용한다. 지도 0%의 연한 황토색 화면을 확인했으며 v0.0.17 컨테이너 검사와 Django 11개 테스트가 통과했다.
+
+## 최종 배포
+
+- 커밋 `a3c871f` 상태에서 `honestjung/hanyang3d:v0.0.17`을 다시 빌드해 revision 레이블의 `-dirty`를 없앴다. Django 11개 테스트와 컨테이너 검사 통과.
+- Docker Hub push digest: `sha256:b3308c255b274658313d5f9e0f83a169c3ccea834c409df789bc6d0ef0bbc9a3`.
+- dolfinid에서 이미지 pull, `data/v0.0.17` 전개 후 `deploy.sh v0.0.17` 실행. 컨테이너 healthy 상태로 교체됐다.
+- 공개 healthz 정상: v0.0.17, resources 58, 누락 없음. `palace.js`·`terrain3d.js`는 저장소 파일과 해시가 같다.
+- `deploy/check_public_browser.py` 통과: 공개 자원, 다리 접합, 1인칭 눈높이 1.65m, 3D 화면 인원 130·수목 2349·산 이름 3개.
