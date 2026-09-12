@@ -14,6 +14,15 @@ with sync_playwright() as p:
  assert gates['gateSouthOfChangdeok']>40,'donhwamun must sit south of changdeok'
  assert 30<gates['honghwaEastOfChanggyeong']<70,'honghwamun must front changgyeong'
  assert gates['gapNorthSouth']<12,'honghwamun must stay on the changgyeong axis'
+ midpoint=page.evaluate('''()=>{const t=terrain3d,R=6378137,rad=Math.PI/180;
+  const project=(lon,lat)=>[R*lon*rad,R*Math.log(Math.tan(Math.PI/4+lat*Math.PI/360))];
+  const at=id=>t.buildings.children.find(b=>b.userData.feature.id===id).userData.feature;
+  const cg=at('changgyeong'),hh=at('honghwamun');
+  const a=t.warp(...cg.source_position.pixel),b=t.warp(...hh.source_position.pixel),m=project(cg.lon,cg.lat);
+  const ground=Math.cos(2*Math.atan(Math.exp(m[1]/R))-Math.PI/2);
+  return Math.hypot((a[0]+b[0])/2-m[0],(a[1]+b[1])/2-m[1])*ground}''')
+ print({'midpointOffsetMetres':midpoint},flush=True)
+ assert midpoint<3,'changgyeong and honghwamun must straddle the modern coordinate site'
  for id in ['gyeongdeok','changdeok','changgyeong','donhwamun','honghwamun']:
   page.evaluate('''id=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id===id);t.controls.target.copy(b.position);t.camera.position.copy(b.position);t.camera.position.x+=50;t.camera.position.y+=32;t.camera.position.z+=60;t.controls.update();t.updateBuildingNames();t.renderer.render(t.scene,t.camera)}''',id)
   page.screenshot(path='/tmp/'+id+'-model.png',timeout=120000)

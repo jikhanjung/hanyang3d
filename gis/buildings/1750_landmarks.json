@@ -59,7 +59,7 @@
       "category": "궁궐",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R103010000.do",
       "note": "창덕궁과 이어진 왕실 공간. 전각의 실제 외형은 표현하지 않았습니다.",
-      "position_status": "manual_source_symbol_hint",
+      "position_status": "approximate_site_hint",
       "symbol_size_m": [
         24,
         12,
@@ -90,11 +90,11 @@
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          1782,
-          1012
+          1908,
+          1029
         ],
-        "method": "manual_drawn_palace_roof_group",
-        "note": "원도 동궐 구역에서 동쪽 붉은 전각 지붕 무리의 중심을 육안 판독했다. 두 무리 중 동쪽을 창경궁으로 본 개략 해석이며 원도에 궁 이름은 적혀 있지 않다."
+        "method": "modern_site_pair_midpoint",
+        "note": "창경궁과 홍화문의 중간 지점이 기존 현대 위경도 위치와 맞도록 서쪽으로 약 22 m 옮긴 표시 위치다. 원도 전각 지붕 판독값이 아니다."
       }
     },
     {
@@ -146,7 +146,7 @@
       "name": "홍화문 · 창경궁 정문",
       "category": "궁궐",
       "reference": "https://encykorea.aks.ac.kr/Article/E0064444",
-      "note": "창경궁의 동쪽 정문. 원도에서 문 기호를 확인하지 못해 모형 앞면 기준으로 배치했습니다.",
+      "note": "창경궁의 동쪽 정문. 원도에서 문 기호를 확인하지 못해 창경궁과의 중간이 기존 위치와 맞도록 배치했습니다.",
       "position_status": "model_front_offset",
       "symbol_size_m": [
         15,
@@ -173,11 +173,11 @@
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          1804,
-          1012
+          1929,
+          1029
         ],
-        "method": "model_front_offset",
-        "note": "원도에 대응하는 문 기호를 찾지 못해 창경궁 모형 동쪽 약 45 m 앞에 배치한 표시 위치다. 원도 판독값이 아니다."
+        "method": "modern_site_pair_midpoint",
+        "note": "창경궁 모형 동쪽 약 45 m. 창경궁과의 중간 지점이 기존 현대 위경도 위치와 맞는다. 원도 문 기호 판독값이 아니다."
       },
       "display_model": "palace_gate",
       "palace_gate_tiers": 2,
