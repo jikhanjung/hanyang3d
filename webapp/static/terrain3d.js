@@ -3,6 +3,7 @@ import {createGranite} from './granite.js';
 import {setupOrbitNavigation} from './orbit_navigation.js';
 import {createTrees} from './trees.js';
 import {createPedestrians,createWalker} from './pedestrians.js';
+import {createSiteMarker} from './site_marker.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
@@ -146,7 +147,8 @@ async function main(){
  const foundations=new THREE.Group();scene.add(foundations);
  const supportSurfaces=[terrain,historical].map(mesh=>({positions:mesh.geometry.attributes.position.array,index:mesh.geometry.index.array}));
  const buildingData=JSON.parse(el('buildings').textContent);
- const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b};
+ const siteMarkers=[];
+ const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b,'집터':0x8a8577};
  for(const feature of buildingData.features){
   let x,y;
   if(feature.source_position){
@@ -179,10 +181,14 @@ async function main(){
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
+  if(feature.display_model==='site_marker'){box.material.visible=false;box.add(createSiteMarker(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
   buildings.add(box);
  }
+ // Commemorative house sites are optional: they are modern markers, not 1750 buildings.
+ function updateSites(){const on=el('sites3d').checked;for(const {box,foundation} of siteMarkers){box.visible=on;foundation.visible=on}}
+ el('sites3d').onchange=()=>{updateSites();updateBuildingNames()};updateSites();
  // Transparent text sprites live above the models in the 3D scene.
  function nameSprite(name){
   const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
@@ -222,6 +228,7 @@ async function main(){
   mountainNames.visible=el('names3d').checked;districtNames.visible=el('names3d').checked;
   const scale=24*2*Math.tan(camera.fov*Math.PI/360)/Math.max(1,el('scene').clientHeight); // 24px font on a 36px canvas yields ~16px text.
   for(const {building,tag,aspect} of nameTags){
+   tag.visible=building.visible;
    tag.position.copy(building.position);tag.position.y+=building.userData.boxHeight/2+4;
    tag.scale.set(scale*aspect,scale,1);
   }

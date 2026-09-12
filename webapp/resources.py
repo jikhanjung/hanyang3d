@@ -20,6 +20,7 @@ def public_resource_paths():
         'webapp/static/city_wall.js',
         'webapp/static/jongmyo.js',
         'webapp/static/palace.js',
+        'webapp/static/site_marker.js',
         'webapp/static/yukjo.js',
         'webapp/static/compass3d.js',
         'webapp/static/ground_colors.js',

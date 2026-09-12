@@ -1484,6 +1484,92 @@
           }
         ]
       }
+    },
+    {
+      "id": "jeongdojeon_site",
+      "name": "정도전 집터",
+      "lat": 37.572539,
+      "lon": 126.979405,
+      "category": "집터",
+      "reference": "https://encykorea.aks.ac.kr/Article/E0050380",
+      "note": "조선 개국공신 정도전의 집이 있던 자리로 전해지는 지점입니다. 1398년 이후 집은 남아 있지 않으며 도성대지도에도 그려져 있지 않습니다.",
+      "position_status": "user_supplied_modern_point",
+      "symbol_size_m": [
+        1.2,
+        2.4,
+        1.2
+      ],
+      "size_status": "commemorative_marker_scale",
+      "size_note": "표석 크기의 표시용 모형. 집터의 실제 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": 1398,
+          "status": "site_only_after_1398",
+          "note": "정도전 사후 집은 남지 않았다. 1750년 원도의 표현 대상이 아니며 현재 위치 표시만 한다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "not_depicted_on_source_map"
+        },
+        "sources": []
+      },
+      "modern_position": {
+        "method": "what3words_address_resolved_to_wgs84",
+        "what3words": "///축구공.정성껏.연말",
+        "resolved_by": "what3words.com 공개 주소 페이지",
+        "resolved_on": "2026-09-12",
+        "precision_m": 3,
+        "note": "사용자가 알려 준 what3words 주소를 위경도로 변환한 값이다. 원도 판독이나 발굴 성과가 아니며, 종로구청 앞 표석 위치와는 약 100 m 차이가 있다."
+      },
+      "display_model": "site_marker",
+      "display_yaw_deg": 180,
+      "model_note": "표석 형태의 표시용 모형. 집이나 담장을 복원한 것이 아니다."
+    },
+    {
+      "id": "songsiyeol_site",
+      "name": "송시열 집터",
+      "lat": 37.58861,
+      "lon": 126.99689,
+      "category": "집터",
+      "reference": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaKdcd=21&ccbaAsno=0000570000000&ccbaCtcd=11",
+      "note": "우암 송시열이 살던 자리로 전해지는 곳입니다. 서울특별시 유형문화유산으로 지정된 집터이며 건물은 남아 있지 않고 증주벽립 각자와 우암구기 비석이 전합니다.",
+      "position_status": "approximate_designated_address",
+      "symbol_size_m": [
+        1.2,
+        2.4,
+        1.2
+      ],
+      "size_status": "commemorative_marker_scale",
+      "size_note": "표석 크기의 표시용 모형. 집터의 실제 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified",
+          "note": "송시열(1607~1689)의 생존 시기 이후 자리만 전한다. 1750년 원도에 표시된 대상이 아니다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "not_depicted_on_source_map"
+        },
+        "sources": []
+      },
+      "modern_position": {
+        "method": "quarter_centroid_for_designated_address",
+        "designated_address": "서울특별시 종로구 명륜1가 2-22, 2-23, 5-99",
+        "resolved_by": "OpenStreetMap place=quarter 명륜1가 노드 (ODbL)",
+        "resolved_on": "2026-09-12",
+        "precision_m": 300,
+        "note": "지정 소재지의 동 이름을 기준으로 잡은 개략 지점이다. 증주벽립 각자 바위의 실측 위치가 아니며 수백 m 오차가 있을 수 있다."
+      },
+      "display_model": "site_marker",
+      "display_yaw_deg": 180,
+      "model_note": "표석 형태의 표시용 모형. 집이나 담장을 복원한 것이 아니다."
     }
   ],
   "size_policy": "Representative single-building-scale approximate envelopes in metres, not compound bounds or measured historical reconstructions. Axis order: width, height, depth. Sizes are explicit modelling assumptions except the Sajik single-altar reference.",
