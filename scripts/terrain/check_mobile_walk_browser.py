@@ -69,7 +69,7 @@ with sync_playwright() as p:
     before=position();advance()
     assert distance(before,position())>1, (distance(before,position()),page.evaluate('touchLog'))
     # Losing canvas focus does not cancel the finger held on the pad.
-    page.locator('#first-person-exit').focus()
+    page.locator('#first-person3d').focus()
     before=position();advance()
     assert distance(before,position())>1, (distance(before,position()),page.evaluate('touchLog'))
     touch('touchEnd',[look])
@@ -83,7 +83,7 @@ with sync_playwright() as p:
     touch('touchStart',[forward]);page.evaluate('window.dispatchEvent(new Event("blur"))')
     stopped=position();advance();assert distance(stopped,position())<1e-6
     touch('touchEnd',[])
-    page.locator('#first-person-exit').tap()
+    page.locator('#first-person3d').tap()
     page.locator('#first-person3d').tap()
     stopped=position();advance();assert distance(stopped,position())<1e-6
     # Keyboard input still works after the pointer input separation.

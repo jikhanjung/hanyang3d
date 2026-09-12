@@ -1,7 +1,7 @@
 contract_version = 1
 instance = "hanyang3d"
 image = "honestjung/hanyang3d"
-version = "v0.0.8"
+version = "v0.0.9"
 platform = "linux/amd64"
 settings = "webapp.settings"
 has_database = false
@@ -9,8 +9,8 @@ health_url = "/healthz"
 services = ["hanyang3d"]
 
 [verbs]
-build = "bash deploy/build.sh v0.0.8"
-deploy = "bash /srv/hanyang3d/deploy.sh v0.0.8"
+build = "bash deploy/build.sh v0.0.9"
+deploy = "bash /srv/hanyang3d/deploy.sh v0.0.9"
 rollback = "bash /srv/hanyang3d/deploy.sh <previous-version>"
 
 [targets.prod]

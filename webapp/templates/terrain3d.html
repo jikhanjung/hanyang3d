@@ -8,7 +8,9 @@
 
 #first-person-compass,body.canvas-only #first-person-compass{top:12px;right:12px;width:80px;padding:6px;box-shadow:0 1px 7px #273c3020}#map-controls{max-width:calc(100% - 116px);right:104px}
 @media(max-width:600px){#first-person-compass,body.canvas-only #first-person-compass{top:12px;right:8px;width:72px}#map-controls{max-width:calc(100% - 100px);right:88px;gap:6px 10px;padding:8px}body.canvas-only #scene-loading{top:160px}}
-#first-person-map{opacity:.7}</style>
+#first-person-map{opacity:.7}
+@media(pointer:coarse),(max-width:600px){#first-person-help{width:120px;padding:0;background:transparent;box-shadow:none;pointer-events:none}#first-person-help>:not(#walk-joystick){display:none}#walk-joystick{margin:0;opacity:.6;pointer-events:auto}}
+</style>
 <body{% if canvas_only %} class="canvas-only"{% endif %}>
 <header><a href="/gis/">← 작업 현황</a> · <a href="/gis/terrain/">평면 TPS 편집</a><h1>한양 도성, 산세 위에 펼쳐 보기</h1>
 <p>5개 보정점으로 맞춘 도성대지도와 현대 고도 지형입니다. 드래그로 회전 · 휠로 가리킨 지형 확대 · 오른쪽 드래그로 이동</p>
