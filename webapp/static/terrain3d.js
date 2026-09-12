@@ -66,7 +66,7 @@ async function main(){
  function grid(cols,rows,location,textured=false){
   const positions=[],uv=[],indices=[],heights=[],colors=[];let folded=0;
   for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){
-   const [x,y]=location(i/cols,j/rows),z=height(x,y)+(textured?4:0);positions.push(...world(x,y,z));heights.push(z);uv.push(i/cols,1-j/rows);
+   const [x,y]=location(i/cols,j/rows),z=height(x,y);positions.push(...world(x,y,z));heights.push(z);uv.push(i/cols,1-j/rows);
    const color=new THREE.Color().setHSL(.25-Math.min(z/1000,.12),.13, .64-Math.min(z/2200,.25));colors.push(color.r,color.g,color.b);
   }
   for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
@@ -86,6 +86,7 @@ async function main(){
  const texture=await new THREE.TextureLoader().loadAsync(exp.image_url);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
  const [iw,ih]=exp.image_size;
  const historical=new THREE.Mesh(grid(128,112,(u,v)=>warp(u*iw,v*ih),true),new THREE.MeshStandardMaterial({map:texture,transparent:true,opacity:Number(el('opacity3d').value)/100,roughness:1,side:THREE.DoubleSide,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2}));historical.renderOrder=1;scene.add(historical);
+ const mapGround=terrain; // One physical surface for terrain, map and road overlays.
  const sourceImagePositions=historical.geometry.attributes.position.clone();
  await stage(2,'지도 표시 완료 · 주요 건물과 문을 준비합니다');
  const labels=new THREE.Group();labels.visible=el('anchors3d').checked;scene.add(labels);
@@ -210,7 +211,7 @@ async function main(){
   const tx=cx+p.x/ground,ty=cy-p.z/ground,gu=(tx-xmin)/(xmax-xmin)*(n-1),gv=(ymax-ty)/(ymax-ymin)*(n-1);
   const gi=Math.min(n-2,Math.floor(gu)),gj=Math.min(n-2,Math.floor(gv)),ga=gu-gi,gb=gv-gj,gk=gj*n+gi;
   const zs=dem.elevations,land=ga>=gb?(1-ga)*zs[gk]+(ga-gb)*zs[gk+1]+gb*zs[gk+n+1]:(1-gb)*zs[gk]+(gb-ga)*zs[gk+n]+ga*zs[gk+n+1];
-  p.y=Math.max(p.y,land+4);return p;
+  p.y=Math.max(p.y,land);return p;
  }
  const riverNodes=[],riverHalfWidths=[];
  for(let i=0;i<waterData.centerline.length-1;i++){
@@ -362,11 +363,11 @@ async function main(){
  function home(){const p=sourceSurface(1560,1470);controls.target.set(p.x,150,p.z);camera.position.set(p.x,6200,p.z+7600);controls.update()}
  el('home3d').onclick=home;
  el('top3d').onclick=()=>{controls.target.set(0,0,0);camera.position.set(0,11000,1);controls.update()};
- el('opacity3d').oninput=()=>{historical.material.opacity=Number(el('opacity3d').value)/100;el('opacity-value').textContent=el('opacity3d').value+'%';settlement?.setMapVisible(historical.material.opacity>0);pedestrians?.setMapVisible(historical.material.opacity>0);trees?.setMapVisible(historical.material.opacity>0);firstPerson?.update(0)};
+ el('opacity3d').oninput=()=>{historical.material.opacity=Number(el('opacity3d').value)/100;el('opacity-value').textContent=el('opacity3d').value+'%';firstPerson?.update(0)};
  el('anchors3d').onchange=()=>{labels.visible=el('anchors3d').checked};
  el('height3d').onchange=()=>{
   exaggeration=Number(el('height3d').value);granite?.setHeight(exaggeration);
-  for(const mesh of [terrain,historical]){const pos=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>pos.setY(i,h*exaggeration));pos.needsUpdate=true;mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()}
+  for(const mesh of [terrain,historical]){const pos=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>pos.setY(i,h*exaggeration));pos.needsUpdate=true;if(mesh===terrain)mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()}
   labels.children.forEach(l=>l.position.set(...world(l.userData.x,l.userData.y,l.userData.z)));
   buildings.children.forEach(b=>{const u=b.userData;b.position.set(...world(u.x,u.y,u.z));b.position.y+=u.boxHeight/2});
   foundations.children.forEach(f=>{f.position.y=(f.userData.top+f.userData.bottom)/2*exaggeration;f.scale.y=exaggeration});
@@ -386,20 +387,48 @@ async function main(){
  const channelPath=mainPath;
  await stage(4,'물길 표시 완료 · 하천 주변 지형을 계산합니다');
  const surfaceBaselines=[];
- for(const mesh of [terrain,historical]){
+ for(const mesh of [terrain]){
   const old=mesh.geometry,refined=await refineTerrain({positions:old.attributes.position.array,index:old.index.array,uv:old.attributes.uv.array,colors:old.attributes.color.array},channelPath);
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(refined.positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(refined.uv,2));g.setAttribute('color',new THREE.Float32BufferAttribute(refined.colors,3));g.setIndex(new THREE.BufferAttribute(refined.index,1));
   const original=Array.from({length:g.attributes.position.count},(_,i)=>g.attributes.position.getY(i));
   const matches=refined.matches;
-  g.userData.heights=[...original];g.computeVertexNormals();mesh.geometry=g;old.dispose();surfaceBaselines.push({mesh,original,matches,offset:mesh===historical?4:0});
+  g.userData.heights=[...original];g.computeVertexNormals();mesh.geometry=g;old.dispose();surfaceBaselines.push({mesh,original,matches,offset:0});
  }
+ // Project the warped source image onto the canonical DEM triangles without a height offset.
+ // Index source triangles in X/Z so inverse UV lookup preserves the existing TPS placement.
+ const bins=new Map(),binSize=200,sourceTriangles=[];
+ function addSourceTriangle(ids){
+  const points=ids.map(i=>[sourceImagePositions.getX(i),sourceImagePositions.getZ(i)]);
+  const triangle={points,uv:ids.map(i=>[(i%129)/128,1-Math.floor(i/129)/112])};
+  const index=sourceTriangles.push(triangle)-1;
+  for(let x=Math.floor(Math.min(...points.map(p=>p[0]))/binSize);x<=Math.floor(Math.max(...points.map(p=>p[0]))/binSize);x++)
+   for(let z=Math.floor(Math.min(...points.map(p=>p[1]))/binSize);z<=Math.floor(Math.max(...points.map(p=>p[1]))/binSize);z++){
+    const key=x+','+z;if(!bins.has(key))bins.set(key,[]);bins.get(key).push(index);
+   }
+ }
+ for(let j=0;j<112;j++)for(let i=0;i<128;i++){const a=j*129+i;addSourceTriangle([a,a+130,a+1]);addSourceTriangle([a,a+129,a+130])}
+ const canonical=terrain.geometry,canonicalPositions=canonical.attributes.position,overlayUV=new Float32Array(canonicalPositions.count*2),inside=new Uint8Array(canonicalPositions.count);
+ for(let i=0;i<canonicalPositions.count;i++){
+  const x=canonicalPositions.getX(i),z=canonicalPositions.getZ(i);
+  for(const index of bins.get(Math.floor(x/binSize)+','+Math.floor(z/binSize))??[]){
+   const {points,uv}=sourceTriangles[index],weights=DoseongWarp.barycentric({x,y:z},...points.map(p=>({x:p[0],y:p[1]})));
+   if(weights&&weights.every(w=>w>=-1e-7)){
+    overlayUV[i*2]=weights.reduce((v,w,k)=>v+w*uv[k][0],0);overlayUV[i*2+1]=weights.reduce((v,w,k)=>v+w*uv[k][1],0);inside[i]=1;break;
+   }
+  }
+ }
+ const overlayIndex=[];for(let i=0;i<canonical.index.count;i+=3){const ids=[canonical.index.getX(i),canonical.index.getX(i+1),canonical.index.getX(i+2)];if(ids.every(j=>inside[j]))overlayIndex.push(...ids)}
+ if(!overlayIndex.length)throw Error('지형 위의 지도 좌표를 계산하지 못했습니다.');
+ const overlayGeometry=new THREE.BufferGeometry();
+ for(const name of ['position','normal','color'])overlayGeometry.setAttribute(name,canonical.attributes[name]);
+ overlayGeometry.setAttribute('uv',new THREE.BufferAttribute(overlayUV,2));overlayGeometry.setIndex(overlayIndex);overlayGeometry.userData.heights=canonical.userData.heights;
+ historical.geometry.dispose();historical.geometry=overlayGeometry;
  const roadRecord=await (await fetch('/gis/roads/doseong_road_mask.json')).json();
  if(roadRecord.source_sha256!==exp.input_sha256)throw Error('길 판독 원본이 현재 원도와 다릅니다.');
  const roadTexture=await new THREE.TextureLoader().loadAsync(roadRecord.mask_url);roadTexture.colorSpace=THREE.SRGBColorSpace;
  const roadLayer=new THREE.Mesh(historical.geometry.clone(),new THREE.MeshBasicMaterial({map:roadTexture,color:roadRecord.display_color,transparent:true,opacity:.8,alphaTest:.04,depthWrite:false,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3}));
  roadLayer.geometry.userData={heights:[...historical.geometry.userData.heights]};
  roadLayer.name='source-road-overlay';roadLayer.renderOrder=2;scene.add(roadLayer);
- const roadTerrain=Array.from({length:roadLayer.geometry.attributes.position.count},(_,i)=>{const p=roadLayer.geometry.attributes.position;return height(cx+p.getX(i)/ground,cy-p.getZ(i)/ground)});
  el('roads3d').onchange=()=>{roadLayer.visible=el('roads3d').checked;pedestrians?.setRoadVisible(roadLayer.visible)};
  const waterBaselines=waterLayer.children.map(m=>[...m.geometry.userData.heights]);
  const channelState={enabled:true,depth:2,maxCut:0,path:channelPath,mainPath,northPath,joinIndex};
@@ -419,6 +448,7 @@ async function main(){
    if(mesh===terrain)values.forEach((h,i)=>{maxCut=Math.max(maxCut,original[i]-h)});
    mesh.geometry.attributes.position.needsUpdate=true;
   }
+  historical.geometry.userData.heights=terrain.geometry.userData.heights;
   const surfaces=[terrain,historical].map(m=>({positions:m.geometry.attributes.position.array,index:m.geometry.index.array}));
   buildings.children.forEach((box,i)=>{
    const u=box.userData,[w,,d]=u.feature.symbol_size_m;
@@ -430,11 +460,10 @@ async function main(){
    mesh.geometry.userData.heights=waterBaselines[layer].map((h,i)=>{
     if(!enabled)return h;
     const centre=mesh.userData.centres[Math.floor(i/2)],match=ChannelTerrain.nearest(centre.x,centre.z,channelPath);
-    return match.level+4.35+(mesh.userData.bank?(i%2)*.65:0);
+    return match.level+.35+(mesh.userData.bank?(i%2)*.65:0);
    });
   });
-  const imageBaseline=surfaceBaselines.find(b=>b.mesh===historical);
-  roadLayer.geometry.userData.heights=historical.geometry.userData.heights.map((h,i)=>Math.max(h,enabled?ChannelTerrain.carvedHeight(roadTerrain[i],matchAt(imageBaseline.matches,i),depth):roadTerrain[i])+.7);
+  roadLayer.geometry.userData.heights=[...terrain.geometry.userData.heights];
   updateBridgeGround(surfaces);
   cityWall.updateGround(surfaces,roadLayer.geometry.userData.heights);settlement?.updateGround(cityWall.supportAt);pedestrians?.updateGround(cityWall.supportAt);trees?.updateGround(cityWall.supportAt);
   Object.assign(channelState,{enabled,depth,maxCut});
@@ -531,8 +560,9 @@ async function main(){
   const keys=new Set(),canvas=renderer.domElement,hud=el('first-person-help');canvas.tabIndex=0;
   function groundAt(x,z){
    // Clamp exploration to the prepared map; support queries outside it have no triangles.
-   // supportAt reads the live mesh positions, already scaled by the height control.
-   try{const s=cityWall.supportAt(x,z,.3,.3,0);return historical.material.opacity>0?s.max:s.terrain.max}catch{return null}
+   // Terrain/map positions are already scaled; road support stores unscaled heights.
+   // Include the raised road overlay so eye height matches the surface walkers stand on.
+   try{const s=cityWall.supportAt(x,z,.3,.3,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible&&s.road?s.road.max*exaggeration:-Infinity)}catch{return null}
   }
   function look(){camera.rotation.set(pitch,yaw,0,'YXZ');if(active)navigation.update(yaw)}
   function enter(){
@@ -586,8 +616,8 @@ async function main(){
   }
   return {get active(){return active},get ground(){return lastGround},enter,exit,update};
  })();
- const orbitNavigation=setupOrbitNavigation(camera,controls,renderer.domElement,ray=>cityWall.raycastGround(ray,historical.material.opacity>0),()=>!!firstPerson?.active,(x,z)=>{
-  try{const s=cityWall.supportAt(x,z,.2,.2,0,roadLayer.visible);return Math.max(historical.material.opacity>0?s.max:s.terrain.max,roadLayer.visible?s.road.max*exaggeration:-Infinity)}catch{return null}
+ const orbitNavigation=setupOrbitNavigation(camera,controls,renderer.domElement,ray=>cityWall.raycastGround(ray,true),()=>!!firstPerson?.active,(x,z)=>{
+  try{const s=cityWall.supportAt(x,z,.2,.2,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible?s.road.max*exaggeration:-Infinity)}catch{return null}
  });
  renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();el('error').textContent='3D 그래픽 연결이 끊겼습니다. 페이지를 새로 고쳐 주세요.'});
  frameUpdate=dt=>{firstPerson?.update(dt);pedestrians?.update(dt);updateBuildingNames()};
@@ -595,6 +625,6 @@ async function main(){
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation};
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

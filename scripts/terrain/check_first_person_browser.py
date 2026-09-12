@@ -21,7 +21,7 @@ with sync_playwright() as p:
  # Compare with an independent ray intersection of the displayed geometry.
  # Comparing camera.y with firstPerson.ground alone cannot detect double scaling.
  def check_eye_height():
-  result=page.evaluate("""async()=>{const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,origin=t.camera.position.clone();origin.y=10000;const ray=new T.Raycaster(origin,new T.Vector3(0,-1,0)),meshes=[t.terrain];if(t.historical.material.opacity>0)meshes.push(t.historical);for(const mesh of meshes)mesh.updateMatrixWorld(true);const hits=ray.intersectObjects(meshes,false);if(!hits.length)throw Error('No visible ground beneath camera');return {scale:Number(document.getElementById('height3d').value),map:t.historical.material.opacity,eye:t.camera.position.y-hits[0].point.y}}""")
+  result=page.evaluate("""async()=>{const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,origin=t.camera.position.clone();origin.y=10000;const ray=new T.Raycaster(origin,new T.Vector3(0,-1,0)),meshes=[t.terrain,t.mapGround];if(t.roadLayer.visible)meshes.push(t.roadLayer);for(const mesh of meshes)mesh.updateMatrixWorld(true);const hits=ray.intersectObjects(meshes,false);if(!hits.length)throw Error('No visible ground beneath camera');return {scale:Number(document.getElementById('height3d').value),map:t.historical.material.opacity,eye:t.camera.position.y-hits[0].point.y}}""")
   assert abs(result['eye']-1.65)<.08,result
   print(result,flush=True)
  page.locator('#first-person3d').click()

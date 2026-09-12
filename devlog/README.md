@@ -12,6 +12,10 @@
 
 ## 작업 기록
 
+- [048 — 지면·지도·도로 높이 통일](20260912_048_unified_ground_surface.md)
+
+- [047 — 1인칭 도로 눈높이 수정](20260912_047_first_person_road_height.md)
+
 - [046 — 전체 FABDEM 지형과 출처·저작권](20260912_046_fabdem_and_credits.md)
 
 - [045 — 지도 조작 패널과 물길 범위](20260912_045_map_controls_and_river.md)
