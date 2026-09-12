@@ -2,19 +2,17 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>출처·저작권 · 한양 3D</title>
 <style>*{box-sizing:border-box}body{margin:0;background:#e9eee7;color:#24372e;font:16px/1.75 system-ui}main{max-width:880px;margin:auto;padding:28px 22px 60px}a{color:#12634e}h1{font-size:28px}h2{font-size:21px;margin-top:32px}section{background:#fffdf6;padding:20px;border-radius:8px;margin:18px 0}p{margin:8px 0}li{margin:10px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}small{color:#526559}</style></head>
 <body><main><a href="/">← 한양 3D로 돌아가기</a><h1>출처·저작권</h1>
-<p>한양 3D는 옛 지도와 현대 지면 고도 위에 한양의 모습을 탐색하는 프로젝트입니다. 자료별 저작권과 이용 조건은 아래와 같습니다.</p>
+<p>한양 3D는 옛 지도와 현대 지면 고도 위에 한양의 모습을 탐색하는 프로젝트입니다. 현재 한양 3D 지도 화면에 사용한 자료의 출처와 이용 조건을 안내합니다.</p>
 <section><h2>지면 고도 — FABDEM V1.2</h2>
 <p>Neal, J., Hawker, L., Uhe, P., Paulo, L., Sosa, J., Savage, J., Sampson, C. (2023). <a href="https://doi.org/10.5523/bris.s5hqmjcdj8yo2ibzi9b4ew3sn">FABDEM V1-2</a>. University of Bristol.</p>
 <p>Copernicus DEM에서 건물·수목 높이 영향을 줄인 약 30m 간격의 지면 고도 추정 자료입니다. Hanyang 3D에서 서울 구간을 추출하고 좌표 변환·격자 재표본화를 했으며, 화면에서는 물길 주변의 개념 지형 보정을 적용했습니다.</p>
 <p>원본 FABDEM과 이를 가공한 본 서비스의 고도 격자·지형 자료는 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons 저작자표시–비영리–동일조건변경허락 4.0 국제(CC BY-NC-SA 4.0)</a>에 따라 제공합니다. 출처와 변경 사실을 표시해야 하며, 영리 목적 이용은 이 라이선스에 포함되지 않습니다. 변경 자료를 공유할 때에는 동일한 조건을 적용합니다.</p>
 <p><a href="/gis/control_points/seoul_terrain_manifest.json">고도 자료의 출처·가공 기록</a> · <a href="/gis/georeferenced/terrain3d/dem.json">가공 고도 격자</a></p>
 <p><small>정밀 측량·조선시대 지형 복원 자료가 아닙니다. 건물·숲과 도로·하천 표현에는 오차 및 추정이 포함됩니다.</small></p></section>
-<section><h2>옛 지도와 지적자료</h2><p>도성대지도와 부분도는 서울역사박물관 서울역사아카이브 자료를 사용했습니다. 지도 변형과 판독·배치·3D 표현은 Hanyang 3D의 가공입니다. 아래는 프로젝트에서 사용하는 원자료별 출처와 확인된 이용 조건입니다.</p>
-<ul>{% for record in records %}<li>{{ record.attribution }}<br><a href="{{ record.license_url }}">{{ record.license_name }}</a></li>{% endfor %}</ul>
-<p><a href="/data/catalog/sources.csv">자료 목록</a> · <a href="/data/catalog/assets.csv">파일별 출처·권리 기록</a></p></section>
-<section><h2>지도 배경</h2><p>선택형 현대 지도 배경: © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. OpenStreetMap 데이터는 Open Database License(ODbL)에 따라 제공됩니다.</p><p>평면 지도에서 사용하는 OpenTopoMap: © OpenStreetMap contributors, SRTM · 지도 표현 © <a href="https://opentopomap.org/about">OpenTopoMap</a> (CC BY-SA).</p></section>
-<section><h2>소프트웨어</h2><p>3D 화면은 Three.js, 평면 지도는 Leaflet을 사용합니다. 각 라이브러리의 저작권 고지와 라이선스 전문입니다.</p>
+<section><h2>옛 지도 — 도성대지도</h2><p>서울역사박물관 서울역사아카이브의 도성대지도 전체 이미지를 사용했습니다. 지형에 맞춘 지도 변형과 도로·물길·성벽·경복궁 담장·숲의 판독 및 3D 배치는 한양3D에서 가공했습니다.</p>
+<ul>{% for record in records %}<li>{{ record.attribution }}<br><a href="{{ record.license_url }}">{{ record.license_name }} · 원본 출처</a></li>{% endfor %}</ul></section>
+<section><h2>건축 표현 참고</h2><p>종묘 정전은 <a href="https://royal.khs.go.kr/ROYAL/contents/R105010000.do">국가유산청 궁능유적본부의 종묘 연혁</a>에 따라 1726년 증축 이후의 15칸 규모를 참고했습니다. 건물·담장·사람·수목 모형은 한양3D에서 직접 만든 단순화된 표현이며, 실측 복원 모형은 아닙니다.</p></section>
+<section><h2>소프트웨어</h2><p>3D 지도 화면은 Three.js를 사용합니다. 저작권 고지와 라이선스 전문입니다.</p>
 <details><summary>Three.js — MIT License</summary><pre>{{ three_license }}</pre></details>
-<details><summary>Leaflet — BSD 2-Clause License</summary><pre>{{ leaflet_license }}</pre></details>
 <p>웹 서버는 Django와 Gunicorn을 사용합니다. <a href="https://github.com/jikhanjung/hanyang3d">프로젝트 소스 코드</a></p></section>
 <p><a href="/">한양 3D로 돌아가기</a> · <a href="/gis/">작업 현황</a></p></main></body></html>

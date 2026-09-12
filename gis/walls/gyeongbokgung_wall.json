@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "경복궁 담장",
+  "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+  "coordinate_space": "image pixels, upper-left origin",
+  "centerline": [
+    [
+      1080,
+      1155
+    ],
+    [
+      1077,
+      1020
+    ],
+    [
+      1069,
+      838
+    ],
+    [
+      1105,
+      821
+    ],
+    [
+      1190,
+      811
+    ],
+    [
+      1229,
+      838
+    ],
+    [
+      1238,
+      980
+    ],
+    [
+      1238,
+      1155
+    ],
+    [
+      1155,
+      1155
+    ],
+    [
+      1080,
+      1155
+    ]
+  ],
+  "openings": [
+    {
+      "id": "gwanghwamun",
+      "model_id": "gwanghwamun",
+      "wall_connection": {
+        "straight_radius_m": 35,
+        "transition_radius_m": 85
+      }
+    }
+  ],
+  "width_m": 1.2,
+  "height_m": 3.2,
+  "parapet_height_m": 0.55,
+  "cap_style": "tile",
+  "note": "도성대지도 경복궁 경계를 수동 판독한 개념 담장. 북쪽 경계는 흐릿하여 개략 연결. 당시 잔존 담장 높이·재료·문 위치를 실측 복원한 것이 아님."
+}

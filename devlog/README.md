@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [049: 경복궁 담장·종묘 정전, 제목과 출처 정리](20260912_049_palace_models_and_map_title.md)
 - [048 — 지면·지도·도로 높이 통일](20260912_048_unified_ground_surface.md)
 
 - [047 — 1인칭 도로 눈높이 수정](20260912_047_first_person_road_height.md)

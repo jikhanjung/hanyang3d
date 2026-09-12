@@ -101,7 +101,11 @@ export function createCityWall(data,sourceSurface,buildings){
  }
  const body=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial({color:0xa69a80,roughness:1}),segments.length);
  body.name='wall-body';group.add(body);
- const parapets=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial({color:0xc0b59b,roughness:1}),segments.length*2);
+ const tiled=data.cap_style==='tile';
+ const capGeometry=new THREE.BufferGeometry();
+ capGeometry.setAttribute('position',new THREE.Float32BufferAttribute([-.5,0,-.5,.5,0,-.5,0,1,-.5,-.5,0,.5,.5,0,.5,0,1,.5],3));
+ capGeometry.setIndex([0,2,1,3,4,5,0,3,5,0,5,2,1,2,5,1,5,4,0,1,4,0,4,3]);capGeometry.computeVertexNormals();
+ const parapets=new THREE.InstancedMesh(tiled?capGeometry:new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial({color:tiled?0x41464a:0xc0b59b,roughness:1}),segments.length*(tiled?1:2));
  parapets.name='wall-parapets';group.add(parapets);
  const dummy=new THREE.Object3D();
  let nearby,roadHeights;
@@ -117,7 +121,9 @@ export function createCityWall(data,sourceSurface,buildings){
   segments.forEach((seg,i)=>{
    const bottom=seg.support.min*exaggeration-.4,top=seg.support.max*exaggeration+data.height_m;
    dummy.position.set(seg.x,(bottom+top)/2,seg.z);dummy.rotation.set(0,seg.yaw,0);dummy.scale.set(data.width_m,top-bottom,seg.length);dummy.updateMatrix();body.setMatrixAt(i,dummy.matrix);
-   for(const side of [-1,1]){
+   if(tiled){
+    dummy.position.set(seg.x,top,seg.z);dummy.scale.set(data.width_m+.65,data.parapet_height_m,seg.length+.1);dummy.updateMatrix();parapets.setMatrixAt(i,dummy.matrix);
+   }else for(const side of [-1,1]){
     const offset=side*(data.width_m/2-.35);
     dummy.position.set(seg.x+Math.cos(seg.yaw)*offset,top+data.parapet_height_m/2,seg.z-Math.sin(seg.yaw)*offset);
     dummy.scale.set(.7,data.parapet_height_m,seg.length*.55);dummy.updateMatrix();parapets.setMatrixAt(i*2+(side+1)/2,dummy.matrix);
@@ -131,5 +137,6 @@ export function createCityWall(data,sourceSurface,buildings){
   // Use the visible upper surface, not the gap between DEM and map overlay.
   return {min:Math.max(...ranges.map(r=>r.min)),max:Math.max(...ranges.map(r=>r.max)),terrain:ranges[0],road:includeRoad&&roadHeights?TerrainSupport.footprintRange([{...surfaces[1],heights:roadHeights}],bounds,yaw):null};
  };
- return {group,segments,gaps,connections,sourceNodes,nodes,updateGround,updateHeights,supportAt,raycastGround:(ray,mapVisible)=>nearby.raycast(ray,mapVisible)};
+ const updateGroundFrom=support=>{for(const seg of segments)seg.support=support(seg.x,seg.z,data.width_m,seg.length,seg.yaw)};
+ return {group,segments,gaps,connections,sourceNodes,nodes,updateGround,updateGroundFrom,updateHeights,supportAt,raycastGround:(ray,mapVisible)=>nearby.raycast(ray,mapVisible)};
 }

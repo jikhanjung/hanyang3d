@@ -18,6 +18,8 @@ def public_resource_paths():
         'gis/georeferenced/terrain3d/dem.json',
         'gis/walls/doseong_city_wall.json',
         'webapp/static/city_wall.js',
+        'webapp/static/jongmyo.js',
+        'gis/walls/gyeongbokgung_wall.json',
         'webapp/static/settlement.js',
         'webapp/static/pedestrians.js',
         'webapp/static/trees.js',

@@ -55,7 +55,7 @@ class ReviewTests(SimpleTestCase):
     def test_credits_and_map_link(self):
         self.assertContains(self.client.get('/'), 'id="credits-link" href="/credits/"')
         response = self.client.get('/credits/')
-        for text in ('FABDEM V1.2', 'CC BY-NC-SA 4.0', '서울역사박물관', 'Three.js', 'Leaflet', 'OpenStreetMap', 'Permission is hereby granted'):
+        for text in ('FABDEM V1.2', 'CC BY-NC-SA 4.0', '서울역사박물관', 'Three.js', 'Permission is hereby granted'):
             self.assertContains(response, text)
 
     def test_home_opens_fullscreen_3d(self):

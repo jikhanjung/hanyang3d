@@ -37,6 +37,7 @@ def terrain3d(request, canvas_only=False):
     return render(request, 'terrain3d.html', {
         'experiment': experiment, 'buildings': buildings, 'water': water, 'wall': wall,
         'canvas_only': canvas_only,
+        'app_version': settings.APP_VERSION,
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),
     })
@@ -70,7 +71,6 @@ def healthz(request):
 def credits(request):
     vendor = settings.BASE_DIR / 'webapp/static/vendor'
     return render(request, 'credits.html', {
-        'records': assets(),
+        'records': [record for record in assets() if record['id'] == 'asset-0001'],
         'three_license': (vendor / 'three/LICENSE').read_text(),
-        'leaflet_license': (vendor / 'leaflet/LICENSE').read_text(),
     })

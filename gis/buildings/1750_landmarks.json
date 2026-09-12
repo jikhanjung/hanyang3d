@@ -63,15 +63,16 @@
       "lon": 126.9937,
       "category": "제례",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R105010000.do",
-      "note": "왕실 제례 공간. 당시 정전은 15칸이며 이 박스는 건물의 칸수나 길이를 재현하지 않습니다.",
+      "note": "1726년 증축 이후의 정전 15칸을 바탕으로 긴 맞배지붕·기둥·신실 문·월대·익랑을 단순화했습니다. 위치·치수·세부 형태는 실측 복원이 아닌 개략 모형입니다.",
       "position_status": "approximate_site_hint",
       "symbol_size_m": [
-        80,
-        12,
-        18
+        94,
+        10,
+        38
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "당시 정전 15칸의 긴 평면을 참고한 개략값. 실측 치수 아님."
+      "size_note": "정전 15칸과 월대를 포함한 개략 모형 범위. 1836년 이후의 19칸 형태와 구분.",
+      "display_model": "jongmyo_15_chambers"
     },
     {
       "id": "sajik",

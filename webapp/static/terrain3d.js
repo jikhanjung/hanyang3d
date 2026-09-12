@@ -5,6 +5,7 @@ import {createTrees} from './trees.js';
 import {createPedestrians} from './pedestrians.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
+import {createJongmyo} from './jongmyo.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 
 const el=id=>document.getElementById(id),R=6378137,H=Math.PI*R;
@@ -12,7 +13,7 @@ const project=(lon,lat)=>[R*lon*Math.PI/180,R*Math.log(Math.tan(Math.PI/4+lat*Ma
 async function main(){
  const loading=window.terrainLoading={stage:0,history:[],ready:false};
  const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')];toolbarControls.forEach(c=>c.disabled=true);
- let granite=null,trees=null,settlement=null,pedestrians=null,firstPerson=null,frameUpdate=()=>{};
+ let granite=null,trees=null,settlement=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
 
  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5e4');
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -162,6 +163,7 @@ async function main(){
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
+  if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   buildings.add(box);
  }
  // Transparent text sprites live above the models in the 3D scene.
@@ -373,7 +375,7 @@ async function main(){
   foundations.children.forEach(f=>{f.position.y=(f.userData.top+f.userData.bottom)/2*exaggeration;f.scale.y=exaggeration});
   waterLayer.children.forEach(mesh=>{const p=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>p.setY(i,h*exaggeration));p.needsUpdate=true;mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()});
   bridges.children.forEach(b=>{b.position.y=b.userData.z*exaggeration+b.userData.lift+b.userData.boxHeight/2;renderBridgeConnections(b)});
-  cityWall.updateHeights(exaggeration);settlement?.updateHeights(exaggeration);trees?.updateHeights(exaggeration);pedestrians?.setHeight(exaggeration);
+  cityWall.updateHeights(exaggeration);palaceWall?.updateHeights(exaggeration);settlement?.updateHeights(exaggeration);trees?.updateHeights(exaggeration);pedestrians?.setHeight(exaggeration);
   const rp=roadLayer.geometry.attributes.position;roadLayer.geometry.userData.heights.forEach((h,i)=>rp.setY(i,h*exaggeration));rp.needsUpdate=true;roadLayer.geometry.computeBoundingSphere();
   firstPerson?.update(0);clearHover();
  };
@@ -435,10 +437,15 @@ async function main(){
  const wallData=JSON.parse(el('wall').textContent);
  if(wallData.source_sha256!==exp.input_sha256)throw Error('성벽 판독 원본이 현재 원도와 다릅니다.');
  const cityWall=createCityWall(wallData,sourceSurface,buildings);scene.add(cityWall.group);
+ const palaceResponse=await fetch('/gis/walls/gyeongbokgung_wall.json');
+ if(!palaceResponse.ok)throw Error('경복궁 담장 자료를 불러오지 못했습니다.');
+ const palaceData=await palaceResponse.json();
+ if(palaceData.source_sha256!==exp.input_sha256)throw Error('경복궁 담장 판독 원본이 현재 원도와 다릅니다.');
+ palaceWall=createCityWall(palaceData,sourceSurface,buildings);palaceWall.group.name='gyeongbokgung-wall';scene.add(palaceWall.group);
  granite=createGranite([surfaceMaterial,historical.material],sourceSurface);
  el('granite3d').onchange=e=>{granite.setEnabled(e.target.checked);renderDirty=true};
  el('granite-focus').onclick=()=>{const p=granite.patches[0].centre.clone();p.y*=exaggeration;controls.target.copy(p);camera.position.copy(p).add(new THREE.Vector3(220,160,240));controls.update()};
- el('walls3d').onchange=()=>{cityWall.group.visible=el('walls3d').checked};
+ el('walls3d').onchange=()=>{cityWall.group.visible=palaceWall.group.visible=el('walls3d').checked};
  function applyChannel(){
   const enabled=el('carve3d').checked,depth=Number(el('channel-depth').value);let maxCut=0;
   // Work in unexaggerated elevations. The shared height handler restores display scaling.
@@ -465,7 +472,7 @@ async function main(){
   });
   roadLayer.geometry.userData.heights=[...terrain.geometry.userData.heights];
   updateBridgeGround(surfaces);
-  cityWall.updateGround(surfaces,roadLayer.geometry.userData.heights);settlement?.updateGround(cityWall.supportAt);pedestrians?.updateGround(cityWall.supportAt);trees?.updateGround(cityWall.supportAt);
+  cityWall.updateGround(surfaces,roadLayer.geometry.userData.heights);palaceWall.updateGroundFrom(cityWall.supportAt);settlement?.updateGround(cityWall.supportAt);pedestrians?.updateGround(cityWall.supportAt);trees?.updateGround(cityWall.supportAt);
   Object.assign(channelState,{enabled,depth,maxCut});
   el('channel-depth').disabled=!enabled;
   el('channel-status').textContent=enabled?`개념 하도 보정 · 수면 아래 ${depth} m · 현대 지형 대비 최대 낮춤 ${maxCut.toFixed(1)} m · 역사적 깊이 미확정`:'원래 고도 표시 · 청계천은 원도 위치의 지형 표면을 따릅니다.';
@@ -484,7 +491,7 @@ async function main(){
  if(!treeResponse.ok)throw Error('수목 배치 자료를 불러오지 못했습니다.');
  const treeData=await treeResponse.json();
  if(treeData.source_sha256!==exp.input_sha256)throw Error('수목 배치 원도가 현재 지도와 다릅니다.');
- trees=createTrees(treeData,sourceSurface,buildings,settlement,channelPath,cityWall);trees.updateGround(cityWall.supportAt);trees.updateHeights(exaggeration);scene.add(trees.group);
+ trees=createTrees(treeData,sourceSurface,buildings,settlement,channelPath,{segments:[...cityWall.segments,...palaceWall.segments]});trees.updateGround(cityWall.supportAt);trees.updateHeights(exaggeration);scene.add(trees.group);
  await yieldPaint();
  el('trees-focus').onclick=()=>{const r=trees.records.find(r=>r.region==='gyeongbok');if(!r)return;controls.target.set(r.x,r.floor,r.z);camera.position.copy(controls.target).add(new THREE.Vector3(120,240,320));controls.update()};
  const walkingData=await(await fetch('/gis/roads/doseong_walking_routes.json')).json();
@@ -625,6 +632,6 @@ async function main(){
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation};
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});
