@@ -3,7 +3,7 @@ import {createGranite} from './granite.js';
 import {setupOrbitNavigation} from './orbit_navigation.js';
 import {createTrees} from './trees.js';
 import {createPedestrians,createWalker} from './pedestrians.js';
-import {createSiteMarker} from './site_marker.js';
+import {createHouseSite} from './house_site.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
@@ -181,13 +181,13 @@ async function main(){
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
-  if(feature.display_model==='site_marker'){box.material.visible=false;box.add(createSiteMarker(feature,w,h,d));siteMarkers.push({box,foundation})}
+  if(feature.display_model==='house_site'){box.material.visible=false;foundation.visible=false;box.add(createHouseSite(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
   buildings.add(box);
  }
  // Commemorative house sites are optional: they are modern markers, not 1750 buildings.
- function updateSites(){const on=el('sites3d').checked;for(const {box,foundation} of siteMarkers){box.visible=on;foundation.visible=on}}
+ function updateSites(){const on=el('sites3d').checked;for(const {box} of siteMarkers)box.visible=on}
  el('sites3d').onchange=()=>{updateSites();updateBuildingNames()};updateSites();
  // Transparent text sprites live above the models in the 3D scene.
  function nameSprite(name){
