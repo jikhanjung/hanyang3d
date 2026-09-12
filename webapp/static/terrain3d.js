@@ -5,7 +5,7 @@ import {createTrees} from './trees.js';
 import {createPedestrians} from './pedestrians.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
-import {createPalace} from './palace.js';
+import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
 import {createWalkJoystick} from './walk_joystick.js';
 import {createYukjo,groundYukjo,heightYukjo} from './yukjo.js';
@@ -178,6 +178,7 @@ async function main(){
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
+  if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
   buildings.add(box);

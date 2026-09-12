@@ -13,7 +13,7 @@
       "category": "궁궐",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R102010000.do",
       "note": "동궐의 중심 궁궐. 박스는 인정전 일대를 가리키는 위치 표시입니다.",
-      "position_status": "approximate_site_hint",
+      "position_status": "manual_source_symbol_hint",
       "symbol_size_m": [
         30,
         18,
@@ -39,7 +39,17 @@
       "palace_roof_tiers": 2,
       "display_yaw_deg": 0,
       "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
-      "model_reference": "https://encykorea.aks.ac.kr/Article/E0055393"
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0055393",
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1749,
+          1020
+        ],
+        "method": "manual_drawn_palace_roof_group",
+        "note": "원도 동궐 구역에서 서쪽 붉은 전각 지붕 무리의 중심을 육안 판독했다. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다. 돈화문 기호와의 상대 위치를 맞추려고 함께 옮겼다."
+      }
     },
     {
       "id": "changgyeong",
@@ -49,7 +59,7 @@
       "category": "궁궐",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R103010000.do",
       "note": "창덕궁과 이어진 왕실 공간. 전각의 실제 외형은 표현하지 않았습니다.",
-      "position_status": "approximate_site_hint",
+      "position_status": "manual_source_symbol_hint",
       "symbol_size_m": [
         24,
         12,
@@ -75,7 +85,105 @@
       "palace_roof_tiers": 1,
       "display_yaw_deg": 90,
       "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
-      "model_reference": "https://encykorea.aks.ac.kr/Article/E0055322"
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0055322",
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1782,
+          1012
+        ],
+        "method": "manual_drawn_palace_roof_group",
+        "note": "원도 동궐 구역에서 동쪽 붉은 전각 지붕 무리의 중심을 육안 판독했다. 두 무리 중 동쪽을 창경궁으로 본 개략 해석이며 원도에 궁 이름은 적혀 있지 않다."
+      }
+    },
+    {
+      "id": "donhwamun",
+      "name": "돈화문 · 창덕궁 정문",
+      "category": "궁궐",
+      "reference": "https://encykorea.aks.ac.kr/Article/E0016240",
+      "note": "창덕궁의 남쪽 정문. 원도에 이름과 문 기호가 그려져 있습니다.",
+      "position_status": "manual_source_symbol_hint",
+      "symbol_size_m": [
+        18,
+        12,
+        8
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "2층 문루 1동 수준의 개략 치수. 실측 복원값이 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1717,
+          1064
+        ],
+        "method": "manual_drawn_gate_symbol",
+        "note": "원도의 敦化門 글씨 아래 문 기호와 남향 길 시작점을 육안 판독했다."
+      },
+      "display_model": "palace_gate",
+      "palace_gate_tiers": 2,
+      "display_yaw_deg": 0,
+      "model_note": "기단·삼문·중층 문루를 단순화한 개념 모형. 칸수와 치수는 실측 복원이 아니다.",
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0016240"
+    },
+    {
+      "id": "honghwamun",
+      "name": "홍화문 · 창경궁 정문",
+      "category": "궁궐",
+      "reference": "https://encykorea.aks.ac.kr/Article/E0064444",
+      "note": "창경궁의 동쪽 정문. 원도에서 문 기호를 확인하지 못해 모형 앞면 기준으로 배치했습니다.",
+      "position_status": "model_front_offset",
+      "symbol_size_m": [
+        15,
+        10,
+        7
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "2층 문루 1동 수준의 개략 치수. 실측 복원값이 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1804,
+          1012
+        ],
+        "method": "model_front_offset",
+        "note": "원도에 대응하는 문 기호를 찾지 못해 창경궁 모형 동쪽 약 45 m 앞에 배치한 표시 위치다. 원도 판독값이 아니다."
+      },
+      "display_model": "palace_gate",
+      "palace_gate_tiers": 2,
+      "display_yaw_deg": 90,
+      "model_note": "기단·삼문·중층 문루를 단순화한 개념 모형. 칸수와 치수는 실측 복원이 아니다.",
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0064444"
     },
     {
       "id": "gyeongdeok",
