@@ -1,5 +1,8 @@
 <strong class="map-title">한양3D <small>{{ app_version }}</small></strong>
+<button id="first-person3d" aria-pressed="false">1인칭으로 걷기</button>
+<button id="map-options-toggle" aria-expanded="false" aria-controls="map-options">설정</button>
+<div id="map-options">
 <label>옛지도 <input id="opacity3d" aria-label="옛 지도 불투명도" type="range" min="0" max="100" value="50"> <output id="opacity-value">50%</output></label>
 <label hidden><input id="anchors3d" type="checkbox">보정점</label>
-<button id="first-person3d" aria-pressed="false">1인칭으로 걷기</button>
 <a href="/gis/">기존 초기화면</a>
+</div>

@@ -7,12 +7,14 @@ import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
 import {createJongmyo} from './jongmyo.js';
 import {createWalkJoystick} from './walk_joystick.js';
+import {createYukjo,groundYukjo,heightYukjo} from './yukjo.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 
 const el=id=>document.getElementById(id),R=6378137,H=Math.PI*R;
 const project=(lon,lat)=>[R*lon*Math.PI/180,R*Math.log(Math.tan(Math.PI/4+lat*Math.PI/360))];
 async function main(){
  const loading=window.terrainLoading={stage:0,history:[],ready:false};
+ el('map-options-toggle').onclick=()=>{const open=el('map-options').classList.toggle('open');el('map-options-toggle').setAttribute('aria-expanded',String(open))};
  const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')];toolbarControls.forEach(c=>c.disabled=true);
  let granite=null,trees=null,settlement=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
 
@@ -157,9 +159,15 @@ async function main(){
    const p=sourceSurface(...feature.source_position.pixel);
    x=cx+p.x/ground;y=cy-p.z/ground;
   }else [x,y]=project(feature.lon,feature.lat);
-  const [w,h,d]=feature.symbol_size_m;
+  let [w,h,d]=feature.symbol_size_m;
   const [wx,,wz]=world(x,y,0);
   let yaw=0;
+  if(feature.source_plot){
+   const plot=feature.source_plot,a=sourceSurface(...plot.near_start),b=sourceSurface(...plot.near_end),back=sourceSurface(...plot.back);
+   const nx=(a.x+b.x)/2-back.x,nz=(a.z+b.z)/2-back.z;
+   yaw=Math.atan2(nx,nz);w=a.distanceTo(b)*.96;d=Math.hypot(nx,nz)*.96;
+   feature.symbol_size_m=[w,h,d];
+  }
   if(feature.road_axis){
    if(feature.road_axis.source_sha256!==exp.input_sha256)throw Error('문 진입로 판독 원본이 현재 원도와 다릅니다.');
    const [a,b]=feature.road_axis.pixel_points.map(p=>warp(...p));
@@ -175,6 +183,7 @@ async function main(){
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
+  if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
   buildings.add(box);
  }
  // Transparent text sprites live above the models in the 3D scene.
@@ -382,7 +391,7 @@ async function main(){
   exaggeration=Number(el('height3d').value);granite?.setHeight(exaggeration);
   for(const mesh of [terrain,historical]){const pos=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>pos.setY(i,h*exaggeration));pos.needsUpdate=true;if(mesh===terrain)mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()}
   labels.children.forEach(l=>l.position.set(...world(l.userData.x,l.userData.y,l.userData.z)));
-  buildings.children.forEach(b=>{const u=b.userData;b.position.set(...world(u.x,u.y,u.z));b.position.y+=u.boxHeight/2});
+  buildings.children.forEach(b=>{const u=b.userData;b.position.set(...world(u.x,u.y,u.z));b.position.y+=u.boxHeight/2;heightYukjo(b,exaggeration)});
   foundations.children.forEach(f=>{f.position.y=(f.userData.top+f.userData.bottom)/2*exaggeration;f.scale.y=exaggeration});
   waterLayer.children.forEach(mesh=>{const p=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>p.setY(i,h*exaggeration));p.needsUpdate=true;mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()});
   bridges.children.forEach(b=>{b.position.y=b.userData.z*exaggeration+b.userData.lift+b.userData.boxHeight/2;renderBridgeConnections(b)});
@@ -484,6 +493,7 @@ async function main(){
   roadLayer.geometry.userData.heights=[...terrain.geometry.userData.heights];
   updateBridgeGround(surfaces);
   cityWall.updateGround(surfaces,roadLayer.geometry.userData.heights);palaceWall.updateGroundFrom(cityWall.supportAt);settlement?.updateGround(cityWall.supportAt);pedestrians?.updateGround(cityWall.supportAt);trees?.updateGround(cityWall.supportAt);
+  buildings.children.forEach(b=>groundYukjo(b,cityWall.supportAt));
   Object.assign(channelState,{enabled,depth,maxCut});
   el('channel-depth').disabled=!enabled;
   el('channel-status').textContent=enabled?`개념 하도 보정 · 수면 아래 ${depth} m · 현대 지형 대비 최대 낮춤 ${maxCut.toFixed(1)} m · 역사적 깊이 미확정`:'원래 고도 표시 · 청계천은 원도 위치의 지형 표면을 따릅니다.';
@@ -625,7 +635,7 @@ async function main(){
   const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   el('first-person3d').onclick=()=>active?exit():enter();
   el('first-person-exit').onclick=exit;
-  document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&event.target.id!=='first-person3d')exit()},true);
+  document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['first-person3d','map-options-toggle'].includes(event.target.id))exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Touch buttons allow the same walk controls without a hardware keyboard.
   for(const button of hud.querySelectorAll('[data-walk]')){

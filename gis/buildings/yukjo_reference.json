@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "title": "서울 S-MAP 오픈랩 조선시대의 육조거리 시간여행",
+  "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+  "retrieved_at": "2026-09-12",
+  "used_as": "Visual reference for independently made schematic courtyard compounds; no source images or external 3D models embedded in the scene.",
+  "images": [
+    {
+      "url": "https://openlab.eseoul.go.kr/userData/openlab/USER_DATA/storymap_1759063974.png",
+      "sha256": "90b85735f8d9af0e5d9f9ec904af788ffcd8739277e25ea344b16d5c39469fac"
+    },
+    {
+      "url": "https://openlab.eseoul.go.kr/userData/openlab/USER_DATA/storymap_1759063999.png",
+      "sha256": "8a75dc557658ec419a113d4596deeff86fb7a1117527feb83d80c61bca1936ae"
+    },
+    {
+      "url": "https://openlab.eseoul.go.kr/userData/openlab/USER_DATA/storymap_1759064006.png",
+      "sha256": "6054845bfa05d6a7dfcad11cd9f5c9aea212712cc29187369cb4be85b2fda6c4"
+    }
+  ],
+  "layout_reference": "1863년경 / 1865년경 비교 중 이전 배치",
+  "placement": "도성대지도 광화문 앞 지명과 길·현 구현 물길을 기준으로 구획을 수동 배치. 정확한 역사 지적 경계가 아님."
+}

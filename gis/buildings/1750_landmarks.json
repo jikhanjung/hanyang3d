@@ -20,7 +20,21 @@
         24
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "changgyeong",
@@ -37,7 +51,21 @@
         16
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "gyeongdeok",
@@ -54,7 +82,21 @@
         20
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "jongmyo",
@@ -72,7 +114,27 @@
       ],
       "size_status": "approximate_single_structure_scale",
       "size_note": "정전 15칸과 월대를 포함한 개략 모형 범위. 1836년 이후의 19칸 형태와 구분.",
-      "display_model": "jongmyo_15_chambers"
+      "display_model": "jongmyo_15_chambers",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": 1726,
+          "end_year": 1835,
+          "reference_year": 1750,
+          "status": "documented_chamber_count",
+          "note": "1726년 15칸 증축 이후, 1836년 19칸 증축 이전의 칸수. 형상·치수는 개략이며 정전의 전체 존속 기간과 다름."
+        },
+        "sources": [
+          {
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R105010000.do",
+            "supports": "15-chamber configuration: 1726–1835"
+          }
+        ]
+      }
     },
     {
       "id": "sajik",
@@ -89,7 +151,21 @@
         7.65
       ],
       "size_status": "single_altar_reference_size",
-      "size_note": "사직단 두 제단 중 하나의 크기를 참고한 단일 박스. 실제 제단 배치는 미복원."
+      "size_note": "사직단 두 제단 중 하나의 크기를 참고한 단일 박스. 실제 제단 배치는 미복원.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "sungkyun",
@@ -106,24 +182,21 @@
         16
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
-    },
-    {
-      "id": "uijeongbu",
-      "name": "의정부",
-      "lat": 37.5756,
-      "lon": 126.9787,
-      "category": "관청",
-      "reference": "https://history.seoul.go.kr/bbsctt/view.do?bbscttSn=2604300001&key=2210200020",
-      "note": "육조거리 동쪽 관청의 대표 위치. 개별 청사 배치는 미복원입니다.",
-      "position_status": "approximate_site_hint",
-      "symbol_size_m": [
-        24,
-        9,
-        14
-      ],
-      "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다."
+      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "sijeon",
@@ -140,7 +213,21 @@
         7
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "시전 전체 거리가 아닌 작은 상점 건물 1동의 개략 규모."
+      "size_note": "시전 전체 거리가 아닌 작은 상점 건물 1동의 개략 규모.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "gwanghwamun",
@@ -176,6 +263,20 @@
         ],
         "method": "manual_local_road_reading_then_current_tps",
         "note": "원도에서 문 주변 진입로의 방향을 판독한 개략 축. 통로를 이 축에 평행하게 회전하며 기존 보정점 위치는 유지."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
       }
     },
     {
@@ -212,6 +313,20 @@
         ],
         "method": "manual_local_road_reading_then_current_tps",
         "note": "원도에서 문 주변 진입로의 방향을 판독한 개략 축. 통로를 이 축에 평행하게 회전하며 기존 보정점 위치는 유지."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
       }
     },
     {
@@ -248,6 +363,20 @@
         ],
         "method": "manual_local_road_reading_then_current_tps",
         "note": "원도에서 문 주변 진입로의 방향을 판독한 개략 축. 통로를 이 축에 평행하게 회전하며 기존 보정점 위치는 유지."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
       }
     },
     {
@@ -293,7 +422,21 @@
         ],
         "method": "manual_gate_at_wall_road_intersection"
       },
-      "calibration_anchor": "돈의문 터"
+      "calibration_anchor": "돈의문 터",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "changuimun",
@@ -328,7 +471,21 @@
       },
       "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
       "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
-      "size_status": "conceptual_relative_scale"
+      "size_status": "conceptual_relative_scale",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "sukjeongmun",
@@ -363,7 +520,21 @@
       },
       "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
       "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
-      "size_status": "conceptual_relative_scale"
+      "size_status": "conceptual_relative_scale",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "hyehwamun",
@@ -398,7 +569,21 @@
       },
       "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
       "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
-      "size_status": "conceptual_relative_scale"
+      "size_status": "conceptual_relative_scale",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "gwanghuimun",
@@ -433,7 +618,21 @@
       },
       "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
       "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
-      "size_status": "conceptual_relative_scale"
+      "size_status": "conceptual_relative_scale",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
     },
     {
       "id": "souimun",
@@ -468,7 +667,670 @@
       },
       "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
       "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
-      "size_status": "conceptual_relative_scale"
+      "size_status": "conceptual_relative_scale",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": []
+      }
+    },
+    {
+      "id": "yejo",
+      "name": "예조",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "large",
+      "source_position": {
+        "pixel": [
+          1110.0,
+          1188.5
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1140,
+          1168
+        ],
+        "near_end": [
+          1140,
+          1209
+        ],
+        "back": [
+          1080,
+          1188.5
+        ],
+        "side": "west"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jungchubu",
+      "name": "중추부",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "small",
+      "source_position": {
+        "pixel": [
+          1110.0,
+          1220.5
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1140,
+          1213
+        ],
+        "near_end": [
+          1140,
+          1228
+        ],
+        "back": [
+          1080,
+          1220.5
+        ],
+        "side": "west"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "saheonbu",
+      "name": "사헌부",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "small",
+      "source_position": {
+        "pixel": [
+          1111.0,
+          1244.0
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1140,
+          1232
+        ],
+        "near_end": [
+          1140,
+          1256
+        ],
+        "back": [
+          1082,
+          1244.0
+        ],
+        "side": "west"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "byeongjo",
+      "name": "병조",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "large",
+      "source_position": {
+        "pixel": [
+          1115.0,
+          1273.0
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1140,
+          1260
+        ],
+        "near_end": [
+          1140,
+          1286
+        ],
+        "back": [
+          1090,
+          1273.0
+        ],
+        "side": "west"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hyeongjo",
+      "name": "형조",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "small",
+      "source_position": {
+        "pixel": [
+          1119.0,
+          1303.0
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1140,
+          1290
+        ],
+        "near_end": [
+          1140,
+          1316
+        ],
+        "back": [
+          1098,
+          1303.0
+        ],
+        "side": "west"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gongjo",
+      "name": "공조",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "small",
+      "source_position": {
+        "pixel": [
+          1125.0,
+          1333.0
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1140,
+          1320
+        ],
+        "near_end": [
+          1140,
+          1346
+        ],
+        "back": [
+          1110,
+          1333.0
+        ],
+        "side": "west"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "uijeongbu",
+      "name": "의정부",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "large",
+      "source_position": {
+        "pixel": [
+          1203.5,
+          1190.0
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1172,
+          1168
+        ],
+        "near_end": [
+          1172,
+          1212
+        ],
+        "back": [
+          1235,
+          1190.0
+        ],
+        "side": "east"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ijo",
+      "name": "이조",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "small",
+      "source_position": {
+        "pixel": [
+          1203.5,
+          1229.0
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1172,
+          1216
+        ],
+        "near_end": [
+          1172,
+          1242
+        ],
+        "back": [
+          1235,
+          1229.0
+        ],
+        "side": "east"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hanseongbu",
+      "name": "한성부",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "small",
+      "source_position": {
+        "pixel": [
+          1203.5,
+          1259.5
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1172,
+          1246
+        ],
+        "near_end": [
+          1172,
+          1273
+        ],
+        "back": [
+          1235,
+          1259.5
+        ],
+        "side": "east"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hojo",
+      "name": "호조",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "large",
+      "source_position": {
+        "pixel": [
+          1203.5,
+          1298.5
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1172,
+          1277
+        ],
+        "near_end": [
+          1172,
+          1320
+        ],
+        "back": [
+          1235,
+          1298.5
+        ],
+        "side": "east"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hunguk",
+      "name": "훈국신영",
+      "category": "관청",
+      "reference": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+      "note": "서울 S-MAP 육조거리 자료의 1863년경 배치·복원 형태를 참고한 단순화 모형. 현 원도의 길 양쪽에 개략 배치했으며 18세기 실측 복원이 아닙니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "small",
+      "source_position": {
+        "pixel": [
+          1203.5,
+          1338.0
+        ],
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+      },
+      "source_plot": {
+        "near_start": [
+          1172,
+          1324
+        ],
+        "near_end": [
+          1172,
+          1352
+        ],
+        "back": [
+          1235,
+          1338.0
+        ],
+        "side": "east"
+      },
+      "symbol_size_m": [
+        80,
+        9,
+        90
+      ],
+      "size_status": "derived_from_schematic_source_plot",
+      "size_note": "화면에서 원도 구획을 변형한 길이로 폭·깊이를 계산. 문·전각 치수는 시각화 가정.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unverified"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1864,
+          "reference_year": 1863,
+          "reference_precision": "circa",
+          "status": "schematic_layout_phase",
+          "note": "자료의 1863년경/1865년경 비교 중 개편 이전 배치를 참조. 시작 연도 미확인. 1864는 이 배치 모형의 단계 끝이며 건물 철거 연도가 아님."
+        },
+        "sources": [
+          {
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      }
     }
   ],
   "size_policy": "Representative single-building-scale approximate envelopes in metres, not compound bounds or measured historical reconstructions. Axis order: width, height, depth. Sizes are explicit modelling assumptions except the Sajik single-altar reference.",
@@ -481,5 +1343,7 @@
       "url": "https://www.heritage.go.kr/heri/cul/culGuidePostDetail.do?ccbaCpno=1331101210000&ccgbGbtype=UNI&ccgbGbtypeNo=2&pageNo=1_5_0_0",
       "basis": "사직단 한 제단의 한 변 7.65m·높이 약 1m. 전체 시설군이 아닌 제단 하나의 규모 참고."
     }
-  ]
+  ],
+  "temporal_schema_version": 1,
+  "temporal_policy": "CE integer years, inclusive bounds; null means unverified, not unbounded. Existence and depicted layout periods are independent. Child meshes inherit their parent feature period. Future year filtering must handle unknown bounds explicitly."
 }

@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [052: 육조거리 관청·연대 데이터·모바일 설정](20260912_052_yukjo_compounds_and_mobile_options.md)
 - [051: 반투명 모바일 조이스틱과 간소화](20260912_051_minimal_mobile_joystick.md)
 - [050: 모바일 조이스틱·상시 나침반·반투명 미니맵](20260912_050_mobile_joystick_and_compass.md)
 - [049: 경복궁 담장·종묘 정전, 제목과 출처 정리](20260912_049_palace_models_and_map_title.md)
