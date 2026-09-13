@@ -59,14 +59,12 @@ with sync_playwright() as p:
    metres:Math.hypot(warped[0]-point[0],warped[1]-point[1])*g}}''')
  print(shift,flush=True)
  assert shift['east']>0 and shift['north']>0 and 18<shift['metres']<22,shift
- # Jeong Dojeon's compound is sized from the two office blocks beside it, as requested.
- sizing=page.evaluate('''()=>{const t=terrain3d,span=id=>{const b=t.buildings.children.find(b=>b.userData.feature.id===id);
-   const [w,,d]=b.userData.feature.symbol_size_m,yaw=b.rotation.y;
-   return Math.abs(w*Math.sin(yaw))+Math.abs(d*Math.cos(yaw))};
-  const site=t.buildings.children.find(b=>b.userData.feature.id==='jeongdojeon_site').userData.feature;
-  return {northSouth:site.symbol_size_m[2],eastWest:site.symbol_size_m[0],offices:span('hojo')+span('hunguk')}}''')
+ # Jeong Dojeon's compound was sized from the two office blocks once beside it (Hojo and the old
+ # 훈국신영 slot, 163 m north-south). 훈국신영 moved to its drawn label by 경덕궁 in 082; the site keeps its size.
+ sizing=page.evaluate('''()=>{const site=terrain3d.buildings.children.find(b=>b.userData.feature.id==='jeongdojeon_site').userData.feature;
+  return {northSouth:site.symbol_size_m[2],eastWest:site.symbol_size_m[0]}}''')
  print(sizing,flush=True)
- assert abs(sizing['northSouth']-sizing['offices'])<3,sizing
+ assert abs(sizing['northSouth']-163)<1,sizing
  assert abs(sizing['eastWest']-sizing['northSouth']/2)<1,sizing
  toggle=page.evaluate('''ids=>{const t=terrain3d,read=()=>ids.map(id=>{
    const b=t.buildings.children.find(b=>b.userData.feature.id===id),tag=t.nameTags.find(n=>n.tag.userData.featureId===id);

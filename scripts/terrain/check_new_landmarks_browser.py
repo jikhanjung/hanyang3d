@@ -18,6 +18,39 @@ EXPECTED={
  'dongmyo':('동관왕묘','palace-compound'),
  'pyeongsiseo':('평시서','yukjo-compound'),
  'yeonghuijeon':('영희전','palace-compound'),
+ 'bibyeonsa':('비변사','yukjo-compound'),
+ 'jamungam':('자문감','yukjo-compound'),
+ 'uibinbu':('의빈부','yukjo-compound'),
+ 'changuigung':('창의궁','palace-compound'),
+ 'bongsangsi':('봉상시','yukjo-compound'),
+ 'sayeogwon':('사역원','yukjo-compound'),
+ 'uiyeonggo':('의영고','yukjo-compound'),
+ 'saboksi':('사복시','yukjo-compound'),
+ 'jangheunggo':('장흥고','yukjo-compound'),
+ 'naesusa':('내수사','yukjo-compound'),
+ 'daebodan':('대보단',None),
+ 'jangwonseo':('장원서','yukjo-compound'),
+ 'seonhyechang_buk':('선혜청 북창','yukjo-compound'),
+ 'bugyeong':('북영','yukjo-compound'),
+ 'donghwalinseo':('동활인서','yukjo-compound'),
+ 'tangpyeongbi':('탕평비각',None),
+ 'eouigung':('어의궁(본궁)','palace-compound'),
+ 'hunguk':('훈국신영','yukjo-compound'),
+ 'bibyeonsa_gyeongdeok':('비변사(경덕궁 앞)','yukjo-compound'),
+ 'seongonggam':('선공감','yukjo-compound'),
+ 'myeongnyegung':('명례궁','palace-compound'),
+ 'seonhyecheong':('선혜청 신창','yukjo-compound'),
+ 'taepyeonggwan':('태평관','yukjo-compound'),
+ 'yebinsi':('예빈시','yukjo-compound'),
+ 'nammyo':('남관왕묘','palace-compound'),
+ 'eoyeongchang':('어영창','yukjo-compound'),
+ 'namsoyeong':('남소영','yukjo-compound'),
+ 'sohyeonmyo':('소현묘','palace-compound'),
+ 'segeomjeong':('세검정',None),
+ 'nambyeolgung':('남별궁','palace-compound'),
+ 'donghak':('동학(동부학당)','yukjo-compound'),
+ 'suncheong':('순청','yukjo-compound'),
+ 'jangagwon':('장악원','yukjo-compound'),
 }
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
@@ -34,7 +67,8 @@ with sync_playwright() as p:
   name,model=EXPECTED[row['id']]
   assert row['name']==name and row['label']==name,row
   # Every added landmark is a modern-sourced position, so the record must say so.
-  assert row['model']==model and row['boxHidden'] and row['grounded'] and row['modern'],row
+  # Plain-box landmarks (altars, pavilions) keep their box visible.
+  assert row['model']==model and (row['boxHidden'] or model is None) and row['grounded'] and row['modern'],row
  print(rows,flush=True)
  # The belfry is the single-storey 1619 pavilion, with the 1468 bell hung in the open hall.
  belfry=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='jongru');
@@ -54,12 +88,14 @@ with sync_playwright() as p:
   const j=bridge('장통교'),s=bridge('수표교');return {westOfSupyo:s.x-pg.x,eastOfJangtong:pg.x-j.x,northOfSupyo:s.z-pg.z}}''')
  print(order,flush=True)
  assert order['westOfSupyo']>20 and order['eastOfJangtong']>20 and order['northOfSupyo']>100,order
- # The Geumwiyeong camp sits just west of the drawn Donhwamun without touching it.
+ # West of the drawn Donhwamun the sheet-5 labels run gate, Bibyeonsa, Geumwiyeong; the offices must not touch.
  camp=page.evaluate('''()=>{const t=terrain3d,at=id=>t.buildings.children.find(b=>b.userData.feature.id===id);
-  const c=at('geumwiyeong'),g=at('donhwamun'),[cw,,cd]=c.userData.feature.symbol_size_m,[gw,,gd]=g.userData.feature.symbol_size_m;
-  return {west:g.position.x-c.position.x,north:Math.abs(g.position.z-c.position.z),gapM:(g.position.x-gw/2)-(c.position.x+cw/2)}}''')
+  const c=at('geumwiyeong'),b=at('bibyeonsa'),g=at('donhwamun'),[cw,,cd]=c.userData.feature.symbol_size_m,[bw,,bd]=b.userData.feature.symbol_size_m,[gw,,gd]=g.userData.feature.symbol_size_m;
+  return {bibyeonsaWest:g.position.x-b.position.x,geumwiyeongWest:g.position.x-c.position.x,gapGate:(g.position.x-gw/2)-(b.position.x+bw/2),gapCamp:(b.position.x-bw/2)-(c.position.x+cw/2),
+   labels:[b.userData.feature.source_position.label_pixel,c.userData.feature.source_position.label_pixel,at('gwansanggam').userData.feature.source_position.label_pixel]}}''')
  print(camp,flush=True)
- assert 25<camp['west']<60 and camp['north']<15 and camp['gapM']>0,camp
+ assert 30<camp['bibyeonsaWest']<80 and camp['geumwiyeongWest']>camp['bibyeonsaWest']+40 and camp['gapGate']>0 and camp['gapCamp']>0,camp
+ assert camp['labels']==[[1692,1078],[1661,1090],[1633,1059]],camp
  # Eoyeongcheong stands east of Jongmyo, clear of the shrine's footprint.
  camp2=page.evaluate('''()=>{const t=terrain3d,at=id=>t.buildings.children.find(b=>b.userData.feature.id===id);
   const e=at('eoyeongcheong'),j=at('jongmyo'),[ew,,ed]=e.userData.feature.symbol_size_m,[jw,,jd]=j.userData.feature.symbol_size_m;
@@ -124,7 +160,7 @@ with sync_playwright() as p:
    uigeumbuNorthWest:[at('uigeumbu').position.x<at('jongru').position.x,at('uigeumbu').position.z<at('jongru').position.z],
    leftOfficeEast:at('jwaporocheong').position.x-at('jongru').position.x,
    rightOfficeWest:at('jongru').position.x-at('uporocheong').position.x,
-   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung','hyeminseo','gwansanggam','pyeongsiseo','yeonghuijeon'].every(id=>{
+   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung','hyeminseo','gwansanggam','pyeongsiseo','yeonghuijeon','bibyeonsa','jamungam','uibinbu','changuigung','bongsangsi','sayeogwon','uiyeonggo','saboksi','jangheunggo','naesusa','daebodan','jangwonseo','seonhyechang_buk','bugyeong','tangpyeongbi','eouigung','hunguk','bibyeonsa_gyeongdeok','seongonggam','myeongnyegung','seonhyecheong','taepyeonggwan','yebinsi','eoyeongchang','namsoyeong','sohyeonmyo','nambyeolgung','donghak','suncheong','jangagwon'].every(id=>{
     const f=at(id).userData.feature;return f.source_position?inside(...f.source_position.pixel):true})}}''')
  print(place,flush=True)
  # Both sit in the blocks either side of the drawn Jongno crossing, not on the streets.

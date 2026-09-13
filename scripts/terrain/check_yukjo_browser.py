@@ -9,7 +9,10 @@ with sync_playwright() as p:
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden',timeout=300000)
  assert page.evaluate('!!window.terrain3d?.ready'),errors
  result=page.evaluate('''async()=>{const t=terrain3d,T=await import('/webapp/static/vendor/three/three.module.js');t.renderer.setAnimationLoop(null);const g=t.buildings.children.find(b=>b.userData.feature.id==='gwanghwamun');t.controls.target.copy(g.position).add(new T.Vector3(0,0,350));t.camera.position.copy(g.position).add(new T.Vector3(380,500,1000));t.controls.update();t.updateBuildingNames();t.updateCompass();t.renderer.render(t.scene,t.camera);return t.buildings.children.filter(b=>b.userData.feature.display_model==='yukjo_compound').map(b=>({id:b.userData.feature.id,parts:b.getObjectByName('yukjo-compound').userData.parts.length,batches:b.getObjectByName('yukjo-compound').userData.batches.length,size:b.userData.feature.symbol_size_m}))}''')
- assert len(result)==11 and all(r['batches']<=6 and r['parts']>10 for r in result),result
+ # The ten Yukjo street offices must be present; other offices reuse the same compound model.
+ ids={r['id'] for r in result}
+ assert {'yejo','jungchubu','saheonbu','byeongjo','hyeongjo','gongjo','uijeongbu','ijo','hanseongbu','hojo'}<=ids,ids
+ assert all(r['batches']<=6 and r['parts']>10 for r in result),result
  print('Compounds:',result,flush=True);page.screenshot(path='/tmp/yukjo-overview.png')
  contacts=page.evaluate('''()=>{const t=terrain3d,boxes=t.buildings.children.filter(b=>b.userData.feature.display_model==='yukjo_compound');let maxError=0;for(const ex of [1,2,1]){const input=document.getElementById('height3d');input.value=ex;input.onchange();for(const b of boxes)for(const p of b.getObjectByName('yukjo-compound').userData.parts){maxError=Math.max(maxError,Math.abs(b.position.y+p.root.position.y-(p.support.max*ex+.08)));if(b.position.y+p.root.position.y+p.footing.position.y-.15*p.footing.scale.y>p.support.min*ex)throw Error('floating foundation')}}return maxError}''')
  assert contacts<1e-6,contacts
