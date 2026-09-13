@@ -12,6 +12,7 @@ EXPECTED={
  'wongaksa_pagoda':('원각사지 십층석탑','wongaksa-pagoda'),
  'geumwiyeong':('금위영','yukjo-compound'),
  'eoyeongcheong':('어영청','yukjo-compound'),
+ 'yuksanggung':('육상궁','palace-compound'),
 }
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
@@ -60,6 +61,11 @@ with sync_playwright() as p:
   return {eastOfJongmyo:e.position.x-j.position.x,gapM:(e.position.x-ew/2)-(j.position.x+jw/2)}}''')
  print(camp2,flush=True)
  assert camp2['eastOfJongmyo']>60 and camp2['gapM']>0,camp2
+ # Yuksanggung sits on its drawn 毓祥宮 label, north-west of the Gyeongbokgung wall.
+ shrine=page.evaluate('''()=>{const t=terrain3d,f=t.buildings.children.find(b=>b.userData.feature.id==='yuksanggung').userData.feature;
+  return {pixel:f.source_position.pixel,depictionStart:f.temporal.depiction.start_year,info:!!f.info}}''')
+ print(shrine,flush=True)
+ assert shrine['pixel']==[1023,757] and shrine['depictionStart']==1753 and shrine['info'],shrine
  # The drill ground keeps an open field south of its offices.
  field=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='hullyeonwon');
   const m=b.getObjectByName('training-ground'),[w,,d]=b.userData.feature.symbol_size_m;
@@ -81,7 +87,7 @@ with sync_playwright() as p:
    uigeumbuNorthWest:[at('uigeumbu').position.x<at('jongru').position.x,at('uigeumbu').position.z<at('jongru').position.z],
    leftOfficeEast:at('jwaporocheong').position.x-at('jongru').position.x,
    rightOfficeWest:at('jongru').position.x-at('uporocheong').position.x,
-   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong'].every(id=>{
+   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung'].every(id=>{
     const f=at(id).userData.feature;return f.source_position?inside(...f.source_position.pixel):true})}}''')
  print(place,flush=True)
  # Both sit in the blocks either side of the drawn Jongno crossing, not on the streets.

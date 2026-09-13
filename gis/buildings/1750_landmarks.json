@@ -2524,6 +2524,87 @@
       }
     },
     {
+      "id": "yuksanggung",
+      "name": "육상궁",
+      "category": "제례",
+      "reference": "https://royal.khs.go.kr/ROYAL/contents/R107010000.do",
+      "note": "영조의 생모 숙빈 최씨의 사당. 도성대지도에 毓祥宮으로 적혀 있습니다.",
+      "lat": 37.5853169,
+      "lon": 126.9738851,
+      "position_status": "manual_source_symbol_hint",
+      "symbol_size_m": [
+        44,
+        13,
+        40
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "사당 정당과 앞뜰을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1725,
+          "end_year": null,
+          "status": "founded_1725_renamed_1744_elevated_1753",
+          "note": "1725년 숙빈묘로 세우고 1744년 육상묘, 1753년 육상궁으로 올렸다. 1882년 불타 1883년 중건했다. 고종·순종 때 다른 사당들이 옮겨 와 1929년 칠궁이 됐다. 현존."
+        },
+        "depiction": {
+          "start_year": 1753,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도에 毓祥宮으로 적혀 있어 1753년 이후 이름으로 표시한다."
+        },
+        "sources": [
+          {
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R107010000.do",
+            "supports": "1725 founded, 1744 Yuksangmyo, 1753 Yuksanggung, 1882 fire, 1883 rebuilt"
+          },
+          {
+            "url": "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR",
+            "supports": "map labels 毓祥宮, dating the map to 1753–1760"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 30,
+        "note": "칠궁(OSM 37.5853169, 126.9738851)의 원도 환산값은 (1071, 769)로, 원도의 毓祥宮 글씨보다 약 100 m 동쪽이다. 화면 배치는 원도 글씨를 따른다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1023,
+          757
+        ],
+        "method": "label_read_on_source_map",
+        "note": "경복궁 담장 서북쪽의 노란 테 가로 글씨 毓祥宮의 중심을 읽었다. 길 판독 마스크와 겹치지 않고 경복궁 담장에서 175 m 떨어져 있다."
+      },
+      "display_model": "palace_compound",
+      "palace_roof_tiers": 1,
+      "display_yaw_deg": 0,
+      "model_note": "사당 정당 한 채와 앞뜰을 단순화한 개념 모형. 칠궁의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "영조의 생모 숙빈 최씨의 사당. 영조가 어머니의 지위를 높여 궁으로 올렸다. 지금의 칠궁 자리다.",
+        "period": "1725년 숙빈묘로 세움. 1744년 육상묘, 1753년 육상궁. 1882년 화재, 1883년 중건. 고종·순종 때 다른 후궁 사당들이 옮겨 와 1929년 칠궁이 됐다. 현존.",
+        "in_1750": "1750년에는 육상묘였고 1753년 육상궁이 됐다. 도성대지도에는 毓祥宮으로 적혀 있어, 이 지도가 1753년 이후에 그려졌음을 보여 준다. 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "궁능유적본부 칠궁 소개·역사",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R107010000.do"
+          },
+          {
+            "title": "우리역사넷 육상궁 1725",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300763&code=kc_age_30"
+          },
+          {
+            "title": "한양도성박물관 도성대지도",
+            "url": "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR"
+          }
+        ]
+      }
+    },
+    {
       "id": "gyeongmogung",
       "name": "경모궁",
       "lat": 37.58,
