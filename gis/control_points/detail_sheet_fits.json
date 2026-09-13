@@ -1,0 +1,357 @@
+{
+ "target_asset": "asset-0001",
+ "target_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+ "method": "SIFT features + RANSAC similarity (cv2.estimateAffinePartial2D), reprojection threshold 3 px on a downscaled sheet",
+ "resolved_on": "2026-09-13",
+ "note": "full = A @ [sheet_x, sheet_y, 1]. 부분도 8의 수동 대응(모전교 기준 scale 0.2152, rot -0.84°)과 견주면 축척은 같고 회전은 1° 안에서 다르다. 시트 간 오차는 수 px 수준이며 판독 좌표는 전체 원도에서 다시 확인한다.",
+ "sheets": {
+  "asset-0002": {
+   "source_id": "src-0002",
+   "title": "도성대지도 부분도 8",
+   "path": "data/maps/src-0002/asset-0002.jpg",
+   "sha256": "90cc037e4f78d3f0fa65b7f350a902cee9599b0a52d4c5554a542c866f037a9b",
+   "width": 2854,
+   "height": 2000,
+   "affine_to_full": [
+    [
+     0.21998,
+     0.00071,
+     1249.64214
+    ],
+    [
+     -0.00071,
+     0.21998,
+     1340.48743
+    ]
+   ],
+   "scale": 0.22,
+   "rotation_deg": -0.18,
+   "inliers": 717,
+   "full_bbox": [
+    1250,
+    1338,
+    1879,
+    1780
+   ]
+  },
+  "asset-0013": {
+   "source_id": "src-0018",
+   "title": "도성대지도 부분도 11",
+   "path": "data/maps/src-0018/asset-0013.jpg",
+   "sha256": "1c41698e4598853208fafd6aa228c600f65ddf425a0b1f5a1cb822f3690faf63",
+   "width": 4014,
+   "height": 2812,
+   "affine_to_full": [
+    [
+     0.15714,
+     0.00062,
+     1259.06736
+    ],
+    [
+     -0.00062,
+     0.15714,
+     1758.74876
+    ]
+   ],
+   "scale": 0.1571,
+   "rotation_deg": -0.23,
+   "inliers": 331,
+   "full_bbox": [
+    1259,
+    1756,
+    1892,
+    2201
+   ]
+  },
+  "asset-0014": {
+   "source_id": "src-0019",
+   "title": "도성대지도 부분도 1",
+   "path": "data/maps/src-0019/asset-0014.jpg",
+   "sha256": "c6891011cc15d4678001ede01a79f790b547e59bf7dda484b819124392b2e549",
+   "width": 2854,
+   "height": 1962,
+   "affine_to_full": [
+    [
+     0.21789,
+     0.00013,
+     684.07805
+    ],
+    [
+     -0.00013,
+     0.21789,
+     529.31869
+    ]
+   ],
+   "scale": 0.2179,
+   "rotation_deg": -0.03,
+   "inliers": 657,
+   "full_bbox": [
+    684,
+    529,
+    1306,
+    957
+   ]
+  },
+  "asset-0015": {
+   "source_id": "src-0020",
+   "title": "도성대지도 부분도 2",
+   "path": "data/maps/src-0020/asset-0015.jpg",
+   "sha256": "aca66d25bce4f0381f73756c087951fe4fb252c8c580865827ffbd7179730dfe",
+   "width": 2854,
+   "height": 2000,
+   "affine_to_full": [
+    [
+     0.218,
+     -0.00049,
+     1213.42457
+    ],
+    [
+     0.00049,
+     0.218,
+     499.15036
+    ]
+   ],
+   "scale": 0.218,
+   "rotation_deg": 0.13,
+   "inliers": 620,
+   "full_bbox": [
+    1212,
+    499,
+    1836,
+    937
+   ]
+  },
+  "asset-0016": {
+   "source_id": "src-0021",
+   "title": "도성대지도 부분도 3",
+   "path": "data/maps/src-0021/asset-0016.jpg",
+   "sha256": "d190508360f2a40cd1b453392746d68b13b719e19baa07a98044a4988b16e9e5",
+   "width": 2854,
+   "height": 2000,
+   "affine_to_full": [
+    [
+     0.21131,
+     0.00071,
+     1843.19924
+    ],
+    [
+     -0.00071,
+     0.21131,
+     537.12324
+    ]
+   ],
+   "scale": 0.2113,
+   "rotation_deg": -0.19,
+   "inliers": 526,
+   "full_bbox": [
+    1843,
+    535,
+    2448,
+    960
+   ]
+  },
+  "asset-0017": {
+   "source_id": "src-0022",
+   "title": "도성대지도 부분도 4",
+   "path": "data/maps/src-0022/asset-0017.jpg",
+   "sha256": "32bd8e239780ea9e3fc4e713a96aa339b83cf15c88fafba2fc8f050aa24492cc",
+   "width": 2854,
+   "height": 2000,
+   "affine_to_full": [
+    [
+     0.21884,
+     0.00025,
+     672.87802
+    ],
+    [
+     -0.00025,
+     0.21884,
+     922.70207
+    ]
+   ],
+   "scale": 0.2188,
+   "rotation_deg": -0.07,
+   "inliers": 530,
+   "full_bbox": [
+    673,
+    922,
+    1298,
+    1360
+   ]
+  },
+  "asset-0018": {
+   "source_id": "src-0023",
+   "title": "도성대지도 부분도 5",
+   "path": "data/maps/src-0023/asset-0018.jpg",
+   "sha256": "a1e7d0cfffa87452254d852a8861e392358ef0798ad51ff376ebb6676e3bfac4",
+   "width": 2854,
+   "height": 2000,
+   "affine_to_full": [
+    [
+     0.21856,
+     4e-05,
+     1261.05605
+    ],
+    [
+     -4e-05,
+     0.21856,
+     915.71327
+    ]
+   ],
+   "scale": 0.2186,
+   "rotation_deg": -0.01,
+   "inliers": 548,
+   "full_bbox": [
+    1261,
+    916,
+    1885,
+    1353
+   ]
+  },
+  "asset-0019": {
+   "source_id": "src-0024",
+   "title": "도성대지도 부분도 6",
+   "path": "data/maps/src-0024/asset-0019.jpg",
+   "sha256": "1bff269c4368843ff79f21092ed2ae649e0500013ed5924cf97e826945da0603",
+   "width": 2854,
+   "height": 2000,
+   "affine_to_full": [
+    [
+     0.22156,
+     -0.00071,
+     1826.55574
+    ],
+    [
+     0.00071,
+     0.22156,
+     911.83571
+    ]
+   ],
+   "scale": 0.2216,
+   "rotation_deg": 0.18,
+   "inliers": 394,
+   "full_bbox": [
+    1825,
+    912,
+    2459,
+    1357
+   ]
+  },
+  "asset-0020": {
+   "source_id": "src-0025",
+   "title": "도성대지도 부분도 7",
+   "path": "data/maps/src-0025/asset-0020.jpg",
+   "sha256": "d91801ed99b868d4380ec37c106642b5282485e351350886957fa1ddbf353aa5",
+   "width": 2854,
+   "height": 2000,
+   "affine_to_full": [
+    [
+     0.21861,
+     0.00092,
+     680.50845
+    ],
+    [
+     -0.00092,
+     0.21861,
+     1350.85273
+    ]
+   ],
+   "scale": 0.2186,
+   "rotation_deg": -0.24,
+   "inliers": 489,
+   "full_bbox": [
+    681,
+    1348,
+    1306,
+    1788
+   ]
+  },
+  "asset-0021": {
+   "source_id": "src-0026",
+   "title": "도성대지도 부분도 9",
+   "path": "data/maps/src-0026/asset-0021.jpg",
+   "sha256": "e48b230caa5f0b64102e1d58bbfa771231ae46301b027a2e229670843c03d203",
+   "width": 4014,
+   "height": 2812,
+   "affine_to_full": [
+    [
+     0.15789,
+     -0.00015,
+     1832.99955
+    ],
+    [
+     0.00015,
+     0.15789,
+     1332.4371
+    ]
+   ],
+   "scale": 0.1579,
+   "rotation_deg": 0.05,
+   "inliers": 318,
+   "full_bbox": [
+    1833,
+    1332,
+    2467,
+    1777
+   ]
+  },
+  "asset-0022": {
+   "source_id": "src-0027",
+   "title": "도성대지도 부분도 10",
+   "path": "data/maps/src-0027/asset-0022.jpg",
+   "sha256": "d69b3168c96aaf55ac27dae38b96b45d753ce3835a2cf9fbec5da6a6b5c75f8e",
+   "width": 4014,
+   "height": 2812,
+   "affine_to_full": [
+    [
+     0.15792,
+     0.00052,
+     668.81127
+    ],
+    [
+     -0.00052,
+     0.15792,
+     1753.52458
+    ]
+   ],
+   "scale": 0.1579,
+   "rotation_deg": -0.19,
+   "inliers": 300,
+   "full_bbox": [
+    669,
+    1751,
+    1304,
+    2198
+   ]
+  },
+  "asset-0023": {
+   "source_id": "src-0028",
+   "title": "도성대지도 부분도 12",
+   "path": "data/maps/src-0028/asset-0023.jpg",
+   "sha256": "e1bdbfe8ba35960f8ea274d14c0d7c53cdaa9df90ff4ce3b58ff2938a48578dc",
+   "width": 5352,
+   "height": 3750,
+   "affine_to_full": [
+    [
+     0.11675,
+     0.00024,
+     1844.37213
+    ],
+    [
+     -0.00024,
+     0.11675,
+     1726.34268
+    ]
+   ],
+   "scale": 0.1168,
+   "rotation_deg": -0.12,
+   "inliers": 518,
+   "full_bbox": [
+    1844,
+    1725,
+    2470,
+    2164
+   ]
+  }
+ }
+}
