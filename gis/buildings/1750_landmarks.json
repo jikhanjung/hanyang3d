@@ -422,6 +422,80 @@
       }
     },
     {
+      "id": "eoyeongcheong",
+      "name": "어영청",
+      "category": "관청",
+      "reference": "https://ko.wikipedia.org/wiki/%EC%96%B4%EC%98%81%EC%B2%AD",
+      "note": "국왕 호위와 도성 방어를 맡은 군영. 본영은 종묘 정문 동쪽 연화방에 있었습니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "large",
+      "position_status": "text_description_corrected_by_drawn_jongmyo_gate",
+      "symbol_size_m": [
+        56,
+        9,
+        48
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "505칸 규모로 전하는 본영을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1623,
+          "end_year": 1894,
+          "status": "founded_1623_merged_1881_abolished_1894",
+          "note": "1623년 국왕 친위대로 신설, 1652년 대규모로 개편. 1881년 총융청·금위영과 합쳐 장어영이 되고 1884년 총어영, 1894년 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%96%B4%EC%98%81%EC%B2%AD",
+            "supports": "founded 1623, reorganised 1652, merged 1881, abolished 1894; 505-bay headquarters east of the Jongmyo main gate in Yeonhwa-bang"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "quarter_centroid_with_local_gate_offset",
+        "resolved_on": "2026-09-13",
+        "precision_m": 150,
+        "note": "어영청 터 표석이 있는 종로구 인의동의 OSM 동 좌표(37.57236, 126.9971)를 원도 좌표로 옮기고, 원도의 종묘 남문과 현대 종묘 정문 환산값의 차이를 더했다. 원도에서 御營廳 글씨는 읽어 내지 못했다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1939,
+          1293
+        ],
+        "method": "modern_quarter_shifted_by_drawn_gate_clear_of_roads",
+        "note": "인의동 환산값 (2000, 1338)에 원도의 종묘 남문 (1850, 1343)과 현대 정문 환산값 (1898, 1388)의 차이 (-48, -45)를 더한 (1952, 1293)이 남북 대로 위라, 길 판독 마스크와 겹치지 않는 가장 가까운 곳으로 27 m 서쪽에 두었다. 원도의 종묘 담장과 대로 사이다."
+      },
+      "display_yaw_deg": 0,
+      "model_note": "담장·문·마당·대청을 단순화한 관청 개념 모형. 군영의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "국왕 호위와 도성 방어를 맡은 오군영의 하나. 효종 때 북벌을 위해 크게 키웠다. 본영은 종묘 정문 동쪽 연화방에 505칸 규모로 있었다.",
+        "period": "1623년 국왕 친위대로 신설, 1652년 개편. 1881년 장어영으로 통합, 1884년 총어영, 1894년 폐지.",
+        "in_1750": "있었다. 원도의 글씨는 읽어 내지 못해, 표석이 있는 인의동 위치를 원도의 종묘 남문에 맞춰 보정하고 길을 피해 두었다.",
+        "sources": [
+          {
+            "title": "위키백과 어영청",
+            "url": "https://ko.wikipedia.org/wiki/%EC%96%B4%EC%98%81%EC%B2%AD"
+          },
+          {
+            "title": "우리역사넷 어영청",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_030_0040_0050_0010_0020"
+          },
+          {
+            "title": "우리역사넷 오군영 1593~1884",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300820&code=kc_age_30"
+          }
+        ]
+      }
+    },
+    {
       "id": "sajik",
       "name": "사직단",
       "lat": 37.5755,
