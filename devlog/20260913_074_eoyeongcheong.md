@@ -28,3 +28,9 @@
 ## 검증
 
 `scripts/terrain/check_new_landmarks_browser.py`에서 어영청이 종묘보다 동쪽이고 종묘 모형과 닿지 않는지, 성곽 안이며 길과 겹치지 않는지 확인한다.
+
+## 배포
+
+- v0.1.5로 배포했다. Docker Hub digest: `sha256:e18803d6538db066db8819a08a2c5b0e02b826dcf3c7186f75cfb421c6f88e6b`.
+- 공개 healthz 정상: v0.1.5, resources 65. 운영 화면에서 어영청이 종묘보다 159 m 동쪽이고 종묘 모형과 84 m 떨어져 있으며 길과 겹치지 않음을 확인했다.
+- 서버 이미지는 v0.1.5와 직전 v0.1.4만 남겼다.
