@@ -37,3 +37,9 @@
 ## 검증
 
 `scripts/terrain/check_new_landmarks_browser.py`에서 내부 상자가 없는지, 주인이 가게 수보다 많은지, 간판이 5개 이상이고 가게 수의 3분의 1 이하인지, 간판 이름이 운종가의 다섯 시전 안에 드는지 본다.
+
+## 배포
+
+- v0.0.31로 배포했다. Docker Hub digest: `sha256:9d99525715e074a5876d46e8fecd8f0c7224715195acfdb5daea3758cbaa8fa0`.
+- 공개 healthz 정상: v0.0.31, resources 63. 운영 화면에서 가게 주인·간판 검사가 통과했다.
+- 서버 이미지는 v0.0.31과 직전 v0.0.30만 남겼다.
