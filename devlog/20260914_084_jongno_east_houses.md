@@ -20,3 +20,9 @@
 ## 검사
 
 `scripts/buildings/test_settlement.py`(성곽 안, 제외 구역 밖, 길 기준점) 통과.
+
+## 배포
+
+- v0.1.14로 배포했다. Docker Hub digest: `sha256:b00cd7be73d0f81283f07b9c340dc2e4bfc2e13404e4ed16a58b40367703c0e9`.
+- 공개 healthz 정상: v0.1.14, resources 78. 서버 이미지는 v0.1.14와 직전 v0.1.13만 남겼다.
+- `check_settlement_browser.py`는 옛 주소(8000 포트 `/gis/terrain/3d/`)를 박아 두었고, 주소를 바꿔 돌려도 햄버거 메뉴 안에 숨은 밀도 선택 상자를 고르다 멈춘다. 이번 변경과 무관한 옛 검사라 고치지 않았다.
