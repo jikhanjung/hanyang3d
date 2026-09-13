@@ -12,7 +12,7 @@ with sync_playwright() as p:
  page.goto(args.url,wait_until='networkidle')
  page.wait_for_function('window.terrain3d?.ready',timeout=30000)
  print(page.evaluate('({anchors:terrain3d.anchorCount,error:terrain3d.anchorError,range:terrain3d.elevationRange,calls:terrain3d.renderer.info.render.calls})'))
- assert page.evaluate('terrain3d.anchorCount===5 && terrain3d.anchorError<0.0001')
+ assert page.evaluate('terrain3d.anchorCount===6 && terrain3d.anchorError<0.0001')
  page.screenshot(path='/tmp/hanyang-terrain3d.png')
  page.locator('#opacity3d').fill('0');assert page.evaluate('terrain3d.historical.material.opacity')==0
  page.locator('#opacity3d').fill('85')
