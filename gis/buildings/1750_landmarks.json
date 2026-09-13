@@ -1597,16 +1597,16 @@
       "lat": 37.5697,
       "lon": 126.9832,
       "category": "시설",
-      "reference": "https://encykorea.aks.ac.kr/Article/E0053270",
-      "note": "운종가 네거리에 있던 종각입니다. 도성의 통행 시각을 알리는 종을 걸었습니다.",
+      "reference": "https://ko.wikipedia.org/wiki/%EB%B3%B4%EC%8B%A0%EA%B0%81",
+      "note": "운종가 네거리에 있던 종각입니다. 도성의 통행 시각을 알리는 종을 위층에 걸었습니다.",
       "position_status": "manual_source_symbol_hint",
       "symbol_size_m": [
-        24,
-        14,
-        18
+        16,
+        15,
+        12
       ],
       "size_status": "assumed_display_scale",
-      "size_note": "표시용 개략 치수. 실측 복원값이나 시설군 전체 범위가 아닙니다.",
+      "size_note": "정면 5칸·측면 4칸 중층 누각을 개략 치수로 옮긴 표시용 값. 실측 복원값이 아닙니다.",
       "temporal": {
         "existence": {
           "start_year": 1413,
@@ -1620,7 +1620,16 @@
           "reference_year": null,
           "status": "not_read_on_source_map"
         },
-        "sources": []
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EB%B3%B4%EC%8B%A0%EA%B0%81",
+            "supports": "five-bay two-storey belfry with the bell on the upper floor"
+          },
+          {
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121100020000",
+            "supports": "bell cast 1468, 3.18 m tall, 2.28 m mouth"
+          }
+        ]
       },
       "modern_position": {
         "method": "approximate_modern_site",
@@ -1630,7 +1639,7 @@
       },
       "display_model": "bell_tower",
       "display_yaw_deg": 0,
-      "model_note": "기단 위 2층 누각과 종을 단순화한 개념 모형. 실측 복원이 아니다.",
+      "model_note": "기단과 둥근 주춧돌·원기둥, 개방된 아래층, 종을 건 위층, 팔작지붕을 단순화한 개념 모형. 종은 1468년 주조된 옛 보신각 동종의 높이 3.18 m·입지름 2.28 m를 따랐다. 실측 복원이 아니다.",
       "source_position": {
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",

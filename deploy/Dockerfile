@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 
-ARG APP_VERSION=v0.0.27
+ARG APP_VERSION=v0.0.28
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="Hanyang 3D" \
       org.opencontainers.image.version=$APP_VERSION \

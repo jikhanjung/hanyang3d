@@ -27,6 +27,14 @@ with sync_playwright() as p:
   # Every added landmark is a modern-sourced position, so the record must say so.
   assert row['model']==model and row['boxHidden'] and row['grounded'] and row['modern'],row
  print(rows,flush=True)
+ # The belfry follows the described Bosingak: five bays by four with the 1468 bell upstairs.
+ belfry=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='jongru');
+  const m=b.getObjectByName('bell-tower'),u=m.userData;
+  return {bays:u.bays,bellHeightM:u.bellHeightM,bellMouthM:u.bellMouthM,meshes:m.children.length,
+   parts:['great-bell','bell-hook','lower-column','upper-column','rail-bar','gable-panel','tile-roof','footing-stone'].filter(p=>u.parts.includes(p))}}''')
+ print(belfry,flush=True)
+ assert belfry['bays']==[5,4] and belfry['bellHeightM']==3.18 and belfry['bellMouthM']==2.28,belfry
+ assert len(belfry['parts'])==8 and belfry['meshes']<=8,belfry
  place=page.evaluate('''async()=>{const t=terrain3d;
   const wall=await (await fetch('/gis/walls/doseong_city_wall.json')).json(),poly=wall.centerline;
   const inside=(x,y)=>{let c=false;for(let i=0,n=poly.length;i<n;i++){const [x1,y1]=poly[i],[x2,y2]=poly[(i+1)%n];
