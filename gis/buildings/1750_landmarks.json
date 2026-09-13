@@ -2122,7 +2122,7 @@
       "category": "탑",
       "reference": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100020000",
       "note": "세조 때 원각사에 세운 대리석 십층석탑. 절은 없어졌으나 탑이 남아 백탑으로 불렸습니다.",
-      "position_status": "modern_site_on_torn_sheet_band",
+      "position_status": "modern_site_corrected_by_drawn_bridges",
       "symbol_size_m": [
         14,
         10,
@@ -2159,17 +2159,17 @@
         "method": "modern_site_converted_to_source_pixels",
         "resolved_on": "2026-09-13",
         "precision_m": 30,
-        "note": "탑골공원 석탑 위치를 원도 좌표로 옮겼다. 부분도 8과 전체 원도 모두 이 일대가 찢겨 탑 기호나 글씨를 확인할 수 없었다."
+        "note": "탑골공원 석탑 위치를 원도 좌표로 옮기고, 원도의 장통교·수표교 위치로 국지 보정했다. 부분도 8과 전체 원도 모두 이 일대가 찢겨 탑 기호나 글씨를 확인할 수 없었다."
       },
       "source_position": {
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          1637,
-          1395
+          1591,
+          1406
         ],
-        "method": "modern_site_converted_torn_sheet_band",
-        "note": "원도의 이 자리는 종이가 찢겨 그림이 없다. 현대 위치를 원도 좌표로 환산했으며 길 판독 마스크와 겹치지 않는다."
+        "method": "modern_site_with_offset_interpolated_from_drawn_bridges",
+        "note": "원도의 이 자리는 찢겨 그림이 없다. 현대 위치를 그대로 환산하면 (1637, 1395)로 원도의 수표교보다 동쪽에 놓여, 원도에서 판독한 장통교 (1523, 1554)·수표교 (1625, 1565)와 두 다리의 현대 위치(OSM) 환산값의 차이를 구하고, 탑이 두 다리 사이 동서 비율 0.56 지점에 있다는 점으로 차이를 보간해 적용했다. 수표교는 원도에서 현대 환산값보다 171 m 서쪽에 그려져 있다. 길 판독 마스크와 겹치지 않는다."
       },
       "display_model": "wongaksa_pagoda",
       "display_yaw_deg": 0,
@@ -2177,7 +2177,7 @@
       "info": {
         "summary": "세조가 세운 원각사의 대리석 십층석탑. 절은 없어졌지만 탑이 남아 조선 후기에 백탑이라 불렸다. 지금의 탑골공원 자리다.",
         "period": "1465년 원각사 창건, 1467년 탑 건립. 1504년 절이 없어졌다. 임진왜란 무렵 맨 위 3층이 떨어져 곁에 놓였고 1947년 다시 올렸다. 현존(국보).",
-        "in_1750": "일곱 층만 서 있고 맨 위 세 층은 탑 옆 땅에 놓여 있었다. 원도의 이 자리는 찢겨 있어 현대 위치로 배치했다.",
+        "in_1750": "일곱 층만 서 있고 맨 위 세 층은 탑 옆 땅에 놓여 있었다. 원도의 이 자리는 찢겨 있어, 현대 위치를 원도의 장통교·수표교에 맞춰 보정해 두 다리 사이 북쪽에 두었다.",
         "sources": [
           {
             "title": "국가유산포털 서울 원각사지 십층석탑",

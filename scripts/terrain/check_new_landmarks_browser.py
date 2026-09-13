@@ -41,6 +41,12 @@ with sync_playwright() as p:
    parts:['pagoda-base','pagoda-storey','pagoda-roof','fallen-storey'].filter(p=>u.parts.includes(p))}}''')
  print(pagoda,flush=True)
  assert pagoda['standing']==7 and pagoda['fallen']==3 and 7<pagoda['height']<12 and len(pagoda['parts'])==4,pagoda
+ # The pagoda stands north of Unjongga between the drawn Jangtonggyo and Supyogyo, west of Supyogyo.
+ order=page.evaluate('''()=>{const t=terrain3d,pg=t.buildings.children.find(b=>b.userData.feature.id==='wongaksa_pagoda').position;
+  const bridge=name=>t.bridges.children.find(b=>b.userData.feature.name.startsWith(name)).position;
+  const j=bridge('장통교'),s=bridge('수표교');return {westOfSupyo:s.x-pg.x,eastOfJangtong:pg.x-j.x,northOfSupyo:s.z-pg.z}}''')
+ print(order,flush=True)
+ assert order['westOfSupyo']>20 and order['eastOfJangtong']>20 and order['northOfSupyo']>100,order
  # The Geumwiyeong camp sits just west of the drawn Donhwamun without touching it.
  camp=page.evaluate('''()=>{const t=terrain3d,at=id=>t.buildings.children.find(b=>b.userData.feature.id===id);
   const c=at('geumwiyeong'),g=at('donhwamun'),[cw,,cd]=c.userData.feature.symbol_size_m,[gw,,gd]=g.userData.feature.symbol_size_m;
