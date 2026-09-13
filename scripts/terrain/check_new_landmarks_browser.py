@@ -15,6 +15,7 @@ EXPECTED={
  'yuksanggung':('육상궁','palace-compound'),
  'hyeminseo':('혜민서','yukjo-compound'),
  'gwansanggam':('관상감','observatory'),
+ 'dongmyo':('동관왕묘','palace-compound'),
 }
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
@@ -80,6 +81,15 @@ with sync_playwright() as p:
   return {platform:m.parts.includes('observation-platform')&&m.parts.includes('instrument-table'),height:m.platformHeightM,westOfDonhwamun:g.x-o.position.x}}''')
  print(obs,flush=True)
  assert obs['platform'] and 3<obs['height']<4.5 and obs['westOfDonhwamun']>150,obs
+ # Dongmyo stands on its drawn 關王廟 label outside the wall, east of Heunginjimun.
+ shrine2=page.evaluate('''async()=>{const t=terrain3d,at=id=>t.buildings.children.find(b=>b.userData.feature.id===id);
+  const wall=await (await fetch('/gis/walls/doseong_city_wall.json')).json(),poly=wall.centerline;
+  const inside=(x,y)=>{let c=false;for(let i=0,n=poly.length;i<n;i++){const [x1,y1]=poly[i],[x2,y2]=poly[(i+1)%n];
+   if((y1>y)!==(y2>y)&&x<x1+(y-y1)*(x2-x1)/(y2-y1))c=!c}return c};
+  const m=at('dongmyo'),f=m.userData.feature;
+  return {pixel:f.source_position.pixel,inside:inside(...f.source_position.pixel),eastOfHeunginjimun:m.position.x-at('heunginjimun').position.x}}''')
+ print(shrine2,flush=True)
+ assert shrine2['pixel']==[2748,1413] and not shrine2['inside'] and shrine2['eastOfHeunginjimun']>300,shrine2
  # The drill ground keeps an open field south of its offices.
  field=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='hullyeonwon');
   const m=b.getObjectByName('training-ground'),[w,,d]=b.userData.feature.symbol_size_m;

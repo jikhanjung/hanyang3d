@@ -12,7 +12,7 @@
 | 4 | 육상궁 | 왕실 사당 | 1725년 세움, 1753년 육상궁 | 원도의 毓祥宮 글씨, 지금의 칠궁 | 추가함 (v0.1.6) |
 | 5 | 혜민서 | 관청 | 1466년 개칭, 1882년 폐지 | 부분도의 惠民署 글씨, 지금의 을지로3가 65 | 추가함 (v0.1.7) |
 | 6 | 관상감·관천대 | 관청·관측대 | 관천대는 현존 | 창덕궁 서쪽 광화방, 관천대는 원서동 206 | 추가함 (v0.1.8) |
-| 7 | 동관왕묘 | 사당 | 1601년 완공 | 흥인지문 밖, 지도 가장자리 | 대기 |
+| 7 | 동관왕묘 | 사당 | 1601년 완공 | 원도의 關王廟 글씨, 흥인지문 밖 | 추가함 (v0.1.9) |
 
 ## 원도에서 새로 찾은 후보
 
@@ -36,4 +36,5 @@
 - [우리역사넷 육상궁](https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300763&code=kc_age_30)
 - [위키백과 혜민서](https://ko.wikipedia.org/wiki/%ED%98%9C%EB%AF%BC%EC%84%9C)
 - [국가유산포털 관상감 관천대](http://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121117400000)
+- [우리역사넷 관왕묘와 무성왕묘](https://contents.history.go.kr/mobile/km/view.do?levelId=km_007_0060_0010_0030_0010)
 - [국가유산포털 서울 동관왕묘](https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121101420000)
