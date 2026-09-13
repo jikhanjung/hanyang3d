@@ -943,52 +943,6 @@
       }
     },
     {
-      "id": "sijeon",
-      "name": "운종가 · 시전 거리",
-      "lat": 37.57,
-      "lon": 126.9847,
-      "category": "상업",
-      "reference": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1182&seq=20221208151226671&sso=ok",
-      "note": "종로를 따라 이어진 시전의 대표 위치. 단일 건물이나 시전 전체 범위를 뜻하지 않습니다.",
-      "position_status": "approximate_site_hint",
-      "symbol_size_m": [
-        12,
-        5,
-        7
-      ],
-      "size_status": "approximate_single_structure_scale",
-      "size_note": "시전 전체 거리가 아닌 작은 상점 건물 1동의 개략 규모.",
-      "temporal": {
-        "existence": {
-          "start_year": null,
-          "end_year": null,
-          "status": "unverified"
-        },
-        "depiction": {
-          "start_year": null,
-          "end_year": null,
-          "reference_year": null,
-          "status": "undated_concept"
-        },
-        "sources": []
-      },
-      "info": {
-        "summary": "나라가 지어 상인에게 빌려준 가게 줄. 국역 부담이 큰 시전은 육의전으로 묶였다.",
-        "period": "1412년 이후 세 차례 공사로 행랑 2,027칸을 지었다. 시전 체제가 끝난 시기는 미확인.",
-        "in_1750": "있었다. 행랑 한 채씩은 원도에 없어 표시용으로 늘어놓았다.",
-        "sources": [
-          {
-            "title": "우리역사넷 시전 상업",
-            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0020_0010"
-          },
-          {
-            "title": "우리역사넷 육의전",
-            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010"
-          }
-        ]
-      }
-    },
-    {
       "id": "gwanghwamun",
       "name": "광화문",
       "lat": 37.5760444,
@@ -2264,21 +2218,21 @@
       "lon": 126.979405,
       "category": "집터",
       "reference": "https://encykorea.aks.ac.kr/Article/E0050380",
-      "note": "조선 개국공신 정도전의 집이 있던 자리로 전해지는 곳입니다. 오늘날 종로구청 일대에 해당하며 건물은 남아 있지 않습니다.",
-      "position_status": "user_supplied_modern_point_shifted",
+      "note": "조선 개국공신 정도전의 집이 있던 자리로 전해지는 지점입니다. 1398년 이후 집은 남지 않았고, 1750년 무렵 이 일대에는 사복시가 있었습니다. 표석으로만 표시합니다.",
+      "position_status": "user_supplied_modern_point",
       "symbol_size_m": [
-        81,
-        8,
-        163
+        1.2,
+        2.4,
+        1.2
       ],
-      "size_status": "assumed_compound_extent",
-      "size_note": "남북 163 m는 이웃한 호조와 훈국신영 표시 범위를 남북으로 합친 길이, 동서 81 m는 그 절반으로 잡은 가정값이다. 두 관청 크기는 원도 구획을 화면 좌표로 환산해 정하므로 보정점을 더하면 값이 조금 달라진다. 종로1가 사거리 보정점을 넣은 뒤 181 m에서 다시 계산했다. 정도전의 집이 오늘날 종로구청 일대에 걸쳐 있었다는 설명을 크기 기준으로 삼았을 뿐 실측 범위가 아니다.",
+      "size_status": "commemorative_marker_scale",
+      "size_note": "표석 크기의 표시용 모형. 집터의 실제 범위가 아닙니다.",
       "temporal": {
         "existence": {
           "start_year": null,
           "end_year": 1398,
           "status": "site_only_after_1398",
-          "note": "정도전 사후 집은 남지 않았다. 1750년 원도의 표현 대상이 아니며 현재 위치 표시만 한다."
+          "note": "정도전(1342–1398)이 1398년 제1차 왕자의 난으로 죽은 뒤 집은 남지 않았다. 1750년 무렵 이 일대는 사복시(太僕寺) 자리였다. 원도에 그려진 대상이 아니며 옛 자리 표시만 한다."
         },
         "depiction": {
           "start_year": null,
@@ -2286,7 +2240,16 @@
           "reference_year": null,
           "status": "not_depicted_on_source_map"
         },
-        "sources": []
+        "sources": [
+          {
+            "url": "https://encykorea.aks.ac.kr/Article/E0050380",
+            "supports": "Jeong Dojeon died 1398"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C",
+            "supports": "Saboksi on the Jongno-gu office site in the Joseon period"
+          }
+        ]
       },
       "modern_position": {
         "method": "what3words_address_resolved_to_wgs84",
@@ -2294,29 +2257,23 @@
         "resolved_by": "what3words.com 공개 주소 페이지",
         "resolved_on": "2026-09-12",
         "precision_m": 3,
-        "note": "사용자가 알려 준 what3words 주소를 위경도로 변환한 값이다. 원도 판독이나 발굴 성과가 아니며, 종로구청 앞 표석 위치와는 약 100 m 차이가 있다. 화면 배치는 이 지점에서 북동쪽으로 20 m 옮긴 source_position을 사용한다."
+        "note": "사용자가 알려 준 what3words 주소를 위경도로 변환한 값이다. 원도 판독이나 발굴 성과가 아니며, 종로구청 앞 표석 위치와는 약 100 m 차이가 있다. 처음(v0.0.21) 표석을 둔 그 지점에 다시 둔다."
       },
-      "display_model": "house_site",
-      "display_yaw_deg": 0,
-      "model_note": "담장과 마당, 남향 안채·사랑채·별당·행랑채, 남쪽 대문을 단순화한 개념 모형. 실제 가옥 배치를 복원한 것이 아니다.",
-      "source_position": {
-        "source_asset": "asset-0001",
-        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
-        "pixel": [
-          1270,
-          1321
-        ],
-        "method": "w3w_point_shifted_20m_northeast",
-        "note": "what3words 주소로 얻은 지점에서 북동쪽으로 20 m 옮긴 화면 배치 좌표다. 육조거리 관청 담장과 모형이 맞붙어 보여 띄웠다. 종로1가 사거리 보정점을 넣어 원도 변형이 바뀌면서 (1265, 1330)에서 다시 계산했으며, 정수 픽셀 반올림으로 실제 이동량은 19.2 m다. 위경도는 원래 지점을 그대로 둔다."
-      },
+      "display_model": "site_marker",
+      "display_yaw_deg": 180,
+      "model_note": "표석 형태의 표시용 모형. 집이나 담장을 복원한 것이 아니다. v0.0.22~v0.1.12에는 담장·기와집 모형으로 표시했으나, 1750년에는 집이 없었으므로 표석으로 되돌렸다.",
       "info": {
         "summary": "조선 개국공신 정도전이 살던 자리로 전한다. 오늘날 종로구청 일대다.",
         "period": "정도전(1342–1398)이 1398년 제1차 왕자의 난으로 죽은 뒤 집은 남지 않았다.",
-        "in_1750": "집은 없었다. 옛 자리를 기억하는 표시다.",
+        "in_1750": "집은 없었다. 이 일대에는 사복시가 있었다. 옛 자리를 기억하는 표석만 둔다.",
         "sources": [
           {
             "title": "한국민족문화대백과사전 정도전",
             "url": "https://encykorea.aks.ac.kr/Article/E0050380"
+          },
+          {
+            "title": "위키백과 사복시",
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C"
           }
         ]
       }
@@ -3604,7 +3561,7 @@
           1277,
           1305
         ],
-        "note": "부분도 4에서 중학천 동쪽, 수진궁 글씨 서쪽의 네모 칸 글씨 太僕寺를 읽어 전체 원도 좌표로 환산했다. 정도전 집터 표시(설정의 유명인 집터)와 같은 자리이며 길 판독 마스크와 겹치지 않는다. 길 판독 마스크와 겹치지 않는다."
+        "note": "부분도 4에서 중학천 동쪽, 수진궁 글씨 서쪽의 네모 칸 글씨 太僕寺를 읽어 전체 원도 좌표로 환산했다. 정도전 집터로 전하는 일대이며 길 판독 마스크와 겹치지 않는다. 길 판독 마스크와 겹치지 않는다."
       },
       "display_model": "yukjo_compound",
       "display_yaw_deg": 0,
@@ -3612,7 +3569,7 @@
       "info": {
         "summary": "임금의 말과 수레, 마구와 목축을 맡은 관청. 육조거리 동쪽 한성부·호조와 중학천을 사이에 두고 마주한 지금의 종로구청 자리다. 정도전의 집터로 전하는 곳이기도 하다.",
         "period": "1392년 설치. 1894년 태복시로 고쳤다가 1895년 폐지.",
-        "in_1750": "있었다. 도성대지도 부분도 4에 중학천 동쪽에 별칭 太僕寺로 적혀 있어 그 글씨 자리에 두었다. 정도전 집터 표시와 같은 자리다.",
+        "in_1750": "있었다. 도성대지도 부분도 4에 중학천 동쪽에 별칭 太僕寺로 적혀 있어 그 글씨 자리에 두었다. 정도전 집터 표석은 이 남서쪽에 있다.",
         "sources": [
           {
             "title": "위키백과 사복시",

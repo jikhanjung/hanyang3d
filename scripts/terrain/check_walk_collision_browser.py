@@ -23,6 +23,15 @@ with sync_playwright() as p:
  assert not popup['hidden'] and '종루' in popup['text'] and '존재 시기' in popup['text'] and '1750년 무렵' in popup['text'] and popup['links']>=1,popup
  page.dispatch_event('#building-popup button','click')
  assert page.evaluate("document.getElementById('building-popup').hidden")
+ # The 운종가 placeholder box is gone; clicking a shop row describes the trade of its zone instead.
+ assert not page.evaluate("terrain3d.buildings.children.some(b=>b.userData.feature.id==='sijeon')")
+ point=page.evaluate('''()=>{const t=terrain3d,box=t.sijeon.picks.children.find(b=>b.visible&&b.userData.feature.name.startsWith('선전'));
+  t.controls.target.copy(box.position);t.camera.position.set(box.position.x+18,box.position.y+22,box.position.z+26);t.controls.update();t.renderer.render(t.scene,t.camera);
+  const v=box.position.clone();v.project(t.camera);const r=t.renderer.domElement.getBoundingClientRect();return {x:r.left+(v.x+1)*r.width/2,y:r.top+(1-v.y)*r.height/2}}''')
+ page.mouse.move(point['x'],point['y']);page.mouse.down();page.mouse.up()
+ shop=page.evaluate("()=>{const p=document.getElementById('building-popup');return {hidden:p.hidden,text:p.innerText,links:p.querySelectorAll('a').length}}")
+ assert not shop['hidden'] and '선전' in shop['text'] and '육의전' in shop['text'] and '1750년 무렵' in shop['text'] and shop['links']>=2,shop
+ page.dispatch_event('#building-popup button','click')
  # Walking straight at a shop stops at its front face instead of passing through.
  player=page.evaluate('''()=>{const t=terrain3d,fp=t.firstPerson,canvas=t.renderer.domElement;
   const r=t.sijeon.records.find(r=>r.displayed&&r.bays>=6&&!t.collision.hit(r.x-Math.sin(r.yaw)*9,r.z-Math.cos(r.yaw)*9,.6));

@@ -151,6 +151,31 @@ export function createSijeon(data,sourceSurface,landmarks){
    mesh.name='shop-goods';mesh.frustumCulled=false;mesh.userData={trade,spots};extras.add(mesh);goodsMeshes.push(mesh);
   }
  }
+ // Invisible pick boxes make each row clickable; the card describes the trade of its zone.
+ const SOURCES=[
+  {title:'우리역사넷 육의전',url:'https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010'},
+  {title:'우리역사넷 조선 전기 신도의 시전 상업',url:'https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0020_0010'},
+  {title:'우리역사넷 도가와 시전 행랑',url:'https://contents.history.go.kr/mobile/km/view.do?levelId=km_003_0040_0040_0050_0010'}];
+ const TRADES={
+  '선전':'중국산 비단을 파는 시전. 육의전 가운데 으뜸인 수전(首廛)으로 국역 부담이 가장 컸다.',
+  '면포전':'무명과 은을 파는 시전. 무명이 돈처럼 쓰여 국역 부담이 컸고 육의전에 들었다.',
+  '면주전':'국산 명주를 파는 시전으로 육의전에 들었다.',
+  '내어물전':'말린 어물과 소금에 절인 어물을 파는 어물전으로 육의전에 들었다.',
+  '저포전':'모시를 파는 시전으로 육의전에 들었다.'};
+ const picks=new THREE.Group();picks.name='shop-picks';group.add(picks);
+ const pickMaterial=new THREE.MeshBasicMaterial({visible:false});
+ records.forEach((r,i)=>{
+  const zone=data.signs?.zones.find(z=>z.hangul===r.trade);
+  const name=zone?`${zone.hangul}(${zone.hanja}) 행랑`:'시전 행랑';
+  const feature={id:`sijeon-row-${i}`,name,category:'상업',symbol_size_m:[r.length,height,depth],reference:SOURCES[0].url,
+   note:zone?`${zone.sells}을 파는 ${zone.hangul}. 행랑 한 채의 위치는 표시용이다.`:'운종가 시전 행랑. 행랑 한 채의 위치는 표시용이다.',
+   info:{summary:(zone?TRADES[zone.hangul]+' ':'')+'운종가 양쪽에 나라가 지어 상인에게 빌려준 가게 줄(행랑)의 한 채다.',
+    period:'1412년(태종 12) 이후 세 차례 공사로 혜정교에서 창덕궁 동구까지 행랑 2,027칸을 지었다. 시전 체제가 끝난 시기는 미확인.',
+    in_1750:'있었다. 다만 행랑 한 채씩은 원도에 그려져 있지 않아, 원도에서 읽은 길을 따라 표시용으로 늘어놓았다.'+(zone?` 이 구간을 ${zone.hangul}으로 둔 것은 ${zone.basis}에 있었다는 문헌 위치를 따른 가정이다.`:''),
+    sources:SOURCES}};
+  const box=new THREE.Mesh(new THREE.BoxGeometry(r.length,height+1.5,depth+3),pickMaterial);
+  box.name='shop-pick';box.userData={feature,record:i};picks.add(box);
+ });
  const dummy=new THREE.Object3D(),tilt=new THREE.Euler();
  let exaggeration=1,mapVisible=true,visible=0;
  function updateHeights(ex){
@@ -199,6 +224,11 @@ export function createSijeon(data,sourceSurface,landmarks){
    dummy.position.set(r.x+dz*s+g.along*c,r.floor+.4+.8+.27,r.z+dz*c-g.along*s);
    dummy.quaternion.setFromEuler(tilt.set(-1,r.yaw+Math.PI,0,'YXZ'));dummy.scale.set(1,1,1);dummy.updateMatrix();mesh.setMatrixAt(j,dummy.matrix);
   });
+  picks.children.forEach(box=>{
+   const r=records[box.userData.record];box.visible=!!r.displayed;if(!r.displayed)return;
+   const s=Math.sin(r.yaw),c=Math.cos(r.yaw),dz=-.75;
+   box.position.set(r.x+dz*s,r.floor+.4+(height+1.5)/2,r.z+dz*c);box.rotation.set(0,r.yaw,0);
+  });
   for(const board of signs){
    const r=records[board.userData.record];board.visible=!!r.displayed;if(!r.displayed)continue;
    const s=Math.sin(r.yaw),c=Math.cos(r.yaw),dz=-depth*.5-2.05,eave=r.floor+.35+height;
@@ -213,6 +243,6 @@ export function createSijeon(data,sourceSurface,landmarks){
  const setMapVisible=value=>{mapVisible=value;updateHeights(exaggeration)};
  const toggle=document.getElementById('sijeon3d');
  if(toggle)toggle.onchange=e=>{group.visible=e.target.checked};
- return {group,records,signs,goodsMeshes,keeperCount:keeperSpots.length,updateGround,updateHeights,setMapVisible,get visibleCount(){return visible},
+ return {group,records,signs,goodsMeshes,picks,keeperCount:keeperSpots.length,updateGround,updateHeights,setMapVisible,get visibleCount(){return visible},
   get bayCount(){return records.reduce((sum,r)=>sum+r.bays,0)}};
 }

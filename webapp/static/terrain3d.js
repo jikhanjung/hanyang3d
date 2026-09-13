@@ -5,6 +5,7 @@ import {createTrees} from './trees.js';
 import {createPedestrians,createWalker} from './pedestrians.js';
 import {createCollision} from './collision.js';
 import {createHouseSite} from './house_site.js';
+import {createSiteMarker} from './site_marker.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
 import {createPagoda} from './pagoda.js';
@@ -196,6 +197,7 @@ async function main(){
   if(feature.display_model==='wongaksa_pagoda'){box.material.visible=false;box.add(createPagoda(feature,w,h,d))}
   if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d))}
   if(feature.display_model==='bell_tower'){box.material.visible=false;box.add(createBellTower(feature,w,h,d))}
+  if(feature.display_model==='site_marker'){box.material.visible=false;foundation.visible=false;box.add(createSiteMarker(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.display_model==='house_site'){box.material.visible=false;foundation.visible=false;box.add(createHouseSite(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
@@ -347,7 +349,8 @@ async function main(){
    const approach=new THREE.Mesh(geometry,b.material);approach.name='bridge-approach';group.add(approach);
   }
  }
- const selectable=()=>[...(buildings.visible?buildings.children:[]),...(bridges.visible?bridges.children:[])];
+ const selectable=()=>[...(buildings.visible?buildings.children:[]),...(bridges.visible?bridges.children:[]),
+  ...(buildings.visible&&sijeon?.group.visible?sijeon.picks.children.filter(box=>box.visible):[])];
  el('water3d').onchange=()=>{waterLayer.visible=el('water3d').checked;bridges.visible=waterLayer.visible;selected=null;clearHover()};
  el('water-focus').onclick=()=>{const target=sourceSurface(1523,1554);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(0,900,1300));controls.update()};
  el('namsan-focus').onclick=()=>{const target=sourceSurface(...exp.terrain_alignment.anchors[0].pixel);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(400,1200,1700));controls.update()};
