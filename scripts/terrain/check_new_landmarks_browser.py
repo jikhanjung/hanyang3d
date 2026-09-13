@@ -46,5 +46,22 @@ with sync_playwright() as p:
  # The two police offices flank the bell tower along Unjongga.
  assert place['leftOfficeEast']>300 and place['rightOfficeWest']>200,place
  assert place['allInside'],place
+ # None of the added landmarks may sit on a street read from the old map.
+ roads=page.evaluate('''async(ids)=>{const t=terrain3d;
+  const img=new Image();img.src='/gis/roads/doseong_road_mask.png';await img.decode();
+  const c=document.createElement('canvas');c.width=img.width;c.height=img.height;
+  const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0);
+  const MX=2.0838,MY=1.8092,out={};
+  for(const b of t.buildings.children){
+   const f=b.userData.feature;if(!ids.includes(f.id)||!f.source_position)continue;
+   const [px,py]=f.source_position.pixel,[w,,d]=f.symbol_size_m;
+   const hw=Math.round(w/2/MX),hd=Math.round(d/2/MY);
+   const data=ctx.getImageData(px-hw,py-hd,hw*2+1,hd*2+1).data;
+   let hits=0;for(let i=3;i<data.length;i+=4)if(data[i]>100)hits++;
+   out[f.id]=hits;
+  }
+  return out}''',list(EXPECTED))
+ print(roads,flush=True)
+ assert all(v==0 for v in roads.values()),roads
  assert not errors,errors
  print('PASS: bell tower at the drawn crossing, offices and shrine placed, grounded and labelled',flush=True);b.close()
