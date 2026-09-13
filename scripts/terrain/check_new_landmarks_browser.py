@@ -9,6 +9,7 @@ EXPECTED={
  'uporocheong':('우포도청','yukjo-compound'),
  'hullyeonwon':('훈련원','training-ground'),
  'gyeongmogung':('경모궁','palace-compound'),
+ 'wongaksa_pagoda':('원각사지 십층석탑','wongaksa-pagoda'),
 }
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
@@ -33,6 +34,12 @@ with sync_playwright() as p:
   return {storeys:u.storeys,bays:u.bays,bellHeightM:u.bellHeightM,bellMouthM:u.bellMouthM,meshes:m.children.length,bellInsideHall:u.bellBottom>0&&u.bellBottom+u.bellHeightM<u.hallTop,
    parts:['great-bell','bell-hook','hall-column','gable-panel','tile-roof','footing-stone'].filter(p=>u.parts.includes(p)),upper:u.parts.includes('upper-column')}}''')
  print(belfry,flush=True)
+ # Around 1750 the pagoda stood seven storeys high with its top three lying beside it.
+ pagoda=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='wongaksa_pagoda');
+  const u=b.getObjectByName('wongaksa-pagoda').userData;return {standing:u.standingStoreys,fallen:u.fallenStoreys,height:u.standingHeightM,
+   parts:['pagoda-base','pagoda-storey','pagoda-roof','fallen-storey'].filter(p=>u.parts.includes(p))}}''')
+ print(pagoda,flush=True)
+ assert pagoda['standing']==7 and pagoda['fallen']==3 and 7<pagoda['height']<12 and len(pagoda['parts'])==4,pagoda
  # The drill ground keeps an open field south of its offices.
  field=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='hullyeonwon');
   const m=b.getObjectByName('training-ground'),[w,,d]=b.userData.feature.symbol_size_m;
@@ -54,7 +61,7 @@ with sync_playwright() as p:
    uigeumbuNorthWest:[at('uigeumbu').position.x<at('jongru').position.x,at('uigeumbu').position.z<at('jongru').position.z],
    leftOfficeEast:at('jwaporocheong').position.x-at('jongru').position.x,
    rightOfficeWest:at('jongru').position.x-at('uporocheong').position.x,
-   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung'].every(id=>{
+   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda'].every(id=>{
     const f=at(id).userData.feature;return f.source_position?inside(...f.source_position.pixel):true})}}''')
  print(place,flush=True)
  # Both sit in the blocks either side of the drawn Jongno crossing, not on the streets.

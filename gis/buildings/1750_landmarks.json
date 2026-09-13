@@ -2033,6 +2033,86 @@
       }
     },
     {
+      "id": "wongaksa_pagoda",
+      "name": "원각사지 십층석탑",
+      "lat": 37.57118,
+      "lon": 126.98817,
+      "category": "탑",
+      "reference": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100020000",
+      "note": "세조 때 원각사에 세운 대리석 십층석탑. 절은 없어졌으나 탑이 남아 백탑으로 불렸습니다.",
+      "position_status": "modern_site_on_torn_sheet_band",
+      "symbol_size_m": [
+        14,
+        10,
+        14
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "기단 폭 약 7 m, 서 있던 일곱 층까지 약 9 m로 잡은 표시용 치수. 실측값이 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1467,
+          "end_year": null,
+          "status": "standing_top_three_storeys_fallen_c1592_reset_1947",
+          "note": "1465년 원각사를 세우고 1467년 탑을 세웠다. 1504년 절이 없어졌다. 임진왜란 무렵 맨 위 3층이 떨어져 탑 옆에 놓였고 1947년 다시 올렸다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1946,
+          "reference_year": 1750,
+          "status": "seven_storeys_standing_three_on_ground",
+          "note": "1750년 무렵에는 일곱 층만 서 있고 세 층은 곁에 놓여 있던 모습으로 표시한다."
+        },
+        "sources": [
+          {
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100020000",
+            "supports": "1467 marble pagoda, three-tier base and ten storeys"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EC%9B%90%EA%B0%81%EC%82%AC%EC%A7%80_%EC%8B%AD%EC%B8%B5%EC%84%9D%ED%83%91",
+            "supports": "top three storeys fallen until reset in 1947"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "modern_site_converted_to_source_pixels",
+        "resolved_on": "2026-09-13",
+        "precision_m": 30,
+        "note": "탑골공원 석탑 위치를 원도 좌표로 옮겼다. 부분도 8과 전체 원도 모두 이 일대가 찢겨 탑 기호나 글씨를 확인할 수 없었다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1637,
+          1395
+        ],
+        "method": "modern_site_converted_torn_sheet_band",
+        "note": "원도의 이 자리는 종이가 찢겨 그림이 없다. 현대 위치를 원도 좌표로 환산했으며 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "wongaksa_pagoda",
+      "display_yaw_deg": 0,
+      "model_note": "3층 기단과 10층 탑신을 단순화한 개념 모형. 1750년 무렵 모습대로 일곱 층만 세우고 맨 위 세 층은 곁에 눕혔다. 조각은 표현하지 않았다.",
+      "info": {
+        "summary": "세조가 세운 원각사의 대리석 십층석탑. 절은 없어졌지만 탑이 남아 조선 후기에 백탑이라 불렸다. 지금의 탑골공원 자리다.",
+        "period": "1465년 원각사 창건, 1467년 탑 건립. 1504년 절이 없어졌다. 임진왜란 무렵 맨 위 3층이 떨어져 곁에 놓였고 1947년 다시 올렸다. 현존(국보).",
+        "in_1750": "일곱 층만 서 있고 맨 위 세 층은 탑 옆 땅에 놓여 있었다. 원도의 이 자리는 찢겨 있어 현대 위치로 배치했다.",
+        "sources": [
+          {
+            "title": "국가유산포털 서울 원각사지 십층석탑",
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100020000"
+          },
+          {
+            "title": "우리역사넷 원각사지 십층석탑 1467",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300756&code=kc_age_30"
+          },
+          {
+            "title": "위키백과 서울 원각사지 십층석탑",
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EC%9B%90%EA%B0%81%EC%82%AC%EC%A7%80_%EC%8B%AD%EC%B8%B5%EC%84%9D%ED%83%91"
+          }
+        ]
+      }
+    },
+    {
       "id": "uigeumbu",
       "name": "의금부",
       "lat": 37.5705,
@@ -2103,7 +2183,7 @@
       "category": "관청",
       "reference": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30",
       "note": "도성 동쪽을 맡은 포도청입니다. 현재 단성사 일대로 전합니다.",
-      "position_status": "modern_site_aligned_to_drawn_crossing",
+      "position_status": "manual_source_symbol_hint",
       "symbol_size_m": [
         45,
         8,
@@ -2139,16 +2219,16 @@
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
           1714,
-          1405
+          1379
         ],
-        "method": "north_side_of_drawn_unjongga_clear_of_roads",
-        "note": "원도 길 판독 자료에서 운종가 북쪽 약 40 m에 두되, 골목에 걸치지 않도록 서쪽으로 약 37 m 옮긴 자리다. 관청 기호나 글씨를 원도에서 확인한 값은 아니다.",
+        "method": "label_read_on_detail_sheet_clear_of_roads",
+        "note": "부분도 8에서 左捕廳 글씨를 찾아 모전교·광통교 기준으로 환산한 (1723, 1379)에서, 길 판독 마스크와 겹치지 않는 가장 가까운 자리로 약 19 m 서쪽에 두었다.",
         "detail_asset": "asset-0002"
       },
       "info": {
         "summary": "도성 동쪽의 치안을 맡은 포도청. 오늘날 묘동 단성사 일대로 전한다.",
         "period": "조선 전기 설치. 1894년 경무청으로 개편.",
-        "in_1750": "있었다. 원도에서 기호를 찾지 못해 표시 위치로 두었다.",
+        "in_1750": "있었다. 도성대지도 부분도의 左捕廳 글씨 자리에 두었다.",
         "sources": [
           {
             "title": "우리역사넷 포도청",
