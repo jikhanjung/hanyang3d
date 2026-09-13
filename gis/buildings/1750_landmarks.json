@@ -175,6 +175,88 @@
       }
     },
     {
+      "id": "geumwiyeong",
+      "name": "금위영",
+      "category": "관청",
+      "reference": "https://ko.wikipedia.org/wiki/%EA%B8%88%EC%9C%84%EC%98%81",
+      "note": "도성 방어와 창덕궁·창경궁 수비를 맡은 군영. 본영은 창덕궁 돈화문 서쪽에 있었습니다.",
+      "display_model": "yukjo_compound",
+      "court_type": "large",
+      "position_status": "text_offset_from_drawn_gate",
+      "symbol_size_m": [
+        40,
+        9,
+        36
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "군영 본영의 담장·대청을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1682,
+          "end_year": 1895,
+          "status": "founded_1682_merged_1881_abolished_1895",
+          "note": "1682년 정초군과 훈련별대를 합쳐 설치했다. 1881년 장어영에 흡수되고 1895년 폐지됐다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": [
+          {
+            "url": "https://encykorea.aks.ac.kr/Article/E0007930",
+            "supports": "founded 1682, merged 1881, abolished 1895"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EA%B8%88%EC%9C%84%EC%98%81",
+            "supports": "headquarters about 30 m west of Donhwamun, Unni-dong"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "text_description_relative_to_gate",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "문헌의 “돈화문 서쪽 30여 m, 지금의 운니동” 설명을 따랐다. 원도의 돈화문 서쪽 노란 칸 글씨들은 해상도가 낮아 禁衛營으로 읽어 내지 못했다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1697,
+          1064
+        ],
+        "method": "offset_west_of_drawn_donhwamun_clear_of_roads",
+        "note": "원도에서 판독한 돈화문 (1717, 1064)의 서쪽 30 m 지점을 기준으로, 길 판독 마스크와 돈화문 모형에 닿지 않도록 12.5 m 더 서쪽에 두었다."
+      },
+      "display_yaw_deg": 0,
+      "model_note": "담장·문·마당·대청을 단순화한 관청 개념 모형. 군영의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "도성 방어와 창덕궁·창경궁 수비, 국왕 행차 호위를 맡은 오군영의 하나. 본영은 창덕궁 돈화문 서쪽, 지금의 운니동에 있었다.",
+        "period": "1682년 정초군과 훈련별대를 합쳐 설치. 1881년 장어영에 흡수, 1895년 폐지.",
+        "in_1750": "있었다. 원도의 글씨는 읽어 내지 못해 문헌의 돈화문 서쪽 30여 m 설명을 따라 배치했다.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 금위영",
+            "url": "https://encykorea.aks.ac.kr/Article/E0007930"
+          },
+          {
+            "title": "우리역사넷 금위영 1682~1895",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300110&code=kc_age_30"
+          },
+          {
+            "title": "위키백과 금위영",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B8%88%EC%9C%84%EC%98%81"
+          },
+          {
+            "title": "종로구 문화관광 금위영서영터",
+            "url": "https://tour.jongno.go.kr/tour/tour/indvdlz/view.do?nttId=26815&viewType=BODY&dongCode=1111014900"
+          }
+        ]
+      }
+    },
+    {
       "id": "honghwamun",
       "name": "홍화문 · 창경궁 정문",
       "category": "궁궐",
