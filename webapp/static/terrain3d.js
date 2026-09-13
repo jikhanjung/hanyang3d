@@ -23,7 +23,12 @@ const project=(lon,lat)=>[R*lon*Math.PI/180,R*Math.log(Math.tan(Math.PI/4+lat*Ma
 async function main(){
  const loading=window.terrainLoading={stage:0,history:[],ready:false};
  el('map-options-toggle').onclick=()=>{const open=el('map-options').classList.toggle('open');el('map-options-toggle').setAttribute('aria-expanded',String(open))};
- const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')];toolbarControls.forEach(c=>c.disabled=true);
+ // About opens a short project introduction over the map and closes the menu.
+ const closeAbout=()=>{el('about-panel').hidden=true};
+ el('about-open').onclick=()=>{el('about-panel').hidden=false;el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false');el('about-close').focus()};
+ el('about-close').onclick=closeAbout;
+ document.addEventListener('keydown',event=>{if(event.code==='Escape'&&!el('about-panel').hidden)closeAbout()});
+ const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')].filter(c=>c.id!=='about-open');toolbarControls.forEach(c=>c.disabled=true);
  let granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
 
  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5e4');

@@ -9,6 +9,11 @@ with sync_playwright() as p:
  page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
  assert page.get_attribute('#map-options-toggle','aria-label')=='설정'
  assert page.evaluate("terrain3d.districtNames.children.some(c=>c.userData.name==='경복궁')")
+ # The menu's About button opens and closes the project introduction.
+ page.dispatch_event('#map-options-toggle','click');page.dispatch_event('#about-open','click')
+ about=page.evaluate("()=>{const a=document.getElementById('about-panel');return {hidden:a.hidden,text:a.innerText,menuOpen:document.getElementById('map-options').classList.contains('open')}}")
+ assert not about['hidden'] and '도성대지도' in about['text'] and not about['menuOpen'],about
+ page.dispatch_event('#about-close','click');assert page.evaluate("document.getElementById('about-panel').hidden")
  # Clicking a building opens its information card.
  point=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='jongru');
   t.controls.target.copy(b.position);t.camera.position.set(b.position.x+30,b.position.y+30,b.position.z+45);t.controls.update();t.renderer.render(t.scene,t.camera);
@@ -41,4 +46,4 @@ with sync_playwright() as p:
  print('pedestrians',people,flush=True)
  assert people['dodge']>.5 and people['away']>1 and people['close']==0,people
  assert not errors,errors
- print('PASS: popup, walking collision, pedestrian side-stepping and 경복궁 label',flush=True);b.close()
+ print('PASS: About panel, popup, walking collision, pedestrian side-stepping and 경복궁 label',flush=True);b.close()

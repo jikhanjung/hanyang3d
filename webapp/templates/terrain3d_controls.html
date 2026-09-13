@@ -5,4 +5,5 @@
 <label class="map-opacity">옛지도 <input id="opacity3d" aria-label="옛 지도 불투명도" type="range" min="0" max="100" value="50"> <output id="opacity-value">50%</output></label>
 {% if canvas_only %}{% include "terrain3d_layers.html" %}{% endif %}
 <label hidden><input id="anchors3d" type="checkbox">보정점</label>
+<button id="about-open" type="button" aria-haspopup="dialog" aria-controls="about-panel">About</button>
 </div>
