@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.1.13`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.1.14`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 
@@ -13,12 +13,12 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- Docker Hub: `honestjung/hanyang3d:v0.1.13`
+- Docker Hub: `honestjung/hanyang3d:v0.1.14`
 - 배포 digest: `sha256:e1c61b3ac3730011f3b1c63070ce6705f24621b6422e00db0860b30319a558e6`
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 
-`v0.1.13`는 전체 화면 3D에 옛지도 슬라이더(50%), 보정점(기본 꺼짐), 1인칭 걷기 버튼을 제공한다. 청계천은 원도 구간만 표시한다. 이전 `v0.0.1` 이미지와 데이터는 서버에 보관해 롤백할 수 있다.
+`v0.1.14`는 전체 화면 3D에 옛지도 슬라이더(50%), 보정점(기본 꺼짐), 1인칭 걷기 버튼을 제공한다. 청계천은 원도 구간만 표시한다. 이전 `v0.0.1` 이미지와 데이터는 서버에 보관해 롤백할 수 있다.
 
 ## 구성과 데이터
 
@@ -34,7 +34,7 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 원본 및 `gis/georeferenced`가 준비된 현재 작업 디렉터리에서:
 
 ```bash
-bash deploy/build.sh v0.1.13
+bash deploy/build.sh v0.1.14
 ```
 
 원본 해시 검사 → 데이터 묶음 → 이미지 빌드 → 컨테이너 내 Django 검사 → 누락/버전 불일치 시작 차단 검사 → 실제 Gunicorn HTTP 검사 → 내보내기 순서다.
@@ -44,10 +44,10 @@ Docker Hub push나 원격 배포는 빌드 명령에 포함하지 않는다.
 생성 파일(Git 제외):
 
 ```text
-dist/hanyang3d-image-v0.1.13.tar.gz
-dist/hanyang3d-data-v0.1.13.tar.gz
-dist/hanyang3d-host-v0.1.13.tar.gz
-dist/SHA256SUMS-v0.1.13
+dist/hanyang3d-image-v0.1.14.tar.gz
+dist/hanyang3d-data-v0.1.14.tar.gz
+dist/hanyang3d-host-v0.1.14.tar.gz
+dist/SHA256SUMS-v0.1.14
 ```
 
 후속 버전은 `deploy/DOCKER_VERSION`과 `deploy/deploy.toml`을 갱신한 뒤 같은 명령을 사용한다.
@@ -63,20 +63,20 @@ dist/SHA256SUMS-v0.1.13
 
 ```bash
 ssh dolfinid 'mkdir -p ~/hanyang3d-release'
-scp dist/hanyang3d-*-v0.1.13.tar.gz dist/SHA256SUMS-v0.1.13 dolfinid:~/hanyang3d-release/
+scp dist/hanyang3d-*-v0.1.14.tar.gz dist/SHA256SUMS-v0.1.14 dolfinid:~/hanyang3d-release/
 ```
 
 서버에서:
 
 ```bash
 cd ~/hanyang3d-release
-sha256sum -c SHA256SUMS-v0.1.13
-docker load -i hanyang3d-image-v0.1.13.tar.gz
+sha256sum -c SHA256SUMS-v0.1.14
+docker load -i hanyang3d-image-v0.1.14.tar.gz
 sudo install -d -o "$(id -un)" -g "$(id -gn)" /srv/hanyang3d
-tar -xzf hanyang3d-host-v0.1.13.tar.gz -C /srv/hanyang3d
+tar -xzf hanyang3d-host-v0.1.14.tar.gz -C /srv/hanyang3d
 mkdir -p /srv/hanyang3d/data
-mkdir /srv/hanyang3d/data/v0.1.13
-tar -xzf hanyang3d-data-v0.1.13.tar.gz -C /srv/hanyang3d/data/v0.1.13
+mkdir /srv/hanyang3d/data/v0.1.14
+tar -xzf hanyang3d-data-v0.1.14.tar.gz -C /srv/hanyang3d/data/v0.1.14
 cd /srv/hanyang3d
 cp .env.django.example .env.django
 chmod 600 .env.django
@@ -85,7 +85,7 @@ chmod 600 .env.django
 `.env.django`의 `DJANGO_SECRET_KEY`를 충분히 긴 무작위 값으로 바꾼다. 공개 도메인을 쓸 경우 `DJANGO_ALLOWED_HOSTS`에 그 도메인을 추가한다(healthcheck용 `127.0.0.1,localhost` 유지).
 
 ```bash
-bash deploy.sh v0.1.13
+bash deploy.sh v0.1.14
 curl -f http://127.0.0.1:8013/healthz
 ```
 
@@ -199,3 +199,4 @@ v0.1.10은 운종가 북쪽에 평시서를 원도의 平市署 글씨 자리로
 v0.1.11은 혜민서 남쪽에 영희전을 원도의 담장 구역 자리로 더한다.
 v0.1.12는 부분도 12장에서 읽은 관청·궁가·사당 33곳을 더하고 관상감·금위영·훈국신영을 글씨 자리로 옮긴다.
 v0.1.13은 정도전 집터를 처음 자리의 표석으로 되돌리고, 운종가 상자를 없애고, 시전 행랑을 누르면 설명이 나오게 한다.
+v0.1.14는 종묘 제외 구역을 원도 담장 범위로 줄여 종로3가~4가 길가에 추정 건물을 채운다.
