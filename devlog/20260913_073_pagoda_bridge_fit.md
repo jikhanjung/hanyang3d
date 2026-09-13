@@ -31,3 +31,9 @@
 ## 검증
 
 `scripts/terrain/check_new_landmarks_browser.py`에서 탑이 원도의 수표교보다 20 m 넘게 서쪽, 장통교보다 20 m 넘게 동쪽, 수표교보다 100 m 넘게 북쪽에 있는지 확인한다.
+
+## 배포
+
+- v0.1.4로 배포했다. Docker Hub digest: `sha256:2fb3d4e1f58b8086bed06dea825934b62ae6641a18faefe15958381bbb67c4f1`.
+- 공개 healthz 정상: v0.1.4, resources 65. 운영 화면에서 탑이 수표교보다 95 m 서쪽, 장통교보다 101 m 동쪽에 있고 길과 겹치지 않음을 확인했다.
+- 서버 이미지는 v0.1.4와 직전 v0.1.3만 남겼다.
