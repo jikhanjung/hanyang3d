@@ -13,6 +13,7 @@ EXPECTED={
  'geumwiyeong':('금위영','yukjo-compound'),
  'eoyeongcheong':('어영청','yukjo-compound'),
  'yuksanggung':('육상궁','palace-compound'),
+ 'hyeminseo':('혜민서','yukjo-compound'),
 }
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
@@ -66,6 +67,12 @@ with sync_playwright() as p:
   return {pixel:f.source_position.pixel,depictionStart:f.temporal.depiction.start_year,info:!!f.info}}''')
  print(shrine,flush=True)
  assert shrine['pixel']==[1023,757] and shrine['depictionStart']==1753 and shrine['info'],shrine
+ # Hyeminseo sits on its drawn 惠民署 label south of the stream, west of Supyogyo.
+ clinic=page.evaluate('''()=>{const t=terrain3d,h=t.buildings.children.find(b=>b.userData.feature.id==='hyeminseo');
+  const s=t.bridges.children.find(b=>b.userData.feature.name.startsWith('수표교')).position;
+  return {pixel:h.userData.feature.source_position.pixel,southOfSupyo:h.position.z-s.z,westOfSupyo:s.x-h.position.x}}''')
+ print(clinic,flush=True)
+ assert clinic['pixel']==[1608,1661] and clinic['southOfSupyo']>100 and clinic['westOfSupyo']>0,clinic
  # The drill ground keeps an open field south of its offices.
  field=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='hullyeonwon');
   const m=b.getObjectByName('training-ground'),[w,,d]=b.userData.feature.symbol_size_m;
@@ -87,7 +94,7 @@ with sync_playwright() as p:
    uigeumbuNorthWest:[at('uigeumbu').position.x<at('jongru').position.x,at('uigeumbu').position.z<at('jongru').position.z],
    leftOfficeEast:at('jwaporocheong').position.x-at('jongru').position.x,
    rightOfficeWest:at('jongru').position.x-at('uporocheong').position.x,
-   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung'].every(id=>{
+   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung','hyeminseo'].every(id=>{
     const f=at(id).userData.feature;return f.source_position?inside(...f.source_position.pixel):true})}}''')
  print(place,flush=True)
  # Both sit in the blocks either side of the drawn Jongno crossing, not on the streets.

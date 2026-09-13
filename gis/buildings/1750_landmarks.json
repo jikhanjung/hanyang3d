@@ -2456,6 +2456,84 @@
       }
     },
     {
+      "id": "hyeminseo",
+      "name": "혜민서",
+      "category": "관청",
+      "reference": "https://ko.wikipedia.org/wiki/%ED%98%9C%EB%AF%BC%EC%84%9C",
+      "note": "서민의 병을 고치고 의녀를 가르치던 관청. 도성대지도에 惠民署로 적혀 있습니다.",
+      "display_model": "yukjo_compound",
+      "position_status": "manual_source_symbol_hint",
+      "symbol_size_m": [
+        40,
+        9,
+        34
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "관청 담장·대청을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1392,
+          "end_year": 1882,
+          "status": "founded_1392_renamed_1414_1466_abolished_1882",
+          "note": "1392년 혜민고국으로 설치, 1414년 혜민국, 1466년 혜민서로 고쳤다. 1882년 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%ED%98%9C%EB%AF%BC%EC%84%9C",
+            "supports": "founded 1392, renamed 1414 and 1466, abolished 1882; site at Euljiro 3-ga 65"
+          },
+          {
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_025_0040_0010_0020_0050",
+            "supports": "treated common people and trained female physicians"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_detail_sheet",
+        "resolved_on": "2026-09-13",
+        "precision_m": 20,
+        "note": "혜민서 터 표석은 을지로3가역 근처(을지로3가 65)에 있다. 이 일대는 원도 변형이 커 현대 위치 환산만으로는 수표교보다 동쪽 멀리 놓이므로, 원도 글씨를 따른다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1608,
+          1661
+        ],
+        "method": "yellow_cartouche_read_on_detail_sheet_and_full_map",
+        "detail_asset": "asset-0002",
+        "note": "부분도 8의 노란 칸 惠民署 글씨를 모전교·광통교 기준으로 환산한 (1604, 1660)과 전체 원도에서 읽은 (1612, 1662)의 가운데다. 길 판독 마스크와 다리에 닿지 않는다."
+      },
+      "display_yaw_deg": 0,
+      "model_note": "담장·문·마당·대청을 단순화한 관청 개념 모형. 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "서민의 병을 치료하고 약을 나누며 의녀를 가르치던 의료 관청. 터는 지금의 을지로3가역 근처다.",
+        "period": "1392년 혜민고국으로 설치, 1414년 혜민국, 1466년 혜민서로 개칭. 1882년 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도에 惠民署 노란 칸 글씨가 있어 그 자리에 두었다.",
+        "sources": [
+          {
+            "title": "위키백과 혜민서",
+            "url": "https://ko.wikipedia.org/wiki/%ED%98%9C%EB%AF%BC%EC%84%9C"
+          },
+          {
+            "title": "우리역사넷 혜민서",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_025_0040_0010_0020_0050"
+          },
+          {
+            "title": "우리역사넷 교과서 용어해설 혜민서",
+            "url": "https://contents.history.go.kr/front/tg/view.do?levelId=tg_003_0730"
+          }
+        ]
+      }
+    },
+    {
       "id": "hullyeonwon",
       "name": "훈련원",
       "lat": 37.5666,
