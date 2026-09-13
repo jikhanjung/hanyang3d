@@ -425,6 +425,85 @@
       }
     },
     {
+      "id": "pyeongsiseo",
+      "name": "평시서",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)",
+      "note": "시전의 물가·도량형과 영업 허가를 감독한 관청. 도성대지도 부분도에 平市署로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        28,
+        9,
+        24
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "작은 관청 청사와 마당을 담은 표시용 치수. 바로 북쪽 원각사지 석탑과 겹치지 않게 작게 잡았으며 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1466,
+          "end_year": 1894,
+          "status": "renamed_1466_abolished_1894",
+          "note": "1392년 경시서로 출발해 1466년(세조 12) 평시서로 고쳤다. 처음 중부 견평방에 있다가 중부 경행방으로 옮겼다. 1894년(고종 31) 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도 8에 平市署로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)",
+            "supports": "Gyeongsiseo 1392, renamed 1466, Gyeongpyeong-bang then Gyeonghaeng-bang, abolished 1894"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%ED%8F%89%EC%8B%9C%EC%84%9C",
+            "supports": "duties and staff"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "지금 남아 있는 표석이나 정확한 현대 주소를 찾지 못했다. 옮겨 간 경행방은 지금의 낙원동·경운동·탑골공원 일대다. 화면 배치는 원도 글씨를 따른다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1593,
+          1419
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0002",
+        "note": "부분도 8에서 운종가 바로 북쪽, 남북으로 난 붉은 길 서쪽의 노란 칸 글씨 平市署를 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않고 원각사지 석탑과도 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 평시서의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "시전 상인을 감독한 관청. 물가를 조절하고 자·되·저울 같은 도량형을 검사했으며, 시전의 영업 허가와 금난전권을 맡았다.",
+        "period": "1392년 경시서로 설치, 1466년 평시서로 개칭. 처음 견평방에 있다가 경행방으로 옮김. 1894년 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도에 운종가 시전 바로 북쪽, 원각사지 석탑 남쪽에 平市署로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 평시서",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)"
+          },
+          {
+            "title": "위키백과 평시서",
+            "url": "https://ko.wikipedia.org/wiki/%ED%8F%89%EC%8B%9C%EC%84%9C"
+          },
+          {
+            "title": "한양도성박물관 도성대지도",
+            "url": "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR"
+          }
+        ]
+      }
+    },
+    {
       "id": "honghwamun",
       "name": "홍화문 · 창경궁 정문",
       "category": "궁궐",

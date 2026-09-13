@@ -51,6 +51,14 @@
 - **1750년 무렵**: 있었다. 도성대지도 흥인지문 밖에 關王廟로 적혀 있다. 글씨 자리가 길과 겹쳐 36 m 남쪽에 두었다.
 - **출처**: [위키백과 서울 동관왕묘](https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EB%8F%99%EA%B4%80%EC%99%95%EB%AC%98), [국가유산포털 서울 동관왕묘](https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121101420000), [우리역사넷 관왕묘와 무성왕묘](https://contents.history.go.kr/mobile/km/view.do?levelId=km_007_0060_0010_0030_0010)
 
+### 평시서
+
+시전 상인을 감독한 관청이다. 물가를 조절하고 자·되·저울 같은 도량형을 검사했으며, 시전의 영업 허가와 금난전권을 맡았다.
+
+- **존재 시기**: 1392년 경시서로 설치, 1466년(세조 12) 평시서로 개칭. 처음 중부 견평방에 있다가 중부 경행방으로 옮겼다. 1894년 폐지.
+- **1750년 무렵**: 있었다. 도성대지도 부분도 8에 운종가 시전 바로 북쪽, 원각사지 석탑 남쪽에 平市署로 적혀 있어 그 글씨 자리에 두었다.
+- **출처**: [조선왕조실록사전 평시서](http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)), [위키백과 평시서](https://ko.wikipedia.org/wiki/%ED%8F%89%EC%8B%9C%EC%84%9C), [한양도성박물관 도성대지도](https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR)
+
 ### 창경궁
 
 성종이 대비들을 모시려고 수강궁 터를 넓혀 지은 궁궐로, 창덕궁과 담을 맞대고 동궐을 이뤘다. 지도에는 정전인 명정전 일대를 단층 지붕 전각으로 표시했다.
