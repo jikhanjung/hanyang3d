@@ -17,6 +17,7 @@ EXPECTED={
  'gwansanggam':('관상감','observatory'),
  'dongmyo':('동관왕묘','palace-compound'),
  'pyeongsiseo':('평시서','yukjo-compound'),
+ 'yeonghuijeon':('영희전','palace-compound'),
 }
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
@@ -97,6 +98,11 @@ with sync_playwright() as p:
   return {pixel:m.userData.feature.source_position.pixel,southOfPagoda:m.position.z-pg.position.z,gapM:(m.position.z-md/2)-(pg.position.z+pd/2)}}''')
  print(market,flush=True)
  assert market['pixel']==[1593,1419] and market['southOfPagoda']>15 and market['gapM']>0,market
+ # Yeonghuijeon sits on its drawn walled compound, well south of Hyeminseo.
+ jinjeon=page.evaluate('''()=>{const t=terrain3d,at=id=>t.buildings.children.find(b=>b.userData.feature.id===id);
+  const y=at('yeonghuijeon'),h=at('hyeminseo');return {pixel:y.userData.feature.source_position.pixel,detail:y.userData.feature.source_position.detail_asset,southOfHyeminseo:y.position.z-h.position.z}}''')
+ print(jinjeon,flush=True)
+ assert jinjeon['pixel']==[1643,1878] and jinjeon['detail']=='asset-0013' and jinjeon['southOfHyeminseo']>300,jinjeon
  # The drill ground keeps an open field south of its offices.
  field=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='hullyeonwon');
   const m=b.getObjectByName('training-ground'),[w,,d]=b.userData.feature.symbol_size_m;
@@ -118,7 +124,7 @@ with sync_playwright() as p:
    uigeumbuNorthWest:[at('uigeumbu').position.x<at('jongru').position.x,at('uigeumbu').position.z<at('jongru').position.z],
    leftOfficeEast:at('jwaporocheong').position.x-at('jongru').position.x,
    rightOfficeWest:at('jongru').position.x-at('uporocheong').position.x,
-   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung','hyeminseo','gwansanggam','pyeongsiseo'].every(id=>{
+   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung','hyeminseo','gwansanggam','pyeongsiseo','yeonghuijeon'].every(id=>{
     const f=at(id).userData.feature;return f.source_position?inside(...f.source_position.pixel):true})}}''')
  print(place,flush=True)
  # Both sit in the blocks either side of the drawn Jongno crossing, not on the streets.

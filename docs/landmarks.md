@@ -59,6 +59,14 @@
 - **1750년 무렵**: 있었다. 도성대지도 부분도 8에 운종가 시전 바로 북쪽, 원각사지 석탑 남쪽에 平市署로 적혀 있어 그 글씨 자리에 두었다.
 - **출처**: [조선왕조실록사전 평시서](http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)), [위키백과 평시서](https://ko.wikipedia.org/wiki/%ED%8F%89%EC%8B%9C%EC%84%9C), [한양도성박물관 도성대지도](https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR)
 
+### 영희전
+
+태조·세조·원종·숙종 등 역대 임금의 어진을 모시고 제사를 지낸 진전이다. 지금의 중구 저동, 옛 중부경찰서 자리 부근에 있었다.
+
+- **존재 시기**: 1619년(광해군 11) 남별전으로 시작. 1677년 중건, 1690년(숙종 16) 영희전으로 개칭. 1748년(영조 24) 5실로 중건. 1899년 경모궁 터로 이전.
+- **1750년 무렵**: 있었다. 도성대지도에 훈도방(薰陶坊) 남쪽, 나무와 담장으로 둘러싼 永禧殿으로 그려져 있다. 부분도11에서 담장 안 글씨를 읽고, 전체 원도의 담장 그림 중심에 두었다.
+- **출처**: [한국민족문화대백과사전 영희전](https://encykorea.aks.ac.kr/Article/E0037870), [서울역사아카이브 도성대지도 부분도11](https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=dae3d5ce-3616-4256-a8b9-ab636d8d8723&fileSn=1100&type=C&upperNodeId=CTGRY780)
+
 ### 창경궁
 
 성종이 대비들을 모시려고 수강궁 터를 넓혀 지은 궁궐로, 창덕궁과 담을 맞대고 동궐을 이뤘다. 지도에는 정전인 명정전 일대를 단층 지붕 전각으로 표시했다.
