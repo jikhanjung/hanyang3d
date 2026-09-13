@@ -42,7 +42,9 @@ export function createPedestrians(data,sourceSurface){
   if(group.visible&&document.getElementById('walking3d').checked&&!document.hidden)elapsed+=Math.min(dt,.1);
   walkers.forEach((w,i)=>{
    const phase=(w.phase+elapsed*w.speed)%(2*w.route.length),forward=phase<=w.route.length,distance=forward?phase:2*w.route.length-phase,p=sample(w.route,distance),direction=forward?1:-1,len=Math.hypot(p.dx,p.dz)||1;
-   const lane=.35*direction*Math.min(1,distance/3,(w.route.length-distance)/3),x=p.x-p.dz/len*lane,z=p.z+p.dx/len*lane,y=p.y*exaggeration+.04;
+   // The dodge term is the side-step from the previous frame's neighbours and the player.
+   const lane=.35*direction*Math.min(1,distance/3,(w.route.length-distance)/3)+(w.dodge||0),x=p.x-p.dz/len*lane,z=p.z+p.dx/len*lane,y=p.y*exaggeration+.04;
+   w.nx=-p.dz/len;w.nz=p.dx/len;
    w.position.set(x,y,z);w.distance=distance;w.yaw=Math.atan2(p.dx*direction,p.dz*direction);
    rotation.setFromAxisAngle(new THREE.Vector3(0,1,0),w.yaw);
    const swing=Math.sin(elapsed*w.speed*8+w.phase*8)*.45;
@@ -58,7 +60,29 @@ export function createPedestrians(data,sourceSurface){
    for(let k=0;k<2;k++){const side=k?1:-1,a=swing*side;place(legs[k],side*.115,.75-.35*Math.cos(a),-.35*Math.sin(a),a);place(arms[k],side*.285,1.35-.275*Math.cos(a),.275*Math.sin(a),-a)}
   });
   for(const mesh of group.children)mesh.instanceMatrix.needsUpdate=true;
+  // Step aside across the lane from nearby walkers and from the player, easing in over time.
+  const ease=Math.min(1,Math.min(dt,.1)*4);
+  if(ease>0){
+   for(const w of walkers){
+    let push=0;
+    for(const o of walkers){
+     if(o===w)continue;
+     const dx=w.position.x-o.position.x,dz=w.position.z-o.position.z,dist=Math.hypot(dx,dz);
+     if(dist<1.1)push+=(Math.sign(dx*w.nx+dz*w.nz)||(w.seed%2?1:-1))*(1.1-dist)*1.4;
+    }
+    if(avoid){
+     const dx=w.position.x-avoid.x,dz=w.position.z-avoid.z,dist=Math.hypot(dx,dz);
+     if(dist<2.2)push+=(Math.sign(dx*w.nx+dz*w.nz)||1)*(2.2-dist)*1.6;
+    }
+    const target=Math.max(-1.8,Math.min(1.8,push));
+    w.dodge=(w.dodge||0)+(target-(w.dodge||0))*ease;
+   }
+  }
  }
+ let avoid=null;
+ const setAvoidPoint=point=>{avoid=point};
+ // True when any visible walker stands within `radius` of the point.
+ const near=(x,z,radius)=>group.visible&&walkers.some(w=>Math.hypot(w.position.x-x,w.position.z-z)<radius);
  function updateGround(supportAt){
   for(const route of routes)for(const p of route.points){const s=supportAt(p.x,p.z,2.5,2.5,0,true);p.height=s.max;p.terrainHeight=s.terrain.max;p.roadHeight=s.road?.max??s.max}
   update();
@@ -67,7 +91,7 @@ export function createPedestrians(data,sourceSurface){
  const setRoadVisible=value=>{roadVisible=value;update()};
  const setHeight=value=>{exaggeration=value;update()},setMapVisible=value=>{mapVisible=value;update()};
  document.getElementById('people3d').onchange=e=>{group.visible=e.target.checked};
- return {group,routes,walkers,update,updateGround,setHeight,setMapVisible,setRoadVisible,get elapsed(){return elapsed}};
+ return {group,routes,walkers,update,updateGround,setHeight,setMapVisible,setRoadVisible,setAvoidPoint,near,get elapsed(){return elapsed}};
 }
 
 // Single non-instanced walker for the player's own character in walk mode.

@@ -49,6 +49,17 @@
         ],
         "method": "manual_drawn_palace_roof_group",
         "note": "원도 동궐 구역에서 서쪽 붉은 전각 지붕 무리의 중심을 육안 판독했다. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다. 돈화문 기호와의 상대 위치를 맞추려고 함께 옮겼다."
+      },
+      "info": {
+        "summary": "조선의 두 번째 궁궐. 경복궁이 임진왜란으로 불탄 뒤 오랫동안 법궁 구실을 했다. 정전인 인정전 일대를 표시했다.",
+        "period": "1405년 창건. 1592년 소실, 1610년 무렵 중건. 현존.",
+        "in_1750": "왕이 머물던 궁궐로 쓰였다.",
+        "sources": [
+          {
+            "title": "궁능유적본부 창덕궁",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R102010000.do"
+          }
+        ]
       }
     },
     {
@@ -95,6 +106,17 @@
         ],
         "method": "modern_site_pair_midpoint",
         "note": "창경궁과 홍화문의 중간 지점이 기존 현대 위경도 위치와 맞도록 서쪽으로 약 22 m 옮긴 표시 위치다. 원도 전각 지붕 판독값이 아니다. 종로1가 사거리 보정점을 넣어 원도 변형이 바뀐 뒤 다시 계산했다."
+      },
+      "info": {
+        "summary": "성종이 수강궁 터를 넓혀 지은 궁궐로 창덕궁과 함께 동궐을 이뤘다. 정전인 명정전 일대를 표시했다.",
+        "period": "1484년 창건. 임진왜란 때 소실, 1616년 무렵 중건. 일제강점기 창경원을 거쳐 1980년대 복원. 현존.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "궁능유적본부 창경궁",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R103010000.do"
+          }
+        ]
       }
     },
     {
@@ -139,7 +161,18 @@
       "palace_gate_tiers": 2,
       "display_yaw_deg": 0,
       "model_note": "기단·삼문·중층 문루를 단순화한 개념 모형. 칸수와 치수는 실측 복원이 아니다.",
-      "model_reference": "https://encykorea.aks.ac.kr/Article/E0016240"
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0016240",
+      "info": {
+        "summary": "창덕궁의 남쪽 정문. 원도에 敦化門 글씨와 문 기호가 있다.",
+        "period": "1412년 창건. 임진왜란 때 소실, 1609년 무렵 중건. 현존.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 돈화문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0016240"
+          }
+        ]
+      }
     },
     {
       "id": "honghwamun",
@@ -183,7 +216,18 @@
       "palace_gate_tiers": 2,
       "display_yaw_deg": 90,
       "model_note": "기단·삼문·중층 문루를 단순화한 개념 모형. 칸수와 치수는 실측 복원이 아니다.",
-      "model_reference": "https://encykorea.aks.ac.kr/Article/E0064444"
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0064444",
+      "info": {
+        "summary": "창경궁의 동쪽 정문.",
+        "period": "1484년 창건. 임진왜란 때 소실, 1616년 무렵 중건. 현존.",
+        "in_1750": "있었다. 원도에서 문 기호를 찾지 못해 모형 앞면 기준으로 배치했다.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 홍화문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0064444"
+          }
+        ]
+      }
     },
     {
       "id": "gyeongdeok",
@@ -229,7 +273,22 @@
       "palace_roof_tiers": 1,
       "display_yaw_deg": 0,
       "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
-      "model_reference": "https://encykorea.aks.ac.kr/Article/E0032098"
+      "model_reference": "https://encykorea.aks.ac.kr/Article/E0032098",
+      "info": {
+        "summary": "광해군이 도성 서쪽에 세운 이궁. 오늘날의 경희궁이다.",
+        "period": "1617년 착공. 1760년 경희궁으로 개칭. 1829년 화재, 1831년 중건. 1865년 전각 대부분 철거, 1907년 이후 훼철. 숭정전은 1926년 이건되어 동국대 정각원이 됐다.",
+        "in_1750": "경덕궁이라는 이름으로 있었다.",
+        "sources": [
+          {
+            "title": "우리역사넷 경희궁 1617",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300210&code=kc_age_30"
+          },
+          {
+            "title": "궁능유적본부 경희궁",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R110000000.do"
+          }
+        ]
+      }
     },
     {
       "id": "jongmyo",
@@ -265,6 +324,17 @@
           {
             "url": "https://royal.khs.go.kr/ROYAL/contents/R105010000.do",
             "supports": "15-chamber configuration: 1726–1835"
+          }
+        ]
+      },
+      "info": {
+        "summary": "역대 왕과 왕비의 신주를 모신 왕실 사당. 정전을 15칸 맞배지붕 건물로 표시했다.",
+        "period": "1395년 창건. 임진왜란 때 소실, 1608년 중건. 정전은 1726년 15칸, 1836년 19칸으로 늘었다. 현존.",
+        "in_1750": "있었다. 모형의 15칸은 1726–1835년 칸수와 맞는다.",
+        "sources": [
+          {
+            "title": "궁능유적본부 종묘 연혁",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R105010000.do"
           }
         ]
       }
@@ -308,6 +378,17 @@
         ],
         "method": "manual_site_inside_drawn_enclosure",
         "note": "원도의 나무와 담장 안에 표시한 개략 시설 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
+      },
+      "info": {
+        "summary": "토지의 신과 곡식의 신에게 제사하던 제단.",
+        "period": "조선 초 도성 건설과 함께 조성. 세부 연도는 미확인. 현존.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "궁능유적본부 사직단",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R311030000.do"
+          }
+        ]
       }
     },
     {
@@ -349,6 +430,17 @@
         ],
         "method": "manual_site_inside_drawn_enclosure",
         "note": "원도의 문묘·성균관 건물과 담장 안 개략 대표 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
+      },
+      "info": {
+        "summary": "공자를 모신 문묘와 최고 교육기관 성균관이 함께 있는 시설군.",
+        "period": "조선 초 창건. 임진왜란 때 소실 후 17세기 초 중건. 세부 연도는 미확인. 현존.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "국가유산 디지털 서비스 서울 문묘와 성균관",
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101410000&ctptUid=13898859667928200187"
+          }
+        ]
       }
     },
     {
@@ -380,6 +472,21 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "나라가 지어 상인에게 빌려준 가게 줄. 국역 부담이 큰 시전은 육의전으로 묶였다.",
+        "period": "1412년 이후 세 차례 공사로 행랑 2,027칸을 지었다. 시전 체제가 끝난 시기는 미확인.",
+        "in_1750": "있었다. 행랑 한 채씩은 원도에 없어 표시용으로 늘어놓았다.",
+        "sources": [
+          {
+            "title": "우리역사넷 시전 상업",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0020_0010"
+          },
+          {
+            "title": "우리역사넷 육의전",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010"
+          }
+        ]
       }
     },
     {
@@ -430,6 +537,17 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "경복궁의 정문.",
+        "period": "1395년 창건. 임진왜란 때 소실, 1865–1868년 재건. 이전·소실·복원을 거쳐 2010년 제자리 복원.",
+        "in_1750": "문루가 없었다. 경복궁과 함께 폐허였고, 모형은 위치 표시다.",
+        "sources": [
+          {
+            "title": "Wikidata 광화문",
+            "url": "https://www.wikidata.org/wiki/Q485034"
+          }
+        ]
       }
     },
     {
@@ -480,6 +598,21 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 동대문. 한양도성은 1396년 처음 쌓고 4대문과 4소문을 두었다.",
+        "period": "조선 초 창건. 1869년 고쳐 지은 건물이 현존.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "Wikipedia Heunginjimun",
+            "url": "https://en.wikipedia.org/wiki/Heunginjimun"
+          },
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          }
+        ]
       }
     },
     {
@@ -530,6 +663,21 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 남대문. 한양도성은 1396년 처음 쌓고 4대문과 4소문을 두었다.",
+        "period": "1398년 완공. 2008년 화재, 2013년 복구. 현존.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "Wikipedia Sungnyemun",
+            "url": "https://en.wikipedia.org/wiki/Sungnyemun"
+          },
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          }
+        ]
       }
     },
     {
@@ -589,6 +737,21 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 서대문. 새문이라고도 불렀다.",
+        "period": "조선 초 창건. 1915년 헐어 건축 자재로 팔렸다.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "Wikipedia Donuimun",
+            "url": "https://en.wikipedia.org/wiki/Donuimun"
+          },
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          }
+        ]
       }
     },
     {
@@ -638,6 +801,17 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 북소문.",
+        "period": "조선 초 창건. 현존. 문루 중건 연도는 미확인.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          }
+        ]
       }
     },
     {
@@ -687,6 +861,17 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 북대문.",
+        "period": "조선 초 창건. 1968년 이후 문루를 다시 세웠다.",
+        "in_1750": "문은 있었다. 당시 문루 여부는 미확인.",
+        "sources": [
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          }
+        ]
       }
     },
     {
@@ -736,6 +921,17 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 동소문.",
+        "period": "조선 초 창건. 1928년 문루, 1938년 홍예 철거. 원래 자리가 아닌 곳에 복원.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          }
+        ]
       }
     },
     {
@@ -785,6 +981,21 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 남소문.",
+        "period": "조선 초 창건. 1915년 문루 붕괴. 원래 자리가 아닌 곳에 복원.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "위키백과 광희문",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B4%91%ED%9D%AC%EB%AC%B8"
+          }
+        ]
       }
     },
     {
@@ -834,6 +1045,17 @@
           "status": "undated_concept"
         },
         "sources": []
+      },
+      "info": {
+        "summary": "한양도성의 서소문.",
+        "period": "조선 초 창건. 1914년 철거.",
+        "in_1750": "있었다.",
+        "sources": [
+          {
+            "title": "서울 한양도성 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          }
+        ]
       }
     },
     {
@@ -891,6 +1113,17 @@
           {
             "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
             "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      },
+      "info": {
+        "summary": "의례·외교·과거·교육을 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
           }
         ]
       }
@@ -952,6 +1185,17 @@
             "supports": "depiction.reference_year and pre-1865 layout phase"
           }
         ]
+      },
+      "info": {
+        "summary": "현직이 없는 고위 관원을 예우하던 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+          }
+        ]
       }
     },
     {
@@ -1009,6 +1253,17 @@
           {
             "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
             "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      },
+      "info": {
+        "summary": "관리 감찰과 풍속 단속을 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
           }
         ]
       }
@@ -1070,6 +1325,17 @@
             "supports": "depiction.reference_year and pre-1865 layout phase"
           }
         ]
+      },
+      "info": {
+        "summary": "무관 인사와 군사 행정을 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+          }
+        ]
       }
     },
     {
@@ -1127,6 +1393,17 @@
           {
             "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
             "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      },
+      "info": {
+        "summary": "법률·소송·형벌을 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
           }
         ]
       }
@@ -1188,6 +1465,17 @@
             "supports": "depiction.reference_year and pre-1865 layout phase"
           }
         ]
+      },
+      "info": {
+        "summary": "토목·공예·산림을 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+          }
+        ]
       }
     },
     {
@@ -1245,6 +1533,17 @@
           {
             "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
             "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      },
+      "info": {
+        "summary": "영의정·좌의정·우의정이 이끈 최고 정무 기관.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
           }
         ]
       }
@@ -1306,6 +1605,17 @@
             "supports": "depiction.reference_year and pre-1865 layout phase"
           }
         ]
+      },
+      "info": {
+        "summary": "문관 인사를 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+          }
+        ]
       }
     },
     {
@@ -1363,6 +1673,17 @@
           {
             "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
             "supports": "depiction.reference_year and pre-1865 layout phase"
+          }
+        ]
+      },
+      "info": {
+        "summary": "도성과 그 주변의 행정·치안을 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
           }
         ]
       }
@@ -1424,6 +1745,17 @@
             "supports": "depiction.reference_year and pre-1865 layout phase"
           }
         ]
+      },
+      "info": {
+        "summary": "호구·조세·재정을 맡은 관청.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+          }
+        ]
       }
     },
     {
@@ -1483,6 +1815,17 @@
             "supports": "depiction.reference_year and pre-1865 layout phase"
           }
         ]
+      },
+      "info": {
+        "summary": "훈련도감의 새 군영.",
+        "period": "조선 초 설치. 1894년 갑오개혁으로 관제가 크게 바뀌었고 건물은 20세기 초에 대부분 헐렸다. 관청별 철거 연도는 미확인.",
+        "in_1750": "기관은 있었다. 모형 배치는 1863년경 자료를 따른다.",
+        "sources": [
+          {
+            "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+          }
+        ]
       }
     },
     {
@@ -1536,6 +1879,17 @@
         ],
         "method": "w3w_point_shifted_20m_northeast",
         "note": "what3words 주소로 얻은 지점에서 북동쪽으로 20 m 옮긴 화면 배치 좌표다. 육조거리 관청 담장과 모형이 맞붙어 보여 띄웠다. 종로1가 사거리 보정점을 넣어 원도 변형이 바뀌면서 (1265, 1330)에서 다시 계산했으며, 정수 픽셀 반올림으로 실제 이동량은 19.2 m다. 위경도는 원래 지점을 그대로 둔다."
+      },
+      "info": {
+        "summary": "조선 개국공신 정도전이 살던 자리로 전한다. 오늘날 종로구청 일대다.",
+        "period": "정도전(1342–1398)이 1398년 제1차 왕자의 난으로 죽은 뒤 집은 남지 않았다.",
+        "in_1750": "집은 없었다. 옛 자리를 기억하는 표시다.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 정도전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0050380"
+          }
+        ]
       }
     },
     {
@@ -1589,6 +1943,17 @@
         ],
         "method": "half_way_from_seonggyungwan_to_wall_northeast",
         "note": "성균관 표시 위치 (2010, 770)에서 북동쪽으로 선을 그어 성곽과 만나는 지점 (2111, 678)까지의 절반 자리다. 원도에 집터 표시가 없어 정한 표시용 지점이며 판독값도 실측 위치도 아니다."
+      },
+      "info": {
+        "summary": "우암 송시열이 살던 서울 집터. 증주벽립 각자와 우암구기 비석이 전한다.",
+        "period": "송시열(1607–1689)이 살던 17세기. 집 건물은 남아 있지 않다.",
+        "in_1750": "송시열의 집으로는 없었다. 옛 자리를 기억하는 표시다.",
+        "sources": [
+          {
+            "title": "국가유산포털 우암 송시열 집터",
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaKdcd=21&ccbaAsno=0000570000000&ccbaCtcd=11"
+          }
+        ]
       }
     },
     {
@@ -1602,17 +1967,17 @@
       "position_status": "manual_source_symbol_hint",
       "symbol_size_m": [
         16,
-        15,
+        11,
         12
       ],
       "size_status": "assumed_display_scale",
-      "size_note": "정면 5칸·측면 4칸 중층 누각을 개략 치수로 옮긴 표시용 값. 실측 복원값이 아닙니다.",
+      "size_note": "1440년의 5×4칸 규모를 1층 종각에 옮긴 표시용 치수. 1619년 중건 건물의 실측값은 확인하지 못했다.",
       "temporal": {
         "existence": {
           "start_year": 1413,
           "end_year": null,
           "status": "founded_1413_rebuilt_repeatedly",
-          "note": "태종 13년 종루를 세운 뒤 여러 차례 다시 지었다. 18세기 건물의 형태·규모는 확인하지 않았다."
+          "note": "1398년 처음 종을 걸고 1413년 운종가로 옮겼다. 1440년 2층으로 다시 지었으나 임진왜란 때 소실, 1619년 1층 종각으로 중건했다."
         },
         "depiction": {
           "start_year": null,
@@ -1639,7 +2004,7 @@
       },
       "display_model": "bell_tower",
       "display_yaw_deg": 0,
-      "model_note": "기단과 둥근 주춧돌·원기둥, 개방된 아래층, 종을 건 위층, 팔작지붕을 단순화한 개념 모형. 종은 1468년 주조된 옛 보신각 동종의 높이 3.18 m·입지름 2.28 m를 따랐다. 실측 복원이 아니다.",
+      "model_note": "기단과 둥근 주춧돌·원기둥 위에 팔작지붕을 얹고 가운데에 종을 건 1층 종각 개념 모형. 종은 1468년 주조한 옛 보신각 동종의 높이 3.18 m·입지름 2.28 m를 따랐다.",
       "source_position": {
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
@@ -1650,6 +2015,21 @@
         "method": "southeast_block_of_drawn_jongno_crossing",
         "note": "부분도 8에서 확인한 운종가 네거리 `(1417, 1442)`의 남동쪽 블록에 두었다. 원도 길 판독 자료로 도로에 걸치지 않는 가장 가까운 자리를 골랐다. 鍾樓 글씨는 네거리 남동쪽에 적혀 있으나 건물 기호는 확인하지 못했다.",
         "detail_asset": "asset-0002"
+      },
+      "info": {
+        "summary": "도성의 통행 시각을 알리는 종을 걸던 종각. 오늘날 보신각 자리다.",
+        "period": "1398년 처음 종을 걸고 1413년 종로 네거리로 옮겼다. 1440년 5×4칸 2층으로 다시 지었으나 임진왜란 때 소실. 1619년 1층 종각으로 중건. 1895년 보신각 현판. 지금 건물은 1979년 재건.",
+        "in_1750": "1619년에 지은 1층 종각에 1468년 주조한 종(높이 3.18 m)이 걸려 있었다.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 보신각 터",
+            "url": "https://encykorea.aks.ac.kr/Article/E0023446"
+          },
+          {
+            "title": "국가유산포털 옛 보신각 동종",
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121100020000"
+          }
+        ]
       }
     },
     {
@@ -1702,6 +2082,17 @@
         "method": "northwest_block_of_drawn_jongno_crossing",
         "note": "부분도 8의 義禁府 글씨는 네거리 북서쪽에 있다. 글씨 중심을 환산한 `(1385, 1428)`은 피맛길에 걸쳐, 원도 길 판독 자료로 피맛길 북쪽의 도로에 닿지 않는 자리를 골라 `(1400, 1408)`에 두었다.",
         "detail_asset": "asset-0002"
+      },
+      "info": {
+        "summary": "왕명을 받아 역모 같은 중죄인을 다루던 관청. 종로 네거리 북서쪽에 있었다.",
+        "period": "조선 초 설치. 1894년 무렵 개편. 세부 연도는 미확인.",
+        "in_1750": "있었다. 도성대지도 부분도의 義禁府 글씨로 위치를 잡았다.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 의금부",
+            "url": "https://encykorea.aks.ac.kr/Article/E0043266"
+          }
+        ]
       }
     },
     {
@@ -1753,6 +2144,17 @@
         "method": "north_side_of_drawn_unjongga_clear_of_roads",
         "note": "원도 길 판독 자료에서 운종가 북쪽 약 40 m에 두되, 골목에 걸치지 않도록 서쪽으로 약 37 m 옮긴 자리다. 관청 기호나 글씨를 원도에서 확인한 값은 아니다.",
         "detail_asset": "asset-0002"
+      },
+      "info": {
+        "summary": "도성 동쪽의 치안을 맡은 포도청. 오늘날 묘동 단성사 일대로 전한다.",
+        "period": "조선 전기 설치. 1894년 경무청으로 개편.",
+        "in_1750": "있었다. 원도에서 기호를 찾지 못해 표시 위치로 두었다.",
+        "sources": [
+          {
+            "title": "우리역사넷 포도청",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30"
+          }
+        ]
       }
     },
     {
@@ -1804,6 +2206,17 @@
         "method": "north_side_of_drawn_unjongga",
         "note": "원도 길 판독 자료에서 해당 지점의 운종가 폭을 찾아 그 북쪽 약 40 m에 두었다. 현대 위치가 종로 북측이라는 점만 반영한 표시 위치이며, 관청 기호나 글씨를 원도에서 확인한 값은 아니다.",
         "detail_asset": "asset-0002"
+      },
+      "info": {
+        "summary": "도성 서쪽의 치안을 맡은 포도청. 오늘날 종로1가 일대로 전한다.",
+        "period": "조선 전기 설치. 1894년 경무청으로 개편.",
+        "in_1750": "있었다. 원도에서 기호를 찾지 못해 표시 위치로 두었다.",
+        "sources": [
+          {
+            "title": "우리역사넷 포도청",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30"
+          }
+        ]
       }
     },
     {
@@ -1861,6 +2274,17 @@
         ],
         "method": "drawn_label_with_field_to_the_south",
         "note": "원도의 訓鍊院 글씨 `(2396, 1597)`를 청사 자리로 보고, 그 남쪽으로 연병장을 둔 범위의 중심이다. 길 판독 마스크에서 범위가 도로에 닿지 않도록 15 m 안쪽으로 맞췄다."
+      },
+      "info": {
+        "summary": "무과 시험과 무예 훈련, 병법 교육을 맡던 관청. 청사 남쪽에 활쏘기와 시험을 보던 마당을 두었다.",
+        "period": "1392년 훈련관으로 설치. 태종 때 이 자리로 옮기고 1466년 훈련원으로 개칭. 폐지 시기는 미확인.",
+        "in_1750": "있었다. 원도의 訓鍊院 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "서울시 이순신의 무과시험장, 훈련원 터",
+            "url": "https://mediahub.seoul.go.kr/archives/180498"
+          }
+        ]
       }
     },
     {
@@ -1903,7 +2327,22 @@
       "display_model": "palace_compound",
       "display_yaw_deg": 0,
       "model_note": "정전 한 채와 앞뜰을 단순화한 개념 모형. 실측 복원이 아니다.",
-      "palace_roof_tiers": 1
+      "palace_roof_tiers": 1,
+      "info": {
+        "summary": "사도세자의 사당. 터는 오늘날 서울대학교병원 일대다.",
+        "period": "1764년 수은묘로 세움. 1776년 경모궁으로 개칭. 1899년 장조 추존으로 신주를 종묘로 옮기며 폐지.",
+        "in_1750": "없었다. 지도 기준 시점보다 뒤에 세웠다.",
+        "sources": [
+          {
+            "title": "우리역사넷 경모궁 1764",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300150&code=kc_age_30"
+          },
+          {
+            "title": "한국민족문화대백과사전 경모궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002406"
+          }
+        ]
+      }
     }
   ],
   "size_policy": "Representative single-building-scale approximate envelopes in metres, not compound bounds or measured historical reconstructions. Axis order: width, height, depth. Sizes are explicit modelling assumptions except the Sajik single-altar reference.",

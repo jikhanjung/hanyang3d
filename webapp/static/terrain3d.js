@@ -3,6 +3,7 @@ import {createGranite} from './granite.js';
 import {setupOrbitNavigation} from './orbit_navigation.js';
 import {createTrees} from './trees.js';
 import {createPedestrians,createWalker} from './pedestrians.js';
+import {createCollision} from './collision.js';
 import {createHouseSite} from './house_site.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
@@ -23,7 +24,7 @@ async function main(){
  const loading=window.terrainLoading={stage:0,history:[],ready:false};
  el('map-options-toggle').onclick=()=>{const open=el('map-options').classList.toggle('open');el('map-options-toggle').setAttribute('aria-expanded',String(open))};
  const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')];toolbarControls.forEach(c=>c.disabled=true);
- let granite=null,trees=null,settlement=null,sijeon=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
+ let granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
 
  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5e4');
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -225,7 +226,8 @@ async function main(){
  // Approximate area labels, not surveyed points or historical administrative boundaries.
  // Seochon follows the drawn palace wall and upstream channel, not a historical center.
  // Area descriptions: hanok.seoul.go.kr/front/kor/town/town01.do and town02.do.
- const districtTags=[{name:'북촌',pixel:[1445,965]},{name:'서촌',pixel:[1042,1085]}].map(p=>{
+ // 경복궁 sits at the centre of its drawn wall; the palace itself is not modelled.
+ const districtTags=[{name:'북촌',pixel:[1445,965]},{name:'서촌',pixel:[1042,1085]},{name:'경복궁',pixel:[1153,983]}].map(p=>{
   const [x,y]=warp(...p.pixel);return placeTag(p.name,x,y,districtNames);
  });
  function updateBuildingNames(){
@@ -344,6 +346,26 @@ async function main(){
  const tooltip=document.createElement('div');tooltip.id='building-tooltip';tooltip.hidden=true;
  Object.assign(tooltip.style,{position:'absolute',pointerEvents:'none',background:'#fffdf2',color:'#24372e',padding:'6px 10px',border:'1px solid #829783',borderRadius:'4px',maxWidth:'250px',zIndex:'20'});el('scene').append(tooltip);
  const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let hovered=null,selected=null,press=null;
+ // Clicking a building opens a card with its introduction, period and sources.
+ const popup=document.createElement('section');popup.id='building-popup';popup.hidden=true;popup.setAttribute('aria-live','polite');el('scene').append(popup);
+ function renderPopup(box){
+  const f=box?.userData.feature;popup.hidden=!f;if(!f)return;
+  const info=f.info??{summary:f.note,sources:f.reference?[{title:'참고 자료',url:f.reference}]:[]};
+  popup.replaceChildren();
+  const head=document.createElement('header');
+  const title=document.createElement('strong');title.textContent=f.name.split(' · ')[0];
+  const kind=document.createElement('small');kind.textContent=f.category;
+  const close=document.createElement('button');close.type='button';close.textContent='닫기';close.setAttribute('aria-label','건물 정보 닫기');
+  close.onclick=()=>{selected=null;clearHover()};
+  head.append(title,kind,close);popup.append(head);
+  const para=(label,text)=>{if(!text)return;const p=document.createElement('p');if(label){const b=document.createElement('b');b.textContent=label+' ';p.append(b)}p.append(text);popup.append(p)};
+  para('',info.summary);para('존재 시기',info.period);para('1750년 무렵',info.in_1750);
+  if(info.sources?.length){
+   const list=document.createElement('ul');
+   for(const source of info.sources){const li=document.createElement('li'),a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=source.title;li.append(a);list.append(li)}
+   const label=document.createElement('p');label.className='popup-sources';label.textContent='출처';popup.append(label,list);
+  }
+ }
  function showBuilding(box){
   const f=box?.userData.feature;
   el('building-name').textContent=f?f.name+' · '+f.category:'박스에 커서를 올리거나 클릭하면 이름을 볼 수 있습니다.';
@@ -353,6 +375,7 @@ async function main(){
   if(f)el('building-reference').href=f.reference;else el('building-reference').removeAttribute('href');
   el('clear-building').hidden=!selected;
   el('focus-building').hidden=!selected;
+  renderPopup(selected);
   for(const b of [...buildings.children,...bridges.children]){const glow=b===selected?0x5b3918:b===hovered?0x343b21:0;b.traverse(part=>{if(part.isMesh&&part.material.emissive)part.material.emissive.setHex(glow)})}
  }
  function hit(event){
@@ -655,9 +678,11 @@ async function main(){
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
    let moved=false;
    if(dx||dz){
-    const x=eye.x+dx,z=eye.z+dz,ground=groundAt(x,z);
+    // Buildings, walls, shop rows and other walkers block the character; slide along them.
+    const [x,z]=collision?collision.move(eye.x,eye.z,eye.x+dx,eye.z+dz,.35,(px,pz)=>pedestrians?.near(px,pz,.6)):[eye.x+dx,eye.z+dz];
+    const ground=groundAt(x,z);
     // Avoid walking off abrupt terrain steps or out of the prepared region.
-    if(ground!==null&&Math.abs(ground-lastGround)<.7){eye.x=x;eye.z=z;lastGround=ground;walked+=Math.hypot(dx,dz);moved=true}
+    if((x!==eye.x||z!==eye.z)&&ground!==null&&Math.abs(ground-lastGround)<.7){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;lastGround=ground;moved=true}
    }
    const ground=groundAt(eye.x,eye.z);if(ground!==null){lastGround=ground;eye.y=ground+1.65}
    walker?.update(walked,moved);
@@ -666,7 +691,7 @@ async function main(){
   const movement=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
   document.addEventListener('keydown',event=>{
    if(!active)return;if(event.code==='Escape'){event.preventDefault();exit();return}
-   if(event.target.matches('input,select,textarea,button'))return;
+   if(event.target.matches?.('input,select,textarea,button'))return;
    if(movement.has(event.code)){event.preventDefault();keys.add(event.code)}
   });
   document.addEventListener('keyup',event=>keys.delete(event.code));
@@ -689,17 +714,38 @@ async function main(){
    for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,event=>{touchKeys.delete(event.pointerId);if(![...touchKeys.values()].includes(button))button.classList.remove('pressed')});
    button.addEventListener('contextmenu',event=>event.preventDefault());
   }
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get view(){return view},get walker(){return walker},enter,exit,update};
+  // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
+  function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+1.65,z);lastGround=g;yaw=heading;look();return true}
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get view(){return view},get walker(){return walker},enter,exit,update,placeAt};
  })();
  const orbitNavigation=setupOrbitNavigation(camera,controls,renderer.domElement,ray=>cityWall.raycastGround(ray,true),()=>!!firstPerson?.active,(x,z)=>{
   try{const s=cityWall.supportAt(x,z,.2,.2,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible?s.road.max*exaggeration:-Infinity)}catch{return null}
  });
  renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();el('error').textContent='3D 그래픽 연결이 끊겼습니다. 페이지를 새로 고쳐 주세요.'});
- frameUpdate=dt=>{firstPerson?.update(dt);pedestrians?.update(dt);updateBuildingNames()};
+ frameUpdate=dt=>{firstPerson?.update(dt);pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);updateBuildingNames()};
  toolbarControls.forEach(c=>c.disabled=false);el('channel-depth').disabled=!channelState.enabled;
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass,groundColors};
+ // Collision world for walking, built once every layer has placed its buildings.
+ collision=createCollision();
+ for(const b of buildings.children){
+  const f=b.userData.feature;if(f.category==='성문'||f.display_model==='palace_gate')continue;
+  const [w,,d]=f.symbol_size_m,frame={x:b.position.x,z:b.position.z,yaw:b.rotation.y},shown=()=>buildings.visible&&b.visible;
+  if(f.display_model==='house_site'||f.display_model==='training_ground'){
+   // Walled compounds block only their walls, leaving the south gate open.
+   const t=1.2,gate=Math.min(9,w*.2),run=(w-gate)/2;
+   collision.addLocal(frame,0,-d/2+t/2,w/2,t/2,shown);
+   for(const side of [-1,1]){
+    collision.addLocal(frame,side*(w/2-t/2),0,t/2,d/2,shown);
+    collision.addLocal(frame,side*(gate/2+run/2),d/2-t/2,run/2,t/2,shown);
+   }
+  }else collision.add({...frame,hw:w/2,hd:d/2,visible:shown});
+ }
+ for(const [wall,data] of [[cityWall,wallData],[palaceWall,palaceData]])
+  for(const seg of wall.segments)collision.add({x:seg.x,z:seg.z,hw:data.width_m/2,hd:seg.length/2,yaw:seg.yaw,visible:()=>wall.group.visible});
+ for(const r of sijeon.records)collision.add({x:r.x,z:r.z,hw:r.length/2,hd:(sijeonData.placement.depth_m+.9)/2,yaw:r.yaw,visible:()=>sijeon.group.visible&&r.displayed});
+ for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

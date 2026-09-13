@@ -3,6 +3,39 @@ import * as THREE from 'three';
 // Shop rows (행랑) lining both sides of the read Unjongga centreline.
 // The map does not draw the individual shops: only the street line and its width
 // come from the reading, the rows themselves are a stated display assumption.
+// Painted goods cards for the counters: flat pictures, one design per shop kind.
+function drawGoods(kind){
+ const canvas=document.createElement('canvas');canvas.width=256;canvas.height=128;
+ const g=canvas.getContext('2d');
+ if(kind==='내어물전'){
+  // Dried pollack laid in a row on a straw mat.
+  g.fillStyle='#b79b62';g.fillRect(6,58,244,64);
+  for(let i=0;i<7;i++){
+   const x=24+i*33;g.fillStyle=i%2?'#8f7b5f':'#a38d6c';
+   g.beginPath();g.ellipse(x,70,9,38,0,0,Math.PI*2);g.fill();
+   g.fillStyle='#6d5d47';g.beginPath();g.moveTo(x-10,104);g.lineTo(x+10,104);g.lineTo(x,120);g.fill();
+  }
+ }else if(kind==='면포전'){
+  // Rolls of cotton cloth seen end-on, stacked two deep.
+  const colors=['#f1ead8','#e7dcc1','#f6f1e4','#ddd0b2'];
+  for(let row=0;row<2;row++)for(let i=0;i<6;i++){
+   const x=26+i*40+(row?20:0),y=96-row*34;
+   g.fillStyle=colors[(i+row)%colors.length];g.beginPath();g.arc(x,y,18,0,Math.PI*2);g.fill();
+   g.strokeStyle='#b39f7c';g.lineWidth=2;g.stroke();g.beginPath();g.arc(x,y,6,0,Math.PI*2);g.stroke();
+  }
+ }else{
+  // Folded bolts in piles: bright imported silk, pale native silk or greenish ramie.
+  const palettes={'선전':['#b8322f','#2f5f9e','#d6a53a','#3f7d4f','#8b3f8f'],'면주전':['#efd9c6','#e8c9c2','#f2e6c9','#d9c7a8'],'저포전':['#e6ead6','#d8dfc4','#eef0e0','#cfd6b8']};
+  const colors=palettes[kind]??palettes['면주전'];
+  for(let pile=0;pile<4;pile++)for(let k=0;k<4;k++){
+   const x=10+pile*60,y=102-k*22;g.fillStyle=colors[(pile*2+k)%colors.length];g.fillRect(x,y,52,20);
+   g.fillStyle='rgba(255,255,255,.28)';g.fillRect(x+4,y+3,44,3);
+   g.strokeStyle='rgba(60,40,20,.4)';g.lineWidth=1;g.strokeRect(x+.5,y+.5,51,19);
+  }
+ }
+ return canvas;
+}
+
 export function createSijeon(data,sourceSurface,landmarks){
  const group=new THREE.Group();group.name='unjongga-shop-rows';
  const {bay_m:bay,depth_m:depth,height_m:height,setback_m:setback,min_half_width_m:minHalf=0,block_bays:[minBays,maxBays],gap_m:[minGap,maxGap]}=data.placement;
@@ -101,7 +134,24 @@ export function createSijeon(data,sourceSurface,landmarks){
    extras.add(board);signs.push(board);
   });
  }
- const dummy=new THREE.Object3D();
+ // Every shop gets goods cards for its zone's trade, one or two along the counter.
+ const goodsMeshes=[];
+ if(data.signs&&belfry){
+  const axis=sample(0),byZone=new Map();
+  records.forEach((r,i)=>{
+   const offset=(r.x-belfry.position.x)*axis.dx+(r.z-belfry.position.z)*axis.dz;
+   const zone=data.signs.zones.find(z=>offset>=z.from_m&&offset<z.to_m);if(!zone)return;
+   r.trade=zone.hangul;if(!byZone.has(zone.hangul))byZone.set(zone.hangul,[]);
+   const count=r.bays>=6?2:1;
+   for(let k=0;k<count;k++)byZone.get(zone.hangul).push({record:i,along:count===1?0:(k?.22:-.22)*r.length});
+  });
+  for(const [trade,spots] of byZone){
+   const texture=new THREE.CanvasTexture(drawGoods(trade));texture.colorSpace=THREE.SRGBColorSpace;
+   const mesh=new THREE.InstancedMesh(new THREE.PlaneGeometry(1.7,.85),new THREE.MeshStandardMaterial({map:texture,transparent:true,alphaTest:.3,roughness:1,side:THREE.DoubleSide}),spots.length);
+   mesh.name='shop-goods';mesh.frustumCulled=false;mesh.userData={trade,spots};extras.add(mesh);goodsMeshes.push(mesh);
+  }
+ }
+ const dummy=new THREE.Object3D(),tilt=new THREE.Euler();
  let exaggeration=1,mapVisible=true,visible=0;
  function updateHeights(ex){
   exaggeration=ex;visible=0;
@@ -141,6 +191,14 @@ export function createSijeon(data,sourceSurface,landmarks){
    };
    put(keeperLegs,.38);put(keeperBody,1.1);put(keeperArms,.9,-.26);put(keeperHead,1.6);put(keeperHair,1.6);put(keeperKnot,1.77,.02);
   });
+  // Goods cards lie on the counter top, tipped up toward the street.
+  for(const mesh of goodsMeshes)mesh.userData.spots.forEach((g,j)=>{
+   const r=records[g.record];
+   if(!r.displayed){dummy.scale.set(0,0,0);dummy.updateMatrix();mesh.setMatrixAt(j,dummy.matrix);return}
+   const s=Math.sin(r.yaw),c=Math.cos(r.yaw),dz=-depth*.42;
+   dummy.position.set(r.x+dz*s+g.along*c,r.floor+.4+.8+.27,r.z+dz*c-g.along*s);
+   dummy.quaternion.setFromEuler(tilt.set(-1,r.yaw+Math.PI,0,'YXZ'));dummy.scale.set(1,1,1);dummy.updateMatrix();mesh.setMatrixAt(j,dummy.matrix);
+  });
   for(const board of signs){
    const r=records[board.userData.record];board.visible=!!r.displayed;if(!r.displayed)continue;
    const s=Math.sin(r.yaw),c=Math.cos(r.yaw),dz=-depth*.5-2.05,eave=r.floor+.35+height;
@@ -155,6 +213,6 @@ export function createSijeon(data,sourceSurface,landmarks){
  const setMapVisible=value=>{mapVisible=value;updateHeights(exaggeration)};
  const toggle=document.getElementById('sijeon3d');
  if(toggle)toggle.onchange=e=>{group.visible=e.target.checked};
- return {group,records,signs,keeperCount:keeperSpots.length,updateGround,updateHeights,setMapVisible,get visibleCount(){return visible},
+ return {group,records,signs,goodsMeshes,keeperCount:keeperSpots.length,updateGround,updateHeights,setMapVisible,get visibleCount(){return visible},
   get bayCount(){return records.reduce((sum,r)=>sum+r.bays,0)}};
 }

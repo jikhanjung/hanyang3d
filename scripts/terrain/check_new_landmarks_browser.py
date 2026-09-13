@@ -27,11 +27,11 @@ with sync_playwright() as p:
   # Every added landmark is a modern-sourced position, so the record must say so.
   assert row['model']==model and row['boxHidden'] and row['grounded'] and row['modern'],row
  print(rows,flush=True)
- # The belfry follows the described Bosingak: five bays by four with the 1468 bell upstairs.
+ # The belfry is the single-storey 1619 pavilion, with the 1468 bell hung in the open hall.
  belfry=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='jongru');
   const m=b.getObjectByName('bell-tower'),u=m.userData;
-  return {bays:u.bays,bellHeightM:u.bellHeightM,bellMouthM:u.bellMouthM,meshes:m.children.length,
-   parts:['great-bell','bell-hook','lower-column','upper-column','rail-bar','gable-panel','tile-roof','footing-stone'].filter(p=>u.parts.includes(p))}}''')
+  return {storeys:u.storeys,bays:u.bays,bellHeightM:u.bellHeightM,bellMouthM:u.bellMouthM,meshes:m.children.length,bellInsideHall:u.bellBottom>0&&u.bellBottom+u.bellHeightM<u.hallTop,
+   parts:['great-bell','bell-hook','hall-column','gable-panel','tile-roof','footing-stone'].filter(p=>u.parts.includes(p)),upper:u.parts.includes('upper-column')}}''')
  print(belfry,flush=True)
  # The drill ground keeps an open field south of its offices.
  field=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='hullyeonwon');
@@ -42,7 +42,8 @@ with sync_playwright() as p:
  assert field['widthM']>=120 and field['depthM']>=170 and field['fieldDepthM']>100,field
  assert len(field['parts'])==5,field
  assert belfry['bays']==[5,4] and belfry['bellHeightM']==3.18 and belfry['bellMouthM']==2.28,belfry
- assert len(belfry['parts'])==8 and belfry['meshes']<=8,belfry
+ assert belfry['storeys']==1 and not belfry['upper'] and belfry['bellInsideHall'],belfry
+ assert len(belfry['parts'])==6 and belfry['meshes']<=8,belfry
  place=page.evaluate('''async()=>{const t=terrain3d;
   const wall=await (await fetch('/gis/walls/doseong_city_wall.json')).json(),poly=wall.centerline;
   const inside=(x,y)=>{let c=false;for(let i=0,n=poly.length;i<n;i++){const [x1,y1]=poly[i],[x2,y2]=poly[(i+1)%n];
@@ -85,7 +86,7 @@ with sync_playwright() as p:
   const east=Math.max(...s.records.map(r=>r.x));
   return {blocks:s.records.length,bays:s.bayCount,visible:s.visibleCount,
    meshNames:[...s.group.children,...s.group.getObjectByName('shop-keepers-and-signs').children].map(m=>m.name),
-   keepers:s.keeperCount,signs:s.signs.map(b=>b.userData.hangul),
+   keepers:s.keeperCount,signs:s.signs.map(b=>b.userData.hangul),goods:s.goodsMeshes.map(m=>[m.userData.trade,m.count]),
    metresShortOfJongmyo:jongmyo.position.x-east,
    minPairGap:Math.min(...s.records.filter(r=>r.side<0).map(a=>Math.min(...s.records.filter(b=>b.side>0&&Math.abs(b.x-a.x)<12).map(b=>Math.hypot(b.x-a.x,b.z-a.z)))))}}''')
  print(shops,flush=True)
@@ -96,6 +97,9 @@ with sync_playwright() as p:
  assert 'shop-interiors' not in shops['meshNames'],shops
  assert shops['keepers']>shops['blocks'] and 5<=len(shops['signs'])<=shops['blocks']//3,shops
  assert set(shops['signs'])<={'선전','면포전','면주전','내어물전','저포전'},shops
+ # Every trade zone has painted goods cards, at least one per shop.
+ assert {g[0] for g in shops['goods']}=={'선전','면포전','면주전','내어물전','저포전'},shops
+ assert sum(g[1] for g in shops['goods'])>=shops['blocks'],shops
  # Rows face each other across a street at least 17 m wide, and stop before Jongmyo.
  assert shops['minPairGap']>17,shops
  assert shops['metresShortOfJongmyo']>150,shops

@@ -13,6 +13,7 @@
 | [자료 수집](sources.md) | 카탈로그 등록과 파일 취득 |
 | [좌표 정합](georeferencing.md) | 기준점, 변환, 오차 기록 |
 | [3D 복원 규칙](reconstruction_rules.md) | 모델 수준과 추정 표시 |
+| [건물·시설 안내](landmarks.md) | 지도에 올린 건물마다 소개, 존재 시기, 출처와 1750년과의 차이 |
 | [권리 관리](licensing.md) | 코드·사료·파생물의 권리 상태 |
 | [초기 설계 결정](decisions/0001-project-foundation.md) | 채택한 기본 방향과 재검토 조건 |
 
