@@ -1635,11 +1635,11 @@
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          1417,
-          1442
+          1444,
+          1451
         ],
-        "method": "drawn_jongno_crossing_read_on_detail_sheet",
-        "note": "부분도 8(asset-0002)에서 운종가와 남북 대로가 만나는 네거리와 그 곁의 鍾樓 글씨를 확인하고, 전체 원도에서 같은 교차점을 읽었다. 두 판독값의 평균이다.",
+        "method": "southeast_block_of_drawn_jongno_crossing",
+        "note": "부분도 8에서 확인한 운종가 네거리 `(1417, 1442)`의 남동쪽 블록에 두었다. 원도 길 판독 자료로 도로에 걸치지 않는 가장 가까운 자리를 골랐다. 鍾樓 글씨는 네거리 남동쪽에 적혀 있으나 건물 기호는 확인하지 못했다.",
         "detail_asset": "asset-0002"
       }
     },
@@ -1687,11 +1687,11 @@
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          1385,
-          1428
+          1400,
+          1408
         ],
-        "method": "yellow_cartouche_read_on_detail_sheet",
-        "note": "부분도 8에서 義禁府 글씨가 든 노란 칸의 중심을 읽고, 모전교·광통교를 기준점으로 전체 원도 좌표로 환산했다.",
+        "method": "northwest_block_of_drawn_jongno_crossing",
+        "note": "부분도 8의 義禁府 글씨는 네거리 북서쪽에 있다. 글씨 중심을 환산한 `(1385, 1428)`은 피맛길에 걸쳐, 원도 길 판독 자료로 피맛길 북쪽의 도로에 닿지 않는 자리를 골라 `(1400, 1408)`에 두었다.",
         "detail_asset": "asset-0002"
       }
     },

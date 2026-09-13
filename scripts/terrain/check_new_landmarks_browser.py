@@ -32,15 +32,16 @@ with sync_playwright() as p:
   const inside=(x,y)=>{let c=false;for(let i=0,n=poly.length;i<n;i++){const [x1,y1]=poly[i],[x2,y2]=poly[(i+1)%n];
    if((y1>y)!==(y2>y)&&x<x1+(y-y1)*(x2-x1)/(y2-y1))c=!c}return c};
   const at=id=>t.buildings.children.find(b=>b.userData.feature.id===id);
-  const belfry=at('jongru').userData.feature.source_position.pixel;
-  return {jongruPixel:belfry,jongruInside:inside(...belfry),
+  const belfry=at('jongru').userData.feature.source_position.pixel,office=at('uigeumbu').userData.feature.source_position.pixel;
+  return {jongruPixel:belfry,uigeumbuPixel:office,jongruInside:inside(...belfry),
    uigeumbuNorthWest:[at('uigeumbu').position.x<at('jongru').position.x,at('uigeumbu').position.z<at('jongru').position.z],
    leftOfficeEast:at('jwaporocheong').position.x-at('jongru').position.x,
    rightOfficeWest:at('jongru').position.x-at('uporocheong').position.x,
    allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung'].every(id=>{
     const f=at(id).userData.feature;return f.source_position?inside(...f.source_position.pixel):true})}}''')
  print(place,flush=True)
- assert place['jongruPixel']==[1417,1442] and place['jongruInside'],place
+ # Both sit in the blocks either side of the drawn Jongno crossing, not on the streets.
+ assert place['jongruPixel']==[1444,1451] and place['uigeumbuPixel']==[1400,1408] and place['jongruInside'],place
  assert all(place['uigeumbuNorthWest']),place
  # The two police offices flank the bell tower along Unjongga.
  assert place['leftOfficeEast']>300 and place['rightOfficeWest']>200,place
