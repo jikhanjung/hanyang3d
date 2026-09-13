@@ -5,7 +5,7 @@ import * as THREE from 'three';
 // come from the reading, the rows themselves are a stated display assumption.
 export function createSijeon(data,sourceSurface,landmarks){
  const group=new THREE.Group();group.name='unjongga-shop-rows';
- const {bay_m:bay,depth_m:depth,height_m:height,setback_m:setback,block_bays:[minBays,maxBays],gap_m:[minGap,maxGap]}=data.placement;
+ const {bay_m:bay,depth_m:depth,height_m:height,setback_m:setback,min_half_width_m:minHalf=0,block_bays:[minBays,maxBays],gap_m:[minGap,maxGap]}=data.placement;
  const line=data.street_points.map(([px,py,half])=>{const p=sourceSurface(px,py);return {x:p.x,z:p.z,half,pixel:[px,py]}});
  let total=0;
  line.forEach((p,i)=>{if(i)total+=Math.hypot(p.x-line[i-1].x,p.z-line[i-1].z);p.distance=total});
@@ -24,7 +24,8 @@ export function createSijeon(data,sourceSurface,landmarks){
    const bays=Math.round(minBays+next()*(maxBays-minBays)),length=bays*bay;
    if(distance+length>total)break;
    const mid=sample(distance+length/2),yaw=Math.atan2(-mid.dz,mid.dx);
-   const nx=-mid.dz,nz=mid.dx,offset=mid.half+setback+depth/2;
+   // The drawn street is narrower than the real avenue, so hold a minimum clear width.
+   const nx=-mid.dz,nz=mid.dx,offset=Math.max(mid.half,minHalf)+setback+depth/2;
    const x=mid.x+side*nx*offset,z=mid.z+side*nz*offset,reach=Math.hypot(length,depth)/2;
    // Leave room for the named landmarks that already stand along the street.
    const clash=landmarks&&landmarks.children.some(b=>{
@@ -39,7 +40,10 @@ export function createSijeon(data,sourceSurface,landmarks){
   stone:new THREE.MeshStandardMaterial({color:0x9d9583,roughness:1}),
   wall:new THREE.MeshStandardMaterial({color:0xd7cbb2,roughness:1}),
   roof:new THREE.MeshStandardMaterial({color:0x454f52,roughness:1}),
-  front:new THREE.MeshStandardMaterial({color:0x5b4630,roughness:1}),
+  shade:new THREE.MeshStandardMaterial({color:0x2f2921,roughness:1}),
+  counter:new THREE.MeshStandardMaterial({color:0x6d5334,roughness:1}),
+  awning:new THREE.MeshStandardMaterial({color:0xcbb789,roughness:1}),
+  post:new THREE.MeshStandardMaterial({color:0x7a5c3c,roughness:1}),
  };
  // A unit gable prism: ridge along local X, eaves at z = ±0.5, base at y = 0.
  const prism=new THREE.BufferGeometry();
@@ -51,7 +55,12 @@ export function createSijeon(data,sourceSurface,landmarks){
  const footing=make(new THREE.BoxGeometry(1,1,1),mats.stone);footing.name='shop-footing';
  const walls=make(new THREE.BoxGeometry(1,1,1),mats.wall);walls.name='shop-walls';
  const roofs=make(prism,mats.roof);roofs.name='shop-roofs';
- const fronts=make(new THREE.BoxGeometry(1,1,1),mats.front);fronts.name='shop-fronts';
+ // Open shopfronts: a dark interior behind a counter, shaded by an awning on posts.
+ const interiors=make(new THREE.BoxGeometry(1,1,1),mats.shade);interiors.name='shop-interiors';
+ const counters=make(new THREE.BoxGeometry(1,1,1),mats.counter);counters.name='shop-counters';
+ const awnings=make(new THREE.BoxGeometry(1,1,1),mats.awning);awnings.name='shop-awnings';
+ const postsLeft=make(new THREE.CylinderGeometry(.09,.11,1,6),mats.post);postsLeft.name='awning-post-left';
+ const postsRight=make(new THREE.CylinderGeometry(.09,.11,1,6),mats.post);postsRight.name='awning-post-right';
  const dummy=new THREE.Object3D();
  let exaggeration=1,mapVisible=true,visible=0;
  function updateHeights(ex){
@@ -63,15 +72,23 @@ export function createSijeon(data,sourceSurface,landmarks){
    if(!show){dummy.scale.set(0,0,0);dummy.updateMatrix();for(const m of group.children)m.setMatrixAt(i,dummy.matrix);return}
    visible++;
    const floor=surface.min*ex+.05;r.floor=floor;
-   const place=(mesh,y,sx,sy,sz,dz=0)=>{
-    dummy.position.set(r.x+dz*Math.sin(r.yaw),y,r.z+dz*Math.cos(r.yaw));
+   const place=(mesh,y,sx,sy,sz,dz=0,dx=0)=>{
+    dummy.position.set(r.x+dz*Math.sin(r.yaw)+dx*Math.cos(r.yaw),y,r.z+dz*Math.cos(r.yaw)-dx*Math.sin(r.yaw));
     dummy.rotation.set(0,r.yaw,0);dummy.scale.set(sx,sy,sz);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);
    };
-   place(footing,floor+.2,r.length+.5,.4,depth+.5);
-   place(walls,floor+.4+height/2,r.length,height,depth*.92);
-   place(roofs,floor+.4+height,r.length+1.1,1.55,depth+1.7);
-   // The shop side facing the street: a dark timber front under the eaves.
-   place(fronts,floor+.4+height*.45,r.length*.96,height*.72,.3,-depth*.46);
+   const sill=floor+.4,eave=sill+height;
+   place(footing,floor+.2,r.length+.5,.4,depth+.9);
+   // Only the back half is walled; the street side stands open for trade.
+   place(walls,sill+height/2,r.length,height,depth*.5,depth*.24);
+   place(roofs,sill+height,r.length+1.1,1.55,depth+1.7);
+   place(interiors,sill+height*.42,r.length*.96,height*.84,depth*.46,-depth*.02);
+   place(counters,sill+.5,r.length*.94,1,1.1,-depth*.42);
+   place(awnings,eave-.35,r.length+.7,.16,2.2,-depth*.5-1);
+   for(const [mesh,side] of [[postsLeft,-1],[postsRight,1]]){
+    dummy.position.set(r.x+(-depth*.5-1.9)*Math.sin(r.yaw)+side*r.length*.46*Math.cos(r.yaw),
+     (sill+eave-.35)/2,r.z+(-depth*.5-1.9)*Math.cos(r.yaw)-side*r.length*.46*Math.sin(r.yaw));
+    dummy.rotation.set(0,r.yaw,0);dummy.scale.set(1,eave-.35-sill,1);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);
+   }
   });
   for(const mesh of group.children){mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere()}
  }

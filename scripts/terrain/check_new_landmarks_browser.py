@@ -79,5 +79,20 @@ with sync_playwright() as p:
   return out}''',list(EXPECTED))
  print(roads,flush=True)
  assert all(v==0 for v in roads.values()),roads
+ # The shop rows: open fronts, a clear avenue between them, and no Jongmyo stretch.
+ shops=page.evaluate('''()=>{const t=terrain3d,s=t.sijeon;
+  const jongmyo=t.buildings.children.find(b=>b.userData.feature.id==='jongmyo');
+  const east=Math.max(...s.records.map(r=>r.x));
+  return {blocks:s.records.length,bays:s.bayCount,visible:s.visibleCount,
+   meshNames:s.group.children.map(m=>m.name),
+   metresShortOfJongmyo:jongmyo.position.x-east,
+   minPairGap:Math.min(...s.records.filter(r=>r.side<0).map(a=>Math.min(...s.records.filter(b=>b.side>0&&Math.abs(b.x-a.x)<12).map(b=>Math.hypot(b.x-a.x,b.z-a.z)))))}}''')
+ print(shops,flush=True)
+ assert shops['blocks']>60 and shops['bays']>400,shops
+ for name in ['shop-interiors','shop-counters','shop-awnings','awning-post-left']:
+  assert name in shops['meshNames'],shops
+ # Rows face each other across a street at least 17 m wide, and stop before Jongmyo.
+ assert shops['minPairGap']>17,shops
+ assert shops['metresShortOfJongmyo']>150,shops
  assert not errors,errors
  print('PASS: bell tower at the drawn crossing, offices and shrine placed, grounded and labelled',flush=True);b.close()

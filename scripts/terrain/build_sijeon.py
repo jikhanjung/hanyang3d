@@ -17,8 +17,9 @@ MASK = ROOT / 'gis/roads/doseong_road_mask.png'
 OUT = ROOT / 'gis/buildings/doseong_sijeon.json'
 # Metres per source pixel, from the georeference matrix at the Jongno crossing.
 MX, MY = 2.0838, 1.8092
-# The shop-row stretch: from the Yukjo street junction east to the Jongmyo approach.
-START_X, END_X = 1200, 1860
+# The shop-row stretch: Hyejeonggyo by the Yukjo street junction east to the Changdeokgung
+# approach, the run the early records describe; the Jongmyo stretch is left out.
+START_X, END_X = 1200, 1720
 STEP = 4
 
 
@@ -53,17 +54,19 @@ def main():
         'method': 'rows_lined_along_read_street_centreline',
         'street_points': points,
         'placement': {
+            'min_half_width_m': 8.5,
             'bay_m': 2.7,
             'depth_m': 5.5,
             'height_m': 3.4,
             'setback_m': 2.5,
-            'block_bays': [8, 18],
-            'gap_m': [5, 9],
+            'block_bays': [4, 9],
+            'gap_m': [2.5, 5],
         },
         'limitations': [
             '행랑 한 채 한 채의 위치는 원도에 그려져 있지 않다. 판독한 길 선형과 폭만 원도에서 왔고 나머지는 표시용 가정이다.',
-            '칸 크기 2.7 m와 깊이 5.5 m, 높이 3.4 m는 시각화 가정이며 실측값이 아니다.',
-            '태종대 행랑 2,027칸 가운데 운종가-종묘 앞 누문, 종루-광통교 구간이 시전 전용이었다는 기록을 구간 근거로 삼았다. 남북 대로 구간은 이번 판독 선형에 없어 넣지 않았다.',
+            '칸 크기 2.7 m와 깊이 5.5 m, 높이 3.4 m는 시각화 가정이며 실측값이 아니다. 한 채를 4~9칸으로 끊어 작은 시전 여럿이 늘어선 모습으로 보이게 했다.',
+            '태종 12년 이후 혜정교에서 창덕궁 동구까지 행랑을 세웠다는 기록을 구간 근거로 삼았다. 종묘 앞 누문 구간과 종루-광통교 남북 구간은 이번 판독 선형에 넣지 않았다.',
+            '원도에 그려진 길은 실제 대로보다 좁다. 행랑은 중심선에서 최소 8.5 m를 띄워 대로 폭을 17 m 이상 확보한다.',
         ],
         'references': [
             'https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0020_0010',
