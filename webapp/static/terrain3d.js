@@ -4,6 +4,7 @@ import {setupOrbitNavigation} from './orbit_navigation.js';
 import {createTrees} from './trees.js';
 import {createPedestrians,createWalker} from './pedestrians.js';
 import {createHouseSite} from './house_site.js';
+import {createBellTower} from './bell_tower.js';
 import {createSettlement} from './settlement.js';
 import {createCityWall} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
@@ -148,7 +149,7 @@ async function main(){
  const supportSurfaces=[terrain,historical].map(mesh=>({positions:mesh.geometry.attributes.position.array,index:mesh.geometry.index.array}));
  const buildingData=JSON.parse(el('buildings').textContent);
  const siteMarkers=[];
- const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b,'집터':0x8a8577};
+ const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b,'집터':0x8a8577,'시설':0x7f6a4c};
  for(const feature of buildingData.features){
   let x,y;
   if(feature.source_position){
@@ -181,6 +182,7 @@ async function main(){
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
+  if(feature.display_model==='bell_tower'){box.material.visible=false;box.add(createBellTower(feature,w,h,d))}
   if(feature.display_model==='house_site'){box.material.visible=false;foundation.visible=false;box.add(createHouseSite(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
