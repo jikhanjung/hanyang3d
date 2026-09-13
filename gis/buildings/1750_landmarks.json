@@ -1812,21 +1812,22 @@
       "lat": 37.5666,
       "lon": 127.0043,
       "category": "관청",
-      "reference": "https://encykorea.aks.ac.kr/Article/E0065452",
-      "note": "무예 시험과 훈련을 맡던 관청입니다. 흥인지문 안쪽 동촌에 넓은 마당을 두었습니다.",
-      "position_status": "modern_site_moved_off_drawn_roads",
+      "reference": "https://mediahub.seoul.go.kr/archives/180498",
+      "note": "무과 시험과 무예 훈련을 맡던 관청입니다. 청사 남쪽에 활쏘기와 시험을 위한 넓은 마당을 두었습니다.",
+      "position_status": "manual_source_symbol_hint",
       "symbol_size_m": [
-        110,
-        9,
-        95
+        130,
+        10,
+        180
       ],
-      "size_status": "assumed_display_scale",
-      "size_note": "표시용 개략 치수. 실측 복원값이나 시설군 전체 범위가 아닙니다.",
+      "size_status": "assumed_compound_extent",
+      "size_note": "청사와 그 남쪽 연병장을 함께 담은 표시 범위다. 훈련원은 청사 남쪽에 활쏘기와 무과 시험을 보던 사청을 두었다는 기록을 근거로 넓게 잡았으며, 실측 범위가 아니다.",
       "temporal": {
         "existence": {
-          "start_year": null,
+          "start_year": 1392,
           "end_year": null,
-          "status": "unverified"
+          "status": "founded_1392_moved_and_renamed_1466",
+          "note": "태조 원년 훈련관으로 설치해 태종 때 이 자리로 옮기고 세조 12년 훈련원으로 고쳤다."
         },
         "depiction": {
           "start_year": null,
@@ -1834,7 +1835,12 @@
           "reference_year": null,
           "status": "not_read_on_source_map"
         },
-        "sources": []
+        "sources": [
+          {
+            "url": "https://mediahub.seoul.go.kr/archives/180498",
+            "supports": "office with an archery and examination ground to its south"
+          }
+        ]
       },
       "modern_position": {
         "method": "approximate_modern_site",
@@ -1842,19 +1848,19 @@
         "precision_m": 100,
         "note": "문헌·표석이 전하는 현재 위치를 개략 좌표로 옮겼다. 원도에서 해당 기호를 판독한 값이 아니다."
       },
-      "display_model": "yukjo_compound",
+      "display_model": "training_ground",
       "display_yaw_deg": 0,
-      "model_note": "담장·문·마당·전각을 단순화한 개념 모형. 실제 건물 배치를 복원한 것이 아니다.",
+      "model_note": "담장과 남쪽 정문, 북쪽 청사·사청, 넓은 연병장과 과녁을 단순화한 개념 모형. 실제 배치를 복원한 것이 아니다.",
       "court_type": "large",
       "source_position": {
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          2269,
-          1619
+          2389,
+          1647
         ],
-        "method": "modern_site_shifted_clear_of_drawn_roads",
-        "note": "현대 위치를 원도 좌표로 환산한 (2266, 1652)는 원도의 길 위에 걸쳐, 길 판독 마스크에서 모형 범위가 도로에 닿지 않는 가장 가까운 자리로 약 60 m 북쪽에 옮겼다."
+        "method": "drawn_label_with_field_to_the_south",
+        "note": "원도의 訓鍊院 글씨 `(2396, 1597)`를 청사 자리로 보고, 그 남쪽으로 연병장을 둔 범위의 중심이다. 길 판독 마스크에서 범위가 도로에 닿지 않도록 15 m 안쪽으로 맞췄다."
       }
     },
     {

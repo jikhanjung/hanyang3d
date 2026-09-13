@@ -43,10 +43,22 @@ with sync_playwright() as p:
     assert not page.locator('footer').is_visible()
     assert page.locator('#map-controls').is_visible()
     assert not page.locator('#anchors3d').is_checked()
+    # Reading the rect in the page avoids Playwright's stability wait while the scene renders.
+    def canvas_bounds():
+        return page.evaluate("()=>{const r=document.querySelector('#scene > canvas').getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}}")
+    # Walk button, map slider and layer switches live in the settings panel now.
+    def open_settings():
+        if page.locator('#map-options-toggle').get_attribute('aria-expanded') != 'true':
+            page.dispatch_event('#map-options-toggle','click')
+    def close_settings():
+        if page.locator('#map-options-toggle').get_attribute('aria-expanded') == 'true':
+            page.dispatch_event('#map-options-toggle','click')
+    open_settings()
     assert page.locator('#opacity3d').input_value() == '50'
-    assert page.locator('#first-person3d').is_visible()
+    assert page.locator('#map-options .layer-group').count() == 4
+    assert page.locator('#map-options-toggle').is_visible()
     assert page.locator('#map-controls a[href="/gis/"]').count() == 0
-    bounds = page.locator('#scene > canvas').bounding_box()
+    bounds = canvas_bounds()
     assert bounds['x']==0 and bounds['y']==0 and bounds['width']==1440 and bounds['height']==1080, bounds
     result = page.evaluate('''()=>{const t=terrain3d;t.renderer.setAnimationLoop(null);t.updateBuildingNames();t.renderer.render(t.scene,t.camera);return {people:t.pedestrians.walkers.length,trees:t.trees.records.length,names:t.mountainNames.children.map(n=>n.userData.name),granite:t.granite.enabled,minDistance:t.controls.minDistance}}''')
     assert result['people'] == 130 and result['trees'] > 2000 and result['minDistance'] == 1, result
@@ -65,11 +77,12 @@ with sync_playwright() as p:
     assert before != page.evaluate('terrain3d.camera.position.toArray()')
     page.set_viewport_size({'width':390,'height':844})
     page.wait_for_timeout(300)
-    bounds = page.locator('#scene > canvas').bounding_box()
+    bounds = canvas_bounds()
     assert bounds['x']==0 and bounds['y']==0 and bounds['width']==390 and bounds['height']==844, bounds
     assert page.evaluate('document.documentElement.scrollHeight <= innerHeight')
+    close_settings()
     assert not page.locator('#first-person3d').is_visible()
-    page.locator('#map-options-toggle').click()
+    open_settings()
     coincident = "()=>{const t=terrain3d,a=t.terrain.geometry.attributes.position,b=t.historical.geometry.attributes.position,c=t.roadLayer.geometry.attributes.position;let error=0;for(let i=0;i<a.count;i++)error=Math.max(error,Math.abs(a.getY(i)-b.getY(i)),Math.abs(a.getY(i)-c.getY(i)));return error}"
     assert page.evaluate("()=>{const n=terrain3d.terrain.geometry.attributes.normal;for(let i=0;i<n.count;i++)if(Math.hypot(n.getX(i),n.getY(i),n.getZ(i))<.9)return false;return true}")
     assert page.evaluate(coincident) == 0
@@ -87,7 +100,7 @@ with sync_playwright() as p:
     assert page.evaluate('terrain3d.firstPerson.walker.group.visible && terrain3d.firstPerson.view > 1')
     assert page.evaluate('terrain3d.camera.position.distanceTo(terrain3d.firstPerson.eye) > 1')
     assert page.locator('#first-person-help').is_visible()
-    page.locator('#map-options-toggle').click()
+    open_settings()
     for scale, opacity, road in [('1','50',True),('1.5','50',True),('2','50',True),('2','0',True),('2','0',False),('1','50',True)]:
         page.locator('#height3d').select_option(scale, force=True)
         page.locator('#opacity3d').fill(opacity)

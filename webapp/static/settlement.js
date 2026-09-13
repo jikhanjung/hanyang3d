@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 // Deliberately small, repeated concept models; positions are speculative.
-export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPath){
+export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPath,blockers=[]){
  const group=new THREE.Group();group.name='speculative-roadside-buildings';
  const records=[],cells=new Map(),cellSize=14;
  for(const row of data.features){
@@ -18,6 +18,8 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
   if(Math.max(...hs)>140||Math.max(...hs)-Math.min(...hs)>2.8)continue;
   const water=ChannelTerrain.nearest(p.x,p.z,channelPath);if(water.distance<water.width+25+radius)continue;
   if(landmarks.children.some(b=>Math.hypot(p.x-b.position.x,p.z-b.position.z)<Math.hypot(b.userData.feature.symbol_size_m[0],b.userData.feature.symbol_size_m[2])/2+radius+14))continue;
+  // Keep the speculative houses out of the shop rows lining Unjongga.
+  if(blockers.some(b=>Math.hypot(p.x-b.x,p.z-b.z)<b.radius+radius))continue;
   const ix=Math.floor(p.x/cellSize),iz=Math.floor(p.z/cellSize);let clash=false;
   for(let x=ix-1;x<=ix+1;x++)for(let z=iz-1;z<=iz+1;z++)for(const other of cells.get(x+','+z)??[])if(Math.hypot(other.x-p.x,other.z-p.z)<other.radius+radius+1)clash=true;
   if(clash)continue;

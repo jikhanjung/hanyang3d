@@ -5,7 +5,9 @@ import {createTrees} from './trees.js';
 import {createPedestrians,createWalker} from './pedestrians.js';
 import {createHouseSite} from './house_site.js';
 import {createBellTower} from './bell_tower.js';
+import {createTrainingGround} from './training_ground.js';
 import {createSettlement} from './settlement.js';
+import {createSijeon} from './sijeon.js';
 import {createCityWall} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
@@ -21,7 +23,7 @@ async function main(){
  const loading=window.terrainLoading={stage:0,history:[],ready:false};
  el('map-options-toggle').onclick=()=>{const open=el('map-options').classList.toggle('open');el('map-options-toggle').setAttribute('aria-expanded',String(open))};
  const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')];toolbarControls.forEach(c=>c.disabled=true);
- let granite=null,trees=null,settlement=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
+ let granite=null,trees=null,settlement=null,sijeon=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
 
  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5e4');
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -182,6 +184,7 @@ async function main(){
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
+  if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d))}
   if(feature.display_model==='bell_tower'){box.material.visible=false;box.add(createBellTower(feature,w,h,d))}
   if(feature.display_model==='house_site'){box.material.visible=false;foundation.visible=false;box.add(createHouseSite(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
@@ -412,7 +415,7 @@ async function main(){
   foundations.children.forEach(f=>{f.position.y=(f.userData.top+f.userData.bottom)/2*exaggeration;f.scale.y=exaggeration});
   waterLayer.children.forEach(mesh=>{const p=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>p.setY(i,h*exaggeration));p.needsUpdate=true;mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()});
   bridges.children.forEach(b=>{b.position.y=b.userData.z*exaggeration+b.userData.lift+b.userData.boxHeight/2;renderBridgeConnections(b)});
-  cityWall.updateHeights(exaggeration);palaceWall?.updateHeights(exaggeration);settlement?.updateHeights(exaggeration);trees?.updateHeights(exaggeration);pedestrians?.setHeight(exaggeration);
+  cityWall.updateHeights(exaggeration);palaceWall?.updateHeights(exaggeration);settlement?.updateHeights(exaggeration);sijeon?.updateHeights(exaggeration);trees?.updateHeights(exaggeration);pedestrians?.setHeight(exaggeration);
   const rp=roadLayer.geometry.attributes.position;roadLayer.geometry.userData.heights.forEach((h,i)=>rp.setY(i,h*exaggeration));rp.needsUpdate=true;roadLayer.geometry.computeBoundingSphere();
   firstPerson?.update(0);clearHover();
  };
@@ -509,7 +512,7 @@ async function main(){
   });
   roadLayer.geometry.userData.heights=[...terrain.geometry.userData.heights];
   updateBridgeGround(surfaces);
-  cityWall.updateGround(surfaces,roadLayer.geometry.userData.heights);palaceWall.updateGroundFrom(cityWall.supportAt);settlement?.updateGround(cityWall.supportAt);pedestrians?.updateGround(cityWall.supportAt);trees?.updateGround(cityWall.supportAt);
+  cityWall.updateGround(surfaces,roadLayer.geometry.userData.heights);palaceWall.updateGroundFrom(cityWall.supportAt);sijeon?.updateGround(cityWall.supportAt);settlement?.updateGround(cityWall.supportAt);pedestrians?.updateGround(cityWall.supportAt);trees?.updateGround(cityWall.supportAt);
   buildings.children.forEach(b=>groundYukjo(b,cityWall.supportAt));
   Object.assign(channelState,{enabled,depth,maxCut});
   el('channel-depth').disabled=!enabled;
@@ -521,9 +524,13 @@ async function main(){
  el('channel-depth').onchange=applyChannel;
  applyChannel();
  await stage(5,'하천·성벽·길 표시 완료 · 주택과 상가를 배치합니다');
+ const sijeonData=await(await fetch('/gis/buildings/doseong_sijeon.json')).json();
+ if(sijeonData.source_sha256!==exp.input_sha256)throw Error('시전 배치의 길 판독 원본이 현재 원도와 다릅니다.');
+ sijeon=createSijeon(sijeonData,sourceSurface,buildings);sijeon.updateGround(cityWall.supportAt);sijeon.updateHeights(exaggeration);scene.add(sijeon.group);
+ const sijeonBlockers=sijeon.records.map(r=>({x:r.x,z:r.z,radius:Math.hypot(r.length,sijeonData.placement.depth_m)/2+2}));
  const settlementData=await(await fetch('/gis/buildings/doseong_settlement.json')).json();
  if(settlementData.source_sha256!==exp.input_sha256)throw Error('추정 건물 배치 원본이 현재 원도와 다릅니다.');
- settlement=createSettlement(settlementData,sourceSurface,(x,z)=>height(cx+x/ground,cy-z/ground),buildings,channelPath);settlement.updateGround(cityWall.supportAt);settlement.updateHeights(exaggeration);scene.add(settlement.group);
+ settlement=createSettlement(settlementData,sourceSurface,(x,z)=>height(cx+x/ground,cy-z/ground),buildings,channelPath,sijeonBlockers);settlement.updateGround(cityWall.supportAt);settlement.updateHeights(exaggeration);scene.add(settlement.group);
  await stage(6,'주택·상가 표시 완료 · 숲과 걷는 사람을 준비합니다');
  const treeResponse=await fetch('/gis/vegetation/doseong_trees.json');
  if(!treeResponse.ok)throw Error('수목 배치 자료를 불러오지 못했습니다.');
@@ -693,6 +700,6 @@ async function main(){
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass,groundColors};
+ window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

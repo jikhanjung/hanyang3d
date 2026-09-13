@@ -7,7 +7,7 @@ EXPECTED={
  'uigeumbu':('의금부','yukjo-compound'),
  'jwaporocheong':('좌포도청','yukjo-compound'),
  'uporocheong':('우포도청','yukjo-compound'),
- 'hullyeonwon':('훈련원','yukjo-compound'),
+ 'hullyeonwon':('훈련원','training-ground'),
  'gyeongmogung':('경모궁','palace-compound'),
 }
 with sync_playwright() as p:
@@ -33,6 +33,14 @@ with sync_playwright() as p:
   return {bays:u.bays,bellHeightM:u.bellHeightM,bellMouthM:u.bellMouthM,meshes:m.children.length,
    parts:['great-bell','bell-hook','lower-column','upper-column','rail-bar','gable-panel','tile-roof','footing-stone'].filter(p=>u.parts.includes(p))}}''')
  print(belfry,flush=True)
+ # The drill ground keeps an open field south of its offices.
+ field=page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(b=>b.userData.feature.id==='hullyeonwon');
+  const m=b.getObjectByName('training-ground'),[w,,d]=b.userData.feature.symbol_size_m;
+  return {widthM:w,depthM:d,fieldDepthM:m.userData.fieldDepthM,
+   parts:['field','sacheong-roof','target','flag-post','gate-roof'].filter(p=>m.userData.parts.includes(p))}}''')
+ print(field,flush=True)
+ assert field['widthM']>=120 and field['depthM']>=170 and field['fieldDepthM']>100,field
+ assert len(field['parts'])==5,field
  assert belfry['bays']==[5,4] and belfry['bellHeightM']==3.18 and belfry['bellMouthM']==2.28,belfry
  assert len(belfry['parts'])==8 and belfry['meshes']<=8,belfry
  place=page.evaluate('''async()=>{const t=terrain3d;
