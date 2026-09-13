@@ -84,13 +84,18 @@ with sync_playwright() as p:
   const jongmyo=t.buildings.children.find(b=>b.userData.feature.id==='jongmyo');
   const east=Math.max(...s.records.map(r=>r.x));
   return {blocks:s.records.length,bays:s.bayCount,visible:s.visibleCount,
-   meshNames:s.group.children.map(m=>m.name),
+   meshNames:[...s.group.children,...s.group.getObjectByName('shop-keepers-and-signs').children].map(m=>m.name),
+   keepers:s.keeperCount,signs:s.signs.map(b=>b.userData.hangul),
    metresShortOfJongmyo:jongmyo.position.x-east,
    minPairGap:Math.min(...s.records.filter(r=>r.side<0).map(a=>Math.min(...s.records.filter(b=>b.side>0&&Math.abs(b.x-a.x)<12).map(b=>Math.hypot(b.x-a.x,b.z-a.z)))))}}''')
  print(shops,flush=True)
  assert shops['blocks']>60 and shops['bays']>400,shops
- for name in ['shop-interiors','shop-counters','shop-awnings','awning-post-left']:
+ for name in ['shop-counters','shop-awnings','awning-post-left','shopkeepers','shop-sign']:
   assert name in shops['meshNames'],shops
+ # The dark interior boxes are gone; keepers stand behind most counters, signs appear here and there.
+ assert 'shop-interiors' not in shops['meshNames'],shops
+ assert shops['keepers']>shops['blocks'] and 5<=len(shops['signs'])<=shops['blocks']//3,shops
+ assert set(shops['signs'])<={'선전','면포전','면주전','내어물전','저포전'},shops
  # Rows face each other across a street at least 17 m wide, and stop before Jongmyo.
  assert shops['minPairGap']>17,shops
  assert shops['metresShortOfJongmyo']>150,shops
