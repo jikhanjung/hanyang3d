@@ -8,6 +8,7 @@ import {createHouseSite} from './house_site.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
 import {createPagoda} from './pagoda.js';
+import {createObservatory} from './observatory.js';
 import {createSettlement} from './settlement.js';
 import {createSijeon} from './sijeon.js';
 import {createCityWall} from './city_wall.js';
@@ -191,6 +192,7 @@ async function main(){
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
+  if(feature.display_model==='observatory'){box.material.visible=false;foundation.visible=false;box.add(createObservatory(feature,w,h,d))}
   if(feature.display_model==='wongaksa_pagoda'){box.material.visible=false;box.add(createPagoda(feature,w,h,d))}
   if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d))}
   if(feature.display_model==='bell_tower'){box.material.visible=false;box.add(createBellTower(feature,w,h,d))}

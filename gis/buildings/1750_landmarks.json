@@ -257,6 +257,89 @@
       }
     },
     {
+      "id": "gwansanggam",
+      "name": "관상감",
+      "category": "관청",
+      "reference": "https://ko.wikipedia.org/wiki/%EA%B4%80%EC%83%81%EA%B0%90",
+      "note": "천문·지리·역법·측후를 맡은 관청. 돌로 쌓은 관천대가 지금도 제자리에 남아 있습니다.",
+      "lat": 37.5786,
+      "lon": 126.9876,
+      "position_status": "surviving_platform_site_corrected_by_drawn_gate",
+      "symbol_size_m": [
+        40,
+        9,
+        36
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 관천대를 담은 표시용 치수. 관천대 높이 약 3.5 m는 남은 유구를 참고한 개략값이며 실측값이 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1466,
+          "end_year": 1894,
+          "status": "renamed_1466_to_gwansangso_1894",
+          "note": "서운관을 1466년 관상감으로 고쳤다. 1506년 사력서로 낮췄다가 중종 때 복구. 1894년 관상소로 바뀌었다. 관천대는 1434년 세종 때 소간의대로 세운 것으로 추정하며 현존한다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "undated_concept"
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EA%B4%80%EC%83%81%EA%B0%90",
+            "supports": "renamed 1466, Gwansangso 1894"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EA%B4%80%EC%83%81%EA%B0%90_%EA%B4%80%EC%B2%9C%EB%8C%80",
+            "supports": "platform presumed 1434, in original place, rebuilt in place 1984"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "surviving_platform_site",
+        "resolved_on": "2026-09-13",
+        "precision_m": 60,
+        "note": "관천대는 원래 자리인 종로구 원서동 206(현대 계동사옥 앞)에 있다. OSM의 율곡로 75 건물 좌표를 참고해 37.5786, 126.9876으로 잡았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1575,
+          1083
+        ],
+        "method": "surviving_site_shifted_by_drawn_donhwamun_clear_of_roads",
+        "note": "관천대 위치 환산값 (1625, 1016)에 원도의 돈화문 (1717, 1064)과 현대 돈화문 환산값 (1767, 978)의 차이 (-50, +86)를 더한 (1575, 1102)가 길 위라, 길 판독 마스크와 겹치지 않는 가장 가까운 곳으로 34 m 북쪽에 두었다. 원도 광화방 일대의 네모 칸 글씨들은 觀象監으로 읽어 내지 못했다."
+      },
+      "display_model": "observatory",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사 한 채와 돌 관천대를 단순화한 개념 모형. 관천대는 네모난 돌 기단 위에 간의를 올리던 돌 받침대를 둔 남은 유구의 형태를 따랐다.",
+      "info": {
+        "summary": "천문·지리·역법·측후·물시계를 맡은 관청. 별을 관측하던 돌 관천대가 지금의 원서동 현대 계동사옥 앞에 제자리로 남아 있다.",
+        "period": "1466년 서운관을 관상감으로 개칭. 1506년 사력서로 낮췄다가 복구. 1894년 관상소로 바뀜. 관천대는 1434년 세종 때 세운 것으로 추정되며 현존(보물).",
+        "in_1750": "있었다. 원도에서 觀象監 글씨는 읽어 내지 못해, 남아 있는 관천대 위치를 원도의 돈화문에 맞춰 보정하고 길을 피해 두었다.",
+        "sources": [
+          {
+            "title": "위키백과 관상감",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B4%80%EC%83%81%EA%B0%90"
+          },
+          {
+            "title": "우리역사넷 관상감의 관장업무와 직제",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_027_0020_0020_0010_0010"
+          },
+          {
+            "title": "위키백과 서울 관상감 관천대",
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EA%B4%80%EC%83%81%EA%B0%90_%EA%B4%80%EC%B2%9C%EB%8C%80"
+          },
+          {
+            "title": "국가유산포털 서울 관상감 관천대",
+            "url": "http://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121117400000"
+          }
+        ]
+      }
+    },
+    {
       "id": "honghwamun",
       "name": "홍화문 · 창경궁 정문",
       "category": "궁궐",
