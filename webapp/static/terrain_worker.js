@@ -1,9 +1,9 @@
 // Heavy channel refinement runs away from the UI, while the existing scene remains visible.
-importScripts('/webapp/static/channel_terrain.js');
+importScripts('channel_terrain.js');
 onmessage=({data})=>{
  try{
-  const result=ChannelTerrain.refine(data.geometry,data.path);
-  const positions=new Float32Array(result.positions),uv=new Float32Array(result.uv),colors=new Float32Array(result.colors),index=new Uint32Array(result.index),matches=new Float64Array(positions.length);
+  // Shared vertices: about a sixth of the refined vertex count, with smooth shading across triangles.
+  const {positions,uv,colors,index}=ChannelTerrain.weld(ChannelTerrain.refine(data.geometry,data.path)),matches=new Float64Array(positions.length);
   // Carving only reaches width+20 m from the channel, never more than the widest point plus 20 m;
   // farther vertices keep their original height, so an infinite distance carves identically.
   const grid=ChannelTerrain.segmentGrid(data.path),reach=Math.max(...data.path.map(p=>p.width))+20;

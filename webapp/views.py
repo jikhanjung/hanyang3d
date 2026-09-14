@@ -1,7 +1,8 @@
 import json
 
 from django.conf import settings
-from django.http import FileResponse, Http404, JsonResponse
+from django.http import FileResponse, Http404, HttpResponseNotModified, HttpResponseRedirect, JsonResponse
+from django.utils.http import http_date
 from django.shortcuts import render
 from django.views.decorators.http import require_safe
 from .resources import assets, public_resource_paths, resource_path
@@ -43,8 +44,7 @@ def terrain3d(request, canvas_only=False):
     })
 
 
-@require_safe
-def resource(request, resource):
+def serve_resource(request, resource, immutable=False):
     if resource not in public_resource_paths():
         raise Http404
     try:
@@ -53,10 +53,37 @@ def resource(request, resource):
         raise Http404
     if not file.is_file():
         raise Http404
-    response = FileResponse(file.open('rb'))
-    if file.suffix in {'.js', '.css', '.html', '.json'}:
+    stat = file.stat()
+    etag = f'"{stat.st_size:x}-{stat.st_mtime_ns:x}"'
+    # Revalidation answers 304 without resending unchanged files.
+    if etag in [tag.strip() for tag in request.headers.get('If-None-Match', '').split(',')]:
+        response = HttpResponseNotModified()
+    else:
+        response = FileResponse(file.open('rb'))
+    if resource.endswith('.bin.gz') and not isinstance(response, HttpResponseNotModified):
+        # Stored pre-compressed; the browser inflates it transparently.
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Encoding'] = 'gzip'
+    response['ETag'] = etag
+    response['Last-Modified'] = http_date(stat.st_mtime)
+    if immutable:
+        response['Cache-Control'] = 'public, max-age=31536000, immutable'
+    elif file.suffix in {'.js', '.css', '.html', '.json', '.bin'}:
         response['Cache-Control'] = 'no-cache'
     return response
+
+
+@require_safe
+def resource(request, resource):
+    return serve_resource(request, resource)
+
+
+@require_safe
+def versioned_resource(request, version, resource):
+    # Files under the running release's version never change, so browsers may keep them.
+    if version != settings.APP_VERSION:
+        return HttpResponseRedirect('/' + resource)
+    return serve_resource(request, resource, immutable=True)
 
 
 @require_safe

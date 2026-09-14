@@ -78,5 +78,26 @@
   for(let i=0;i<index.length;i+=3)triangle(get(index[i]),get(index[i+1]),get(index[i+2]),0);
   return out;
  }
- const api={nearest,nearestWithin,segmentGrid,profile,carvedHeight,refine};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.ChannelTerrain=api;
+ // Merge refined vertices that share an exact position. Refinement emits every triangle with its own three
+ // vertices; midpoints of a shared edge are computed from the same two endpoints, so they compare equal.
+ function weld(out){
+  const count=out.positions.length/3,table=new Int32Array(2**Math.ceil(Math.log2(count*2+1))).fill(-1),mask=table.length-1;
+  const bits=new Float64Array(1),words=new Uint32Array(bits.buffer),remap=new Uint32Array(count);
+  const positions=new Float32Array(count*3),uv=new Float32Array(count*2),colors=new Float32Array(count*3),p=out.positions;
+  const kept=[];let unique=0;
+  for(let v=0;v<count;v++){
+   let h=2166136261;
+   for(let k=0;k<3;k++){bits[0]=p[v*3+k];h=Math.imul(h^words[0],16777619);h=Math.imul(h^words[1],16777619)}
+   let slot=h&mask,found=-1;
+   while(table[slot]!==-1){const u=kept[table[slot]];if(p[u*3]===p[v*3]&&p[u*3+1]===p[v*3+1]&&p[u*3+2]===p[v*3+2]){found=table[slot];break}slot=(slot+1)&mask}
+   if(found===-1){
+    found=unique++;table[slot]=found;kept.push(v);
+    positions.set([p[v*3],p[v*3+1],p[v*3+2]],found*3);uv.set([out.uv[v*2],out.uv[v*2+1]],found*2);colors.set([out.colors[v*3],out.colors[v*3+1],out.colors[v*3+2]],found*3);
+   }
+   remap[v]=found;
+  }
+  const index=new Uint32Array(out.index.length);for(let i=0;i<index.length;i++)index[i]=remap[out.index[i]];
+  return {positions:positions.slice(0,unique*3),uv:uv.slice(0,unique*2),colors:colors.slice(0,unique*3),index};
+ }
+ const api={nearest,nearestWithin,segmentGrid,profile,carvedHeight,refine,weld};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.ChannelTerrain=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -26,3 +26,13 @@ console.log('Upstream: descending profile, bounded 8% grade and no terrain raisi
  assert.equal(C.carvedHeight(20,C.nearest(55,50,path),2),20);
  console.log('River branch: no synthetic connecting segment or unintended diagonal cut');
 }
+// Welding keeps every triangle's corner positions and only shares identical vertices.
+{
+ const C=require('../../webapp/static/channel_terrain.js');
+ const path=C.profile([{x:0,z:0,height:20,width:10},{x:100,z:0,height:25,width:10}]);
+ const geometry={positions:[0,20,-20,100,20,-20,0,20,20,100,20,20],index:[0,1,2,1,3,2],uv:[0,0,1,0,0,1,1,1],colors:new Array(12).fill(1)};
+ const raw=C.refine(geometry,path),welded=C.weld(raw);
+ assert(welded.positions.length<raw.positions.length/2);assert.equal(welded.index.length,raw.index.length);
+ for(let i=0;i<raw.index.length;i++)for(let k=0;k<3;k++)assert.equal(welded.positions[welded.index[i]*3+k],Math.fround(raw.positions[raw.index[i]*3+k]));
+ console.log('Weld: shared vertices with unchanged triangle corners',raw.positions.length/3,'->',welded.positions.length/3);
+}

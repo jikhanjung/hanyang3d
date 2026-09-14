@@ -22,6 +22,8 @@ import {createCompass3D} from './compass3d.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 
 const el=id=>document.getElementById(id),R=6378137,H=Math.PI*R;
+// Resources share the versioned prefix this module was loaded from (/v/<version>/ or /), so a release can be cached forever.
+const assetBase=new URL('../../',import.meta.url),asset=path=>new URL(path.replace(/^\//,''),assetBase).href;
 const project=(lon,lat)=>[R*lon*Math.PI/180,R*Math.log(Math.tan(Math.PI/4+lat*Math.PI/360))];
 async function main(){
  const loading=window.terrainLoading={stage:0,history:[],ready:false};
@@ -56,16 +58,69 @@ async function main(){
   frameUpdate(0);renderer.render(scene,camera);renderDirty=false;await yieldPaint();
  }
  function refineTerrain(geometry,path){
-  return new Promise((resolve,reject)=>{
-   const worker=new Worker('/webapp/static/terrain_worker.js');
+  let worker;
+  const job=new Promise((resolve,reject)=>{
+   worker=new Worker(new URL('./terrain_worker.js',import.meta.url));
    worker.onmessage=({data})=>{worker.terminate();data.error?reject(Error(data.error)):resolve(data)};
    worker.onerror=event=>{worker.terminate();reject(Error(event.message||'지형 계산을 완료하지 못했습니다.'))};
    worker.postMessage({geometry,path});
   });
+  job.cancel=()=>worker.terminate();
+  return job;
+ }
+ // A pre-computed refinement is used only when its key matches the exact inputs of this browser's run
+ // (terrain grid, channel path and algorithm); otherwise the worker computes it as before.
+ const REFINE_ALGORITHM='channel-refine-weld-v1',params=new URLSearchParams(location.search);
+ function refineKey(geometry,path){
+  let a=2166136261,b=5381;
+  const mix=words=>{for(let i=0;i<words.length;i++){a=Math.imul(a^words[i],16777619);b=Math.imul(b,33)^words[i]}};
+  for(const array of [geometry.positions,geometry.uv,geometry.colors])mix(new Uint32Array(array.buffer,array.byteOffset,array.length));
+  mix(Uint32Array.from(geometry.index));
+  mix(new Uint32Array(Float64Array.from(path.flatMap(p=>[p.x,p.z,p.level,p.width,p.breakBefore?1:0])).buffer));
+  for(const c of REFINE_ALGORITHM)mix([c.charCodeAt(0)]);
+  return (a>>>0).toString(16).padStart(8,'0')+(b>>>0).toString(16).padStart(8,'0')+'-'+geometry.positions.length+'-'+path.length;
+ }
+ function packRefinement(key,r){
+  const near=[];for(let i=0;i<r.matches.length/3;i++)if(r.matches[i*3]!==Infinity)near.push(i);
+  const header=new TextEncoder().encode(JSON.stringify({key,vertices:r.positions.length/3,indices:r.index.length,near:near.length}));
+  const start=12+header.length,pad=(8-start%8)%8,sizes=[r.positions.byteLength,r.uv.byteLength,r.colors.byteLength,r.index.byteLength,near.length*4],body=sizes.reduce((s,v)=>s+v,0);
+  const tailPad=(8-(start+pad+body)%8)%8,buffer=new ArrayBuffer(start+pad+body+tailPad+near.length*24),view=new DataView(buffer),bytes=new Uint8Array(buffer);
+  bytes.set([72,89,67,82]);view.setUint32(4,1,true);view.setUint32(8,header.length,true);bytes.set(header,12);
+  let offset=start+pad;
+  for(const array of [r.positions,r.uv,r.colors,r.index,Uint32Array.from(near)]){bytes.set(new Uint8Array(array.buffer,array.byteOffset,array.byteLength),offset);offset+=array.byteLength}
+  offset+=tailPad;const values=new Float64Array(buffer,offset,near.length*3);near.forEach((v,j)=>{values.set(r.matches.subarray(v*3,v*3+3),j*3)});
+  return buffer;
+ }
+ function unpackRefinement(buffer,key){
+  const view=new DataView(buffer);
+  if(view.getUint32(0,true)!==0x52435948||view.getUint32(4,true)!==1)return null;
+  const length=view.getUint32(8,true),header=JSON.parse(new TextDecoder().decode(new Uint8Array(buffer,12,length)));
+  if(header.key!==key)return null;
+  let offset=12+length;offset+=(8-offset%8)%8;
+  const take=(Type,count)=>{const array=new Type(buffer,offset,count);offset+=array.byteLength;return array};
+  const positions=take(Float32Array,header.vertices*3),uv=take(Float32Array,header.vertices*2),colors=take(Float32Array,header.vertices*3),index=take(Uint32Array,header.indices),near=take(Uint32Array,header.near);
+  offset+=(8-offset%8)%8;const values=take(Float64Array,header.near*3);
+  const matches=new Float64Array(header.vertices*3);for(let i=0;i<header.vertices;i++)matches[i*3]=Infinity;
+  near.forEach((v,j)=>matches.set(values.subarray(j*3,j*3+3),v*3));
+  return {positions,uv,colors,index,matches};
+ }
+ async function refineTerrainCached(geometry,path){
+  // Download the file and run the worker together; whichever yields a valid result first wins.
+  const key=refineKey(geometry,path),job=refineTerrain(geometry,path),download=new AbortController();
+  const fromFile=params.get('refine-cache')==='off'?Promise.resolve(null):
+   fetch(asset('/gis/georeferenced/terrain3d/channel_refined.bin.gz'),{signal:download.signal})
+    .then(response=>response.ok?response.arrayBuffer():null).then(buffer=>buffer&&unpackRefinement(buffer,key)).catch(()=>null);
+  const {result,source}=await Promise.race([
+   job.then(result=>({result,source:'worker'})),
+   fromFile.then(result=>result?{result,source:'file'}:job.then(result=>({result,source:'worker'})))]);
+  if(source==='file')job.cancel();else download.abort();
+  // Build-time export of the worker result; only kept when explicitly requested.
+  if(params.get('refine-export')==='1')loading.exportRefinement=()=>{const bytes=new Uint8Array(packRefinement(key,result));let s='';for(let i=0;i<bytes.length;i+=32768)s+=String.fromCharCode(...bytes.subarray(i,i+32768));return btoa(s)};
+  return {...result,source,key};
  }
  const matchAt=(matches,i)=>({distance:matches[i*3],level:matches[i*3+1],width:matches[i*3+2]});
  await stage(0,'고도 자료를 불러오는 중입니다');
- const response=await fetch('/gis/georeferenced/terrain3d/dem.json');
+ const response=await fetch(asset('/gis/georeferenced/terrain3d/dem.json'));
  if(!response.ok)throw Error('고도 자료를 불러오지 못했습니다.');
  const dem=await response.json(),exp=JSON.parse(el('experiment').textContent);
  const points=[...exp.landmarks,...exp.suggested_anchors];
@@ -105,7 +160,7 @@ async function main(){
  const terrain=new THREE.Mesh(grid(n-1,n-1,(u,v)=>[xmin+u*(xmax-xmin),ymax-v*(ymax-ymin)]),surfaceMaterial);scene.add(terrain);
  const initial=world(...warp(1560,1470),150);controls.target.set(...initial);camera.position.set(initial[0],6200,initial[2]+7600);controls.update();
  await stage(1,'지형 표시 완료 · 도성대지도를 불러오는 중입니다');
- const texture=await new THREE.TextureLoader().loadAsync(exp.image_url);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+ const texture=await new THREE.TextureLoader().loadAsync(asset(exp.image_url));texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
  const [iw,ih]=exp.image_size;
  const historical=new THREE.Mesh(grid(128,112,(u,v)=>warp(u*iw,v*ih),true),new THREE.MeshStandardMaterial({map:texture,transparent:true,opacity:Number(el('opacity3d').value)/100,roughness:1,side:THREE.DoubleSide,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2}));historical.renderOrder=1;scene.add(historical);
  const mapGround=terrain; // One physical surface for terrain, map and road overlays.
@@ -468,13 +523,13 @@ async function main(){
  await stage(4,'물길 표시 완료 · 하천 주변 지형을 계산합니다');
  const surfaceBaselines=[];
  for(const mesh of [terrain]){
-  const refineStart=performance.now(),old=mesh.geometry,refined=await refineTerrain({positions:old.attributes.position.array,index:old.index.array,uv:old.attributes.uv.array,colors:old.attributes.color.array},channelPath);
+  const refineStart=performance.now(),old=mesh.geometry,refined=await refineTerrainCached({positions:old.attributes.position.array,index:old.index.array,uv:old.attributes.uv.array,colors:old.attributes.color.array},channelPath);
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(refined.positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(refined.uv,2));g.setAttribute('color',new THREE.Float32BufferAttribute(refined.colors,3));g.setIndex(new THREE.BufferAttribute(refined.index,1));
   const original=Array.from({length:g.attributes.position.count},(_,i)=>g.attributes.position.getY(i));
   const matches=refined.matches;
   g.userData.heights=[...original];g.computeVertexNormals();mesh.geometry=g;old.dispose();surfaceBaselines.push({mesh,original,matches,offset:0});
   // Read-only load diagnostics: channel refinement runs in a worker and is otherwise invisible to profiles.
-  loading.refine={ms:Math.round(performance.now()-refineStart),vertices:[old.attributes.position.count,g.attributes.position.count],pathNodes:channelPath.length};
+  loading.refine={ms:Math.round(performance.now()-refineStart),source:refined.source,key:refined.key,vertices:[old.attributes.position.count,g.attributes.position.count],pathNodes:channelPath.length};
  }
  // Project the warped source image onto the canonical DEM triangles without a height offset.
  // Index source triangles in X/Z so inverse UV lookup preserves the existing TPS placement.
@@ -505,9 +560,9 @@ async function main(){
  for(const name of ['position','normal','color'])overlayGeometry.setAttribute(name,canonical.attributes[name]);
  overlayGeometry.setAttribute('uv',new THREE.BufferAttribute(overlayUV,2));overlayGeometry.setIndex(overlayIndex);overlayGeometry.userData.heights=canonical.userData.heights;
  historical.geometry.dispose();historical.geometry=overlayGeometry;
- const roadRecord=await (await fetch('/gis/roads/doseong_road_mask.json')).json();
+ const roadRecord=await (await fetch(asset('/gis/roads/doseong_road_mask.json'))).json();
  if(roadRecord.source_sha256!==exp.input_sha256)throw Error('길 판독 원본이 현재 원도와 다릅니다.');
- const roadTexture=await new THREE.TextureLoader().loadAsync(roadRecord.mask_url);roadTexture.colorSpace=THREE.SRGBColorSpace;
+ const roadTexture=await new THREE.TextureLoader().loadAsync(asset(roadRecord.mask_url));roadTexture.colorSpace=THREE.SRGBColorSpace;
  const roadLayer=new THREE.Mesh(historical.geometry.clone(),new THREE.MeshBasicMaterial({map:roadTexture,color:roadRecord.display_color,transparent:true,opacity:.8,alphaTest:.04,depthWrite:false,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3}));
  roadLayer.geometry.userData={heights:[...historical.geometry.userData.heights]};
  roadLayer.name='source-road-overlay';roadLayer.renderOrder=2;scene.add(roadLayer);
@@ -517,7 +572,7 @@ async function main(){
  const wallData=JSON.parse(el('wall').textContent);
  if(wallData.source_sha256!==exp.input_sha256)throw Error('성벽 판독 원본이 현재 원도와 다릅니다.');
  const cityWall=createCityWall(wallData,sourceSurface,buildings);scene.add(cityWall.group);
- const palaceResponse=await fetch('/gis/walls/gyeongbokgung_wall.json');
+ const palaceResponse=await fetch(asset('/gis/walls/gyeongbokgung_wall.json'));
  if(!palaceResponse.ok)throw Error('경복궁 담장 자료를 불러오지 못했습니다.');
  const palaceData=await palaceResponse.json();
  if(palaceData.source_sha256!==exp.input_sha256)throw Error('경복궁 담장 판독 원본이 현재 원도와 다릅니다.');
@@ -564,15 +619,15 @@ async function main(){
  el('channel-depth').onchange=applyChannel;
  applyChannel();
  await stage(5,'하천·성벽·길 표시 완료 · 주택과 상가를 배치합니다');
- const sijeonData=await(await fetch('/gis/buildings/doseong_sijeon.json')).json();
+ const sijeonData=await(await fetch(asset('/gis/buildings/doseong_sijeon.json'))).json();
  if(sijeonData.source_sha256!==exp.input_sha256)throw Error('시전 배치의 길 판독 원본이 현재 원도와 다릅니다.');
  sijeon=createSijeon(sijeonData,sourceSurface,buildings);sijeon.updateGround(cityWall.supportAt);sijeon.updateHeights(exaggeration);scene.add(sijeon.group);
  const sijeonBlockers=sijeon.records.map(r=>({x:r.x,z:r.z,radius:Math.hypot(r.length,sijeonData.placement.depth_m)/2+2}));
- const settlementData=await(await fetch('/gis/buildings/doseong_settlement.json')).json();
+ const settlementData=await(await fetch(asset('/gis/buildings/doseong_settlement.json'))).json();
  if(settlementData.source_sha256!==exp.input_sha256)throw Error('추정 건물 배치 원본이 현재 원도와 다릅니다.');
  settlement=createSettlement(settlementData,sourceSurface,(x,z)=>height(cx+x/ground,cy-z/ground),buildings,channelPath,sijeonBlockers);settlement.updateGround(cityWall.supportAt);settlement.updateHeights(exaggeration);scene.add(settlement.group);
  await stage(6,'주택·상가 표시 완료 · 숲과 걷는 사람을 준비합니다');
- const treeResponse=await fetch('/gis/vegetation/doseong_trees.json');
+ const treeResponse=await fetch(asset('/gis/vegetation/doseong_trees.json'));
  if(!treeResponse.ok)throw Error('수목 배치 자료를 불러오지 못했습니다.');
  const treeData=await treeResponse.json();
  if(treeData.source_sha256!==exp.input_sha256)throw Error('수목 배치 원도가 현재 지도와 다릅니다.');
@@ -580,7 +635,7 @@ async function main(){
  const groundColors=createGroundColors(surfaceMaterial,terrain.geometry,trees.records);
  await yieldPaint();
  el('trees-focus').onclick=()=>{const r=trees.records.find(r=>r.region==='gyeongbok');if(!r)return;controls.target.set(r.x,r.floor,r.z);camera.position.copy(controls.target).add(new THREE.Vector3(120,240,320));controls.update()};
- const walkingData=await(await fetch('/gis/roads/doseong_walking_routes.json')).json();
+ const walkingData=await(await fetch(asset('/gis/roads/doseong_walking_routes.json'))).json();
  if(walkingData.source_sha256!==exp.input_sha256)throw Error('보행 경로 원도가 현재 지도와 다릅니다.');
  pedestrians=createPedestrians(walkingData,sourceSurface);pedestrians.updateGround(cityWall.supportAt);pedestrians.setHeight(exaggeration);scene.add(pedestrians.group);
  frameUpdate=dt=>{pedestrians.update(dt);updateBuildingNames()};

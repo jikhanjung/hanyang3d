@@ -9,5 +9,6 @@ urlpatterns = [
     path('', views.terrain3d, {'canvas_only': True}, name='home'),
     path('gis/', views.dashboard, name='dashboard'),
     path('gis/index.html', views.dashboard),
+    path('v/<str:version>/<path:resource>', views.versioned_resource, name='versioned-resource'),
     path('<path:resource>', views.resource, name='resource'),
 ]

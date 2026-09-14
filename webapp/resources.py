@@ -16,6 +16,7 @@ def public_resource_paths():
     allowed = {a['local_path'] for a in assets()}
     allowed.update({
         'gis/georeferenced/terrain3d/dem.json',
+        'gis/georeferenced/terrain3d/channel_refined.bin.gz',
         'gis/walls/doseong_city_wall.json',
         'webapp/static/city_wall.js',
         'webapp/static/jongmyo.js',

@@ -85,6 +85,21 @@ class ReviewTests(SimpleTestCase):
                     '/gis/georeferenced/1908_join/missing.png'):
             self.assertEqual(self.client.get(url).status_code, 404, url)
 
+    def test_versioned_resources_are_immutable_and_revalidate(self):
+        response = self.client.get(f'/v/{settings.APP_VERSION}/webapp/static/terrain3d.js')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('immutable', response['Cache-Control'])
+        etag = response['ETag']
+        response.close()
+        self.assertEqual(self.client.get('/webapp/static/terrain3d.js', HTTP_IF_NONE_MATCH=etag).status_code, 304)
+        response = self.client.get('/v/v0.0.0/webapp/static/terrain3d.js')
+        self.assertEqual((response.status_code, response['Location']), (302, '/webapp/static/terrain3d.js'))
+        self.assertEqual(self.client.get('/v/%s/webapp/static/../settings.py' % settings.APP_VERSION).status_code, 404)
+        self.assertContains(self.client.get('/'), f'/v/{settings.APP_VERSION}/webapp/static/terrain3d.js')
+        response = self.client.get('/gis/georeferenced/terrain3d/channel_refined.bin.gz')
+        self.assertEqual((response.status_code, response['Content-Encoding'], response['Content-Type']), (200, 'gzip', 'application/octet-stream'))
+        response.close()
+
     def test_read_only(self):
         self.assertEqual(self.client.post('/').status_code, 405)
         self.assertEqual(self.client.post('/data/catalog/assets.csv').status_code, 405)
