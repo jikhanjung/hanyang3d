@@ -26,3 +26,9 @@
 ## 검사
 
 `check_palace_browser.py`의 제목 검사를 새 제목에 맞췄다. 팝업·걷기 검사와 Django 테스트 통과.
+
+## 배포
+
+- v0.1.27로 배포했다. Docker Hub digest: `sha256:c54d16a480e75245e21ca5ae4866392f48076bfdfd06f4fc1e05b8ed949c3ac8`.
+- 공개 healthz 정상: v0.1.27, resources 82(`gyeongbokgung_ruins.js` 추가). 로컬 팝업·걷기 검사, 건물 검사, Django 테스트 통과.
+- 서버 이미지는 v0.1.27과 직전 v0.1.26만 남겼다.
