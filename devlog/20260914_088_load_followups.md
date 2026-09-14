@@ -44,3 +44,10 @@
 
 - `webapp/tests.py`: 버전 경로 immutable, ETag 304, 다른 버전 리디렉트, 경로 탈출 404, 홈의 버전 경로, `.bin.gz`의 gzip 헤더.
 - `scripts/terrain/test_channel.cjs`: weld가 삼각형 꼭짓점 위치를 바꾸지 않음.
+
+## 배포
+
+- v0.1.18로 배포했다. Docker Hub digest: `sha256:82e36d8c3c01a3cbe970e836e576cbe0a77bc8ef44f931072e6bb619f8d6a6c9`.
+- 공개 healthz 정상: v0.1.18, resources 79. `/v/v0.1.18/` 경로의 하천 지형 파일이 `Content-Encoding: gzip`, 5.2 MB, `immutable`로 나간다.
+- 운영 사이트 측정(llvmpipe): 첫 방문 8.0 s(파일 사용, 13.6 MB), 같은 브라우저 재방문 9.0 s(38개 디스크 캐시, 0.1 MB), 파일 끔 8.7 s(워커, 8.3 MB). 파일과 워커의 건물 바닥 높이가 같다. 재방문 시간은 계산 몫이라 전송량만 줄었다.
+- 운영 사이트 팝업·걷기 검사 통과. 서버 이미지는 v0.1.18과 직전 v0.1.17만 남겼다.
