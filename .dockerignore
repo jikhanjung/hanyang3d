@@ -10,6 +10,7 @@ gis/georeferenced/**
 !data/catalog/
 !data/catalog/assets.csv
 !data/catalog/sources.csv
+!docs/landmarks.md
 !deploy/
 !deploy/**
 **/__pycache__/**

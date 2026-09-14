@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 
-ARG APP_VERSION=v0.1.19
+ARG APP_VERSION=v0.1.20
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="Hanyang 3D" \
       org.opencontainers.image.version=$APP_VERSION \
@@ -18,6 +18,7 @@ RUN pip install --no-cache-dir -r deploy/requirements.txt \
 COPY webapp/ webapp/
 COPY gis/ gis/
 COPY data/catalog/assets.csv data/catalog/sources.csv data/catalog/
+COPY docs/landmarks.md docs/landmarks.md
 COPY deploy/ deploy/
 COPY manage.py ./
 RUN python manage.py check

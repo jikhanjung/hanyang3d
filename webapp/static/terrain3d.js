@@ -417,6 +417,7 @@ async function main(){
  Object.assign(tooltip.style,{position:'absolute',pointerEvents:'none',background:'#fffdf2',color:'#24372e',padding:'6px 10px',border:'1px solid #829783',borderRadius:'4px',maxWidth:'250px',zIndex:'20'});el('scene').append(tooltip);
  const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();let hovered=null,selected=null,press=null;
  // Clicking a building opens a card with its introduction, period and sources.
+ const guideAnchors=new Set(JSON.parse(el('guide-anchors')?.textContent??'[]'));
  const popup=document.createElement('section');popup.id='building-popup';popup.hidden=true;popup.setAttribute('aria-live','polite');el('scene').append(popup);
  function renderPopup(box){
   const f=box?.userData.feature;popup.hidden=!f;if(!f)return;
@@ -435,6 +436,9 @@ async function main(){
    for(const source of info.sources){const li=document.createElement('li'),a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=source.title;li.append(a);list.append(li)}
    const label=document.createElement('p');label.className='popup-sources';label.textContent='출처';popup.append(label,list);
   }
+  // Link to the same building in the site's guide page when it has a section there.
+  const guideKey=f.name.split(' · ')[0];
+  if(guideAnchors.has(guideKey)){const p=document.createElement('p'),a=document.createElement('a');a.href='/guide/#'+encodeURIComponent(guideKey);a.target='_blank';a.textContent='건물 안내에서 자세히 보기';p.append(a);popup.append(p)}
  }
  function showBuilding(box){
   const f=box?.userData.feature;

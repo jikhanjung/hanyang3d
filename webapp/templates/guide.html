@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>건물 안내 · 한양 3D</title>
+<style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e9eee7;color:#24372e;font:16px/1.75 system-ui}main{max-width:880px;margin:auto;padding:28px 22px 60px}a{color:#12634e}h1{font-size:28px;margin-bottom:6px}h2{font-size:22px;margin:40px 0 10px;padding-top:8px;border-top:2px solid #b9c7b8}h3{font-size:18px;margin:26px 0 4px;scroll-margin-top:12px}h2,tr,h3 span[id]{scroll-margin-top:12px}h3 span[id]{display:inline-block}p{margin:8px 0}ul{margin:6px 0;padding-left:22px}li{margin:4px 0}code{font-size:13px;background:#dfe6dc;padding:1px 4px;border-radius:4px}nav.toc{background:#fffdf6;border-radius:8px;padding:12px 18px;margin:18px 0}nav.toc ol{margin:4px 0;padding-left:22px;columns:2}article{background:#fffdf6;border-radius:8px;padding:6px 22px 22px}.table{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:10px 0}th,td{border-bottom:1px solid #cfd8cc;padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef2ea}:target{background:#fff2c4;border-radius:4px}@media(max-width:600px){nav.toc ol{columns:1}article{padding:4px 14px 16px}}</style></head>
+<body><main><a href="/">← 한양 3D로 돌아가기</a>
+<h1>{{ guide.title }}</h1>
+<nav class="toc" aria-label="목차"><strong>목차</strong><ol>{% for section in guide.toc %}<li><a href="#{{ section|urlencode }}">{{ section }}</a></li>{% endfor %}</ol></nav>
+<article>{{ guide.body|safe }}</article>
+<p><a href="/">한양 3D로 돌아가기</a> · <a href="/credits/">출처·저작권</a></p></main></body></html>

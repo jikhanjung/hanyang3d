@@ -100,6 +100,18 @@ class ReviewTests(SimpleTestCase):
         self.assertEqual((response.status_code, response['Content-Encoding'], response['Content-Type']), (200, 'gzip', 'application/octet-stream'))
         response.close()
 
+    def test_landmark_guide_is_served_on_the_site(self):
+        response = self.client.get('/guide/')
+        self.assertContains(response, '<h3 id="창덕궁">')
+        self.assertContains(response, '<h3 id="숭례문">')
+        self.assertContains(response, '<tr id="의정부">')
+        self.assertNotContains(response, 'github.com')
+        self.assertEqual(self.client.post('/guide/').status_code, 405)
+        home = self.client.get('/')
+        self.assertContains(home, 'href="/guide/"')
+        self.assertNotContains(home, 'blob/main/docs/landmarks.md')
+        self.assertContains(home, 'id="guide-anchors"')
+
     def test_read_only(self):
         self.assertEqual(self.client.post('/').status_code, 405)
         self.assertEqual(self.client.post('/data/catalog/assets.csv').status_code, 405)

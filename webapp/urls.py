@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('credits/', views.credits, name='credits'),
+    path('guide/', views.guide, name='guide'),
     path('healthz', views.healthz, name='healthz'),
     path('gis/terrain/3d/', views.terrain3d, name='terrain3d'),
     path('gis/terrain/', views.terrain_overlay, name='terrain-overlay'),

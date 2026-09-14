@@ -192,3 +192,5 @@ v0.0.17 배포 완료: Docker Hub digest `sha256:b3308c25…b9c9a3`, 공개 heal
 088: 하천 지형 꼭짓점을 공유하고, 미리 계산한 `channel_refined.bin.gz`를 워커와 경주시켜 쓰며, `/v/<버전>/` 경로로 긴 캐시와 304 재검증을 넣었다. 지형·물길 입력을 바꾸면 `scripts/terrain/build_channel_refined.py`를 다시 돌린다. [기록](../devlog/20260914_088_load_followups.md).
 
 089: 4차 추가 목록에서 전의감·충훈부·중부·남부·사재감·내자시·만리창·군자감 강감을 원도 글씨 자리에 넣고, 기로소를 부분도 7의 분명한 耆老所 글씨 자리로 옮겼다. [기록](../devlog/20260914_089_round4_landmarks.md).
+
+090: `docs/landmarks.md`를 `/guide/` 페이지로 사이트에 넣고, About·출처 페이지·건물 카드에서 연결했다. 문서를 고치면 페이지에 바로 반영되며 이미지에는 이 파일만 들어간다. [기록](../devlog/20260914_090_guide_page.md).

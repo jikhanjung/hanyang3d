@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.views.decorators.http import require_safe
 from .resources import assets, public_resource_paths, resource_path
 from .deployment import runtime_report
+from .guide import render_guide
 
 
 
@@ -38,6 +39,7 @@ def terrain3d(request, canvas_only=False):
     return render(request, 'terrain3d.html', {
         'experiment': experiment, 'buildings': buildings, 'water': water, 'wall': wall,
         'canvas_only': canvas_only,
+        'guide_anchors': render_guide()['anchors'],
         'app_version': settings.APP_VERSION,
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),
@@ -101,3 +103,8 @@ def credits(request):
         'records': [record for record in assets() if record['id'] == 'asset-0001'],
         'three_license': (vendor / 'three/LICENSE').read_text(),
     })
+
+
+@require_safe
+def guide(request):
+    return render(request, 'guide.html', {'guide': render_guide()})
