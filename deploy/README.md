@@ -18,7 +18,7 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 
-`v0.1.23`는 전체 화면 3D에 옛지도 슬라이더(50%), 보정점(기본 꺼짐), 1인칭 걷기 버튼을 제공한다. 청계천은 원도 구간만 표시한다. 이전 `v0.0.1` 이미지와 데이터는 서버에 보관해 롤백할 수 있다.
+`v0.1.23`는 전체 화면 3D에 옛지도 슬라이더(50%), 보정점(기본 꺼짐), 1인칭 걷기 버튼을 제공한다. 청계천은 원도 구간만 표시한다. 서버에는 운영 버전과 직전 버전의 이미지·데이터만 보관한다(`prune.sh`).
 
 ## 구성과 데이터
 
@@ -93,6 +93,8 @@ curl -f http://127.0.0.1:8013/healthz
 이후 버전은 새 이미지와 새 `data/<version>`을 먼저 준비하고 같은 배포 명령을 실행한다.
 배포 전 이미지·데이터 쌍을 검증하고, 실패 시 이전 `.env`가 있으면 이전 서비스 구성을 다시 시작한다.
 예전 이미지와 데이터 디렉터리를 남겨두면 `bash deploy.sh <previous-version>`으로 롤백한다.
+
+배포 확인 후 `bash prune.sh`로 운영 버전과 직전 버전(`KEEP=2`)만 남기고 이 서비스의 이미지, `data/<version>`, `~/hanyang3d-release`·`releases/` 압축 파일을 지운다. 다른 서비스의 이미지나 Docker 캐시는 건드리지 않는다. `DRY_RUN=1`로 지울 목록만 먼저 볼 수 있다.
 
 도메인 없이 확인하려면 로컬에서 `ssh -L 18013:127.0.0.1:8013 dolfinid` 후 `http://localhost:18013/`을 연다.
 운영 서버의 Nginx 설정은 `host/hanyang3d.nginx.conf`를 사용한다. 신규 서버에서는 먼저 HTTP webroot를 연 뒤 아래 명령으로 인증서를 발급하고 HTTPS 설정을 설치한다.
