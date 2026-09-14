@@ -5526,6 +5526,839 @@
           }
         ]
       }
+    },
+    {
+      "id": "jongchinbu",
+      "name": "종친부",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A2%85%EC%B9%9C%EB%B6%80(%E5%AE%97%E8%A6%AA%E5%BA%9C)",
+      "note": "종친을 관리한 관청. 도성대지도에 경복궁 동쪽 宗親府로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        40,
+        9,
+        36
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1430,
+          "end_year": 1895,
+          "status": "renamed_1430_abolished_1895",
+          "note": "1430년(세종 12) 재내제군소를 종친부로 고쳤다. 한성부 북부 관광방(지금의 중학동·가회동·재동 일대)에 있었다. 1895년(고종 32) 종정부가 생기며 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 宗親府로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A2%85%EC%B9%9C%EB%B6%80(%E5%AE%97%E8%A6%AA%E5%BA%9C)",
+            "supports": "renamed 1430, Gwangwang-bang, abolished 1895"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1306,
+          1018
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0018",
+        "detail_pixel": [
+          205,
+          470
+        ],
+        "label_pixel": [
+          1306,
+          1018
+        ],
+        "note": "부분도 5 왼쪽 위, 관광방계 글씨 동쪽의 세로 글씨 宗親府를 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 종친부의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "왕의 친족인 종친을 관리하고, 역대 왕의 계보와 초상화를 보관하며 왕과 왕비의 의복을 맡은 관청. 경복궁 동쪽 북부 관광방, 지금의 국립현대미술관 서울관 자리 일대다.",
+        "period": "1430년 재내제군소를 종친부로 개칭. 1895년 종정부 설치로 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도 5에 경복궁 동쪽 관광방에 宗親府로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 종친부",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A2%85%EC%B9%9C%EB%B6%80(%E5%AE%97%E8%A6%AA%E5%BA%9C)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "saganwon",
+      "name": "사간원",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EA%B0%84%EC%9B%90(%E5%8F%B8%E8%AB%AB%E9%99%A2)",
+      "note": "간쟁을 맡은 관청. 도성대지도에 司諫院으로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1401,
+          "end_year": 1894,
+          "status": "established_1401_abolished_1894",
+          "note": "1401년(태종 1) 문하부 낭사를 독립시켜 세웠다. 1894년(고종 31) 갑오개혁 때 도찰원으로 바뀌며 사라졌다. 사간동 62번지에 있었다고 전한다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 司諫院로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EA%B0%84%EC%9B%90(%E5%8F%B8%E8%AB%AB%E9%99%A2)",
+            "supports": "established 1401, abolished 1894"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EA%B0%84%EC%9B%90",
+            "supports": "site at Sagan-dong 62"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1279,
+          1042
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0018",
+        "detail_pixel": [
+          80,
+          580
+        ],
+        "label_pixel": [
+          1279,
+          1042
+        ],
+        "note": "부분도 5 왼쪽 위, 관광방계 글씨 아래의 네모 칸 글씨 司諫院을 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 사간원의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "임금의 잘못을 간하고 관원을 탄핵하던 언론 관청. 지금의 종로구 사간동이 이 이름에서 왔다.",
+        "period": "1401년 문하부 낭사를 독립시켜 설치. 1894년 갑오개혁 때 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도 5에 종친부 남서쪽에 司諫院으로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 사간원",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EA%B0%84%EC%9B%90(%E5%8F%B8%E8%AB%AB%E9%99%A2)"
+          },
+          {
+            "title": "위키백과 사간원",
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EA%B0%84%EC%9B%90"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bukbu",
+      "name": "한성부 북부",
+      "category": "관청",
+      "reference": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)",
+      "note": "한성부 북부의 관아. 도성대지도에 北部로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        26,
+        9,
+        22
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "joseon_period_unverified",
+          "note": "한성부 오부 가운데 북부의 관아. 삼청동길에 한성부 북부 관아터 표석이 있다. 설치·폐지 연도는 확인하지 못했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 北部로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)",
+            "supports": "five wards of Hanseongbu, wards of the northern ward"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1271,
+          1072
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0018",
+        "detail_pixel": [
+          45,
+          715
+        ],
+        "label_pixel": [
+          1271,
+          1072
+        ],
+        "note": "부분도 5 왼쪽, 사간원 글씨 남쪽의 네모 칸 글씨 北部를 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "한성부 다섯 부 가운데 북쪽 지역의 주민 행정을 맡은 관아.",
+        "period": "조선 초 오부 설치 때부터 한말까지. 정확한 설치·폐지 연도는 확인하지 못했다.",
+        "in_1750": "있었다. 도성대지도 부분도 5에 사간원 남쪽에 北部로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "위키백과 오부 (한성부)",
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "junghak",
+      "name": "중학(중부학당)",
+      "category": "교육",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A4%91%ED%95%99(%E4%B8%AD%E5%AD%B8)",
+      "note": "사학의 하나인 중부학당. 도성대지도에 中學으로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1422,
+          "end_year": null,
+          "status": "built_1422_faded_after_1592",
+          "note": "1422년(세종 4) 세웠다. 북부 관광방에 있었다. 임진왜란 뒤 이름만 남다시피 하다 한말 소멸했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 中學로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A4%91%ED%95%99(%E4%B8%AD%E5%AD%B8)",
+            "supports": "built 1422, Gwangwang-bang, faded after 1592"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1303,
+          1197
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0018",
+        "detail_pixel": [
+          190,
+          1285
+        ],
+        "label_pixel": [
+          1303,
+          1197
+        ],
+        "note": "부분도 5 왼쪽 아래, 觀中學契 글씨 동쪽의 비스듬한 네모 칸 글씨 中學을 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 학당을 단순화한 개념 모형. 중학의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "한성부에 둔 네 학당(사학) 가운데 하나로, 유생을 가르친 관립 학교. 지금의 종로구 중학동이 이 이름에서 왔다.",
+        "period": "1422년 건립. 임진왜란 뒤 유명무실. 한말 신교육 도입으로 소멸.",
+        "in_1750": "있었다. 도성대지도 부분도 5에 관광방 중학계 글씨 옆에 中學으로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 중학",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A4%91%ED%95%99(%E4%B8%AD%E5%AD%B8)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jeonokseo",
+      "name": "전옥서",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%98%A5%EC%84%9C(%E5%85%B8%E7%8D%84%E7%BD%B2)",
+      "note": "죄수를 가둔 옥을 관리한 관청. 도성대지도에 典獄署로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "symbol_size_m": [
+        28,
+        9,
+        24
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1392,
+          "end_year": 1894,
+          "status": "established_1392_abolished_1894",
+          "note": "1392년(태조 1) 7월 설치. 중부 서린방에 있었고, 남자 옥과 여자 옥을 따로 두었다. 1894년(고종 31) 감옥서 설치로 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 典獄署로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%98%A5%EC%84%9C(%E5%85%B8%E7%8D%84%E7%BD%B2)",
+            "supports": "established 1392, Seorin-bang, abolished 1894"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1389,
+          1465
+        ],
+        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
+        "detail_asset": "asset-0002",
+        "detail_pixel": [
+          630,
+          545
+        ],
+        "label_pixel": [
+          1389,
+          1460
+        ],
+        "note": "부분도 8에서 운종가 남쪽, 典獄後洞 글씨 북쪽의 네모 칸 글씨 典獄署를 읽어 전체 원도 좌표로 환산했다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 9.0 m 옮겼다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 전옥서의 실제 옥사 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "옥에 갇힌 죄수를 관리한 관청. 중부 서린방, 지금의 서린동에 있었다.",
+        "period": "1392년 설치. 1894년 감옥서가 생기며 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도 8에 의금부 남동쪽 운종가 남쪽에 典獄署로 적혀 있고 옆에 典獄後洞이 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 전옥서",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%98%A5%EC%84%9C(%E5%85%B8%E7%8D%84%E7%BD%B2)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sujingung",
+      "name": "수진궁",
+      "category": "궁가",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%98%EC%A7%84%EA%B6%81(%E5%A3%BD%E9%80%B2%E5%AE%AE)",
+      "note": "제사를 맡은 궁가. 도성대지도 수진방에 그려져 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        36,
+        12,
+        32
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "궁가 본채와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1544,
+          "end_year": 1909,
+          "status": "rebuilt_1544_abolished_1909",
+          "note": "제안대군 사후 1544년(중종 39) 제택을 새로 지었다. 조선 후기에는 제사궁이 됐다. 1907년 궁내부령으로 도장이 폐지되고 1909년까지 존속했다. 중부 수진방 중심, 지금의 수송동 일대."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 壽進宮로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%98%EC%A7%84%EA%B6%81(%E5%A3%BD%E9%80%B2%E5%AE%AE)",
+            "supports": "Je-an daegun house, rebuilt 1544, memorial palace, Sujin-bang, to 1909"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1342,
+          1345
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0018",
+        "detail_pixel": [
+          370,
+          1965
+        ],
+        "label_pixel": [
+          1342,
+          1345
+        ],
+        "note": "부분도 5 아래 가장자리의 宮 글자(부분도 8 위 가장자리와 겹침)를 전체 원도 좌표로 환산했다. 壽進坊 이름칸 동쪽이며 궁 이름 전체는 판독하지 못했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "palace_compound",
+      "palace_roof_tiers": 1,
+      "display_yaw_deg": 0,
+      "model_note": "궁가 본채 한 채와 담장·앞뜰을 단순화한 개념 모형. 수진궁의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "예종의 아들 제안대군의 궁가로 시작해, 조선 후기에는 후사 없이 죽은 대군·왕자와 혼인 전에 죽은 공주·옹주, 후사 없는 후궁의 제사를 맡은 제사궁. 지금의 수송동 종로구청 일대다.",
+        "period": "1544년 제안대군 사후 제택을 새로 지음. 조선 후기 제사궁. 1907년 도장 폐지, 1909년까지 존속.",
+        "in_1750": "있었다. 도성대지도에서 부분도 5와 8의 경계에 壽進坊 이름칸과 함께 宮 글자가 걸쳐 있어 그 자리에 두었다. 궁 이름 전체를 한 번에 읽지는 못했다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 수진궁",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%98%EC%A7%84%EA%B6%81(%E5%A3%BD%E9%80%B2%E5%AE%AE)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "giroso",
+      "name": "기로소",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B8%B0%EB%A1%9C%EC%86%8C(%E8%80%86%E8%80%81%E6%89%80)",
+      "note": "원로 문신을 예우한 관서. 도성대지도 징청방에 그려져 있습니다.",
+      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1428,
+          "end_year": 1909,
+          "status": "named_1428_abolished_1909",
+          "note": "태조가 60세에 들어간 데서 비롯해 1428년(세종 10) 치사기로소라는 이름을 정했다. 1765년(영조 41) 독립 관서가 됐다. 한성부 징청방에 있었다. 1909년 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 耆社로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B8%B0%EB%A1%9C%EC%86%8C(%E8%80%86%E8%80%81%E6%89%80)",
+            "supports": "named 1428, Jingcheong-bang, independent 1765, abolished 1909"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1175,
+          1323
+        ],
+        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
+        "detail_asset": "asset-0017",
+        "detail_pixel": [
+          2300,
+          1830
+        ],
+        "label_pixel": [
+          1177,
+          1323
+        ],
+        "note": "부분도 4 아래 오른쪽, 澄淸坊 원 글씨 서쪽의 네모 칸 글씨를 耆社로 읽어 전체 원도 좌표로 환산했다. 획이 흐려 확정 판독은 아니다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 4.2 m 옮겼다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 기로소의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "일흔 넘은 고위 문신을 예우하려 둔 관서. 임금도 나이 들면 들어갔다. 중부 징청방, 지금의 종로1가(교보빌딩 자리) 일대다.",
+        "period": "태조가 60세에 들어간 데서 시작, 1428년 치사기로소로 명칭 확정. 1765년 독립 관서. 1909년 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도 4에 육조거리 남동쪽 징청방 글씨 옆에 기로소의 다른 이름 耆社로 보이는 네모 칸이 있어 그 자리에 두었다. 획이 흐려 글자를 확정하지는 못했다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 기로소",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B8%B0%EB%A1%9C%EC%86%8C(%E8%80%86%E8%80%81%E6%89%80)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "saonseo",
+      "name": "사온서",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)",
+      "note": "궁중 술을 맡은 관청. 도성대지도에 司醞署로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        26,
+        9,
+        22
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1392,
+          "end_year": null,
+          "status": "established_1392_end_unknown",
+          "note": "1392년(태조 1) 설치. 서부 적선방에 있었다. 언제 혁파됐는지 알 수 없으며 1617년 이전 폐지 추정도 있다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 司醞署로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)",
+            "supports": "established 1392, Jeokseon-bang, end unknown"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1059,
+          1188
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0017",
+        "detail_pixel": [
+          1765,
+          1215
+        ],
+        "label_pixel": [
+          1059,
+          1188
+        ],
+        "note": "부분도 4에서 적선방 원 글씨 동쪽의 가로 글씨 司醞署를 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 사온서의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "궁중에서 쓰는 술과 감주를 맡은 관청. 서부 적선방에 있었다.",
+        "period": "1392년 설치. 혁파 시기는 알 수 없고 17세기 초 이전에 없어졌다고 추정하기도 한다.",
+        "in_1750": "확실하지 않다. 사전은 17세기 초 이전 혁파를 추정하지만, 도성대지도 부분도 4 적선방에 司醞署 글씨가 있어 그 자리에 두었다. 관청이 남아 있었는지, 옛 이름만 적은 것인지는 확인하지 못했다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 사온서",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gyeonggi_gamyeong",
+      "name": "경기감영",
+      "category": "관청",
+      "reference": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EA%B8%B0%EA%B0%90%EC%98%81",
+      "note": "경기도 관찰사의 감영. 도성대지도에 돈의문 밖 京畿監營으로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "symbol_size_m": [
+        44,
+        9,
+        40
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1460,
+          "end_year": 1895,
+          "status": "moved_to_hanseong_c1460_abolished_1895",
+          "note": "1413년(태종 13) 경기도를 두며 수원에 감영을 설치했다가 광주를 거쳐 1460년(세조 6) 무렵 한성부로 옮겼다. 종로구 평동 234 일대로, 돈의문이 북동쪽 약 250 m에 있었다. 1895년 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 京畿監營로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EA%B8%B0%EA%B0%90%EC%98%81",
+            "supports": "moved to Hanseong c.1460, Pyeong-dong 234, abolished 1895"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          647,
+          1492
+        ],
+        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
+        "detail_asset": "asset-0001",
+        "detail_pixel": [
+          672,
+          1492
+        ],
+        "label_pixel": [
+          672,
+          1492
+        ],
+        "note": "전체 원도에서 돈의문 밖 서남쪽 京橋 글씨 옆의 京畿監營 글씨를 읽었다. 부분도 7 왼쪽 가장자리에 걸쳐 있다. 도성 밖이다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 52.1 m 옮겼다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 경기감영의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "경기도 관찰사가 근무한 감영. 돈의문 밖 서남쪽, 지금의 종로구 평동(적십자병원 일대)에 있었다.",
+        "period": "1413년 수원에 설치, 곧 광주로, 1460년 무렵 한성으로 이전. 1895년 23부제로 폐지.",
+        "in_1750": "있었다. 도성대지도에 돈의문 밖 京橋 옆에 京畿監營으로 적혀 있어 그 글씨 자리에 두었다. 도성 밖이다.",
+        "sources": [
+          {
+            "title": "위키백과 경기감영",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EA%B8%B0%EA%B0%90%EC%98%81"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mohwagwan",
+      "name": "모화관",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)",
+      "note": "중국 사신을 맞던 곳. 도성대지도에 돈의문 밖 慕華館으로 그려져 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        36,
+        9,
+        32
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1407,
+          "end_year": 1897,
+          "status": "built_1407_renamed_1897",
+          "note": "1407년(태종 7) 모화루로 짓고 1430년(세종 12) 모화관으로 고쳤다. 1897년 독립관으로 개축."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 慕華館로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)",
+            "supports": "built 1407, renamed 1430, Independence Hall 1897, northwest of Donuimun"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          598,
+          1290
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0001",
+        "detail_pixel": [
+          598,
+          1290
+        ],
+        "label_pixel": [
+          598,
+          1290
+        ],
+        "note": "전체 원도에서 돈의문 밖 서북쪽 붉은 길 서쪽의 세로 네모 칸 글씨를 慕華館으로 읽었다. 획이 작아 확정 판독은 아니다. 도성 밖이다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 건물을 단순화한 개념 모형. 모화관의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "중국 사신을 맞이하고 전송하던 곳. 돈의문 밖 서북쪽, 지금의 서대문구 현저동(독립문 일대)에 있었다.",
+        "period": "1407년 모화루로 건립, 1430년 모화관으로 개칭. 1896년 독립문 건립 뒤 1897년 독립관으로 고침.",
+        "in_1750": "있었다. 도성대지도에 돈의문 밖 서북쪽 길가에 慕華館으로 보이는 네모 칸이 있어 그 자리에 두었다. 도성 밖이다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 모화관",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yeongeunmun",
+      "name": "영은문",
+      "category": "시설",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)",
+      "note": "모화관 앞 사신 영접 문. 도성대지도에 迎恩門으로 그려져 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        10,
+        6,
+        4
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "문 한 채를 뜻하는 작은 표시 치수. 실측값이 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1538,
+          "end_year": 1896,
+          "status": "built_1537_renamed_1538_removed_1896",
+          "note": "1537년(중종 32) 영조문으로 세우고 1538년 영은문으로 고쳤다. 대한제국 수립 무렵 헐렸고 주초가 1963년 사적으로 지정됐다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 迎恩門로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)",
+            "supports": "Yeongjomun 1537, renamed Yeongeunmun 1538, removed, plinths designated 1963"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          608,
+          1318
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0001",
+        "detail_pixel": [
+          608,
+          1318
+        ],
+        "label_pixel": [
+          608,
+          1318
+        ],
+        "note": "전체 원도에서 모화관 글씨 남쪽 붉은 길가의 세로 네모 칸 글씨를 迎恩門으로 읽었다. 획이 작아 확정 판독은 아니다. 문이라 길 위에 그대로 둔다. 도성 밖이다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_yaw_deg": 0,
+      "model_note": "작은 상자로만 표시한다. 문의 지붕과 기둥은 재현하지 않았다.",
+      "info": {
+        "summary": "모화관 앞에 세워 중국 사신을 맞던 문. 1896년 헐리고 그 자리 뒤에 독립문이 섰으며 주춧돌 두 개가 남아 있다.",
+        "period": "1537년 영조문으로 세워 1538년 영은문으로 개칭. 대한제국 수립 무렵 헐림. 주초는 1963년 사적.",
+        "in_1750": "있었다. 도성대지도에 모화관 남쪽 길가에 迎恩門으로 보이는 네모 칸이 있어 그 자리에 작은 문 표시로 두었다. 도성 밖이다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 모화관",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)"
+          }
+        ]
+      }
     }
   ],
   "size_policy": "Representative single-building-scale approximate envelopes in metres, not compound bounds or measured historical reconstructions. Axis order: width, height, depth. Sizes are explicit modelling assumptions except the Sajik single-altar reference.",
