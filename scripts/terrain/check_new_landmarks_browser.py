@@ -62,6 +62,14 @@ EXPECTED={
  'gyeonggi_gamyeong':('경기감영','yukjo-compound'),
  'mohwagwan':('모화관','yukjo-compound'),
  'yeongeunmun':('영은문',None),
+ 'jeonuigam':('전의감','yukjo-compound'),
+ 'chunghunbu':('충훈부','yukjo-compound'),
+ 'jungbu':('한성부 중부','yukjo-compound'),
+ 'nambu':('한성부 남부','yukjo-compound'),
+ 'sajaegam':('사재감','yukjo-compound'),
+ 'naejasi':('내자시','yukjo-compound'),
+ 'manrichang':('만리창','yukjo-compound'),
+ 'gunjagam':('군자감 강감','yukjo-compound'),
 }
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
@@ -171,7 +179,7 @@ with sync_playwright() as p:
    uigeumbuNorthWest:[at('uigeumbu').position.x<at('jongru').position.x,at('uigeumbu').position.z<at('jongru').position.z],
    leftOfficeEast:at('jwaporocheong').position.x-at('jongru').position.x,
    rightOfficeWest:at('jongru').position.x-at('uporocheong').position.x,
-   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung','hyeminseo','gwansanggam','pyeongsiseo','yeonghuijeon','bibyeonsa','jamungam','uibinbu','changuigung','bongsangsi','sayeogwon','uiyeonggo','saboksi','jangheunggo','naesusa','daebodan','jangwonseo','seonhyechang_buk','bugyeong','tangpyeongbi','eouigung','hunguk','bibyeonsa_gyeongdeok','seongonggam','myeongnyegung','seonhyecheong','taepyeonggwan','yebinsi','eoyeongchang','namsoyeong','sohyeonmyo','nambyeolgung','donghak','suncheong','jangagwon','jongchinbu','saganwon','bukbu','junghak','jeonokseo','sujingung','giroso','saonseo'].every(id=>{
+   allInside:['uigeumbu','jwaporocheong','uporocheong','hullyeonwon','gyeongmogung','wongaksa_pagoda','geumwiyeong','eoyeongcheong','yuksanggung','hyeminseo','gwansanggam','pyeongsiseo','yeonghuijeon','bibyeonsa','jamungam','uibinbu','changuigung','bongsangsi','sayeogwon','uiyeonggo','saboksi','jangheunggo','naesusa','daebodan','jangwonseo','seonhyechang_buk','bugyeong','tangpyeongbi','eouigung','hunguk','bibyeonsa_gyeongdeok','seongonggam','myeongnyegung','seonhyecheong','taepyeonggwan','yebinsi','eoyeongchang','namsoyeong','sohyeonmyo','nambyeolgung','donghak','suncheong','jangagwon','jongchinbu','saganwon','bukbu','junghak','jeonokseo','sujingung','giroso','saonseo','jeonuigam','chunghunbu','jungbu','nambu','sajaegam','naejasi'].every(id=>{
     const f=at(id).userData.feature;return f.source_position?inside(...f.source_position.pixel):true})}}''')
  print(place,flush=True)
  # Both sit in the blocks either side of the drawn Jongno crossing, not on the streets.

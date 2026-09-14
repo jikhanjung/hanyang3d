@@ -5991,8 +5991,8 @@
       "name": "기로소",
       "category": "관청",
       "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B8%B0%EB%A1%9C%EC%86%8C(%E8%80%86%E8%80%81%E6%89%80)",
-      "note": "원로 문신을 예우한 관서. 도성대지도 징청방에 그려져 있습니다.",
-      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "note": "원로 문신을 예우한 관서. 도성대지도에 耆老所로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
       "symbol_size_m": [
         30,
         9,
@@ -6012,7 +6012,7 @@
           "end_year": null,
           "reference_year": null,
           "status": "named_as_drawn_on_source_map",
-          "note": "도성대지도 부분도에 耆社로 적혀 있다."
+          "note": "도성대지도 부분도에 耆老所로 적혀 있다."
         },
         "sources": [
           {
@@ -6031,20 +6031,20 @@
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          1175,
-          1323
+          1170,
+          1407
         ],
-        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
-        "detail_asset": "asset-0017",
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0020",
         "detail_pixel": [
-          2300,
-          1830
+          2240,
+          265
         ],
         "label_pixel": [
-          1177,
-          1323
+          1170,
+          1407
         ],
-        "note": "부분도 4 아래 오른쪽, 澄淸坊 원 글씨 서쪽의 네모 칸 글씨를 耆社로 읽어 전체 원도 좌표로 환산했다. 획이 흐려 확정 판독은 아니다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 4.2 m 옮겼다."
+        "note": "부분도 7 오른쪽 위, 육조거리 남동쪽 모퉁이의 가로 네모 칸 글씨 耆老所를 읽어 전체 원도 좌표로 환산했다. v0.1.16에는 부분도 4 징청방의 흐린 네모 칸을 耆社로 추정해 80 m 북쪽에 두었는데, 이번에 분명한 글씨를 찾아 옮겼다. 길 판독 마스크와 겹치지 않는다."
       },
       "display_model": "yukjo_compound",
       "display_yaw_deg": 0,
@@ -6052,7 +6052,7 @@
       "info": {
         "summary": "일흔 넘은 고위 문신을 예우하려 둔 관서. 임금도 나이 들면 들어갔다. 중부 징청방, 지금의 종로1가(교보빌딩 자리) 일대다.",
         "period": "태조가 60세에 들어간 데서 시작, 1428년 치사기로소로 명칭 확정. 1765년 독립 관서. 1909년 폐지.",
-        "in_1750": "있었다. 도성대지도 부분도 4에 육조거리 남동쪽 징청방 글씨 옆에 기로소의 다른 이름 耆社로 보이는 네모 칸이 있어 그 자리에 두었다. 획이 흐려 글자를 확정하지는 못했다.",
+        "in_1750": "있었다. 도성대지도 부분도 7 오른쪽 위, 육조거리 남동쪽 모퉁이에 耆老所로 또렷이 적혀 있어 그 글씨 자리에 두었다.",
         "sources": [
           {
             "title": "조선왕조실록사전 기로소",
@@ -6356,6 +6356,624 @@
           {
             "title": "조선왕조실록사전 모화관",
             "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jeonuigam",
+      "name": "전의감",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%9D%98%EA%B0%90(%E5%85%B8%E9%86%AB%E7%9B%A3)",
+      "note": "왕실 약재를 맡은 관청. 도성대지도에 典醫監으로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1392,
+          "end_year": 1894,
+          "status": "established_1392_abolished_1894",
+          "note": "1392년(태조 1) 고려의 전의시를 고쳐 세웠다. 1894년(고종 31) 갑오개혁 때 폐지되고 기능은 내의원과 위생국으로 넘어갔다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 典醫監로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%9D%98%EA%B0%90(%E5%85%B8%E9%86%AB%E7%9B%A3)",
+            "supports": "established 1392, abolished 1894"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1393,
+          1215
+        ],
+        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
+        "detail_asset": "asset-0018",
+        "detail_pixel": [
+          640,
+          1370
+        ],
+        "label_pixel": [
+          1401,
+          1215
+        ],
+        "note": "부분도 5 왼쪽 아래, 견평방 이름칸 서쪽의 가로 네모 칸 글씨 典醫監을 읽어 전체 원도 좌표로 환산했다. 부분도 8에는 典醫監洞 동네 이름만 있다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 16.7 m 옮겼다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 전의감의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "왕실에서 쓰는 약재와 신하에게 내리는 의약을 맡은 관청. 의학 교육과 의과 시험도 맡았다.",
+        "period": "1392년 고려 전의시를 이어 설치. 1894년 갑오개혁 때 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도 5 아래쪽 견평방에 典醫監으로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 전의감",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%9D%98%EA%B0%90(%E5%85%B8%E9%86%AB%E7%9B%A3)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chunghunbu",
+      "name": "충훈부",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%B6%A9%ED%9B%88%EB%B6%80(%E5%BF%A0%E5%8B%B3%E5%BA%9C)",
+      "note": "공신을 관리한 관청. 도성대지도에 忠勳府로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1454,
+          "end_year": 1894,
+          "status": "renamed_1454_merged_1894",
+          "note": "1392년 공신도감으로 시작해 1434년(세종 16) 충훈사, 1454년(단종 2) 충훈부가 됐다. 처음 북부 광화방에 있다가 중종 초 중부 관인방으로 옮겼고 인조 때 중건했다. 1894년 기공국으로 의정부에 합병."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 忠勳府로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%B6%A9%ED%9B%88%EB%B6%80(%E5%BF%A0%E5%8B%B3%E5%BA%9C)",
+            "supports": "Chunghunbu 1454, moved to Gwanin-bang, merged 1894"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1449,
+          1167
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0018",
+        "detail_pixel": [
+          860,
+          1150
+        ],
+        "label_pixel": [
+          1449,
+          1167
+        ],
+        "note": "부분도 5에서 관인방 이름칸 북쪽, 忠勳府契 글씨 서쪽의 세로 네모 칸 글씨 忠勳府를 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 충훈부의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "공신과 그 자손을 관리하고 예우한 관청. 중종 초 중부 관인방, 지금의 인사동·관훈동 일대로 옮겼다.",
+        "period": "1392년 공신도감, 1434년 충훈사, 1454년 충훈부. 1894년 기공국으로 바뀌어 의정부에 합병.",
+        "in_1750": "있었다. 도성대지도 부분도 5에 관인방 북쪽에 忠勳府로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 충훈부",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%B6%A9%ED%9B%88%EB%B6%80(%E5%BF%A0%E5%8B%B3%E5%BA%9C)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jungbu",
+      "name": "한성부 중부",
+      "category": "관청",
+      "reference": "https://www.seouland.com/arti/culture/culture_general/3813.html",
+      "note": "한성부 중부의 관아. 도성대지도에 中部로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        26,
+        9,
+        22
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "joseon_period_unverified",
+          "note": "한성부 오부 가운데 중부의 관아. 관아 터 표석은 종묘 앞 세운상가에 있다. 설치·폐지 연도는 확인하지 못했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 中部로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html",
+            "supports": "sites of the five ward offices"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)",
+            "supports": "five wards of Hanseongbu"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1821,
+          1462
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0002",
+        "detail_pixel": [
+          2595,
+          560
+        ],
+        "label_pixel": [
+          1821,
+          1462
+        ],
+        "note": "부분도 8 오른쪽, 운종가 남쪽 길가의 노란 네모 칸 글씨 中部를 읽어 전체 원도 좌표로 환산했다. 종묘 앞 세운상가라는 관아 터 위치와 맞는다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "한성부 다섯 부 가운데 도성 한가운데 지역의 주민 행정을 맡은 관아. 관아 터 표석은 종묘 앞 세운상가에 있다.",
+        "period": "조선 초 오부 설치 때부터 한말까지. 정확한 설치·폐지 연도는 확인하지 못했다.",
+        "in_1750": "있었다. 도성대지도 부분도 8에 운종가 동쪽 끝 남쪽에 中部로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "서울& 오늘날 종로구청 격…한성판윤은 어전회의도 참석 (2018)",
+            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html"
+          },
+          {
+            "title": "위키백과 오부 (한성부)",
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nambu",
+      "name": "한성부 남부",
+      "category": "관청",
+      "reference": "https://www.seouland.com/arti/culture/culture_general/3813.html",
+      "note": "한성부 남부의 관아. 도성대지도에 南部로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "symbol_size_m": [
+        26,
+        9,
+        22
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "joseon_period_unverified",
+          "note": "한성부 오부 가운데 남부의 관아. 관아 터 표석은 을지로입구역 7·8번 출구 사이에 있다. 설치·폐지 연도는 확인하지 못했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 南部로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html",
+            "supports": "sites of the five ward offices"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)",
+            "supports": "five wards of Hanseongbu"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1427,
+          1718
+        ],
+        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
+        "detail_asset": "asset-0002",
+        "detail_pixel": [
+          770,
+          1715
+        ],
+        "label_pixel": [
+          1420,
+          1717
+        ],
+        "note": "부분도 8 왼쪽 아래, 남북 대로 동쪽의 검은 테 세로 네모 칸 글씨 南部를 읽어 전체 원도 좌표로 환산했다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 14.7 m 옮겼다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "한성부 다섯 부 가운데 남쪽 지역의 주민 행정을 맡은 관아. 관아 터 표석은 을지로입구역 7·8번 출구 사이에 있다.",
+        "period": "조선 초 오부 설치 때부터 한말까지. 정확한 설치·폐지 연도는 확인하지 못했다.",
+        "in_1750": "있었다. 도성대지도 부분도 8 왼쪽 아래 청계천 남쪽 길가에 南部로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "서울& 오늘날 종로구청 격…한성판윤은 어전회의도 참석 (2018)",
+            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html"
+          },
+          {
+            "title": "위키백과 오부 (한성부)",
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sajaegam",
+      "name": "사재감",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%9E%AC%EA%B0%90(%E5%8F%B8%E5%AE%B0%E7%9B%A3)",
+      "note": "궁중 어물·육류를 맡은 관청. 도성대지도에 司宰監으로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1392,
+          "end_year": 1882,
+          "status": "established_1392_abolished_1882",
+          "note": "1392년(태조 즉위) 7월 설치. 처음 북부 의통방에 있다가 순화방으로 옮겼다. 1882년(고종 19) 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 司宰監로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%9E%AC%EA%B0%90(%E5%8F%B8%E5%AE%B0%E7%9B%A3)",
+            "supports": "established 1392, Uitong-bang then Sunhwa-bang, abolished 1882"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1030,
+          1065
+        ],
+        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
+        "detail_asset": "asset-0017",
+        "detail_pixel": [
+          1615,
+          650
+        ],
+        "label_pixel": [
+          1026,
+          1065
+        ],
+        "note": "부분도 4 위쪽, 순화방 이름칸 남쪽·의통방 이름칸 서쪽의 세로 네모 칸 글씨 司宰監을 읽어 전체 원도 좌표로 환산했다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 8.3 m 옮겼다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 사재감의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "궁중에서 쓰는 어물·육류와 땔감 등을 맡은 호조 소속 관청. 북부 의통방에 있다가 순화방으로 옮겼다.",
+        "period": "1392년 설치. 1882년 관제 개혁으로 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도 4 경복궁 서쪽 순화방·의통방 사이에 司宰監으로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 사재감",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%9E%AC%EA%B0%90(%E5%8F%B8%E5%AE%B0%E7%9B%A3)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "naejasi",
+      "name": "내자시",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%9E%90%EC%8B%9C(%E5%85%A7%E8%B3%87%E5%AF%BA)",
+      "note": "왕실 물자를 대던 관청. 도성대지도에 內資寺로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1401,
+          "end_year": 1882,
+          "status": "renamed_1401_abolished_1882",
+          "note": "1401년(태종 1) 내부시를 내자시로 고쳤다. 서부 인달방에 있었다. 1882년(고종 19) 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 內資寺로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%9E%90%EC%8B%9C(%E5%85%A7%E8%B3%87%E5%AF%BA)",
+            "supports": "renamed 1401, Indal-bang, abolished 1882"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          980,
+          1195
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0017",
+        "detail_pixel": [
+          1400,
+          1245
+        ],
+        "label_pixel": [
+          980,
+          1195
+        ],
+        "note": "부분도 4에서 장흥고 글씨 서쪽의 가로 네모 칸 글씨 內資寺를 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 청사를 단순화한 개념 모형. 내자시의 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "왕실에 쌀·밀가루·술·장과 잔치 물자를 대던 호조 소속 관청. 서부 인달방, 지금의 내자동이 이 이름에서 왔다.",
+        "period": "1401년 내부시를 내자시로 개칭. 1882년 폐지.",
+        "in_1750": "있었다. 도성대지도 부분도 4 적선방 서쪽에 內資寺로 적혀 있어 그 글씨 자리에 두었다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 내자시",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%9E%90%EC%8B%9C(%E5%85%A7%E8%B3%87%E5%AF%BA)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "manrichang",
+      "name": "만리창",
+      "category": "관청",
+      "reference": "https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%B0%BD%EA%B3%B5%EC%9B%90",
+      "note": "선혜청의 창고. 도성대지도에 萬里倉으로 적혀 있습니다.",
+      "lat": 37.5447104,
+      "lon": 126.9608147,
+      "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
+      "symbol_size_m": [
+        30,
+        8,
+        34
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "seonhyecheong_storehouse_dates_unverified",
+          "note": "선혜청 창고로 효창원 앞 송림 안에 있었다. 설치·폐지 연도는 확인하지 못했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 萬里倉로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%B0%BD%EA%B3%B5%EC%9B%90",
+            "supports": "Manrichang, Seonhyecheong storehouse in front of Hyochangwon, 1894 camp"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 300,
+        "note": "OSM 효창공원 지점. 창고 터와 수백 m 오차가 있을 수 있다. 원도 글씨를 남서쪽 정합 대응점으로 이 지점에 맞췄다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          680,
+          2408
+        ],
+        "method": "label_read_on_detail_sheet_shifted_clear_of_roads",
+        "detail_asset": "asset-0001",
+        "detail_pixel": [
+          680,
+          2412
+        ],
+        "label_pixel": [
+          680,
+          2412
+        ],
+        "note": "전체 원도 남서쪽, 산줄기 끝의 가로 네모 칸 글씨 萬里倉을 읽었다. 도성 밖이다. 글씨 자리가 길 판독 마스크나 이웃 건물과 겹쳐, 겹치지 않는 가장 가까운 곳으로 7.2 m 옮겼다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 창고를 단순화한 개념 모형. 실제 창고 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "선혜청의 창고. 효창원 앞 송림 안, 지금의 효창공원 일대에 있었다. 1894년 청일전쟁 때 일본군이 이곳에 야영했다.",
+        "period": "설치·폐지 연도는 확인하지 못했다. 1894년 청일전쟁 때 창고 터에 일본군이 야영했다.",
+        "in_1750": "있었던 것으로 본다. 도성대지도 남서쪽 용산 방면에 萬里倉으로 적혀 있어 그 글씨 자리에 두었다. 이 글씨는 남서쪽 모서리 정합 대응점으로도 쓴다. 도성 밖이다.",
+        "sources": [
+          {
+            "title": "위키백과 효창공원",
+            "url": "https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%B0%BD%EA%B3%B5%EC%9B%90"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gunjagam",
+      "name": "군자감 강감",
+      "category": "관청",
+      "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EC%9E%90%EA%B0%90(%E8%BB%8D%E8%B3%87%E7%9B%A3)",
+      "note": "군자감의 용산강 창고. 도성대지도에 軍資監으로 적혀 있습니다.",
+      "position_status": "label_read_on_detail_sheet",
+      "symbol_size_m": [
+        30,
+        9,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1413,
+          "end_year": 1894,
+          "status": "river_branch_1413_abolished_1894",
+          "note": "1392년(태조 1) 군자감을 두고 1413년 용산강에 강감을 세웠다. 18세기 말 이후 강감만 유지했다. 1894년 폐지."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도에 軍資監로 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EC%9E%90%EA%B0%90(%E8%BB%8D%E8%B3%87%E7%9B%A3)",
+            "supports": "established 1392, Yongsan river branch 1413, abolished 1894"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "label_read_on_source_map",
+        "resolved_on": "2026-09-13",
+        "precision_m": 40,
+        "note": "원도 글씨를 따라 두었다. 현대 좌표는 따로 잡지 않았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          648,
+          2485
+        ],
+        "method": "label_read_on_detail_sheet",
+        "detail_asset": "asset-0001",
+        "detail_pixel": [
+          648,
+          2485
+        ],
+        "label_pixel": [
+          648,
+          2485
+        ],
+        "note": "전체 원도 남서쪽, 만리창 글씨 남쪽 길가의 가로 네모 칸 글씨 軍資監을 읽었다. 도성 밖이다. 길 판독 마스크와 겹치지 않는다."
+      },
+      "display_model": "yukjo_compound",
+      "display_yaw_deg": 0,
+      "model_note": "담장 안 창고를 단순화한 개념 모형. 실제 배치를 복원한 것이 아니다.",
+      "info": {
+        "summary": "군량 등 군사 물자를 맡은 호조 소속 관청의 용산강 창고(강감). 18세기 말 이후에는 강감만 남아 곡식 30만 섬을 저장했다고 한다.",
+        "period": "1392년 군자감 설치, 1413년 용산강에 강감 설치. 1894년 갑오개혁 때 폐지.",
+        "in_1750": "있었다. 도성대지도 남서쪽 만리창 남쪽 용산 방면에 軍資監으로 적혀 있어 그 글씨 자리에 두었다. 도성 안 본감이 아니라 용산강 강감으로 본다. 도성 밖이다.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 군자감",
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EC%9E%90%EA%B0%90(%E8%BB%8D%E8%B3%87%E7%9B%A3)"
           }
         ]
       }
