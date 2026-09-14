@@ -39,3 +39,10 @@
 
 - `scripts/georeference/test_mountain_alignment.cjs`: 평지 영역 정확히 유지, 모든 대응점 일치, 세 격자 해상도에서 접힘 없음, 고도 격자 범위 안 — 통과.
 - Django 테스트 통과. 로컬 화면에서 산 이름표 3개, 페이지 오류 없음.
+
+## 배포
+
+- v0.1.15로 배포했다. Docker Hub digest: `sha256:40f56de0dd8ce7f78688be5b873b8e5bab29d16e6c9ce21700d6d21ae18c3452`.
+- 공개 healthz 정상: v0.1.15, resources 78. 운영 화면에서 남서 모서리 37.53315, 126.93717, 만리창 37.54471, 126.96081이고 숭례문·돈의문 터·남산 위치와 보정점 오차 0, 산 이름표 3개, 페이지 오류 없음을 확인했다.
+- `check_walls_alignment_browser.py`는 대응점 일치 검사까지 통과한 뒤 화면 캡처 단계에서 글꼴 대기로 시간이 초과됐다. 대응점 일치는 `test_mountain_alignment.cjs`가 따로 확인한다.
+- 서버 이미지는 v0.1.15와 직전 v0.1.14만 남겼다.
