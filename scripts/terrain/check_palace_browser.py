@@ -15,7 +15,7 @@ with sync_playwright() as p:
  page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden',timeout=300000)
  assert page.evaluate('!!window.terrain3d?.ready'),errors
  print('ready',flush=True)
- assert page.locator('.map-title').inner_text()=='한양3D '+version
+ assert page.locator('.map-title').inner_text()=='한양3D '+version+' · 1750년경'
  result=page.evaluate('''async()=>{const t=terrain3d,T=await import('/webapp/static/vendor/three/three.module.js');t.renderer.setAnimationLoop(null);const j=t.buildings.children.find(b=>b.userData.feature.id==='jongmyo'),m=j.getObjectByName('jongmyo-jeongjeon');t.controls.target.copy(j.position);t.camera.position.copy(j.position).add(new T.Vector3(25,50,115));t.controls.update();t.renderer.render(t.scene,t.camera);return {chambers:m.userData.chambers,doors:m.children.filter(m=>m.name==='shrine-door').length,walls:t.palaceWall.segments.length,clearance:t.palaceWall.segments.every(s=>Number.isFinite(s.support.max))}}''')
  assert result['chambers']==result['doors']==15 and result['walls']>100 and result['clearance'],result
  print(result,flush=True);page.screenshot(path='/tmp/jongmyo.png')

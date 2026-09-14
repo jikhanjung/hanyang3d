@@ -13,6 +13,7 @@ import {createObservatory} from './observatory.js';
 import {createSettlement} from './settlement.js';
 import {createSijeon} from './sijeon.js';
 import {createPlaceNames} from './placenames.js';
+import {createGyeonghoeruPond,createGeunjeongjeonSite} from './gyeongbokgung_ruins.js';
 import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
@@ -251,6 +252,8 @@ async function main(){
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
+  if(feature.display_model==='gyeonghoeru_pond'){box.material.visible=false;foundation.visible=false;box.add(createGyeonghoeruPond(feature,w,h,d))}
+  if(feature.display_model==='geunjeongjeon_site'){box.material.visible=false;box.add(createGeunjeongjeonSite(feature,w,h,d))}
   if(feature.display_model==='observatory'){box.material.visible=false;foundation.visible=false;box.add(createObservatory(feature,w,h,d))}
   if(feature.display_model==='wongaksa_pagoda'){box.material.visible=false;box.add(createPagoda(feature,w,h,d))}
   if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d))}
@@ -285,7 +288,7 @@ async function main(){
  }
  const colors3d=colors;
  for(const box of buildings.children){
-  const detail=[...box.children];if(!detail.length)continue;
+  const detail=[...box.children];if(!detail.length||['gyeonghoeru_pond','geunjeongjeon_site'].includes(box.userData.feature.display_model))continue;
   const f=box.userData.feature,[w,h,d]=f.symbol_size_m;
   const proxy=new THREE.Mesh(proxyGeometry(f,w,h,d),proxyMaterial);proxy.name='landmark-lod';proxy.visible=false;box.add(proxy);
   landmarkLods.push({box,detail,proxy,near:true});
@@ -355,13 +358,13 @@ async function main(){
  // label is hidden for that frame.
  const LABEL_REACH=[Infinity,7000,3000,1500,1000];
  const LEVEL0=new Set(['changdeok','changgyeong','gyeongdeok','jongmyo','heunginjimun','sungnyemun','donuimun','sukjeongmun']);
- const LEVEL1=new Set(['sajik','sungkyun','gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
+ const LEVEL1=new Set(['gyeonghoeru_pond','geunjeongjeon_site','sajik','sungkyun','gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
  function buildingLevel(f){
   if(LEVEL0.has(f.id))return 0;if(LEVEL1.has(f.id))return 1;
   const [w,,d]=f.symbol_size_m??[0,0,0];
   return f.category!=='집터'&&w*d>=900&&['궁궐','제례','관청','교육','궁가'].includes(f.category)?2:3;
  }
- for(const n of nameTags)n.level=n.tag.userData.role==='hall'?2:buildingLevel(n.building.userData.feature);
+ for(const n of nameTags)n.level=n.tag.userData.role==='hall'?(LEVEL0.has(n.building.userData.feature.id)?1:2):buildingLevel(n.building.userData.feature);
  const areaLevel=name=>name==='북촌'||name==='서촌'?1:0;
  const labelCells=new Map(),projected=new THREE.Vector3(),LABEL_PX=24,LABEL_CELL=48;
  function updateBuildingNames(){

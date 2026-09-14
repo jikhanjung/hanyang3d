@@ -35,6 +35,7 @@ def public_resource_paths():
         'webapp/static/settlement.js',
         'webapp/static/sijeon.js',
         'webapp/static/placenames.js',
+        'webapp/static/gyeongbokgung_ruins.js',
         'gis/placenames/doseong_placenames.json',
         'webapp/static/collision.js',
         'gis/buildings/doseong_sijeon.json',

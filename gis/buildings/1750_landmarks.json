@@ -1004,6 +1004,151 @@
       }
     },
     {
+      "id": "gyeonghoeru_pond",
+      "name": "경회루 터",
+      "category": "궁궐",
+      "reference": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8",
+      "note": "경복궁 서쪽의 네모난 연못. 1592년 경회루가 불탄 뒤 돌기둥 48개만 연못 안에 서 있었습니다.",
+      "lat": 37.5797,
+      "lon": 126.9757,
+      "position_status": "drawn_pond_on_source_map",
+      "symbol_size_m": [
+        128,
+        1.2,
+        113
+      ],
+      "size_status": "recorded_dimensions",
+      "size_note": "연못 동서 128 m·남북 113 m는 기록값. 누각 터 34.4 × 28.5 m, 섬·다리 크기는 개략값.",
+      "temporal": {
+        "existence": {
+          "start_year": 1412,
+          "end_year": null,
+          "status": "pond_1412_pavilion_burnt_1592_rebuilt_1867",
+          "note": "1412년(태종 12) 연못을 넓히고 누각을 크게 지었다. 1592년 임진왜란으로 누각이 불타 돌기둥만 남았고, 1867년 경복궁 중건 때 경회루를 다시 지었다. 연못과 돌기둥은 1750년에도 있었다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "drawn_on_source_map",
+          "note": "도성대지도 부분도 4 경복궁 담장 안 서쪽에 네모난 연못, 그 안의 기둥 줄과 둥근 섬 둘이 그려져 있다."
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8",
+            "supports": "pond 128 x 113 m, 48 pillars, pavilion burnt 1592, rebuilt 1867"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "drawn_pond_on_source_map",
+        "resolved_on": "2026-09-14",
+        "precision_m": 30,
+        "note": "경회루 누각 37.5797, 126.9757의 원도 환산값은 (1103, 959)로, 원도 담장이 실제보다 좁아 그림의 연못(1142, 999)보다 약 90 m 북서쪽이다. 화면 배치는 원도 그림을 따른다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1142,
+          999
+        ],
+        "method": "drawn_pond_on_source_map",
+        "detail_asset": "asset-0017",
+        "note": "도성대지도 부분도 4에 그려진 네모 연못(원도 1111~1173, 966~1032)의 중심. 그려진 크기 129 × 119 m가 기록값 128 × 113 m와 거의 같다. 원도의 경복궁 담장은 실제(동서 약 500 m)보다 좁게(약 350 m) 그려져 있어 현대 위치를 옮기면 연못이 담장 밖으로 나가므로 그림을 따랐다."
+      },
+      "display_model": "gyeonghoeru_pond",
+      "display_yaw_deg": 0,
+      "model_note": "기록된 연못 크기와 누각 칸수(정면 7칸·측면 5칸, 돌기둥 8×6)를 따른 개념 모형. 다리 셋과 섬 둘의 위치·크기는 지금 경회루 배치를 참고한 개략값이다.",
+      "info": {
+        "summary": "경복궁 서쪽의 인공 연못. 1412년 넓혀 만들었고, 그 안 동쪽 섬에 경회루가 있었다. 임진왜란 때 누각은 불탔지만 용을 새긴 돌기둥 48개는 연못 안에 그대로 서 있었다.",
+        "period": "1412년 연못 확장과 누각 건립. 1592년 누각 소실, 돌기둥만 남음. 1867년 경회루 재건.",
+        "in_1750": "연못과 돌기둥만 있었다. 도성대지도 경복궁 담장 안에 그려진 네모 연못·기둥 줄·섬 둘 자리에 두었다. 원도 담장이 실제보다 좁게 그려져 실제 위치와는 다를 수 있다.",
+        "sources": [
+          {
+            "title": "위키백과 경회루",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geunjeongjeon_site",
+      "name": "근정전 터",
+      "category": "궁궐",
+      "reference": "https://ko.wikipedia.org/wiki/%EA%B7%BC%EC%A0%95%EC%A0%84",
+      "note": "경복궁 정전 근정전의 2단 월대와 주춧돌. 1592년 불탄 뒤 터만 남아 과거 시험 같은 행사에 쓰였습니다.",
+      "lat": 37.5786,
+      "lon": 126.977,
+      "position_status": "proportional_inside_drawn_palace_wall",
+      "symbol_size_m": [
+        48,
+        3.3,
+        40
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "월대 높이 2.72 m와 건물 30 × 21 m는 기록값. 월대 너비 48 × 40 m는 개략값.",
+      "temporal": {
+        "existence": {
+          "start_year": 1395,
+          "end_year": null,
+          "status": "built_1395_burnt_1592_rebuilt_1867",
+          "note": "1395년(태조 4) 경복궁 중심부와 함께 세웠다. 임진왜란 때 불탔고 1867년 다시 지었다. 그 사이에도 터는 과거 시험과 합격자 발표 등에 쓰였다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "not_depicted_on_source_map",
+          "note": "도성대지도 경복궁 담장 안에는 건물이 그려져 있지 않다."
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EA%B7%BC%EC%A0%95%EC%A0%84",
+            "supports": "built 1395, burnt 1592, site used for exams, rebuilt 1867"
+          },
+          {
+            "url": "https://www.heritage.go.kr/heri/gungDetail/gogungDetail.do?serial_number=161&detail_code=11&gung_number=1",
+            "supports": "two-tier terrace 2.72 m, hall 30 x 21 m"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "proportional_inside_drawn_palace_wall",
+        "resolved_on": "2026-09-14",
+        "precision_m": 30,
+        "note": "근정전 37.5786, 126.9770의 원도 환산값 (1159, 1016)은 그려진 연못 안에 떨어진다. 원도 담장이 실제보다 좁아 담장 안 비율로 다시 잡았다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1153,
+          1062
+        ],
+        "method": "proportional_inside_drawn_palace_wall",
+        "note": "원도 담장 안 남북 비율(광화문에서 신무문까지의 72% 지점, 담장 가운데 축)에 두었다. 실제 비율은 68%지만 그려진 연못과 겹치지 않게 조금 남쪽으로 옮겼다. 원도에는 건물이 없다."
+      },
+      "display_model": "geunjeongjeon_site",
+      "display_yaw_deg": 0,
+      "model_note": "상·하 2단 월대와 남쪽 계단, 5×5칸 주춧돌 36개를 단순화한 개념 모형. 건물은 1750년에 없었으므로 두지 않았다.",
+      "info": {
+        "summary": "경복궁의 정전 근정전이 서 있던 자리. 1750년에는 건물 없이 2단 월대와 주춧돌만 남아 있었고, 이곳에서 과거 시험을 치르고 합격자를 발표하기도 했다.",
+        "period": "1395년 창건. 1592년 임진왜란 때 소실. 1865~1867년 중건.",
+        "in_1750": "건물은 없었다. 월대와 주춧돌만 남은 터를 표시했다. 원도의 담장 안에는 건물이 없어 광화문과 담장의 비율로 자리를 잡았다.",
+        "sources": [
+          {
+            "title": "위키백과 근정전",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B7%BC%EC%A0%95%EC%A0%84"
+          },
+          {
+            "title": "국가유산청 경복궁 근정전",
+            "url": "https://www.heritage.go.kr/heri/gungDetail/gogungDetail.do?serial_number=161&detail_code=11&gung_number=1"
+          }
+        ]
+      }
+    },
+    {
       "id": "heunginjimun",
       "name": "흥인지문",
       "lat": 37.5711528,
