@@ -14,7 +14,7 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
 - Docker Hub: `honestjung/hanyang3d:v0.1.26`
-- 배포 digest: `sha256:079dd84578804671502c1e00ed80943d4e6ff91f994d47cc41da11481b152a5f`
+- 배포 digest: `sha256:caee3f599d9faef291ee6e9fb594b8cde1d86942ce7cbd54c142726719577a96`
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 
