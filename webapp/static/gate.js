@@ -25,7 +25,12 @@ export function createCityGate(feature,w,h,d){
  const arch=new THREE.Mesh(new THREE.ExtrudeGeometry(outline,{depth:d,bevelEnabled:false,curveSegments:12}),mats.stone);
  arch.name='stone-arch';arch.position.set(0,-h/2,-d/2);model.add(arch);parts.push('stone-arch');
  // Coursing lines and a projecting cornice make the base read as dressed stone.
- for(let y=1.4;y<base-.6;y+=1.4)for(const zz of [-1,1])box('stone-course',0,y,zz*(d/2+.02),w+.04,.12,.04,'stoneDark');
+ // Coursing lines run only over solid stone: they stop at each passage below the arch top.
+ const edges=[-w/2,...centres.flatMap(x=>[x-doorWidth/2-.15,x+doorWidth/2+.15]),w/2];
+ for(let y=1.4;y<base-.6;y+=1.4)for(const zz of [-1,1]){
+  if(y>=archTop){box('stone-course',0,y,zz*(d/2+.02),w+.04,.12,.04,'stoneDark');continue}
+  for(let i=0;i<edges.length;i+=2){const x0=edges[i],x1=edges[i+1];if(x1-x0>.3)box('stone-course',(x0+x1)/2,y,zz*(d/2+.02),x1-x0,.12,.04,'stoneDark')}
+ }
  box('cornice',0,base+.15,0,w+.6,.3,d+.6,'stoneDark');
  // Battlements (여장) around the top of the base, open in front of the pavilion doors.
  const merlon=1.1,gapM=.5,mh=1.3;
