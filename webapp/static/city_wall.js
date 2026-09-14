@@ -14,7 +14,7 @@ function outside(a,b,gap){
  const at=t=>({x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t});
  return [...(lo>0?[[a,at(lo)]]:[]),...(hi<1?[[at(hi),b]]:[])];
 }
-function surfaceIndex(surfaces){
+export function surfaceIndex(surfaces){
  const cells=new Map(),size=60;
  let minX=Infinity,maxX=-Infinity,minZ=Infinity,maxZ=-Infinity;
  for(let n=0;n<surfaces.length;n++){

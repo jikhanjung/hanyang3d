@@ -11,6 +11,35 @@
   }
   return best;
  }
+ // Bucket path segments by X/Z cell. nearestWithin returns exactly what nearest returns whenever the
+ // true nearest distance is below reach, and {distance:Infinity} otherwise, visiting only nearby segments.
+ function segmentGrid(path,size=64){
+  const cells=new Map();
+  for(let i=0;i<path.length-1;i++){
+   if(path[i+1].breakBefore)continue;
+   const a=path[i],b=path[i+1];
+   for(let x=Math.floor(Math.min(a.x,b.x)/size);x<=Math.floor(Math.max(a.x,b.x)/size);x++)
+    for(let z=Math.floor(Math.min(a.z,b.z)/size);z<=Math.floor(Math.max(a.z,b.z)/size);z++){
+     const key=x+','+z;if(!cells.has(key))cells.set(key,[]);cells.get(key).push(i);
+    }
+  }
+  return {path,size,cells};
+ }
+ function nearestWithin(x,z,grid,reach){
+  const {path,size,cells}=grid,found=new Set();
+  for(let i=Math.floor((x-reach)/size);i<=Math.floor((x+reach)/size);i++)
+   for(let j=Math.floor((z-reach)/size);j<=Math.floor((z+reach)/size);j++)
+    for(const k of cells.get(i+','+j)??[])found.add(k);
+  let best={distance:Infinity};
+  // Same formula and index order as nearest, so ties resolve identically.
+  for(const i of [...found].sort((p,q)=>p-q)){
+   const a=path[i],b=path[i+1],dx=b.x-a.x,dz=b.z-a.z,l2=dx*dx+dz*dz;
+   const t=l2?Math.max(0,Math.min(1,((x-a.x)*dx+(z-a.z)*dz)/l2)):0;
+   const distance=Math.hypot(x-a.x-t*dx,z-a.z-t*dz);
+   if(distance<best.distance)best={distance,index:i,t,level:a.level+(b.level-a.level)*t,width:a.width+(b.width-a.width)*t};
+  }
+  return best.distance<reach?best:{distance:Infinity};
+ }
  function profile(nodes){
   let previous=Infinity;
   const result=nodes.map((p,i)=>{
@@ -35,18 +64,19 @@
   const {positions,index,uv,colors}=geometry,out={positions:[],uv:[],colors:[],index:[]};
   const radius=Math.max(...path.map(p=>p.width))+20;
   const get=i=>[positions[i*3],positions[i*3+1],positions[i*3+2],uv[i*2],uv[i*2+1],colors[i*3],colors[i*3+1],colors[i*3+2]];
+  const grid=segmentGrid(path);
   function triangle(a,b,c,depth){
    const edge=Math.max(Math.hypot(a[0]-b[0],a[2]-b[2]),Math.hypot(b[0]-c[0],b[2]-c[2]),Math.hypot(c[0]-a[0],c[2]-a[2]));
-   const centre=nearest((a[0]+b[0]+c[0])/3,(a[2]+b[2]+c[2])/3,path);
+   const centre=nearestWithin((a[0]+b[0]+c[0])/3,(a[2]+b[2]+c[2])/3,grid,radius+edge);
    if(depth<5&&edge>6&&centre.distance<radius+edge){
     const mid=(u,v)=>u.map((n,i)=>(n+v[i])/2),ab=mid(a,b),bc=mid(b,c),ca=mid(c,a);
     triangle(a,ab,ca,depth+1);triangle(ab,b,bc,depth+1);triangle(ca,bc,c,depth+1);triangle(ab,bc,ca,depth+1);
    }else{
-    for(const v of [a,b,c]){out.index.push(out.positions.length/3);out.positions.push(...v.slice(0,3));out.uv.push(...v.slice(3,5));out.colors.push(...v.slice(5,8))}
+    for(const v of [a,b,c]){out.index.push(out.positions.length/3);out.positions.push(v[0],v[1],v[2]);out.uv.push(v[3],v[4]);out.colors.push(v[5],v[6],v[7])}
    }
   }
   for(let i=0;i<index.length;i+=3)triangle(get(index[i]),get(index[i+1]),get(index[i+2]),0);
   return out;
  }
- const api={nearest,profile,carvedHeight,refine};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.ChannelTerrain=api;
+ const api={nearest,nearestWithin,segmentGrid,profile,carvedHeight,refine};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.ChannelTerrain=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

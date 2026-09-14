@@ -23,8 +23,11 @@
   let min=Infinity,max=-Infinity,count=0;
   for(const {positions,index,heights} of surfaces){
    for(let i=0;i<index.length;i+=3){
+    // Reject distant triangles from raw coordinates before allocating any polygon arrays.
+    const a=index[i]*3,b=index[i+1]*3,d=index[i+2]*3;
+    if(Math.max(positions[a],positions[b],positions[d])<cx-rx||Math.min(positions[a],positions[b],positions[d])>cx+rx||
+     Math.max(positions[a+2],positions[b+2],positions[d+2])<cz-rz||Math.min(positions[a+2],positions[b+2],positions[d+2])>cz+rz)continue;
     let poly=[index[i],index[i+1],index[i+2]].map(k=>[positions[k*3],heights?heights[k]:positions[k*3+1],positions[k*3+2]]);
-    if(Math.max(...poly.map(p=>p[0]))<cx-rx||Math.min(...poly.map(p=>p[0]))>cx+rx||Math.max(...poly.map(p=>p[2]))<cz-rz||Math.min(...poly.map(p=>p[2]))>cz+rz)continue;
     // Clip in the rotated building's local horizontal frame; retain elevation.
     if(yaw)poly=poly.map(([x,y,z])=>[cx+c*(x-cx)-s*(z-cz),y,cz+s*(x-cx)+c*(z-cz)]);
     for(const [axis,bound,greater] of [[0,left,true],[0,right,false],[2,near,true],[2,far,false]])poly=clip(poly,axis,bound,greater);

@@ -12,7 +12,7 @@ import {createPagoda} from './pagoda.js';
 import {createObservatory} from './observatory.js';
 import {createSettlement} from './settlement.js';
 import {createSijeon} from './sijeon.js';
-import {createCityWall} from './city_wall.js';
+import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
 import {createWalkJoystick} from './walk_joystick.js';
@@ -158,6 +158,8 @@ async function main(){
  const buildings=new THREE.Group();scene.add(buildings);
  const foundations=new THREE.Group();scene.add(foundations);
  const supportSurfaces=[terrain,historical].map(mesh=>({positions:mesh.geometry.attributes.position.array,index:mesh.geometry.index.array}));
+ // A coarse X/Z index keeps each footprint test to the triangles near the building.
+ const supportNearby=surfaceIndex(supportSurfaces);
  const buildingData=JSON.parse(el('buildings').textContent);
  const siteMarkers=[];
  const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b,'집터':0x8a8577,'시설':0x7f6a4c,'탑':0xd8d4c8,'궁가':0xa87a55};
@@ -183,7 +185,7 @@ async function main(){
    // Local +z is the open passage; world +z points south.
    yaw=Math.atan2(b[0]-a[0],-(b[1]-a[1]));
   }
-  const support=TerrainSupport.footprintRange(supportSurfaces,[wx-w/2,wz-d/2,wx+w/2,wz+d/2],yaw);
+  const support=TerrainSupport.footprintRange(supportNearby(wx,wz,Math.hypot(w,d)/2+1),[wx-w/2,wz-d/2,wx+w/2,wz+d/2],yaw);
   const z=support.max+.5,bottom=support.min-.25;
   const foundation=new THREE.Mesh(new THREE.BoxGeometry(w,z-bottom,d),new THREE.MeshStandardMaterial({color:0x8a8273,roughness:1}));
   foundation.rotation.y=yaw;foundation.position.set(wx,(z+bottom)/2,wz);foundation.userData={top:z,bottom,featureId:feature.id};foundations.add(foundation);
@@ -466,11 +468,13 @@ async function main(){
  await stage(4,'물길 표시 완료 · 하천 주변 지형을 계산합니다');
  const surfaceBaselines=[];
  for(const mesh of [terrain]){
-  const old=mesh.geometry,refined=await refineTerrain({positions:old.attributes.position.array,index:old.index.array,uv:old.attributes.uv.array,colors:old.attributes.color.array},channelPath);
+  const refineStart=performance.now(),old=mesh.geometry,refined=await refineTerrain({positions:old.attributes.position.array,index:old.index.array,uv:old.attributes.uv.array,colors:old.attributes.color.array},channelPath);
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(refined.positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(refined.uv,2));g.setAttribute('color',new THREE.Float32BufferAttribute(refined.colors,3));g.setIndex(new THREE.BufferAttribute(refined.index,1));
   const original=Array.from({length:g.attributes.position.count},(_,i)=>g.attributes.position.getY(i));
   const matches=refined.matches;
   g.userData.heights=[...original];g.computeVertexNormals();mesh.geometry=g;old.dispose();surfaceBaselines.push({mesh,original,matches,offset:0});
+  // Read-only load diagnostics: channel refinement runs in a worker and is otherwise invisible to profiles.
+  loading.refine={ms:Math.round(performance.now()-refineStart),vertices:[old.attributes.position.count,g.attributes.position.count],pathNodes:channelPath.length};
  }
  // Project the warped source image onto the canonical DEM triangles without a height offset.
  // Index source triangles in X/Z so inverse UV lookup preserves the existing TPS placement.
@@ -532,10 +536,10 @@ async function main(){
    mesh.geometry.attributes.position.needsUpdate=true;
   }
   historical.geometry.userData.heights=terrain.geometry.userData.heights;
-  const surfaces=[terrain,historical].map(m=>({positions:m.geometry.attributes.position.array,index:m.geometry.index.array}));
+  const surfaces=[terrain,historical].map(m=>({positions:m.geometry.attributes.position.array,index:m.geometry.index.array})),nearbySurfaces=surfaceIndex(surfaces);
   buildings.children.forEach((box,i)=>{
    const u=box.userData,[w,,d]=u.feature.symbol_size_m;
-   const range=TerrainSupport.footprintRange(surfaces,[box.position.x-w/2,box.position.z-d/2,box.position.x+w/2,box.position.z+d/2],box.rotation.y);
+   const range=TerrainSupport.footprintRange(nearbySurfaces(box.position.x,box.position.z,Math.hypot(w,d)/2+1),[box.position.x-w/2,box.position.z-d/2,box.position.x+w/2,box.position.z+d/2],box.rotation.y);
    u.support=range;u.z=range.max+.5;
    const f=foundations.children[i];f.geometry.dispose();f.geometry=new THREE.BoxGeometry(w,u.z-range.min+.25,d);f.userData.top=u.z;f.userData.bottom=range.min-.25;
   });
