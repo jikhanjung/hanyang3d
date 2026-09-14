@@ -3,9 +3,9 @@ import argparse
 from playwright.sync_api import sync_playwright
 parser=argparse.ArgumentParser();parser.add_argument('--browser');args=parser.parse_args()
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--enable-unsafe-swiftshader'])
+ b=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=b.new_page(viewport={'width':1440,'height':1080});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
- page.goto('http://127.0.0.1:8000/gis/terrain/3d/',wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=180000)
+ page.goto('http://127.0.0.1:18014/gis/terrain/3d/',wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=180000)
  result=page.evaluate('''async()=>{
   const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,g=t.buildings.children.find(b=>b.userData.feature.id==='sungnyemun'),c=Math.cos(g.rotation.y),s=Math.sin(g.rotation.y);
   const local=p=>({x:c*(p.x-g.position.x)-s*(p.z-g.position.z),z:s*(p.x-g.position.x)+c*(p.z-g.position.z)});

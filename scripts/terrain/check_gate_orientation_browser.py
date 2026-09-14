@@ -2,11 +2,11 @@
 import argparse
 from playwright.sync_api import sync_playwright, expect
 parser=argparse.ArgumentParser()
-parser.add_argument('--url',default='http://127.0.0.1:8000/gis/terrain/3d/')
+parser.add_argument('--url',default='http://127.0.0.1:18014/gis/terrain/3d/')
 parser.add_argument('--browser')
 args=parser.parse_args()
 with sync_playwright() as p:
- browser=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--enable-unsafe-swiftshader'])
+ browser=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=browser.new_page(viewport={'width':1440,'height':1080}); errors=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=240000)
@@ -21,7 +21,7 @@ with sync_playwright() as p:
  const model=b.children[0],arch=model.getObjectByName('stone-arch'),dir=new T.Vector3(0,0,-1).transformDirection(b.matrixWorld);
  const hits=x=>{const p=new T.Vector3(x,model.userData.archTestY,100);b.localToWorld(p);return new T.Raycaster(p,dir,0,200).intersectObject(arch,false).length};
  const target=f.source_position?warp(...f.source_position.pixel):project(f);
- return {id:f.id,yaw:b.rotation.y*180/Math.PI,aligned:Math.abs(Math.sin(b.rotation.y)*dx/len+Math.cos(b.rotation.y)*dz/len)>.999999,
+ return {id:f.id,yaw:b.rotation.y*180/Math.PI,aligned:(()=>{const yaw=b.rotation.y-(f.wall_square_deg??0)*Math.PI/180;return Math.abs(Math.sin(yaw)*dx/len+Math.cos(yaw)*dz/len)>.999999})(),squareToWall:f.wall_square_deg??null,
  open:model.userData.centres.every(x=>hits(x)===0),stone:hits(f.symbol_size_m[0]*.45)>0,
  placementError:Math.hypot(b.userData.x-target[0],b.userData.y-target[1]),
  support:t.foundations.children.find(g=>g.userData.featureId===f.id).rotation.y===b.rotation.y};
@@ -29,6 +29,9 @@ with sync_playwright() as p:
  print(result,flush=True)
  assert len(result)==9
  assert all(r['aligned'] and r['open'] and r['stone'] and r['support'] and r['placementError']<2 for r in result)
+ # Gates without a wall connection are turned square to the wall; the turn stays within 60° of the road axis.
+ assert all(r['squareToWall'] is None or abs(r['squareToWall'])<60 for r in result),result
+ assert all(r['squareToWall'] is None for r in result if r['id'] in ('gwanghwamun','sungnyemun')),result
  assert abs(next(r['yaw'] for r in result if r['id']=='heunginjimun')-90)<5
  assert page.evaluate("""()=>{const b=terrain3d.buildings.children.find(b=>b.userData.feature.id==='donuimun'),p=terrain3d.labels.children.find(p=>p.userData.name==='돈의문 터');return b.userData.x===p.userData.x&&b.userData.y===p.userData.y&&terrain3d.anchorError<0.0001}""")
  # Carving and height changes must preserve yaw and support clearance.
@@ -42,5 +45,5 @@ with sync_playwright() as p:
   page.wait_for_timeout(500)
   page.screenshot(path='/tmp/hanyang-'+gate+'-aligned.png')
  assert not errors,errors
- print('Passed: nine road-aligned open gates, source-map Donuimun position, carving/height support and no JS errors',flush=True)
+ print('Passed: nine open gates on their road axes (small gates square to the wall), source-map Donuimun position, carving/height support and no JS errors',flush=True)
  browser.close()

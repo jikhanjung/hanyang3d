@@ -196,7 +196,8 @@
             "url": "https://encykorea.aks.ac.kr/Article/E0016240"
           }
         ]
-      }
+      },
+      "palace_gate_bays": 5
     },
     {
       "id": "geumwiyeong",
@@ -676,7 +677,8 @@
             "url": "https://encykorea.aks.ac.kr/Article/E0064444"
           }
         ]
-      }
+      },
+      "palace_gate_bays": 3
     },
     {
       "id": "gyeongdeok",
@@ -996,7 +998,7 @@
       "size_status": "approximate_single_structure_scale",
       "size_note": "주요 네 문을 다른 문보다 크게 표현한 개관용 치수. 역사적 실측 복원값 아님.",
       "display_model": "conceptual_gate_with_open_arch_and_roof",
-      "model_note": "석축 통로·문루·지붕을 단순화한 개념 모형. 1750년대 외형·재료·문 방향의 실측 복원 아님.",
+      "model_note": "1750년에는 문루가 없는 폐허였으므로 홍예 셋이 뚫린 석축만 두었다. 석축이 그때 어느 정도 남아 있었는지는 확인하지 못했다.",
       "road_axis": {
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
@@ -1030,14 +1032,15 @@
       "info": {
         "summary": "경복궁의 정문.",
         "period": "1395년 창건. 임진왜란 때 소실, 1865–1868년 재건. 이전·소실·복원을 거쳐 2010년 제자리 복원.",
-        "in_1750": "문루가 없었다. 경복궁과 함께 폐허였고, 모형은 위치 표시다.",
+        "in_1750": "문루가 없었다. 경복궁과 함께 폐허였다. 모형은 홍예 셋이 있는 석축만 두어 자리를 표시한다.",
         "sources": [
           {
             "title": "Wikidata 광화문",
             "url": "https://www.wikidata.org/wiki/Q485034"
           }
         ]
-      }
+      },
+      "gate_tiers": 0
     },
     {
       "id": "gyeonghoeru_pond",

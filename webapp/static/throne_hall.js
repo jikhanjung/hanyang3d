@@ -18,7 +18,7 @@ function mergeByMaterial(model){
 }
 // Hip-and-gable roof (팔작지붕): long slopes over the full width, short hips at the ends up to the gable, a
 // concave slope profile and eaves that lift toward the corners.
-function hipGableRoof(width,depth,rise,lift=.5,gableFrac=.55){
+export function hipGableRoof(width,depth,rise,lift=.5,gableFrac=.55){
  const pos=[],a=width/2,b=depth/2,N=12,M=6;
  const slope=t=>rise*Math.pow(t,1.45);
  const quad=(p1,p2,p3,p4)=>{pos.push(...p1,...p2,...p3,...p1,...p3,...p4)};

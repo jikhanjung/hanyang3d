@@ -2,11 +2,11 @@
 import argparse
 from playwright.sync_api import sync_playwright, expect
 parser=argparse.ArgumentParser()
-parser.add_argument("--url",default="http://127.0.0.1:8000/gis/terrain/3d/")
+parser.add_argument("--url",default="http://127.0.0.1:18014/gis/terrain/3d/")
 parser.add_argument("--browser")
 args=parser.parse_args()
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--enable-unsafe-swiftshader'])
+ b=p.chromium.launch(executable_path=args.browser,headless=True,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=b.new_page(viewport={'width':1440,'height':1080});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto(args.url,wait_until='networkidle');page.wait_for_function('window.terrain3d?.ready',timeout=240000);page.wait_for_timeout(500)
  assert page.evaluate('terrain3d.bridges.children.length')==4

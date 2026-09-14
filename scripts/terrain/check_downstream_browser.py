@@ -2,9 +2,9 @@
 from playwright.sync_api import sync_playwright
 import json
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path='/home/jikhanjung/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',headless=True,args=['--no-sandbox','--enable-unsafe-swiftshader'])
+ b=p.chromium.launch(executable_path='/home/jikhanjung/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',headless=True,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=b.new_page(viewport={'width':1440,'height':1080});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
- page.goto('http://127.0.0.1:8000/gis/terrain/3d/',wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=240000)
+ page.goto('http://127.0.0.1:18014/gis/terrain/3d/',wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=240000)
  result=page.evaluate('''async()=>{
  const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,c=t.channelState,join=c.mainPath[c.joinIndex],north=c.northPath.at(-1),gates=t.buildings.children.filter(b=>b.userData.feature.category==='성문');t.scene.updateMatrixWorld(true);
  const passages=gates.map(g=>{const origin=new T.Vector3(0,g.children[0].userData.archTestY,g.userData.feature.symbol_size_m[2]);g.localToWorld(origin);return {id:g.userData.feature.id,size:g.userData.feature.symbol_size_m,open:!new T.Raycaster(origin,new T.Vector3(0,0,-1).transformDirection(g.matrixWorld),0,g.userData.feature.symbol_size_m[2]*2).intersectObject(t.cityWall.group,true).length};});

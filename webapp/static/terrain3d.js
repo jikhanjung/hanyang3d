@@ -15,6 +15,7 @@ import {createSijeon} from './sijeon.js';
 import {createPlaceNames} from './placenames.js';
 import {createGyeonghoeruPond,createHallSite} from './gyeongbokgung_ruins.js';
 import {createThroneHall} from './throne_hall.js';
+import {createCityGate} from './gate.js';
 import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
@@ -178,41 +179,7 @@ async function main(){
   const dot=new THREE.Sprite(new THREE.SpriteMaterial({map:dotTexture,depthTest:false,depthWrite:false,sizeAttenuation:false}));
   dot.renderOrder=10;dot.position.set(...world(x,y,z));dot.scale.set(.011,.011,1);dot.userData={x,y,z,name:p.name};if(p.dem_height_m)dot.material.color.setHex(0xffa84c);labels.add(dot);
  }
- function gateModel(feature,w,h,d){
-  const model=new THREE.Group();model.name='gate-model';
-  const stone=new THREE.MeshStandardMaterial({color:0xb5aa94,roughness:1,side:THREE.DoubleSide});
-  const timber=new THREE.MeshStandardMaterial({color:0x813f2e,roughness:.9});
-  const tiles=new THREE.MeshStandardMaterial({color:0x364345,roughness:.85,side:THREE.DoubleSide});
-  const base=h*.43,doors=feature.id==='gwanghwamun'?3:1;
-  const doorWidth=w*(doors===3?.14:.25),spring=base*.48,archTop=base*.85;
-  const outline=new THREE.Shape();outline.moveTo(-w/2,0);outline.lineTo(-w/2,base);outline.lineTo(w/2,base);outline.lineTo(w/2,0);
-  const centres=Array.from({length:doors},(_,i)=>(i-(doors-1)/2)*w*.27);
-  for(const x of [...centres].reverse()){
-   outline.lineTo(x+doorWidth/2,0);outline.lineTo(x+doorWidth/2,spring);
-   outline.quadraticCurveTo(x+doorWidth/2,archTop,x,archTop);
-   outline.quadraticCurveTo(x-doorWidth/2,archTop,x-doorWidth/2,spring);outline.lineTo(x-doorWidth/2,0);
-  }
-  outline.closePath();
-  const arch=new THREE.Mesh(new THREE.ExtrudeGeometry(outline,{depth:d,bevelEnabled:false,curveSegments:12}),stone);
-  arch.name='stone-arch';arch.position.set(0,-h/2,-d/2);model.add(arch);
-  const tiers=feature.gate_tiers??(feature.id==='donuimun'?1:2),step=(h-base)/tiers;
-  for(let tier=0;tier<tiers;tier++){
-   const bottom=base+tier*step-h/2,shrink=1-tier*.13;
-   const hall=new THREE.Mesh(new THREE.BoxGeometry(w*.69*shrink,step*.62,d*.68*shrink),timber);
-   hall.position.y=bottom+step*.31;hall.name='gate-hall';model.add(hall);
-   const rw=w*.49*shrink,rd=d*.49*shrink,low=bottom+step*.62,high=bottom+step;
-   const roof=new THREE.BufferGeometry();
-   roof.setAttribute('position',new THREE.Float32BufferAttribute([-rw,low,-rd,rw,low,-rd,rw,low,rd,-rw,low,rd,-rw*.65,high,0,rw*.65,high,0],3));
-   roof.setIndex([0,4,5,0,5,1,1,5,2,2,5,4,2,4,3,3,4,0,0,1,2,0,2,3]);roof.computeVertexNormals();
-   const roofMesh=new THREE.Mesh(roof,tiles);roofMesh.name='gate-roof';model.add(roofMesh);
-   // Posts and dark window bays make the upper storey legible without detailed reconstruction.
-   for(let col=0;col<5;col++){
-    const window=new THREE.Mesh(new THREE.BoxGeometry(w*.085*shrink,step*.32,.12),new THREE.MeshStandardMaterial({color:0x252e29,roughness:1}));
-    window.position.set((col-2)*w*.125*shrink,bottom+step*.33,d*.34*shrink+.08);model.add(window);
-   }
-  }
-  model.userData={doors,centres,doorWidth,archTestY:-h/2+spring*.6,conceptual:true};return model;
- }
+ const gateModel=createCityGate;
  const buildings=new THREE.Group();scene.add(buildings);
  const foundations=new THREE.Group();scene.add(foundations);
  const supportSurfaces=[terrain,historical].map(mesh=>({positions:mesh.geometry.attributes.position.array,index:mesh.geometry.index.array}));
@@ -221,6 +188,24 @@ async function main(){
  const buildingData=JSON.parse(el('buildings').textContent);
  const siteMarkers=[];
  const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b,'집터':0x8a8577,'시설':0x7f6a4c,'탑':0xd8d4c8,'궁가':0xa87a55};
+ const wallData=JSON.parse(el('wall').textContent);
+ if(wallData.source_sha256!==exp.input_sha256)throw Error('성벽 판독 원본이 현재 원도와 다릅니다.');
+ // A gate stands square to the wall it pierces: its yaw is the wall's local direction turned 90°, on whichever
+ // side faces the road axis read from the map. 숭례문 is the exception: there the wall is bent to the gate's
+ // transverse axis instead (wall_connection in city_wall.js), so its road-axis yaw is kept.
+ const wallNodes=[];
+ wallData.centerline.slice(0,-1).forEach((a,i)=>{const b=wallData.centerline[i+1],steps=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/3);
+  for(let j=0;j<steps;j++){const p=sourceSurface(a[0]+(b[0]-a[0])*j/steps,a[1]+(b[1]-a[1])*j/steps);wallNodes.push([p.x,p.z])}});
+ function wallSquareYaw(wx,wz,roadYaw,radius=45){
+  const near=wallNodes.filter(([x,z])=>Math.hypot(x-wx,z-wz)<radius);if(near.length<4)return null;
+  // Principal direction of the nearby wall nodes.
+  const mx=near.reduce((a,p)=>a+p[0],0)/near.length,mz=near.reduce((a,p)=>a+p[1],0)/near.length;
+  let sxx=0,sxz=0,szz=0;for(const [x,z] of near){sxx+=(x-mx)**2;sxz+=(x-mx)*(z-mz);szz+=(z-mz)**2}
+  const theta=.5*Math.atan2(2*sxz,sxx-szz),tx=Math.cos(theta),tz=Math.sin(theta);
+  const candidates=[Math.atan2(-tz,tx),Math.atan2(tz,-tx)];
+  const diff=a=>Math.abs(Math.atan2(Math.sin(a-roadYaw),Math.cos(a-roadYaw)));
+  return candidates.sort((a,b)=>diff(a)-diff(b))[0];
+ }
  for(const feature of buildingData.features){
   let x,y;
   if(feature.source_position){
@@ -242,6 +227,7 @@ async function main(){
    const [a,b]=feature.road_axis.pixel_points.map(p=>warp(...p));
    // Local +z is the open passage; world +z points south.
    yaw=Math.atan2(b[0]-a[0],-(b[1]-a[1]));
+   if(feature.category==='성문'&&!wallData.openings.some(o=>o.model_id===feature.id&&o.wall_connection)&&feature.id!=='gwanghwamun'){const square=wallSquareYaw(wx,wz,yaw);if(square!==null){feature.wall_square_deg=Math.round((square-yaw)*180/Math.PI*10)/10;yaw=square}}
   }
   const support=TerrainSupport.footprintRange(supportNearby(wx,wz,Math.hypot(w,d)/2+1),[wx-w/2,wz-d/2,wx+w/2,wz+d/2],yaw);
   const z=support.max+.5,bottom=support.min-.25;
@@ -270,21 +256,34 @@ async function main(){
  // merged low model — a base plate, a hall block and a roof — so the whole city costs about one draw call per building.
  const LANDMARK_LOD_M=1600,proxyMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1}),landmarkLods=[];
  function proxyGeometry(feature,w,h,d){
-  const positions=[],colors=[];
-  const push=(geometry,color,x,y,z)=>{const g=geometry.index?geometry.toNonIndexed():geometry,p=g.attributes.position,c=new THREE.Color(color);
-   for(let i=0;i<p.count;i++){positions.push(p.getX(i)+x,p.getY(i)+y,p.getZ(i)+z);colors.push(c.r,c.g,c.b)}};
+  const positions=[],colors=[],m=new THREE.Matrix4(),v=new THREE.Vector3();
+  const push=(geometry,color,x,y,z,ry=0)=>{const g=geometry.index?geometry.toNonIndexed():geometry,p=g.attributes.position,c=new THREE.Color(color);
+   m.makeRotationY(ry).setPosition(x,y,z);
+   for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m);positions.push(v.x,v.y,v.z);colors.push(c.r,c.g,c.b)}};
   const roof=(rw,rd,rise)=>{const g=new THREE.BufferGeometry(),a=rw/2,b=rd/2;
    g.setAttribute('position',new THREE.Float32BufferAttribute([-a,0,-b,a,0,-b,a,rise,0, -a,0,-b,a,rise,0,-a,rise,0, a,0,b,-a,0,b,-a,rise,0, a,0,b,-a,rise,0,a,rise,0, -a,0,-b,-a,rise,0,-a,0,b, a,0,b,a,rise,0,a,0,-b],3));return g};
   const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','palace_compound','observatory','throne_hall'].includes(feature.display_model);
   // Walls stay close to the beige of the detailed timber-and-plaster models, with only a hint of the category colour.
-  const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25);
-  if(compound){
+  const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25),tile=0x4b5254;
+  // A hall is a wall block with a pitched roof of ordinary house pitch; the rise never scales with the plot.
+  const hall=(x,z,hw,hd,hh,ry=0)=>{push(new THREE.BoxGeometry(hw,hh,hd),wall,x,ground+.6+hh/2,z,ry);push(roof(hw+1.6,hd+1.6,Math.min(3.2,1.2+hd*.16)),tile,x,ground+.6+hh,z,ry)};
+  if(feature.display_model==='yukjo_compound'){
+   // Mirror the detailed layout: plate, enclosure wall, front row with the gate, main hall and two side halls.
    push(new THREE.BoxGeometry(w,.6,d),0xb9aa8a,0,ground+.3,0);
-   const hw=Math.max(6,w*.5),hd=Math.max(5,d*.3),hh=Math.min(Math.max(3,h*.45),7);
-   push(new THREE.BoxGeometry(hw,hh,hd),wall,0,ground+.6+hh/2,-d*.15);push(roof(hw+1.5,hd+2,Math.max(1.5,hd*.35)),0x4b5254,0,ground+.6+hh,-d*.15);
+   const gateW=Math.min(13,w*.24),front=d/2-5,run=(w-gateW)/2-2;
+   for(const side of [-1,1]){hall(side*(gateW/2+run/2),front,run,6,3.5);push(new THREE.BoxGeometry(1.2,2.3,d-10),0xd5c8ad,side*(w/2-.8),ground+.6+1.15,-2)}
+   hall(0,front,gateW,7,4.8);push(new THREE.BoxGeometry(w,2.3,1.2),0xd5c8ad,0,ground+.6+1.15,-d/2+2);
+   hall(0,-d*.12,w*(feature.court_type==='large'?.52:.6),Math.min(13,d*.2),feature.court_type==='large'?5.7:4.8);
+   for(const side of [-1,1])hall(side*w*.33,d*.05,Math.min(d*.36,25),7,3.5,Math.PI/2);
+  }else if(compound){
+   push(new THREE.BoxGeometry(w,.6,d),0xb9aa8a,0,ground+.3,0);
+   const hw=Math.max(6,w*.5),hd=Math.min(14,Math.max(5,d*.25)),hh=Math.min(Math.max(3,h*.45),7);
+   hall(0,-d*.15,hw,hd,hh);
+   for(const side of [-1,1])push(new THREE.BoxGeometry(1.2,2.3,d-2),0xd5c8ad,side*(w/2-.8),ground+.6+1.15,0);
+   for(const side of [-1,1])push(new THREE.BoxGeometry(w,2.3,1.2),0xd5c8ad,0,ground+.6+1.15,side*(d/2-.8));
   }else{
    const bh=Math.max(2,h*.65);
-   push(new THREE.BoxGeometry(w*.85,bh,d*.85),wall,0,ground+bh/2,0);push(roof(w*.95,d*.95,Math.max(1,h*.3)),0x4b5254,0,ground+bh,0);
+   push(new THREE.BoxGeometry(w*.85,bh,d*.85),wall,0,ground+bh/2,0);push(roof(w*.95,d*.95,Math.max(1,h*.3)),tile,0,ground+bh,0);
   }
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));g.computeVertexNormals();return g;
  }
@@ -293,12 +292,14 @@ async function main(){
   const detail=[...box.children];if(!detail.length||['gyeonghoeru_pond','hall_site'].includes(box.userData.feature.display_model))continue;
   const f=box.userData.feature,[w,h,d]=f.symbol_size_m;
   const proxy=new THREE.Mesh(proxyGeometry(f,w,h,d),proxyMaterial);proxy.name='landmark-lod';proxy.visible=false;box.add(proxy);
-  landmarkLods.push({box,detail,proxy,near:true});
+  landmarkLods.push({box,detail,proxy,near:true,far:null});
  }
+ // Important buildings keep their detail farther out (level 0 to 4800 m, level 1 to 2880 m, level 2 to 1920 m).
  // A small distance gap keeps a model from flickering between its two forms at the boundary.
  function updateLandmarkLod(){
   for(const l of landmarkLods){
-   const dist=camera.position.distanceTo(l.box.position),near=l.near?dist<LANDMARK_LOD_M+100:dist<LANDMARK_LOD_M-100;
+   l.far??=LANDMARK_LOD_M*[3,1.8,1.2,1][buildingLevel(l.box.userData.feature)];
+   const dist=camera.position.distanceTo(l.box.position),near=l.near?dist<l.far+100:dist<l.far-100;
    if(near===l.near)continue;l.near=near;for(const c of l.detail)c.visible=near;l.proxy.visible=!near;
   }
  }
@@ -674,8 +675,6 @@ async function main(){
  el('roads3d').onchange=()=>{roadLayer.visible=el('roads3d').checked;pedestrians?.setRoadVisible(roadLayer.visible)};
  const waterBaselines=waterLayer.children.map(m=>[...m.geometry.userData.heights]);
  const channelState={enabled:true,depth:2,maxCut:0,path:channelPath,mainPath,northPath,joinIndex};
- const wallData=JSON.parse(el('wall').textContent);
- if(wallData.source_sha256!==exp.input_sha256)throw Error('성벽 판독 원본이 현재 원도와 다릅니다.');
  const cityWall=createCityWall(wallData,sourceSurface,buildings);scene.add(cityWall.group);
  const palaceResponse=await fetch(asset('/gis/walls/gyeongbokgung_wall.json'));
  if(!palaceResponse.ok)throw Error('경복궁 담장 자료를 불러오지 못했습니다.');

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {hipGableRoof} from './throne_hall.js';
 
 const PALETTE={stone:0xb4ac99,wood:0x813b2c,door:0x493a2b,roof:0x374448,trim:0x597461,court:0xbca779};
 function palaceMaterials(){
@@ -68,45 +69,48 @@ export function createPalace(feature,w,h,d){
  model.userData={conceptual:true,roofTiers:tiers,parts,footprint:[w,d],period:feature.temporal};return model;
 }
 
-// Schematic two-storey palace gate: stone base, three door bays, upper gate house.
+// Two-storey timber palace gate (돈화문·홍화문): a low stone platform, three to five door bays between red
+// columns, a balustraded upper floor with lattice windows, and two hip-and-gable roofs. Wall stubs keep it
+// joined to the palace wall. feature.palace_gate_bays gives the bay count (돈화문 5, 홍화문 3).
 export function createPalaceGate(feature,w,h,d){
  const model=new THREE.Group();model.name='palace-gate';
- const tiers=feature.palace_gate_tiers??2;
- const mats=palaceMaterials();
+ const tiers=feature.palace_gate_tiers??2,bays=feature.palace_gate_bays??3,doorBays=Math.min(3,bays);
+ const mats=palaceMaterials();mats.plaster=new THREE.MeshStandardMaterial({color:0xe6dcc4,roughness:1});mats.bracket=new THREE.MeshStandardMaterial({color:0xb9432c,roughness:1});
+ mats.roof.side=THREE.DoubleSide;
  const parts=[];
  function box(name,x,y,z,sx,sy,sz,material){
   const mesh=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mats[material]);mesh.position.set(x,y-h/2,z);mesh.name=name;model.add(mesh);parts.push(name);return mesh;
  }
  function roof(name,x,z,width,depth,eave,rise){
-  const g=new THREE.BufferGeometry(),a=width/2,b=depth/2;
-  g.setAttribute('position',new THREE.Float32BufferAttribute([-a,.12,-b,a,.12,-b,a,.12,b,-a,.12,b,-a*.77,.45,-b*.66,a*.77,.45,-b*.66,a*.77,.45,b*.66,-a*.77,.45,b*.66,-a*.52,rise,0,a*.52,rise,0],3));
-  g.setIndex([0,4,5,0,5,1,1,5,6,1,6,2,2,6,7,2,7,3,3,7,4,3,4,0,4,8,9,4,9,5,5,9,6,6,9,8,6,8,7,7,8,4,0,1,2,0,2,3]);g.computeVertexNormals();
-  const mesh=new THREE.Mesh(g,mats.roof);mesh.name=name;mesh.position.set(x,eave-h/2,z);model.add(mesh);parts.push(name);
-  box('ridge',x,eave+rise+.08,z,width*.55,.16,.2,'stone');
+  const mesh=new THREE.Mesh(hipGableRoof(width,depth,rise,.7,.5),mats.roof);mesh.name=name;mesh.position.set(x,eave-h/2,z);model.add(mesh);parts.push(name);
+  box('ridge',x,eave+rise+.12,z,width-depth*.5*2+.6,.25,.4,'stone');
  }
- const base=h*.08,postH=h*(tiers===2?.4:.62),eave=base+postH,bays=3,bayW=w*.78/bays;
+ const base=h*.07,postH=h*(tiers===2?.36:.55),eave=base+postH,gw=w*.8,gd=d*.6,bayW=gw/bays;
  box('gate-platform',0,base/2,0,w,base,d,'stone');
- for(let i=0;i<bays;i++){
-  const x=(i-(bays-1)/2)*bayW;
-  box('gate-door',x,base+postH*.46,0,bayW*.72,postH*.9,d*.24,'door');
-  for(let j=-1;j<=1;j++)box('door-stud',x+j*bayW*.2,base+postH*.5,d*.13,.09,postH*.62,.08,'trim');
- }
  for(let i=0;i<=bays;i++)for(const sign of [-1,1]){
-  const x=(i/bays-.5)*w*.86,z=sign*d*.3;
-  box('column-foot',x,base+.1,z,.5,.2,.5,'stone');
-  const post=new THREE.Mesh(new THREE.CylinderGeometry(.18,.23,postH,8),mats.wood);post.name='red-column';post.position.set(x,base+postH/2-h/2,z);model.add(post);parts.push(post.name);
+  const x=-gw/2+i*bayW,z=sign*gd/2;
+  box('column-foot',x,base+.15,z,.6,.3,.6,'stone');
+  const post=new THREE.Mesh(new THREE.CylinderGeometry(.24,.28,postH,10),mats.wood);post.name='red-column';post.position.set(x,base+postH/2-h/2,z);model.add(post);parts.push(post.name);
  }
- box('lintel',0,eave-.2,0,w*.9,.4,d*.66,'wood');
+ // Central bays are doors (studded wooden leaves under the middle beam); outer bays are plastered walls.
+ for(let i=0;i<bays;i++){
+  const x=-gw/2+(i+.5)*bayW,isDoor=Math.abs(i-(bays-1)/2)<=(doorBays-1)/2;
+  if(isDoor){box('gate-door',x,base+postH*.46,0,bayW-.6,postH*.9,.3,'door');for(let j=-1;j<=1;j++)box('door-stud',x+j*bayW*.22,base+postH*.5,.2,.09,postH*.7,.08,'trim')}
+  else{box('gate-wall',x,base+postH*.45,0,bayW-.5,postH*.88,gd-.3,'plaster');for(const sign of [-1,1])box('lattice-window',x,base+postH*.6,sign*(gd/2-.05),bayW-1,postH*.32,.1,'door')}
+ }
+ box('lintel',0,eave-.25,0,gw+.6,.45,gd+.6,'wood');box('bracket-band',0,eave+.15,0,gw+1.2,.4,gd+1.2,'bracket');
  if(tiers===2){
-  const upper=eave+h*.05;
-  box('gate-railing',0,upper,0,w*.92,h*.05,d*.86,'trim');
-  box('upper-house',0,upper+h*.14,0,w*.8,h*.22,d*.62,'wood');
-  for(let i=0;i<bays+1;i++)box('upper-window',(i-bays/2+.5)*w*.19,upper+h*.15,d*.31,w*.12,h*.12,.1,'trim');
-  roof('gate-roof',0,0,w*1.04,d*1.1,upper+h*.25,h*.2);
- }else roof('gate-roof',0,0,w*1.04,d*1.2,eave,h*.24);
+  roof('lower-roof',0,0,gw+6,gd+5,eave+.4,h*.13);
+  const upper=eave+.4+h*.13+.2,uH=h*.2,uw=gw*.86,ud=gd*.8;
+  box('gate-railing',0,upper+.3,0,uw+1.6,.6,ud+1.6,'trim');
+  box('upper-house',0,upper+uH/2,0,uw,uH,ud,'plaster');
+  for(let i=0;i<bays;i++)for(const sign of [-1,1])box('upper-window',-uw/2+(i+.5)*uw/bays,upper+uH*.5,sign*(ud/2+.05),uw/bays-.7,uH*.6,.1,'door');
+  box('upper-beam',0,upper+uH-.25,0,uw+.6,.45,ud+.6,'wood');box('upper-bracket',0,upper+uH+.15,0,uw+1.2,.4,ud+1.2,'bracket');
+  roof('gate-roof',0,0,uw+6,ud+5,upper+uH+.4,h*.18);
+ }else roof('gate-roof',0,0,gw+6,gd+5,eave+.4,h*.26);
  // Wall stubs stay inside the landmark footprint so they rest on the gate platform.
- for(const side of [-1,1])box('flanking-wall',side*w*.44,base+h*.11,0,w*.12,h*.22,d*.52,'stone');
- for(let i=0;i<3;i++)box('gate-stair',0,base*(i+1)/6,d*.5+.9-i*.3,w*.5,base*(i+1)/3,.7,'stone');
+ for(const side of [-1,1]){box('flanking-wall',side*w*.45,base+h*.1,0,w*.1,h*.2,d*.45,'stone');box('wall-roof',side*w*.45,base+h*.2+.15,0,w*.12,.3,d*.5,'roof')}
+ for(let i=0;i<3;i++)box('gate-stair',0,base*(i+1)/6,d/2+.9-i*.3,gw*.6,base*(i+1)/3,.7,'stone');
  mergeByMaterial(model);
- model.userData={conceptual:true,gateTiers:tiers,bays,parts,footprint:[w,d],period:feature.temporal};return model;
+ model.userData={conceptual:true,roofTiers:tiers,bays,parts,footprint:[w,d],period:feature.temporal};return model;
 }
