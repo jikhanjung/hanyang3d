@@ -26,3 +26,7 @@
 ## 검사
 
 guards(7곳), stories(28개), palace_models, gate_models, walk_collision, new_landmarks 브라우저 검사와 Django 테스트 15개 통과.
+
+## 배포
+
+- v0.1.36으로 배포했다. Docker Hub digest: `sha256:c40024eea415a5f72af16d228eaabfa68d7ee53110d7e41a5db58f76222409b4`. 공개 healthz 정상, resources 85, 공개 건물 안내에 금호문·흥화문 절이 보인다. 서버 이미지는 v0.1.36과 v0.1.35만 남겼다.
