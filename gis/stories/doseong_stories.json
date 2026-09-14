@@ -530,6 +530,54 @@
      "url": "https://encykorea.aks.ac.kr/Article/E0005662"
     }
    ]
+  },
+  {
+   "id": "geumhomun-officials",
+   "target": {
+    "type": "landmark",
+    "key": "geumhomun",
+    "label": "금호문"
+   },
+   "title": "관리들이 드나든 서쪽 문",
+   "year": "1475",
+   "legend": false,
+   "text": "1475년(성종 6) 서거정이 서쪽을 뜻하는 금(金)과 백호의 호(虎)를 따서 이름을 지었다. 정문인 돈화문과 달리 승정원·홍문관 같은 궁 안 관서의 관리들이 이 문으로 드나들었다. 창덕궁 궁성 밖 파수를 삼군영이 나눌 때 금호문은 금위영 몫이었다. 1926년에는 이 문 앞에서 송학선이 조선총독을 노린 의거를 벌였다.",
+   "sources": [
+    {
+     "title": "국가유산청 「궁궐의 현판과 주련 – 창덕궁 궁문」",
+     "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02"
+    },
+    {
+     "title": "성종실록 6년 8월 23일",
+     "url": "https://sillok.history.go.kr/id/kia_10608023_007"
+    },
+    {
+     "title": "우리역사넷 신편 한국사 「궁성 파수」",
+     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+    }
+   ]
+  },
+  {
+   "id": "heunghwamun-travels",
+   "target": {
+    "type": "landmark",
+    "key": "heunghwamun",
+    "label": "흥화문"
+   },
+   "title": "세 번 옮겨진 정문",
+   "year": "1915",
+   "legend": false,
+   "text": "경덕궁 동남쪽 모퉁이에서 동쪽을 보고 서 있던 정문이다. 일제강점기에 궁이 헐리면서 1915년 남쪽 담으로 옮겨졌고, 1932년에는 이토 히로부미를 기리는 장충동 박문사의 정문이 되었다. 그 자리에 호텔이 들어선 뒤에도 정문으로 쓰이다가 1988년 경희궁 터로 돌아왔지만, 원래 자리가 아닌 곳에 서 있다.",
+   "sources": [
+    {
+     "title": "위키백과 흥화문",
+     "url": "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8"
+    },
+    {
+     "title": "국가유산포털 경희궁 흥화문",
+     "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000"
+    }
+   ]
   }
  ],
  "checked": "2026-09-15"

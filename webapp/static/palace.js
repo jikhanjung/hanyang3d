@@ -82,8 +82,10 @@ export function createPalaceGate(feature,w,h,d){
   const mesh=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mats[material]);mesh.position.set(x,y-h/2,z);mesh.name=name;model.add(mesh);parts.push(name);return mesh;
  }
  function roof(name,x,z,width,depth,eave,rise){
-  const mesh=new THREE.Mesh(hipGableRoof(width,depth,rise,.7,.5),mats.roof);mesh.name=name;mesh.position.set(x,eave-h/2,z);model.add(mesh);parts.push(name);
-  box('ridge',x,eave+rise+.12,z,width-depth*.5*2+.6,.25,.4,'stone');
+  // feature.palace_gate_roof: 'hip-gable' (팔작, default), 'hip' (우진각) or 'gable' (맞배, a hip too short to see).
+  const frac={hip:1,gable:.04}[feature.palace_gate_roof]??.5;
+  const mesh=new THREE.Mesh(hipGableRoof(width,depth,rise,frac===.04?.25:.7,frac),mats.roof);mesh.name=name;mesh.position.set(x,eave-h/2,z);model.add(mesh);parts.push(name);
+  box('ridge',x,eave+rise+.12,z,Math.max(.6,width-depth*frac+.6),.25,.4,'stone');
  }
  const base=h*.07,postH=h*(tiers===2?.36:.55),eave=base+postH,gw=w*.8,gd=d*.6,bayW=gw/bays;
  box('gate-platform',0,base/2,0,w,base,d,'stone');
@@ -112,5 +114,5 @@ export function createPalaceGate(feature,w,h,d){
  for(const side of [-1,1]){box('flanking-wall',side*w*.45,base+h*.1,0,w*.1,h*.2,d*.45,'stone');box('wall-roof',side*w*.45,base+h*.2+.15,0,w*.12,.3,d*.5,'roof')}
  for(let i=0;i<3;i++)box('gate-stair',0,base*(i+1)/6,d/2+.9-i*.3,gw*.6,base*(i+1)/3,.7,'stone');
  mergeByMaterial(model);
- model.userData={conceptual:true,roofTiers:tiers,bays,parts,footprint:[w,d],period:feature.temporal};return model;
+ model.userData={conceptual:true,roofTiers:tiers,bays,roof:feature.palace_gate_roof??'hip-gable',parts,footprint:[w,d],period:feature.temporal};return model;
 }

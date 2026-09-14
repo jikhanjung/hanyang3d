@@ -371,7 +371,7 @@ async function main(){
  // label is hidden for that frame.
  const LABEL_REACH=[Infinity,7000,3000,1500,1000];
  const LEVEL0=new Set(['changdeok','changgyeong','gyeongdeok','jongmyo','heunginjimun','sungnyemun','donuimun','sukjeongmun']);
- const LEVEL1=new Set(['gyeonghoeru_pond','geunjeongjeon_site','sajeongjeon_site','gangnyeongjeon_site','gyotaejeon_site','sajik','sungkyun','gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
+ const LEVEL1=new Set(['gyeonghoeru_pond','geunjeongjeon_site','sajeongjeon_site','gangnyeongjeon_site','gyotaejeon_site','sajik','sungkyun','gwanghwamun','donhwamun','honghwamun','heunghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
  function buildingLevel(f){
   if(LEVEL0.has(f.id))return 0;if(LEVEL1.has(f.id))return 1;
   const [w,,d]=f.symbol_size_m??[0,0,0];

@@ -34,6 +34,8 @@ function figure(parts,mats,x,z,y,{officer=false,yaw=0}={}){
 export const GUARD_POSTS={
  donhwamun:{unit:'훈련도감',officer:true,soldiers:4,kind:'palace'},
  honghwamun:{unit:'어영청',officer:true,soldiers:2,kind:'palace'},
+ geumhomun:{unit:'금위영',officer:true,soldiers:2,kind:'palace'},
+ heunghwamun:{unit:'경덕궁 궁문 파수',officer:true,soldiers:2,kind:'palace'},
  sungnyemun:{unit:'도성 문 파수',officer:false,soldiers:2,kind:'city'},
  heunginjimun:{unit:'도성 문 파수',officer:false,soldiers:2,kind:'city'},
  donuimun:{unit:'도성 문 파수',officer:false,soldiers:2,kind:'city'},

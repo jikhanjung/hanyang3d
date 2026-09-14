@@ -681,6 +681,158 @@
       "palace_gate_bays": 3
     },
     {
+      "id": "geumhomun",
+      "name": "금호문 · 창덕궁 서쪽 문",
+      "category": "궁궐",
+      "reference": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02",
+      "note": "창덕궁 서쪽 궁장의 문. 부분도에 金虎門 글씨와 문 기호가 그려져 있습니다.",
+      "position_status": "manual_detail_sheet_gate_symbol",
+      "symbol_size_m": [
+        9,
+        7,
+        6
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "문 1동의 개략 치수. 실측 복원값이 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1475,
+          "end_year": null,
+          "status": "documented",
+          "note": "1475년 이름을 지었다. 임진왜란 뒤 중건 연도는 미확인."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도 asset-0018에 문 기호와 함께 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02",
+            "supports": "서쪽 궁장의 문, 이름 뜻, 드나든 관리"
+          },
+          {
+            "url": "https://sillok.history.go.kr/id/kia_10608023_007",
+            "supports": "1475년 이름 지음"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%B0%BD%EB%8D%95%EA%B6%81_%EA%B8%88%ED%98%B8%EB%AC%B8",
+            "supports": "정면 1칸 측면 2칸 솟을대문, 맞배지붕"
+          }
+        ]
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1688,
+          1028
+        ],
+        "method": "manual_detail_sheet_gate_symbol",
+        "note": "부분도에서 창덕궁 서쪽 담 위의 金虎門 문 기호를 읽었다. 부분도 asset-0018 픽셀 [1953, 512]을 부분도 정합으로 전체도 좌표에 옮겼다."
+      },
+      "display_model": "palace_gate",
+      "palace_gate_tiers": 1,
+      "display_yaw_deg": -90,
+      "model_note": "정면 1칸 솟을대문과 맞배지붕을 단순화한 개념 모형. 치수는 실측이 아니다.",
+      "model_reference": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02",
+      "info": {
+        "summary": "창덕궁 서쪽 궁장에 난 문이다. 이름은 오행에서 서쪽을 뜻하는 금(金)과 서쪽을 지키는 백호의 호(虎)에서 왔다. 승정원·홍문관 같은 궁 안 관서의 관리들이 드나들었다. 정면 1칸의 솟을대문에 맞배지붕이다.",
+        "period": "1475년(성종 6) 서거정이 이름을 지었다(성종실록). 창덕궁이 임진왜란 때 불탄 뒤 언제 다시 지었는지는 확인하지 못했다. 현존.",
+        "in_1750": "있었다. 부분도에 창덕궁 서쪽 담의 문으로 그려져 있어 그 자리에 서쪽을 향하게 두었다. 모형은 1칸 솟을대문을 단순화한 것이다.",
+        "sources": [
+          {
+            "title": "국가유산청 「궁궐의 현판과 주련 – 창덕궁 궁문」",
+            "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02"
+          },
+          {
+            "title": "성종실록 6년 8월 23일",
+            "url": "https://sillok.history.go.kr/id/kia_10608023_007"
+          },
+          {
+            "title": "위키백과 창덕궁 금호문",
+            "url": "https://ko.wikipedia.org/wiki/%EC%B0%BD%EB%8D%95%EA%B6%81_%EA%B8%88%ED%98%B8%EB%AC%B8"
+          }
+        ]
+      },
+      "palace_gate_bays": 1,
+      "palace_gate_roof": "gable"
+    },
+    {
+      "id": "heunghwamun",
+      "name": "흥화문 · 경덕궁 정문",
+      "category": "궁궐",
+      "reference": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000",
+      "note": "경덕궁의 정문. 부분도에 興化門 글씨와 붉은 지붕의 문 기호가 동쪽 담에 그려져 있습니다.",
+      "position_status": "manual_detail_sheet_gate_symbol",
+      "symbol_size_m": [
+        16,
+        10,
+        8
+      ],
+      "size_status": "approximate_single_structure_scale",
+      "size_note": "문 1동의 개략 치수. 실측 복원값이 아닙니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1616,
+          "end_year": null,
+          "status": "documented",
+          "note": "1616년(국가유산포털) 또는 1618년(위키백과) 창건. 여러 차례 옮겨져 지금은 경희궁 자리에 있다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "named_as_drawn_on_source_map",
+          "note": "도성대지도 부분도 asset-0020에 문 기호와 함께 적혀 있다."
+        },
+        "sources": [
+          {
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000",
+            "supports": "1616년 창건, 서울시 유형문화유산"
+          },
+          {
+            "url": "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8",
+            "supports": "원래 동남쪽 모퉁이 동향, 3칸 단층 우진각, 1915·1932·1988 이전"
+          }
+        ]
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          949,
+          1441
+        ],
+        "method": "manual_detail_sheet_gate_symbol",
+        "note": "부분도에서 경덕궁 동쪽 담 위의 興化門 문 기호(붉은 지붕 표시)를 읽었다. 부분도 asset-0020 픽셀 [1228, 420]을 부분도 정합으로 전체도 좌표에 옮겼다."
+      },
+      "display_model": "palace_gate",
+      "palace_gate_tiers": 1,
+      "display_yaw_deg": 90,
+      "model_note": "정면 3칸 단층 우진각지붕 문을 단순화한 개념 모형. 치수는 실측이 아니다.",
+      "model_reference": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000",
+      "info": {
+        "summary": "경덕궁(1760년부터 경희궁)의 정문이다. 궁의 동남쪽 모퉁이에서 동쪽을 향해 서 있었고, 좌우로 흥원문·개양문이 있었다. 정면 3칸, 측면 2칸의 단층 우진각지붕 문이다.",
+        "period": "광해군 때 지었다. 국가유산포털은 1616년(광해군 8), 위키백과는 1618년으로 적는다. 1915년 궁의 남쪽 담으로, 1932년 장충동 박문사 정문으로 옮겨졌다가 1988년 지금의 경희궁 자리로 돌아왔다. 원래 자리는 지금의 구세군회관 부근이다.",
+        "in_1750": "있었다. 부분도에 경덕궁 동쪽 담의 문으로 그려져 있어 그 자리에 동쪽을 향하게 두었다. 모형은 3칸 단층 우진각지붕 문을 단순화한 것이다.",
+        "sources": [
+          {
+            "title": "국가유산포털 경희궁 흥화문",
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000"
+          },
+          {
+            "title": "위키백과 흥화문",
+            "url": "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8"
+          }
+        ]
+      },
+      "palace_gate_bays": 3,
+      "palace_gate_roof": "hip"
+    },
+    {
       "id": "gyeongdeok",
       "name": "경덕궁 · 숭정전 일대",
       "lat": 37.5714,

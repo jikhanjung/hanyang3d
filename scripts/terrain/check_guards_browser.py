@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--url', default='http://127.0.0.1:18014')
 parser.add_argument('--shots', default='')
 args = parser.parse_args()
-EXPECTED = {'donhwamun': (True, 4), 'honghwamun': (True, 2), 'sungnyemun': (False, 2), 'heunginjimun': (False, 2), 'donuimun': (False, 2)}
+EXPECTED = {'donhwamun': (True, 4), 'honghwamun': (True, 2), 'geumhomun': (True, 2), 'heunghwamun': (True, 2), 'sungnyemun': (False, 2), 'heunginjimun': (False, 2), 'donuimun': (False, 2)}
 with sync_playwright() as p:
     b = p.chromium.launch(args=['--no-sandbox', '--use-angle=vulkan', '--enable-features=Vulkan', '--ignore-gpu-blocklist'])
     page = b.new_page(viewport={'width': 1100, 'height': 800})
@@ -32,7 +32,7 @@ with sync_playwright() as p:
         assert info[fid] is None, (fid, info[fid])
     if args.shots:
         Path(args.shots).mkdir(parents=True, exist_ok=True)
-        for fid, dist in [('donhwamun', 30), ('sungnyemun', 40)]:
+        for fid, dist in [('donhwamun', 30), ('sungnyemun', 40), ('geumhomun', 24), ('heunghwamun', 30)]:
             page.evaluate('''([id,dist])=>{const t=terrain3d,bld=t.buildings.children.find(b=>b.userData.feature?.id===id);const s=Math.sin(bld.rotation.y),c=Math.cos(bld.rotation.y),p=bld.position;
               t.controls.target.set(p.x+s*6,p.y-bld.userData.boxHeight/2+2,p.z+c*6);t.camera.position.set(p.x+s*dist+c*dist*.4,p.y+dist*.2,p.z+c*dist-s*dist*.4);t.controls.update();t.updateBuildingNames();t.renderer.render(t.scene,t.camera)}''', [fid, dist])
             page.screenshot(path=f'{args.shots}/guards_{fid}.png')
