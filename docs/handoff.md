@@ -196,3 +196,5 @@ v0.0.17 배포 완료: Docker Hub digest `sha256:b3308c25…b9c9a3`, 공개 heal
 090: `docs/landmarks.md`를 `/guide/` 페이지로 사이트에 넣고, About·출처 페이지·건물 카드에서 연결했다. 문서를 고치면 페이지에 바로 반영되며 이미지에는 이 파일만 들어간다. [기록](../devlog/20260914_090_guide_page.md).
 
 091: `○○ · □□ 일대` 이름의 궁궐·종묘 모형에 전각 이름표(인정전·명정전·숭정전·정전)를 더하고 궁 이름표는 제자리에서 한 줄 위로 올렸다. [기록](../devlog/20260914_091_hall_names.md).
+
+092: 도성대지도에서 읽은 방·계·동 이름 399곳을 누를 수 있는 글씨로 띄웠다. 판독은 `gis/placenames/readings/`, 자료는 `scripts/placenames/build_placenames.py`로 만든다. [기록](../devlog/20260914_092_place_names.md).

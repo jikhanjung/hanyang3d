@@ -112,6 +112,13 @@ class ReviewTests(SimpleTestCase):
         self.assertNotContains(home, 'blob/main/docs/landmarks.md')
         self.assertContains(home, 'id="guide-anchors"')
 
+    def test_place_names_are_served(self):
+        for path in ('webapp/static/placenames.js', 'gis/placenames/doseong_placenames.json'):
+            response = self.client.get('/' + path)
+            self.assertEqual(response.status_code, 200, path)
+            response.close()
+        self.assertContains(self.client.get('/'), 'id="placenames3d"')
+
     def test_read_only(self):
         self.assertEqual(self.client.post('/').status_code, 405)
         self.assertEqual(self.client.post('/data/catalog/assets.csv').status_code, 405)

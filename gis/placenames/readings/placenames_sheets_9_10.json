@@ -1,0 +1,770 @@
+[
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   210,
+   470
+  ],
+  "text": "宗廟洞契",
+  "reading": "종묘동계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   480,
+   460
+  ],
+  "text": "連三契",
+  "reading": "연삼계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   720,
+   580
+  ],
+  "text": "北三契",
+  "reading": "북삼계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   970,
+   550
+  ],
+  "text": "金?契",
+  "reading": "금?계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   550,
+   675
+  ],
+  "text": "一契",
+  "reading": "일계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   950,
+   680
+  ],
+  "text": "二契",
+  "reading": "이계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   150,
+   805
+  ],
+  "text": "粉廛中路契",
+  "reading": "분전중로계",
+  "kind": "gye",
+  "ward_mark": "長",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   400,
+   880
+  ],
+  "text": "分六契",
+  "reading": "분육계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   780,
+   990
+  ],
+  "text": "中路契",
+  "reading": "중로계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   215,
+   1110
+  ],
+  "text": "河順元契",
+  "reading": "하순원계",
+  "kind": "gye",
+  "ward_mark": "長",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   580,
+   1210
+  ],
+  "text": "川邊契",
+  "reading": "천변계",
+  "kind": "gye",
+  "ward_mark": "蓮",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   350,
+   200
+  ],
+  "text": "後?洞",
+  "reading": "후?동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   2265,
+   740
+  ],
+  "text": "彰善坊契",
+  "reading": "창선방계",
+  "kind": "gye",
+  "ward_mark": "彰",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   2750,
+   760
+  ],
+  "text": "二里契",
+  "reading": "이리계",
+  "kind": "gye",
+  "ward_mark": "彰",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   2950,
+   705
+  ],
+  "text": "彰善坊",
+  "reading": "창선방",
+  "kind": "bang",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   3120,
+   740
+  ],
+  "text": "小川邊契",
+  "reading": "소천변계",
+  "kind": "gye",
+  "ward_mark": "彰",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   3280,
+   410
+  ],
+  "text": "舍人洞",
+  "reading": "사인동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   3545,
+   440
+  ],
+  "text": "東學內契",
+  "reading": "동학내계",
+  "kind": "gye",
+  "ward_mark": "彰",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   3555,
+   700
+  ],
+  "text": "東學洞契",
+  "reading": "동학동계",
+  "kind": "gye",
+  "ward_mark": "彰",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   50,
+   1890
+  ],
+  "text": "山林洞",
+  "reading": "산림동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   245,
+   2430
+  ],
+  "text": "連城尉契",
+  "reading": "연성위계",
+  "kind": "gye",
+  "ward_mark": "誠",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   320,
+   2690
+  ],
+  "text": "板井洞",
+  "reading": "판정동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   500,
+   2480
+  ],
+  "text": "執擧洞",
+  "reading": "집거동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   700,
+   2450
+  ],
+  "text": "樂善坊",
+  "reading": "낙선방",
+  "kind": "bang",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   1095,
+   2350
+  ],
+  "text": "宮洞",
+  "reading": "궁동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   1050,
+   2550
+  ],
+  "text": "?三洞",
+  "reading": "?삼동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   930,
+   2690
+  ],
+  "text": "???里契",
+  "reading": "???리계",
+  "kind": "gye",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   1530,
+   1830
+  ],
+  "text": "真?里契",
+  "reading": "진?리계",
+  "kind": "gye",
+  "ward_mark": "樂",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   1240,
+   1950
+  ],
+  "text": "伐井洞",
+  "reading": "벌정동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   1780,
+   2420
+  ],
+  "text": "水芹洞",
+  "reading": "수근동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   1980,
+   2320
+  ],
+  "text": "帶洞",
+  "reading": "대동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   2560,
+   2120
+  ],
+  "text": "青寧尉契",
+  "reading": "청녕위계",
+  "kind": "gye",
+  "ward_mark": "明",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   2640,
+   2270
+  ],
+  "text": "蓮坊?洞",
+  "reading": "연방?동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0021",
+  "sheet_pixel": [
+   3040,
+   2530
+  ],
+  "text": "鹽井洞",
+  "reading": "염정동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   130,
+   630
+  ],
+  "text": "翰林洞",
+  "reading": "한림동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   395,
+   250
+  ],
+  "text": "盤石坊",
+  "reading": "반석방",
+  "kind": "bang",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   720,
+   460
+  ],
+  "text": "盖井洞",
+  "reading": "개정동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   820,
+   640
+  ],
+  "text": "米廛下契",
+  "reading": "미전하계",
+  "kind": "gye",
+  "ward_mark": "石",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   1050,
+   300
+  ],
+  "text": "?洞",
+  "reading": "?동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   510,
+   1080
+  ],
+  "text": "京主人井洞",
+  "reading": "경주인정동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   980,
+   1170
+  ],
+  "text": "巡?洞",
+  "reading": "순?동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   1180,
+   1240
+  ],
+  "text": "??廳洞",
+  "reading": "??청동",
+  "kind": "dong",
+  "ward_mark": "石",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   1880,
+   180
+  ],
+  "text": "新倉洞",
+  "reading": "신창동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   2110,
+   970
+  ],
+  "text": "大平館契",
+  "reading": "대평관계",
+  "kind": "gye",
+  "ward_mark": "養",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   2500,
+   200
+  ],
+  "text": "館井洞",
+  "reading": "관정동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   2420,
+   955
+  ],
+  "text": "養生坊",
+  "reading": "양생방",
+  "kind": "bang",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3790,
+   510
+  ],
+  "text": "本宮內契",
+  "reading": "본궁내계",
+  "kind": "gye",
+  "ward_mark": "好",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3690,
+   910
+  ],
+  "text": "好賢坊",
+  "reading": "호현방",
+  "kind": "bang",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3370,
+   960
+  ],
+  "text": "?峴契",
+  "reading": "?현계",
+  "kind": "gye",
+  "ward_mark": "好",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3280,
+   740
+  ],
+  "text": "???契",
+  "reading": "???계",
+  "kind": "gye",
+  "ward_mark": "好",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3300,
+   1270
+  ],
+  "text": "本?契",
+  "reading": "본?계",
+  "kind": "gye",
+  "ward_mark": "養",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3340,
+   1480
+  ],
+  "text": "???洞",
+  "reading": "???동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3670,
+   1240
+  ],
+  "text": "好賢洞",
+  "reading": "호현동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   3670,
+   1570
+  ],
+  "text": "好賢洞契",
+  "reading": "호현동계",
+  "kind": "gye",
+  "ward_mark": "好",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   2885,
+   1400
+  ],
+  "text": "倉洞",
+  "reading": "창동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   2880,
+   1640
+  ],
+  "text": "倉洞契",
+  "reading": "창동계",
+  "kind": "gye",
+  "ward_mark": "養",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   2380,
+   2700
+  ],
+  "text": "牛首峴",
+  "reading": "우수현",
+  "kind": "other",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   760,
+   1630
+  ],
+  "text": "鹽井洞",
+  "reading": "염정동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   1650,
+   1850
+  ],
+  "text": "蓮池契",
+  "reading": "연지계",
+  "kind": "gye",
+  "ward_mark": "石",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   1520,
+   2120
+  ],
+  "text": "里門洞",
+  "reading": "이문동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   830,
+   2090
+  ],
+  "text": "磨造米洞",
+  "reading": "마조미동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   960,
+   2330
+  ],
+  "text": "回??契",
+  "reading": "회??계",
+  "kind": "gye",
+  "ward_mark": "石",
+  "confidence": "low"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   740,
+   2510
+  ],
+  "text": "石橋契",
+  "reading": "석교계",
+  "kind": "gye",
+  "ward_mark": "石",
+  "confidence": "high"
+ },
+ {
+  "asset": "asset-0022",
+  "sheet_pixel": [
+   1260,
+   2690
+  ],
+  "text": "?楮洞",
+  "reading": "?저동",
+  "kind": "dong",
+  "ward_mark": null,
+  "confidence": "low"
+ }
+]

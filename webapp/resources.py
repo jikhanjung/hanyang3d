@@ -34,6 +34,8 @@ def public_resource_paths():
         'gis/walls/gyeongbokgung_wall.json',
         'webapp/static/settlement.js',
         'webapp/static/sijeon.js',
+        'webapp/static/placenames.js',
+        'gis/placenames/doseong_placenames.json',
         'webapp/static/collision.js',
         'gis/buildings/doseong_sijeon.json',
         'webapp/static/pedestrians.js',

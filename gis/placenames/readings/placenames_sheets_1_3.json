@@ -1,0 +1,19 @@
+[
+  {"asset": "asset-0014", "sheet_pixel": [340, 65], "text": "?理廳契", "reading": "?리청계", "kind": "gye", "ward_mark": null, "confidence": "low", "note": "top of label runs off sheet edge; 理廳契 legible, preceding character(s) and any ward mark cut off"},
+  {"asset": "asset-0014", "sheet_pixel": [865, 877], "text": "白雲洞", "reading": "백운동", "kind": "dong", "ward_mark": null, "confidence": "high", "note": "written sideways"},
+  {"asset": "asset-0014", "sheet_pixel": [720, 1610], "text": "王?洞", "reading": "왕?동 (옥류동?)", "kind": "dong", "ward_mark": null, "confidence": "low", "note": "first char 王 or 玉; middle char resembles 流 but unclear; written diagonally"},
+  {"asset": "asset-0014", "sheet_pixel": [1722, 1810], "text": "王井洞契", "reading": "왕정동계", "kind": "gye", "ward_mark": "義", "confidence": "high", "note": "first char written 王 without dot (possibly intended 玉)"},
+  {"asset": "asset-0014", "sheet_pixel": [1515, 1905], "text": "壯義洞", "reading": "장의동", "kind": "dong", "ward_mark": null, "confidence": "high"},
+  {"asset": "asset-0014", "sheet_pixel": [1462, 1950], "text": "司?", "reading": "사?", "kind": "gye", "ward_mark": "順", "confidence": "low", "note": "label after circled 順 runs off bottom edge; only 司 visible"},
+  {"asset": "asset-0015", "sheet_pixel": [577, 1675], "text": "鎭長坊", "reading": "진장방", "kind": "bang", "ward_mark": null, "confidence": "high"},
+  {"asset": "asset-0015", "sheet_pixel": [583, 1767], "text": "鎭長坊契", "reading": "진장방계", "kind": "gye", "ward_mark": null, "confidence": "high", "note": "契 written directly below the 鎭長坊 box"},
+  {"asset": "asset-0015", "sheet_pixel": [1765, 1915], "text": "陽德坊", "reading": "양덕방", "kind": "bang", "ward_mark": null, "confidence": "high"},
+  {"asset": "asset-0015", "sheet_pixel": [1765, 1993], "text": "陽德坊契", "reading": "양덕방계", "kind": "gye", "ward_mark": null, "confidence": "low", "note": "契 below box is cut by bottom edge"},
+  {"asset": "asset-0015", "sheet_pixel": [2085, 1778], "text": "院洞", "reading": "원동", "kind": "dong", "ward_mark": null, "confidence": "low", "note": "faint ink"},
+  {"asset": "asset-0015", "sheet_pixel": [2035, 1965], "text": "廣化?", "reading": "광화?", "kind": "bang", "ward_mark": null, "confidence": "low", "note": "yellow box cut by bottom edge; third char (likely 坊) not visible"},
+  {"asset": "asset-0016", "sheet_pixel": [2800, 110], "text": "牛耳里契", "reading": "우이리계", "kind": "gye", "ward_mark": null, "confidence": "high", "note": "starts at top edge; a ward mark, if any, is off-sheet"},
+  {"asset": "asset-0016", "sheet_pixel": [873, 1535], "text": "成均館契", "reading": "성균관계", "kind": "gye", "ward_mark": "崇", "confidence": "high"},
+  {"asset": "asset-0016", "sheet_pixel": [1422, 1060], "text": "興德洞", "reading": "흥덕동", "kind": "dong", "ward_mark": null, "confidence": "high"},
+  {"asset": "asset-0016", "sheet_pixel": [1150, 1720], "text": "館洞", "reading": "관동", "kind": "dong", "ward_mark": null, "confidence": "high"},
+  {"asset": "asset-0016", "sheet_pixel": [1500, 1965], "text": "崇?", "reading": "숭?", "kind": "bang", "ward_mark": null, "confidence": "low", "note": "yellow box cut by bottom edge; only 崇 visible (a separate circled 崇 at ~[1395,1935] starts another label that is also cut off)"}
+]

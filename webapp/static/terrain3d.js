@@ -12,6 +12,7 @@ import {createPagoda} from './pagoda.js';
 import {createObservatory} from './observatory.js';
 import {createSettlement} from './settlement.js';
 import {createSijeon} from './sijeon.js';
+import {createPlaceNames} from './placenames.js';
 import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
@@ -305,6 +306,9 @@ async function main(){
  const districtTags=[{name:'북촌',pixel:[1445,965]},{name:'서촌',pixel:[1042,1085]},{name:'경복궁',pixel:[1153,983]}].map(p=>{
   const [x,y]=warp(...p.pixel);return placeTag(p.name,x,y,districtNames);
  });
+ // Neighbourhood names from the map; missing data only hides the layer.
+ let placeNames=null;
+ try{const response=await fetch(asset('/gis/placenames/doseong_placenames.json'));if(response.ok){const data=await response.json();if(data.source_sha256===exp.input_sha256){placeNames=createPlaceNames(data,{warp,world,height,camera,canvas:renderer.domElement});scene.add(placeNames.group)}}}catch{}
  function updateBuildingNames(){
   buildingNames.visible=buildings.visible&&el('names3d').checked;
   mountainNames.visible=el('names3d').checked;districtNames.visible=el('names3d').checked;
@@ -315,6 +319,7 @@ async function main(){
    tag.scale.set(scale*aspect,scale,1);
   }
   for(const {tag,aspect} of [...mountainTags,...districtTags]){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));tag.scale.set(scale*aspect,scale,1)}
+  placeNames?.update(scale,el('names3d').checked&&(el('placenames3d')?.checked??true));
  }
  frameUpdate=()=>updateBuildingNames();
  await stage(3,'주요 건물·문 표시 완료 · 물길을 준비합니다');
@@ -450,9 +455,9 @@ async function main(){
   const f=box?.userData.feature;
   el('building-name').textContent=f?f.name+' · '+f.category:'박스에 커서를 올리거나 클릭하면 이름을 볼 수 있습니다.';
   el('building-name').style.fontWeight=f?'bold':'';
-  el('building-note').textContent=f?' — '+f.note+' · 개략 크기 '+f.symbol_size_m[0]+' × '+f.symbol_size_m[2]+' m / 높이 '+f.symbol_size_m[1]+' m · '+(f.category==='교량'?'다리 구조는 개념 모형':'지형 받침은 개관용 가정'):'';
-  el('building-reference').hidden=!f;
-  if(f)el('building-reference').href=f.reference;else el('building-reference').removeAttribute('href');
+  el('building-note').textContent=!f?'':f.placeName?' — '+f.note:' — '+f.note+' · 개략 크기 '+f.symbol_size_m[0]+' × '+f.symbol_size_m[2]+' m / 높이 '+f.symbol_size_m[1]+' m · '+(f.category==='교량'?'다리 구조는 개념 모형':'지형 받침은 개관용 가정');
+  el('building-reference').hidden=!f?.reference;
+  if(f?.reference)el('building-reference').href=f.reference;else el('building-reference').removeAttribute('href');
   el('clear-building').hidden=!selected;
   el('focus-building').hidden=!selected;
   renderPopup(selected);
@@ -483,7 +488,7 @@ async function main(){
  renderer.domElement.addEventListener('pointermove',event=>{
   if(firstPerson?.active)return;
   if(press){clearHover();return}
-  hovered=hit(event);renderer.domElement.style.cursor=hovered?'pointer':'';
+  hovered=hit(event)??placeNames?.pick(event)??null;renderer.domElement.style.cursor=hovered?'pointer':'';
   tooltip.hidden=!hovered;
   if(hovered){const r=renderer.domElement.getBoundingClientRect();tooltip.textContent=hovered.userData.feature.name;tooltip.style.left=Math.max(0,Math.min(event.clientX-r.left+14,r.width-260))+'px';tooltip.style.top=Math.max(0,Math.min(event.clientY-r.top+12,r.height-50))+'px'}
   showBuilding(selected??hovered);
@@ -491,7 +496,7 @@ async function main(){
  renderer.domElement.addEventListener('pointerdown',event=>{if(firstPerson?.active)return;press={x:event.clientX,y:event.clientY,id:event.pointerId};tooltip.hidden=true});
  renderer.domElement.addEventListener('pointerup',event=>{
   if(firstPerson?.active)return;
-  if(press&&press.id===event.pointerId&&Math.hypot(event.clientX-press.x,event.clientY-press.y)<6){selected=hit(event);hovered=null;tooltip.hidden=true;showBuilding(selected)}
+  if(press&&press.id===event.pointerId&&Math.hypot(event.clientX-press.x,event.clientY-press.y)<6){selected=hit(event)??placeNames?.pick(event)??null;hovered=null;tooltip.hidden=true;showBuilding(selected)}
   press=null;
  });
  renderer.domElement.addEventListener('pointercancel',()=>{press=null;clearHover()});
@@ -501,7 +506,7 @@ async function main(){
  el('focus-building').onclick=()=>{
   if(!selected)return;
   const target=selected.position.clone();controls.target.copy(target);
-  const distance=Math.max(120,...selected.userData.feature.symbol_size_m.map(v=>v*4));
+  const distance=Math.max(120,...(selected.userData.feature.symbol_size_m??[60]).map(v=>v*4));
   camera.position.copy(target).add(new THREE.Vector3(distance*.3,distance*.65,distance));controls.update();
  };
  el('buildings3d').onchange=()=>{buildings.visible=el('buildings3d').checked;foundations.visible=buildings.visible;selected=null;clearHover()};
