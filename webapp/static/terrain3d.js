@@ -318,8 +318,8 @@ async function main(){
  // 4 동 and lanes. Each level has a viewing distance, and a label that would overlap a more important (then nearer)
  // label is hidden for that frame.
  const LABEL_REACH=[Infinity,7000,3000,1500,1000];
- const LEVEL0=new Set(['changdeok','changgyeong','gyeongdeok','jongmyo','sajik','sungkyun','heunginjimun','sungnyemun','donuimun','sukjeongmun']);
- const LEVEL1=new Set(['gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
+ const LEVEL0=new Set(['changdeok','changgyeong','gyeongdeok','jongmyo','heunginjimun','sungnyemun','donuimun','sukjeongmun']);
+ const LEVEL1=new Set(['sajik','sungkyun','gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
  function buildingLevel(f){
   if(LEVEL0.has(f.id))return 0;if(LEVEL1.has(f.id))return 1;
   const [w,,d]=f.symbol_size_m??[0,0,0];
@@ -354,12 +354,18 @@ async function main(){
   labelCells.clear();
   for(const c of candidates){
    // Sprites are anchored at their bottom centre; palace names are lifted by their negative centre offset.
-   const w=LABEL_PX*c.aspect,bottom=c.sy+c.tag.center.y*LABEL_PX,box=[c.sx-w/2-2,bottom-LABEL_PX-2,c.sx+w/2+2,bottom+2],keys=[];let clash=false;
-   for(let gx=Math.floor(box[0]/LABEL_CELL);gx<=Math.floor(box[2]/LABEL_CELL)&&!clash;gx++)for(let gy=Math.floor(box[1]/LABEL_CELL);gy<=Math.floor(box[3]/LABEL_CELL)&&!clash;gy++){
+   // Level 0 names are never hidden: when one collides it steps up a line (at most two) before being placed anyway.
+   c.tag.userData.baseCenterY??=c.tag.center.y;c.tag.center.y=c.tag.userData.baseCenterY;
+   const tries=c.level===0?3:1;let box,keys,clash;
+   for(let step=0;step<tries;step++){
+   const w=LABEL_PX*c.aspect,bottom=c.sy+(c.tag.userData.baseCenterY-step*1.1)*LABEL_PX;box=[c.sx-w/2-2,bottom-LABEL_PX-2,c.sx+w/2+2,bottom+2];keys=[];clash=false;
+   for(let gx=Math.floor(box[0]/LABEL_CELL);gx<=Math.floor(box[2]/LABEL_CELL);gx++)for(let gy=Math.floor(box[1]/LABEL_CELL);gy<=Math.floor(box[3]/LABEL_CELL);gy++){
     const key=gx+','+gy;keys.push(key);
-    for(const o of labelCells.get(key)??[])if(box[0]<o[2]&&box[2]>o[0]&&box[1]<o[3]&&box[3]>o[1]){clash=true;break}
+    if(!clash)for(const o of labelCells.get(key)??[])if(box[0]<o[2]&&box[2]>o[0]&&box[1]<o[3]&&box[3]>o[1]){clash=true;break}
    }
-   if(clash)continue;
+   if(!clash||step===tries-1){c.tag.center.y=c.tag.userData.baseCenterY-step*1.1;break}
+   }
+   if(clash&&c.level>0)continue;
    c.tag.visible=true;for(const key of keys){if(!labelCells.has(key))labelCells.set(key,[]);labelCells.get(key).push(box)}
   }
  }

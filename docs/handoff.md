@@ -201,4 +201,4 @@ v0.0.17 배포 완료: Docker Hub digest `sha256:b3308c25…b9c9a3`, 공개 heal
 
 093: 육조거리 관청 열 곳은 1.2 km 밖에서는 ‘육조거리’ 이름표 하나로, 안에서는 관청별 이름표로 보인다. [기록](../devlog/20260914_093_yukjo_street_label.md).
 
-094: 모든 이름표에 중요도 단계(0 항상, 1 7 km, 2 3 km, 3 1.5 km, 4 1 km)를 매기고 겹침 가리기를 전체로 넓혔다. 단계 목록은 `terrain3d.js`의 `LEVEL0`·`LEVEL1`·`buildingLevel`에 있다. [기록](../devlog/20260914_094_label_levels.md).
+094: 모든 이름표에 중요도 단계(0 항상, 1 7 km, 2 3 km, 3 1.5 km, 4 1 km)를 매기고 겹침 가리기를 전체로 넓혔다. 단계 목록은 `terrain3d.js`의 `LEVEL0`·`LEVEL1`·`buildingLevel`에 있다. 0단계는 숨기지 않고 겹치면 한두 줄 위로 올린다(v0.1.25). [기록](../devlog/20260914_094_label_levels.md).

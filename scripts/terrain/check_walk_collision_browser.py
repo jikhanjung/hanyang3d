@@ -24,10 +24,11 @@ with sync_playwright() as p:
  levels=page.evaluate('''()=>{const t=terrain3d,h=t.buildings.children.find(b=>b.userData.feature.id==='jongru').position,g=t.scene.getObjectByName('place-name-labels');
   const shot=(up,back)=>{t.controls.target.copy(h);t.camera.position.set(h.x,h.y+up,h.z+back);t.controls.update();t.updateBuildingNames();
    const kinds=k=>g.children.filter(c=>c.visible&&c.userData.feature.kind===k).length;
-   return {bang:kinds('bang'),gye:kinds('gye'),dong:kinds('dong'),palace:t.nameTags.some(n=>n.tag.visible&&n.level===0),small:t.nameTags.filter(n=>n.tag.visible&&n.level===3).length}};
+   const shown=id=>t.nameTags.some(n=>n.tag.visible&&n.tag.userData.featureId===id&&n.tag.userData.role!=='hall');
+   return {bang:kinds('bang'),gye:kinds('gye'),dong:kinds('dong'),palace:t.nameTags.some(n=>n.tag.visible&&n.level===0),major:['changdeok','changgyeong','heunginjimun','sungnyemun'].every(shown),small:t.nameTags.filter(n=>n.tag.visible&&n.level===3).length}};
   return {far:shot(6000,7000),mid:shot(1900,2300),near:shot(450,560)}}''')
  print('levels',levels,flush=True)
- assert levels['far']['palace'] and levels['far']['bang']==0 and levels['far']['gye']==0 and levels['far']['dong']==0 and levels['far']['small']==0,levels
+ assert levels['far']['palace'] and levels['far']['major'] and levels['far']['bang']==0 and levels['far']['gye']==0 and levels['far']['dong']==0 and levels['far']['small']==0,levels
  assert levels['mid']['bang']>0 and levels['mid']['gye']==0 and levels['mid']['dong']==0,levels
  assert levels['near']['gye']>0 and levels['near']['small']>0,levels
  # The menu's About button opens and closes the project introduction.
