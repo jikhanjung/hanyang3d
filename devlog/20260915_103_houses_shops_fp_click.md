@@ -29,3 +29,7 @@
 ## 검사
 
 walk_collision(1인칭 클릭 포함), new_landmarks(행랑 부품 이름), gate_models, palace_models, gate_orientation, Django 테스트 14개 통과.
+
+## 배포
+
+- v0.1.34로 배포했다. Docker Hub digest: `sha256:dc86c46498a604357b7234a2f20b0805dc23ddc44f6ff54b9401072f2a5180c4`. 공개 healthz 정상, resources 84. 서버 이미지는 v0.1.34와 v0.1.33만 남겼다.
