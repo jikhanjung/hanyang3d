@@ -1,3 +1,4 @@
+import json
 from django.test import SimpleTestCase
 from django.conf import settings
 from pathlib import Path
@@ -118,6 +119,29 @@ class ReviewTests(SimpleTestCase):
             self.assertEqual(response.status_code, 200, path)
             response.close()
         self.assertContains(self.client.get('/'), 'id="placenames3d"')
+
+    def test_place_stories_point_at_real_places(self):
+        data = json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text())
+        landmarks = {f['id']: f['name'].split(' · ')[0] for f in json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']}
+        bridges = {b['id']: b['name'] for b in json.loads((settings.BASE_DIR / 'gis/waterways/doseong_cheonggyecheon.json').read_text())['bridges']}
+        places = {f['name']: f['name'] for f in json.loads((settings.BASE_DIR / 'gis/placenames/doseong_placenames.json').read_text())['features']}
+        known = {'landmark': landmarks, 'bridge': bridges, 'place': places}
+        ids = [story['id'] for story in data['stories']]
+        self.assertEqual(len(ids), len(set(ids)))
+        for story in data['stories']:
+            target = story['target']
+            self.assertIn(target['key'], known[target['type']], story['id'])
+            self.assertEqual(target['label'], known[target['type']][target['key']], story['id'])
+            self.assertTrue(story['title'] and story['text'] and story['sources'], story['id'])
+            self.assertIsInstance(story['legend'], bool, story['id'])
+            for source in story['sources']:
+                self.assertTrue(source['url'].startswith('https://'), story['id'])
+        home = self.client.get('/')
+        self.assertContains(home, 'id="stories"')
+        guide = self.client.get('/guide/')
+        if data['stories']:
+            self.assertContains(guide, 'id="장소-이야기"')
+            self.assertContains(guide, data['stories'][0]['title'])
 
     def test_read_only(self):
         self.assertEqual(self.client.post('/').status_code, 405)

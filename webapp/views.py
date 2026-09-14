@@ -8,6 +8,7 @@ from django.views.decorators.http import require_safe
 from .resources import assets, public_resource_paths, resource_path
 from .deployment import runtime_report
 from .guide import render_guide
+from .stories import load_stories, stories_by_place
 
 
 
@@ -37,7 +38,7 @@ def terrain3d(request, canvas_only=False):
     water = json.loads((settings.BASE_DIR / 'gis/waterways/doseong_cheonggyecheon.json').read_text())
     wall = json.loads((settings.BASE_DIR / 'gis/walls/doseong_city_wall.json').read_text())
     return render(request, 'terrain3d.html', {
-        'experiment': experiment, 'buildings': buildings, 'water': water, 'wall': wall,
+        'experiment': experiment, 'buildings': buildings, 'water': water, 'wall': wall, 'stories': load_stories(),
         'canvas_only': canvas_only,
         'guide_anchors': render_guide()['anchors'],
         'app_version': settings.APP_VERSION,
@@ -107,4 +108,4 @@ def credits(request):
 
 @require_safe
 def guide(request):
-    return render(request, 'guide.html', {'guide': render_guide()})
+    return render(request, 'guide.html', {'guide': render_guide(), 'stories': stories_by_place()})

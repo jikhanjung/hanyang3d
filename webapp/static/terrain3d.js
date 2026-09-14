@@ -16,6 +16,7 @@ import {createPlaceNames} from './placenames.js';
 import {createGyeonghoeruPond,createHallSite} from './gyeongbokgung_ruins.js';
 import {createThroneHall} from './throne_hall.js';
 import {createCityGate} from './gate.js';
+import {createGuards} from './guards.js';
 import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
@@ -186,6 +187,12 @@ async function main(){
  // A coarse X/Z index keeps each footprint test to the triangles near the building.
  const supportNearby=surfaceIndex(supportSurfaces);
  const buildingData=JSON.parse(el('buildings').textContent);
+ // Place stories are kept in their own file and attached to the feature they belong to by type and id (or name).
+ const storyData=JSON.parse(el('stories')?.textContent??'{"stories":[]}');
+ function attachStories(type,features,key=f=>f.id){
+  for(const f of features){const list=storyData.stories.filter(s=>s.target.type===type&&s.target.key===key(f));if(list.length)f.info={...(f.info??{summary:f.note,sources:f.reference?[{title:'참고 자료',url:f.reference}]:[]}),stories:list}}
+ }
+ attachStories('landmark',buildingData.features);
  const siteMarkers=[];
  const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b,'집터':0x8a8577,'시설':0x7f6a4c,'탑':0xd8d4c8,'궁가':0xa87a55};
  const wallData=JSON.parse(el('wall').textContent);
@@ -236,10 +243,10 @@ async function main(){
   const box=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color:colors[feature.category]??0x856549,roughness:.8}));
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
-  if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
+  if(feature.category==='성문'){box.material.visible=false;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards)box.add(guards)}
   if(feature.display_model==='throne_hall'){box.material.visible=false;foundation.visible=false;box.add(createThroneHall(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
-  if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
+  if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d));const guards=createGuards(feature,w,h,d);if(guards)box.add(guards)}
   if(feature.display_model==='gyeonghoeru_pond'){box.material.visible=false;foundation.visible=false;box.add(createGyeonghoeruPond(feature,w,h,d))}
   if(feature.display_model==='hall_site'){box.material.visible=false;box.add(createHallSite(feature,w,h,d))}
   if(feature.display_model==='observatory'){box.material.visible=false;foundation.visible=false;box.add(createObservatory(feature,w,h,d))}
@@ -357,7 +364,7 @@ async function main(){
  });
  // Neighbourhood names from the map; missing data only hides the layer.
  let placeNames=null;
- try{const response=await fetch(asset('/gis/placenames/doseong_placenames.json'));if(response.ok){const data=await response.json();if(data.source_sha256===exp.input_sha256){placeNames=createPlaceNames(data,{warp,world,height,camera,canvas:renderer.domElement});scene.add(placeNames.group)}}}catch{}
+ try{const response=await fetch(asset('/gis/placenames/doseong_placenames.json'));if(response.ok){const data=await response.json();if(data.source_sha256===exp.input_sha256){attachStories('place',data.features,f=>f.name);placeNames=createPlaceNames(data,{warp,world,height,camera,canvas:renderer.domElement});scene.add(placeNames.group)}}}catch{}
  // Name levels by importance: 0 always shown (palaces, 종묘, great gates, mountains, 육조거리, 경복궁); 1 wards (방),
  // small gates, 북촌·서촌 and landmark sites; 2 other large offices and shrines, and palace halls; 3 small buildings and 계;
  // 4 동 and lanes. Each level has a viewing distance, and a label that would overlap a more important (then nearer)
@@ -455,6 +462,7 @@ async function main(){
  const river=ribbon(riverEdges,0x278fb0,.35);river.name='cheonggyecheon-water';
  // Low schematic bank edges; this does not excavate or reconstruct the riverbed.
  for(const side of [0,1]){const bank=ribbon(riverEdges.map(pair=>{const p=pair[side].clone(),q=p.clone();q.y+=.65;return [p,q]}),0x8b9180,.35);bank.userData.bank=true;bank.userData.centres=river.userData.centres;}
+ attachStories('bridge',waterData.bridges);
  for(const feature of waterData.bridges){
   const road=feature.road_connections.pixel_points.map(p=>sourceSurface(...p)),ends=road.slice(1,3),mid=ends[0].clone().add(ends[1]).multiplyScalar(.5),direction=ends[1].clone().sub(ends[0]);
   const length=Math.hypot(direction.x,direction.z),w=feature.deck_width_m,h=1.6,base=Math.max(ends[0].y,ends[1].y)+.35;
@@ -536,6 +544,18 @@ async function main(){
   head.append(title,kind,close);popup.append(head);
   const para=(label,text)=>{if(!text)return;const p=document.createElement('p');if(label){const b=document.createElement('b');b.textContent=label+' ';p.append(b)}p.append(text);popup.append(p)};
   para('',info.summary);para('존재 시기',info.period);para('1750년 무렵',info.in_1750);
+  if(info.stories?.length){
+   const label=document.createElement('p');label.className='popup-stories';label.textContent='이야기';popup.append(label);
+   for(const story of info.stories){
+    const p=document.createElement('p');p.className='story';
+    const t=document.createElement('b');t.textContent=story.title;p.append(t);
+    if(story.year){const y=document.createElement('small');y.textContent=' ('+story.year+')';p.append(y)}
+    if(story.legend){const tag=document.createElement('span');tag.className='legend';tag.textContent='전해지는 이야기';p.append(tag)}
+    p.append(document.createElement('br'),story.text,' ');
+    story.sources.forEach((source,i)=>{const a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=source.title;const s=document.createElement('small');s.append(i?', ':'— ',a);p.append(s)});
+    popup.append(p);
+   }
+  }
   if(info.sources?.length){
    const list=document.createElement('ul');
    for(const source of info.sources){const li=document.createElement('li'),a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=source.title;li.append(a);list.append(li)}

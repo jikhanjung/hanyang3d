@@ -1,0 +1,536 @@
+{
+ "schema_version": 1,
+ "name": "한양 도성 장소 이야기",
+ "method": "백과사전·국가유산포털·실록 등 공개 자료에서 사실을 확인하고 짧게 새로 쓴 글. 원문을 옮기지 않았다.",
+ "limitations": [
+  "‘전해지는 이야기’로 표시한 것은 설화나 유래담이며 사실로 입증되지 않았다.",
+  "1750년 이후의 사건도 그 장소에 얽힌 이야기로 함께 싣고 연도를 적었다."
+ ],
+ "stories": [
+  {
+   "id": "changuimun-coup",
+   "target": {
+    "type": "landmark",
+    "key": "changuimun",
+    "label": "창의문"
+   },
+   "title": "반정군이 넘어온 문",
+   "year": "1623",
+   "legend": false,
+   "text": "1623년 3월 13일 밤, 홍제원에 모인 반정군이 창의문을 부수고 들어와 창덕궁으로 향했다. 그날 밤 광해군이 쫓겨나고 인조가 즉위했다. 경복궁을 내리누르는 자리라는 풍수 해석 때문에 오래 닫혀 있던 문이며, 지금의 문루는 1741년(영조 17)에 세웠다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 인조반정",
+     "url": "https://encykorea.aks.ac.kr/Article/E0047030"
+    },
+    {
+     "title": "한국민족문화대백과사전 서울 창의문",
+     "url": "https://encykorea.aks.ac.kr/Article/E0055516"
+    }
+   ]
+  },
+  {
+   "id": "segeomjeong-name",
+   "target": {
+    "type": "landmark",
+    "key": "segeomjeong",
+    "label": "세검정"
+   },
+   "title": "칼을 씻은 정자",
+   "year": "1747",
+   "legend": true,
+   "text": "1747년(영조 23) 총융청 군사들이 쉬는 정자로 지었다고 한다. 이름에는 인조반정 때 이귀·김류 등이 여기서 거사를 의논하고 칼을 씻었다는 이야기가 붙어 있지만, 유래에는 여러 설이 있다. 실록 편찬이 끝나면 초고를 물에 씻어 없애는 세초를 이 근처 개울에서 했다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 세검정 터",
+     "url": "https://encykorea.aks.ac.kr/Article/E0029740"
+    }
+   ]
+  },
+  {
+   "id": "sukjeongmun-closed",
+   "target": {
+    "type": "landmark",
+    "key": "sukjeongmun",
+    "label": "숙정문"
+   },
+   "title": "늘 닫혀 있던 북문",
+   "year": "1413",
+   "legend": false,
+   "text": "1413년(태종 13) 풍수학생 최양선이 백악 양쪽 고개가 경복궁의 두 팔이니 길을 막아야 한다고 올리자, 문을 닫고 소나무를 심어 통행을 막았다. 가뭄이 심하면 음에 해당하는 이 북문을 열고 양에 해당하는 남대문을 닫는 기우 풍습이 있었다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 숙정문",
+     "url": "https://encykorea.aks.ac.kr/Article/E0031852"
+    }
+   ]
+  },
+  {
+   "id": "sukjeongmun-three-visits",
+   "target": {
+    "type": "landmark",
+    "key": "sukjeongmun",
+    "label": "숙정문"
+   },
+   "title": "세 번 오가면 액을 면한다",
+   "year": null,
+   "legend": true,
+   "text": "정월 대보름 전에 부녀자가 숙정문을 세 번 다녀가면 그해 액운을 면한다는 풍속이 전한다(『동국세시기』를 출전으로 드는 글이 있다). 북쪽 문을 열면 풍기가 어지러워진다는 속설도 함께 전한다.",
+   "sources": [
+    {
+     "title": "국가유산청 월간 「600여 년의 회한 속에 그늘진 북문, 숙정문」",
+     "url": "https://www.khs.go.kr/cop/bbs/selectBoardArticle.do?nttId=5454&bbsId=BBSMSTR_1008&pageUnit=10&searchtitle=title&mn=NS_01_09_01"
+    },
+    {
+     "title": "한국민족문화대백과사전 숙정문",
+     "url": "https://encykorea.aks.ac.kr/Article/E0031852"
+    }
+   ]
+  },
+  {
+   "id": "sungnyemun-plaque",
+   "target": {
+    "type": "landmark",
+    "key": "sungnyemun",
+    "label": "숭례문"
+   },
+   "title": "세로로 단 현판",
+   "year": null,
+   "legend": true,
+   "text": "다른 문과 달리 숭례문 현판은 세로로 걸려 있다. 禮는 오행에서 불과 남쪽에 해당해, 세로로 쓴 崇禮가 불꽃처럼 서서 남쪽 관악산의 화기를 막는다고 풀이한다. 현판 글씨를 양녕대군이 썼다는 기록(『지봉유설』)도 있지만 설이 갈린다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 서울 숭례문",
+     "url": "https://encykorea.aks.ac.kr/Article/E0028017"
+    },
+    {
+     "title": "우리역사넷 숭례문",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300700&code=kc_age_30"
+    }
+   ]
+  },
+  {
+   "id": "heunginjimun-name",
+   "target": {
+    "type": "landmark",
+    "key": "heunginjimun",
+    "label": "흥인지문"
+   },
+   "title": "한 글자 더한 이름과 옹성",
+   "year": null,
+   "legend": true,
+   "text": "4대문 가운데 흥인지문만 이름이 네 글자다. 도성 동쪽이 낮고 비어 지세가 약하므로 之 자를 더해 보강했다는 풀이가 전한다. 문 바깥을 두른 반원형 옹성은 한쪽만 열어 두고 성문에 다가오는 적을 여러 방향에서 칠 수 있게 한 방어 시설이다.",
+   "sources": [
+    {
+     "title": "우리역사넷 흥인지문",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_30&levelId=kc_r301000"
+    }
+   ]
+  },
+  {
+   "id": "gwanghuimun-funerals",
+   "target": {
+    "type": "landmark",
+    "key": "gwanghuimun",
+    "label": "광희문"
+   },
+   "title": "장례 행렬이 나가던 문",
+   "year": "1719",
+   "legend": false,
+   "text": "1396년 도성과 함께 세웠고 1719년 문루를 짓고 현판을 달았다. 청계천 물이 빠지는 수구에 가까워 수구문이라 불렸고, 도성 안의 장례 행렬이 동쪽 성 밖 묘지로 나가던 문이었다. ‘시구문’이라는 이름은 일제강점기 후반에 널리 퍼졌다는 견해도 있다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 광희문",
+     "url": "https://encykorea.aks.ac.kr/Article/E0005355"
+    },
+    {
+     "title": "한양도성박물관 「광희문, 수구문, 시구문」",
+     "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1002&seq=20201215133223916&sso=ok"
+    }
+   ]
+  },
+  {
+   "id": "jongru-curfew",
+   "target": {
+    "type": "landmark",
+    "key": "jongru",
+    "label": "종루"
+   },
+   "title": "인정과 파루",
+   "year": null,
+   "legend": false,
+   "text": "밤이 되면 종루에서 인정을 28번 울려 도성 문을 닫고 통행을 막았고, 새벽 파루에 33번을 울려 문을 열었다. 28은 하늘의 별자리 28수, 33은 불교의 33천을 뜻한다. 우리역사넷은 파루를 북으로 쳤다고 적으며, 시각은 자료에 따라 조금씩 다르다.",
+   "sources": [
+    {
+     "title": "우리역사넷 「시보, 인정과 파루」",
+     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_015_0040_0020_0030&whereStr="
+    },
+    {
+     "title": "우리역사넷 보신각 동종",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300520"
+    }
+   ]
+  },
+  {
+   "id": "wongaksa-yeonbangwon",
+   "target": {
+    "type": "landmark",
+    "key": "wongaksa_pagoda",
+    "label": "원각사지 십층석탑"
+   },
+   "title": "절이 기생방이 되다",
+   "year": "1504",
+   "legend": false,
+   "text": "세조가 고려 흥복사 터에 원각사를 세우고 1467년 십층석탑이 완성되자 연등회를 열었다. 1504년(연산군 10) 장악원을 이리로 옮기고 연방원이라 부르며 기생과 악공을 두었고, 1512년(중종 7) 건물이 헐려 탑과 비만 남았다. 1750년에도 절 없이 탑만 서 있었다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 서울 원각사",
+     "url": "https://encykorea.aks.ac.kr/Article/E0040579"
+    },
+    {
+     "title": "국가유산포털 서울 원각사지 십층석탑",
+     "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&VdkVgwKey=11%2C00020000%2C11"
+    }
+   ]
+  },
+  {
+   "id": "gyeongdeok-rename",
+   "target": {
+    "type": "landmark",
+    "key": "gyeongdeok",
+    "label": "경덕궁"
+   },
+   "title": "1760년에 바뀐 이름",
+   "year": "1760",
+   "legend": false,
+   "text": "광해군이 원종(인조의 아버지)의 옛집 터에 왕기가 서렸다는 말을 듣고 1617년 짓기 시작한 궁이다. 1760년 영조가 궁 이름 慶德이 원종의 시호 敬德과 소리가 같다 하여 경희궁으로 고쳤다. 이 지도의 기준인 1750년에는 아직 경덕궁이었다.",
+   "sources": [
+    {
+     "title": "우리역사넷 경희궁",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300210&code=kc_age_30"
+    }
+   ]
+  },
+  {
+   "id": "changgyeong-imo",
+   "target": {
+    "type": "landmark",
+    "key": "changgyeong",
+    "label": "창경궁"
+   },
+   "title": "임오화변",
+   "year": "1762",
+   "legend": false,
+   "text": "1762년(영조 38) 윤5월, 영조는 대리청정하던 세자를 폐하고 창경궁 문정전(당시 휘령전) 앞에서 뒤주에 가두게 했고, 세자는 여드레 만에 숨졌다(이레로 적는 자료도 있다). 영조는 뒤에 ‘사도’라는 시호를 내렸다. 이 지도의 1750년보다 12년 뒤의 일이다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 임오화변",
+     "url": "https://encykorea.aks.ac.kr/Article/E0076535"
+    },
+    {
+     "title": "창경궁 문정전 안내",
+     "url": "https://cgg.cha.go.kr/agapp/public/html/HtmlPage.do?pg=/cgg/01/virtual_01.jsp&pageNo=79010000&siteCd=CGG"
+    }
+   ]
+  },
+  {
+   "id": "tangpyeongbi-text",
+   "target": {
+    "type": "landmark",
+    "key": "tangpyeongbi",
+    "label": "탕평비각"
+   },
+   "title": "두루 사귀되 편 가르지 않는다",
+   "year": "1742",
+   "legend": false,
+   "text": "1742년(영조 18) 영조가 성균관 입구 반수교 위에 직접 글씨를 써서 세운 비다. 『논어』 구절을 고친 비문은, 두루 어울리고 편을 짓지 않는 것이 군자의 공평한 마음이고 편을 지어 어울리는 것은 소인의 사사로운 뜻이라는 내용이다. 앞날의 관리가 될 유생들에게 탕평의 뜻을 보인 것이다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 탕평비",
+     "url": "https://encykorea.aks.ac.kr/Article/E0058858"
+    }
+   ]
+  },
+  {
+   "id": "sungkyun-strike",
+   "target": {
+    "type": "landmark",
+    "key": "sungkyun",
+    "label": "문묘·성균관"
+   },
+   "title": "유생들의 식당 파업",
+   "year": null,
+   "legend": false,
+   "text": "성균관 유생들은 뜻을 모아 상소를 올렸고, 왕의 답이 마음에 들지 않으면 식당에 들어가지 않는 권당을 벌였다. 더 강하게는 성균관을 비우고 모두 떠나는 공관을 했으며, 조정은 대개 승지나 대신을 보내 달랬다.",
+   "sources": [
+    {
+     "title": "우리역사넷 「성균관」",
+     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_002_0040_0010_0040_0030"
+    }
+   ]
+  },
+  {
+   "id": "sungkyun-banchon",
+   "target": {
+    "type": "landmark",
+    "key": "sungkyun",
+    "label": "문묘·성균관"
+   },
+   "title": "반촌",
+   "year": null,
+   "legend": false,
+   "text": "성균관 동쪽과 서쪽 마을은 반촌이라 불렸고 성균관에 딸린 반인들이 살았다. 반인은 제사에 쓸 소를 잡고 도성의 푸줏간(현방)을 도맡아 운영했으며, 한때는 포교도 함부로 드나들지 못했다고 한다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 반촌",
+     "url": "https://encykorea.aks.ac.kr/Article/E0021564"
+    }
+   ]
+  },
+  {
+   "id": "daebodan-ming",
+   "target": {
+    "type": "landmark",
+    "key": "daebodan",
+    "label": "대보단"
+   },
+   "title": "망한 명나라를 위한 제단",
+   "year": "1704",
+   "legend": false,
+   "text": "명이 망한 지 60년이 되는 1704년(숙종 30), 임진왜란 때 원군을 보낸 명 신종을 제사하려고 창덕궁 후원에 쌓았다. 1749년(영조 25) 명 태조와 마지막 황제 의종을 더해, 1750년 무렵에는 세 황제를 모셨다. 제사는 1894년까지 이어졌다.",
+   "sources": [
+    {
+     "title": "우리역사넷 대보단",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300280&code=kc_age_30"
+    }
+   ]
+  },
+  {
+   "id": "mohwagwan-envoys",
+   "target": {
+    "type": "landmark",
+    "key": "mohwagwan",
+    "label": "모화관"
+   },
+   "title": "왕이 사신을 맞던 곳",
+   "year": null,
+   "legend": false,
+   "text": "1407년(태종 7) 서대문 밖에 모화루를 세웠다가 뒤에 넓혀 모화관이라 했다. 황제의 조서를 가진 중국 사신이 오면 왕이 이곳까지 나가 맞고, 사신은 모화관에서 옷을 갈아입은 뒤 도성으로 들어갔다. 1896년 앞의 영은문 자리에 독립문이 섰다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 모화관",
+     "url": "https://encykorea.aks.ac.kr/Article/E0018585"
+    },
+    {
+     "title": "한국민족문화대백과사전 영은문",
+     "url": "https://encykorea.aks.ac.kr/Article/E0037621"
+    }
+   ]
+  },
+  {
+   "id": "yeongeunmun-name",
+   "target": {
+    "type": "landmark",
+    "key": "yeongeunmun",
+    "label": "영은문"
+   },
+   "title": "이름을 바꾼 문",
+   "year": "1539",
+   "legend": false,
+   "text": "모화관 앞의 홍살문을 1537년 고쳐 세우고 영조문이라 했는데, 1539년 명 사신의 말에 따라 조서를 맞는다는 뜻의 영은문으로 고쳤다. 영은문은 1895년 무렵 헐렸고 그 자리에 독립문을 세웠다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 영은문",
+     "url": "https://encykorea.aks.ac.kr/Article/E0037621"
+    }
+   ]
+  },
+  {
+   "id": "hyeminseo-clinic",
+   "target": {
+    "type": "landmark",
+    "key": "hyeminseo",
+    "label": "혜민서"
+   },
+   "title": "백성의 약국",
+   "year": null,
+   "legend": false,
+   "text": "백성에게 약을 팔고 병을 고쳐 주던 관청이다. 1392년 혜민고국으로 시작해 혜민국을 거쳐 1466년 혜민서가 되었다. 의학교수가 의학을 가르쳤고, 의녀가 소속되어 부녀자 진료를 맡았다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 혜민서",
+     "url": "https://encykorea.aks.ac.kr/Article/E0063592"
+    }
+   ]
+  },
+  {
+   "id": "hullyeonwon-exam",
+   "target": {
+    "type": "landmark",
+    "key": "hullyeonwon",
+    "label": "훈련원"
+   },
+   "title": "무과 시험장",
+   "year": null,
+   "legend": false,
+   "text": "무과를 주관한 관청이다. 초시에서 한성 70명과 각 도 120명, 모두 190명을 뽑고, 복시에서 28명으로 추린 뒤 전시에서 등수를 정했다. 매달 두 번 진법 훈련에 관여했고 병서를 가르쳤다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 훈련원",
+     "url": "https://encykorea.aks.ac.kr/Article/E0065795"
+    }
+   ]
+  },
+  {
+   "id": "jeonokseo-jail",
+   "target": {
+    "type": "landmark",
+    "key": "jeonokseo",
+    "label": "전옥서"
+   },
+   "title": "판결을 기다리는 감옥",
+   "year": null,
+   "legend": false,
+   "text": "형조에 딸려 죄수를 가두던 곳으로, 서린방 의금부 옆에 있었다. 주로 형이 정해지기 전의 사람들을 가두었고 형조 관원이 돌아가며 점검했다. 1895년 감옥서로 바뀌었다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 전옥서",
+     "url": "https://encykorea.aks.ac.kr/Article/E0049540"
+    }
+   ]
+  },
+  {
+   "id": "gwangtong-stones",
+   "target": {
+    "type": "bridge",
+    "key": "gwangtong",
+    "label": "광통교"
+   },
+   "title": "왕비 무덤의 돌로 놓은 다리",
+   "year": "1410",
+   "legend": false,
+   "text": "1410년(태종 10) 큰물에 흙다리가 무너지자 돌다리로 다시 놓으면서, 도성 밖으로 옮긴 신덕왕후 정릉의 병풍석 같은 석물을 가져다 썼다. 태조의 계비인 신덕왕후와 태종의 사이가 나빴던 일과 함께 전해진다. 다리 주변은 도성에서 가장 붐비는 상가였다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 광교",
+     "url": "https://encykorea.aks.ac.kr/Article/E0005063"
+    }
+   ]
+  },
+  {
+   "id": "supyo-level",
+   "target": {
+    "type": "bridge",
+    "key": "supyo",
+    "label": "수표교"
+   },
+   "title": "경진지평",
+   "year": "1760",
+   "legend": false,
+   "text": "1441년(세종 23) 개천의 물 높이를 재는 수표를 세운 뒤 다리 이름이 수표교가 되었다. 1760년 영조가 57일 동안 약 20만 명을 동원해 개천 바닥을 파내는 준천을 마친 뒤, 교각에 庚辰地平이라 새겨 이후 바닥을 이 높이로 유지하게 했다. 준천이 끝난 뒤 준천사를 상설 관청으로 두었다.",
+   "sources": [
+    {
+     "title": "우리역사넷 수표와 수표교",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300695&code=kc_age_30"
+    },
+    {
+     "title": "한국민족문화대백과사전 준천사",
+     "url": "https://encykorea.aks.ac.kr/Article/E0053649"
+    }
+   ]
+  },
+  {
+   "id": "sogong-princess",
+   "target": {
+    "type": "place",
+    "key": "소공동",
+    "label": "소공동"
+   },
+   "title": "작은 공주의 동네",
+   "year": null,
+   "legend": false,
+   "text": "태종의 둘째 딸 경정공주의 집(소공주댁)이 있어 작은공주골, 곧 소공주동이라 불렀다. 이 집은 1583년 선조가 아들 의안군에게 주었고, 임진왜란 뒤 1593년부터 남별궁이라 불리며 중국 사신 접대에 쓰였다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 서울특별시 중구",
+     "url": "https://encykorea.aks.ac.kr/Article/E0067021"
+    },
+    {
+     "title": "한국민족문화대백과사전 남별궁",
+     "url": "https://encykorea.aks.ac.kr/Article/E0011914"
+    }
+   ]
+  },
+  {
+   "id": "myeongnye-catholics",
+   "target": {
+    "type": "place",
+    "key": "명례방",
+    "label": "명례방"
+   },
+   "title": "김범우 집의 신앙 모임",
+   "year": "1785",
+   "legend": false,
+   "text": "1784년 북경에서 세례를 받고 돌아온 이승훈이 이벽 등과 함께 명례방 김범우의 집에서 천주교 모임을 열었다. 1785년(정조 9) 봄 형조가 모임을 적발했는데 양반들은 풀려나고 중인 김범우만 유배되었다. 이 지도의 1750년보다 35년 뒤의 일이다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 추조적발사건",
+     "url": "https://encykorea.aks.ac.kr/Article/E0057898"
+    },
+    {
+     "title": "한국민족문화대백과사전 명례방공동체",
+     "url": "https://encykorea.aks.ac.kr/Article/E0069925"
+    }
+   ]
+  },
+  {
+   "id": "donhwamun-guards",
+   "target": {
+    "type": "landmark",
+    "key": "donhwamun",
+    "label": "돈화문"
+   },
+   "title": "문을 지키던 사람들",
+   "year": null,
+   "legend": false,
+   "text": "궁문을 여닫고 드나드는 사람을 살피는 일은 수문장이 맡았다. 1746년 『속대전』에서 수문장청은 수문장 23명을 두는 관청이 되었고, 수문장들이 번갈아 입직하며 각 문을 지켰다. 창덕궁 궁성 밖 파수는 삼군영이 나누어 맡아 훈련도감이 돈화문, 금위영이 금호문, 어영청이 홍화문을 지켰다. 밤에 문을 열려면 선전관이 표신을 보여야 했다. 지도에 세운 경비병 수는 기록이 아니라 표시용 추정이다.",
+   "sources": [
+    {
+     "title": "한국민족문화대백과사전 수문장청",
+     "url": "https://encykorea.aks.ac.kr/Article/E0031377"
+    },
+    {
+     "title": "우리역사넷 신편 한국사 「궁성 파수」",
+     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+    },
+    {
+     "title": "조선왕조실록사전 표신",
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29"
+    }
+   ]
+  },
+  {
+   "id": "honghwamun-guards",
+   "target": {
+    "type": "landmark",
+    "key": "honghwamun",
+    "label": "홍화문"
+   },
+   "title": "어영청이 지킨 문",
+   "year": null,
+   "legend": false,
+   "text": "창덕궁·창경궁 궁성 밖 파수를 삼군영이 나누어 맡을 때 창경궁 정문인 홍화문은 어영청 몫이었다. 문을 여닫는 일은 수문장이 따로 맡았다. 경비병의 옷은 무관의 구군복(전립, 동달이, 전복, 환도)을 참고했으며, 사람 수는 표시용 추정이다.",
+   "sources": [
+    {
+     "title": "우리역사넷 신편 한국사 「궁성 파수」",
+     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+    },
+    {
+     "title": "한국민족문화대백과사전 구군복",
+     "url": "https://encykorea.aks.ac.kr/Article/E0005662"
+    }
+   ]
+  }
+ ],
+ "checked": "2026-09-15"
+}
