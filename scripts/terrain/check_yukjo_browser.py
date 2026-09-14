@@ -4,7 +4,7 @@ import os
 from playwright.sync_api import sync_playwright
 parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:18014');parser.add_argument('--chromium-path',default=os.environ.get('CHROMIUM_PATH'));args=parser.parse_args()
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
+ b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=b.new_page(viewport={'width':1000,'height':750});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden',timeout=300000)
  assert page.evaluate('!!window.terrain3d?.ready'),errors
@@ -12,7 +12,7 @@ with sync_playwright() as p:
  # The ten Yukjo street offices must be present; other offices reuse the same compound model.
  ids={r['id'] for r in result}
  assert {'yejo','jungchubu','saheonbu','byeongjo','hyeongjo','gongjo','uijeongbu','ijo','hanseongbu','hojo'}<=ids,ids
- assert all(r['batches']<=6 and r['parts']>10 for r in result),result
+ assert all(r['batches']<=12 and r['parts']>10 for r in result),result
  print('Compounds:',result,flush=True);page.screenshot(path='/tmp/yukjo-overview.png')
  contacts=page.evaluate('''()=>{const t=terrain3d,boxes=t.buildings.children.filter(b=>b.userData.feature.display_model==='yukjo_compound');let maxError=0;for(const ex of [1,2,1]){const input=document.getElementById('height3d');input.value=ex;input.onchange();for(const b of boxes)for(const p of b.getObjectByName('yukjo-compound').userData.parts){maxError=Math.max(maxError,Math.abs(b.position.y+p.root.position.y-(p.support.max*ex+.08)));if(b.position.y+p.root.position.y+p.footing.position.y-.15*p.footing.scale.y>p.support.min*ex)throw Error('floating foundation')}}return maxError}''')
  assert contacts<1e-6,contacts

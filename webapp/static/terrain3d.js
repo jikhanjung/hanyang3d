@@ -257,11 +257,12 @@ async function main(){
  const LANDMARK_LOD_M=2400,proxyMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1}),landmarkLods=[];
  function proxyGeometry(feature,w,h,d){
   const positions=[],colors=[],m=new THREE.Matrix4(),v=new THREE.Vector3();
-  // Every upward face of a wall or plate block is painted tile colour so the simplified city reads as roofs from above.
+  // Every upward face of a wall block is painted tile colour so the simplified city reads as roofs from above; the
+  // ground plate of a compound keeps its courtyard colour.
   const tile=0x4b5254,tileC=new THREE.Color(tile);
-  const push=(geometry,color,x,y,z,ry=0)=>{const g=geometry.index?geometry.toNonIndexed():geometry,p=g.attributes.position,n=g.attributes.normal,c=new THREE.Color(color);
+  const push=(geometry,color,x,y,z,ry=0,tileTop=true)=>{const g=geometry.index?geometry.toNonIndexed():geometry,p=g.attributes.position,n=g.attributes.normal,c=new THREE.Color(color);
    m.makeRotationY(ry).setPosition(x,y,z);
-   for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m);positions.push(v.x,v.y,v.z);const up=n&&n.getY(i)>.5;colors.push(up?tileC.r:c.r,up?tileC.g:c.g,up?tileC.b:c.b)}};
+   for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m);positions.push(v.x,v.y,v.z);const up=tileTop&&n&&n.getY(i)>.5;colors.push(up?tileC.r:c.r,up?tileC.g:c.g,up?tileC.b:c.b)}};
   const roof=(rw,rd,rise)=>{const g=new THREE.BufferGeometry(),a=rw/2,b=rd/2;
    g.setAttribute('position',new THREE.Float32BufferAttribute([-a,0,-b,a,0,-b,a,rise,0, -a,0,-b,a,rise,0,-a,rise,0, a,0,b,-a,0,b,-a,rise,0, a,0,b,-a,rise,0,a,rise,0, -a,0,-b,-a,rise,0,-a,0,b, a,0,b,a,rise,0,a,0,-b],3));return g};
   const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','palace_compound','observatory','throne_hall'].includes(feature.display_model);
@@ -271,14 +272,14 @@ async function main(){
   const hall=(x,z,hw,hd,hh,ry=0)=>{push(new THREE.BoxGeometry(hw,hh,hd),wall,x,ground+.6+hh/2,z,ry);push(roof(hw+1.6,hd+1.6,Math.min(3.2,1.2+hd*.16)),tile,x,ground+.6+hh,z,ry)};
   if(feature.display_model==='yukjo_compound'){
    // Mirror the detailed layout: plate, enclosure wall, front row with the gate, main hall and two side halls.
-   push(new THREE.BoxGeometry(w,.6,d),0xb9aa8a,0,ground+.3,0);
+   push(new THREE.BoxGeometry(w,.6,d),0xc6b48f,0,ground+.3,0,0,false);
    const gateW=Math.min(13,w*.24),front=d/2-5,run=(w-gateW)/2-2;
    for(const side of [-1,1]){hall(side*(gateW/2+run/2),front,run,6,3.5);push(new THREE.BoxGeometry(1.2,2.3,d-10),0xd5c8ad,side*(w/2-.8),ground+.6+1.15,-2)}
    hall(0,front,gateW,7,4.8);push(new THREE.BoxGeometry(w,2.3,1.2),0xd5c8ad,0,ground+.6+1.15,-d/2+2);
    hall(0,-d*.12,w*(feature.court_type==='large'?.52:.6),Math.min(13,d*.2),feature.court_type==='large'?5.7:4.8);
    for(const side of [-1,1])hall(side*w*.33,d*.05,Math.min(d*.36,25),7,3.5,Math.PI/2);
   }else if(compound){
-   push(new THREE.BoxGeometry(w,.6,d),0xb9aa8a,0,ground+.3,0);
+   push(new THREE.BoxGeometry(w,.6,d),0xc6b48f,0,ground+.3,0,0,false);
    const hw=Math.max(6,w*.5),hd=Math.min(14,Math.max(5,d*.25)),hh=Math.min(Math.max(3,h*.45),7);
    hall(0,-d*.15,hw,hd,hh);
    for(const side of [-1,1])push(new THREE.BoxGeometry(1.2,2.3,d-2),0xd5c8ad,side*(w/2-.8),ground+.6+1.15,0);
