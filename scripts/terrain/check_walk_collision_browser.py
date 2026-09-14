@@ -9,6 +9,9 @@ with sync_playwright() as p:
  page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
  assert page.get_attribute('#map-options-toggle','aria-label')=='설정'
  assert page.evaluate("terrain3d.districtNames.children.some(c=>c.userData.name==='경복궁')")
+ # Palace names stay on their compound; the modelled halls carry their own names beneath.
+ halls=page.evaluate('''()=>Object.fromEntries(['changdeok','changgyeong','gyeongdeok','jongmyo'].map(id=>[id,terrain3d.nameTags.filter(n=>n.tag.userData.featureId===id).map(n=>[n.tag.userData.role,n.tag.userData.name])]))''')
+ assert halls=={'changdeok':[['palace','창덕궁'],['hall','인정전']],'changgyeong':[['palace','창경궁'],['hall','명정전']],'gyeongdeok':[['palace','경덕궁'],['hall','숭정전']],'jongmyo':[['palace','종묘'],['hall','정전']]},halls
  # The menu's About button opens and closes the project introduction.
  page.dispatch_event('#map-options-toggle','click');page.dispatch_event('#about-open','click')
  about=page.evaluate("()=>{const a=document.getElementById('about-panel');return {hidden:a.hidden,text:a.innerText,menuOpen:document.getElementById('map-options').classList.contains('open')}}")

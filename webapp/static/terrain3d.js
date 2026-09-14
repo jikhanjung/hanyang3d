@@ -275,10 +275,16 @@ async function main(){
   tag.center.set(.5,0);return {tag,aspect:canvas.width/canvas.height};
  }
  const buildingNames=new THREE.Group();buildingNames.name='building-name-labels';scene.add(buildingNames);
- const nameTags=buildings.children.map(building=>{
-  const name=building.userData.feature.name.split(' · ')[0],{tag,aspect}=nameSprite(name);
-  tag.renderOrder=5;tag.userData={name,featureId:building.userData.feature.id};buildingNames.add(tag);
-  return {building,tag,aspect};
+ // Names like "창덕궁 · 인정전 일대" put the palace name where it was and the hall name on the modelled hall.
+ // The palace tag stays first per building (checks look it up by feature id) and is lifted one line on screen.
+ const nameTags=buildings.children.flatMap(building=>{
+  const [name,detail]=building.userData.feature.name.split(' · '),hall=detail?.endsWith(' 일대')?detail.replace(/ 일대$/,''):null;
+  const {tag,aspect}=nameSprite(name);
+  tag.renderOrder=5;tag.userData={name,featureId:building.userData.feature.id,role:hall?'palace':'building'};buildingNames.add(tag);
+  if(!hall)return [{building,tag,aspect}];
+  tag.center.set(.5,-1.15);
+  const hallSprite=nameSprite(hall);hallSprite.tag.renderOrder=5;hallSprite.tag.userData={name:hall,featureId:building.userData.feature.id,role:'hall'};buildingNames.add(hallSprite.tag);
+  return [{building,tag,aspect},{building,...hallSprite}];
  });
  const mountainNames=new THREE.Group();mountainNames.name='mountain-name-labels';scene.add(mountainNames);
  const districtNames=new THREE.Group();districtNames.name='district-name-labels';scene.add(districtNames);
