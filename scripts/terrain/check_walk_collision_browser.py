@@ -20,6 +20,16 @@ with sync_playwright() as p:
   t.camera.position.set(h.x+60,h.y+300,h.z+400);t.controls.update();t.updateBuildingNames();const near=[street.visible,offices()];
   return {far,near,name:street.userData.name}}''')
  assert yukjo=={'far':[True,False],'near':[False,True],'name':'육조거리'},yukjo
+ # Names follow importance levels: from far only major names, at middle range 坊, and 契 only up close.
+ levels=page.evaluate('''()=>{const t=terrain3d,h=t.buildings.children.find(b=>b.userData.feature.id==='jongru').position,g=t.scene.getObjectByName('place-name-labels');
+  const shot=(up,back)=>{t.controls.target.copy(h);t.camera.position.set(h.x,h.y+up,h.z+back);t.controls.update();t.updateBuildingNames();
+   const kinds=k=>g.children.filter(c=>c.visible&&c.userData.feature.kind===k).length;
+   return {bang:kinds('bang'),gye:kinds('gye'),dong:kinds('dong'),palace:t.nameTags.some(n=>n.tag.visible&&n.level===0),small:t.nameTags.filter(n=>n.tag.visible&&n.level===3).length}};
+  return {far:shot(6000,7000),mid:shot(1900,2300),near:shot(450,560)}}''')
+ print('levels',levels,flush=True)
+ assert levels['far']['palace'] and levels['far']['bang']==0 and levels['far']['gye']==0 and levels['far']['dong']==0 and levels['far']['small']==0,levels
+ assert levels['mid']['bang']>0 and levels['mid']['gye']==0 and levels['mid']['dong']==0,levels
+ assert levels['near']['gye']>0 and levels['near']['small']>0,levels
  # The menu's About button opens and closes the project introduction.
  page.dispatch_event('#map-options-toggle','click');page.dispatch_event('#about-open','click')
  about=page.evaluate("()=>{const a=document.getElementById('about-panel');return {hidden:a.hidden,text:a.innerText,menuOpen:document.getElementById('map-options').classList.contains('open')}}")

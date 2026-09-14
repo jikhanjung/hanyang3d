@@ -313,20 +313,55 @@ async function main(){
  // Neighbourhood names from the map; missing data only hides the layer.
  let placeNames=null;
  try{const response=await fetch(asset('/gis/placenames/doseong_placenames.json'));if(response.ok){const data=await response.json();if(data.source_sha256===exp.input_sha256){placeNames=createPlaceNames(data,{warp,world,height,camera,canvas:renderer.domElement});scene.add(placeNames.group)}}}catch{}
+ // Name levels by importance: 0 always shown (palaces, 종묘, great gates, mountains, 육조거리, 경복궁); 1 wards (방),
+ // small gates, 북촌·서촌 and landmark sites; 2 other large offices and shrines, and palace halls; 3 small buildings and 계;
+ // 4 동 and lanes. Each level has a viewing distance, and a label that would overlap a more important (then nearer)
+ // label is hidden for that frame.
+ const LABEL_REACH=[Infinity,7000,3000,1500,1000];
+ const LEVEL0=new Set(['changdeok','changgyeong','gyeongdeok','jongmyo','sajik','sungkyun','heunginjimun','sungnyemun','donuimun','sukjeongmun']);
+ const LEVEL1=new Set(['gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
+ function buildingLevel(f){
+  if(LEVEL0.has(f.id))return 0;if(LEVEL1.has(f.id))return 1;
+  const [w,,d]=f.symbol_size_m??[0,0,0];
+  return f.category!=='집터'&&w*d>=900&&['궁궐','제례','관청','교육','궁가'].includes(f.category)?2:3;
+ }
+ for(const n of nameTags)n.level=n.tag.userData.role==='hall'?2:buildingLevel(n.building.userData.feature);
+ const areaLevel=name=>name==='북촌'||name==='서촌'?1:0;
+ const labelCells=new Map(),projected=new THREE.Vector3(),LABEL_PX=24,LABEL_CELL=48;
  function updateBuildingNames(){
-  buildingNames.visible=buildings.visible&&el('names3d').checked;
-  mountainNames.visible=el('names3d').checked;districtNames.visible=el('names3d').checked;
+  const namesOn=el('names3d').checked;
+  buildingNames.visible=buildings.visible&&namesOn;mountainNames.visible=namesOn;districtNames.visible=namesOn;
   const scale=24*2*Math.tan(camera.fov*Math.PI/360)/Math.max(1,el('scene').clientHeight); // 24px font on a 36px canvas yields ~16px text.
   const yukjoCentre=new THREE.Vector3();for(const b of yukjoOffices)yukjoCentre.add(b.position);yukjoCentre.multiplyScalar(1/Math.max(1,yukjoOffices.length));
   const yukjoFar=camera.position.distanceTo(yukjoCentre)>YUKJO_NEAR_M;
-  yukjoStreetTag.tag.visible=yukjoFar&&yukjoOffices.some(b=>b.visible);yukjoStreetTag.tag.position.copy(yukjoCentre);yukjoStreetTag.tag.position.y+=16;yukjoStreetTag.tag.scale.set(scale*yukjoStreetTag.aspect,scale,1);
-  for(const {building,tag,aspect} of nameTags){
-   tag.visible=building.visible&&!(yukjoFar&&YUKJO_STREET.has(tag.userData.featureId));
-   tag.position.copy(building.position);tag.position.y+=building.userData.boxHeight/2+4;
-   tag.scale.set(scale*aspect,scale,1);
+  const r=renderer.domElement.getBoundingClientRect(),candidates=[];
+  const consider=(tag,aspect,level,eligible)=>{
+   tag.scale.set(scale*aspect,scale,1);tag.visible=false;if(!eligible)return;
+   const d=camera.position.distanceTo(tag.position);if(d>=LABEL_REACH[level])return;
+   projected.copy(tag.position).project(camera);if(projected.z<-1||projected.z>1||Math.abs(projected.x)>1.1||Math.abs(projected.y)>1.1)return;
+   candidates.push({tag,aspect,level,d,sx:(projected.x+1)*r.width/2,sy:(1-projected.y)*r.height/2});
+  };
+  yukjoStreetTag.tag.position.copy(yukjoCentre);yukjoStreetTag.tag.position.y+=16;
+  consider(yukjoStreetTag.tag,yukjoStreetTag.aspect,0,buildingNames.visible&&yukjoFar&&yukjoOffices.some(b=>b.visible));
+  for(const n of nameTags){
+   n.tag.position.copy(n.building.position);n.tag.position.y+=n.building.userData.boxHeight/2+4;
+   consider(n.tag,n.aspect,n.level,buildingNames.visible&&n.building.visible&&!(yukjoFar&&YUKJO_STREET.has(n.tag.userData.featureId)));
   }
-  for(const {tag,aspect} of [...mountainTags,...districtTags]){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));tag.scale.set(scale*aspect,scale,1)}
-  placeNames?.update(scale,el('names3d').checked&&(el('placenames3d')?.checked??true));
+  for(const {tag,aspect} of mountainTags){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));consider(tag,aspect,0,namesOn)}
+  for(const {tag,aspect} of districtTags){const p=tag.userData;tag.position.set(...world(p.x,p.y,p.z));consider(tag,aspect,areaLevel(p.name),namesOn)}
+  for(const c of placeNames?.place(namesOn&&(el('placenames3d')?.checked??true))??[])consider(c.tag,c.aspect,c.level,true);
+  candidates.sort((a,b)=>a.level-b.level||a.d-b.d);
+  labelCells.clear();
+  for(const c of candidates){
+   // Sprites are anchored at their bottom centre; palace names are lifted by their negative centre offset.
+   const w=LABEL_PX*c.aspect,bottom=c.sy+c.tag.center.y*LABEL_PX,box=[c.sx-w/2-2,bottom-LABEL_PX-2,c.sx+w/2+2,bottom+2],keys=[];let clash=false;
+   for(let gx=Math.floor(box[0]/LABEL_CELL);gx<=Math.floor(box[2]/LABEL_CELL)&&!clash;gx++)for(let gy=Math.floor(box[1]/LABEL_CELL);gy<=Math.floor(box[3]/LABEL_CELL)&&!clash;gy++){
+    const key=gx+','+gy;keys.push(key);
+    for(const o of labelCells.get(key)??[])if(box[0]<o[2]&&box[2]>o[0]&&box[1]<o[3]&&box[3]>o[1]){clash=true;break}
+   }
+   if(clash)continue;
+   c.tag.visible=true;for(const key of keys){if(!labelCells.has(key))labelCells.set(key,[]);labelCells.get(key).push(box)}
+  }
  }
  frameUpdate=()=>updateBuildingNames();
  await stage(3,'주요 건물·문 표시 완료 · 물길을 준비합니다');
