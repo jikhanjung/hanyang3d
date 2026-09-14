@@ -12,6 +12,14 @@ with sync_playwright() as p:
  # Palace names stay on their compound; the modelled halls carry their own names beneath.
  halls=page.evaluate('''()=>Object.fromEntries(['changdeok','changgyeong','gyeongdeok','jongmyo'].map(id=>[id,terrain3d.nameTags.filter(n=>n.tag.userData.featureId===id).map(n=>[n.tag.userData.role,n.tag.userData.name])]))''')
  assert halls=={'changdeok':[['palace','창덕궁'],['hall','인정전']],'changgyeong':[['palace','창경궁'],['hall','명정전']],'gyeongdeok':[['palace','경덕궁'],['hall','숭정전']],'jongmyo':[['palace','종묘'],['hall','정전']]},halls
+ # From afar the Yukjo street shows one "육조거리" label; up close each office shows its own name.
+ yukjo=page.evaluate('''()=>{const t=terrain3d,ids=['uijeongbu','hojo','byeongjo','gongjo'],street=t.buildingNames.children.find(c=>c.userData.role==='street');
+  const offices=()=>t.nameTags.filter(n=>ids.includes(n.tag.userData.featureId)).every(n=>n.tag.visible);
+  const h=t.buildings.children.find(b=>b.userData.feature.id==='hojo').position;
+  t.controls.target.copy(h);t.camera.position.set(h.x,h.y+3500,h.z+4000);t.controls.update();t.updateBuildingNames();const far=[street.visible,offices()];
+  t.camera.position.set(h.x+60,h.y+300,h.z+400);t.controls.update();t.updateBuildingNames();const near=[street.visible,offices()];
+  return {far,near,name:street.userData.name}}''')
+ assert yukjo=={'far':[True,False],'near':[False,True],'name':'육조거리'},yukjo
  # The menu's About button opens and closes the project introduction.
  page.dispatch_event('#map-options-toggle','click');page.dispatch_event('#about-open','click')
  about=page.evaluate("()=>{const a=document.getElementById('about-panel');return {hidden:a.hidden,text:a.innerText,menuOpen:document.getElementById('map-options').classList.contains('open')}}")

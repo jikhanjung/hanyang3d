@@ -287,6 +287,10 @@ async function main(){
   const hallSprite=nameSprite(hall);hallSprite.tag.renderOrder=5;hallSprite.tag.userData={name:hall,featureId:building.userData.feature.id,role:'hall'};buildingNames.add(hallSprite.tag);
   return [{building,tag,aspect},{building,...hallSprite}];
  });
+ // The ten Yukjo street offices share one "육조거리" label from afar and show their own names up close.
+ const YUKJO_STREET=new Set(['uijeongbu','ijo','hojo','hanseongbu','yejo','jungchubu','saheonbu','byeongjo','hyeongjo','gongjo']),YUKJO_NEAR_M=1200;
+ const yukjoOffices=nameTags.filter(n=>YUKJO_STREET.has(n.tag.userData.featureId)).map(n=>n.building);
+ const yukjoStreetTag=nameSprite('육조거리');yukjoStreetTag.tag.renderOrder=5;yukjoStreetTag.tag.userData={name:'육조거리',role:'street'};buildingNames.add(yukjoStreetTag.tag);
  const mountainNames=new THREE.Group();mountainNames.name='mountain-name-labels';scene.add(mountainNames);
  const districtNames=new THREE.Group();districtNames.name='district-name-labels';scene.add(districtNames);
  function placeTag(name,x,y,group){
@@ -313,8 +317,11 @@ async function main(){
   buildingNames.visible=buildings.visible&&el('names3d').checked;
   mountainNames.visible=el('names3d').checked;districtNames.visible=el('names3d').checked;
   const scale=24*2*Math.tan(camera.fov*Math.PI/360)/Math.max(1,el('scene').clientHeight); // 24px font on a 36px canvas yields ~16px text.
+  const yukjoCentre=new THREE.Vector3();for(const b of yukjoOffices)yukjoCentre.add(b.position);yukjoCentre.multiplyScalar(1/Math.max(1,yukjoOffices.length));
+  const yukjoFar=camera.position.distanceTo(yukjoCentre)>YUKJO_NEAR_M;
+  yukjoStreetTag.tag.visible=yukjoFar&&yukjoOffices.some(b=>b.visible);yukjoStreetTag.tag.position.copy(yukjoCentre);yukjoStreetTag.tag.position.y+=16;yukjoStreetTag.tag.scale.set(scale*yukjoStreetTag.aspect,scale,1);
   for(const {building,tag,aspect} of nameTags){
-   tag.visible=building.visible;
+   tag.visible=building.visible&&!(yukjoFar&&YUKJO_STREET.has(tag.userData.featureId));
    tag.position.copy(building.position);tag.position.y+=building.userData.boxHeight/2+4;
    tag.scale.set(scale*aspect,scale,1);
   }
