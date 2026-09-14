@@ -66,35 +66,54 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
  const mesh=(geometry,color)=>{const m=new THREE.InstancedMesh(geometry,new THREE.MeshStandardMaterial({color,roughness:1,side:THREE.DoubleSide,vertexColors:!!geometry.attributes.color}),records.length);group.add(m);return m};
  const body=mesh(wallGeo,0xffffff),roof=mesh(hanokRoof(false),0xffffff),base=mesh(new THREE.BoxGeometry(1,1,1),0x938471),front=mesh(new THREE.BoxGeometry(1,1,1),0x68523a);
  const strawRoof=mesh(hanokRoof(true),0xffffff);strawRoof.name='thatched-roofs';
+ // Far level of detail: a plain block and a two-slope prism (about 20 triangles) replace the lattice walls and roof courses.
+ const farPrism=new THREE.BufferGeometry();
+ farPrism.setAttribute('position',new THREE.Float32BufferAttribute([-.5,0,-.5, .5,0,-.5, .5,0,.5, -.5,0,.5, -.5,1,0, .5,1,0],3));
+ farPrism.setIndex([0,4,5,0,5,1,1,5,2,2,5,4,2,4,3,3,4,0]);farPrism.computeVertexNormals();
+ const farBody=mesh(new THREE.BoxGeometry(1,1,1),0xffffff),farRoof=mesh(farPrism,0xffffff);farBody.name='house-walls-far';farRoof.name='house-roofs-far';
  body.name='house-walls';roof.name='house-roofs';base.name='house-footings';front.name='shop-awnings';
- records.forEach((r,i)=>{body.setColorAt(i,new THREE.Color(r.shop?'#bca17b':r.style<.5?'#c8baa0':'#b7a68a'));r.roofType=r.shop||r.style<.38?'tile':'thatch';roof.setColorAt(i,new THREE.Color('#515957'));strawRoof.setColorAt(i,new THREE.Color(r.style<.72?'#b6a070':'#c3ad7d'))});
- let density=.7,exaggeration=1,visibleCount=0,shopCount=0,mapVisible=true;
+ const tileColor=new THREE.Color('#515957');
+ records.forEach(r=>{r.wallColor=new THREE.Color(r.shop?'#bca17b':r.style<.5?'#c8baa0':'#b7a68a');r.roofType=r.shop||r.style<.38?'tile':'thatch';r.strawColor=new THREE.Color(r.style<.72?'#b6a070':'#c3ad7d')});
+ let density=.7,exaggeration=1,visibleCount=0,shopCount=0,mapVisible=true,lod=null,nearCount=0;const LOD_M=800;
  const dummy=new THREE.Object3D();
+ // Each instanced mesh packs only the houses it draws at the front and sets its count, so hidden or far houses cost the
+ // GPU nothing: near houses fill the detailed meshes, far houses the simple ones.
  function updateHeights(ex){
-  exaggeration=ex;visibleCount=0;shopCount=0;
-  records.forEach((r,i)=>{
+  exaggeration=ex;visibleCount=0;shopCount=0;nearCount=0;
+  const slots=new Map(group.children.map(m=>[m,0]));
+  for(const r of records){
    const surface=r.support&&(mapVisible?r.support:r.support.terrain);
    const show=r.rank<=density&&surface&&(surface.max-surface.min)*ex<=1.2;
    r.displaySurface=surface;r.displayed=!!show;
-   if(!show){dummy.scale.set(0,0,0);dummy.updateMatrix();for(const m of group.children)m.setMatrixAt(i,dummy.matrix);return;}
+   if(!show)continue;
    visibleCount++;if(r.shop)shopCount++;
    const floor=surface.min*ex+.08,low=floor-.18;
    r.floor=floor;
-   const place=(m,x,y,z,sx,sy,sz)=>{dummy.position.set(x,y,z);dummy.rotation.set(0,r.yaw,0);dummy.scale.set(sx,sy,sz);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix)};
-   place(body,r.x,floor+r.h/2,r.z,r.w,r.h,r.d);
+   const place=(m,x,y,z,sx,sy,sz,color)=>{const i=slots.get(m);slots.set(m,i+1);dummy.position.set(x,y,z);dummy.rotation.set(0,r.yaw,0);dummy.scale.set(sx,sy,sz);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix);if(color)m.setColorAt(i,color)};
    place(base,r.x,(floor+low)/2,r.z,r.w,floor-low,r.d);
-   const activeRoof=r.roofType==='thatch'?strawRoof:roof,inactiveRoof=r.roofType==='thatch'?roof:strawRoof;
-   place(activeRoof,r.x,floor+r.h,r.z,r.w+1,1.5,r.d+1);
-   dummy.scale.set(0,0,0);dummy.updateMatrix();inactiveRoof.setMatrixAt(i,dummy.matrix);
-   // A shallow shop eave or small doorway; neither represents a named business.
-   place(front,r.x+Math.sin(r.yaw)*r.d*.5,floor+(r.shop?2.1:1),r.z+Math.cos(r.yaw)*r.d*.5,r.shop?r.w*.9:.9,r.shop?.18:1.8,r.shop?1.6:.1);
-  });
-  for(const m of group.children){m.instanceMatrix.needsUpdate=true;m.computeBoundingSphere()}
+   const near=!lod||Math.hypot(r.x-lod.x,floor-lod.y,r.z-lod.z)<LOD_M,thatch=r.roofType==='thatch';
+   if(near){
+    nearCount++;
+    place(body,r.x,floor+r.h/2,r.z,r.w,r.h,r.d,r.wallColor);
+    place(thatch?strawRoof:roof,r.x,floor+r.h,r.z,r.w+1,1.5,r.d+1,thatch?r.strawColor:tileColor);
+    // A shallow shop eave or small doorway; neither represents a named business.
+    place(front,r.x+Math.sin(r.yaw)*r.d*.5,floor+(r.shop?2.1:1),r.z+Math.cos(r.yaw)*r.d*.5,r.shop?r.w*.9:.9,r.shop?.18:1.8,r.shop?1.6:.1);
+   }else{
+    place(farBody,r.x,floor+r.h/2,r.z,r.w,r.h,r.d,r.wallColor);
+    place(farRoof,r.x,floor+r.h,r.z,r.w+1,1.5,r.d+1,thatch?r.strawColor:tileColor);
+   }
+  }
+  for(const m of group.children){m.count=slots.get(m);m.instanceMatrix.needsUpdate=true;if(m.instanceColor)m.instanceColor.needsUpdate=true;m.computeBoundingSphere()}
   document.getElementById('settlement-status').textContent=`추정 배치 ${visibleCount.toLocaleString()}동 · 주택 ${(visibleCount-shopCount).toLocaleString()} · 상가 ${shopCount.toLocaleString()} — 도성 안 길 주변 일부, 개별 건물 위치 미확인`;
  }
  function updateGround(supportAt){for(const r of records)r.support=supportAt(r.x,r.z,r.w+1,r.d+1,r.yaw)}
  document.getElementById('settlement3d').onchange=e=>{group.visible=e.target.checked};
  document.getElementById('settlement-density').onchange=e=>{density=Number(e.target.value);updateHeights(exaggeration)};
  const setMapVisible=value=>{mapVisible=value;updateHeights(exaggeration)};
- return {group,records,updateGround,updateHeights,setMapVisible,get visibleCount(){return visibleCount},get shopCount(){return shopCount}};
+ // Recompute the detail split only after the camera has moved far enough to matter.
+ function setLod(position){
+  if(lod&&Math.hypot(position.x-lod.x,position.y-lod.y,position.z-lod.z)<60)return;
+  lod={x:position.x,y:position.y,z:position.z};updateHeights(exaggeration);
+ }
+ return {group,records,updateGround,updateHeights,setMapVisible,setLod,get visibleCount(){return visibleCount},get shopCount(){return shopCount},get nearCount(){return nearCount}};
 }

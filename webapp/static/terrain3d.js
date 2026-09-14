@@ -261,6 +261,42 @@ async function main(){
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
   buildings.add(box);
  }
+ // Far level of detail for landmarks: beyond LANDMARK_LOD_M a detailed model (often hundreds of meshes) is replaced by one
+ // merged low model — a base plate, a hall block and a roof — so the whole city costs about one draw call per building.
+ const LANDMARK_LOD_M=1600,proxyMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1}),landmarkLods=[];
+ function proxyGeometry(feature,w,h,d){
+  const positions=[],colors=[];
+  const push=(geometry,color,x,y,z)=>{const g=geometry.index?geometry.toNonIndexed():geometry,p=g.attributes.position,c=new THREE.Color(color);
+   for(let i=0;i<p.count;i++){positions.push(p.getX(i)+x,p.getY(i)+y,p.getZ(i)+z);colors.push(c.r,c.g,c.b)}};
+  const roof=(rw,rd,rise)=>{const g=new THREE.BufferGeometry(),a=rw/2,b=rd/2;
+   g.setAttribute('position',new THREE.Float32BufferAttribute([-a,0,-b,a,0,-b,a,rise,0, -a,0,-b,a,rise,0,-a,rise,0, a,0,b,-a,0,b,-a,rise,0, a,0,b,-a,rise,0,a,rise,0, -a,0,-b,-a,rise,0,-a,0,b, a,0,b,a,rise,0,a,0,-b],3));return g};
+  const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','palace_compound','observatory'].includes(feature.display_model);
+  // Walls stay close to the beige of the detailed timber-and-plaster models, with only a hint of the category colour.
+  const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25);
+  if(compound){
+   push(new THREE.BoxGeometry(w,.6,d),0xb9aa8a,0,ground+.3,0);
+   const hw=Math.max(6,w*.5),hd=Math.max(5,d*.3),hh=Math.min(Math.max(3,h*.45),7);
+   push(new THREE.BoxGeometry(hw,hh,hd),wall,0,ground+.6+hh/2,-d*.15);push(roof(hw+1.5,hd+2,Math.max(1.5,hd*.35)),0x4b5254,0,ground+.6+hh,-d*.15);
+  }else{
+   const bh=Math.max(2,h*.65);
+   push(new THREE.BoxGeometry(w*.85,bh,d*.85),wall,0,ground+bh/2,0);push(roof(w*.95,d*.95,Math.max(1,h*.3)),0x4b5254,0,ground+bh,0);
+  }
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));g.computeVertexNormals();return g;
+ }
+ const colors3d=colors;
+ for(const box of buildings.children){
+  const detail=[...box.children];if(!detail.length)continue;
+  const f=box.userData.feature,[w,h,d]=f.symbol_size_m;
+  const proxy=new THREE.Mesh(proxyGeometry(f,w,h,d),proxyMaterial);proxy.name='landmark-lod';proxy.visible=false;box.add(proxy);
+  landmarkLods.push({box,detail,proxy,near:true});
+ }
+ // A small distance gap keeps a model from flickering between its two forms at the boundary.
+ function updateLandmarkLod(){
+  for(const l of landmarkLods){
+   const dist=camera.position.distanceTo(l.box.position),near=l.near?dist<LANDMARK_LOD_M+100:dist<LANDMARK_LOD_M-100;
+   if(near===l.near)continue;l.near=near;for(const c of l.detail)c.visible=near;l.proxy.visible=!near;
+  }
+ }
  // Commemorative house sites are optional: they are modern markers, not 1750 buildings.
  function updateSites(){const on=el('sites3d').checked;for(const {box} of siteMarkers)box.visible=on}
  el('sites3d').onchange=()=>{updateSites();updateBuildingNames()};updateSites();
@@ -329,6 +365,7 @@ async function main(){
  const areaLevel=name=>name==='북촌'||name==='서촌'?1:0;
  const labelCells=new Map(),projected=new THREE.Vector3(),LABEL_PX=24,LABEL_CELL=48;
  function updateBuildingNames(){
+  updateLandmarkLod();settlement?.setLod(camera.position);
   const namesOn=el('names3d').checked;
   buildingNames.visible=buildings.visible&&namesOn;mountainNames.visible=namesOn;districtNames.visible=namesOn;
   const scale=24*2*Math.tan(camera.fov*Math.PI/360)/Math.max(1,el('scene').clientHeight); // 24px font on a 36px canvas yields ~16px text.
@@ -881,6 +918,6 @@ async function main(){
   for(const seg of wall.segments)collision.add({x:seg.x,z:seg.z,hw:data.width_m/2,hd:seg.length/2,yaw:seg.yaw,visible:()=>wall.group.visible});
  for(const r of sijeon.records)collision.add({x:r.x,z:r.z,hw:r.length/2,hd:(sijeonData.placement.depth_m+.9)/2,yaw:r.yaw,visible:()=>sijeon.group.visible&&r.displayed});
  for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
- window.terrain3d={ready:true,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
+ window.terrain3d={ready:true,landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});
