@@ -15,12 +15,12 @@
       "note": "동궐의 중심 궁궐. 박스는 인정전 일대를 가리키는 위치 표시입니다.",
       "position_status": "manual_source_symbol_hint",
       "symbol_size_m": [
-        30,
-        18,
-        24
+        64,
+        22,
+        60
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다.",
+      "size_note": "정전 칸수는 기록값, 조정·월대 크기는 개략값. 시설군 전체 크기가 아닙니다.",
       "temporal": {
         "existence": {
           "start_year": null,
@@ -35,10 +35,10 @@
         },
         "sources": []
       },
-      "display_model": "palace_compound",
+      "display_model": "throne_hall",
       "palace_roof_tiers": 2,
       "display_yaw_deg": 0,
-      "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
+      "model_note": "인정전(정면 5칸·측면 4칸, 중층)과 2단 월대, 인정문과 회랑으로 둘러싼 조정(품계석)을 단순화한 개념 모형. 조정 크기 64 × 60 m는 개략값.",
       "model_reference": "https://encykorea.aks.ac.kr/Article/E0055393",
       "source_position": {
         "source_asset": "asset-0001",
@@ -60,6 +60,18 @@
             "url": "https://royal.khs.go.kr/ROYAL/contents/R102010000.do"
           }
         ]
+      },
+      "throne_hall": {
+        "bays": [
+          5,
+          4
+        ],
+        "hall_m": [
+          30,
+          20
+        ],
+        "roof_tiers": 2,
+        "terrace_tiers": 2
       }
     },
     {
@@ -72,12 +84,12 @@
       "note": "창덕궁과 이어진 왕실 공간. 전각의 실제 외형은 표현하지 않았습니다.",
       "position_status": "approximate_site_hint",
       "symbol_size_m": [
-        24,
-        12,
-        16
+        50,
+        16,
+        44
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다.",
+      "size_note": "정전 칸수는 기록값, 조정·월대 크기는 개략값. 시설군 전체 크기가 아닙니다.",
       "temporal": {
         "existence": {
           "start_year": null,
@@ -92,10 +104,10 @@
         },
         "sources": []
       },
-      "display_model": "palace_compound",
+      "display_model": "throne_hall",
       "palace_roof_tiers": 1,
       "display_yaw_deg": 90,
-      "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
+      "model_note": "명정전(정면 5칸·측면 3칸, 단층)과 2단 월대, 명정문과 회랑으로 둘러싼 조정을 단순화한 개념 모형. 동향. 조정 크기는 개략값.",
       "model_reference": "https://encykorea.aks.ac.kr/Article/E0055322",
       "source_position": {
         "source_asset": "asset-0001",
@@ -117,6 +129,18 @@
             "url": "https://royal.khs.go.kr/ROYAL/contents/R103010000.do"
           }
         ]
+      },
+      "throne_hall": {
+        "bays": [
+          5,
+          3
+        ],
+        "hall_m": [
+          24,
+          14
+        ],
+        "roof_tiers": 1,
+        "terrace_tiers": 2
       }
     },
     {
@@ -664,12 +688,12 @@
       "note": "오늘날 경희궁. 1760년 이전 이름인 경덕궁으로 표시합니다.",
       "position_status": "manual_source_enclosure_hint",
       "symbol_size_m": [
-        26,
-        13,
-        20
+        54,
+        18,
+        48
       ],
       "size_status": "approximate_single_structure_scale",
-      "size_note": "대표 건물 1동 수준의 개략 치수. 역사적 실측 복원값이나 시설군 전체 크기가 아닙니다.",
+      "size_note": "정전 칸수는 기록값, 조정·월대 크기는 개략값. 시설군 전체 크기가 아닙니다.",
       "temporal": {
         "existence": {
           "start_year": null,
@@ -694,10 +718,10 @@
         "method": "manual_site_inside_drawn_enclosure",
         "note": "원도의 나무와 담장 안에 표시한 개략 시설 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
       },
-      "display_model": "palace_compound",
+      "display_model": "throne_hall",
       "palace_roof_tiers": 1,
       "display_yaw_deg": 0,
-      "model_note": "정전의 지붕 층수와 목조 궁궐 형태를 참고한 기단·전각·앞뜰 개념 모형. 궁궐 전체 배치나 특정 연도의 실측 복원이 아니다.",
+      "model_note": "숭정전(정면 5칸·측면 4칸)과 2단 월대, 숭정문과 회랑으로 둘러싼 조정을 단순화한 개념 모형. 조정 크기는 개략값.",
       "model_reference": "https://encykorea.aks.ac.kr/Article/E0032098",
       "info": {
         "summary": "광해군이 도성 서쪽에 세운 이궁. 오늘날의 경희궁이다.",
@@ -713,6 +737,18 @@
             "url": "https://royal.khs.go.kr/ROYAL/contents/R110000000.do"
           }
         ]
+      },
+      "throne_hall": {
+        "bays": [
+          5,
+          4
+        ],
+        "hall_m": [
+          28,
+          18
+        ],
+        "roof_tiers": 1,
+        "terrace_tiers": 2
       }
     },
     {

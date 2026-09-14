@@ -14,6 +14,7 @@ import {createSettlement} from './settlement.js';
 import {createSijeon} from './sijeon.js';
 import {createPlaceNames} from './placenames.js';
 import {createGyeonghoeruPond,createHallSite} from './gyeongbokgung_ruins.js';
+import {createThroneHall} from './throne_hall.js';
 import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
@@ -250,6 +251,7 @@ async function main(){
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
   if(feature.category==='성문'){box.material.visible=false;box.add(gateModel(feature,w,h,d))}
+  if(feature.display_model==='throne_hall'){box.material.visible=false;foundation.visible=false;box.add(createThroneHall(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
   if(feature.display_model==='gyeonghoeru_pond'){box.material.visible=false;foundation.visible=false;box.add(createGyeonghoeruPond(feature,w,h,d))}
@@ -273,7 +275,7 @@ async function main(){
    for(let i=0;i<p.count;i++){positions.push(p.getX(i)+x,p.getY(i)+y,p.getZ(i)+z);colors.push(c.r,c.g,c.b)}};
   const roof=(rw,rd,rise)=>{const g=new THREE.BufferGeometry(),a=rw/2,b=rd/2;
    g.setAttribute('position',new THREE.Float32BufferAttribute([-a,0,-b,a,0,-b,a,rise,0, -a,0,-b,a,rise,0,-a,rise,0, a,0,b,-a,0,b,-a,rise,0, a,0,b,-a,rise,0,a,rise,0, -a,0,-b,-a,rise,0,-a,0,b, a,0,b,a,rise,0,a,0,-b],3));return g};
-  const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','palace_compound','observatory'].includes(feature.display_model);
+  const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','palace_compound','observatory','throne_hall'].includes(feature.display_model);
   // Walls stay close to the beige of the detailed timber-and-plaster models, with only a hint of the category colour.
   const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25);
   if(compound){
