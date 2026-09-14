@@ -14,7 +14,7 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
 - Docker Hub: `honestjung/hanyang3d:v0.1.22`
-- 배포 digest: `sha256:65cc5c6f62bee4fc486c28c39052818f6e5eb1a06f2fa5488e74a89fc1d1ec36`
+- 배포 digest: `sha256:cc96af7df977647ae45f07cfc2d8ed32e4b6202872953bdbb207ae887f88d954`
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 
@@ -25,7 +25,7 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 - 이미지: Django/Three.js 코드, 카탈로그, GIS 판독·배치 JSON, 배포 도구.
 - 데이터 묶음: 카탈로그 원본 23개와 웹에서 제공하는 파생 산출물 9개. 경로·크기·SHA-256을 `manifest.json`에 기록한다.
 - 컨테이너: Gunicorn, UID/GID `10001`, 읽기 전용 루트와 `/runtime`, 임시 작업용 `/tmp`.
-- `/healthz`: 버전 및 제공 파일 79개의 존재 상태. 데이터 누락·버전 불일치 시 503.
+- `/healthz`: 버전 및 제공 파일 81개의 존재 상태. 데이터 누락·버전 불일치 시 503.
 - 시작 시 전체 데이터 SHA-256 검사. 런타임 healthcheck는 존재·크기·버전을 확인한다.
 - 자료 파일의 기존 인용·이용 조건은 카탈로그에 유지한다. 데이터 묶음은 운영 서버 이전용이며 Docker 이미지에 들어가지 않는다.
 
