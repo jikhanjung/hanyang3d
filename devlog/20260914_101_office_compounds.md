@@ -19,3 +19,7 @@
 ## 검사
 
 `check_yukjo_browser.py`의 URL·브라우저 인자를 개발 서버에 맞추고 배치 수 한도를 12로 올렸다. 구역 부분(열 관청 존재, 부품 수, 지면 접촉)은 통과하고, 그 뒤의 메뉴 표시 단정은 전부터 깨진 채다. `check_new_landmarks`·`check_walk_collision`·Django 테스트 통과.
+
+## 배포
+
+- v0.1.32로 배포했다. Docker Hub digest: `sha256:061a0d5a4b1df65d44909888434ed00a24a8171b535807700f60bba88ddbbbb5`. 공개 healthz 정상, resources 84. 서버 이미지는 v0.1.32와 v0.1.31만 남겼다.
