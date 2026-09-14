@@ -38,3 +38,9 @@
 ## 검사
 
 `check_new_landmarks_browser.py`에 11곳을 넣어 이름표·모형·접지·길 겹침·성곽 안(도성 안 8곳)을 확인한다.
+
+## 배포
+
+- v0.1.16으로 배포했다. Docker Hub digest: `sha256:eb989df9f9131e0b1037cb77ebb5471f911b15b44f001d9ee30ebf04bfa11884`.
+- 공개 healthz 정상: v0.1.16, resources 78. 운영 사이트에서 건물 검사를 다시 돌려 통과했다.
+- 서버 이미지는 v0.1.16과 직전 v0.1.15만 남겼다.
