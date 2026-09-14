@@ -16,15 +16,17 @@ function mergeByMaterial(model){
  }
  for(const [material,values] of buckets){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(values,3));g.computeVertexNormals();const mesh=new THREE.Mesh(g,material);mesh.name='hall-surfaces';model.add(mesh)}
 }
-// Hip-and-gable roof (팔작지붕): long slopes over the full width, short hips at the ends up to the gable, a
-// concave slope profile and eaves that lift toward the corners.
+// Hip-and-gable roof (팔작지붕): long slopes trimmed by the end hips up to the gable line, then a vertical gable
+// panel; with gableFrac 1 the hips reach the ridge and the roof is a plain hip (우진각). Concave slope profile and
+// eaves that lift toward the corners.
 export function hipGableRoof(width,depth,rise,lift=.5,gableFrac=.55){
  const pos=[],a=width/2,b=depth/2,N=12,M=6;
  const slope=t=>rise*Math.pow(t,1.45);
  const quad=(p1,p2,p3,p4)=>{pos.push(...p1,...p2,...p3,...p1,...p3,...p4)};
  for(const sign of [-1,1]){ // front (+z) and back (-z) long slopes
   for(let i=0;i<N;i++)for(let j=0;j<M;j++){
-   const pt=(ii,jj)=>{const u=ii/N,v=jj/M,x=-a+u*width,ex=Math.abs(x)/a,z=sign*b*(1-v),y=slope(v)+lift*Math.pow(ex,3)*(1-v);return [x,y,z]};
+   // The long slopes narrow as they rise so the hips cut them cleanly; above the gable line the width stays.
+   const pt=(ii,jj)=>{const u=ii/N,v=jj/M,half=a-Math.min(v,gableFrac)*b,x=-half+u*half*2,ex=Math.abs(x)/a,z=sign*b*(1-v),y=slope(v)+lift*Math.pow(ex,3)*(1-v);return [x,y,z]};
    sign>0?quad(pt(i,j),pt(i+1,j),pt(i+1,j+1),pt(i,j+1)):quad(pt(i,j),pt(i,j+1),pt(i+1,j+1),pt(i+1,j));
   }
  }

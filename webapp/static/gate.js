@@ -52,8 +52,8 @@ export function createCityGate(feature,w,h,d){
    box('pavilion-wall',0,bottom+.3+postH*.5,0,tw-.4,postH*.92,td-.4,'wall');
    for(let i=0;i<cols;i++)for(const zz of [-1,1])box('lattice-window',-tw/2+(i+.5)*tw/cols,bottom+.3+postH*.55,zz*(td/2-.1),tw/cols-.6,postH*.55,.1,'lattice');
    box('beam-band',0,eave-.4,0,tw+.6,.45,td+.6,'beam');box('bracket-band',0,eave+.05,0,tw+1.4,.5,td+1.4,'bracket');
-   const roof=new THREE.Mesh(hipGableRoof(tw+6,td+5,step*.4,.8,gable),mats.roof);roof.position.set(0,eave+.35-h/2,0);roof.name='gate-roof';model.add(roof);parts.push('gate-roof');
-   box('ridge',0,eave+.35+step*.4+.15,0,(tw+6)-(td+5)*.55*2+.6,.3,.5,'ridge');
+   const roof=new THREE.Mesh(hipGableRoof(tw+6,td+5,step*.4,tiers===2?.8:.5,gable),mats.roof);roof.position.set(0,eave+.35-h/2,0);roof.name='gate-roof';model.add(roof);parts.push('gate-roof');
+   box('ridge',0,eave+.35+step*.4+.15,0,(tw+6)-(td+5)*gable+.6,.3,.5,'ridge');
   }
  }
  // The barbican (옹성) of Heunginjimun: a curved outer wall in front of the gate (local +z is the outer side
