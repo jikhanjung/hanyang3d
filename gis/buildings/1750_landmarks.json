@@ -1011,14 +1011,14 @@
       "note": "경복궁 서쪽의 네모난 연못. 1592년 경회루가 불탄 뒤 돌기둥 48개만 연못 안에 서 있었습니다.",
       "lat": 37.5797,
       "lon": 126.9757,
-      "position_status": "drawn_pond_on_source_map",
+      "position_status": "drawn_pond_shifted_to_west_wall",
       "symbol_size_m": [
-        128,
+        64,
         1.2,
-        113
+        57
       ],
-      "size_status": "recorded_dimensions",
-      "size_note": "연못 동서 128 m·남북 113 m는 기록값. 누각 터 34.4 × 28.5 m, 섬·다리 크기는 개략값.",
+      "size_status": "display_scaled_half",
+      "size_note": "연못 기록값 128 × 113 m의 절반 크기로 표시한다. 원도의 경복궁 담장이 실제보다 좁게 그려져 있어 담장 안 배치에 맞췄다. 누각 터·섬·다리도 같은 비율로 줄였다.",
       "temporal": {
         "existence": {
           "start_year": 1412,
@@ -1050,12 +1050,12 @@
         "source_asset": "asset-0001",
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
-          1142,
-          999
+          1092,
+          1000
         ],
-        "method": "drawn_pond_on_source_map",
+        "method": "drawn_pond_shifted_to_west_wall",
         "detail_asset": "asset-0017",
-        "note": "도성대지도 부분도 4에 그려진 네모 연못(원도 1111~1173, 966~1032)의 중심. 그려진 크기 129 × 119 m가 기록값 128 × 113 m와 거의 같다. 원도의 경복궁 담장은 실제(동서 약 500 m)보다 좁게(약 350 m) 그려져 있어 현대 위치를 옮기면 연못이 담장 밖으로 나가므로 그림을 따랐다."
+        "note": "원도 부분도 4의 연못 그림(1111~1173, 966~1032)은 담장 안 가운데 가까이 있으나, 실제 경회루 연못은 경복궁 서쪽 담장에 붙어 있다. 그림의 남북 위치를 살리고 서쪽 담장(x≈1069) 안쪽으로 옮겼다."
       },
       "display_model": "gyeonghoeru_pond",
       "display_yaw_deg": 0,
@@ -1063,7 +1063,7 @@
       "info": {
         "summary": "경복궁 서쪽의 인공 연못. 1412년 넓혀 만들었고, 그 안 동쪽 섬에 경회루가 있었다. 임진왜란 때 누각은 불탔지만 용을 새긴 돌기둥 48개는 연못 안에 그대로 서 있었다.",
         "period": "1412년 연못 확장과 누각 건립. 1592년 누각 소실, 돌기둥만 남음. 1867년 경회루 재건.",
-        "in_1750": "연못과 돌기둥만 있었다. 도성대지도 경복궁 담장 안에 그려진 네모 연못·기둥 줄·섬 둘 자리에 두었다. 원도 담장이 실제보다 좁게 그려져 실제 위치와는 다를 수 있다.",
+        "in_1750": "연못과 돌기둥만 있었다. 도성대지도에는 담장 안에 연못·기둥 줄·섬 둘이 그려져 있다. 실제 연못이 서쪽 담장에 붙어 있으므로 그림보다 서쪽으로 옮겨 절반 크기로 표시했다.",
         "sources": [
           {
             "title": "위키백과 경회루",
@@ -1124,12 +1124,12 @@
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "pixel": [
           1153,
-          1062
+          1058
         ],
         "method": "proportional_inside_drawn_palace_wall",
-        "note": "원도 담장 안 남북 비율(광화문에서 신무문까지의 72% 지점, 담장 가운데 축)에 두었다. 실제 비율은 68%지만 그려진 연못과 겹치지 않게 조금 남쪽으로 옮겼다. 원도에는 건물이 없다."
+        "note": "원도 담장 안 남북 비율(광화문에서 신무문까지의 72% 지점, 담장 가운데 축). 원도에는 건물이 없다."
       },
-      "display_model": "geunjeongjeon_site",
+      "display_model": "hall_site",
       "display_yaw_deg": 0,
       "model_note": "상·하 2단 월대와 남쪽 계단, 5×5칸 주춧돌 36개를 단순화한 개념 모형. 건물은 1750년에 없었으므로 두지 않았다.",
       "info": {
@@ -1144,6 +1144,245 @@
           {
             "title": "국가유산청 경복궁 근정전",
             "url": "https://www.heritage.go.kr/heri/gungDetail/gogungDetail.do?serial_number=161&detail_code=11&gung_number=1"
+          }
+        ]
+      },
+      "hall_site": {
+        "hall_m": [
+          30,
+          21
+        ],
+        "bays": [
+          5,
+          5
+        ],
+        "tiers": 2
+      }
+    },
+    {
+      "id": "sajeongjeon_site",
+      "name": "사정전 터",
+      "category": "궁궐",
+      "reference": "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%A0%95%EC%A0%84",
+      "note": "경복궁 사정전 터 자리. 1592년 불탄 뒤 기단과 주춧돌만 남았습니다.",
+      "position_status": "proportional_inside_drawn_palace_wall",
+      "symbol_size_m": [
+        30,
+        1.6,
+        18
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "건물 칸수는 기록값, 기단 너비는 개략값.",
+      "temporal": {
+        "existence": {
+          "start_year": 1395,
+          "end_year": null,
+          "status": "built_1395_burnt_1592_rebuilt_1865",
+          "note": "1395년 경복궁 창건 때 세웠다. 1592년 임진왜란 때 불탔고 1865~1867년 중건했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "not_depicted_on_source_map"
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%A0%95%EC%A0%84",
+            "supports": "built 1395, burnt 1592, rebuilt 1865-67"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "proportional_inside_drawn_palace_wall",
+        "resolved_on": "2026-09-14",
+        "precision_m": 40,
+        "note": "근정전 북쪽 중심축 위의 실제 간격을 원도 담장의 남북 축척(약 0.67)으로 줄여 두었다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1153,
+          1024
+        ],
+        "method": "proportional_inside_drawn_palace_wall",
+        "note": "근정전 터 북쪽 중심축. 원도에는 건물이 없다."
+      },
+      "display_model": "hall_site",
+      "hall_site": {
+        "hall_m": [
+          24,
+          12
+        ],
+        "bays": [
+          5,
+          3
+        ],
+        "tiers": 1
+      },
+      "display_yaw_deg": 0,
+      "model_note": "기단 한 단과 주춧돌만 둔 개념 모형. 건물은 1750년에 없었다.",
+      "info": {
+        "summary": "경복궁의 편전 사정전이 서 있던 자리. 임금이 평소 정무를 보던 곳으로, 근정전 바로 북쪽에 있었다.",
+        "period": "1395년 창건. 1592년 소실. 1867년 중건.",
+        "in_1750": "건물은 없었다. 기단과 주춧돌만 남은 터를 표시했다. 원도 담장 안에는 건물이 없어 근정전 북쪽 중심축에 실제 간격을 줄여 두었다.",
+        "sources": [
+          {
+            "title": "위키백과 사정전",
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%A0%95%EC%A0%84"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gangnyeongjeon_site",
+      "name": "강녕전 터",
+      "category": "궁궐",
+      "reference": "https://ko.wikipedia.org/wiki/%EA%B0%95%EB%85%95%EC%A0%84",
+      "note": "경복궁 강녕전 터 자리. 1592년 불탄 뒤 기단과 주춧돌만 남았습니다.",
+      "position_status": "proportional_inside_drawn_palace_wall",
+      "symbol_size_m": [
+        48,
+        1.6,
+        26
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "건물 칸수는 기록값, 기단 너비는 개략값.",
+      "temporal": {
+        "existence": {
+          "start_year": 1395,
+          "end_year": null,
+          "status": "built_1395_burnt_1592_rebuilt_1865",
+          "note": "1395년 경복궁 창건 때 세웠다. 1592년 임진왜란 때 불탔고 1865~1867년 중건했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "not_depicted_on_source_map"
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EA%B0%95%EB%85%95%EC%A0%84",
+            "supports": "built 1395, burnt 1592, rebuilt 1865-67"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "proportional_inside_drawn_palace_wall",
+        "resolved_on": "2026-09-14",
+        "precision_m": 40,
+        "note": "근정전 북쪽 중심축 위의 실제 간격을 원도 담장의 남북 축척(약 0.67)으로 줄여 두었다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1153,
+          998
+        ],
+        "method": "proportional_inside_drawn_palace_wall",
+        "note": "근정전 터 북쪽 중심축. 원도에는 건물이 없다."
+      },
+      "display_model": "hall_site",
+      "hall_site": {
+        "hall_m": [
+          41,
+          20
+        ],
+        "bays": [
+          11,
+          5
+        ],
+        "tiers": 1
+      },
+      "display_yaw_deg": 0,
+      "model_note": "기단 한 단과 주춧돌만 둔 개념 모형. 건물은 1750년에 없었다.",
+      "info": {
+        "summary": "임금의 침전 강녕전이 서 있던 자리. 사정전 북쪽에 있었다.",
+        "period": "1395년 창건. 1592년 소실. 1865년 중건.",
+        "in_1750": "건물은 없었다. 기단과 주춧돌만 남은 터를 표시했다. 원도 담장 안에는 건물이 없어 근정전 북쪽 중심축에 실제 간격을 줄여 두었다.",
+        "sources": [
+          {
+            "title": "위키백과 강녕전",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B0%95%EB%85%95%EC%A0%84"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gyotaejeon_site",
+      "name": "교태전 터",
+      "category": "궁궐",
+      "reference": "https://ko.wikipedia.org/wiki/%EA%B5%90%ED%83%9C%EC%A0%84",
+      "note": "경복궁 교태전 터 자리. 1592년 불탄 뒤 기단과 주춧돌만 남았습니다.",
+      "position_status": "proportional_inside_drawn_palace_wall",
+      "symbol_size_m": [
+        40,
+        1.6,
+        24
+      ],
+      "size_status": "assumed_display_scale",
+      "size_note": "건물 칸수는 기록값, 기단 너비는 개략값.",
+      "temporal": {
+        "existence": {
+          "start_year": 1395,
+          "end_year": null,
+          "status": "built_1395_burnt_1592_rebuilt_1865",
+          "note": "1395년 경복궁 창건 때 세웠다. 1592년 임진왜란 때 불탔고 1865~1867년 중건했다."
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": null,
+          "status": "not_depicted_on_source_map"
+        },
+        "sources": [
+          {
+            "url": "https://ko.wikipedia.org/wiki/%EA%B5%90%ED%83%9C%EC%A0%84",
+            "supports": "built 1395, burnt 1592, rebuilt 1865-67"
+          }
+        ]
+      },
+      "modern_position": {
+        "method": "proportional_inside_drawn_palace_wall",
+        "resolved_on": "2026-09-14",
+        "precision_m": 40,
+        "note": "근정전 북쪽 중심축 위의 실제 간격을 원도 담장의 남북 축척(약 0.67)으로 줄여 두었다."
+      },
+      "source_position": {
+        "source_asset": "asset-0001",
+        "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+        "pixel": [
+          1153,
+          978
+        ],
+        "method": "proportional_inside_drawn_palace_wall",
+        "note": "근정전 터 북쪽 중심축. 원도에는 건물이 없다."
+      },
+      "display_model": "hall_site",
+      "hall_site": {
+        "hall_m": [
+          34,
+          18
+        ],
+        "bays": [
+          9,
+          5
+        ],
+        "tiers": 1
+      },
+      "display_yaw_deg": 0,
+      "model_note": "기단 한 단과 주춧돌만 둔 개념 모형. 건물은 1750년에 없었다.",
+      "info": {
+        "summary": "왕비의 침전 교태전이 서 있던 자리. 강녕전 북쪽, 경복궁 중심축의 가장 안쪽에 있었다.",
+        "period": "1395년 창건. 1592년 소실. 1865년 중건. 1918년 창덕궁으로 옮겨졌다가 1995년 복원.",
+        "in_1750": "건물은 없었다. 기단과 주춧돌만 남은 터를 표시했다. 원도 담장 안에는 건물이 없어 근정전 북쪽 중심축에 실제 간격을 줄여 두었다.",
+        "sources": [
+          {
+            "title": "위키백과 교태전",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B5%90%ED%83%9C%EC%A0%84"
           }
         ]
       }

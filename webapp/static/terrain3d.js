@@ -13,7 +13,7 @@ import {createObservatory} from './observatory.js';
 import {createSettlement} from './settlement.js';
 import {createSijeon} from './sijeon.js';
 import {createPlaceNames} from './placenames.js';
-import {createGyeonghoeruPond,createGeunjeongjeonSite} from './gyeongbokgung_ruins.js';
+import {createGyeonghoeruPond,createHallSite} from './gyeongbokgung_ruins.js';
 import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
@@ -253,7 +253,7 @@ async function main(){
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d))}
   if(feature.display_model==='gyeonghoeru_pond'){box.material.visible=false;foundation.visible=false;box.add(createGyeonghoeruPond(feature,w,h,d))}
-  if(feature.display_model==='geunjeongjeon_site'){box.material.visible=false;box.add(createGeunjeongjeonSite(feature,w,h,d))}
+  if(feature.display_model==='hall_site'){box.material.visible=false;box.add(createHallSite(feature,w,h,d))}
   if(feature.display_model==='observatory'){box.material.visible=false;foundation.visible=false;box.add(createObservatory(feature,w,h,d))}
   if(feature.display_model==='wongaksa_pagoda'){box.material.visible=false;box.add(createPagoda(feature,w,h,d))}
   if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d))}
@@ -288,7 +288,7 @@ async function main(){
  }
  const colors3d=colors;
  for(const box of buildings.children){
-  const detail=[...box.children];if(!detail.length||['gyeonghoeru_pond','geunjeongjeon_site'].includes(box.userData.feature.display_model))continue;
+  const detail=[...box.children];if(!detail.length||['gyeonghoeru_pond','hall_site'].includes(box.userData.feature.display_model))continue;
   const f=box.userData.feature,[w,h,d]=f.symbol_size_m;
   const proxy=new THREE.Mesh(proxyGeometry(f,w,h,d),proxyMaterial);proxy.name='landmark-lod';proxy.visible=false;box.add(proxy);
   landmarkLods.push({box,detail,proxy,near:true});
@@ -358,7 +358,7 @@ async function main(){
  // label is hidden for that frame.
  const LABEL_REACH=[Infinity,7000,3000,1500,1000];
  const LEVEL0=new Set(['changdeok','changgyeong','gyeongdeok','jongmyo','heunginjimun','sungnyemun','donuimun','sukjeongmun']);
- const LEVEL1=new Set(['gyeonghoeru_pond','geunjeongjeon_site','sajik','sungkyun','gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
+ const LEVEL1=new Set(['gyeonghoeru_pond','geunjeongjeon_site','sajeongjeon_site','gangnyeongjeon_site','gyotaejeon_site','sajik','sungkyun','gwanghwamun','donhwamun','honghwamun','gwanghuimun','souimun','changuimun','hyehwamun','jongru','wongaksa_pagoda','hullyeonwon','gyeongmogung','dongmyo','nammyo','uigeumbu','bibyeonsa','seonhyecheong','hunguk','daebodan','yeonghuijeon','yuksanggung']);
  function buildingLevel(f){
   if(LEVEL0.has(f.id))return 0;if(LEVEL1.has(f.id))return 1;
   const [w,,d]=f.symbol_size_m??[0,0,0];
@@ -379,7 +379,7 @@ async function main(){
    tag.scale.set(scale*aspect,scale,1);tag.visible=false;if(!eligible)return;
    const d=camera.position.distanceTo(tag.position);if(d>=LABEL_REACH[level])return;
    projected.copy(tag.position).project(camera);if(projected.z<-1||projected.z>1||Math.abs(projected.x)>1.1||Math.abs(projected.y)>1.1)return;
-   candidates.push({tag,aspect,level,d,sx:(projected.x+1)*r.width/2,sy:(1-projected.y)*r.height/2});
+   candidates.push({tag,aspect,level,d,sx:(projected.x+1)*r.width/2,sy:(1-projected.y)*r.height/2,owner:tag.userData.featureId??null});
   };
   yukjoStreetTag.tag.position.copy(yukjoCentre);yukjoStreetTag.tag.position.y+=16;
   consider(yukjoStreetTag.tag,yukjoStreetTag.aspect,0,buildingNames.visible&&yukjoFar&&yukjoOffices.some(b=>b.visible));
@@ -401,12 +401,12 @@ async function main(){
    const w=LABEL_PX*c.aspect,bottom=c.sy+(c.tag.userData.baseCenterY-step*1.1)*LABEL_PX;box=[c.sx-w/2-2,bottom-LABEL_PX-2,c.sx+w/2+2,bottom+2];keys=[];clash=false;
    for(let gx=Math.floor(box[0]/LABEL_CELL);gx<=Math.floor(box[2]/LABEL_CELL);gx++)for(let gy=Math.floor(box[1]/LABEL_CELL);gy<=Math.floor(box[3]/LABEL_CELL);gy++){
     const key=gx+','+gy;keys.push(key);
-    if(!clash)for(const o of labelCells.get(key)??[])if(box[0]<o[2]&&box[2]>o[0]&&box[1]<o[3]&&box[3]>o[1]){clash=true;break}
+    if(!clash)for(const o of labelCells.get(key)??[])if(box[0]<o[2]&&box[2]>o[0]&&box[1]<o[3]&&box[3]>o[1]&&!(c.owner&&o[4]===c.owner)){clash=true;break}
    }
    if(!clash||step===tries-1){c.tag.center.y=c.tag.userData.baseCenterY-step*1.1;break}
    }
    if(clash&&c.level>0)continue;
-   c.tag.visible=true;for(const key of keys){if(!labelCells.has(key))labelCells.set(key,[]);labelCells.get(key).push(box)}
+   box[4]=c.owner;c.tag.visible=true;for(const key of keys){if(!labelCells.has(key))labelCells.set(key,[]);labelCells.get(key).push(box)}
   }
  }
  frameUpdate=()=>updateBuildingNames();
