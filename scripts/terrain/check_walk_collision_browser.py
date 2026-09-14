@@ -76,6 +76,18 @@ with sync_playwright() as p:
   return {moved:Math.hypot(e.x-before.x,e.z-before.z),localZ:(e.x-r.x)*sx+(e.z-r.z)*sz,inside:!!t.collision.hit(e.x,e.z,.3)}}''')
  print('player',player,flush=True)
  assert 4<player['moved']<7 and -3.8<player['localZ']<-3.3 and not player['inside'],player
+ # In first-person view a click (not a drag) still opens a card: walk up to a signboard and click it.
+ spot=page.evaluate('''()=>{const t=terrain3d,fp=t.firstPerson,board=t.sijeon.signs.find(b=>b.visible);const r=t.sijeon.records[board.userData.record];
+  fp.enter();const sx=Math.sin(r.yaw),sz=Math.cos(r.yaw);fp.placeAt(r.x-sx*14,r.z-sz*14,Math.atan2(-sx,-sz));t.pedestrians.group.visible=false;
+  fp.update(1/30);t.renderer.setAnimationLoop(null);t.scene.updateMatrixWorld(true);t.renderer.render(t.scene,t.camera);
+  const v=board.getWorldPosition(new board.position.constructor()).project(t.camera),rect=t.renderer.domElement.getBoundingClientRect();
+  return {x:rect.left+(v.x+1)*rect.width/2,y:rect.top+(1-v.y)*rect.height/2,hangul:board.userData.hangul,onScreen:Math.abs(v.x)<1&&Math.abs(v.y)<1&&v.z<1}}''')
+ assert spot['onScreen'],spot
+ page.mouse.move(spot['x'],spot['y']);page.mouse.down();page.mouse.up()
+ card=page.evaluate("()=>{const p=document.getElementById('building-popup');return {hidden:p.hidden,text:p.innerText,active:terrain3d.firstPerson.active}}")
+ page.evaluate("()=>{terrain3d.firstPerson.exit();terrain3d.pedestrians.group.visible=true}")
+ print('first-person click',{**spot,'card':card['text'][:40],'active':card['active']},flush=True)
+ assert not card['hidden'] and card['text'].startswith(spot['hangul']) and card['active'],card
  # Pedestrians step aside from the player and keep apart from each other.
  people=page.evaluate('''()=>{const ped=terrain3d.pedestrians,w=ped.walkers[10];
   ped.update(0);const start=w.position.clone();
@@ -86,4 +98,4 @@ with sync_playwright() as p:
  print('pedestrians',people,flush=True)
  assert people['dodge']>.5 and people['away']>1 and people['close']==0,people
  assert not errors,errors
- print('PASS: About panel, popup, walking collision, pedestrian side-stepping and 경복궁 label',flush=True);b.close()
+ print('PASS: About panel, popup, first-person click, walking collision, pedestrian side-stepping and 경복궁 label',flush=True);b.close()

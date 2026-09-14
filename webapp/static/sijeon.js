@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {hipGableRoof} from './throne_hall.js';
 
 // Shop rows (행랑) lining both sides of the read Unjongga centreline.
 // The map does not draw the individual shops: only the street line and its width
@@ -77,16 +78,17 @@ export function createSijeon(data,sourceSurface,landmarks){
   awning:new THREE.MeshStandardMaterial({color:0xcbb789,roughness:1}),
   post:new THREE.MeshStandardMaterial({color:0x7a5c3c,roughness:1}),
  };
- // A unit gable prism: ridge along local X, eaves at z = ±0.5, base at y = 0.
- const prism=new THREE.BufferGeometry();
- prism.setAttribute('position',new THREE.Float32BufferAttribute([
-  -.5,0,-.5, .5,0,-.5, .5,0,.5, -.5,0,.5, -.5,1,0, .5,1,0],3));
- prism.setIndex([0,4,5,0,5,1,1,5,2,2,5,4,2,4,3,3,4,0,0,1,2,0,2,3]);
- prism.computeVertexNormals();
+ // A unit hip-and-gable roof with a short hip, so each row block reads as one long tiled hall.
+ const prism=hipGableRoof(1,1,1,.06,.16);
  const make=(geometry,material)=>{const mesh=new THREE.InstancedMesh(geometry,material,records.length);mesh.frustumCulled=false;group.add(mesh);return mesh};
  const footing=make(new THREE.BoxGeometry(1,1,1),mats.stone);footing.name='shop-footing';
  const walls=make(new THREE.BoxGeometry(1,1,1),mats.wall);walls.name='shop-walls';
  const roofs=make(prism,mats.roof);roofs.name='shop-roofs';
+ mats.ridge=new THREE.MeshStandardMaterial({color:0x8b908f,roughness:1});mats.roof.side=THREE.DoubleSide;
+ const ridges=make(new THREE.BoxGeometry(1,1,1),mats.ridge);ridges.name='shop-ridges';
+ // Gable-end walls close both ends of each block.
+ const endLeft=make(new THREE.BoxGeometry(1,1,1),mats.wall);endLeft.name='shop-end-wall-left';
+ const endRight=make(new THREE.BoxGeometry(1,1,1),mats.wall);endRight.name='shop-end-wall-right';
  // Open shopfronts: a counter under an awning on posts, with the keeper standing behind it.
  const counters=make(new THREE.BoxGeometry(1,1,1),mats.counter);counters.name='shop-counters';
  const awnings=make(new THREE.BoxGeometry(1,1,1),mats.awning);awnings.name='shop-awnings';
@@ -94,6 +96,9 @@ export function createSijeon(data,sourceSurface,landmarks){
  const postsRight=make(new THREE.CylinderGeometry(.09,.11,1,6),mats.post);postsRight.name='awning-post-right';
  // Keepers and signboards live in their own group: their counts differ from the block count.
  const extras=new THREE.Group();extras.name='shop-keepers-and-signs';group.add(extras);
+ // Timber posts on the open front mark every bay (칸) of the row.
+ const baySpots=records.flatMap((r,i)=>Array.from({length:r.bays+1},(_,k)=>({record:i,along:(k/r.bays-.5)*r.length})));
+ const bayPosts=new THREE.InstancedMesh(new THREE.CylinderGeometry(.12,.14,1,6),mats.post,baySpots.length);bayPosts.name='shop-bay-posts';bayPosts.frustumCulled=false;extras.add(bayPosts);
  const keeperSpots=[];
  records.forEach((r,i)=>{
   const count=r.bays<=5?1:2;
@@ -176,6 +181,8 @@ export function createSijeon(data,sourceSurface,landmarks){
   const box=new THREE.Mesh(new THREE.BoxGeometry(r.length,height+1.5,depth+3),pickMaterial);
   box.name='shop-pick';box.userData={feature,record:i};picks.add(box);
  });
+ // A signboard opens the same card as its row.
+ for(const board of signs)board.userData.feature=picks.children[board.userData.record].userData.feature;
  const dummy=new THREE.Object3D(),tilt=new THREE.Euler();
  let exaggeration=1,mapVisible=true,visible=0;
  function updateHeights(ex){
@@ -195,7 +202,9 @@ export function createSijeon(data,sourceSurface,landmarks){
    place(footing,floor+.2,r.length+.5,.4,depth+.9);
    // Only the back half is walled; the street side stands open for trade.
    place(walls,sill+height/2,r.length,height,depth*.5,depth*.24);
-   place(roofs,sill+height,r.length+1.1,1.55,depth+1.7);
+   place(roofs,sill+height,r.length+1.1,1.7,depth+1.7);
+   place(ridges,sill+height+1.75,r.length+1.1-(depth+1.7)*.16,.2,.3);
+   for(const [mesh,side] of [[endLeft,-1],[endRight,1]])place(mesh,sill+height/2,.25,height,depth,0,side*(r.length/2-.12));
    place(counters,sill+.4,r.length*.94,.8,.8,-depth*.42);
    place(awnings,eave-.35,r.length+.7,.16,2.2,-depth*.5-1);
    for(const [mesh,side] of [[postsLeft,-1],[postsRight,1]]){
@@ -203,6 +212,12 @@ export function createSijeon(data,sourceSurface,landmarks){
      (sill+eave-.35)/2,r.z+(-depth*.5-1.9)*Math.cos(r.yaw)-side*r.length*.46*Math.sin(r.yaw));
     dummy.rotation.set(0,r.yaw,0);dummy.scale.set(1,eave-.35-sill,1);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);
    }
+  });
+  baySpots.forEach((b,j)=>{
+   const r=records[b.record];
+   if(!r.displayed){dummy.scale.set(0,0,0);dummy.updateMatrix();bayPosts.setMatrixAt(j,dummy.matrix);return}
+   const s=Math.sin(r.yaw),c=Math.cos(r.yaw),dz=-depth*.5+.15,sill=r.floor+.4;
+   dummy.position.set(r.x+dz*s+b.along*c,sill+height/2,r.z+dz*c-b.along*s);dummy.rotation.set(0,r.yaw,0);dummy.scale.set(1,height,1);dummy.updateMatrix();bayPosts.setMatrixAt(j,dummy.matrix);
   });
   // Keepers stand between the counter and the back wall, facing the street.
   keeperSpots.forEach((k,j)=>{

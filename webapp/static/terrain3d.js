@@ -513,7 +513,7 @@ async function main(){
   }
  }
  const selectable=()=>[...(buildings.visible?buildings.children:[]),...(bridges.visible?bridges.children:[]),
-  ...(buildings.visible&&sijeon?.group.visible?sijeon.picks.children.filter(box=>box.visible):[])];
+  ...(buildings.visible&&sijeon?.group.visible?[...sijeon.picks.children,...sijeon.signs].filter(o=>o.visible):[])];
  el('water3d').onchange=()=>{waterLayer.visible=el('water3d').checked;bridges.visible=waterLayer.visible;selected=null;clearHover()};
  el('water-focus').onclick=()=>{const target=sourceSurface(1523,1554);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(0,900,1300));controls.update()};
  el('namsan-focus').onclick=()=>{const target=sourceSurface(...exp.terrain_alignment.anchors[0].pixel);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(400,1200,1700));controls.update()};
@@ -587,9 +587,9 @@ async function main(){
   if(hovered){const r=renderer.domElement.getBoundingClientRect();tooltip.textContent=hovered.userData.feature.name;tooltip.style.left=Math.max(0,Math.min(event.clientX-r.left+14,r.width-260))+'px';tooltip.style.top=Math.max(0,Math.min(event.clientY-r.top+12,r.height-50))+'px'}
   showBuilding(selected??hovered);
  });
- renderer.domElement.addEventListener('pointerdown',event=>{if(firstPerson?.active)return;press={x:event.clientX,y:event.clientY,id:event.pointerId};tooltip.hidden=true});
+ // Clicks select in both orbit and first-person views; a drag (6 px or more) only turns the view.
+ renderer.domElement.addEventListener('pointerdown',event=>{press={x:event.clientX,y:event.clientY,id:event.pointerId};tooltip.hidden=true});
  renderer.domElement.addEventListener('pointerup',event=>{
-  if(firstPerson?.active)return;
   if(press&&press.id===event.pointerId&&Math.hypot(event.clientX-press.x,event.clientY-press.y)<6){selected=hit(event)??placeNames?.pick(event)??null;hovered=null;tooltip.hidden=true;showBuilding(selected)}
   press=null;
  });

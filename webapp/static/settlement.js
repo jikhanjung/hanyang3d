@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {hipGableRoof} from './throne_hall.js';
 
 // Deliberately small, repeated concept models; positions are speculative.
 export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPath,blockers=[]){
@@ -42,6 +43,10 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
    for(const offset of [-.175,0,.175])wallBox(x,.05+offset,z*1.04,.22,.018,.02,'#69503a');
   }
  }
+ // Front door (local +Z, the road side): a plank door with a lattice upper panel between the two windows.
+ wallBox(0,-.1,.49,.2,.72,.02,'#5b4431');
+ for(const offset of [-.05,.05])wallBox(offset,.08,.505,.012,.3,.015,'#e6dcc1');
+ wallBox(0,-.47,.49,.24,.05,.05,'#8f8574');
  const wallGeo=new THREE.BufferGeometry();wallGeo.setAttribute('position',new THREE.Float32BufferAttribute(wallPositions,3));wallGeo.setAttribute('color',new THREE.Float32BufferAttribute(wallColors,3));wallGeo.computeVertexNormals();
  function hanokRoof(thatch){
   const positions=[],colors=[],baseColor=new THREE.Color('#ffffff');
@@ -66,6 +71,11 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
  const mesh=(geometry,color)=>{const m=new THREE.InstancedMesh(geometry,new THREE.MeshStandardMaterial({color,roughness:1,side:THREE.DoubleSide,vertexColors:!!geometry.attributes.color}),records.length);group.add(m);return m};
  const body=mesh(wallGeo,0xffffff),roof=mesh(hanokRoof(false),0xffffff),base=mesh(new THREE.BoxGeometry(1,1,1),0x938471),front=mesh(new THREE.BoxGeometry(1,1,1),0x68523a);
  const strawRoof=mesh(hanokRoof(true),0xffffff);strawRoof.name='thatched-roofs';
+ // Larger tile houses of the well-off get a hip-and-gable roof (팔작) instead of the plain gable (맞배).
+ const hipRoof=mesh(hipGableRoof(1,1,1,.12,.5),0xffffff);hipRoof.name='house-roofs-hip';
+ const ridge=mesh(new THREE.BoxGeometry(1,1,1),0x8b908f);ridge.name='house-ridges';
+ // A low chimney (굴뚝) stands behind every house by the kitchen end, clear of the back eave.
+ const chimney=mesh(new THREE.BoxGeometry(1,1,1),0x8a7a66);chimney.name='house-chimneys';
  // Far level of detail: a plain block and a two-slope prism (about 20 triangles) replace the lattice walls and roof courses.
  const farPrism=new THREE.BufferGeometry();
  farPrism.setAttribute('position',new THREE.Float32BufferAttribute([-.5,0,-.5, .5,0,-.5, .5,0,.5, -.5,0,.5, -.5,1,0, .5,1,0],3));
@@ -73,7 +83,13 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
  const farBody=mesh(new THREE.BoxGeometry(1,1,1),0xffffff),farRoof=mesh(farPrism,0xffffff);farBody.name='house-walls-far';farRoof.name='house-roofs-far';
  body.name='house-walls';roof.name='house-roofs';base.name='house-footings';front.name='shop-awnings';
  const tileColor=new THREE.Color('#515957');
- records.forEach(r=>{r.wallColor=new THREE.Color(r.shop?'#bca17b':r.style<.5?'#c8baa0':'#b7a68a');r.roofType=r.shop||r.style<.38?'tile':'thatch';r.strawColor=new THREE.Color(r.style<.72?'#b6a070':'#c3ad7d')});
+ records.forEach(r=>{
+  r.roofType=r.shop||r.style<.38?'tile':'thatch';
+  // Tile houses have lime-plastered walls; thatched houses keep earthen walls.
+  r.wallColor=new THREE.Color(r.shop?'#c7b28f':r.roofType==='tile'?(r.style<.2?'#ddd3bd':'#d2c6ad'):(r.style<.7?'#b9a585':'#ae9a7b'));
+  r.hip=r.roofType==='tile'&&!r.shop&&r.w*r.d>=30&&r.style<.2;
+  r.strawColor=new THREE.Color(r.style<.72?'#b6a070':'#c3ad7d');
+ });
  let density=.7,exaggeration=1,visibleCount=0,shopCount=0,mapVisible=true,lod=null,nearCount=0;const LOD_M=1400;
  const dummy=new THREE.Object3D();
  // Each instanced mesh packs only the houses it draws at the front and sets its count, so hidden or far houses cost the
@@ -87,7 +103,8 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
    r.displaySurface=surface;r.displayed=!!show;
    if(!show)continue;
    visibleCount++;if(r.shop)shopCount++;
-   const floor=surface.min*ex+.08,low=floor-.18;
+   // Tile houses stand on a knee-high stone plinth (기단); thatched houses on a low earth step.
+   const plinth=r.roofType==='tile'?.4:.15,floor=surface.min*ex+.08+plinth,low=surface.min*ex-.1;
    r.floor=floor;
    const place=(m,x,y,z,sx,sy,sz,color)=>{const i=slots.get(m);slots.set(m,i+1);dummy.position.set(x,y,z);dummy.rotation.set(0,r.yaw,0);dummy.scale.set(sx,sy,sz);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix);if(color)m.setColorAt(i,color)};
    place(base,r.x,(floor+low)/2,r.z,r.w,floor-low,r.d);
@@ -95,9 +112,13 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
    if(near){
     nearCount++;
     place(body,r.x,floor+r.h/2,r.z,r.w,r.h,r.d,r.wallColor);
-    place(thatch?strawRoof:roof,r.x,floor+r.h,r.z,r.w+1,1.5,r.d+1,thatch?r.strawColor:tileColor);
-    // A shallow shop eave or small doorway; neither represents a named business.
-    place(front,r.x+Math.sin(r.yaw)*r.d*.5,floor+(r.shop?2.1:1),r.z+Math.cos(r.yaw)*r.d*.5,r.shop?r.w*.9:.9,r.shop?.18:1.8,r.shop?1.6:.1);
+    if(r.hip){place(hipRoof,r.x,floor+r.h,r.z,r.w+1.4,1.8,r.d+1.4,tileColor);place(ridge,r.x,floor+r.h+1.85,r.z,Math.max(.5,r.w+1.4-(r.d+1.4)*.5),.16,.22)}
+    else{place(thatch?strawRoof:roof,r.x,floor+r.h,r.z,r.w+1,1.5,r.d+1,thatch?r.strawColor:tileColor);if(!thatch)place(ridge,r.x,floor+r.h+1.52,r.z,r.w+1,.16,.22)}
+    // The chimney sits behind the back eave at the kitchen end.
+    const side=r.style<.5?1:-1,cx=side*(r.w/2-.5),cz=-(r.d/2+.75);
+    place(chimney,r.x+Math.cos(r.yaw)*cx+Math.sin(r.yaw)*cz,floor+.6,r.z-Math.sin(r.yaw)*cx+Math.cos(r.yaw)*cz,.45,1.8,.45);
+    // A shallow shop eave over the street front; it does not represent a named business.
+    if(r.shop)place(front,r.x+Math.sin(r.yaw)*r.d*.5,floor+2.1,r.z+Math.cos(r.yaw)*r.d*.5,r.w*.9,.18,1.6);
    }else{
     place(farBody,r.x,floor+r.h/2,r.z,r.w,r.h,r.d,r.wallColor);
     place(farRoof,r.x,floor+r.h,r.z,r.w+1,1.5,r.d+1,thatch?r.strawColor:tileColor);

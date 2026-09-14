@@ -32,7 +32,8 @@ export function hipGableRoof(width,depth,rise,lift=.5,gableFrac=.55){
  }
  for(const sign of [-1,1]){ // end hips up to the gable line, then the gable panel
   for(let i=0;i<M;i++)for(let j=0;j<M;j++){
-   const pt=(ii,jj)=>{const v=(jj/M)*gableFrac,u=ii/M,z=-b+u*depth,ez=Math.abs(z)/b,x=sign*(a-(v*b)),y=slope(v)+lift*Math.pow(ez,3)*(1-v);return [x,y,z]};
+   // Each end hip narrows toward the top, meeting the long slopes along the hip ridges.
+   const pt=(ii,jj)=>{const v=(jj/M)*gableFrac,u=ii/M,half=b*(1-v),z=-half+u*half*2,ez=Math.abs(z)/b,x=sign*(a-(v*b)),y=slope(v)+lift*Math.pow(ez,3)*(1-v);return [x,y,z]};
    sign>0?quad(pt(i,j),pt(i,j+1),pt(i+1,j+1),pt(i+1,j)):quad(pt(i,j),pt(i+1,j),pt(i+1,j+1),pt(i,j+1));
   }
   const v=gableFrac,x=sign*(a-v*b),yv=slope(v),zt=b*(1-v);
