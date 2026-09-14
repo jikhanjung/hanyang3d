@@ -254,17 +254,19 @@ async function main(){
  }
  // Far level of detail for landmarks: beyond LANDMARK_LOD_M a detailed model (often hundreds of meshes) is replaced by one
  // merged low model — a base plate, a hall block and a roof — so the whole city costs about one draw call per building.
- const LANDMARK_LOD_M=1600,proxyMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1}),landmarkLods=[];
+ const LANDMARK_LOD_M=2400,proxyMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1}),landmarkLods=[];
  function proxyGeometry(feature,w,h,d){
   const positions=[],colors=[],m=new THREE.Matrix4(),v=new THREE.Vector3();
-  const push=(geometry,color,x,y,z,ry=0)=>{const g=geometry.index?geometry.toNonIndexed():geometry,p=g.attributes.position,c=new THREE.Color(color);
+  // Every upward face of a wall or plate block is painted tile colour so the simplified city reads as roofs from above.
+  const tile=0x4b5254,tileC=new THREE.Color(tile);
+  const push=(geometry,color,x,y,z,ry=0)=>{const g=geometry.index?geometry.toNonIndexed():geometry,p=g.attributes.position,n=g.attributes.normal,c=new THREE.Color(color);
    m.makeRotationY(ry).setPosition(x,y,z);
-   for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m);positions.push(v.x,v.y,v.z);colors.push(c.r,c.g,c.b)}};
+   for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m);positions.push(v.x,v.y,v.z);const up=n&&n.getY(i)>.5;colors.push(up?tileC.r:c.r,up?tileC.g:c.g,up?tileC.b:c.b)}};
   const roof=(rw,rd,rise)=>{const g=new THREE.BufferGeometry(),a=rw/2,b=rd/2;
    g.setAttribute('position',new THREE.Float32BufferAttribute([-a,0,-b,a,0,-b,a,rise,0, -a,0,-b,a,rise,0,-a,rise,0, a,0,b,-a,0,b,-a,rise,0, a,0,b,-a,rise,0,a,rise,0, -a,0,-b,-a,rise,0,-a,0,b, a,0,b,a,rise,0,a,0,-b],3));return g};
   const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','palace_compound','observatory','throne_hall'].includes(feature.display_model);
   // Walls stay close to the beige of the detailed timber-and-plaster models, with only a hint of the category colour.
-  const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25),tile=0x4b5254;
+  const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25);
   // A hall is a wall block with a pitched roof of ordinary house pitch; the rise never scales with the plot.
   const hall=(x,z,hw,hd,hh,ry=0)=>{push(new THREE.BoxGeometry(hw,hh,hd),wall,x,ground+.6+hh/2,z,ry);push(roof(hw+1.6,hd+1.6,Math.min(3.2,1.2+hd*.16)),tile,x,ground+.6+hh,z,ry)};
   if(feature.display_model==='yukjo_compound'){
@@ -294,7 +296,7 @@ async function main(){
   const proxy=new THREE.Mesh(proxyGeometry(f,w,h,d),proxyMaterial);proxy.name='landmark-lod';proxy.visible=false;box.add(proxy);
   landmarkLods.push({box,detail,proxy,near:true,far:null});
  }
- // Important buildings keep their detail farther out (level 0 to 4800 m, level 1 to 2880 m, level 2 to 1920 m).
+ // Important buildings keep their detail farther out (level 0 to 7200 m, level 1 to 4320 m, level 2 to 2880 m).
  // A small distance gap keeps a model from flickering between its two forms at the boundary.
  function updateLandmarkLod(){
   for(const l of landmarkLods){

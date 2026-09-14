@@ -74,7 +74,7 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
  body.name='house-walls';roof.name='house-roofs';base.name='house-footings';front.name='shop-awnings';
  const tileColor=new THREE.Color('#515957');
  records.forEach(r=>{r.wallColor=new THREE.Color(r.shop?'#bca17b':r.style<.5?'#c8baa0':'#b7a68a');r.roofType=r.shop||r.style<.38?'tile':'thatch';r.strawColor=new THREE.Color(r.style<.72?'#b6a070':'#c3ad7d')});
- let density=.7,exaggeration=1,visibleCount=0,shopCount=0,mapVisible=true,lod=null,nearCount=0;const LOD_M=800;
+ let density=.7,exaggeration=1,visibleCount=0,shopCount=0,mapVisible=true,lod=null,nearCount=0;const LOD_M=1400;
  const dummy=new THREE.Object3D();
  // Each instanced mesh packs only the houses it draws at the front and sets its count, so hidden or far houses cost the
  // GPU nothing: near houses fill the detailed meshes, far houses the simple ones.
