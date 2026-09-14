@@ -230,7 +230,8 @@ async function main(){
   tag.userData={name,x,y,z:height(x,y)+20};tag.renderOrder=6;group.add(tag);
   return {tag,aspect};
  }
- const mountainTags=exp.terrain_alignment.anchors.map(p=>{
+ // Lowland anchors (e.g. 만리창) only stretch the outskirts; mountain name tags come from the ridge anchors.
+ const mountainTags=exp.terrain_alignment.anchors.filter(p=>p.kind!=='lowland').map(p=>{
   const name=p.name.startsWith('백악')?'북악산':p.name.replace(' 능선','');
   const [x,y]=alignTerrain?project(p.lon,p.lat):warp(...p.pixel);return placeTag(name,x,y,mountainNames);
  });
