@@ -31,3 +31,9 @@
 - `check_npc_browser.py`: 로그인 전 ‘로그인’ 표시, 거래하기 → 명부 → 가입 → 가게 창과 ‘이름 · 엽전’, 서버 API로 사고팔기, 나가기 뒤 다시 로그인하면 서버의 엽전 그대로.
 - 새 `check_first_person_controls_browser.py`: 컨텍스트 메뉴 막힘, 우클릭 드래그에 `yaw` 그대로·`lookYaw`만 변함, 놓으면 0으로 복귀, 좌클릭 드래그는 `yaw`가 돎, Alt+W로 W 없이 45프레임에 4.5 m 전진, S로 멈춤.
 - `check_walk_collision`, `check_guards` 회귀.
+
+## 배포
+
+- dolfinid에 웹 v0.3.7 배포(`bash deploy.sh v0.3.7 v0.3.4`, 멀티플레이 v0.3.4 유지). 배포 직전 검증 스냅샷 `content_v0.3.7_20260915_140016.sqlite3`, migration `0003_player_accounts` 적용, `sync_content` 변경 0, `healthcheck.py --deploy` 통과. Nginx 사이트 설정 변경 없음.
+- 웹 digest `sha256:741c1663a5127602b064e10758e903bac89b2e7c5aef40c68e77d540caf6a9d0`.
+- 운영 확인(HTTPS, 브라우저와 같은 쿠키·CSRF 흐름): 로그인 전 `{"logged_in": false}`, 로그인 없는 거래 401, 가입 200, 나가기 뒤 로그인 전 상태, 틀린 비밀번호 401, 로그인 200, 로그인 뒤 북어 사기 200(2880문), 공개 `/healthz` 정상. 이 확인으로 운영 DB에 시험 계정 1개(`운영검사…`)와 거래 기록 1건, 로그인 실패 기록 1건이 남았다.
