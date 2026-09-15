@@ -285,6 +285,23 @@ class BackupTests(SimpleTestCase):
             self.assertFalse((source.parent / FAILURE_SENTINEL).exists())
             self.assertFalse(list(directory.glob('*.sqlite3-wal')))
 
+    def test_pre_deploy_snapshots_keep_the_newest(self):
+        from deploy.host.backup_content import snapshot_before_deploy
+        import os
+        with TemporaryDirectory() as root:
+            source = Path(root) / 'source.sqlite3'
+            with sqlite3.connect(source) as db:
+                db.execute('CREATE TABLE t (id INTEGER)'); db.commit()
+            directory = Path(root) / 'pre-deploy'; directory.mkdir()
+            other = directory / 'keep-me.sqlite3'; other.write_bytes(b'not ours')
+            for i in range(4):
+                old = directory / f'content_v0.3.{i}_20260101_00000{i}.sqlite3'
+                old.write_bytes(b'old'); os.utime(old, (1000 + i, 1000 + i))
+            snapshot_before_deploy(source, directory / 'content_v0.3.9_20260915_120000.sqlite3', keep=2)
+            names = sorted(p.name for p in directory.iterdir())
+            self.assertEqual(names, ['content_v0.3.3_20260101_000003.sqlite3', 'content_v0.3.9_20260915_120000.sqlite3', 'keep-me.sqlite3'])
+            with self.assertRaises(ValueError): snapshot_before_deploy(source, directory / 'content_v0.4.0_20260915_130000.sqlite3', keep=0)
+
     def test_backup_removes_deleted_session_bytes(self):
         from contextlib import closing
         with TemporaryDirectory() as root:

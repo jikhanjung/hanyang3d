@@ -98,7 +98,12 @@ def versioned_resource(request, version, resource):
 @require_safe
 def healthz(request):
     report = runtime_report()
-    response = JsonResponse(report, status=503 if report['status'] == 'unhealthy' else 200)
+    status = 503 if report['status'] == 'unhealthy' else 200
+    # Requests through the public proxy carry X-Forwarded-For; they get only status and version. Container and
+    # deploy checks call the app directly and still see counts, warnings and error messages.
+    if 'HTTP_X_FORWARDED_FOR' in request.META:
+        report = {'status': report['status'], 'version': report['version']}
+    response = JsonResponse(report, status=status)
     response['Cache-Control'] = 'no-store'
     return response
 

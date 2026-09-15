@@ -22,6 +22,8 @@ class ReviewTests(TestCase):
             self.assertIn('data/maps/src-0001/asset-0001.jpg', response.json()['missing'])
             self.assertTrue(response.json()['errors'])
         self.assertEqual(self.client.post('/healthz').status_code, 405)
+        public = self.client.get('/healthz', HTTP_X_FORWARDED_FOR='203.0.113.9').json()
+        self.assertEqual(set(public), {'status', 'version'})
 
     def test_runtime_mount_is_used_without_exposing_unlisted_files(self):
         with TemporaryDirectory() as root, self.settings(RUNTIME_DATA_ROOT=Path(root)):

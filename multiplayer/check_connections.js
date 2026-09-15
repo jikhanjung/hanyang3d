@@ -84,7 +84,7 @@ try {
   assert.notEqual(otherVersion.roomId, a.roomId);
   await wait(() => otherNpcs, 'new space must publish NPCs');
   assert.notDeepEqual(otherNpcs.npcs.map(p => p[6]), bNpcs.npcs.map(p => p[6]));
-  assert.ok(bNpcs.npcs.every(p => p[7] >= .8 && p[7] < 1.3));
+  assert.ok(bNpcs.npcs.every(p => p[7] >= .8 && p[7] <= 1.3)); // speeds are rounded to centimetres per second
   await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, name: '<script>' }), /이름/);
   await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, routeKey: 'wrong' }), /자료/);
   await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, mapVersion: 'random-123', name: '위조' }), /자료/);

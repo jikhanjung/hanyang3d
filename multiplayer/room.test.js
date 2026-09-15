@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readPose, readChat, readJoinOptions, roomLimitReached } from './room.js';
+import { readPose, readChat, readJoinOptions, roomLimitReached, roundPose } from './room.js';
 import { normalizePlayerName } from '../webapp/static/player_name.js';
 import { createWalkingSimulation, buildWalkingRoutes } from '../webapp/static/walking_simulation.js';
 import { npcWorld } from './npc_world.js';
@@ -84,4 +84,17 @@ test('no new room past the cap while every room is full', () => {
   assert.equal(roomLimitReached([full], 2), false);
   assert.equal(roomLimitReached([full, full], 2), true);
   assert.equal(roomLimitReached([full, open], 2), false);
+});
+
+test('look-alike letters cannot imitate names; emoji sequences pass chat', () => {
+  assert.equal(normalizePlayerName('ＡＬＩＣＥ'), 'ALICE');
+  for (const name of ['Аlice', 'αlice', 'аdmin']) assert.equal(normalizePlayerName(name), null, name);
+  assert.equal(normalizePlayerName('漢陽 길동'), '漢陽 길동');
+  assert.equal(readChat('가족 👨\u200d👩\u200d👧 반가워요'), '가족 👨\u200d👩\u200d👧 반가워요');
+  assert.equal(readChat('a\u202eb'), null);
+  assert.equal(readChat('a\u2066b'), null);
+});
+
+test('NPC snapshots are rounded to centimetres and keep ids', () => {
+  assert.deepEqual(roundPose(['road:1', 1.23456, -2.34567, 3.1, 4, 0, 5.555, 1.004]), ['road:1', 1.23, -2.35, 3.1, 4, 0, 5.56, 1]);
 });

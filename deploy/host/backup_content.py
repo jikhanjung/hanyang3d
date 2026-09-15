@@ -17,6 +17,8 @@ import tempfile
 
 FAILURE_SENTINEL = 'CONTENT_BACKUP_FAILED'
 HOURLY_KEEP = 24
+PRE_DEPLOY_KEEP = 10
+PRE_DEPLOY_NAME = r'content_v\d+\.\d+\.\d+_\d{8}_\d{6}\.sqlite3'
 MIN_FREE_BYTES = 5 * 1024 ** 3
 
 
@@ -63,6 +65,24 @@ def backup_database(source, destination):
             Path(temporary + suffix).unlink(missing_ok=True)
 
 
+def snapshot_before_deploy(source, destination, keep=PRE_DEPLOY_KEEP):
+    """Create one verified pre-deploy snapshot, then keep only the newest `keep` pre-deploy snapshots.
+
+    Older ones are removed only after the new snapshot has been adopted, and only files named like deploy.sh's
+    snapshots (content_vX.Y.Z_YYYYmmdd_HHMMSS.sqlite3) in the same directory.
+    """
+    if keep < 1:
+        raise ValueError('At least one pre-deploy snapshot must be kept')
+    destination = Path(destination)
+    destination.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    backup_database(source, destination)
+    snapshots = sorted((p for p in destination.parent.iterdir() if re.fullmatch(PRE_DEPLOY_NAME, p.name)),
+                       key=lambda p: (p.stat().st_mtime, p.name), reverse=True)
+    for old in snapshots[keep:]:
+        old.unlink(missing_ok=True)
+    return destination
+
+
 def run_backup(source, directory, keep=HOURLY_KEEP, min_free_bytes=MIN_FREE_BYTES):
     source, directory = Path(source).resolve(), Path(directory).resolve()
     directory.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -107,13 +127,12 @@ def main():
     parser.add_argument('--database', default='/srv/hanyang3d/content/content.sqlite3')
     parser.add_argument('--directory', default='/srv/hanyang3d/backups/content/hourly')
     parser.add_argument('--keep', type=int, default=HOURLY_KEEP)
-    parser.add_argument('--snapshot', help='Create one pre-deploy snapshot at a new path; no rotation')
+    parser.add_argument('--snapshot', help='Create one pre-deploy snapshot at a new path, keeping the newest --keep-snapshots')
+    parser.add_argument('--keep-snapshots', type=int, default=PRE_DEPLOY_KEEP)
     args = parser.parse_args()
     try:
         if args.snapshot:
-            path = Path(args.snapshot)
-            path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
-            backup_database(args.database, path)
+            path = snapshot_before_deploy(args.database, args.snapshot, args.keep_snapshots)
         else:
             path = run_backup(args.database, args.directory, args.keep)
     except Exception as exc:

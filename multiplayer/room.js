@@ -12,8 +12,10 @@ export function readPose(value) {
   return { x, z, yaw: Math.atan2(Math.sin(yaw), Math.cos(yaw)) };
 }
 
+// Control and format characters are rejected (bidi overrides could disguise text), except the zero-width joiner
+// that emoji sequences such as family or profession emoji need.
 export function readChat(value) {
-  if (typeof value !== 'string' || value.length > 800 || /[\p{Cc}\p{Cf}]/u.test(value)) return null;
+  if (typeof value !== 'string' || value.length > 800 || /[\p{Cc}]|(?!\u200d)\p{Cf}/u.test(value)) return null;
   const text = value.normalize('NFC').trim();
   return text && [...text].length <= 200 ? text : null;
 }
@@ -28,7 +30,7 @@ export const ALIGNMENTS = new Set(['mountains', 'base']);
 
 export function readJoinOptions(options = {}) {
   const name = normalizePlayerName(options.name);
-  if (!name) return { error: [422, '이름은 1~16자의 문자·숫자·공백·_ . -로 입력해 주세요.'] };
+  if (!name) return { error: [422, '이름은 1~16자의 한글·한자·영문·숫자·공백·_ . -로 입력해 주세요.'] };
   if (options.protocolVersion !== 2 || !ALIGNMENTS.has(options.alignment) ||
       typeof options.mapVersion !== 'string' || !/^v\d+\.\d+\.\d+$/.test(options.mapVersion) ||
       options.routeKey !== npcWorld(options.alignment).routeKey) {
@@ -40,6 +42,9 @@ export function readJoinOptions(options = {}) {
 export function roomLimitReached(rooms, max = MAX_ROOMS) {
   return rooms.length >= max && rooms.every(room => room.clients >= room.maxClients);
 }
+
+const round = value => Math.round(value * 100) / 100;
+export const roundPose = pose => [pose[0], ...pose.slice(1).map(round)];
 
 const colors = Array.from({ length: 32 }, (_, i) => `hsl(${Math.round(i * 137.508) % 360}, 48%, ${i % 2 ? 44 : 62}%)`);
 
@@ -85,7 +90,9 @@ export class WalkRoom extends Room {
       this.npcs.step(.1, [...this.players.values()]);
       this.tick++;
       this.broadcast('walkers', [...this.players.values()]);
-      this.broadcast('npcs', { tick: this.tick, elapsed: this.npcs.elapsed, npcs: this.npcs.snapshot() });
+      // NPCs follow fixed routes and browsers smooth toward each snapshot, so 5 updates a second with centimetre
+      // rounding is enough; this halves the largest message (about 8.8 KB each, 86 KB/s per player at 10 Hz).
+      if (this.tick % 2 === 0) this.broadcast('npcs', { tick: this.tick, elapsed: round(this.npcs.elapsed), npcs: this.npcs.snapshot().map(roundPose) });
     }, 100);
   }
 
