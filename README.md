@@ -4,7 +4,7 @@
 
 조선시대 한양의 거리·수계·필지·건축·지형을 **출처와 시간, 불확실성을 추적할 수 있는 GIS / 3D 데이터**로 재구성하는 프로젝트입니다.
 
-## 현재 상태 (2026-09-15, v0.2.4)
+## 현재 상태 (2026-09-15, 웹 v0.3.0 / 멀티플레이 v0.2.4)
 
 도성대지도(전체도와 부분도 12장)를 고도 지형(FABDEM V1.2) 위에 입힌 **1750년 무렵 한양의 3D 지도**를 운영합니다. 모든 건물·사람은 출처를 밝힌 개념 모형이며, 위치 근거와 추정을 구분해 기록합니다.
 
@@ -73,7 +73,7 @@
 
 ## Docker 배포
 
-운영 이미지는 `honestjung/hanyang3d:v0.2.4`과 `honestjung/hanyang3d-multiplayer:v0.2.4`입니다. 개발 호스트에서 `bash deploy/build.sh <버전>`으로 이미지와 지도 데이터 묶음을 만들고 검증한 뒤, dolfinid에서는 이미지를 받아 교체만 합니다. 절차·배포 기록·digest는 [배포 안내](deploy/README.md)에 있습니다. 산출물은 `dist/`에 생성하며 Git에는 포함하지 않습니다.
+운영 이미지는 `honestjung/hanyang3d:v0.3.0`과 `honestjung/hanyang3d-multiplayer:v0.2.4`입니다. 개발 호스트에서 `bash deploy/build.sh <버전> --web-only`로 웹 이미지와 지도 데이터 묶음을 만들고 검증한 뒤, dolfinid에서는 이미지를 받아 교체만 합니다. 절차·배포 기록·digest는 [배포 안내](deploy/README.md)에 있습니다. 산출물은 `dist/`에 생성하며 Git에는 포함하지 않습니다.
 
 ## 실행과 검사
 
@@ -100,4 +100,4 @@
 
 ## 콘텐츠 백오피스 (개발)
 
-건물·이야기·상세 설명·리소스 목록의 SQLite DB와 Django 백오피스를 추가했습니다. 로컬 초기화·관리자 계정 생성은 [백오피스 안내](docs/backoffice.md), fsis2026을 참고한 검증 백업·복원은 [백업 안내](docs/content_backup.md)를 따릅니다. 운영 v0.2.4는 아직 파일 모드입니다.
+건물·이야기·상세 설명·리소스 목록의 SQLite DB와 Django 백오피스를 추가했습니다. 로컬 초기화·관리자 계정 생성은 [백오피스 안내](docs/backoffice.md), fsis2026을 참고한 검증 백업·복원은 [백업 안내](docs/content_backup.md)를 따릅니다. 운영 웹 v0.3.0도 DB 모드입니다. [백오피스](https://hanyang3d.nopeoplestime.info/backoffice/)에서 편집하며, 매시 운영 백업과 매일 05:15(KST) 개발 호스트·NAS 백업을 설치했습니다. 이야기·설명 편집에는 이미지 배포가 필요하지 않습니다.

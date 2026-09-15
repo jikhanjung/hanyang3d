@@ -1,6 +1,6 @@
 # Hanyang3D 작업 안내
 
-한양3D는 Django·Three.js 기반의 지도 서비스다. 개발 환경은 SQLite 콘텐츠 DB와 Django 백오피스(`/backoffice/`)로 건물·이야기·설명·리소스 목록을 관리한다. 운영 v0.2.4는 아직 파일 모드이며 전환 절차는 `docs/backoffice.md`에 있다. 사용자 파일 업로드는 없다. 백업은 `../fsis2026`의 검증·보존 원칙을 참고한 `docs/content_backup.md`를 따른다. 선택 기능인 '함께 걷기'는 별도 Colyseus 프로세스에서 접속자의 이름·위치와 NPC 이동을 메모리에 공유한다. 이름과 마지막 걷기 위치·방향은 브라우저 localStorage에 기억한다. 실행·범위는 `multiplayer/README.md`를 참고한다.
+한양3D는 Django·Three.js 기반의 지도 서비스다. 개발 환경은 SQLite 콘텐츠 DB와 Django 백오피스(`/backoffice/`)로 건물·이야기·설명·리소스 목록을 관리한다. 운영 웹 v0.3.0도 DB 모드이며 편집·배포 절차는 `docs/backoffice.md`에 있다. 멀티플레이 이미지는 v0.2.4로 독립 운영한다. 사용자 파일 업로드는 없다. 백업은 `../fsis2026`의 검증·보존 원칙을 참고한 `docs/content_backup.md`를 따른다. 선택 기능인 '함께 걷기'는 별도 Colyseus 프로세스에서 접속자의 이름·위치와 NPC 이동을 메모리에 공유한다. 이름과 마지막 걷기 위치·방향은 브라우저 localStorage에 기억한다. 실행·범위는 `multiplayer/README.md`를 참고한다.
 
 공통 웹 개발·운영 가이드는 `.guides/web/README.md`, 브랜드 관련 참고는 `.guides/branding.md`에서 읽는다. `.guides`는 `../devdocs/guides`를 가리키는 로컬 상대 심볼릭 링크다. 없거나 끊어져 있으면 형제 devdocs 체크아웃이 없는 것이므로 설정을 확인한다. 가이드 원문과 링크는 이 저장소에 커밋하지 않는다.
 

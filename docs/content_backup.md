@@ -24,7 +24,7 @@
 - `manage.py backup_content <새 파일>`: 로컬 개발 또는 일회용 컨테이너에서 같은 구현으로 수동 백업한다. 출력 경로가 있어도 덮어쓰지 않는다.
 - `manage.py export_content <새 JSON>`: 계정·세션을 제외한 콘텐츠 교환용. 전체 복원용 DB 스냅샷과 구별한다.
 
-운영 설치 예시(아직 정기 작업을 등록하지 않음):
+운영 명령(`/etc/cron.d/hanyang3d-content`에 매시 정각 root 실행으로 등록):
 
 ```bash
 sudo python3 /srv/hanyang3d/backup_content.py \
@@ -32,7 +32,7 @@ sudo python3 /srv/hanyang3d/backup_content.py \
   --directory /srv/hanyang3d/backups/content/hourly
 ```
 
-라이브 DB를 읽을 수 있는 전용 백업 계정이나 root로 실행한다. 웹 컨테이너는 백업 경로를 마운트하지 않는다. 시간별 작업은 위 명령을 매시 실행하고 stdout/stderr를 접근 제한된 로그에 기록하도록 등록한다. 백업 실패는 기존 모니터링의 health/smoke에 연결한다. 이번 작업은 크론·알림 채널을 임의로 설치하거나 외부로 메시지를 보내지 않는다.
+라이브 DB를 읽을 수 있는 전용 백업 계정이나 root로 실행한다. 웹 컨테이너는 백업 경로를 마운트하지 않는다. 시간별 작업은 위 명령을 매시 실행하고 stdout/stderr를 접근 제한된 로그에 기록하도록 등록한다. 백업 실패는 기존 모니터링의 health/smoke에 연결한다. 시간별 로그는 `/srv/hanyang3d/backups/content/hourly.log`(600)에 기록한다. 외부 메시지 알림은 연결하지 않았다.
 
 ## 보관 레인
 
@@ -40,7 +40,7 @@ sudo python3 /srv/hanyang3d/backup_content.py \
 2. **운영 시간별**: 검증된 DB 단일 파일을 최소 24개 보존한다. 24 × 1시간 ≥ 일간 오프사이트 24시간. 스케줄을 바꾸면 이 관계를 다시 확인한다.
 3. **개발 호스트·NAS**: 운영의 검증된 시간별 `.sqlite3` 산출물만 개발 호스트가 SSH로 pull한다. 라이브 DB, `.corrupt`, `.lock`, 임시 파일은 가져오지 않는다. 내려받은 파일을 다시 integrity_check·foreign_key_check·세션 0행으로 검증한 후 current/history로 채택한다. 새 사본 검증 실패나 최신 백업 부재 시 과거본을 정리하지 않는다. NAS는 개발 호스트의 검증된 사본을 받는다.
 
-fsis2026의 오프사이트 실행본은 `system-operation` 저장소가 정본이다. 한양3D에서도 설치 시 그 운영 체계에 연결하고 실행되지 않는 중복 사본을 여기 만들지 않는다. 기본 정책 후보는 fsis와 같이 개발 호스트 일간 30일·NAS 90일, 이후 월초 보존이다. **현재 한양3D용 오프사이트 작업이나 NAS 경로는 아직 설치·검증하지 않았다.**
+fsis2026과 같이 오프사이트 실행본은 `system-operation/m710q/backup-hanyang3d.py`가 정본이다. m710q 사용자 크론에 매일 05:15(KST) 실행으로 등록했다. 개발 호스트 `/home/jikhanjung/backups/hanyang3d`는 일간 30일, NAS `/nas/JikhanJung/hanyang3d_backup`는 90일 이후 월초 사본을 보존한다. 각 경로에 `current`, `db_history`, `configuration_history`를 두며, 운영 `.env`·`.env.django`·Compose 설정도 접근 제한 묶음으로 보관한다. `export_content_snapshot.py`는 3시간 이내의 검증된 사본만 반출한다. 2026-09-15 첫 SSH pull과 NAS 채택을 완료했다. 실행 결과는 개발 호스트의 `status.json`, 출력은 `backup.log`에 남는다.
 
 모형 코드·공개 지도 리소스는 현재 버전 이미지·지도 묶음에서 복원 가능하다. DB에는 그 목록과 연결이 들어간다. 향후 백오피스에서 파일 업로드를 허용하면 업로드 디렉터리의 별도 스냅샷 레인이 반드시 추가되어야 한다. fsis의 uploads link-dest 방식이 그때의 참고 대상이다.
 
@@ -52,4 +52,4 @@ fsis2026의 오프사이트 실행본은 `system-operation` 저장소가 정본�
 4. 중지 상태에서 현재 DB 디렉터리를 보존하고 스냅샷 사본을 새 DB 경로에 설치한다. 이전 DB의 `-wal`·`-shm`을 새 DB와 섞지 않는다. UID/GID 10001과 접근 권한을 맞춘다.
 5. 스냅샷과 호환되는 이미지를 시작해 health, 백오피스 로그인, 건물·이야기 수, 한 건의 편집·조회까지 확인한다. 복원한 DB는 세션이 비어 있어 다시 로그인해야 한다.
 
-자동으로 운영 DB를 교체하는 restore 명령은 제공하지 않는다. 테스트는 WAL 상태의 운영 편집 사본을 복원해 읽기·쓰기까지 확인하며, 실제 운영 전환 때도 별도 DB·포트에서 복원 연습을 수행한다.
+자동으로 운영 DB를 교체하는 restore 명령은 제공하지 않는다. 테스트는 WAL 상태의 운영 편집 사본을 복원해 읽기·쓰기까지 확인하며, 2026-09-15 운영 스냅샷의 별도 사본을 네트워크 없는 일회용 v0.3.0 컨테이너에 복원해 건물 103·이야기 33·설명 102·리소스 108, 관리자 존재, 세션 0행과 읽기·쓰기를 확인했다.
