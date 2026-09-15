@@ -57,6 +57,9 @@ if [[ "$db_mode" == 1 ]]; then
         'import os, sys; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webapp.settings"); import django; django.setup(); from django.db import connection; from django.db.migrations.loader import MigrationLoader; loader = MigrationLoader(connection); unknown = sorted(set(loader.applied_migrations) - set(loader.disk_migrations)); print("Database has migrations this image does not know:", unknown) if unknown else None; sys.exit(1 if unknown else 0)'
     docker compose run --rm --no-deps --entrypoint python hanyang3d manage.py migrate --noinput
     docker compose run --rm --no-deps --entrypoint python hanyang3d manage.py import_content
+    # Later Git corrections of the landmark/story JSON; back-office edits are kept and reported as conflicts.
+    docker compose run --rm --no-deps --entrypoint sh hanyang3d -c \
+        'python manage.py help sync_content >/dev/null 2>&1 || exit 0; python manage.py sync_content --apply'
 fi
 # Unchanged multiplayer image/config stays running when Compose reconciles the stack.
 docker compose up -d --wait --wait-timeout 90

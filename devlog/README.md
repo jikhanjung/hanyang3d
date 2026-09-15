@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [123: Git 콘텐츠 변경을 운영 DB로 반영과 이야기·자료집 보완](20260915_123_content_sync_story_fixes.md)
 - [122: 배포 검사·SECRET_KEY·백업 상태·되돌리기 안전장치](20260915_122_deploy_content_guards.md)
 - [121: 함께 걷기 과부하 차단과 백오피스·HTTPS 보강](20260915_121_walk_backoffice_hardening.md)
 - [120: Codex 작업(111~119) 검토와 수정 계획](20260915_120_codex_review.md)

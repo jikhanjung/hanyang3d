@@ -49,6 +49,64 @@ class BrokenReferenceTests(TestCase):
         self.assertEqual(report['content_warnings'], problems)
 
 
+@override_settings(CONTENT_SOURCE='database')
+class SyncTests(TestCase):
+    """Git JSON corrections reach the database without overwriting back-office edits."""
+    @classmethod
+    def setUpTestData(cls):
+        call_command('import_content', stdout=StringIO())
+
+    def data(self):
+        return (json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text()),
+                json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text()))
+
+    def test_first_sync_is_clean_and_dry_run_writes_nothing(self):
+        from .content_sync import sync_content, SYNC_KEY
+        buildings, stories = self.data()
+        report = sync_content(buildings, stories)
+        self.assertEqual((report.created, report.updated, report.conflicts), ([], [], []))
+        self.assertFalse(ContentImport.objects.filter(key=SYNC_KEY).exists())
+        stories['stories'][0]['text'] = '미리보기 문장'
+        sync_content(buildings, stories)
+        self.assertNotEqual(Story.objects.get(key=stories['stories'][0]['id']).text, '미리보기 문장')
+
+    def test_updates_untouched_rows_and_keeps_edits(self):
+        from .content_sync import sync_content
+        buildings, stories = self.data()
+        untouched, edited = stories['stories'][0], stories['stories'][1]
+        row = Story.objects.get(key=edited['id']); row.text = '운영자가 고친 본문'; row.save()
+        untouched['text'] = 'Git에서 고친 본문'; untouched['sources'].append({'title': '추가 출처', 'url': 'https://example.org/a'})
+        edited['text'] = 'Git에서도 고친 본문'
+        feature = buildings['features'][0]; feature['symbol_size_m'] = [11, 12, 13]
+        report = sync_content(buildings, stories, apply=True)
+        self.assertIn(f"story {untouched['id']}", report.updated)
+        self.assertEqual(Story.objects.get(key=untouched['id']).text, 'Git에서 고친 본문')
+        self.assertEqual(Story.objects.get(key=untouched['id']).citations.count(), len(untouched['sources']))
+        self.assertTrue(any(edited['id'] in c for c in report.conflicts), report.conflicts)
+        self.assertEqual(Story.objects.get(key=edited['id']).text, '운영자가 고친 본문')
+        self.assertEqual(Building.objects.get(key=feature['id']).map_config['symbol_size_m'], [11, 12, 13])
+        # A later Git change to the synced row applies; a back-office edit without a Git change is kept.
+        untouched['text'] = '두 번째 Git 수정'
+        row = Building.objects.get(key=feature['id']); row.summary = '운영 설명'; row.save()
+        report = sync_content(buildings, stories, apply=True)
+        self.assertEqual(Story.objects.get(key=untouched['id']).text, '두 번째 Git 수정')
+        self.assertEqual(Building.objects.get(key=feature['id']).summary, '운영 설명')
+
+    def test_creates_new_and_respects_back_office_deletions(self):
+        from .content_sync import sync_content
+        buildings, stories = self.data()
+        sync_content(buildings, stories, apply=True)
+        new = copy.deepcopy(stories['stories'][0]); new['id'] = 'git-new-story'; new['title'] = '새 이야기'
+        stories['stories'].append(new)
+        report = sync_content(buildings, stories, apply=True)
+        self.assertIn('story git-new-story', report.created)
+        self.assertTrue(Story.objects.get(key='git-new-story').published)
+        Story.objects.get(key='git-new-story').delete()
+        report = sync_content(buildings, stories, apply=True)
+        self.assertIn('story git-new-story', report.kept_deleted)
+        self.assertFalse(Story.objects.filter(key='git-new-story').exists())
+
+
 class SecretKeyTests(SimpleTestCase):
     def test_production_secret_requirement(self):
         from django.core.exceptions import ImproperlyConfigured
