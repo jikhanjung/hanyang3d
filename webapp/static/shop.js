@@ -23,7 +23,7 @@ const post=(url,body)=>fetch(url,{method:'POST',credentials:'same-origin',cache:
 
 export function createShop({container,data,onLogout}){
  const state={money:null,items:{},ready:false,loggedIn:false,name:''};
- let shop=null,quantity=1,busy=false,loginResolve=null,readyResolve;
+ let shop=null,quantity=1,busy=false,loginResolve=null,readyResolve,hudShown=false;
  const whenReady=new Promise(resolve=>{readyResolve=resolve});
  // Coin display: when logged out it is a login button; when logged in it shows the name, coins and a logout button.
  const hud=document.createElement('div');hud.id='money-hud';hud.setAttribute('aria-live','polite');
@@ -81,8 +81,8 @@ export function createShop({container,data,onLogout}){
  function apply(answer){
   if(answer&&answer.logged_in===false){state.loggedIn=false;state.name='';state.money=null;state.items={};state.ready=true}
   else if(Number.isInteger(answer?.money)){state.loggedIn=true;state.name=answer.name;state.money=answer.money;state.items=answer.items??{};state.ready=true}
-  // Logging in happens only when entering first person, so the display stays hidden until then.
-  hud.hidden=!state.loggedIn;
+  // The name, coins and logout belong to walking: the display shows only in first person while logged in.
+  hud.hidden=!state.loggedIn||!hudShown;
   hudText.textContent=state.loggedIn?`${state.name} · 엽전 ${formatMoney(state.money)}`:'';
   hudLogout.hidden=!state.loggedIn;
   render();
@@ -136,5 +136,6 @@ export function createShop({container,data,onLogout}){
  function close(){shop=null;win.hidden=true;tip.hidden=true}
  document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;if(!account.hidden){event.preventDefault();closeAccount()}else if(shop){event.preventDefault();close()}});
  refresh();
- return {open,close,refresh,requireLogin,whenReady,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
+ function showHud(shown){hudShown=shown;hud.hidden=!state.loggedIn||!hudShown}
+ return {open,close,refresh,requireLogin,whenReady,showHud,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
 }

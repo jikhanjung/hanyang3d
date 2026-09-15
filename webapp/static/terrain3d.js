@@ -9,6 +9,7 @@ import {createSiteMarker} from './site_marker.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
 import {createDrill} from './drill.js';
+import {createHorseDealer} from './horse_dealer.js';
 import {createNpcDialogue} from './npc_dialogue.js';
 import {createShop} from './shop.js';
 import {createPagoda} from './pagoda.js';
@@ -44,7 +45,7 @@ async function main(){
  el('about-close').onclick=closeAbout;
  document.addEventListener('keydown',event=>{if(event.code==='Escape'&&!el('about-panel').hidden)closeAbout()});
  const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')].filter(c=>c.id!=='about-open');toolbarControls.forEach(c=>c.disabled=true);
- let npcDialogue=null,shop=null,granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,together=null,palaceWall=null,frameUpdate=()=>{};
+ let npcDialogue=null,horseDealer=null,shop=null,granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,together=null,palaceWall=null,frameUpdate=()=>{};
 
  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5e4');
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -482,6 +483,15 @@ async function main(){
   }
   bridge.userData={feature:f,x:cx+mid.x/ground,y:cy-mid.z/ground,z:base,lift:.3,boxHeight:h,roadEnds:[road[0],road[3]].map(p=>{const dx=p.x-mid.x,dz=p.z-mid.z,c=Math.cos(bridge.rotation.y),s=Math.sin(bridge.rotation.y);return {x:c*dx-s*dz,z:s*dx+c*dz}})};bridges.add(bridge);
  }
+ // A horse dealer with one horse beside the north approach of 수표교 (마전교); see horse_dealer.js for the record.
+ {
+  const b=waterData.bridges.find(f=>f.id==='supyo');
+  if(b){
+   const road=b.road_connections.pixel_points.map(p=>sourceSurface(...p)),dir=road[2].clone().sub(road[1]).setY(0).normalize(),side=new THREE.Vector3(dir.z,0,-dir.x);
+   const at=road[0].clone().addScaledVector(side,b.deck_width_m/2+4).addScaledVector(dir,-2);
+   horseDealer=createHorseDealer({position:at,yaw:Math.atan2(-side.x,-side.z)});scene.add(horseDealer);
+  }
+ }
  // Sample only triangles near each crossing, then clip exact rotated footprints.
  function updateBridgeGround(surfaces){
   for(const b of bridges.children){
@@ -780,7 +790,7 @@ async function main(){
  // Moving figures (the drill, the Gyeongbokgung keeper) stand on the ground under their current position, in the
  // local frame of their building.
  const groundAt=obj=>(x,z)=>{const p=obj.parent.localToWorld(new THREE.Vector3(x,0,z)),s=cityWall.supportAt(p.x,p.z,.5,.5,0);return s.max*exaggeration+.05-obj.parent.position.y};
- frameUpdate=dt=>{pedestrians.update(dt);const now=performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(now,groundAt(drill));updateBuildingNames()};
+ frameUpdate=dt=>{pedestrians.update(dt);const now=performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(now,groundAt(drill));if(horseDealer){horseDealer.visible=bridges.visible;if(horseDealer.visible)horseDealer.userData.update(now,groundAt(horseDealer))}updateBuildingNames()};
  await stage(7,'숲·사람 표시 완료 · 마무리합니다');
  el('people-focus').onclick=()=>{const p=pedestrians.walkers[20].position;controls.target.copy(p);camera.position.copy(p).add(new THREE.Vector3(18,28,45));controls.update()};
  el('settlement-focus').onclick=()=>{const r=settlement.records.filter(r=>r.shop&&r.displayed).sort((a,b)=>Math.hypot(a.pixel[0]-1520,a.pixel[1]-1440)-Math.hypot(b.pixel[0]-1520,b.pixel[1]-1440))[0];if(!r)return;const target=new THREE.Vector3(r.x,r.floor,r.z);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(100,220,300));controls.update()};
@@ -890,12 +900,12 @@ async function main(){
    if(!walker){walker=createWalker();scene.add(walker.group)}
    if(walker.group.userData.playerName!==walkProfile.name){const tag=walker.group.getObjectByName('player-name');if(tag){tag.material.map.dispose();tag.material.dispose();tag.removeFromParent()}addPlayerNameTag(walker.group,walkProfile.name)}
    walked=0;walker.update(0,false);look();
-   navigation.show(yaw,eye);hud.hidden=false;canvas.focus({preventScroll:true});
+   navigation.show(yaw,eye);hud.hidden=false;shop?.showHud(true);canvas.focus({preventScroll:true});
   }
   function exit(){
    rememberPosition();
    together?.stop();
-   if(!active)return;active=false;clearInput();hud.hidden=true;navigation.hide();if(walker)walker.group.visible=false;
+   if(!active)return;active=false;clearInput();hud.hidden=true;shop?.showHud(false);navigation.hide();if(walker)walker.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
   }
   function update(dt){
@@ -991,6 +1001,13 @@ async function main(){
    return best;
   }});
   npcDialogue.register({pick(event,hitTest){
+   if(!horseDealer?.visible)return null;
+   const person=horseDealer.userData.person,at=person.getWorldPosition(new THREE.Vector3()),distance=hitTest(event,at,1.9,150);if(distance===null)return null;
+   const d=npcData.horse_dealer;
+   return {distance,npc:{key:'horse-dealer',mode:'overlay',portrait:'horseDealer',name:d.name,subtitle:d.subtitle,nodes:d.nodes,position:()=>person.getWorldPosition(feet),maxDistance:150,
+    finish:()=>horseDealer.userData.stopTalk(),face:camera=>horseDealer.userData.face(camera)}};
+  }});
+  npcDialogue.register({pick(event,hitTest){
    if(!pedestrians?.group.visible)return null;let best=null;
    for(const w of pedestrians.walkers){
     const distance=hitTest(event,w.position,1.7,100);if(distance===null||(best&&best.distance<=distance))continue;
@@ -1000,7 +1017,7 @@ async function main(){
    return best;
   }});
  }
- frameUpdate=dt=>{firstPerson?.update(dt);together?.update(dt);npcDialogue?.update();pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));updateBuildingNames()};
+ frameUpdate=dt=>{firstPerson?.update(dt);together?.update(dt);npcDialogue?.update();pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));if(horseDealer){horseDealer.visible=bridges.visible;if(horseDealer.visible)horseDealer.userData.update(time,groundAt(horseDealer))}updateBuildingNames()};
  toolbarControls.forEach(c=>c.disabled=false);el('channel-depth').disabled=!channelState.enabled;
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
@@ -1024,6 +1041,6 @@ async function main(){
   for(const seg of wall.segments)collision.add({x:seg.x,z:seg.z,hw:data.width_m/2,hd:seg.length/2,yaw:seg.yaw,visible:()=>wall.group.visible});
  for(const r of sijeon.records)collision.add({x:r.x,z:r.z,hw:r.length/2,hd:(sijeonData.placement.depth_m+.9)/2,yaw:r.yaw,visible:()=>sijeon.group.visible&&r.displayed});
  for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
- window.terrain3d={ready:true,cityCentre,drills,guardModels,get npcDialogue(){return npcDialogue},get shop(){return shop},landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
+ window.terrain3d={ready:true,cityCentre,drills,guardModels,horseDealer,get npcDialogue(){return npcDialogue},get shop(){return shop},landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

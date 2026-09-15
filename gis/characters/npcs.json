@@ -26,6 +26,10 @@
       "next": "trees"
      },
      {
+      "label": "처음부터 옛날이야기를 들려주시오. (긴 이야기)",
+      "next": "tale_taejo"
+     },
+     {
       "label": "잘 있으시오.",
       "action": "close"
      }
@@ -134,6 +138,322 @@
      {
       "title": "영조실록 20년 5월 10일 제2기사 — 가뭄에 계천·도랑·경회루 연지를 치게 하다",
       "url": "https://sillok.history.go.kr/id/kua_12005010_002"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 이야기도 들려주시오.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "tale_taejo": {
+    "text": "허허, 옛날이야기라. 그럼 처음부터 하리다. 우리 태조 대왕 이성계께서는 원래 고려의 장수셨소. 홍건적이며 왜구를 여러 번 물리치셨고, 경신년(1380)에는 황산에서 왜구를 크게 이기셨지. 무진년(1388)에 위화도에서 군사를 돌려 개경으로 돌아오셨고, 임신년(1392) 7월 개경 수창궁에서 마침내 왕위에 오르셨소. 실록에는 신하들이 간곡히 청하여 받으셨다고 적혀 있다오.",
+    "year": "1380·1388·1392",
+    "sources": [
+     {
+      "title": "한국민족문화대백과사전 태조",
+      "url": "https://encykorea.aks.ac.kr/Article/E0059033"
+     },
+     {
+      "title": "조선왕조실록 태조 1년(1392) 7월 17일",
+      "url": "https://sillok.history.go.kr/id/kaa_10107017_001"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_capital"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_capital": {
+    "text": "임금이 되시고는 새 도읍을 찾으셨소. 즉위하신 그해에 한양으로 옮기라 하셨다가 신하들이 말려 거두셨고, 이듬해(1393)에는 계룡산에 도읍 공사까지 벌이셨는데 하륜이 반대하여 그만두었다오. 갑술년(1394) 8월에 무악과 한양을 몸소 둘러보셨는데, 이때 왕사 무학 스님도 불러 함께 보셨지. 그러고는 한양으로 정하셨소.",
+    "year": "1392·1393·1394",
+    "sources": [
+     {
+      "title": "우리역사넷 한양 천도 1394",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i306100&code=kc_age_30"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_legend"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_legend": {
+    "text": "이건 옛 사람들 사이에 도는 이야기요, 사실인지는 모르오. 무학 스님이 대궐을 지으려는데 자꾸 무너졌더라오. 한 노인이 나타나 이 땅은 학이 날개를 편 모양이니 날개부터 눌러야 한다며 성부터 쌓으라 일렀다지. 또 노인이 십 리를 더 가라 해서 왕십리라는 이름이 붙었다는 말도 있소. 『지봉유설』 같은 책에도 실린 설화라오.",
+    "sources": [
+     {
+      "title": "한국민족문화대백과사전 무학대사 설화",
+      "url": "https://encykorea.aks.ac.kr/Article/E0019294"
+     }
+    ],
+    "legend": true,
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_move"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_move": {
+    "text": "갑술년(1394) 10월에 도읍을 한양으로 옮기셨소. 궁궐 짓는 도감을 두고 그해 겨울에 공사를 시작해서, 이듬해(1395) 9월에 종묘와 새 궁궐이 다 지어졌지. 그날 새 대궐 뜰에 장끼 한 마리가 날아들었다는 것까지 실록에 적혀 있다 하오. 옛 사람들은 그런 것도 다 적어 두었다오.",
+    "year": "1394·1395",
+    "sources": [
+     {
+      "title": "조선왕조실록 태조 3년(1394) 10월 25일",
+      "url": "https://sillok.history.go.kr/id/kaa_10310025_001"
+     },
+     {
+      "title": "조선왕조실록 태조 4년(1395) 9월 29일 종묘·새 궁궐 완공",
+      "url": "https://sillok.history.go.kr/id/kaa_10409029_006"
+     },
+     {
+      "title": "조선왕조실록 태조 4년(1395) 9월 29일 꿩 기사",
+      "url": "https://sillok.history.go.kr/id/kaa_10409029_002"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_name"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_name": {
+    "text": "궁궐 이름은 정도전이 지었소. 태조께서 새 궁궐과 전각 이름을 지으라 하시자, 『시경』의 ‘이미 술에 취하고 덕에 배불렀으니 군자께서 큰 복을 누리소서’라는 구절에서 ‘경복(景福)’ 두 글자를 따 왔지. 근정전, 사정전, 강녕전 같은 이름도 이때 붙였는데, 이름마다 임금이 지녀야 할 마음가짐을 담았다오.",
+    "year": "1395",
+    "sources": [
+     {
+      "title": "조선왕조실록 태조 4년(1395) 10월 7일",
+      "url": "https://sillok.history.go.kr/id/kaa_10410007_002"
+     },
+     {
+      "title": "한국민족문화대백과사전 경복궁",
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_strife"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_strife": {
+    "text": "그런데 좋은 날만 있었겠소. 무인년(1398) 8월, 태조의 아드님 방원 대군이 군사를 일으켜 정도전과 남은 무리를 쳤소. 그들이 송현에 모여 있던 집을 에워싸 불을 지르니, 정도전은 이웃집으로 달아났다가 붙잡혀 죽었다 하오. 세자 방석과 그 형 방번도 이 난리에 목숨을 잃었지. 이 궁궐 문밖 행랑 언저리까지 난리 통이었다오.",
+    "year": "1398",
+    "sources": [
+     {
+      "title": "조선왕조실록 태조 7년(1398) 8월 26일",
+      "url": "https://sillok.history.go.kr/id/kaa_10708026_001"
+     },
+     {
+      "title": "한국민족문화대백과사전 제1차 왕자의 난",
+      "url": "https://encykorea.aks.ac.kr/Article/E0051385"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_away"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_away": {
+    "text": "난리가 끝나고 정종 임금이 서셨는데, 기묘년(1399)에 도읍을 다시 개경으로 옮기셨소. 이 궁은 한동안 텅 비었지. 태종 임금께서 을유년(1405)에 한양으로 도로 오셨는데, 그해 창덕궁을 따로 지으셨소. 이 경복궁에서 있었던 일을 꺼리셨다고들 하오. 그 뒤로 임금들이 창덕궁을 더 좋아하셨다오.",
+    "year": "1399·1405",
+    "sources": [
+     {
+      "title": "한국민족문화대백과사전 정종",
+      "url": "https://encykorea.aks.ac.kr/Article/E0050884"
+     },
+     {
+      "title": "한국민족문화대백과사전 창덕궁",
+      "url": "https://encykorea.aks.ac.kr/Article/E0055378"
+     },
+     {
+      "title": "한국민족문화대백과사전 경복궁",
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_sejong"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_sejong": {
+    "text": "그래도 세종 대왕 때는 이 궁이 참 번듯했소. 궁 안에 집현전을 두고 학자들을 가까이하셨고, 간의대를 마련해 하늘을 살피셨지. 병오년(1426)에는 집현전 학자들에게 문 이름을 짓게 하셔서 광화문, 건춘문, 영추문, 영제교 같은 이름이 그때 붙었소. 문은 태조 때 섰지만 이름은 그때 얻은 거요. 무오년(1438)에는 장영실이 만든 옥루를 흠경각에 두었는데, 종이로 만든 산 위로 해가 뜨고 졌다 하오.",
+    "year": "1420·1426·1438",
+    "sources": [
+     {
+      "title": "한국민족문화대백과사전 집현전",
+      "url": "https://encykorea.aks.ac.kr/Article/E0055081"
+     },
+     {
+      "title": "조선왕조실록 세종 8년(1426) 10월 26일",
+      "url": "https://sillok.history.go.kr/id/kda_10810026_003"
+     },
+     {
+      "title": "한국민족문화대백과사전 옥루",
+      "url": "https://encykorea.aks.ac.kr/Article/E0038703"
+     },
+     {
+      "title": "한국민족문화대백과사전 경복궁",
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+     },
+     {
+      "title": "궁능유적본부 경복궁 소개·역사",
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_fire1553"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_fire1553": {
+    "text": "명종 임금 때 계축년(1553) 9월에는 궁 안에 큰불이 났소. 강녕전에서 불이 나 사정전과 흠경각까지 탔고, 대대로 내려온 보물과 책들이 재가 되었지. 겨우 책 몇 궤짝을 연못의 작은 배에 실어 건졌다 하오. 근정전은 무사했고, 이듬해에 다시 지었다오.",
+    "year": "1553·1554",
+    "sources": [
+     {
+      "title": "조선왕조실록 명종 8년(1553) 9월 14일",
+      "url": "https://sillok.history.go.kr/id/kma_10809014_001"
+     },
+     {
+      "title": "한국민족문화대백과사전 경복궁",
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+     },
+     {
+      "title": "한국민족문화대백과사전 경복궁 사정전",
+      "url": "https://encykorea.aks.ac.kr/Article/E0002445"
+     },
+     {
+      "title": "한국민족문화대백과사전 옥루",
+      "url": "https://encykorea.aks.ac.kr/Article/E0038703"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_imjin"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_imjin": {
+    "text": "그리고 임진년(1592)이오. 왜적이 충주를 깨뜨렸다는 소식에 선조 임금께서 밤에 서쪽으로 피란을 떠나셨소. 실록에는 임금이 떠나시자 난민들이 먼저 노비 문서가 있는 장례원과 형조에 불을 지르고, 궁궐 창고를 털고 불을 놓아 경복궁·창덕궁·창경궁이 한꺼번에 사라졌다고 적혀 있소. 왜적이 들어와 태웠다는 말도 전하니, 누가 불을 놓았는지는 나도 딱 잘라 말 못 하겠소.",
+    "year": "1592",
+    "sources": [
+     {
+      "title": "선조수정실록 25년(1592) 4월 14일",
+      "url": "https://sillok.history.go.kr/id/knb_12504014_028"
+     },
+     {
+      "title": "한국민족문화대백과사전 임진왜란",
+      "url": "https://encykorea.aks.ac.kr/Article/E0047674"
+     },
+     {
+      "title": "궁능유적본부 경복궁 소개·역사",
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_ruins"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_ruins": {
+    "text": "난리가 끝나고 창덕궁은 다시 지었지만, 이 궁은 끝내 다시 짓지 못했소. 그 뒤로는 창덕궁이 으뜸 궁궐 노릇을 하고 있지. 임진년부터 올해까지 따져 보면 벌써 백오십팔 년째 이렇게 담과 터만 남아 있다오. 나 같은 궁감이 풀 베고 나무 지키며 빈 터를 돌보는 거요.",
+    "year": "1592·1750",
+    "sources": [
+     {
+      "title": "한국민족문화대백과사전 창덕궁",
+      "url": "https://encykorea.aks.ac.kr/Article/E0055378"
+     },
+     {
+      "title": "한국민족문화대백과사전 경복궁",
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+     },
+     {
+      "title": "궁능유적본부 경복궁 소개·역사",
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+     }
+    ],
+    "options": [
+     {
+      "label": "그래서 어찌 되었소?",
+      "next": "tale_1747"
+     },
+     {
+      "label": "이야기는 여기까지 듣겠소.",
+      "next": "hello"
+     }
+    ]
+   },
+   "tale_1747": {
+    "text": "그래도 이 빈 터가 아주 잊힌 건 아니오. 삼 년 전 정묘년(1747)에 인원왕후께 존호를 올린 경사를 기념하여, 저 옛 근정전 터에서 정시를 열었소. 임금께서 시를 지으시고 신하 쉰 명이 화답했지. 그 모습을 그린 병풍도 있다 하오. 자, 내 이야기는 여기까지요. 길게 들어 주어 고맙소.",
+    "year": "1747",
+    "sources": [
+     {
+      "title": "국가유산청 보도자료 「친림광화문내근정전정시시도」",
+      "url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156686659&pWise=sub&pWiseSub=J2"
+     },
+     {
+      "title": "국가유산포털 친림광화문내근정전정시시도",
+      "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2111101380000&pageNo=1_1_1_1"
      }
     ],
     "options": [
@@ -436,6 +756,109 @@
      },
      {
       "label": "수고하시오.",
+      "action": "close"
+     }
+    ]
+   }
+  }
+ },
+ "horse_dealer": {
+  "name": "말 장수",
+  "subtitle": "수표교(마전교) 어귀 · 말을 끌고 나온 사람",
+  "nodes": {
+   "hello": {
+    "text": "어서 오시오. 이 녀석 좀 보시오, 튼튼하지? 이 다리 어귀에 원래 나라가 정한 우마전이 있었는데, 요즘은 형편이 말이 아니오.",
+    "options": [
+     {
+      "label": "우마전이 어떻게 되었소?",
+      "next": "closed"
+     },
+     {
+      "label": "이 다리를 왜 마전교라 부르오?",
+      "next": "bridge"
+     },
+     {
+      "label": "언제부터 여기서 말을 팔았소?",
+      "next": "origin"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "closed": {
+    "text": "몇 해 전(1744)에 조정에서도 이야기가 나왔다오. 여러 군문이 전을 침범하는 통에 전이 없어지고, 그 자리는 논밭으로 갈아엎었다지. 평시서 제조에게 다시 세우게 하자고 아뢰어 임금께서 허락하셨다는데, 나는 아직 소식을 기다리는 중이오.",
+    "year": "1744",
+    "sources": [
+     {
+      "title": "조선왕조실록 영조 20년(1744) 8월 26일",
+      "url": "https://sillok.history.go.kr/id/kua_12008026_001"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 것도 묻겠소.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "bridge": {
+    "text": "그때 조정에서는 마전교(馬廛橋)라는 이름만 봐도 국초부터 우마전이 여기 있었던 걸 알 수 있다고 아뢰었소. 그런데 세종 임금 때(1441) 개천에 수표를 세운 기록에는 馬前橋라고 적혀 있다 하니, 이름 풀이는 사람마다 조금씩 다르오. 수표를 세운 뒤로 수표교라고들 부르지.",
+    "year": "1441·1744",
+    "sources": [
+     {
+      "title": "조선왕조실록 영조 20년(1744) 8월 26일",
+      "url": "https://sillok.history.go.kr/id/kua_12008026_001"
+     },
+     {
+      "title": "조선왕조실록 세종 23년(1441) 8월 18일",
+      "url": "https://sillok.history.go.kr/id/kda_12308018_004"
+     },
+     {
+      "title": "한국민족문화대백과사전 수표교",
+      "url": "https://encykorea.aks.ac.kr/Article/E0031766"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 것도 묻겠소.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "origin": {
+    "text": "태종 임금 때(1410) 시전 자리를 정하면서 소와 말은 장통방 아래 개천가로 정했다고 하오. 그러니 개천가 말 시장은 나라 처음부터 있던 셈이지. 요즘 시전 목록에는 동대문 안에 마전이 따로 있다고도 하오.",
+    "year": "1410",
+    "sources": [
+     {
+      "title": "조선왕조실록 태종 10년(1410) 2월 7일",
+      "url": "https://sillok.history.go.kr/id/kca_11002007_008"
+     },
+     {
+      "title": "한국민족문화대백과사전 시전",
+      "url": "https://encykorea.aks.ac.kr/Article/E0032450"
+     },
+     {
+      "title": "우리역사넷 『한국문화사』 유분각전",
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 것도 묻겠소.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
       "action": "close"
      }
     ]

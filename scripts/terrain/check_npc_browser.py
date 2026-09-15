@@ -23,6 +23,8 @@ AIM = '''([kind, id]) => {
     const role = kind === 'keeper' ? 'keeper' : kind;
     const person = model.children.find(c => c.userData.role === role);
     feet = person.getWorldPosition(new T());
+  } else if (kind === 'dealer') {
+    feet = t.horseDealer.userData.person.getWorldPosition(new T());
   } else if (kind === 'merchant') {
     feet = t.sijeon.keepers()[id].position.clone();
   } else {
@@ -73,6 +75,20 @@ with sync_playwright() as p:
     closed = page.evaluate(state)
     assert not closed['overlay'] and not page.evaluate("terrain3d.guardModels.find(m=>m.userData.keeper).userData.talk.active"), closed
 
+    # The long tale: from 이성계 to the 1747 examination at the palace ruins, every page sourced.
+    click('keeper', 'gwanghwamun')
+    page.click('.npc-line')
+    page.locator('.npc-options button', has_text='옛날이야기').click()
+    pages = []
+    for _ in range(12):
+        page.click('.npc-line')
+        now = page.evaluate(state)
+        assert now['sources'], now
+        pages.append(now['text'])
+        if _ < 11:
+            page.keyboard.press('1')
+    assert '이성계' in pages[0] and '1747' in pages[-1] and '1592' in pages[9], [t[:20] for t in pages]
+    page.keyboard.press('Escape')
     # Gate officer: overlay with gate-specific name and sourced answers; soldier: greeting bubble only.
     click('officer', 'donhwamun')
     officer = page.evaluate(state)
@@ -107,6 +123,8 @@ with sync_playwright() as p:
     hud = page.evaluate("document.getElementById('money-hud').textContent")
     assert name in hud and '엽전' in hud, hud
     page.evaluate('terrain3d.firstPerson.exit()')
+    # Outside first person the name and coin display is hidden even while logged in.
+    assert page.evaluate("document.getElementById('money-hud').hidden && terrain3d.shop.state.loggedIn")
     click('merchant', merchant_index)
     page.click('.npc-line')
     page.locator('.npc-options button', has_text='거래하기').click()
@@ -142,11 +160,24 @@ with sync_playwright() as p:
     page.wait_for_function(f"terrain3d.shop.state.loggedIn && terrain3d.shop.state.money === {sold['money']}")
     page.evaluate('terrain3d.firstPerson.exit()')
 
+    # Horse dealer by 수표교: overlay with the 1744 record about the closed cattle and horse market.
+    page.evaluate('terrain3d.firstPerson.exit()') if page.evaluate('terrain3d.firstPerson.active') else None
+    click('dealer', 0)
+    dealer = page.evaluate(state)
+    assert dealer['overlay'] and dealer['name'] == '말 장수' and len(dealer['options']) == 4, dealer
+    page.click('.npc-line')
+    page.keyboard.press('1')
+    page.click('.npc-line')
+    market = page.evaluate(state)
+    assert '1744' in market['text'] and any('kua_12008026_001' in s for s in market['sources']), market
+    if args.shots:
+        page.screenshot(path=f'{args.shots}/npc_horse_dealer.png')
+    page.keyboard.press('Escape')
     # Passer-by: greeting bubble only.
     click('walker', 5)
     walker = page.evaluate(state)
     assert walker['bubble'] and not walker['overlay'] and walker['bubbleText'], walker
     assert not errors, errors
-    print('PASS: NPC dialogue', {'keeper': story['text'][:20], 'officer': officer['name'], 'soldier': soldier['bubbleText'],
-                                 'merchant': merchant['name'], 'shop': [shop['money'], bought['money'], sold['money']], 'walker': walker['bubbleText']}, flush=True)
+    print('PASS: NPC dialogue', {'keeper': story['text'][:20], 'tale_pages': len(pages), 'officer': officer['name'], 'soldier': soldier['bubbleText'],
+                                 'merchant': merchant['name'], 'dealer': dealer['name'], 'shop': [shop['money'], bought['money'], sold['money']], 'walker': walker['bubbleText']}, flush=True)
     b.close()

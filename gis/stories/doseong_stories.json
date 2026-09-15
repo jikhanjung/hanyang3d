@@ -440,6 +440,40 @@
    ]
   },
   {
+   "id": "supyo-majeon",
+   "target": {
+    "type": "bridge",
+    "key": "supyo",
+    "label": "수표교"
+   },
+   "title": "마전교와 사라진 우마전",
+   "year": "1410·1744",
+   "legend": false,
+   "text": "1410년(태종 10) 시전 자리를 정할 때 소·말 시장은 장통방 아래 개천가로 정했다. 1744년(영조 20) 조정에서는 수표교의 다른 이름 마전교(馬廛橋)를 국초에 우마전이 있었던 증거로 들며, 여러 군문의 침해로 전이 없어지고 자리가 논밭이 되었으니 다시 세우자고 아뢰었고 영조가 허락했다. 실제로 다시 열렸는지는 확인하지 못했다. 1441년 세종실록에는 이 다리가 馬前橋로 적혀 있어, 시장에서 이름이 왔다는 풀이는 18세기 관인들의 이해로 본다. 조선 후기 시전 목록에는 동대문 안쪽의 마전(馬廛)이 따로 보인다.",
+   "sources": [
+    {
+     "title": "조선왕조실록 태종 10년(1410) 2월 7일",
+     "url": "https://sillok.history.go.kr/id/kca_11002007_008"
+    },
+    {
+     "title": "조선왕조실록 영조 20년(1744) 8월 26일",
+     "url": "https://sillok.history.go.kr/id/kua_12008026_001"
+    },
+    {
+     "title": "조선왕조실록 세종 23년(1441) 8월 18일",
+     "url": "https://sillok.history.go.kr/id/kda_12308018_004"
+    },
+    {
+     "title": "한국민족문화대백과사전 수표교",
+     "url": "https://encykorea.aks.ac.kr/Article/E0031766"
+    },
+    {
+     "title": "우리역사넷 『한국문화사』 유분각전",
+     "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020"
+    }
+   ]
+  },
+  {
    "id": "sogong-princess",
    "target": {
     "type": "place",

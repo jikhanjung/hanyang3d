@@ -160,15 +160,15 @@ class ReviewTests(TestCase):
     def test_npc_data_is_consistent_and_sourced(self):
         data = json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text())
         zones = json.loads((settings.BASE_DIR / 'gis/buildings/doseong_sijeon.json').read_text())['signs']['zones']
-        for tree in (data['keeper']['nodes'], data['officer']['nodes'], data['merchant']['nodes']):
+        for tree in (data['keeper']['nodes'], data['officer']['nodes'], data['merchant']['nodes'], data['horse_dealer']['nodes']):
             self.assertIn('hello', tree)
             for node_id, node in tree.items():
                 for option in node.get('options', []):
                     self.assertTrue(option.get('next') in tree or option.get('action') in ('close', 'shop'), (node_id, option))
                 for source in node.get('sources', []):
                     self.assertTrue(source['url'].startswith('https://'), (node_id, source))
-        # Keeper and officer lines that state facts must carry a source.
-        for tree in (data['keeper']['nodes'], data['officer']['nodes']):
+        # Keeper, officer and horse dealer lines that state facts must carry a source.
+        for tree in (data['keeper']['nodes'], data['officer']['nodes'], data['horse_dealer']['nodes']):
             for node_id, node in tree.items():
                 if node_id != 'hello':
                     self.assertTrue(node.get('sources'), node_id)

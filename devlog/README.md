@@ -16,6 +16,8 @@
 
 ## 작업 기록
 
+- [130 — 이름·엽전 표시는 1인칭에서만](20260916_130_coin_display_first_person_only.md)
+- [129 — 수표교 말 장수와 마전교 이야기, 궁감의 긴 옛날이야기](20260915_129_horse_dealer_keeper_tale.md)
 - [128 — 1인칭에 들어갈 때만 로그인, 계정 이름으로 함께 걷기](20260915_128_login_on_first_person_walk_tickets.md)
 - [127: 이름·비밀번호 계정, 1인칭 우클릭 둘러보기와 Alt+W 자동 걷기](20260915_127_accounts_first_person_controls.md)
 - [126: 엽전 표시와 서버에 기록하는 잔고](20260915_126_server_wallet.md)

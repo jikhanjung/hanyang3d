@@ -36,7 +36,7 @@
 - Django `test_place_stories_point_at_real_places`: 대상이 실제 건물·다리·동네 이름인지, id 중복, 제목·본문·출처(https) 유무, 페이지와 안내에 나오는지.
 - `scripts/terrain/check_stories_browser.py`: 모든 이야기가 대상에 붙었는지, 이야기가 있는 건물을 눌렀을 때 카드에 제목과 출처 링크가 나오는지.
 
-현재 33개(건물 29, 다리 2, 동네 2).
+현재 34개(건물 29, 다리 3, 동네 2).
 
 ## 1750년 전후 사건의 이야기 반영
 

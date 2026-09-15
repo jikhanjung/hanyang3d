@@ -28,7 +28,7 @@ try:
             try:
                 with urlopen(url + '/healthz', timeout=2) as response: report = json.load(response)
                 assert report['status'] == 'ok' and report['content_source'] == 'database', report
-                assert report['content'] == {'buildings': 103, 'stories': 33}, report
+                assert report['content'] == {'buildings': 103, 'stories': 34}, report
                 return url
             except OSError:
                 if time.monotonic() > deadline: raise
