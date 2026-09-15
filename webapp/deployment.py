@@ -6,7 +6,7 @@ from django.conf import settings
 from .resources import RUNTIME_PREFIXES, public_resource_paths, resource_path
 
 
-def runtime_report(verify_hashes=False):
+def runtime_report(verify_hashes=False, check_content=True):
     paths = public_resource_paths()
     missing = sorted(p for p in paths if not resource_path(p).is_file())
     errors = []
@@ -29,6 +29,24 @@ def runtime_report(verify_hashes=False):
                     errors.append('Checksum mismatch: ' + path)
         except (OSError, ValueError, KeyError, TypeError):
             errors.append('Missing or invalid data bundle manifest')
-    return {'status': 'unhealthy' if missing or errors else 'ok',
+    content = {}
+    if check_content and settings.CONTENT_SOURCE == 'database':
+        from django.db import DatabaseError
+        from .models import Building, ContentImport, Story
+        from .content import IMPORT_KEY
+        try:
+            if not ContentImport.objects.filter(key=IMPORT_KEY).exists():
+                errors.append('Content database has not been initialized')
+            content = {'buildings': Building.objects.filter(published=True).count(),
+                       'stories': Story.objects.filter(published=True).count()}
+            if content['buildings'] == 0:
+                errors.append('Content database has no published buildings')
+        except DatabaseError:
+            errors.append('Content database is unavailable or migrations are missing')
+    from pathlib import Path
+    from deploy.host.backup_content import FAILURE_SENTINEL
+    backup_failed = settings.CONTENT_SOURCE == 'database' and (Path(settings.DATABASES['default']['NAME']).parent / FAILURE_SENTINEL).exists()
+    status = 'unhealthy' if missing or errors else ('degraded' if backup_failed else 'ok')
+    return {'content_source': settings.CONTENT_SOURCE, 'content': content, 'backup_failed': backup_failed, 'status': status,
             'version': settings.APP_VERSION, 'resources': len(paths),
             'missing': missing, 'errors': errors}

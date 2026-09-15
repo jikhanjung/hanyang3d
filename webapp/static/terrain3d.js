@@ -249,7 +249,7 @@ async function main(){
   const box=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color:colors[feature.category]??0x856549,roughness:.8}));
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
-  if(feature.category==='성문'){box.material.visible=false;feature.outer_side=Math.sign(Math.sin(yaw)*(wx-cityCentre.x)+Math.cos(yaw)*(wz-cityCentre.z))||1;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards){box.add(guards);if(guards.userData.update)drills.push(guards)}}
+  if(feature.display_model==='conceptual_gate_with_open_arch_and_roof'||(!feature.model_resource&&feature.category==='성문')){box.material.visible=false;feature.outer_side=Math.sign(Math.sin(yaw)*(wx-cityCentre.x)+Math.cos(yaw)*(wz-cityCentre.z))||1;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards){box.add(guards);if(guards.userData.update)drills.push(guards)}}
   if(feature.display_model==='throne_hall'){box.material.visible=false;foundation.visible=false;box.add(createThroneHall(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d));const guards=createGuards(feature,w,h,d);if(guards)box.add(guards)}
@@ -261,7 +261,7 @@ async function main(){
   if(feature.display_model==='bell_tower'){box.material.visible=false;box.add(createBellTower(feature,w,h,d))}
   if(feature.display_model==='site_marker'){box.material.visible=false;foundation.visible=false;box.add(createSiteMarker(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.display_model==='house_site'){box.material.visible=false;foundation.visible=false;box.add(createHouseSite(feature,w,h,d));siteMarkers.push({box,foundation})}
-  if(feature.id==='jongmyo'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
+  if(feature.display_model==='jongmyo_15_chambers'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
   buildings.add(box);
  }
@@ -568,7 +568,7 @@ async function main(){
    const label=document.createElement('p');label.className='popup-sources';label.textContent='출처';popup.append(label,list);
   }
   // Link to the same building in the site's guide page when it has a section there.
-  const guideKey=f.name.split(' · ')[0];
+  const guideKey=f.guide_key??f.name.split(' · ')[0];
   if(guideAnchors.has(guideKey)){const p=document.createElement('p'),a=document.createElement('a');a.href='/guide/#'+encodeURIComponent(guideKey);a.target='_blank';a.textContent='건물 안내에서 자세히 보기';p.append(a);popup.append(p)}
  }
  function showBuilding(box){

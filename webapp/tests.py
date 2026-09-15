@@ -1,11 +1,17 @@
 import json
-from django.test import SimpleTestCase
+from django.test import TestCase
+from django.core.management import call_command
+from io import StringIO
 from django.conf import settings
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
 
-class ReviewTests(SimpleTestCase):
+class ReviewTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        call_command("import_content", stdout=StringIO())
+
     def test_health_reports_missing_runtime_data(self):
         response = self.client.get('/healthz')
         self.assertEqual(response.status_code, 200)

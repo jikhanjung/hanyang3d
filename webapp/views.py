@@ -34,7 +34,11 @@ def terrain_overlay(request):
 @require_safe
 def terrain3d(request, canvas_only=False):
     experiment = json.loads((settings.BASE_DIR / 'gis/control_points/doseong_modern_preview.json').read_text())
-    buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())
+    if settings.CONTENT_SOURCE == 'database':
+        from .content import load_buildings
+        buildings = load_buildings()
+    else:
+        buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())
     water = json.loads((settings.BASE_DIR / 'gis/waterways/doseong_cheonggyecheon.json').read_text())
     wall = json.loads((settings.BASE_DIR / 'gis/walls/doseong_city_wall.json').read_text())
     return render(request, 'terrain3d.html', {
@@ -93,7 +97,7 @@ def versioned_resource(request, version, resource):
 @require_safe
 def healthz(request):
     report = runtime_report()
-    response = JsonResponse(report, status=200 if report['status'] == 'ok' else 503)
+    response = JsonResponse(report, status=503 if report['status'] == 'unhealthy' else 200)
     response['Cache-Control'] = 'no-store'
     return response
 

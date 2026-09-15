@@ -1,6 +1,10 @@
 #!/bin/sh
 set -eu
 python manage.py check
+if [ "${HANYANG_CONTENT_SOURCE:-files}" = database ]; then
+    # Schema changes are an explicit, backed-up deployment step, never a worker startup write.
+    python manage.py migrate --check
+fi
 python -c 'import os; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webapp.settings"); import django; django.setup(); from webapp.deployment import runtime_report; r=runtime_report(verify_hashes=True); print(r); raise SystemExit(0 if r["status"] == "ok" else 1)'
 exec gunicorn webapp.wsgi:application --bind 0.0.0.0:8000 \
     --workers "${GUNICORN_WORKERS:-2}" --worker-class gthread --threads "${GUNICORN_THREADS:-4}" \

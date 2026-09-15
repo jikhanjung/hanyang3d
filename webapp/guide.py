@@ -2,6 +2,7 @@
 import html
 import re
 from functools import lru_cache
+from urllib.parse import urlsplit
 
 from django.conf import settings
 
@@ -20,6 +21,13 @@ def inline(text):
 
     def link(m):
         label, url = m.group(1), html.escape(html.unescape(m.group(2)), quote=True)
+        raw_url = html.unescape(url)
+        try:
+            scheme = urlsplit(raw_url).scheme.lower()
+        except ValueError:
+            return label
+        if scheme not in ('', 'http', 'https') or raw_url.startswith('//'):
+            return label
         external = url.startswith('http')
         extra = ' target="_blank" rel="noopener noreferrer"' if external else ''
         return f'<a href="{url}"{extra}>{label}</a>'
@@ -27,8 +35,8 @@ def inline(text):
 
 
 @lru_cache(maxsize=4)
-def _render(path, mtime):
-    lines = (settings.BASE_DIR / path).read_text().splitlines()
+def render_markdown(text):
+    lines = text.splitlines()
     parts, toc, anchors, i = [], [], [], 0
     # Headings own their anchors; table rows only take names no heading uses, so IDs stay unique.
     heading_names = {anchor(m.group(1)) for m in (re.match(r'^#{2,3}\s+(.*)$', l) for l in lines) if m}
@@ -91,5 +99,7 @@ def _render(path, mtime):
 
 
 def render_guide():
-    file = settings.BASE_DIR / GUIDE
-    return _render(GUIDE, file.stat().st_mtime_ns)
+    if settings.CONTENT_SOURCE == 'database':
+        from .content import guide_markdown
+        return render_markdown(guide_markdown())
+    return render_markdown((settings.BASE_DIR / GUIDE).read_text())

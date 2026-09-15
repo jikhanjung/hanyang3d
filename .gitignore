@@ -31,3 +31,9 @@ Thumbs.db
 
 # Private shared guides: local sibling checkout only
 /.guides
+
+# Local editorial database, backups, and collected static files
+*.sqlite3
+*.sqlite3-*
+/content-backups/
+/staticfiles/

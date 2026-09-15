@@ -1,7 +1,11 @@
 from django.urls import path
+from django.contrib import admin
+from django.contrib.staticfiles.views import serve as serve_static
 from . import views
 
 urlpatterns = [
+    path('backoffice/', admin.site.urls),
+    path('static/<path:path>', serve_static, {'insecure': True}),
     path('credits/', views.credits, name='credits'),
     path('guide/', views.guide, name='guide'),
     path('healthz', views.healthz, name='healthz'),

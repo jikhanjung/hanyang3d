@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.title="Hanyang 3D" \
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
     HANYANG_VERSION=$APP_VERSION HANYANG_DATA_ROOT=/runtime \
-    HANYANG_REQUIRE_BUNDLE=1 DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+    HANYANG_REQUIRE_BUNDLE=1 HANYANG_CONTENT_SOURCE=files DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
 WORKDIR /app
 COPY requirements.txt ./
 COPY deploy/requirements.txt deploy/requirements.txt

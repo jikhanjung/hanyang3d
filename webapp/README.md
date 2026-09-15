@@ -1,3 +1,5 @@
+> 개발 환경은 콘텐츠 DB를 사용합니다. 처음 실행하기 전에 `manage.py migrate`, `manage.py import_content`, `manage.py createsuperuser`가 필요합니다. [백오피스 안내](../docs/backoffice.md)와 [백업·복원](../docs/content_backup.md)을 먼저 참고하세요. 아래 과거 실행 기록의 “DB 없음”은 파일 모드에 해당합니다.
+
 # Django GIS 검토 서비스
 
 저장소 루트에서 실행합니다.

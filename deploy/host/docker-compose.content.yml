@@ -1,0 +1,14 @@
+# Opt-in after backup, migration, initial import, and account setup.
+# COMPOSE_FILE=docker-compose.yml:docker-compose.content.yml
+services:
+  hanyang3d:
+    environment:
+      HANYANG_CONTENT_SOURCE: database
+      HANYANG_DB_PATH: /content/content.sqlite3
+      DJANGO_COOKIE_SECURE: '1'
+    volumes:
+      - type: bind
+        source: ./content
+        target: /content
+        bind:
+          create_host_path: false

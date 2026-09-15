@@ -1,6 +1,6 @@
 # 장소 이야기 자료
 
-지도에서 건물·다리·동네 이름을 누르면 카드에 ‘이야기’ 칸이 나오고, [건물 안내](landmarks.md)(사이트 `/guide/`) 끝의 ‘장소 이야기’ 절에 장소별로 모인다. 자료는 `gis/stories/doseong_stories.json` 한 파일에 둔다. 처음 만든 경위는 [개발 기록 104](../devlog/20260915_104_stories_guards.md)에 있다.
+지도에서 건물·다리·동네 이름을 누르면 카드에 ‘이야기’ 칸이 나오고, [건물 안내](landmarks.md)(사이트 `/guide/`) 끝의 ‘장소 이야기’ 절에 장소별로 모인다. 운영 v0.2.4의 자료는 `gis/stories/doseong_stories.json`에 둔다. 개발 환경의 DB 모드에서는 이 파일을 최초 한 번 가져온 뒤 백오피스에서 관리한다([전환·편집 안내](backoffice.md)). 처음 만든 경위는 [개발 기록 104](../devlog/20260915_104_stories_guards.md)에 있다.
 
 ## 형식
 

@@ -1,4 +1,4 @@
-"""Local GIS review service; no database or authentication is needed yet."""
+"""GIS service and editorial back office."""
 import os
 import secrets
 from pathlib import Path
@@ -15,14 +15,39 @@ if os.environ.get('DJANGO_TRUST_PROXY', '0') == '1':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ROOT_URLCONF = 'webapp.urls'
 WSGI_APPLICATION = 'webapp.wsgi.application'
-INSTALLED_APPS = ['webapp']
+CONTENT_SOURCE = os.environ.get('HANYANG_CONTENT_SOURCE', 'database')
+if CONTENT_SOURCE not in {'database', 'files'}:
+    raise ValueError('HANYANG_CONTENT_SOURCE must be database or files')
+DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3',
+                        'NAME': os.environ.get('HANYANG_DB_PATH', str(BASE_DIR / 'data/content.sqlite3')),
+                        'OPTIONS': {'timeout': 20}}}
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = os.environ.get('DJANGO_COOKIE_SECURE', '0') == '1'
+CSRF_COOKIE_SECURE = SESSION_COOKIE_SECURE
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+]
+INSTALLED_APPS = ['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
+                  'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles', 'webapp']
 MIDDLEWARE = ['django.middleware.security.SecurityMiddleware',
+              'django.contrib.sessions.middleware.SessionMiddleware',
               'django.middleware.common.CommonMiddleware',
               'django.middleware.csrf.CsrfViewMiddleware',
+              'django.contrib.auth.middleware.AuthenticationMiddleware',
+              'django.contrib.messages.middleware.MessageMiddleware',
               'django.middleware.clickjacking.XFrameOptionsMiddleware']
 TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates',
-              'DIRS': [BASE_DIR / 'webapp/templates'], 'APP_DIRS': False,
-              'OPTIONS': {'loaders': ['django.template.loaders.filesystem.Loader']}}]
+              'DIRS': [BASE_DIR / 'webapp/templates'], 'APP_DIRS': True,
+              'OPTIONS': {'context_processors': [
+                  'django.template.context_processors.request',
+                  'django.contrib.auth.context_processors.auth',
+                  'django.contrib.messages.context_processors.messages']}}]
 LANGUAGE_CODE = 'ko-kr'
 TIME_ZONE = 'Asia/Seoul'
 USE_TZ = True

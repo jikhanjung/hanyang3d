@@ -35,3 +35,8 @@ gis/georeferenced/
 .build/
 dist/
 .guides
+
+**/*.sqlite3
+**/*.sqlite3-*
+staticfiles/
+content-backups/

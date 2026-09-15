@@ -13,6 +13,9 @@ def _load(mtime):
 
 
 def load_stories():
+    if settings.CONTENT_SOURCE == 'database':
+        from .content import load_stories as from_database
+        return from_database()
     file = settings.BASE_DIR / STORIES
     return _load(file.stat().st_mtime_ns)
 
