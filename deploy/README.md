@@ -21,17 +21,17 @@
 
 ## 운영 주소
 
-2026-09-15 dolfinid에 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 배포했다. 멀티플레이 v0.2.4 컨테이너는 재시작 없이 유지했다.
+2026-09-15 dolfinid에 웹·멀티플레이 v0.3.1(소스 `08b6aea`)을 DB 모드로 배포했다. 이전 기록: 같은 날 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 처음 배포했다.
 
 - 전체 화면 3D (기본 페이지): https://hanyang3d.nopeoplestime.info/
 - 도구 포함 3D 화면: https://hanyang3d.nopeoplestime.info/gis/terrain/3d/
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.3.0`
-  - digest: `sha256:7e82ad170653af4459dd92a1900c735bb8b6174578b78472cbe889fbfc2d5114`
-- 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.2.4`
-  - digest: `sha256:9b9db8007fa3f9f7bb873bbd3621aa54e1075c1bf146ecfc13c70ac6b0c6f29f`
+- 웹: `honestjung/hanyang3d:v0.3.1`
+  - digest: `sha256:72f41958e3c79141a9f07226456a0a8afd156c7fc6779502e6d72954a31952da`
+- 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.3.1`
+  - digest: `sha256:545b6e362e4f7c35ae1812b7b956110a6e84e1a897983103e3b1b66a3b8b03ed`
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 

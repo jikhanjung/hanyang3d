@@ -30,3 +30,10 @@
 - 로컬 Colyseus 서버에 `check_connections.js` 통과. 임의 `mapVersion`으로 보낸 매치메이킹 요청 3건은 412, `<b>` 이름은 422로 방 생성 전에 거절됐다. 검사 스크립트는 `mapVersion` 형식, ‘다른 버전은 같은 방’, 배치별 공간 분리, 채팅 기록 1회 응답, 위조 `mapVersion`·배치 거절을 확인하도록 고쳤다.
 - `deploy/check_maintenance_nginx.py`: 격리 Nginx에서 설정 문법, 점검 페이지, HSTS 헤더, 로그인 12회 연속 요청 중 429를 확인하도록 늘렸다(한도 영역 줄을 격리 설정에 포함).
 - Django 테스트 27개 통과.
+
+## 배포
+
+- dolfinid에 웹·멀티플레이 v0.3.1 배포(`bash deploy.sh v0.3.1 v0.3.1`, DB 모드). 배포 전 `.env`·`.env.django`·Compose·호스트 스크립트·Nginx 사이트 설정을 `releases-v0.3.1.*`(권한 700)에 보존했다. 새 Nginx 사이트 설정은 `nginx -t` 통과 후 reload.
+- 웹 digest `sha256:72f41958e3c79141a9f07226456a0a8afd156c7fc6779502e6d72954a31952da`, 멀티플레이 digest `sha256:545b6e362e4f7c35ae1812b7b956110a6e84e1a897983103e3b1b66a3b8b03ed`.
+- 운영 확인: `/healthz` v0.3.1(database, 건물 103·이야기 33, 백업 실패 없음), `/multiplayer/healthz` v0.3.1·NPC 130, `strict-transport-security: max-age=31536000`, 위조 `mapVersion` 매치메이킹 412·잘못된 이름 422, `/backoffice/login/` 12회 연속 요청 중 7번째부터 429, 운영 멀티플레이 컨테이너 안 `check_connections.js` 통과.
+- 두 브라우저로 운영에 붙는 `check_walk_together_browser.py`는 돌리지 않았다.
