@@ -39,12 +39,12 @@ export function createWalkProfile() {
     dialog.close('accept');
   });
   dialog.querySelector('#walk-name-cancel').onclick = () => dialog.close('cancel');
-  function requestName() {
-    if (name) return Promise.resolve(name);
+  function requestName({ force = false, message = '' } = {}) {
+    if (name && !force) return Promise.resolve(name);
     if (pending) return pending;
     pending = new Promise(resolve => {
-      dialog.addEventListener('close', () => { pending = null; resolve(name); }, { once: true });
-      input.value = ''; error.textContent = ''; dialog.showModal(); input.focus();
+      dialog.addEventListener('close', () => { pending = null; resolve(dialog.returnValue === 'accept' ? name : null); }, { once: true });
+      input.value = force ? name || '' : ''; error.textContent = message; dialog.returnValue = ''; dialog.showModal(); input.focus(); input.select();
     });
     return pending;
   }

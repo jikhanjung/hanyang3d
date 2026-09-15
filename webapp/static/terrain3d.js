@@ -871,15 +871,15 @@ async function main(){
    const ground=groundAt(p.x,p.z);if(ground===null)return;
    controls.enabled=false;active=true;clearInput();lastGround=ground;
    camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();eye.set(p.x,ground+1.65,p.z);
-   if(!walker){walker=createWalker();addPlayerNameTag(walker.group,walkProfile.name);scene.add(walker.group)}
+   if(!walker){walker=createWalker();scene.add(walker.group)}
+   if(walker.group.userData.playerName!==walkProfile.name){const tag=walker.group.getObjectByName('player-name');if(tag){tag.material.map.dispose();tag.material.dispose();tag.removeFromParent()}addPlayerNameTag(walker.group,walkProfile.name)}
    walked=0;walker.update(0,false);look();
-   navigation.show(yaw,eye);hud.hidden=false;el('first-person3d').textContent='전체 지도 시점';el('first-person3d').setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});
+   navigation.show(yaw,eye);hud.hidden=false;canvas.focus({preventScroll:true});
   }
   function exit(){
    together?.stop();
    if(!active)return;active=false;clearInput();hud.hidden=true;navigation.hide();if(walker)walker.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
-   el('first-person3d').textContent='1인칭으로 걷기';el('first-person3d').setAttribute('aria-pressed','false');
   }
   function update(dt){
    if(!active)return;
@@ -915,9 +915,9 @@ async function main(){
    view=Math.max(0,Math.min(12,view+Math.sign(event.deltaY)*.6));look();
   },{passive:false});
   const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
-  el('first-person3d').onclick=()=>{active?exit():enter();el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false')};
+  el('walk-together').addEventListener('click',()=>{el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false')});
   el('first-person-exit').onclick=exit;
-  document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['first-person3d','map-options-toggle','walk-together'].includes(event.target.id))exit()},true);
+  document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['map-options-toggle','walk-together'].includes(event.target.id))exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Touch buttons allow the same walk controls without a hardware keyboard.
   for(const button of hud.querySelectorAll('[data-walk]')){
@@ -927,7 +927,7 @@ async function main(){
   }
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+1.65,z);lastGround=g;yaw=heading;look();return true}
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt};
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
  })();
  const togetherStatus=document.createElement('div');togetherStatus.id='walk-together-status';togetherStatus.hidden=true;togetherStatus.setAttribute('role','status');
  Object.assign(togetherStatus.style,{position:'absolute',top:'64px',left:'12px',zIndex:'25',background:'#fffdf2eb',padding:'6px 10px',borderRadius:'5px',fontSize:'12px',maxWidth:'calc(100% - 150px)',pointerEvents:'none'});el('scene').append(togetherStatus);

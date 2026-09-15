@@ -24,7 +24,7 @@ with sync_playwright() as p:
     controls=page.locator('#map-controls').bounding_box();compass_box=page.locator('#first-person-compass').bounding_box()
     assert controls['x']+controls['width']<=compass_box['x']
     page.locator('#map-options-toggle').tap()
-    page.locator('#first-person3d').tap()
+    page.locator('#walk-together').tap()
     page.wait_for_selector('#walk-name-dialog[open]')
     name_box = page.locator('#walk-name-dialog').bounding_box()
     assert name_box['x'] >= 0 and name_box['x'] + name_box['width'] <= 390, name_box
@@ -32,7 +32,7 @@ with sync_playwright() as p:
     page.fill('#walk-name-input', '검사 나그네')
     page.locator('#walk-name-form button[type=submit]').tap()
     page.wait_for_function('terrain3d.firstPerson.active')
-    assert page.evaluate('terrain3d.firstPerson.active')
+    page.wait_for_function("document.getElementById('walk-together').getAttribute('aria-pressed') === 'true'")
     assert not page.locator('#anchors3d').is_visible()
     assert page.locator('#first-person-map').evaluate('(e)=>getComputedStyle(e).opacity')=='0.7'
     client = context.new_cdp_session(page)
@@ -92,15 +92,29 @@ with sync_playwright() as p:
     stopped=position();advance();assert distance(stopped,position())<1e-6
     touch('touchEnd',[])
     page.locator('#map-options-toggle').tap()
-    page.locator('#first-person3d').tap()
+    page.locator('#walk-together').tap()
     page.locator('#map-options-toggle').tap()
-    page.locator('#first-person3d').tap()
+    page.locator('#walk-together').tap()
+    page.wait_for_function('terrain3d.firstPerson.active')
     stopped=position();advance();assert distance(stopped,position())<1e-6
     # Keyboard input still works after the pointer input separation.
     page.locator('#scene > canvas').focus();page.keyboard.down('KeyW');before=position();advance();assert distance(before,position())>1, (distance(before,position()),page.evaluate('touchLog'))
     page.keyboard.up('KeyW')
+    page.wait_for_function("document.getElementById('walk-together').getAttribute('aria-pressed') === 'true'")
+    page.locator('#walk-chat-toggle').tap()
+    chat_box = page.locator('#walk-chat').bounding_box()
+    assert chat_box['x'] >= 0 and chat_box['x'] + chat_box['width'] <= 390, chat_box
+    before = position()
+    page.locator('#walk-chat-input').press_sequentially('wasd')
+    advance(); assert distance(before, position()) < 1e-6
+    page.fill('#walk-chat-input', '모바일 채팅 확인')
+    page.locator('#walk-chat-form button').tap()
+    page.wait_for_function("document.getElementById('walk-chat-messages').textContent.includes('모바일 채팅 확인')")
+    page.screenshot(path='/tmp/hanyang3d-mobile-chat.png')
+    page.locator('#walk-chat-close').tap()
+    assert page.evaluate('terrain3d.firstPerson.active')
     page.evaluate('terrain3d.renderer.render(terrain3d.scene,terrain3d.camera)')
     page.screenshot(path='/tmp/hanyang3d-mobile-walk.png')
     assert not errors,errors
-    print('Mobile walk passed:',results,'name entry, multitouch, focus, cancel, exit and keyboard',flush=True)
+    print('Mobile walk passed:',results,'name entry, multitouch, focus, cancel, exit, keyboard and chat',flush=True)
     browser.close()

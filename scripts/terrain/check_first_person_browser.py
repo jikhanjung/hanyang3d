@@ -5,7 +5,7 @@ with sync_playwright() as p:
  page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
  page.goto('http://127.0.0.1:8000/gis/terrain/3d/',wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=300000)
  page.evaluate('terrain3d.renderer.setAnimationLoop(null)');saved=page.evaluate('terrain3d.camera.position.toArray()')
- page.locator('#first-person3d').click()
+ page.evaluate('terrain3d.firstPerson.enter()')
  assert page.evaluate('terrain3d.firstPerson.active&&!terrain3d.controls.enabled&&terrain3d.camera.near===.08&&Math.abs(terrain3d.firstPerson.eye.y-terrain3d.firstPerson.ground-1.65)<1e-6')
  # The character stands at the walking position while the camera follows on a boom behind it.
  assert page.evaluate('terrain3d.firstPerson.walker.group.visible&&Math.abs(terrain3d.firstPerson.walker.group.position.y-(terrain3d.firstPerson.eye.y-1.65))<1e-6')
@@ -29,7 +29,7 @@ with sync_playwright() as p:
   result=page.evaluate("""async()=>{const T=await import('/webapp/static/vendor/three/three.module.js'),t=terrain3d,eye=t.firstPerson.eye,origin=eye.clone();origin.y=10000;const ray=new T.Raycaster(origin,new T.Vector3(0,-1,0)),meshes=[t.terrain,t.mapGround];if(t.roadLayer.visible)meshes.push(t.roadLayer);for(const mesh of meshes)mesh.updateMatrixWorld(true);const hits=ray.intersectObjects(meshes,false);if(!hits.length)throw Error('No visible ground beneath camera');return {scale:Number(document.getElementById('height3d').value),map:t.historical.material.opacity,eye:eye.y-hits[0].point.y}}""")
   assert abs(result['eye']-1.65)<.08,result
   print(result,flush=True)
- page.locator('#first-person3d').click()
+ page.evaluate('terrain3d.firstPerson.enter()')
  for scale in ['1','1.5','2','1']:
   page.locator('#height3d').select_option(scale);check_eye_height()
  page.locator('#height3d').select_option('2')
@@ -38,7 +38,7 @@ with sync_playwright() as p:
  page.locator('#carve3d').check();check_eye_height()
  page.locator('#opacity3d').fill('90');check_eye_height()
  # Re-enter while height exaggeration is already enabled.
- page.keyboard.press('Escape');page.locator('#first-person3d').click();check_eye_height()
+ page.keyboard.press('Escape');page.evaluate('terrain3d.firstPerson.enter()');check_eye_height()
  box=page.locator('#scene > canvas').bounding_box();page.mouse.move(box['x']+box['width']/2,box['y']+box['height']/2)
  # Scrolling in pulls the boom to the eye; scrolling out shows the character again.
  for _ in range(12):page.mouse.wheel(0,-120)

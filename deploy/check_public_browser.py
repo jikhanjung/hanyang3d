@@ -82,7 +82,7 @@ with sync_playwright() as p:
     assert bounds['x']==0 and bounds['y']==0 and bounds['width']==390 and bounds['height']==844, bounds
     assert page.evaluate('document.documentElement.scrollHeight <= innerHeight')
     close_settings()
-    assert not page.locator('#first-person3d').is_visible()
+    assert not page.locator('#walk-together').is_visible()
     open_settings()
     coincident = "()=>{const t=terrain3d,a=t.terrain.geometry.attributes.position,b=t.historical.geometry.attributes.position,c=t.roadLayer.geometry.attributes.position;let error=0;for(let i=0;i<a.count;i++)error=Math.max(error,Math.abs(a.getY(i)-b.getY(i)),Math.abs(a.getY(i)-c.getY(i)));return error}"
     assert page.evaluate("()=>{const n=terrain3d.terrain.geometry.attributes.normal;for(let i=0;i<n.count;i++)if(Math.hypot(n.getX(i),n.getY(i),n.getZ(i))<.9)return false;return true}")
@@ -96,8 +96,8 @@ with sync_playwright() as p:
     assert page.evaluate('terrain3d.historical.material.opacity === 0.3')
     assert not page.locator('#anchors3d').is_visible()
     assert not page.evaluate('terrain3d.labels.visible')
-    page.locator('#first-person3d').click()
-    assert page.locator('#first-person3d').get_attribute('aria-pressed') == 'true'
+    page.locator('#walk-together').click()
+    page.wait_for_function("document.getElementById('walk-together').getAttribute('aria-pressed') === 'true'")
     assert page.evaluate('terrain3d.firstPerson.walker.group.visible && terrain3d.firstPerson.view > 1')
     assert page.evaluate('terrain3d.camera.position.distanceTo(terrain3d.firstPerson.eye) > 1')
     assert page.locator('#first-person-help').is_visible()
@@ -110,8 +110,8 @@ with sync_playwright() as p:
         assert page.evaluate(coincident) == 0
         assert abs(eye-1.65)<.08, (scale, opacity, road, eye)
         print('Eye height above displayed surface:', scale, opacity, road, eye, flush=True)
-    page.locator('#first-person3d').click()
-    assert page.locator('#first-person3d').get_attribute('aria-pressed') == 'false'
+    page.locator('#walk-together').click()
+    assert page.locator('#walk-together').get_attribute('aria-pressed') == 'false'
     assert page.locator('#credits-link').is_visible()
     page.locator('#credits-link').click()
     page.wait_for_url(base + '/credits/')

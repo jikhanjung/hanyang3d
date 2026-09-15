@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [114: 1인칭 진입 통합, 옷 색깔·중복 이름·문자 채팅](20260915_114_walking_chat.md)
 - [113: 함께 걷기 v0.2.0 운영 배포](20260915_113_multiplayer_release.md)
 - [112: NPC 동기화와 첫 걷기 이름 입력](20260915_112_shared_npcs_player_names.md)
 - [111: Colyseus로 접속자끼리 함께 걷기](20260915_111_walk_together.md)

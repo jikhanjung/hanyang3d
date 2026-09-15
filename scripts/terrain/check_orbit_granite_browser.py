@@ -81,7 +81,7 @@ with sync_playwright() as p:
     page.evaluate('terrain3d.updateBuildingNames();terrain3d.renderer.render(terrain3d.scene,terrain3d.camera)')
     page.locator('#scene').screenshot(path='/tmp/hanyang-mountain-names.png')
     saved = page.evaluate('({position:terrain3d.camera.position.toArray(),near:terrain3d.camera.near})')
-    page.locator('#first-person3d').click()
+    page.locator('#walk-together').click()
     assert page.evaluate('terrain3d.firstPerson.active && terrain3d.camera.near===.08')
     page.keyboard.press('Escape')
     restored = page.evaluate('({position:terrain3d.camera.position.toArray(),near:terrain3d.camera.near})')

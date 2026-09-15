@@ -25,8 +25,10 @@ with sync_playwright() as p:
             window.npcSamples = {};
             ped.applySnapshot = s => { npcSamples[s.tick] = s; const keys = Object.keys(npcSamples); if(keys.length>20)delete npcSamples[keys[0]]; apply(s); };
         }''')
+        assert page.locator('#first-person3d').count() == 0
+        assert page.locator('#walk-together').inner_text() == '1인칭'
         if index == 0:
-            page.dispatch_event('#first-person3d', 'click')
+            page.dispatch_event('#walk-together', 'click')
             page.wait_for_selector('#walk-name-dialog[open]')
             # Native dialog.close() queues its close event; wait for cancellation
             # to settle before dispatching a synthetic second click.
@@ -34,18 +36,21 @@ with sync_playwright() as p:
             page.click('#walk-name-cancel')
             page.wait_for_function('window.nameDialogClosed === true')
             assert not page.evaluate('terrain3d.firstPerson.active')
-            page.dispatch_event('#first-person3d', 'click')
+            page.dispatch_event('#walk-together', 'click')
         else:
             page.dispatch_event('#walk-together', 'click')
         page.wait_for_selector('#walk-name-dialog[open]')
         page.fill('#walk-name-input', '<script>')
         page.click('#walk-name-form button[type=submit]')
         assert page.locator('#walk-name-dialog').evaluate('(d) => d.open')
-        page.fill('#walk-name-input', ['한양 길동', '서울 나그네'][index])
+        page.fill('#walk-name-input', '한양 길동')
         page.click('#walk-name-form button[type=submit]')
+        if index == 1:
+            page.wait_for_function("document.getElementById('walk-name-dialog').open && document.getElementById('walk-name-error').textContent.includes('이미 사용')")
+            assert not page.evaluate('terrain3d.firstPerson.active')
+            page.fill('#walk-name-input', '서울 나그네')
+            page.click('#walk-name-form button[type=submit]')
         page.wait_for_function('terrain3d.firstPerson.active')
-        if index == 0:
-            page.dispatch_event('#walk-together', 'click')
     for page in pages:
         page.wait_for_function("document.getElementById('walk-together-status').textContent.includes('2명')", timeout=20000)
         page.wait_for_function("terrain3d.scene.children.filter(o => o.name === 'remote-walker').length === 1")
@@ -54,6 +59,23 @@ with sync_playwright() as p:
         assert page.evaluate("terrain3d.scene.children.find(o=>o.name==='remote-walker').userData.playerName") == expected
         page.wait_for_function('terrain3d.pedestrians.networkSnapshot?.npcs.length === 130')
         assert page.is_disabled('#walking3d')
+    own_colors = [page.evaluate("terrain3d.firstPerson.walker.group.getObjectByName('walker-body').material.color.getHexString()") for page in pages]
+    assert own_colors[0] != own_colors[1]
+    for index, page in enumerate(pages):
+        assert page.evaluate("terrain3d.scene.children.find(o=>o.name==='remote-walker').getObjectByName('walker-body').material.color.getHexString()") == own_colors[1-index]
+    a.click('#walk-chat-toggle')
+    position_before_chat = a.evaluate('terrain3d.firstPerson.eye.toArray()')
+    a.locator('#walk-chat-input').press_sequentially('wasd')
+    a.wait_for_timeout(250)
+    assert a.evaluate('terrain3d.firstPerson.eye.toArray()') == position_before_chat
+    a.fill('#walk-chat-input', '안녕하세요 <img src=x onerror=alert(1)>')
+    a.locator('#walk-chat-input').press('Enter')
+    b.wait_for_function("document.getElementById('walk-chat-messages').textContent.includes('안녕하세요')")
+    assert b.locator('#walk-chat-messages img').count() == 0
+    assert '한양 길동:' in b.locator('#walk-chat-messages').text_content()
+    a.locator('#walk-chat-input').press('Escape')
+    assert not a.locator('#walk-chat').is_visible()
+    assert a.evaluate('terrain3d.firstPerson.active')
     # The same authoritative tick contains exactly the same NPC coordinates,
     # headings and avoidance offsets in both browsers.
     b.wait_for_function('Object.keys(npcSamples).length >= 4')
@@ -78,15 +100,19 @@ with sync_playwright() as p:
         return other?.visible && Math.hypot(other.position.x-p.x, other.position.z-p.z) < .15;
     }''', arg=position, timeout=20000)
     b.wait_for_function("Math.abs(terrain3d.scene.children.find(o => o.name === 'remote-walker').rotation.y - (.7 + Math.PI)) < .05")
-    a.dispatch_event('#first-person-exit', 'click')
+    a.dispatch_event('#walk-together', 'click')
+    assert not a.evaluate('terrain3d.firstPerson.active')
+    assert a.locator('#walk-together').inner_text() == '1인칭'
+    assert not a.locator('#walk-chat-toggle').is_visible()
     b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('1명')")
     assert b.evaluate("terrain3d.scene.children.filter(o => o.name === 'remote-walker').length") == 0
     assert a.evaluate("document.getElementById('walk-together-status').hidden")
     a.dispatch_event('#walk-together', 'click')
     assert not a.locator('#walk-name-dialog').evaluate('(d) => d.open')
     b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('2명')")
+    a.wait_for_function("document.getElementById('walk-chat-messages').textContent.includes('안녕하세요')")
     contexts[0].close()
     b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('1명')", timeout=20000)
     assert not errors, errors
-    print('PASS: name entry/cancel/validation, named characters, identical NPC snapshots, shared clock, movement, exit/rejoin, closed tab')
+    print('PASS: single entry, duplicate name retry, matching distinct colors, safe chat and typing, history, identical NPC snapshots, movement, exit/rejoin, closed tab')
     browser.close()

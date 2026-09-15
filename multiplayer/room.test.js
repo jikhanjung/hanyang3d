@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readPose } from './room.js';
+import { readPose, readChat } from './room.js';
 import { normalizePlayerName } from '../webapp/static/player_name.js';
 import { createWalkingSimulation, buildWalkingRoutes } from '../webapp/static/walking_simulation.js';
 import { npcWorld } from './npc_world.js';
@@ -19,6 +19,14 @@ test('names are normalized and validated as display text', () => {
   assert.equal(normalizePlayerName('Alice_2'), 'Alice_2');
   for (const name of ['', '   ', '<script>', 'a\nb', '가'.repeat(17), 123, null]) assert.equal(normalizePlayerName(name), null);
   assert.equal(normalizePlayerName('가'.repeat(16)), '가'.repeat(16));
+});
+
+test('chat accepts bounded text and rejects control characters or forged objects', () => {
+  assert.equal(readChat('  안녕하세요 <b>반가워요</b>  '), '안녕하세요 <b>반가워요</b>');
+  assert.equal(readChat('가'.repeat(200)), '가'.repeat(200));
+  for (const text of ['', '  ', '가'.repeat(201), 'a\nb', 'a\u202eb', { text: 'fake', name: 'other' }, null]) {
+    assert.equal(readChat(text), null);
+  }
 });
 
 test('NPC movement is deterministic and responds to all players', () => {

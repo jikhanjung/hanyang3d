@@ -32,6 +32,7 @@ def public_resource_paths():
         'webapp/static/ground_colors.js',
         'webapp/static/walk_joystick.js',
         'webapp/static/walk_together.js',
+        'webapp/static/walk_chat.js',
         'webapp/static/walking_simulation.js',
         'webapp/static/walk_profile.js',
         'webapp/static/player_name.js',
