@@ -257,7 +257,14 @@ async function main(){
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d));const guards=createGuards(feature,w,h,d);if(guards){box.add(guards);guardModels.push(guards)}}
   if(feature.display_model==='gyeonghoeru_pond'){box.material.visible=false;foundation.visible=false;box.add(createGyeonghoeruPond(feature,w,h,d))}
-  if(feature.display_model==='hall_site'){box.material.visible=false;box.add(createHallSite(feature,w,h,d))}
+  if(feature.display_model==='hall_site'){
+   box.material.visible=false;const site=createHallSite(feature,w,h,d);box.add(site);
+   // On sloping ground the terrace base (the highest ground under it) floats above the ground in front of the south
+   // stairs; approach steps bridge that drop so the stairs can be walked up.
+   const lz=d/2+3.5,fx=wx+Math.sin(yaw)*lz,fz=wz+Math.cos(yaw)*lz;
+   box.userData.approachGround=TerrainSupport.footprintRange(supportNearby(fx,fz,8),[fx-3,fz-1.5,fx+3,fz+1.5],yaw).min;
+   site.userData.setApproach((z-box.userData.approachGround)*exaggeration);
+  }
   if(feature.display_model==='observatory'){box.material.visible=false;foundation.visible=false;box.add(createObservatory(feature,w,h,d))}
   if(feature.display_model==='wongaksa_pagoda'){box.material.visible=false;box.add(createPagoda(feature,w,h,d))}
   if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d));const drill=createDrill(feature,w,h,d);box.add(drill);drills.push(drill)}
@@ -655,7 +662,7 @@ async function main(){
   exaggeration=Number(el('height3d').value);granite?.setHeight(exaggeration);
   for(const mesh of [terrain,historical]){const pos=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>pos.setY(i,h*exaggeration));pos.needsUpdate=true;if(mesh===terrain)mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()}
   labels.children.forEach(l=>l.position.set(...world(l.userData.x,l.userData.y,l.userData.z)));
-  buildings.children.forEach(b=>{const u=b.userData;b.position.set(...world(u.x,u.y,u.z));b.position.y+=u.boxHeight/2;heightYukjo(b,exaggeration)});
+  buildings.children.forEach(b=>{const u=b.userData;b.position.set(...world(u.x,u.y,u.z));b.position.y+=u.boxHeight/2;heightYukjo(b,exaggeration);if(u.approachGround!==undefined)b.getObjectByName('hall-site')?.userData.setApproach((u.z-u.approachGround)*exaggeration)});
   foundations.children.forEach(f=>{f.position.y=(f.userData.top+f.userData.bottom)/2*exaggeration;f.scale.y=exaggeration});
   waterLayer.children.forEach(mesh=>{const p=mesh.geometry.attributes.position;mesh.geometry.userData.heights.forEach((h,i)=>p.setY(i,h*exaggeration));p.needsUpdate=true;mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()});
   bridges.children.forEach(b=>{b.position.y=b.userData.z*exaggeration+b.userData.lift+b.userData.boxHeight/2;renderBridgeConnections(b)});
@@ -858,9 +865,11 @@ async function main(){
  const walkProfile=createWalkProfile({account:shop});
  firstPerson=(()=>{
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
-  // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S.
+  // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S. Space jumps.
   // Riding (the reins used from the pack): three times the fast walk, the rider and eye raised by the horse's back.
-  let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0,mounted=false,horse=null;
+  // Space jumps: `air` is the height of the feet above the ground under them, `vy` the vertical speed.
+  let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0,mounted=false,horse=null,air=0,vy=0;
+  const JUMP_SPEED=4.5,GRAVITY=9.8;
   const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
   const positionWorld={alignment:alignTerrain?'mountains':'base',routeKey:pedestrians.routeKey};
   const eye=new THREE.Vector3(),boom=new THREE.Vector3();
@@ -869,11 +878,49 @@ async function main(){
   const held=code=>keys.has(code);
   function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false}
   function rememberPosition(){if(active){walkProfile.savePosition(positionWorld,{x:eye.x,z:eye.z,yaw});lastRemembered=performance.now()}}
-  function groundAt(x,z){
+  // Walkable raised surfaces: bridge decks and their ramps, and the Gyeongbokgung hall sites (foundation, terraces,
+  // stairs). The displayed meshes are cast against straight down, so height exaggeration is followed. While walking
+  // only a surface at most a step above the current footing counts, so terraces are climbed by their stairs and a
+  // bridge deck does not trap someone walking underneath.
+  const STEP=.7,down=new THREE.Vector3(0,-1,0),surfaceRay=new THREE.Raycaster(),rayOrigin=new THREE.Vector3(),normal=new THREE.Vector3();
+  let walkables=null,walkableScale=null;
+  function walkableList(){
+   if(walkables&&walkableScale===exaggeration)return walkables;
+   walkableScale=exaggeration;
+   const halls=buildings.children.filter(b=>b.userData.feature.display_model==='hall_site');
+   const hallIds=new Set(halls.map(b=>b.userData.feature.id));
+   const entries=[...bridges.children.map(o=>[o,()=>bridges.visible]),...halls.map(o=>[o,()=>buildings.visible&&o.visible]),
+    ...foundations.children.filter(f=>hallIds.has(f.userData.featureId)).map(o=>[o,()=>foundations.visible])];
+   walkables=entries.map(([object,visible])=>{object.updateMatrixWorld(true);return {object,visible,box:new THREE.Box3().setFromObject(object)}});
+   return walkables;
+  }
+  // Returns the highest walkable top, null when there is none, or BLOCKED when (while walking) a surface rises more
+  // than a step but less than head height above the footing: the side of a terrace is a wall, a deck overhead is not.
+  const HEADROOM=2.2,BLOCKED=Symbol('blocked');
+  function surfaceAt(x,z,reference=null){
+   let best=null,blocked=false;
+   for(const {object,visible,box} of walkableList()){
+    if(x<box.min.x||x>box.max.x||z<box.min.z||z>box.max.z||!visible())continue;
+    surfaceRay.set(rayOrigin.set(x,box.max.y+1,z),down);
+    for(const hit of surfaceRay.intersectObject(object,true)){
+     // Skip invisible placeholder boxes and downward faces (the underside of a double-sided deck).
+     if(hit.object.material?.visible===false||!hit.face)continue;
+     if(normal.copy(hit.face.normal).transformDirection(hit.object.matrixWorld).y<.5)continue;
+     if(reference!==null&&hit.point.y>reference+STEP){if(hit.point.y<reference+HEADROOM)blocked=true;continue}
+     if(best===null||hit.point.y>best)best=hit.point.y;
+    }
+   }
+   return blocked?BLOCKED:best;
+  }
+  function groundAt(x,z,reference=null){
    // Clamp exploration to the prepared map; support queries outside it have no triangles.
    // Terrain/map positions are already scaled; road support stores unscaled heights.
    // Include the raised road overlay so eye height matches the surface walkers stand on.
-   try{const s=cityWall.supportAt(x,z,.3,.3,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible&&s.road?s.road.max*exaggeration:-Infinity)}catch{return null}
+   let terrain;
+   try{const s=cityWall.supportAt(x,z,.3,.3,0,roadLayer.visible);terrain=Math.max(s.max,roadLayer.visible&&s.road?s.road.max*exaggeration:-Infinity)}catch{return null}
+   const surface=surfaceAt(x,z,reference);
+   if(surface===BLOCKED)return null;
+   return surface===null?terrain:Math.max(terrain,surface);
   }
   function place(){
    // Third-person boom: the eye stays at walking height and the camera pulls back along the view.
@@ -901,7 +948,7 @@ async function main(){
    yaw=spawn.yaw;pitch=0;lookYaw=0;
    const ground=groundAt(spawn.x,spawn.z);if(!Number.isFinite(ground))return;
    controls.enabled=false;active=true;clearInput();lastGround=ground;
-   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();mounted=false;eye.set(spawn.x,ground+eyeHeight(),spawn.z);
+   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();mounted=false;air=0;vy=0;eye.set(spawn.x,ground+eyeHeight(),spawn.z);
    if(!walker){walker=createWalker();scene.add(walker.group)}
    if(walker.group.userData.playerName!==walkProfile.name){const tag=walker.group.getObjectByName('player-name');if(tag){tag.material.map.dispose();tag.material.dispose();tag.removeFromParent()}addPlayerNameTag(walker.group,walkProfile.name)}
    walked=0;walker.update(0,false);look();
@@ -920,6 +967,9 @@ async function main(){
    const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
    // Selling the reins (or logging out) takes the horse away.
    if(mounted&&!(shop?.state.items[RIDE_ITEM]>0))setMounted(false);
+   // Walking (not jumping) stays on the ground when stepping down, so a downhill stride never counts as airborne.
+   const grounded=air===0&&vy===0;
+   if(!grounded){const step=Math.min(dt,.1);vy-=GRAVITY*step;air=Math.max(0,air+vy*step);if(air===0)vy=0}
    const speed=(mounted?RIDE:keys.has('ShiftLeft')||keys.has('ShiftRight')?FAST:WALK)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
    let moved=false;
@@ -929,12 +979,14 @@ async function main(){
     const steps=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.5));
     for(let i=0;i<steps;i++){
      const [x,z]=collision?collision.move(eye.x,eye.z,eye.x+dx/steps,eye.z+dz/steps,.35,(px,pz)=>pedestrians?.near(px,pz,.6)):[eye.x+dx/steps,eye.z+dz/steps];
-     const ground=groundAt(x,z);
-     // Avoid walking off abrupt terrain steps or out of the prepared region.
-     if((x!==eye.x||z!==eye.z)&&ground!==null&&Math.abs(ground-lastGround)<.7){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;lastGround=ground;moved=true}else break;
+     // Surfaces count from the feet, so a jump can land on a ledge up to a step above the feet. Dropping more
+     // than a step below the ground (off a bridge into the channel) is refused even in the air.
+     const feet=lastGround+air,ground=groundAt(x,z,feet);
+     if((x!==eye.x||z!==eye.z)&&ground!==null&&ground-feet<STEP&&lastGround-ground<STEP){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;air=grounded?0:Math.max(0,feet-ground);if(air===0&&vy<0)vy=0;lastGround=ground;moved=true}else break;
     }
    }
-   const ground=groundAt(eye.x,eye.z);if(ground!==null){lastGround=ground;eye.y=ground+eyeHeight()}
+   const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){air=grounded?0:Math.max(0,lastGround+air-ground);if(air===0&&vy<0)vy=0;lastGround=ground}
+   if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
    walker?.update(walked,moved&&!mounted,mounted);
    if(mounted)horse.update(performance.now(),moved);
    look();
@@ -949,7 +1001,7 @@ async function main(){
    if(on&&!horse){horse=createHorse();horse.group.name='player-horse';scene.add(horse.group)}
    if(horse)horse.group.visible=on;
    walker?.update(walked,false,on);
-   if(lastGround!==null)eye.y=lastGround+eyeHeight();
+   if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
    look();
    return on?'말에 올랐소. 빨리 달릴 수 있소.':'말에서 내렸소.';
   }
@@ -959,6 +1011,7 @@ async function main(){
    if(event.target.matches?.('input,select,textarea,button'))return;
    if(event.altKey&&event.code==='KeyW'){event.preventDefault();autoRun=!autoRun;return}
    if(event.code==='KeyI'&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();shop?.togglePack();return}
+   if(event.code==='Space'){event.preventDefault();if(!event.repeat&&air===0&&vy===0)vy=JUMP_SPEED;return}
    if(autoRun&&['KeyW','KeyS','ArrowUp','ArrowDown'].includes(event.code))autoRun=false;
    if(movement.has(event.code)){event.preventDefault();keys.add(event.code)}
   });
@@ -979,8 +1032,8 @@ async function main(){
   document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['map-options-toggle','walk-together'].includes(event.target.id))exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
-  function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;look();return true}
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
+  function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;look();return true}
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
  })();
  const togetherStatus=document.createElement('div');togetherStatus.id='walk-together-status';togetherStatus.hidden=true;togetherStatus.setAttribute('role','status');
  Object.assign(togetherStatus.style,{position:'absolute',top:'64px',left:'12px',zIndex:'25',background:'#fffdf2eb',padding:'6px 10px',borderRadius:'5px',fontSize:'12px',maxWidth:'calc(100% - 150px)',pointerEvents:'none'});el('scene').append(togetherStatus);
@@ -1051,7 +1104,8 @@ async function main(){
  // Collision world for walking, built once every layer has placed its buildings.
  collision=createCollision();
  for(const b of buildings.children){
-  const f=b.userData.feature;if(f.category==='성문'||f.display_model==='palace_gate')continue;
+  // Gates are open passages; hall sites are walkable terraces (their height comes from first-person groundAt).
+  const f=b.userData.feature;if(f.category==='성문'||f.display_model==='palace_gate'||f.display_model==='hall_site')continue;
   const [w,,d]=f.symbol_size_m,frame={x:b.position.x,z:b.position.z,yaw:b.rotation.y},shown=()=>buildings.visible&&b.visible;
   if(f.display_model==='house_site'||f.display_model==='training_ground'){
    // Walled compounds block only their walls, leaving the south gate open.

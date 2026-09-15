@@ -12,7 +12,7 @@
 | 단일 파일 보관 | 사본을 DELETE journal mode로 바꾸고 연결을 닫은 뒤 채택; WAL/SHM 고아 방지 |
 | 이전 백업 보존 | 새 백업 실패·원본 부재·디스크 부족이면 prune 하지 않음 |
 | 보존 범위 | 서로 다른 시간대의 최신 24개, 같은 시간 재실행은 새 검증본만 유지 |
-| 실패 표시 | DB 옆 CONTENT_BACKUP_FAILED; healthz는 서빙 가능 시 degraded(200), 배포 smoke는 실패 |
+| 실패 표시 | DB 옆 CONTENT_BACKUP_FAILED; healthz는 서빙 가능 시 degraded(200). 컨테이너 시작 검사와 Docker 헬스체크는 degraded에서도 서빙하고 경고만 남긴다(백업 실패가 서비스 중단으로 번지지 않게). 배포 smoke는 실패 |
 | 증거 | 손상 사본 하나를 .corrupt로 보존, 로테이션·오프사이트 대상에서 제외 |
 | 겹친 실행 | 백업 디렉터리의 파일 잠금; 새 이름으로 원자적 채택 |
 
@@ -20,7 +20,7 @@
 
 ## 제공하는 도구
 
-- `deploy/host/backup_content.py`: 호스트 Python 표준 라이브러리만 사용. 시간별 백업·검증·24개 보존·5 GiB 여유 공간 검사. 백업 폴더는 700, 스냅샷은 600이다.
+- `deploy/host/backup_content.py`: 호스트 Python 표준 라이브러리만 사용. 시간별 백업·검증·24개 보존·여유 공간 검사(200 MiB와 DB 크기의 3배 중 큰 값; 2026-09-16 전에는 5 GiB였고, 디스크가 차면서 실패해 웹 시작까지 막았다). 백업 폴더는 700, 스냅샷은 600이다.
 - `manage.py backup_content <새 파일>`: 로컬 개발 또는 일회용 컨테이너에서 같은 구현으로 수동 백업한다. 출력 경로가 있어도 덮어쓰지 않는다.
 - `manage.py export_content <새 JSON>`: 계정·세션을 제외한 콘텐츠 교환용. 전체 복원용 DB 스냅샷과 구별한다.
 

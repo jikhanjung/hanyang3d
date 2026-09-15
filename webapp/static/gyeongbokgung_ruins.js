@@ -68,6 +68,17 @@ export function createHallSite(feature,w,h,d){
  for(let i=0;i<=cols;i++)for(let j=0;j<=rows;j++)box(parts,'column-footing','darkStone',-hallW/2+i*hallW/cols,top+.25,cz-hallD/2+j*hallD/rows,.9,.5,.9);
  box(parts,'hall-floor','earth',0,top+.06,cz,hallW+1,.12,hallD+1);
  const model=merge(parts,'hall-site');
- model.userData={conceptual:true,terraceM:[w,d],hallM:[hallW,hallD],footings:(cols+1)*(rows+1),tiers,period:feature.temporal};
+ // Approach steps in front of the lowest stairs, down to the ground `drop` metres below the terrace base (set by the
+ // map from the ground there; rebuilt when the height exaggeration changes). Each rise is at most 0.33 m.
+ const stairWidth=Math.min(12,w*.3),front=d/2+2.8;
+ function setApproach(drop){
+  model.getObjectByName('approach-steps')?.traverse(o=>o.geometry?.dispose());
+  model.remove(model.getObjectByName('approach-steps'));
+  if(!(drop>.05))return;
+  const steps=[],n=Math.ceil(drop/.33);
+  for(let k=1;k<n;k++){const top=y0-k*drop/n,bottom=y0-drop-.3;box(steps,'approach-step','darkStone',0,(top+bottom)/2,front+(k-1)*.7+.35,stairWidth,top-bottom,.7)}
+  const group=merge(steps,'approach-steps');model.add(group);
+ }
+ model.userData={conceptual:true,terraceM:[w,d],hallM:[hallW,hallD],footings:(cols+1)*(rows+1),tiers,period:feature.temporal,setApproach};
  return model;
 }

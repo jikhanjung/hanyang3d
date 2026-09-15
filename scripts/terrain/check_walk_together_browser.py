@@ -109,6 +109,12 @@ with sync_playwright() as p:
     a.evaluate("terrain3d.shop.state.items.horse_reins = 1; terrain3d.firstPerson.setMounted(true)")
     b.wait_for_function("(() => { const w = terrain3d.scene.children.find(o => o.name === 'remote-walker'); return w?.getObjectByName('remote-horse')?.visible; })()", timeout=20000)
     a.evaluate("terrain3d.firstPerson.setMounted(false); delete terrain3d.shop.state.items.horse_reins")
+    # A jump is shared too: B sees A's walker rise above the ground and come back down.
+    b.evaluate("window.peerTop = 0; window.peerWatch = setInterval(() => { const w = terrain3d.scene.children.find(o => o.name === 'remote-walker'); const g = terrain3d.firstPerson.groundAt(w.position.x, w.position.z); if (g !== null) peerTop = Math.max(peerTop, w.position.y - g); }, 30)")
+    a.evaluate("document.dispatchEvent(new KeyboardEvent('keydown', {code: 'Space', bubbles: true}))")
+    b.wait_for_function("peerTop > .5", timeout=20000)
+    b.wait_for_function("(() => { const w = terrain3d.scene.children.find(o => o.name === 'remote-walker'); const g = terrain3d.firstPerson.groundAt(w.position.x, w.position.z); return g !== null && Math.abs(w.position.y - g) < .05; })()", timeout=20000)
+    b.evaluate("clearInterval(peerWatch)")
     b.wait_for_function("!terrain3d.scene.children.find(o => o.name === 'remote-walker').getObjectByName('remote-horse').visible", timeout=20000)
     a.dispatch_event('#walk-together', 'click')
     assert not a.evaluate('terrain3d.firstPerson.active')

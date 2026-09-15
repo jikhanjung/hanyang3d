@@ -1,5 +1,5 @@
 """Verify first-person controls: no context menu, right drag looks without turning the walker (and eases back),
-left drag still turns, and Alt+W walks forward without holding W until S is pressed."""
+left drag still turns, Alt+W walks forward without holding W until S is pressed, and Space jumps."""
 import argparse
 
 from playwright.sync_api import sync_playwright
@@ -59,6 +59,11 @@ with sync_playwright() as p:
     page.keyboard.down('KeyS')
     page.keyboard.up('KeyS')
     assert not page.evaluate('terrain3d.firstPerson.autoRun')
+    # Space jumps: the feet rise about a metre and come back down to the ground.
+    page.evaluate('terrain3d.renderer.domElement.focus()')
+    page.keyboard.press('Space')
+    jump = page.evaluate('()=>{const fp=terrain3d.firstPerson;let top=0,t=0;for(let i=0;i<60;i++){fp.update(1/30);top=Math.max(top,fp.air);if(i>2&&fp.air===0){t=i;break}}return {top,landedFrame:t,eye:fp.eye.y-fp.ground}}')
+    assert .8 < jump['top'] < 1.2 and jump['landedFrame'] > 10 and abs(jump['eye'] - 1.65) < 1e-6, jump
     assert not errors, errors
-    print('PASS: first-person controls', {'look_offset': round(during['look'], 2), 'turned': round(yaw1 - yaw0, 2), 'auto_run_m': round(moved, 1)}, flush=True)
+    print('PASS: first-person controls', {'look_offset': round(during['look'], 2), 'turned': round(yaw1 - yaw0, 2), 'auto_run_m': round(moved, 1), 'jump_m': round(jump['top'], 2)}, flush=True)
     b.close()

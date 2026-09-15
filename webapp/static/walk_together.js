@@ -59,7 +59,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     walker.group.position.set(pose.x, 0, pose.z);
     walker.group.rotation.y = pose.yaw + Math.PI;
     scene.add(walker.group);
-    const peer = { walker, horse: null, target: pose, distance: 0 };
+    const peer = { walker, horse: null, target: pose, distance: 0, air: 0 };
     peers.set(pose.id, peer);
     return peer;
   }
@@ -121,7 +121,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       const send = () => {
         if (!firstPerson.active) { stop(); return; }
         const eye = firstPerson.eye;
-        joined.send('pose', { x: eye.x, z: eye.z, yaw: firstPerson.yaw, mounted: firstPerson.mounted });
+        joined.send('pose', { x: eye.x, z: eye.z, yaw: firstPerson.yaw, mounted: firstPerson.mounted, air: firstPerson.air });
       };
       send(); sendTimer = setInterval(send, 100);
     } catch (error) {
@@ -145,7 +145,9 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       p.x += dx * fraction; p.z += dz * fraction;
       const ground = groundAt(p.x, p.z);
       walker.group.visible = ground !== null;
-      if (ground !== null) p.y = ground + (target.mounted ? SADDLE : 0);
+      // Jumps arrive ten times a second; ease the height between updates so the arc looks continuous.
+      peer.air += ((target.air || 0) - peer.air) * Math.min(1, alpha * 2);
+      if (ground !== null) p.y = ground + (target.mounted ? SADDLE : 0) + peer.air;
       const angle = target.yaw + Math.PI - walker.group.rotation.y;
       walker.group.rotation.y += Math.atan2(Math.sin(angle), Math.cos(angle)) * alpha;
       peer.distance += moved; walker.update(peer.distance, moved > .002 && !target.mounted, !!target.mounted);

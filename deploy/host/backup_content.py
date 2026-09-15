@@ -19,7 +19,9 @@ FAILURE_SENTINEL = 'CONTENT_BACKUP_FAILED'
 HOURLY_KEEP = 24
 PRE_DEPLOY_KEEP = 10
 PRE_DEPLOY_NAME = r'content_v\d+\.\d+\.\d+_\d{8}_\d{6}\.sqlite3'
-MIN_FREE_BYTES = 5 * 1024 ** 3
+# Keep room for a snapshot plus its temporary copy; the content DB is small (well under a megabyte in 2026-09), so a
+# fixed multi-gigabyte floor only turned a nearly full disk into a failed backup and a blocked web start.
+MIN_FREE_BYTES = 200 * 1024 ** 2
 
 
 class BackupIntegrityError(ValueError):
