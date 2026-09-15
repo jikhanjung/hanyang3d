@@ -18,6 +18,7 @@ export function addPlayerNameTag(group, name) {
 
 export function createWalkProfile() {
   let name = null, pending = null;
+  const positions = new Map();
   try { name = normalizePlayerName(localStorage.getItem('hanyang3d-player-name')); } catch {}
   const dialog = document.createElement('dialog'); dialog.id = 'walk-name-dialog';
   dialog.setAttribute('aria-labelledby', 'walk-name-title');
@@ -48,5 +49,31 @@ export function createWalkProfile() {
     });
     return pending;
   }
-  return { requestName, get name() { return name; } };
+  function positionKey(world) {
+    return `hanyang3d-walk-position:${encodeURIComponent(name.toLowerCase())}:${world.alignment}`;
+  }
+  function readPosition(world) {
+    if (!name) return null;
+    const key = positionKey(world);
+    let raw = positions.get(key);
+    if (raw === undefined) { try { raw = localStorage.getItem(key); } catch {} }
+    try {
+      const value = JSON.parse(raw);
+      if (value.schema !== 1 || value.routeKey !== world.routeKey) return null;
+      const { x, z, yaw } = value;
+      if (![x, z, yaw].every(Number.isFinite) || Math.abs(x) > 30000 || Math.abs(z) > 30000) return null;
+      return { x, z, yaw };
+    } catch { return null; }
+  }
+  function savePosition(world, pose) {
+    if (!name) return;
+    const { x, z, yaw } = pose;
+    if (![x, z, yaw].every(Number.isFinite) || Math.abs(x) > 30000 || Math.abs(z) > 30000) return;
+    const key = positionKey(world);
+    const raw = JSON.stringify({ schema: 1, routeKey: world.routeKey, x, z, yaw: Math.atan2(Math.sin(yaw), Math.cos(yaw)) });
+    if (positions.get(key) === raw) return;
+    positions.set(key, raw);
+    try { localStorage.setItem(key, raw); } catch {}
+  }
+  return { requestName, readPosition, savePosition, get name() { return name; } };
 }

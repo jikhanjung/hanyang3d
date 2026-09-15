@@ -1,5 +1,5 @@
 FROM node:24-bookworm-slim
-ARG APP_VERSION=v0.2.2
+ARG APP_VERSION=v0.2.3
 ARG VCS_REF=unknown
 LABEL org.opencontainers.image.title="Hanyang 3D Multiplayer" \
       org.opencontainers.image.version=$APP_VERSION \

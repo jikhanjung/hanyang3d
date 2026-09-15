@@ -31,7 +31,7 @@ export class WalkRoom extends Room {
 
   onCreate(options) {
     this.world = npcWorld(options.alignment);
-    this.npcs = createWalkingSimulation(this.world.routes);
+    this.npcs = createWalkingSimulation(this.world.routes, { random: Math.random });
     this.tick = 0;
     this.onMessage('pose', (client, message) => {
       const pose = readPose(message);

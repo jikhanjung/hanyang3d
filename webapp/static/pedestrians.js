@@ -30,7 +30,7 @@ export function createPedestrians(data,sourceSurface){
   if(network&&snapshot.tick<=network.tick)return;
   const first=!network;network=snapshot;receivedAt=performance.now();
   simulation.seek(snapshot.elapsed);
-  for(const pose of snapshot.npcs){const w=byId.get(pose[0]);if(!w)continue;w.target=pose;w.dodge=pose[5];if(first){w.position.x=pose[1];w.position.z=pose[2];w.yaw=pose[3];w.distance=pose[4]}}
+  for(const pose of snapshot.npcs){const w=byId.get(pose[0]);if(!w)continue;w.target=pose;w.dodge=pose[5];if(Number.isFinite(pose[6]))w.phase=pose[6];if(Number.isFinite(pose[7]))w.speed=pose[7];if(first){w.position.x=pose[1];w.position.z=pose[2];w.yaw=pose[3];w.distance=pose[4]}}
  }
  function disconnect(){if(network)simulation.seek(timeline());network=null;walkers.forEach(w=>{delete w.target})}
  function update(dt=0){

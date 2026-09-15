@@ -837,12 +837,14 @@ async function main(){
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  const walkProfile=createWalkProfile();
  firstPerson=(()=>{
-  let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null,walked=0,view=4.5,walker=null;
+  let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0;
+  const positionWorld={alignment:alignTerrain?'mountains':'base',routeKey:pedestrians.routeKey};
   const eye=new THREE.Vector3(),boom=new THREE.Vector3();
   const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick');canvas.tabIndex=0;
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
   const held=code=>keys.has(code);
   function clearInput(){joystick.reset();keys.clear();drag=null}
+  function rememberPosition(){if(active){walkProfile.savePosition(positionWorld,{x:eye.x,z:eye.z,yaw});lastRemembered=performance.now()}}
   function groundAt(x,z){
    // Clamp exploration to the prepared map; support queries outside it have no triangles.
    // Terrain/map positions are already scaled; road support stores unscaled heights.
@@ -867,16 +869,20 @@ async function main(){
    if(!walkProfile.name){walkProfile.requestName().then(name=>{if(name)enter()});return false}
    saved={position:camera.position.clone(),quaternion:camera.quaternion.clone(),target:controls.target.clone(),fov:camera.fov,near:camera.near};
    const path=pedestrians.routes[0].points,index=Math.floor(path.length*.42),p=path[index],q=path[index+1];
-   yaw=Math.atan2(-(q.x-p.x),-(q.z-p.z));pitch=0;
-   const ground=groundAt(p.x,p.z);if(ground===null)return;
+   let spawn={x:p.x,z:p.z,yaw:Math.atan2(-(q.x-p.x),-(q.z-p.z))};
+   const remembered=walkProfile.readPosition(positionWorld);
+   if(remembered&&Number.isFinite(groundAt(remembered.x,remembered.z))&&!collision?.hit(remembered.x,remembered.z,.35))spawn=remembered;
+   yaw=spawn.yaw;pitch=0;
+   const ground=groundAt(spawn.x,spawn.z);if(!Number.isFinite(ground))return;
    controls.enabled=false;active=true;clearInput();lastGround=ground;
-   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();eye.set(p.x,ground+1.65,p.z);
+   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();eye.set(spawn.x,ground+1.65,spawn.z);
    if(!walker){walker=createWalker();scene.add(walker.group)}
    if(walker.group.userData.playerName!==walkProfile.name){const tag=walker.group.getObjectByName('player-name');if(tag){tag.material.map.dispose();tag.material.dispose();tag.removeFromParent()}addPlayerNameTag(walker.group,walkProfile.name)}
    walked=0;walker.update(0,false);look();
    navigation.show(yaw,eye);hud.hidden=false;canvas.focus({preventScroll:true});
   }
   function exit(){
+   rememberPosition();
    together?.stop();
    if(!active)return;active=false;clearInput();hud.hidden=true;navigation.hide();if(walker)walker.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
@@ -898,6 +904,7 @@ async function main(){
    const ground=groundAt(eye.x,eye.z);if(ground!==null){lastGround=ground;eye.y=ground+1.65}
    walker?.update(walked,moved);
    look();
+   if(performance.now()-lastRemembered>=1000)rememberPosition();
   }
   const movement=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
   document.addEventListener('keydown',event=>{
@@ -907,7 +914,8 @@ async function main(){
   });
   document.addEventListener('keyup',event=>keys.delete(event.code));
   // Moving focus to a touch control must not cancel a held direction.
-  canvas.addEventListener('blur',()=>{keys.clear();drag=null});window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInput()});
+  canvas.addEventListener('blur',()=>{keys.clear();drag=null});window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{if(document.hidden){rememberPosition();clearInput()}});
+  window.addEventListener('pagehide',rememberPosition);
   canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY};canvas.setPointerCapture(event.pointerId)});
   canvas.addEventListener('pointermove',event=>{if(!active||!drag||drag.id!==event.pointerId)return;yaw-=(event.clientX-drag.x)*.003;pitch=Math.max(-Math.PI*.47,Math.min(Math.PI*.47,pitch-(event.clientY-drag.y)*.003));drag.x=event.clientX;drag.y=event.clientY;look()});
   canvas.addEventListener('wheel',event=>{

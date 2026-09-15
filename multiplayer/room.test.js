@@ -49,3 +49,21 @@ test('both map alignments load complete routes with stable identities and 130 NP
   assert.equal(createWalkingSimulation(mountain.routes).walkers.length, 130);
   assert.throws(() => npcWorld('arbitrary'));
 });
+
+test('random starts vary positions and speeds while preserving routes and repeatable simulation', () => {
+  const routes = npcWorld('mountains').routes;
+  const seeded = seed => () => ((seed = Math.imul(seed, 1664525) + 1013904223 >>> 0) / 4294967296);
+  const a = createWalkingSimulation(routes, { random: seeded(123) });
+  const b = createWalkingSimulation(routes, { random: seeded(123) });
+  const c = createWalkingSimulation(routes, { random: seeded(456) });
+  assert.equal(a.walkers.length, 130);
+  assert.notDeepEqual(a.snapshot(), c.snapshot());
+  assert.deepEqual(a.walkers.map(w => w.id), c.walkers.map(w => w.id));
+  for (const w of a.walkers) {
+    assert.ok(w.phase >= 0 && w.phase < 2 * w.route.length);
+    assert.ok(w.distance >= 0 && w.distance <= w.route.length);
+    assert.ok(w.speed >= .8 && w.speed < 1.3);
+  }
+  for (let i = 0; i < 20; i++) { a.step(.1); b.step(.1); }
+  assert.deepEqual(a.snapshot(), b.snapshot());
+});

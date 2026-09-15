@@ -29,11 +29,11 @@ export function walkingRouteKey(routes) {
   return (hash >>> 0).toString(16);
 }
 
-export function createWalkingSimulation(routes) {
+export function createWalkingSimulation(routes, { random = null } = {}) {
   let elapsed = 0;
   const walkers = routes.flatMap(route => Array.from({ length: route.count }, (_, i) => ({
-    id: `${route.id}:${i}`, route, phase: (i + .35) / route.count * route.length * 2,
-    speed: .8 + (i * 17 % 50) / 100, seed: i, costume: i % 2 ? 'female' : 'male',
+    id: `${route.id}:${i}`, route, phase: (random ? random() : (i + .35) / route.count) * route.length * 2,
+    speed: random ? .8 + random() * .5 : .8 + (i * 17 % 50) / 100, seed: i, costume: i % 2 ? 'female' : 'male',
     position: { x: 0, z: 0 }, dodge: 0,
   })));
   function step(dt = 0, avoidPoints = []) {
@@ -64,5 +64,5 @@ export function createWalkingSimulation(routes) {
   }
   step();
   return { walkers, step, get elapsed() { return elapsed; }, seek(time) { elapsed = time; },
-    snapshot() { return walkers.map(w => [w.id, w.position.x, w.position.z, w.yaw, w.distance, w.dodge]); } };
+    snapshot() { return walkers.map(w => [w.id, w.position.x, w.position.z, w.yaw, w.distance, w.dodge, w.phase, w.speed]); } };
 }

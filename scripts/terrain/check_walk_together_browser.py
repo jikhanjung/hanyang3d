@@ -11,6 +11,7 @@ with sync_playwright() as p:
         '--enable-features=Vulkan', '--ignore-gpu-blocklist'])
     errors = []
     contexts = [browser.new_context(viewport={'width': 1100, 'height': 800}) for _ in range(2)]
+    contexts[0].add_init_script("""if(location.protocol.startsWith('http')){const key='hanyang3d-walk-position:'+encodeURIComponent('한양 길동')+':mountains';if(localStorage.getItem(key)===null)localStorage.setItem(key,'{broken');}""")
     pages = [context.new_page() for context in contexts]
     for index, page in enumerate(pages):
         page.on('pageerror', lambda error: errors.append(str(error)))
@@ -91,8 +92,11 @@ with sync_playwright() as p:
     b.wait_for_function('tick => terrain3d.pedestrians.networkSnapshot.tick > tick + 3', arg=before)
     a.evaluate('terrain3d.pedestrians.group.visible=true')
     position = a.evaluate('''() => {
-        const fp = terrain3d.firstPerson, p = fp.eye;
-        fp.placeAt(p.x + 5, p.z, .7);
+        const t = terrain3d, fp = t.firstPerson, p = fp.eye;
+        const offset = [[5,0],[0,5],[-5,0],[0,-5]].find(([x,z]) =>
+          Number.isFinite(fp.groundAt(p.x+x,p.z+z)) && !t.collision.hit(p.x+x,p.z+z,.35));
+        if (!offset) throw Error('No walkable test destination');
+        fp.placeAt(p.x + offset[0], p.z + offset[1], .7);
         return {x: fp.eye.x, z: fp.eye.z};
     }''')
     b.wait_for_function('''p => {
@@ -110,9 +114,21 @@ with sync_playwright() as p:
     a.dispatch_event('#walk-together', 'click')
     assert not a.locator('#walk-name-dialog').evaluate('(d) => d.open')
     b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('2명')")
+    a.wait_for_function('p => Math.hypot(terrain3d.firstPerson.eye.x-p.x,terrain3d.firstPerson.eye.z-p.z)<1e-6 && Math.abs(terrain3d.firstPerson.yaw-.7)<1e-6', arg=position)
     a.wait_for_function("document.getElementById('walk-chat-messages').textContent.includes('안녕하세요')")
+    # Navigating away immediately after a turn exercises pagehide saving; a fresh
+    # page must restore from localStorage rather than the old camera in memory.
+    a.evaluate('terrain3d.firstPerson.placeAt(terrain3d.firstPerson.eye.x,terrain3d.firstPerson.eye.z,-.4)')
+    a.goto('about:blank')
+    b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('1명')")
+    a.goto(args.url, wait_until='domcontentloaded')
+    a.wait_for_function('window.terrain3d?.ready', timeout=400000)
+    a.evaluate('terrain3d.renderer.render = () => {}')
+    a.dispatch_event('#walk-together', 'click')
+    b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('2명')")
+    a.wait_for_function('p => Math.hypot(terrain3d.firstPerson.eye.x-p.x,terrain3d.firstPerson.eye.z-p.z)<1e-6 && Math.abs(terrain3d.firstPerson.yaw+.4)<1e-6', arg=position)
     contexts[0].close()
     b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('1명')", timeout=20000)
     assert not errors, errors
-    print('PASS: single entry, duplicate name retry, matching distinct colors, safe chat and typing, history, identical NPC snapshots, movement, exit/rejoin, closed tab')
+    print('PASS: names, colors, chat, identical randomized NPCs, corrupt saved position fallback, position/direction after exit and page reload, closed tab')
     browser.close()

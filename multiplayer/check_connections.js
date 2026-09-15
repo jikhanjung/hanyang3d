@@ -71,12 +71,16 @@ try {
   await wait(() => bPoses.some(p => p.id === a.sessionId && p.x === 8), 'movement must arrive');
   const otherVersion = await client.joinOrCreate('hanyang_walk', { ...options, mapVersion: 'other-map' }); rooms.push(otherVersion);
   otherVersion.onMessage('walkers', () => {});
-  otherVersion.onMessage('npcs', () => {});
+  let otherNpcs;
+  otherVersion.onMessage('npcs', snapshot => { otherNpcs = snapshot; });
   assert.notEqual(otherVersion.roomId, a.roomId);
+  await wait(() => otherNpcs, 'new space must publish NPCs');
+  assert.notDeepEqual(otherNpcs.npcs.map(p => p[6]), bNpcs.npcs.map(p => p[6]));
+  assert.ok(bNpcs.npcs.every(p => p[7] >= .8 && p[7] < 1.3));
   await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, name: '<script>' }), /이름/);
   await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, routeKey: 'wrong' }), /자료/);
   await b.leave();
   rooms.splice(rooms.indexOf(b), 1);
   await wait(() => aPoses.length === 1, 'leaving must remove the character');
-  console.log('PASS: unique names (race/reuse), distinct trusted colors, chat/history/limits, movement, shared NPC ticks, version separation, departure');
+  console.log('PASS: unique names (race/reuse), colors, chat/history/limits, movement, shared NPC ticks, randomized new spaces, version separation, departure');
 } finally { await Promise.all(rooms.map(room => room.leave().catch(() => {}))); }
