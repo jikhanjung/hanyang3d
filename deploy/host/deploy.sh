@@ -44,8 +44,11 @@ recover() {
 }
 trap recover ERR
 if [[ "$db_mode" == 1 ]]; then
+    # content/ belongs to the container user, so the login user cannot see the DB file: test and back up with
+    # sudo, and stop rather than skip the backup silently when sudo is not available.
+    sudo -n true || { echo 'sudo -n is required for the pre-deploy content backup; refusing to deploy.' >&2; exit 1; }
     docker compose stop hanyang3d
-    if [[ -f content/content.sqlite3 ]]; then
+    if sudo -n test -f "$PWD/content/content.sqlite3"; then
         sudo -n python3 backup_content.py --database "$PWD/content/content.sqlite3" \
             --snapshot "$PWD/backups/content/pre-deploy/content_${version}_$(date -u +%Y%m%d_%H%M%S).sqlite3"
     fi

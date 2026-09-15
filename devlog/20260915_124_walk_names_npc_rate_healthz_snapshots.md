@@ -26,3 +26,17 @@
 ## 버전
 
 웹과 멀티플레이 이미지를 함께 v0.3.4로 빌드한다(멀티플레이는 v0.3.1에서 바로 v0.3.4로 올려 두 이미지 번호를 맞췄다).
+
+## 배포 전 DB 백업이 실제로는 한 번도 돌지 않았던 문제
+
+v0.3.4 배포 뒤 배포 전 스냅샷 폴더를 확인하다가, `backups/content/pre-deploy`가 아예 없고 운영 어디에도 `content_v*.sqlite3`가 없는 것을 발견했다. `deploy.sh`는 `[[ -f content/content.sqlite3 ]]`로 DB가 있는지 본 뒤에만 백업하는데, `content/`는 컨테이너 사용자(10001) 소유 750이라 배포하는 로그인 사용자에게는 파일이 보이지 않아 조건이 늘 거짓이었다. 그래서 v0.3.0 이후 DB 모드 배포(v0.3.1~v0.3.4, v0.3.3의 이야기 3건 동기화 포함)는 배포 직전 스냅샷 없이 진행됐다. 그 사이 DB는 root 크론의 시간별 검증 백업으로만 보호됐다.
+
+- `deploy.sh`: DB 확인도 `sudo -n test -f`로 하고, `sudo -n`을 쓸 수 없으면 백업을 건너뛰지 않고 배포를 거부한다.
+- 발견 즉시 운영에서 설치된 `backup_content.py --snapshot`으로 v0.3.4 기준 검증 스냅샷을 만들었다(웹 중지 없이 SQLite online backup).
+
+## 배포
+
+- dolfinid에 웹·멀티플레이 v0.3.4 배포(`bash deploy.sh v0.3.4 v0.3.4`). 배포 전 설정·호스트 파일을 `releases-v0.3.4.*`(권한 700)에 보존. Nginx 사이트 설정 변경 없음. 배포 중 `sync_content`는 모든 항목 0, `healthcheck.py --deploy` 통과.
+- 웹 digest `sha256:a9e4b903ae83df6b25c8b2852f7b98e4fcc1cf9e2f396a3ab481bb62dc69582b`, 멀티플레이 digest `sha256:2ae04b94ef5af855b2b5bb38259821feb9768fa09b69699413716d7fb4707b79`.
+- 운영 확인: 공개 `/healthz`는 `{"status": "ok", "version": "v0.3.4"}`만 준다. `/`·`/guide/` 200, HSTS 유지, `/multiplayer/healthz` v0.3.4·NPC 130, 키릴 문자 `Аlice` 이름의 매치메이킹은 422, 운영 멀티플레이 컨테이너 안 `check_connections.js` 통과.
+- 이미지 변경이 필요 없는 `deploy.sh` 수정(배포 전 백업 sudo 확인)은 운영 `/srv/hanyang3d/deploy.sh`에 바로 설치하고, 새 확인이 운영 DB 파일을 찾는 것을 확인했다. 다음 배포부터 배포 전 스냅샷이 실제로 만들어진다.
