@@ -28,7 +28,11 @@ with sync_playwright() as p:
         if index == 0:
             page.dispatch_event('#first-person3d', 'click')
             page.wait_for_selector('#walk-name-dialog[open]')
+            # Native dialog.close() queues its close event; wait for cancellation
+            # to settle before dispatching a synthetic second click.
+            page.evaluate("document.getElementById('walk-name-dialog').addEventListener('close', () => window.nameDialogClosed = true, {once:true})")
             page.click('#walk-name-cancel')
+            page.wait_for_function('window.nameDialogClosed === true')
             assert not page.evaluate('terrain3d.firstPerson.active')
             page.dispatch_event('#first-person3d', 'click')
         else:

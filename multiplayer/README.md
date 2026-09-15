@@ -53,13 +53,13 @@ node multiplayer/check_connections.js
 
 ## 운영 연결
 
-이번 변경은 로컬 구현이며 기존 Docker 운영 배포에 Colyseus는 아직 추가하지 않았다. 배포 시 별도 Node 컨테이너/서비스와 HTTPS 프록시가 필요하다. Node 서버는 `multiplayer/` 외에 `webapp/static/tps.js`, `walking_simulation.js`, `player_name.js`와 `gis/control_points/`의 지도 배치·고도 범위 메타데이터, `gis/roads/doseong_walking_routes.json`을 읽으므로 함께 패키징해야 한다. 전체 고도 래스터나 Three.js 렌더러는 서버에 필요 없다.
+v0.2.0부터 운영에 별도 Node 컨테이너와 HTTPS 프록시를 배포했다. [운영 화면](https://hanyang3d.nopeoplestime.info/)의 설정 메뉴에서 함께 걷기를 시작한다. 이미지·상태 확인·롤백은 [배포 안내](../deploy/README.md)를 따른다. Node 서버는 `multiplayer/` 외에 `webapp/static/tps.js`, `walking_simulation.js`, `player_name.js`와 `gis/control_points/`의 지도 배치·고도 범위 메타데이터, `gis/roads/doseong_walking_routes.json`을 읽으므로 함께 패키징해야 한다. 전체 고도 래스터나 Three.js 렌더러는 서버에 필요 없다.
 
 Django의 `HANYANG_MULTIPLAYER_URL=/multiplayer`를 사용할 경우 Nginx는 HTTP 매치메이킹과 WebSocket을 함께 전달해야 한다.
 
 ```nginx
 location /multiplayer/ {
-    proxy_pass http://127.0.0.1:2567/;
+    proxy_pass http://127.0.0.1:8015/;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";

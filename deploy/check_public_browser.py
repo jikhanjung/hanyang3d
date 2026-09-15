@@ -39,7 +39,7 @@ with sync_playwright() as p:
     page.goto(base + '/', wait_until='domcontentloaded')
     page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden', timeout=300000)
     assert page.evaluate('!!window.terrain3d?.ready'), page.locator('#error').inner_text()
-    assert not page.locator('header').is_visible()
+    assert not page.locator('body > header').is_visible()
     assert not page.locator('#building-info').is_visible()
     assert not page.locator('footer').is_visible()
     assert page.locator('#map-controls').is_visible()
