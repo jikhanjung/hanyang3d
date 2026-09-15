@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [122: 배포 검사·SECRET_KEY·백업 상태·되돌리기 안전장치](20260915_122_deploy_content_guards.md)
 - [121: 함께 걷기 과부하 차단과 백오피스·HTTPS 보강](20260915_121_walk_backoffice_hardening.md)
 - [120: Codex 작업(111~119) 검토와 수정 계획](20260915_120_codex_review.md)
 - [119: 운영 콘텐츠 DB 전환과 백업 연결](20260915_119_content_database_release.md)

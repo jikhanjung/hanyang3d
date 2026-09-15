@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.3.1`**, **`honestjung/hanyang3d-multiplayer:v0.3.1`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.3.2`**, **`honestjung/hanyang3d-multiplayer:v0.3.1`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -42,7 +42,8 @@
 - 이미지: Django/Three.js 코드, 카탈로그, GIS 판독·배치 JSON, 배포 도구.
 - 데이터 묶음: 카탈로그 원본 23개와 웹에서 제공하는 파생 산출물 9개. 경로·크기·SHA-256을 `manifest.json`에 기록한다.
 - 컨테이너: Gunicorn, UID/GID `10001`, 읽기 전용 루트와 `/runtime`, 임시 작업용 `/tmp`, 쓰기 가능한 `/content` DB 볼륨.
-- `/healthz`: 버전·제공 파일 93개와 DB 준비 상태·공개 건물/이야기 수. 데이터 누락·버전 불일치 시 503, 백업 실패 플래그는 degraded(200)이며 배포 검사는 실패한다.
+- `/healthz`: 버전·제공 파일 93개와 DB 준비 상태·공개 건물/이야기 수, 건너뛴 콘텐츠 참조(`content_warnings`). 데이터 누락·버전 불일치 시 503, 백업 실패 플래그는 degraded(200)다. Docker healthcheck는 degraded를 통과시키고, `deploy.sh`의 `healthcheck.py --deploy`는 콘텐츠 경고가 있거나 `/`·`/guide/`가 200이 아니면 실패한다(degraded는 경고만).
+- DB 모드 `deploy.sh`는 콘텐츠 DB를 모르는 이미지와, DB에 이미지가 모르는 migration이 있는 경우를 배포 전에 거부한다. 운영(`DJANGO_COOKIE_SECURE=1`)은 32자 이상 실제 `DJANGO_SECRET_KEY`가 없으면 시작하지 않는다.
 - 시작 시 전체 데이터 SHA-256 검사. 런타임 healthcheck는 존재·크기·버전을 확인한다.
 - 자료 파일의 기존 인용·이용 조건은 카탈로그에 유지한다. 데이터 묶음은 운영 서버 이전용이며 Docker 이미지에 들어가지 않는다.
 

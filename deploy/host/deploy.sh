@@ -25,6 +25,12 @@ if [[ -f .env ]]; then cp -p .env .env.previous; fi
 # The opt-in override is persistent operator configuration.
 db_mode=0
 if grep -q 'docker-compose.content.yml' "$next_env"; then db_mode=1; fi
+if [[ "$db_mode" == 1 ]]; then
+    # Rolling back to an image without the content database would run migrate/import it does not have.
+    docker run --rm --entrypoint python "honestjung/hanyang3d:$version" -c \
+        'import importlib.util, sys; sys.exit(0 if importlib.util.find_spec("webapp.management.commands.import_content") else 1)' 2>/dev/null \
+        || { echo "Image $version does not support the content database; refusing a DB-mode deployment." >&2; exit 1; }
+fi
 recover() {
     code=$?
     trap - ERR
@@ -46,12 +52,15 @@ if [[ "$db_mode" == 1 ]]; then
 fi
 mv "$next_env" .env
 if [[ "$db_mode" == 1 ]]; then
+    # Refuse an image that is older than the database schema (applied migrations it does not know).
+    docker compose run --rm --no-deps --entrypoint python hanyang3d -c \
+        'import os, sys; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webapp.settings"); import django; django.setup(); from django.db import connection; from django.db.migrations.loader import MigrationLoader; loader = MigrationLoader(connection); unknown = sorted(set(loader.applied_migrations) - set(loader.disk_migrations)); print("Database has migrations this image does not know:", unknown) if unknown else None; sys.exit(1 if unknown else 0)'
     docker compose run --rm --no-deps --entrypoint python hanyang3d manage.py migrate --noinput
     docker compose run --rm --no-deps --entrypoint python hanyang3d manage.py import_content
 fi
 # Unchanged multiplayer image/config stays running when Compose reconciles the stack.
 docker compose up -d --wait --wait-timeout 90
-docker compose exec -T hanyang3d python /app/deploy/healthcheck.py </dev/null
+docker compose exec -T hanyang3d python /app/deploy/healthcheck.py --deploy </dev/null
 if docker compose config --services | grep -qx multiplayer; then
     docker compose exec -T multiplayer node healthcheck.js </dev/null
 else

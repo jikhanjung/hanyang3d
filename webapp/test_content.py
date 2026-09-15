@@ -19,6 +19,46 @@ from .guide import render_guide, inline
 from .models import Building, Citation, ContentImport, GuideSection, Resource, Story
 
 
+@override_settings(CONTENT_SOURCE='database')
+class BrokenReferenceTests(TestCase):
+    """A row that points at a renderer, bridge or place the image no longer has must not break the page."""
+    @classmethod
+    def setUpTestData(cls):
+        call_command('import_content', stdout=StringIO())
+
+    def test_broken_references_are_skipped_and_reported(self):
+        from .content import content_problems
+        from .deployment import runtime_report
+        self.assertEqual(content_problems(), [])
+        building = Building.objects.filter(published=True).exclude(model_resource__renderer='').select_related('model_resource').first()
+        Resource.objects.filter(pk=building.model_resource_id).update(renderer='removed_renderer')
+        story = Story.objects.filter(target_type='bridge').first()
+        Story.objects.filter(pk=story.pk).update(target_key='removed-bridge')
+        problems = []
+        features = load_buildings(problems)['features']
+        self.assertIn(building.key, [f['id'] for f in features])
+        stories = load_stories(problems)['stories']
+        self.assertNotIn(story.key, [s['id'] for s in stories])
+        # A model resource can be shared by several buildings; each affected row is reported once.
+        shared = Building.objects.filter(published=True, model_resource_id=building.model_resource_id).count()
+        self.assertEqual(len(problems), shared + 1, problems)
+        self.assertTrue(any(building.key in p for p in problems) and any(story.key in p for p in problems), problems)
+        self.assertEqual(self.client.get('/').status_code, 200)
+        report = runtime_report()
+        self.assertEqual(report['status'], 'ok')
+        self.assertEqual(report['content_warnings'], problems)
+
+
+class SecretKeyTests(SimpleTestCase):
+    def test_production_secret_requirement(self):
+        from django.core.exceptions import ImproperlyConfigured
+        from .secret_check import require_production_secret
+        for bad in ('', 'short', 'replace-with-a-random-secret', 'replace-with-a-random-secret-' + 'x' * 20):
+            with self.assertRaises(ImproperlyConfigured, msg=bad):
+                require_production_secret(bad)
+        require_production_secret('k' * 40)
+
+
 class ImportTests(TestCase):
     def test_dry_run_and_atomic_failure(self):
         call_command('import_content', dry_run=True, stdout=StringIO())
