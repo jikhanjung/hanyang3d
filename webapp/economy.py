@@ -1,8 +1,8 @@
 """Server-authoritative shop trades.
 
-The browser never decides prices, coins or pack contents. A signed, HttpOnly cookie identifies an anonymous player;
-prices and each shop's goods come from gis/characters/npcs.json on the server. Clearing the cookie simply starts a new
-player with the starting purse (there is no trade between players, so that gains nothing).
+The browser never decides prices, coins or pack contents. Players log in with a name and password (webapp/accounts.py);
+a signed, HttpOnly cookie then identifies the account. Prices and each shop's goods come from
+gis/characters/npcs.json on the server.
 """
 import json
 import math
@@ -39,19 +39,20 @@ class TradeError(Exception):
         self.status, self.message = status, message
 
 
-def player_for(request):
-    """Return (player, cookie value to set or None)."""
+def player_from_cookie(request):
+    """The player named by a valid signed cookie, or None. Nothing is created by just visiting."""
     raw = request.COOKIES.get(COOKIE)
-    if raw:
-        try:
-            token = uuid.UUID(signing.loads(raw, salt=SALT))
-            player = Player.objects.filter(token=token).first()
-            if player:
-                return player, None
-        except (signing.BadSignature, ValueError, TypeError):
-            pass
-    player = Player.objects.create(token=uuid.uuid4(), money=catalog()['wallet']['start'])
-    return player, signing.dumps(str(player.token), salt=SALT)
+    if not raw:
+        return None
+    try:
+        token = uuid.UUID(signing.loads(raw, salt=SALT))
+    except (signing.BadSignature, ValueError, TypeError):
+        return None
+    return Player.objects.filter(token=token).first()
+
+
+def cookie_value(player):
+    return signing.dumps(str(player.token), salt=SALT)
 
 
 def attach_cookie(response, value):
@@ -62,7 +63,9 @@ def attach_cookie(response, value):
 
 
 def state(player):
-    return {'money': player.money, 'items': {i.item: i.quantity for i in player.items.all()}}
+    if not player or not player.name_key:
+        return {'logged_in': False}
+    return {'logged_in': True, 'name': player.name, 'money': player.money, 'items': {i.item: i.quantity for i in player.items.all()}}
 
 
 def sell_price(item):

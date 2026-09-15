@@ -616,7 +616,7 @@ async function main(){
   showBuilding(selected??hovered);
  });
  // Clicks select in both orbit and first-person views; a drag (6 px or more) only turns the view.
- renderer.domElement.addEventListener('pointerdown',event=>{press={x:event.clientX,y:event.clientY,id:event.pointerId};tooltip.hidden=true});
+ renderer.domElement.addEventListener('pointerdown',event=>{if(event.button!==0){press=null;return}press={x:event.clientX,y:event.clientY,id:event.pointerId};tooltip.hidden=true});
  renderer.domElement.addEventListener('pointerup',event=>{
   if(press&&press.id===event.pointerId&&Math.hypot(event.clientX-press.x,event.clientY-press.y)<6){
    // People on the map (keeper, gate guards, shopkeepers, passers-by) are picked before buildings.
@@ -843,13 +843,15 @@ async function main(){
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  const walkProfile=createWalkProfile();
  firstPerson=(()=>{
-  let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0;
+  // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
+  // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S.
+  let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0;
   const positionWorld={alignment:alignTerrain?'mountains':'base',routeKey:pedestrians.routeKey};
   const eye=new THREE.Vector3(),boom=new THREE.Vector3();
   const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick');canvas.tabIndex=0;
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
   const held=code=>keys.has(code);
-  function clearInput(){joystick.reset();keys.clear();drag=null}
+  function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false}
   function rememberPosition(){if(active){walkProfile.savePosition(positionWorld,{x:eye.x,z:eye.z,yaw});lastRemembered=performance.now()}}
   function groundAt(x,z){
    // Clamp exploration to the prepared map; support queries outside it have no triangles.
@@ -869,7 +871,7 @@ async function main(){
     walker.group.position.set(eye.x,eye.y-1.65,eye.z);walker.group.rotation.y=yaw+Math.PI;
    }
   }
-  function look(){camera.rotation.set(pitch,yaw,0,'YXZ');place();if(active)navigation.update(yaw,eye)}
+  function look(){camera.rotation.set(pitch,yaw+lookYaw,0,'YXZ');place();if(active)navigation.update(yaw,eye)}
   function enter(){
    if(active)return;clearHover();press=null;
    if(!walkProfile.name){walkProfile.requestName().then(name=>{if(name)enter()});return false}
@@ -878,7 +880,7 @@ async function main(){
    let spawn={x:p.x,z:p.z,yaw:Math.atan2(-(q.x-p.x),-(q.z-p.z))};
    const remembered=walkProfile.readPosition(positionWorld);
    if(remembered&&Number.isFinite(groundAt(remembered.x,remembered.z))&&!collision?.hit(remembered.x,remembered.z,.35))spawn=remembered;
-   yaw=spawn.yaw;pitch=0;
+   yaw=spawn.yaw;pitch=0;lookYaw=0;
    const ground=groundAt(spawn.x,spawn.z);if(!Number.isFinite(ground))return;
    controls.enabled=false;active=true;clearInput();lastGround=ground;
    camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();eye.set(spawn.x,ground+1.65,spawn.z);
@@ -895,7 +897,8 @@ async function main(){
   }
   function update(dt){
    if(!active)return;
-   const forward=Number(held('KeyW')||held('ArrowUp'))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
+   if(lookYaw&&!drag?.look){lookYaw*=Math.exp(-8*Math.min(dt,.1));if(Math.abs(lookYaw)<1e-3)lookYaw=0;look()}
+   const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
    const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
    const speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?8:3)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
@@ -916,14 +919,18 @@ async function main(){
   document.addEventListener('keydown',event=>{
    if(!active)return;if(event.code==='Escape'){event.preventDefault();exit();return}
    if(event.target.matches?.('input,select,textarea,button'))return;
+   if(event.altKey&&event.code==='KeyW'){event.preventDefault();autoRun=!autoRun;return}
+   if(autoRun&&['KeyW','KeyS','ArrowUp','ArrowDown'].includes(event.code))autoRun=false;
    if(movement.has(event.code)){event.preventDefault();keys.add(event.code)}
   });
   document.addEventListener('keyup',event=>keys.delete(event.code));
   // Moving focus to a touch control must not cancel a held direction.
   canvas.addEventListener('blur',()=>{keys.clear();drag=null});window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{if(document.hidden){rememberPosition();clearInput()}});
   window.addEventListener('pagehide',rememberPosition);
-  canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY};canvas.setPointerCapture(event.pointerId)});
-  canvas.addEventListener('pointermove',event=>{if(!active||!drag||drag.id!==event.pointerId)return;yaw-=(event.clientX-drag.x)*.003;pitch=Math.max(-Math.PI*.47,Math.min(Math.PI*.47,pitch-(event.clientY-drag.y)*.003));drag.x=event.clientX;drag.y=event.clientY;look()});
+  canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY,look:event.button===2};canvas.setPointerCapture(event.pointerId)});
+  // Left drag turns the walker; right drag only looks around (the walking direction stays).
+  canvas.addEventListener('pointermove',event=>{if(!active||!drag||drag.id!==event.pointerId)return;const dx=(event.clientX-drag.x)*.003;if(drag.look)lookYaw=Math.max(-Math.PI*.9,Math.min(Math.PI*.9,lookYaw-dx));else yaw-=dx;pitch=Math.max(-Math.PI*.47,Math.min(Math.PI*.47,pitch-(event.clientY-drag.y)*.003));drag.x=event.clientX;drag.y=event.clientY;look()});
+  canvas.addEventListener('contextmenu',event=>{if(active)event.preventDefault()});
   canvas.addEventListener('wheel',event=>{
    if(!active)return;event.preventDefault();
    view=Math.max(0,Math.min(12,view+Math.sign(event.deltaY)*.6));look();
@@ -934,7 +941,7 @@ async function main(){
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+1.65,z);lastGround=g;yaw=heading;look();return true}
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
  })();
  const togetherStatus=document.createElement('div');togetherStatus.id='walk-together-status';togetherStatus.hidden=true;togetherStatus.setAttribute('role','status');
  Object.assign(togetherStatus.style,{position:'absolute',top:'64px',left:'12px',zIndex:'25',background:'#fffdf2eb',padding:'6px 10px',borderRadius:'5px',fontSize:'12px',maxWidth:'calc(100% - 150px)',pointerEvents:'none'});el('scene').append(togetherStatus);

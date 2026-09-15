@@ -28,12 +28,12 @@
 ## 엽전과 봇짐은 서버가 기록한다
 
 - 브라우저는 엽전·봇짐을 저장하지도 계산하지도 않는다. 화면 위쪽 엽전 표시와 가게 창은 서버가 돌려준 값만 보여 준다.
-- 플레이어는 계정 없이 서명된 HttpOnly 쿠키(`hanyang3d_player`, 1년)로 구분한다. 쿠키가 없거나 서명이 틀리면 처음 엽전(`wallet.start`)을 가진 새 플레이어가 된다. 쿠키를 지우면 새 플레이어가 되지만, 사람끼리 주고받는 경제가 없어 얻는 것은 없다.
-- `GET /api/player/`: 엽전과 봇짐. `POST /api/shop/trade`(CSRF 필수): `{action: buy|sell, shop, item, quantity}`.
+- 플레이어는 이름+비밀번호 계정이다(`webapp/accounts.py`, 백오피스 직원 계정과 별개). 가입·로그인하면 서명된 HttpOnly 쿠키(`hanyang3d_player`, 1년)를 준다. 가입하면 처음 엽전(`wallet.start`)을 받는다. 이름은 NFKC·소문자로 비교해 겹칠 수 없고, 비밀번호는 6자 이상을 해시로 저장한다. 로그인 실패는 이름별·IP별 15분 10번까지이고 IP는 HMAC 해시로만 남긴다.
+- `GET /api/player/`: 로그인했으면 이름·엽전·봇짐, 아니면 `{"logged_in": false}`. `POST /api/account/register|login|logout`. `POST /api/shop/trade`(로그인·CSRF 필수): `{action: buy|sell, shop, item, quantity}`.
   - 가격·가게 품목·되파는 비율은 서버의 `npcs.json`만 쓴다(요청에 가격을 넣어도 무시).
   - 사기는 그 가게가 파는 물건만, 팔기는 봇짐에 있는 만큼만. 수량 1~99, 엽전이 모자라면 거절.
   - 거래 하나가 트랜잭션 하나이고, 플레이어별로 1초에 5건까지(넘으면 429).
-- 모델 `Player`·`PlayerItem`·`Trade`(거래 기록). 백오피스에서 읽기만 할 수 있다. DB 백업에 함께 들어가며, 콘텐츠 내보내기(`export_content`)에는 들어가지 않는다.
+- 모델 `Player`·`PlayerItem`·`Trade`(거래 기록)·`LoginAttempt`(로그인 실패). 백오피스에서 읽기만 할 수 있다. DB 백업에 함께 들어가며, 콘텐츠 내보내기(`export_content`)에는 들어가지 않는다.
 
 ## 검사
 

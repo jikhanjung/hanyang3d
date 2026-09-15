@@ -1,6 +1,5 @@
 // MMORPG-style shop window and coin display. The server owns coins and packs: this module only shows the state the
-// server returns (GET /api/player/) and sends trade requests (POST /api/shop/trade); prices and stock checks happen
-// there. Prices are play values, not historical prices.
+// server returns (GET /api/player/) and sends account and trade requests; prices, stock and passwords are checked there. Prices are play values, not historical prices.
 function drawIcon(icon,size=48){
  const c=document.createElement('canvas');c.width=c.height=size;const g=c.getContext('2d');
  g.fillStyle='#3a2c1f';g.fillRect(0,0,size,size);g.fillStyle='#5a4631';g.fillRect(2,2,size-4,size-4);
@@ -20,12 +19,45 @@ function drawIcon(icon,size=48){
 export function formatMoney(mun){const nyang=Math.floor(mun/100),rest=mun%100;return nyang?`${nyang}냥${rest?` ${rest}문`:''}`:`${rest}문`}
 
 const csrfToken=()=>document.cookie.split('; ').find(c=>c.startsWith('csrftoken='))?.slice(10)??'';
+const post=(url,body)=>fetch(url,{method:'POST',credentials:'same-origin',cache:'no-store',headers:{'Content-Type':'application/json','X-CSRFToken':csrfToken()},body:JSON.stringify(body)});
 
 export function createShop({container,data}){
- const state={money:null,items:{},ready:false};
- let shop=null,quantity=1,busy=false;
- const hud=document.createElement('div');hud.id='money-hud';hud.setAttribute('aria-live','polite');hud.title='내 엽전(서버에 기록됨)';hud.textContent='엽전 …';
- container.append(hud);
+ const state={money:null,items:{},ready:false,loggedIn:false,name:''};
+ let shop=null,quantity=1,busy=false,pendingMerchant=null;
+ // Coin display: when logged out it is a login button; when logged in it shows the name, coins and a logout button.
+ const hud=document.createElement('div');hud.id='money-hud';hud.setAttribute('aria-live','polite');
+ const hudText=document.createElement('button');hudText.type='button';hudText.className='hud-main';hudText.textContent='엽전 …';
+ const hudLogout=document.createElement('button');hudLogout.type='button';hudLogout.className='hud-logout';hudLogout.textContent='나가기';hudLogout.hidden=true;
+ hud.append(hudText,hudLogout);container.append(hud);
+ hudText.onclick=()=>{if(!state.loggedIn)openAccount()};
+ hudLogout.onclick=async()=>{await post('/api/account/logout',{}).catch(()=>{});apply({logged_in:false});close()};
+ // Account dialog in the same adventure style as NPC conversations: name + password, log in or sign up.
+ const account=document.createElement('div');account.id='account-overlay';account.hidden=true;
+ account.innerHTML=`<form id="account-dialog" role="dialog" aria-modal="true" aria-label="이름 대기">
+  <strong>한양 나그네 명부</strong><p class="account-intro">엽전과 봇짐은 이름으로 서버에 기록됩니다. 처음이면 이름과 비밀번호를 정하시오.</p>
+  <label>이름 <input name="name" autocomplete="username" maxlength="16" required></label>
+  <label>비밀번호 <input name="password" type="password" autocomplete="current-password" minlength="6" maxlength="128" required></label>
+  <p class="account-message" aria-live="polite"></p>
+  <div class="account-buttons"><button type="submit" value="login">들어가기</button><button type="submit" value="register">처음 왔소 (이름 정하기)</button><button type="button" class="account-cancel">닫기</button></div>
+  <small>비밀번호는 6자 이상. 이름은 1~16자의 한글·한자·영문·숫자·공백·_ . -</small></form>`;
+ container.append(account);
+ const form=account.querySelector('form');
+ account.querySelector('.account-cancel').onclick=()=>closeAccount();
+ account.addEventListener('pointerdown',event=>{if(event.target===account)closeAccount()});
+ form.onsubmit=async event=>{
+  event.preventDefault();
+  const mode=event.submitter?.value==='register'?'register':'login',msg=account.querySelector('.account-message');
+  msg.textContent=mode==='register'?'이름을 적는 중…':'명부를 찾는 중…';
+  try{
+   const response=await post('/api/account/'+mode,{name:form.name.value,password:form.password.value});
+   const answer=await response.json().catch(()=>null);
+   // Take the waiting merchant before closing: closing the dialog forgets it.
+   if(response.ok&&answer?.logged_in){const merchant=pendingMerchant;apply(answer);form.password.value='';closeAccount();if(merchant)open(merchant)}
+   else msg.textContent=answer?.error??'들어가지 못했소.';
+  }catch{msg.textContent='서버에 닿지 않았소.'}
+ };
+ function openAccount(){account.hidden=false;account.querySelector('.account-message').textContent='';form.name.focus()}
+ function closeAccount(){account.hidden=true;pendingMerchant=null}
  const win=document.createElement('section');win.id='shop-window';win.hidden=true;win.setAttribute('role','dialog');win.setAttribute('aria-label','가게');
  win.innerHTML=`<header><strong class="shop-title"></strong><small class="shop-trade"></small><button type="button" class="shop-close" aria-label="가게 닫기">닫기</button></header>
  <div class="shop-panes"><div class="shop-pane"><h3>상인의 물건</h3><div class="shop-grid shop-goods"></div></div>
@@ -40,8 +72,11 @@ export function createShop({container,data}){
  const tip=$('.shop-tip');
  function message(text){$('.shop-message').textContent=text}
  function apply(answer){
-  if(Number.isInteger(answer?.money)){state.money=answer.money;state.items=answer.items??{};state.ready=true}
-  hud.textContent=state.ready?'엽전 '+formatMoney(state.money):'엽전 —';
+  if(answer&&answer.logged_in===false){state.loggedIn=false;state.name='';state.money=null;state.items={};state.ready=true}
+  else if(Number.isInteger(answer?.money)){state.loggedIn=true;state.name=answer.name;state.money=answer.money;state.items=answer.items??{};state.ready=true}
+  hudText.textContent=!state.ready?'엽전 —':state.loggedIn?`${state.name} · 엽전 ${formatMoney(state.money)}`:'로그인';
+  hudText.classList.toggle('hud-login',state.ready&&!state.loggedIn);
+  hudLogout.hidden=!state.loggedIn;
   render();
  }
  async function refresh(){
@@ -51,8 +86,7 @@ export function createShop({container,data}){
  async function request(action,id){
   if(busy||!shop)return;busy=true;
   try{
-   const response=await fetch('/api/shop/trade',{method:'POST',credentials:'same-origin',cache:'no-store',
-    headers:{'Content-Type':'application/json','X-CSRFToken':csrfToken()},body:JSON.stringify({action,shop:shop.trade,item:id,quantity})});
+   const response=await post('/api/shop/trade',{action,shop:shop.trade,item:id,quantity});
    const answer=await response.json().catch(()=>null);
    apply(answer);message(answer?.message??answer?.error??'거래하지 못했소.');
   }catch{message('서버에 닿지 않아 거래하지 못했소.')}
@@ -82,13 +116,14 @@ export function createShop({container,data}){
  }
  function open(merchant){
   const trade=data.shops[merchant.trade];if(!trade)return;
+  if(state.ready&&!state.loggedIn){pendingMerchant=merchant;openAccount();account.querySelector('.account-message').textContent='거래하려면 먼저 이름을 대시오.';return}
   shop={...trade,trade:merchant.trade};quantity=1;
   $('.shop-title').textContent=merchant.trade+(merchant.hanja?` (${merchant.hanja})`:'');
   $('.shop-trade').textContent=merchant.sells?`${merchant.sells}을 파는 가게`:'';
   message('');win.hidden=false;render();refresh();
  }
  function close(){shop=null;win.hidden=true;tip.hidden=true}
- document.addEventListener('keydown',event=>{if(shop&&event.key==='Escape'){event.preventDefault();close()}});
+ document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;if(!account.hidden){event.preventDefault();closeAccount()}else if(shop){event.preventDefault();close()}});
  refresh();
- return {open,close,refresh,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud};
+ return {open,close,refresh,openAccount,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
 }

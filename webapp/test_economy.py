@@ -12,22 +12,69 @@ class EconomyTests(TestCase):
         self.client = Client(enforce_csrf_checks=True)
         self.start = self.client.get('/api/player/')
         self.token = self.client.cookies['csrftoken'].value
+        self.account('나그네', 'secret-pass')
+
+    def account(self, name, password, mode='register', client=None):
+        client = client or self.client
+        return client.post(f'/api/account/{mode}', data=json.dumps({'name': name, 'password': password}), content_type='application/json', HTTP_X_CSRFTOKEN=self.token)
 
     def post(self, **body):
         return self.client.post('/api/shop/trade', data=json.dumps(body), content_type='application/json', HTTP_X_CSRFTOKEN=self.token)
 
-    def test_player_cookie_and_state_are_server_side(self):
+    def test_visiting_creates_no_player_and_accounts_hold_the_purse(self):
         data = catalog()
-        self.assertEqual(self.start.json(), {'money': data['wallet']['start'], 'items': {}})
-        cookie = self.start.cookies[COOKIE]
-        self.assertTrue(cookie['httponly'])
-        self.client.get('/api/player/')
-        self.assertEqual(Player.objects.count(), 1)
-        # A forged or tampered cookie is not accepted; it starts a new player instead of taking over one.
+        self.assertEqual(self.start.json(), {'logged_in': False})
+        self.assertEqual(Player.objects.count(), 1)  # only the registered account from setUp
+        state = self.client.get('/api/player/').json()
+        self.assertEqual(state, {'logged_in': True, 'name': '나그네', 'money': data['wallet']['start'], 'items': {}})
+        self.assertTrue(self.client.cookies[COOKIE]['httponly'])
+        self.assertTrue(Player.objects.get().password.startswith(('pbkdf2_', 'argon2', 'bcrypt', 'scrypt')))
+        # A forged cookie is not accepted.
         forged = Client()
         forged.cookies[COOKIE] = signing.dumps(str(Player.objects.get().token), salt='wrong-salt')
-        forged.get('/api/player/')
-        self.assertEqual(Player.objects.count(), 2)
+        self.assertEqual(forged.get('/api/player/').json(), {'logged_in': False})
+
+    def test_register_login_logout_and_name_rules(self):
+        other = Client(enforce_csrf_checks=True)
+        other.get('/api/player/')
+        token = other.cookies['csrftoken'].value
+        post = lambda url, body: other.post(url, data=json.dumps(body), content_type='application/json', HTTP_X_CSRFTOKEN=token)
+        self.assertEqual(post('/api/account/register', {'name': 'ＮＡＧＥＵＮＥ', 'password': 'another-pass'}).status_code, 200)
+        self.assertEqual(post('/api/account/register', {'name': 'nageune', 'password': 'another-pass'}).status_code, 409)  # same name key
+        self.assertEqual(post('/api/account/register', {'name': '나그네', 'password': 'x' * 10}).status_code, 409)
+        self.assertEqual(post('/api/account/register', {'name': 'Аlice', 'password': 'x' * 10}).status_code, 400)
+        self.assertEqual(post('/api/account/register', {'name': '짧은암호', 'password': '12345'}).status_code, 400)
+        self.assertEqual(post('/api/account/logout', {}).json(), {'logged_in': False})
+        other.cookies.pop(COOKIE, None)
+        self.assertEqual(other.get('/api/player/').json(), {'logged_in': False})
+        self.assertEqual(post('/api/account/login', {'name': '나그네', 'password': 'wrong-pass'}).status_code, 401)
+        login = post('/api/account/login', {'name': '나그네', 'password': 'secret-pass'})
+        self.assertEqual((login.status_code, login.json()['name']), (200, '나그네'))
+
+    def test_anonymous_purse_is_kept_on_sign_up(self):
+        import uuid
+        legacy = Player.objects.create(token=uuid.uuid4(), money=1234)
+        client = Client(enforce_csrf_checks=True)
+        client.get('/api/player/')
+        client.cookies[COOKIE] = signing.dumps(str(legacy.token), salt=SALT)
+        response = client.post('/api/account/register', data=json.dumps({'name': '옛손님', 'password': 'legacy-pass'}), content_type='application/json', HTTP_X_CSRFTOKEN=client.cookies['csrftoken'].value)
+        self.assertEqual(response.json()['money'], 1234)
+        legacy.refresh_from_db()
+        self.assertEqual(legacy.name, '옛손님')
+
+    def test_login_guessing_is_limited(self):
+        from .models import LoginAttempt
+        statuses = [self.account('나그네', f'wrong-{i}', mode='login').status_code for i in range(11)]
+        self.assertEqual(statuses[:10], [401] * 10)
+        self.assertEqual(statuses[10], 429)
+        self.assertTrue(all(len(a.ip_hash) == 64 and '127.0.0.1' not in a.ip_hash for a in LoginAttempt.objects.all()))
+
+    def test_trade_requires_login(self):
+        anonymous = Client(enforce_csrf_checks=True)
+        anonymous.get('/api/player/')
+        response = anonymous.post('/api/shop/trade', data=json.dumps({'action': 'buy', 'shop': '면포전', 'item': 'cotton_bolt', 'quantity': 1}), content_type='application/json', HTTP_X_CSRFTOKEN=anonymous.cookies['csrftoken'].value)
+        self.assertEqual(response.status_code, 401)
+        self.assertFalse(Trade.objects.exists())
 
     def test_trade_requires_csrf(self):
         response = self.client.post('/api/shop/trade', data=json.dumps({'action': 'buy', 'shop': '면포전', 'item': 'cotton_bolt', 'quantity': 1}), content_type='application/json')
@@ -41,6 +88,7 @@ class EconomyTests(TestCase):
         self.assertEqual(response.status_code, 200, response.content)
         self.assertEqual(response.json()['money'], data['wallet']['start'] - 2 * price)
         self.assertEqual(response.json()['items'], {'cotton_bolt': 2})
+        self.assertEqual(response.json()['name'], '나그네')
         response = self.post(action='sell', shop='선전', item='cotton_bolt', quantity=2)
         self.assertEqual(response.json()['money'], data['wallet']['start'] - 2 * price + 2 * sell_price('cotton_bolt'))
         self.assertEqual(response.json()['items'], {})

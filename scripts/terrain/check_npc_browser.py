@@ -1,7 +1,7 @@
 """Verify NPC conversations and the shop by clicking people on the map.
 
 The keeper and a gate officer open the adventure-style overlay (portrait, name plate, typed text, sourced choices),
-a shopkeeper's 거래하기 opens the shop where buying and selling go through the server API (the page shows the
+a shopkeeper's 거래하기 asks for an account (sign up), then opens the shop where buying and selling go through the server API (the page shows the
 server's coins and pack), and a passer-by and a
 soldier only greet in a speech bubble.
 """
@@ -45,7 +45,7 @@ with sync_playwright() as p:
     # Coins and the pack live on the server; the page shows them in the coin display.
     page.wait_for_function("terrain3d.shop?.state.ready")
     hud = page.evaluate("document.getElementById('money-hud').textContent")
-    assert hud.startswith('엽전 ') and '냥' in hud, hud
+    assert '로그인' in hud, hud
     page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
 
     def click(kind, ident):
@@ -90,6 +90,15 @@ with sync_playwright() as p:
     assert merchant['overlay'] and merchant['name'] == '면포전 상인' and any('거래하기' in o for o in merchant['options']), merchant
     page.click('.npc-line')
     page.locator('.npc-options button', has_text='거래하기').click()
+    # Not logged in: the account dialog opens first; signing up opens the shop with the starting purse.
+    assert page.evaluate("!document.getElementById('account-overlay').hidden")
+    name = '검사' + str(__import__('random').randint(1000, 9999))
+    page.fill('#account-dialog input[name=name]', name)
+    page.fill('#account-dialog input[name=password]', 'check-password-1')
+    page.click('#account-dialog button[value=register]')
+    page.wait_for_function("!document.getElementById('shop-window').hidden && terrain3d.shop.state.loggedIn")
+    hud = page.evaluate("document.getElementById('money-hud').textContent")
+    assert name in hud and '엽전' in hud, hud
     page.wait_for_function("terrain3d.shop.state.ready && !terrain3d.shop.busy")
     shop = page.evaluate("()=>({open:!document.getElementById('shop-window').hidden,title:document.querySelector('.shop-title').textContent,goods:document.querySelectorAll('.shop-goods .shop-slot').length,money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items}})")
     assert shop['open'] and shop['title'].startswith('면포전') and shop['goods'] >= 1, shop
@@ -98,7 +107,7 @@ with sync_playwright() as p:
     page.wait_for_function(f"terrain3d.shop.state.money < {shop['money']} && !terrain3d.shop.busy")
     bought = page.evaluate("async()=>({money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items},pack:document.querySelectorAll('.shop-pack .shop-slot').length,hud:document.getElementById('money-hud').textContent,server:await (await fetch('/api/player/')).json(),stored:localStorage.getItem('hanyang3d-pack')})")
     assert sum(bought['items'].values()) == owned + 1 and bought['pack'] >= 1 and bought['stored'] is None, bought
-    assert bought['server'] == {'money': bought['money'], 'items': bought['items']}, bought
+    assert bought['server']['logged_in'] and (bought['server']['money'], bought['server']['items']) == (bought['money'], bought['items']), bought
     if args.shots:
         page.screenshot(path=f'{args.shots}/npc_shop.png')
     page.locator('.shop-pack .shop-slot').first.click()
@@ -108,6 +117,14 @@ with sync_playwright() as p:
     assert sold['server']['money'] == sold['money'], sold
     page.keyboard.press('Escape')
     assert page.evaluate("document.getElementById('shop-window').hidden")
+    # Log out, then log back in: the purse comes from the server account.
+    page.click('#money-hud .hud-logout')
+    page.wait_for_function("!terrain3d.shop.state.loggedIn")
+    page.click('#money-hud .hud-main')
+    page.fill('#account-dialog input[name=name]', name)
+    page.fill('#account-dialog input[name=password]', 'check-password-1')
+    page.click('#account-dialog button[value=login]')
+    page.wait_for_function(f"terrain3d.shop.state.loggedIn && terrain3d.shop.state.money === {sold['money']}")
 
     # Passer-by: greeting bubble only.
     click('walker', 5)

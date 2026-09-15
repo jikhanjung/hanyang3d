@@ -129,29 +129,74 @@ def guide(request):
 @require_safe
 @ensure_csrf_cookie
 def player_state(request):
-    from .economy import attach_cookie, player_for, state
-    player, cookie = player_for(request)
-    response = JsonResponse(state(player))
+    from .economy import player_from_cookie, state
+    response = JsonResponse(state(player_from_cookie(request)))
     response['Cache-Control'] = 'no-store'
-    return attach_cookie(response, cookie)
+    return response
+
+
+def _json_body(request):
+    try:
+        body = json.loads(request.body or b'{}')
+    except ValueError:
+        return None
+    return body if isinstance(body, dict) else None
+
+
+def _no_store(response):
+    response['Cache-Control'] = 'no-store'
+    return response
+
+
+@require_POST
+def account_register(request):
+    from .accounts import AccountError, register
+    from .economy import attach_cookie, catalog, cookie_value, player_from_cookie, state
+    body = _json_body(request)
+    if body is None:
+        return _no_store(JsonResponse({'error': '요청 형식이 잘못되었소.', 'logged_in': False}, status=400))
+    try:
+        player = register(request, player_from_cookie(request), body.get('name'), body.get('password'), catalog()['wallet']['start'])
+    except AccountError as error:
+        return _no_store(JsonResponse({'error': error.message, 'logged_in': False}, status=error.status))
+    return _no_store(attach_cookie(JsonResponse({'message': f'{player.name}, 어서 오시오.', **state(player)}), cookie_value(player)))
+
+
+@require_POST
+def account_login(request):
+    from .accounts import AccountError, login
+    from .economy import attach_cookie, cookie_value, state
+    body = _json_body(request)
+    if body is None:
+        return _no_store(JsonResponse({'error': '요청 형식이 잘못되었소.', 'logged_in': False}, status=400))
+    try:
+        player = login(request, body.get('name'), body.get('password'))
+    except AccountError as error:
+        return _no_store(JsonResponse({'error': error.message, 'logged_in': False}, status=error.status))
+    return _no_store(attach_cookie(JsonResponse({'message': f'{player.name}, 다시 오셨구려.', **state(player)}), cookie_value(player)))
+
+
+@require_POST
+def account_logout(request):
+    from .economy import COOKIE
+    response = _no_store(JsonResponse({'logged_in': False}))
+    response.delete_cookie(COOKIE, samesite='Lax')
+    return response
 
 
 @require_POST
 def shop_trade(request):
-    from .economy import TradeError, attach_cookie, player_for, state, trade
+    from .economy import TradeError, player_from_cookie, state, trade
+    body = _json_body(request)
+    player = player_from_cookie(request)
+    if not player or not player.name_key:
+        return _no_store(JsonResponse({'error': '먼저 이름을 대고 들어오시오. (로그인)', 'logged_in': False}, status=401))
+    if body is None:
+        return _no_store(JsonResponse({'error': '요청 형식이 잘못되었소.', **state(player)}, status=400))
     try:
-        body = json.loads(request.body or b'{}')
-    except ValueError:
-        body = None
-    player, cookie = player_for(request)
-    if not isinstance(body, dict):
-        response = JsonResponse({'error': '요청 형식이 잘못되었소.', **state(player)}, status=400)
-    else:
-        try:
-            player, message = trade(player, body.get('action'), body.get('shop'), body.get('item'), body.get('quantity'))
-            response = JsonResponse({'message': message, **state(player)})
-        except TradeError as error:
-            player.refresh_from_db()
-            response = JsonResponse({'error': error.message, **state(player)}, status=error.status)
-    response['Cache-Control'] = 'no-store'
-    return attach_cookie(response, cookie)
+        player, message = trade(player, body.get('action'), body.get('shop'), body.get('item'), body.get('quantity'))
+        response = JsonResponse({'message': message, **state(player)})
+    except TradeError as error:
+        player.refresh_from_db()
+        response = JsonResponse({'error': error.message, **state(player)}, status=error.status)
+    return _no_store(response)

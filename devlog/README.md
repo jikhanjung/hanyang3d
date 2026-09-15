@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [127: 이름·비밀번호 계정, 1인칭 우클릭 둘러보기와 Alt+W 자동 걷기](20260915_127_accounts_first_person_controls.md)
 - [126: 엽전 표시와 서버에 기록하는 잔고](20260915_126_server_wallet.md)
 - [125: NPC 대화 틀, 옛 게임식 대화창, 시전 가게](20260915_125_npc_dialogue_shop.md)
 - [124: 이름 흉내 차단, 이모지 채팅, NPC 전송량 절반, 공개 healthz 축소, 배포 전 스냅샷 정리](20260915_124_walk_names_npc_rate_healthz_snapshots.md)

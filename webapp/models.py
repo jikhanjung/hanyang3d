@@ -175,6 +175,11 @@ class ContentImport(models.Model):
 # Game economy. Coins and packs live on the server; the browser only shows what the server answers.
 class Player(models.Model):
     token = models.UUIDField('플레이어 토큰', unique=True, editable=False)
+    # Name + password accounts (separate from back-office staff users). Anonymous rows from v0.3.6 have no name
+    # until their browser signs up, which keeps their purse.
+    name = models.CharField('이름', max_length=16, blank=True)
+    name_key = models.CharField('이름 비교 키', max_length=64, unique=True, null=True, editable=False)
+    password = models.CharField('비밀번호 해시', max_length=128, blank=True, editable=False)
     money = models.PositiveIntegerField('엽전(문)', default=0)
     created_at = models.DateTimeField('처음 방문', auto_now_add=True)
     last_seen = models.DateTimeField('마지막 활동', auto_now=True)
@@ -209,3 +214,10 @@ class Trade(models.Model):
         verbose_name = '거래 기록'
         verbose_name_plural = '거래 기록'
         indexes = [models.Index(fields=['player', 'created_at'])]
+
+
+class LoginAttempt(models.Model):
+    """Failed logins, kept to limit password guessing. The client IP is stored only as a keyed hash."""
+    name_key = models.CharField(max_length=64, db_index=True)
+    ip_hash = models.CharField(max_length=64, db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)

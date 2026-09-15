@@ -111,8 +111,10 @@ class PlayerItemInline(admin.TabularInline):
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
     """Read-only view of anonymous players; coins change only through the trade API."""
-    list_display = ('token', 'money', 'created_at', 'last_seen')
-    readonly_fields = ('token', 'money', 'created_at', 'last_seen')
+    list_display = ('name', 'money', 'created_at', 'last_seen')
+    search_fields = ('name',)
+    readonly_fields = ('name', 'token', 'money', 'created_at', 'last_seen')
+    exclude = ('password',)
     inlines = [PlayerItemInline]
     def has_add_permission(self, request): return False
     def has_change_permission(self, request, obj=None): return False
