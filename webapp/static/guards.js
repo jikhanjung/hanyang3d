@@ -10,6 +10,8 @@ export function materials(){return Object.fromEntries(Object.entries(COLORS).map
 
 export function figure(parts,mats,x,z,y,{officer=false,keeper=false,spear=true,archer=false,yaw=0}={}){
  const group=new THREE.Group();group.position.set(x,y,z);group.rotation.y=yaw;
+ // Role for NPC conversations: the keeper and gate officers talk at length, soldiers only greet.
+ group.userData.role=keeper?'keeper':officer?'officer':'soldier';
  const add=(geometry,material,px,py,pz)=>{const m=new THREE.Mesh(geometry,mats[material]);m.position.set(px,py,pz);group.add(m);return m};
  for(const side of [-1,1]){add(new THREE.BoxGeometry(.16,.72,.18),'trousers',side*.11,.5,0);add(new THREE.BoxGeometry(.18,.16,.28),'boots',side*.11,.08,.04)}
  const coat=keeper?'keeperRobe':officer?'officerCoat':'soldierCoat',sleeve=keeper?'keeperRobe':officer?'officerSleeve':'soldierSleeve';
@@ -66,15 +68,28 @@ export function createGuards(feature,w,h,d,gateModel){
   // The keeper rests by the pier between the west and middle arches, then walks in through the middle arch, looks
   // round the ruined grounds and comes back out. Local +z is the road side (south) of the Gwanghwamun base.
   const c=gateModel?.userData.centres??[-w*.27,0,w*.27],rest=[(c[0]+c[1])/2,d/2+1.2],mid=c[1]??0;
-  const keeper=figure(figures,mats,rest[0],rest[1],y,{keeper:true});
+  const keeper=figure(figures,mats,rest[0],rest[1],y,{keeper:true});keeper.name='palace-keeper';
   const stops=[[...rest,5],[mid,d/2+4,0],[mid,-d/2-4,0],[mid-14,-d/2-28,4],[mid+12,-d/2-46,6],[mid+2,-d/2-20,0],[mid,-d/2-4,0],[mid,d/2+4,0]];
   // Precompute the timed route: walk at 1.1 m/s between stops, pausing where a stop asks for it.
   const route=[];let t=0;
   stops.forEach((s,i)=>{const n=stops[(i+1)%stops.length];if(s[2]){route.push({t0:t,t1:t+s[2],a:s,b:s});t+=s[2]}const len=Math.hypot(n[0]-s[0],n[1]-s[1]);route.push({t0:t,t1:t+len/1.1,a:s,b:n});t+=len/1.1});
   const loop=t;
   model.userData.route={stops,loop};
+  // While the keeper talks to the viewer he stands still and turns toward them; his route clock is shifted by the
+  // time spent talking, so he resumes where he stopped (this pause is local to this browser).
+  const talk={active:false,since:0,offset:0,face:null};
+  model.userData.keeperFigure=keeper;
+  model.userData.talk=talk;
+  // Pause bookkeeping uses the same clock as update() (server time while walking together), taken from the last frame.
+  model.userData.startTalk=()=>{if(!talk.active){talk.active=true;talk.since=talk.lastTime??0}};
+  model.userData.stopTalk=()=>{if(talk.active){talk.active=false;talk.offset+=(talk.lastTime??talk.since)-talk.since;talk.face=null}};
   model.userData.update=(time,groundAt)=>{
-   const now=(time/1000)%loop,leg=route.find(r=>now>=r.t0&&now<r.t1)??route[0],k=(now-leg.t0)/Math.max(1e-6,leg.t1-leg.t0);
+   talk.lastTime=time;
+   if(talk.active){
+    if(talk.face)keeper.rotation.y=Math.atan2(talk.face.x-keeper.position.x,talk.face.z-keeper.position.z);
+    return;
+   }
+   const now=((time-talk.offset)/1000)%loop,leg=route.find(r=>now>=r.t0&&now<r.t1)??route[0],k=(now-leg.t0)/Math.max(1e-6,leg.t1-leg.t0);
    const x=leg.a[0]+(leg.b[0]-leg.a[0])*k,z=leg.a[1]+(leg.b[1]-leg.a[1])*k;
    keeper.position.set(x,groundAt?groundAt(x,z):y,z);
    // Pauses also need a deterministic heading for clients joining mid-route.

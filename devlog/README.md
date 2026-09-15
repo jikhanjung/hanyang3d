@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [125: NPC 대화 틀, 옛 게임식 대화창, 시전 가게](20260915_125_npc_dialogue_shop.md)
 - [124: 이름 흉내 차단, 이모지 채팅, NPC 전송량 절반, 공개 healthz 축소, 배포 전 스냅샷 정리](20260915_124_walk_names_npc_rate_healthz_snapshots.md)
 - [123: Git 콘텐츠 변경을 운영 DB로 반영과 이야기·자료집 보완](20260915_123_content_sync_story_fixes.md)
 - [122: 배포 검사·SECRET_KEY·백업 상태·되돌리기 안전장치](20260915_122_deploy_content_guards.md)

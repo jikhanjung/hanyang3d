@@ -258,6 +258,15 @@ export function createSijeon(data,sourceSurface,landmarks){
  const setMapVisible=value=>{mapVisible=value;updateHeights(exaggeration)};
  const toggle=document.getElementById('sijeon3d');
  if(toggle)toggle.onchange=e=>{group.visible=e.target.checked};
- return {group,records,signs,goodsMeshes,picks,keeperCount:keeperSpots.length,updateGround,updateHeights,setMapVisible,get visibleCount(){return visible},
+// Standing shopkeepers for NPC conversations: world position of each displayed keeper and the trade of its row.
+ function keepers(){
+  return keeperSpots.map((k,index)=>{
+   const r=records[k.record];if(!r.displayed||!r.trade)return null;
+   const s=Math.sin(r.yaw),c=Math.cos(r.yaw),dz=-depth*.42+.4+.35,zone=data.signs?.zones.find(z=>z.hangul===r.trade);
+   return {index,record:k.record,trade:r.trade,hanja:zone?.hanja,sells:zone?.sells,
+    position:new THREE.Vector3(r.x+dz*s+k.along*c,r.floor+.4,r.z+dz*c-k.along*s),yaw:r.yaw+Math.PI};
+  }).filter(Boolean);
+ }
+ return {group,records,signs,goodsMeshes,picks,keepers,keeperCount:keeperSpots.length,updateGround,updateHeights,setMapVisible,get visibleCount(){return visible},
   get bayCount(){return records.reduce((sum,r)=>sum+r.bays,0)}};
 }

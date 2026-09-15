@@ -157,6 +157,28 @@ class ReviewTests(TestCase):
             self.assertContains(guide, 'id="장소-이야기"')
             self.assertContains(guide, data['stories'][0]['title'])
 
+    def test_npc_data_is_consistent_and_sourced(self):
+        data = json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text())
+        zones = json.loads((settings.BASE_DIR / 'gis/buildings/doseong_sijeon.json').read_text())['signs']['zones']
+        for tree in (data['keeper']['nodes'], data['officer']['nodes'], data['merchant']['nodes']):
+            self.assertIn('hello', tree)
+            for node_id, node in tree.items():
+                for option in node.get('options', []):
+                    self.assertTrue(option.get('next') in tree or option.get('action') in ('close', 'shop'), (node_id, option))
+                for source in node.get('sources', []):
+                    self.assertTrue(source['url'].startswith('https://'), (node_id, source))
+        # Keeper and officer lines that state facts must carry a source.
+        for tree in (data['keeper']['nodes'], data['officer']['nodes']):
+            for node_id, node in tree.items():
+                if node_id != 'hello':
+                    self.assertTrue(node.get('sources'), node_id)
+        for zone in zones:
+            shop = data['shops'][zone['hangul']]
+            self.assertTrue(shop['items'] and all(item in data['items'] for item in shop['items']), zone['hangul'])
+        for item in data['items'].values():
+            self.assertTrue(isinstance(item['price'], int) and item['price'] > 0 and item['icon']['shape'] in ('bolt', 'roll', 'fish'))
+        self.assertContains(self.client.get('/'), 'id="npcs"')
+
     def test_read_only(self):
         self.assertEqual(self.client.post('/').status_code, 405)
         self.assertEqual(self.client.post('/data/catalog/assets.csv').status_code, 405)

@@ -9,6 +9,8 @@ import {createSiteMarker} from './site_marker.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
 import {createDrill} from './drill.js';
+import {createNpcDialogue} from './npc_dialogue.js';
+import {createShop} from './shop.js';
 import {createPagoda} from './pagoda.js';
 import {createObservatory} from './observatory.js';
 import {createSettlement} from './settlement.js';
@@ -42,7 +44,7 @@ async function main(){
  el('about-close').onclick=closeAbout;
  document.addEventListener('keydown',event=>{if(event.code==='Escape'&&!el('about-panel').hidden)closeAbout()});
  const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')].filter(c=>c.id!=='about-open');toolbarControls.forEach(c=>c.disabled=true);
- let granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,together=null,palaceWall=null,frameUpdate=()=>{};
+ let npcDialogue=null,shop=null,granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,together=null,palaceWall=null,frameUpdate=()=>{};
 
  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5e4');
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -189,7 +191,7 @@ async function main(){
  const supportSurfaces=[terrain,historical].map(mesh=>({positions:mesh.geometry.attributes.position.array,index:mesh.geometry.index.array}));
  // A coarse X/Z index keeps each footprint test to the triangles near the building.
  const supportNearby=surfaceIndex(supportSurfaces);
- const drills=[];
+ const drills=[],guardModels=[];
  const buildingData=JSON.parse(el('buildings').textContent);
  // Place stories are kept in their own file and attached to the feature they belong to by type and id (or name).
  const storyData=JSON.parse(el('stories')?.textContent??'{"stories":[]}');
@@ -249,10 +251,10 @@ async function main(){
   const box=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color:colors[feature.category]??0x856549,roughness:.8}));
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
-  if(feature.display_model==='conceptual_gate_with_open_arch_and_roof'||(!feature.model_resource&&feature.category==='성문')){box.material.visible=false;feature.outer_side=Math.sign(Math.sin(yaw)*(wx-cityCentre.x)+Math.cos(yaw)*(wz-cityCentre.z))||1;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards){box.add(guards);if(guards.userData.update)drills.push(guards)}}
+  if(feature.display_model==='conceptual_gate_with_open_arch_and_roof'||(!feature.model_resource&&feature.category==='성문')){box.material.visible=false;feature.outer_side=Math.sign(Math.sin(yaw)*(wx-cityCentre.x)+Math.cos(yaw)*(wz-cityCentre.z))||1;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards){box.add(guards);guardModels.push(guards);if(guards.userData.update)drills.push(guards)}}
   if(feature.display_model==='throne_hall'){box.material.visible=false;foundation.visible=false;box.add(createThroneHall(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
-  if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d));const guards=createGuards(feature,w,h,d);if(guards)box.add(guards)}
+  if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d));const guards=createGuards(feature,w,h,d);if(guards){box.add(guards);guardModels.push(guards)}}
   if(feature.display_model==='gyeonghoeru_pond'){box.material.visible=false;foundation.visible=false;box.add(createGyeonghoeruPond(feature,w,h,d))}
   if(feature.display_model==='hall_site'){box.material.visible=false;box.add(createHallSite(feature,w,h,d))}
   if(feature.display_model==='observatory'){box.material.visible=false;foundation.visible=false;box.add(createObservatory(feature,w,h,d))}
@@ -616,7 +618,11 @@ async function main(){
  // Clicks select in both orbit and first-person views; a drag (6 px or more) only turns the view.
  renderer.domElement.addEventListener('pointerdown',event=>{press={x:event.clientX,y:event.clientY,id:event.pointerId};tooltip.hidden=true});
  renderer.domElement.addEventListener('pointerup',event=>{
-  if(press&&press.id===event.pointerId&&Math.hypot(event.clientX-press.x,event.clientY-press.y)<6){selected=hit(event)??placeNames?.pick(event)??null;hovered=null;tooltip.hidden=true;showBuilding(selected)}
+  if(press&&press.id===event.pointerId&&Math.hypot(event.clientX-press.x,event.clientY-press.y)<6){
+   // People on the map (keeper, gate guards, shopkeepers, passers-by) are picked before buildings.
+   if(npcDialogue?.pick(event)){hovered=null;tooltip.hidden=true}
+   else{selected=hit(event)??placeNames?.pick(event)??null;hovered=null;tooltip.hidden=true;showBuilding(selected)}
+  }
   press=null;
  });
  renderer.domElement.addEventListener('pointercancel',()=>{press=null;clearHover()});
@@ -937,7 +943,55 @@ async function main(){
   try{const s=cityWall.supportAt(x,z,.2,.2,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible?s.road.max*exaggeration:-Infinity)}catch{return null}
  });
  renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();el('error').textContent='3D 그래픽 연결이 끊겼습니다. 페이지를 새로 고쳐 주세요.'});
- frameUpdate=dt=>{firstPerson?.update(dt);together?.update(dt);pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));updateBuildingNames()};
+ // NPC conversations and the shop. Facts in dialogue carry sources; greetings do not.
+ {
+  const npcData=JSON.parse(el('npcs').textContent),fill=(text,values)=>text.replace(/\{(\w+)\}/g,(_,k)=>values[k]??'');
+  const fillNodes=(nodes,values)=>Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{...n,text:fill(n.text,values)}]));
+  const pickOne=(list,seed)=>list[Math.abs(Math.floor(seed))%list.length];
+  shop=createShop({container:el('scene'),data:npcData});
+  npcDialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:npcData.note,onAction:(action,npc)=>{if(action==='shop'&&npc.merchant)shop.open(npc.merchant)}});
+  const shown=o=>{for(let x=o;x;x=x.parent)if(!x.visible)return false;return true};
+  const feet=new THREE.Vector3();
+  npcDialogue.register({pick(event,hitTest){
+   let best=null;
+   for(const model of guardModels){
+    if(!shown(model))continue;
+    const feature=model.parent.userData.feature,gate=feature.name.split(' · ')[0],unit=model.userData.unit;
+    for(const person of model.children){
+     const role=person.userData.role;if(!role)continue;
+     const at=person.getWorldPosition(new THREE.Vector3()),distance=hitTest(event,at,1.9,role==='keeper'?300:150);
+     if(distance===null||(best&&best.distance<=distance))continue;
+     const position=()=>person.getWorldPosition(feet);
+     let npc;
+     if(role==='keeper')npc={key:'keeper',mode:'overlay',portrait:'keeper',name:npcData.keeper.name,subtitle:npcData.keeper.subtitle,nodes:npcData.keeper.nodes,position,maxDistance:300,
+      begin:()=>model.userData.startTalk(),finish:()=>model.userData.stopTalk(),face:camera=>{model.userData.talk.face=model.worldToLocal(camera.clone())}};
+     else if(role==='officer')npc={key:'officer:'+feature.id,mode:'overlay',portrait:'officer',name:gate+' 수문장',subtitle:fill(npcData.officer.subtitle,{unit}),nodes:fillNodes(npcData.officer.nodes,{gate,unit}),position};
+     else npc={key:'soldier:'+feature.id,mode:'bubble',portrait:'soldier',name:(feature.category==='성문'?gate:unit)+' 군사',nodes:{hello:{text:pickOne(npcData.soldier.greetings,at.x+at.z)}},position};
+     best={distance,npc};
+    }
+   }
+   return best;
+  }});
+  npcDialogue.register({pick(event,hitTest){
+   if(!sijeon?.group.visible)return null;let best=null;
+   for(const k of sijeon.keepers()){
+    const distance=hitTest(event,k.position,1.8,120);if(distance===null||(best&&best.distance<=distance))continue;
+    const values={shop:`${k.trade}(${k.hanja})`,sells:k.sells,about:npcData.shops[k.trade]?.about??''};
+    best={distance,npc:{key:'merchant:'+k.index,mode:'overlay',portrait:'merchant',name:k.trade+' 상인',subtitle:k.sells+'을 파는 시전',nodes:fillNodes(npcData.merchant.nodes,values),merchant:k,position:()=>k.position,maxDistance:120}};
+   }
+   return best;
+  }});
+  npcDialogue.register({pick(event,hitTest){
+   if(!pedestrians?.group.visible)return null;let best=null;
+   for(const w of pedestrians.walkers){
+    const distance=hitTest(event,w.position,1.7,100);if(distance===null||(best&&best.distance<=distance))continue;
+    const greetings=npcData.pedestrian.greetings[w.costume==='female'?'female':'male'];
+    best={distance,npc:{key:'walker:'+w.id,mode:'bubble',portrait:'walker',name:npcData.pedestrian.name,nodes:{hello:{text:pickOne(greetings,w.seed??0)}},position:()=>w.position,maxDistance:100}};
+   }
+   return best;
+  }});
+ }
+ frameUpdate=dt=>{firstPerson?.update(dt);together?.update(dt);npcDialogue?.update();pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));updateBuildingNames()};
  toolbarControls.forEach(c=>c.disabled=false);el('channel-depth').disabled=!channelState.enabled;
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
@@ -961,6 +1015,6 @@ async function main(){
   for(const seg of wall.segments)collision.add({x:seg.x,z:seg.z,hw:data.width_m/2,hd:seg.length/2,yaw:seg.yaw,visible:()=>wall.group.visible});
  for(const r of sijeon.records)collision.add({x:r.x,z:r.z,hw:r.length/2,hd:(sijeonData.placement.depth_m+.9)/2,yaw:r.yaw,visible:()=>sijeon.group.visible&&r.displayed});
  for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
- window.terrain3d={ready:true,cityCentre,drills,landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
+ window.terrain3d={ready:true,cityCentre,drills,guardModels,get npcDialogue(){return npcDialogue},get shop(){return shop},landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

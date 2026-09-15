@@ -47,6 +47,8 @@ def public_resource_paths():
         'webapp/static/gate.js',
         'webapp/static/guards.js',
         'webapp/static/drill.js',
+        'webapp/static/npc_dialogue.js',
+        'webapp/static/shop.js',
         'gis/placenames/doseong_placenames.json',
         'webapp/static/collision.js',
         'gis/buildings/doseong_sijeon.json',

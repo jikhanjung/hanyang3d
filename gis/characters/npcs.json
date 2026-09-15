@@ -1,0 +1,445 @@
+{
+ "schema_version": 1,
+ "note": "인물의 말투와 대사는 기록을 바탕으로 지어낸 것입니다. 사실을 말하는 대사에는 출처를 붙였습니다. 가게의 가격은 기록에서 확인하지 않은 놀이용 값입니다.",
+ "keeper": {
+  "name": "경복궁 궁감",
+  "subtitle": "빈 궁궐을 지키는 사람",
+  "start": "hello",
+  "nodes": {
+   "hello": {
+    "text": "어서 오시오. 여기는 옛 경복궁 터요. 무엇이 궁금하오?",
+    "options": [
+     {
+      "label": "이 궁은 어쩌다 이렇게 되었소?",
+      "next": "history"
+     },
+     {
+      "label": "연못의 돌기둥은 무엇이오?",
+      "next": "pond"
+     },
+     {
+      "label": "궁감은 무슨 일을 하시오?",
+      "next": "duty"
+     },
+     {
+      "label": "요즘 궁터에 무슨 일이 있었소?",
+      "next": "trees"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "history": {
+    "text": "이 궁은 태조 임금 때인 1395년에 지은 조선의 으뜸 궁궐이었소. 임진년(1592) 난리에 모두 타 버리고, 지금은 이렇게 담과 터만 남았다오.",
+    "year": "1395·1592",
+    "sources": [
+     {
+      "title": "궁능유적본부 경복궁 소개·역사",
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 이야기도 들려주시오.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "pond": {
+    "text": "저기 연못 가운데 돌기둥들 보이시오? 경회루 자리요. 태종 임금 때(1412) 연못을 넓히며 크게 지은 누각인데, 누각은 불타고 돌기둥만 줄지어 남았지.",
+    "year": "1412",
+    "sources": [
+     {
+      "title": "위키백과 경회루(태종실록·춘성유기 인용)",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8"
+     }
+    ],
+    "options": [
+     {
+      "label": "연못은 누가 돌보오?",
+      "next": "drought"
+     },
+     {
+      "label": "다른 이야기도 들려주시오.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "duty": {
+    "text": "나라에서는 이 빈 궁을 그냥 버려두지 않고, 나 같은 궁감을 두어 담이며 나무며 연못을 돌보게 하였소.",
+    "year": null,
+    "sources": [
+     {
+      "title": "유재빈, 「영조대 경복궁 터에서 행한 행사와 궁중 회화」, 『한국미술사학회지』 323 (2024)",
+      "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader"
+     },
+     {
+      "title": "위키백과 경복궁",
+      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 이야기도 들려주시오.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "trees": {
+    "text": "스무 해쯤 전(1729)엔 바람에 쓰러진 나무를 치우던 수직군들이 멀쩡한 나무까지 베어 민가에 팔아먹었다고, 사헌부에서 관원들을 잡아 죄를 묻자고 아뢰었다오. 그 뒤로는 나무 한 그루도 조심스럽지.",
+    "year": "1729",
+    "sources": [
+     {
+      "title": "영조실록 5년 3월 27일 제2기사 — 사헌부가 경복궁 나무를 판 수직군 문제를 아뢰다",
+      "url": "https://sillok.history.go.kr/id/kua_10503027_002"
+     }
+    ],
+    "options": [
+     {
+      "label": "가물 때는 어찌하오?",
+      "next": "drought"
+     },
+     {
+      "label": "다른 이야기도 들려주시오.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "drought": {
+    "text": "가물면 경회루 연못도 친다오. 계해년(1743)에 연못을 쳐냈고, 이듬해에는 가뭄이 길어 오부 사람들과 군사들이 개천과 도랑, 이 연못까지 쳐냈지.",
+    "year": "1743·1744",
+    "sources": [
+     {
+      "title": "영조실록 19년 4월 16일 제1기사 — 경회루의 연못을 준설하게 하다",
+      "url": "https://sillok.history.go.kr/id/kua_11904016_001"
+     },
+     {
+      "title": "영조실록 20년 5월 10일 제2기사 — 가뭄에 계천·도랑·경회루 연지를 치게 하다",
+      "url": "https://sillok.history.go.kr/id/kua_12005010_002"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 이야기도 들려주시오.",
+      "next": "hello"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ]
+   }
+  }
+ },
+ "pedestrian": {
+  "name": "길 가는 사람",
+  "greetings": {
+   "male": [
+    "안녕하시오.",
+    "좋은 날이오.",
+    "어디 가시는 길이오?",
+    "바삐 가는 중이라 이만."
+   ],
+   "female": [
+    "안녕하세요.",
+    "날이 좋네요.",
+    "장 보러 가는 길이에요.",
+    "조심히 가세요."
+   ]
+  }
+ },
+ "merchant": {
+  "name": "시전 상인",
+  "nodes": {
+   "hello": {
+    "text": "어서 오시오, 손님. {shop}이오. {sells} 좋은 것만 들여놓았소.",
+    "options": [
+     {
+      "label": "무엇을 파는 가게요?",
+      "next": "about"
+     },
+     {
+      "label": "물건을 보여 주시오. (거래하기)",
+      "action": "shop"
+     },
+     {
+      "label": "다음에 오겠소.",
+      "action": "close"
+     }
+    ]
+   },
+   "about": {
+    "text": "{about}",
+    "sources": [
+     {
+      "title": "우리역사넷 육의전",
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010"
+     }
+    ],
+    "options": [
+     {
+      "label": "물건을 보여 주시오. (거래하기)",
+      "action": "shop"
+     },
+     {
+      "label": "다음에 오겠소.",
+      "action": "close"
+     }
+    ]
+   }
+  }
+ },
+ "shops": {
+  "선전": {
+   "about": "중국에서 들여온 비단을 파는 시전이오. 육의전 가운데 으뜸이라 나라에 바치는 몫도 가장 크다오.",
+   "items": [
+    "silk_red",
+    "silk_blue",
+    "silk_gold"
+   ]
+  },
+  "면포전": {
+   "about": "무명을 파는 시전이오. 무명은 돈처럼도 쓰여서, 육의전에 드는 큰 가게라오.",
+   "items": [
+    "cotton_bolt",
+    "cotton_fine"
+   ]
+  },
+  "면주전": {
+   "about": "우리 땅에서 짠 명주를 파는 시전이오. 육의전에 드는 가게라오.",
+   "items": [
+    "mingju_white",
+    "mingju_pink"
+   ]
+  },
+  "내어물전": {
+   "about": "말린 어물과 소금에 절인 어물을 파는 시전이오. 육의전에 드는 어물전이라오.",
+   "items": [
+    "dried_pollack",
+    "dried_croaker"
+   ]
+  },
+  "저포전": {
+   "about": "모시를 파는 시전이오. 육의전에 드는 가게라오.",
+   "items": [
+    "ramie_bolt"
+   ]
+  }
+ },
+ "items": {
+  "silk_red": {
+   "name": "붉은 비단",
+   "unit": "필",
+   "price": 1200,
+   "icon": {
+    "shape": "bolt",
+    "color": "#b8322f"
+   },
+   "desc": "중국에서 들여온 붉은 비단 한 필."
+  },
+  "silk_blue": {
+   "name": "쪽빛 비단",
+   "unit": "필",
+   "price": 1100,
+   "icon": {
+    "shape": "bolt",
+    "color": "#2f5f9e"
+   },
+   "desc": "중국에서 들여온 쪽빛 비단 한 필."
+  },
+  "silk_gold": {
+   "name": "노란 비단",
+   "unit": "필",
+   "price": 1500,
+   "icon": {
+    "shape": "bolt",
+    "color": "#d6a53a"
+   },
+   "desc": "귀한 노란 비단 한 필."
+  },
+  "cotton_bolt": {
+   "name": "무명",
+   "unit": "필",
+   "price": 250,
+   "icon": {
+    "shape": "roll",
+    "color": "#f1ead8"
+   },
+   "desc": "흰 무명 한 필. 옷감으로도, 셈을 치를 때도 쓰였다."
+  },
+  "cotton_fine": {
+   "name": "고운 무명",
+   "unit": "필",
+   "price": 380,
+   "icon": {
+    "shape": "roll",
+    "color": "#e7dcc1"
+   },
+   "desc": "올이 고운 무명 한 필."
+  },
+  "mingju_white": {
+   "name": "흰 명주",
+   "unit": "필",
+   "price": 700,
+   "icon": {
+    "shape": "bolt",
+    "color": "#efd9c6"
+   },
+   "desc": "우리 땅에서 짠 흰 명주 한 필."
+  },
+  "mingju_pink": {
+   "name": "분홍 명주",
+   "unit": "필",
+   "price": 760,
+   "icon": {
+    "shape": "bolt",
+    "color": "#e8c9c2"
+   },
+   "desc": "물들인 분홍 명주 한 필."
+  },
+  "dried_pollack": {
+   "name": "북어",
+   "unit": "쾌",
+   "price": 120,
+   "icon": {
+    "shape": "fish",
+    "color": "#a38d6c"
+   },
+   "desc": "말린 명태 스무 마리를 한 쾌로 묶었다."
+  },
+  "dried_croaker": {
+   "name": "굴비",
+   "unit": "두름",
+   "price": 180,
+   "icon": {
+    "shape": "fish",
+    "color": "#b7955e"
+   },
+   "desc": "소금에 절여 말린 조기 한 두름."
+  },
+  "ramie_bolt": {
+   "name": "모시",
+   "unit": "필",
+   "price": 520,
+   "icon": {
+    "shape": "roll",
+    "color": "#dfe6cf"
+   },
+   "desc": "시원한 모시 한 필."
+  }
+ },
+ "wallet": {
+  "start": 3000,
+  "sell_rate": 0.6
+ },
+ "soldier": {
+  "greetings": [
+   "문을 지키는 중이오. 지나가시오.",
+   "수상한 자는 들이지 않소.",
+   "날이 저물면 문을 닫으니 서두르시오.",
+   "무슨 일이오? 볼일이 있으면 수문장께 여쭈시오."
+  ]
+ },
+ "officer": {
+  "subtitle": "{unit} · 궁문을 여닫는 관원",
+  "nodes": {
+   "hello": {
+    "text": "나는 {gate}의 수문장이오. 이 문을 여닫고 드나드는 이를 살피는 일을 맡았소. 무엇이 궁금하오?",
+    "options": [
+     {
+      "label": "수문장은 어떤 관원이오?",
+      "next": "office"
+     },
+     {
+      "label": "궁성은 누가 지키오?",
+      "next": "guard"
+     },
+     {
+      "label": "밤에도 문을 열 수 있소?",
+      "next": "night"
+     },
+     {
+      "label": "수고하시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "office": {
+    "text": "궁궐 문을 여닫는 일은 우리 수문장이 맡는다오. 몇 해 전(1746) 『속대전』에서 수문장청이 관청으로 자리를 잡았고, 수문장은 스물세 명이오. 번갈아 입직하며 문을 지키지.",
+    "year": "1746",
+    "sources": [
+     {
+      "title": "한국민족문화대백과사전 수문장청",
+      "url": "https://encykorea.aks.ac.kr/Article/E0031377"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 것도 묻겠소.",
+      "next": "hello"
+     },
+     {
+      "label": "수고하시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "guard": {
+    "text": "창덕궁 궁성 밖 파수는 세 군영이 나누어 맡소. 돈화문은 훈련도감, 금호문은 금위영, 홍화문은 어영청 몫이오. 문을 여닫는 일은 따로 우리 수문장이 하고.",
+    "sources": [
+     {
+      "title": "우리역사넷 신편 한국사 「궁성 파수」",
+      "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 것도 묻겠소.",
+      "next": "hello"
+     },
+     {
+      "label": "수고하시오.",
+      "action": "close"
+     }
+    ]
+   },
+   "night": {
+    "text": "밤에 닫힌 궁문은 함부로 열지 않소. 급한 일이 있으면 선전관이 표신을 보여야만 문을 연다오.",
+    "sources": [
+     {
+      "title": "조선왕조실록사전 표신",
+      "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29"
+     }
+    ],
+    "options": [
+     {
+      "label": "다른 것도 묻겠소.",
+      "next": "hello"
+     },
+     {
+      "label": "수고하시오.",
+      "action": "close"
+     }
+    ]
+   }
+  }
+ }
+}

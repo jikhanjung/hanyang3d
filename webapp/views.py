@@ -48,6 +48,7 @@ def terrain3d(request, canvas_only=False):
         'app_version': settings.APP_VERSION,
         'walk_world_version': settings.WALK_WORLD_VERSION,
         'multiplayer_url': settings.MULTIPLAYER_URL,
+        'npcs': json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text()),
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),
     })

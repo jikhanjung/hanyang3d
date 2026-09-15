@@ -15,7 +15,7 @@
 
 ## 확인만 한 것
 
-- 오프사이트 백업: 개발 호스트 `/home/jikhanjung/backups/hanyang3d`는 폴더 700. NAS `/nas/JikhanJung/hanyang3d_backup`(NFS)은 파일이 600(소유자 uid 1024)이지만 폴더는 777로 보인다. 설정 묶음(`.env.django` 포함)의 내용은 소유자만 읽을 수 있으나, 같은 공유에 쓰기 권한이 있는 사람은 파일을 지우거나 바꿀 수 있다. NAS 공유·폴더 권한은 운영자가 결정할 사항이라 바꾸지 않았다.
+- 오프사이트 백업: 개발 호스트 `/home/jikhanjung/backups/hanyang3d`는 폴더 700. NAS `/nas/JikhanJung/hanyang3d_backup`(NFS)은 파일이 600(소유자 uid 1024)이지만 폴더는 777로 보인다. 설정 묶음(`.env.django` 포함)의 내용은 소유자만 읽을 수 있으나, 같은 공유에 쓰기 권한이 있는 사람은 파일을 지우거나 바꿀 수 있다. NAS 공유·폴더 권한은 운영자가 결정할 사항이라 바꾸지 않았다. 사용자와 확인해 NAS는 지금 설정 그대로 두기로 했다(2026-09-15).
 - 월드 버전 기본값이 `settings.py`(`WALK_WORLD_VERSION`)와 멀티플레이 이미지에 따로 있는 문제는, 121부터 `mapVersion`이 형식만 검사되고 방을 나누지 않으므로 어긋나도 동작에 영향이 없다.
 
 ## 검사
