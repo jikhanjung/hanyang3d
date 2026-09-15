@@ -11,7 +11,9 @@ test('only finite, bounded coordinates reach other browsers', () => {
     { x: Infinity, z: 0, yaw: 0 }, { x: 30001, z: 0, yaw: 0 }]) {
     assert.equal(readPose(pose), null);
   }
-  assert.deepEqual(readPose({ x: 10, z: -20, yaw: 0, id: 'forged' }), { x: 10, z: -20, yaw: 0 });
+  assert.deepEqual(readPose({ x: 10, z: -20, yaw: 0, id: 'forged' }), { x: 10, z: -20, yaw: 0, mounted: false });
+  assert.equal(readPose({ x: 0, z: 0, yaw: 0, mounted: true }).mounted, true);
+  assert.equal(readPose({ x: 0, z: 0, yaw: 0, mounted: 'yes' }).mounted, false);
   assert.ok(Math.abs(readPose({ x: 0, z: 0, yaw: 100 }).yaw) <= Math.PI);
 });
 

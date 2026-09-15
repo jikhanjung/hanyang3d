@@ -47,7 +47,7 @@ with sync_playwright() as p:
     money = page.evaluate('terrain3d.shop.state.money')
     page.locator('.shop-goods .shop-slot').first.click()
     page.wait_for_function("terrain3d.shop.state.items.horse_reins===1 && !terrain3d.shop.busy")
-    assert page.evaluate('terrain3d.shop.state.money') == money - 2400
+    assert page.evaluate('terrain3d.shop.state.money') == money - 900
     page.wait_for_timeout(1100)
     page.locator('.shop-goods .shop-slot').first.click()
     page.wait_for_function("document.querySelector('.shop-message').textContent.includes('족하오') && !terrain3d.shop.busy")

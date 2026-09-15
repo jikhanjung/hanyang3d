@@ -105,6 +105,11 @@ with sync_playwright() as p:
         return other?.visible && Math.hypot(other.position.x-p.x, other.position.z-p.z) < .15;
     }''', arg=position, timeout=20000)
     b.wait_for_function("Math.abs(terrain3d.scene.children.find(o => o.name === 'remote-walker').rotation.y - (.7 + Math.PI)) < .05")
+    # Riding is shared: when A mounts (reins granted locally for display; trades stay on the server) B sees a horse.
+    a.evaluate("terrain3d.shop.state.items.horse_reins = 1; terrain3d.firstPerson.setMounted(true)")
+    b.wait_for_function("(() => { const w = terrain3d.scene.children.find(o => o.name === 'remote-walker'); return w?.getObjectByName('remote-horse')?.visible; })()", timeout=20000)
+    a.evaluate("terrain3d.firstPerson.setMounted(false); delete terrain3d.shop.state.items.horse_reins")
+    b.wait_for_function("!terrain3d.scene.children.find(o => o.name === 'remote-walker').getObjectByName('remote-horse').visible", timeout=20000)
     a.dispatch_event('#walk-together', 'click')
     assert not a.evaluate('terrain3d.firstPerson.active')
     assert a.locator('#walk-together').inner_text() == '1인칭'

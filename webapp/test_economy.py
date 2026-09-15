@@ -1,5 +1,7 @@
 import json
 
+from django.conf import settings
+
 from django.core import signing
 from django.test import Client, TestCase
 
@@ -132,6 +134,59 @@ class EconomyTests(TestCase):
         statuses = [self.post(action='buy', shop='내어물전', item='dried_pollack', quantity=1).status_code for _ in range(6)]
         self.assertEqual(statuses[:5], [200] * 5)
         self.assertEqual(statuses[5], 429)
+
+
+class GoodsDatabaseTests(TestCase):
+    """Goods and prices live in the content database (seeded from npcs.json); trades and the page read them there."""
+    def setUp(self):
+        from io import StringIO
+        from django.core.management import call_command
+        call_command('import_content', stdout=StringIO())  # the map page needs the imported buildings and stories
+        self.client = Client(enforce_csrf_checks=True)
+        self.client.get('/api/player/')
+        self.token = self.client.cookies['csrftoken'].value
+        self.client.post('/api/account/register', data=json.dumps({'name': '값검사', 'password': 'price-pass'}), content_type='application/json', HTTP_X_CSRFTOKEN=self.token)
+
+    def buy(self, shop, item):
+        return self.client.post('/api/shop/trade', data=json.dumps({'action': 'buy', 'shop': shop, 'item': item, 'quantity': 1}), content_type='application/json', HTTP_X_CSRFTOKEN=self.token)
+
+    def test_seed_matches_json(self):
+        from .models import Item, Shop
+        seed = json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text())
+        self.assertEqual({i.key: i.as_catalog() for i in Item.objects.all()}, seed['items'])
+        self.assertEqual({s.key: sorted(i.key for i in s.items.all()) for s in Shop.objects.all()}, {k: sorted(v['items']) for k, v in seed['shops'].items()})
+
+    def test_back_office_price_is_used_by_trades_and_page(self):
+        from .models import Item
+        Item.objects.filter(key='cotton_bolt').update(price=111)
+        response = self.buy('면포전', 'cotton_bolt')
+        self.assertEqual(response.json()['money'], catalog()['wallet']['start'] - 111)
+        page = self.client.get('/')
+        self.assertEqual(page.context['npcs']['items']['cotton_bolt']['price'], 111)
+
+    def test_unpublished_goods_cannot_be_bought(self):
+        from .models import Item
+        Item.objects.filter(key='cotton_bolt').update(published=False)
+        self.assertEqual(self.buy('면포전', 'cotton_bolt').status_code, 400)
+        self.assertNotIn('cotton_bolt', self.client.get('/').context['npcs']['items'])
+
+    def test_sync_updates_untouched_goods_and_keeps_edits(self):
+        import copy
+        from .content_sync import sync_content
+        from .models import Item
+        seed = json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text())
+        buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())
+        stories = json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text())
+        changed = copy.deepcopy(seed)
+        changed['items']['cotton_bolt']['price'] = 260
+        changed['items']['silk_red']['price'] = 1300
+        Item.objects.get(key='silk_red').save()  # touched in the back office (same values)
+        edited = Item.objects.get(key='silk_red'); edited.price = 999; edited.save()
+        report = sync_content(buildings, stories, apply=True, economy_data=changed)
+        self.assertIn('item cotton_bolt', report.updated)
+        self.assertTrue(any(c.startswith('item silk_red') for c in report.conflicts))
+        self.assertEqual(Item.objects.get(key='cotton_bolt').price, 260)
+        self.assertEqual(Item.objects.get(key='silk_red').price, 999)
 
 
 class WalkTicketTests(TestCase):

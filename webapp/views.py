@@ -35,6 +35,7 @@ def terrain_overlay(request):
 @require_safe
 @ensure_csrf_cookie
 def terrain3d(request, canvas_only=False):
+    from .economy import catalog
     experiment = json.loads((settings.BASE_DIR / 'gis/control_points/doseong_modern_preview.json').read_text())
     if settings.CONTENT_SOURCE == 'database':
         from .content import load_buildings
@@ -50,7 +51,7 @@ def terrain3d(request, canvas_only=False):
         'app_version': settings.APP_VERSION,
         'walk_world_version': settings.WALK_WORLD_VERSION,
         'multiplayer_url': settings.MULTIPLAYER_URL,
-        'npcs': json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text()),
+        'npcs': catalog(),
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),
     })

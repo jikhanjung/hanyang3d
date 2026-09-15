@@ -2,7 +2,7 @@ import math
 from pathlib import PurePosixPath
 
 from django.core.exceptions import ValidationError
-from django.core.validators import URLValidator
+from django.core.validators import MinValueValidator, RegexValidator, URLValidator
 from django.db import models
 from django.db.models import Q
 
@@ -164,6 +164,47 @@ class Citation(models.Model):
         verbose_name_plural = '출처'
         constraints = [models.CheckConstraint(condition=(Q(building__isnull=False, story__isnull=True) | Q(building__isnull=True, story__isnull=False)), name='citation_has_one_owner')]
     def __str__(self): return self.title
+
+
+# Goods and shops are content: prices and stock lists are edited in the back office. The browser still never decides
+# a price; trades read these rows on the server. Coins and packs (Player, PlayerItem) stay separate below.
+class Item(EditedModel):
+    key = models.SlugField('물건 ID', max_length=60, unique=True, help_text='봇짐·거래 기록에 쓰이는 고정 ID입니다.')
+    name = models.CharField('이름', max_length=80)
+    unit = models.CharField('단위', max_length=10, help_text='필·쾌·두름·개 등')
+    price = models.PositiveIntegerField('값(문)', validators=[MinValueValidator(1)], help_text='1냥 = 100문. 기록에서 확인하지 않은 놀이용 값입니다.')
+    description = models.TextField('설명', blank=True)
+    icon_shape = models.CharField('아이콘 모양', max_length=20, choices=[('bolt', '옷감 필'), ('roll', '옷감 두루마리'), ('fish', '어물'), ('reins', '고삐')])
+    icon_color = models.CharField('아이콘 색', max_length=7, validators=[RegexValidator(r'^#[0-9a-fA-F]{6}$', '#rrggbb 형식으로 입력하세요.')])
+    use = models.CharField('쓰임', max_length=20, blank=True, choices=[('', '없음'), ('mount', '말 타기')])
+    max_owned = models.PositiveSmallIntegerField('최대 보유 수', null=True, blank=True, help_text='비워 두면 제한 없음')
+    position = models.PositiveIntegerField('표시 순서', default=0)
+    published = models.BooleanField('공개', default=True)
+    class Meta:
+        ordering = ['position', 'id']
+        verbose_name = '물건'
+        verbose_name_plural = '물건·가격'
+    def __str__(self): return f'{self.name} ({self.price}문)'
+    def as_catalog(self):
+        row = {'name': self.name, 'unit': self.unit, 'price': self.price, 'icon': {'shape': self.icon_shape, 'color': self.icon_color}, 'desc': self.description}
+        if self.use:
+            row['use'] = self.use
+        if self.max_owned:
+            row['max_owned'] = self.max_owned
+        return row
+
+
+class Shop(EditedModel):
+    key = models.CharField('가게 이름', max_length=60, unique=True, help_text='시전 구역 이름(예: 면포전) 또는 인물 가게(말 장수)와 같아야 합니다.')
+    about = models.TextField('소개', blank=True)
+    items = models.ManyToManyField(Item, verbose_name='파는 물건', related_name='shops', blank=True)
+    position = models.PositiveIntegerField('표시 순서', default=0)
+    published = models.BooleanField('공개', default=True)
+    class Meta:
+        ordering = ['position', 'id']
+        verbose_name = '가게'
+        verbose_name_plural = '가게'
+    def __str__(self): return self.key
 
 
 class ContentImport(models.Model):

@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.models import BaseInlineFormSet
 
-from .models import Building, Citation, GuideSection, Player, PlayerItem, Resource, Story, Trade
+from .models import Building, Citation, GuideSection, Item, Player, PlayerItem, Resource, Shop, Story, Trade
 
 admin.site.site_header = '한양3D 백오피스'
 admin.site.site_title = '한양3D 관리'
@@ -98,6 +98,24 @@ class ResourceAdmin(StableKeyAdmin):
     list_filter = ['kind', 'renderer']
     search_fields = ['key', 'name', 'path', 'description']
     fields = ['key', 'name', 'kind', 'path', 'renderer', 'description', 'source_url', 'license', 'updated_at']
+
+
+@admin.register(Item)
+class ItemAdmin(StableKeyAdmin):
+    list_display = ['name', 'key', 'price', 'unit', 'use', 'max_owned', 'published', 'updated_at']
+    list_editable = ['price', 'published']
+    list_filter = ['published', 'use', 'icon_shape']
+    search_fields = ['key', 'name', 'description']
+    fields = ['key', 'name', 'unit', 'price', 'description', 'icon_shape', 'icon_color', 'use', 'max_owned', 'published', 'position', 'updated_at']
+
+
+@admin.register(Shop)
+class ShopAdmin(StableKeyAdmin):
+    list_display = ['key', 'published', 'updated_at']
+    list_filter = ['published']
+    search_fields = ['key', 'about', 'items__name']
+    filter_horizontal = ['items']
+    fields = ['key', 'about', 'items', 'published', 'position', 'updated_at']
 
 
 class PlayerItemInline(admin.TabularInline):

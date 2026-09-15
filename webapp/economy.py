@@ -1,8 +1,9 @@
 """Server-authoritative shop trades.
 
 The browser never decides prices, coins or pack contents. Players log in with a name and password (webapp/accounts.py);
-a signed, HttpOnly cookie then identifies the account. Prices and each shop's goods come from
-gis/characters/npcs.json on the server.
+a signed, HttpOnly cookie then identifies the account. Goods, prices and each shop's goods come from the content
+database (Item, Shop; edited in the back office, seeded from gis/characters/npcs.json); dialogue and the wallet
+settings stay in that JSON.
 """
 import json
 import math
@@ -12,7 +13,7 @@ from functools import lru_cache
 
 from django.conf import settings
 from django.core import signing
-from django.db import transaction
+from django.db import DatabaseError, transaction
 from django.utils import timezone
 
 from .models import Player, PlayerItem, Trade
@@ -30,7 +31,17 @@ def _catalog(mtime):
 
 def catalog():
     path = settings.BASE_DIR / 'gis/characters/npcs.json'
-    return _catalog(path.stat().st_mtime_ns)
+    data = dict(_catalog(path.stat().st_mtime_ns))
+    try:
+        from .models import Item, Shop
+        items = {i.key: i.as_catalog() for i in Item.objects.filter(published=True)}
+        shops = {s.key: {'about': s.about, 'items': [i.key for i in s.items.all() if i.key in items]}
+                 for s in Shop.objects.filter(published=True).prefetch_related('items')}
+    except DatabaseError:
+        return data  # no content database (file-only preview): the seed JSON is shown as is
+    if items or shops:
+        data['items'], data['shops'] = items, shops
+    return data
 
 
 class TradeError(Exception):

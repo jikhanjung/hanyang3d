@@ -17,8 +17,9 @@
 - `keeper.nodes`, `officer.nodes`, `merchant.nodes`, `horse_dealer.nodes`: 대화 나무. 노드마다 `text`, 선택 `year`·`sources`, `options`(`label`과 `next` 노드 또는 `action`: `close`·`shop`). 시작 노드는 `hello`.
 - 수문장·상인 문장의 `{gate}`, `{unit}`, `{shop}`, `{sells}`, `{about}`은 화면에서 문·군영·가게 이름으로 채운다.
 - `pedestrian.greetings.male/female`, `soldier.greetings`: 인사말 목록.
-- `shops`: 시전 구역(`gis/buildings/doseong_sijeon.json`의 `signs.zones`)마다 소개 문장과 파는 물건 id.
-- `items`: 이름, 단위(필·쾌·두름), 가격(문), 아이콘 모양·색, 설명. `wallet`: 처음 엽전과 되파는 비율.
+- `shops`: 시전 구역(`gis/buildings/doseong_sijeon.json`의 `signs.zones`)과 인물 가게(말 장수)마다 소개 문장과 파는 물건 id. **처음 값일 뿐**이다. 운영에서는 콘텐츠 DB의 ‘가게’가 정본이다.
+- `items`: 이름, 단위(필·쾌·두름·개), 가격(문), 아이콘 모양·색, 설명, 선택 `use`·`max_owned`. 역시 처음 값이며 DB의 ‘물건·가격’이 정본이다(백오피스에서 값 수정). Git에서 바꾼 값은 `sync_content`가 운영에서 손대지 않은 물건에만 반영한다.
+- `wallet`: 처음 엽전과 되파는 비율(JSON에 남음).
 
 ## 쓰는 원칙
 

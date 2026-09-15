@@ -1,6 +1,10 @@
 import { createWalker } from './pedestrians.js';
+import { createHorse } from './horse_dealer.js';
 import { addPlayerNameTag } from './walk_profile.js';
 import { createWalkChat } from './walk_chat.js';
+
+// Must match the rider height in terrain3d.js first person.
+const SADDLE = .35;
 
 export function createWalkTogether({ scene, firstPerson, pedestrians, profile, groundAt, endpoint, mapVersion, alignment, button, status }) {
   const peers = new Map();
@@ -55,7 +59,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     walker.group.position.set(pose.x, 0, pose.z);
     walker.group.rotation.y = pose.yaw + Math.PI;
     scene.add(walker.group);
-    const peer = { walker, target: pose, distance: 0 };
+    const peer = { walker, horse: null, target: pose, distance: 0 };
     peers.set(pose.id, peer);
     return peer;
   }
@@ -117,7 +121,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       const send = () => {
         if (!firstPerson.active) { stop(); return; }
         const eye = firstPerson.eye;
-        joined.send('pose', { x: eye.x, z: eye.z, yaw: firstPerson.yaw });
+        joined.send('pose', { x: eye.x, z: eye.z, yaw: firstPerson.yaw, mounted: firstPerson.mounted });
       };
       send(); sendTimer = setInterval(send, 100);
     } catch (error) {
@@ -132,16 +136,20 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     const alpha = 1 - Math.exp(-15 * Math.min(dt, .1));
     for (const peer of peers.values()) {
       const { walker, target } = peer, p = walker.group.position;
+      // A rider sits SADDLE metres up with the horse under them (a child of the walker, so it moves and is removed with it).
+      if (target.mounted && !peer.horse) { peer.horse = createHorse(); peer.horse.group.name = 'remote-horse'; walker.group.add(peer.horse.group); }
+      if (peer.horse) { peer.horse.group.visible = !!target.mounted; peer.horse.group.position.y = -SADDLE; }
       const dx = target.x - p.x, dz = target.z - p.z;
       const fraction = Math.hypot(dx, dz) > 30 ? 1 : alpha;
       const moved = Math.hypot(dx, dz) * fraction;
       p.x += dx * fraction; p.z += dz * fraction;
       const ground = groundAt(p.x, p.z);
       walker.group.visible = ground !== null;
-      if (ground !== null) p.y = ground;
+      if (ground !== null) p.y = ground + (target.mounted ? SADDLE : 0);
       const angle = target.yaw + Math.PI - walker.group.rotation.y;
       walker.group.rotation.y += Math.atan2(Math.sin(angle), Math.cos(angle)) * alpha;
-      peer.distance += moved; walker.update(peer.distance, moved > .002);
+      peer.distance += moved; walker.update(peer.distance, moved > .002 && !target.mounted, !!target.mounted);
+      if (target.mounted) peer.horse.update(performance.now(), moved > .002);
     }
   }
 

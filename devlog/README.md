@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [132 — 말값 9냥, 물건·가격을 DB로, 함께 걷기에 말 탄 모습](20260916_132_goods_db_shared_riding.md)
 - [131 — 말 장수에게 말 사기, 봇짐에서 말고삐 쓰기, 말 타기](20260916_131_horse_riding_pack.md)
 - [130 — 이름·엽전 표시는 1인칭에서만](20260916_130_coin_display_first_person_only.md)
 - [129 — 수표교 말 장수와 마전교 이야기, 궁감의 긴 옛날이야기](20260915_129_horse_dealer_keeper_tale.md)

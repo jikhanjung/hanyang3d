@@ -122,7 +122,8 @@ class ImportTests(TestCase):
         call_command('import_content', dry_run=True, stdout=StringIO())
         self.assertFalse(Building.objects.exists())
         self.assertFalse(Resource.objects.exists())
-        self.assertFalse(ContentImport.objects.exists())
+        # Only the goods seed of migration 0004 is recorded; the content import itself left nothing behind.
+        self.assertFalse(ContentImport.objects.exclude(key='economy-import-v1').exists())
         Resource.objects.create(key='existing', name='운영 자료', kind='file', path='webapp/static/terrain3d.js')
         with self.assertRaises(CommandError):
             call_command('import_content', stdout=StringIO())

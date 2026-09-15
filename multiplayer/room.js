@@ -10,7 +10,8 @@ export function readPose(value) {
   if (!value || typeof value !== 'object') return null;
   const { x, z, yaw } = value;
   if (![x, z, yaw].every(Number.isFinite) || Math.abs(x) > 30000 || Math.abs(z) > 30000) return null;
-  return { x, z, yaw: Math.atan2(Math.sin(yaw), Math.cos(yaw)) };
+  // Riding is shown to others only; anything but a literal true is on foot.
+  return { x, z, yaw: Math.atan2(Math.sin(yaw), Math.cos(yaw)), mounted: value.mounted === true };
 }
 
 // Control and format characters are rejected (bidi overrides could disguise text), except the zero-width joiner

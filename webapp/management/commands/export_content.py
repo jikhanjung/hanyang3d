@@ -4,7 +4,7 @@ from pathlib import Path
 from django.core import serializers
 from django.core.management.base import BaseCommand, CommandError
 
-from webapp.models import Building, Citation, ContentImport, GuideSection, Resource, Story
+from webapp.models import Building, Citation, ContentImport, GuideSection, Item, Resource, Shop, Story
 
 
 class Command(BaseCommand):
@@ -12,7 +12,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('output')
     def handle(self, *args, **options):
-        data = serializers.serialize('json', [obj for model in (Resource, GuideSection, Building, Story, Citation, ContentImport) for obj in model.objects.order_by('pk')], indent=2, ensure_ascii=False)
+        data = serializers.serialize('json', [obj for model in (Resource, GuideSection, Building, Story, Citation, Item, Shop, ContentImport) for obj in model.objects.order_by('pk')], indent=2, ensure_ascii=False)
         try:
             fd = os.open(Path(options['output']), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
         except OSError as exc:

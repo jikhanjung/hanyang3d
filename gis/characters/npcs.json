@@ -674,7 +674,7 @@
   "horse_reins": {
    "name": "말고삐",
    "unit": "개",
-   "price": 2400,
+   "price": 900,
    "icon": {
     "shape": "reins",
     "color": "#8a5a2b"

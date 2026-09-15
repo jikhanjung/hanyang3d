@@ -11,6 +11,9 @@ at the last sync tells who changed a row since then:
 
 Before the first sync there is no fingerprint; a row counts as untouched when it has not been saved since the
 import (`updated_at` not later than the import time). Guide sections are only compared, not changed.
+
+Goods and shops (from gis/characters/npcs.json) follow the same rules; their untouched time is the goods seed of
+migration 0004 (`economy-import-v1`).
 """
 import hashlib
 import json
@@ -20,9 +23,11 @@ from django.db import transaction
 
 from .content import IMPORT_KEY, other_places
 from .model_resources import MODEL_RESOURCES
-from .models import Building, Citation, ContentImport, GuideSection, Resource, Story
+from .models import Building, Citation, ContentImport, GuideSection, Item, Resource, Shop, Story
 
 SYNC_KEY = 'content-sync-v1'
+ECONOMY_IMPORT_KEY = 'economy-import-v1'
+ITEM_FIELDS = ('name', 'unit', 'price', 'description', 'icon_shape', 'icon_color', 'use', 'max_owned')
 
 
 def fingerprint(value):
@@ -63,6 +68,35 @@ def db_story(s):
     key = s.building.key if s.building_id else s.target_key
     return {'target': {'type': s.target_type, 'key': key}, 'title': s.title, 'year': s.year, 'legend': s.legend,
             'text': s.text, 'sources': [{'title': c.title, 'url': c.url} for c in s.citations.all()]}
+
+
+def json_item(row):
+    return {'name': row['name'], 'unit': row['unit'], 'price': row['price'], 'description': row.get('desc', ''),
+            'icon_shape': row['icon']['shape'], 'icon_color': row['icon']['color'], 'use': row.get('use', ''), 'max_owned': row.get('max_owned')}
+
+
+def db_item(i):
+    return {f: getattr(i, f) for f in ITEM_FIELDS}
+
+
+def json_shop(row):
+    return {'about': row.get('about', ''), 'items': sorted(row['items'])}
+
+
+def db_shop(s):
+    return {'about': s.about, 'items': sorted(i.key for i in s.items.all())}
+
+
+def _apply_item(item, data):
+    for f in ITEM_FIELDS:
+        setattr(item, f, data[f])
+    item.full_clean(); item.save()
+
+
+def _apply_shop(shop, data):
+    shop.about = data['about']
+    shop.full_clean(); shop.save()
+    shop.items.set(Item.objects.filter(key__in=data['items']))
 
 
 @dataclass
@@ -149,13 +183,13 @@ def _sync_kind(kind, items, rows, to_data, db_data, create, update, baseline, im
     report.only_in_db.extend(f'{kind} {key}' for key in rows if key not in seen)
 
 
-def sync_content(buildings_data, stories_data, guide_markdown=None, apply=False):
+def sync_content(buildings_data, stories_data, guide_markdown=None, apply=False, economy_data=None):
     report = SyncReport(applied=apply)
     imported = ContentImport.objects.get(key=IMPORT_KEY)
     with transaction.atomic():
         # Created inside the transaction so a preview (rolled back) leaves no sync state behind.
         state, _ = ContentImport.objects.get_or_create(key=SYNC_KEY, defaults={'metadata': {'buildings': {}, 'stories': {}}})
-        baseline = {'buildings': dict(state.metadata.get('buildings', {})), 'stories': dict(state.metadata.get('stories', {}))}
+        baseline = {kind: dict(state.metadata.get(kind, {})) for kind in ('buildings', 'stories', 'items', 'shops')}
         def create_building(key, data, position):
             b = Building(key=key, published=True, position=position, guide_section=_section_for(data['name'].split(' · ')[0]))
             _apply_building(b, data, position)
@@ -172,6 +206,19 @@ def sync_content(buildings_data, stories_data, guide_markdown=None, apply=False)
                    {s.key: s for s in Story.objects.select_related('building').prefetch_related('citations')},
                    None, db_story, create_story, lambda s, d, p: _apply_story(s, d),
                    baseline['stories'], imported.imported_at, report)
+
+        economy = ContentImport.objects.filter(key=ECONOMY_IMPORT_KEY).first()
+        if economy_data is not None and economy is not None:
+            def create_item(key, data, position):
+                _apply_item(Item(key=key, position=position, published=True), data)
+            _sync_kind('item', [(k, json_item(row)) for k, row in economy_data['items'].items()],
+                       {i.key: i for i in Item.objects.all()}, None, db_item, create_item, lambda i, d, p: _apply_item(i, d),
+                       baseline['items'], economy.imported_at, report)
+            def create_shop(key, data, position):
+                _apply_shop(Shop(key=key, position=position, published=True), data)
+            _sync_kind('shop', [(k, json_shop(row)) for k, row in economy_data['shops'].items()],
+                       {s.key: s for s in Shop.objects.prefetch_related('items')}, None, db_shop, create_shop, lambda s, d, p: _apply_shop(s, d),
+                       baseline['shops'], economy.imported_at, report)
 
         if guide_markdown is not None:
             from .content import guide_markdown as db_guide
