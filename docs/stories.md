@@ -1,0 +1,37 @@
+# 장소 이야기 자료
+
+지도에서 건물·다리·동네 이름을 누르면 카드에 ‘이야기’ 칸이 나오고, [건물 안내](landmarks.md)(사이트 `/guide/`) 끝의 ‘장소 이야기’ 절에 장소별로 모인다. 자료는 `gis/stories/doseong_stories.json` 한 파일에 둔다. 처음 만든 경위는 [개발 기록 104](../devlog/20260915_104_stories_guards.md)에 있다.
+
+## 형식
+
+```json
+{
+ "id": "changuimun-coup",
+ "target": {"type": "landmark", "key": "changuimun", "label": "창의문"},
+ "title": "반정군이 넘어온 문",
+ "year": "1623",
+ "legend": false,
+ "text": "짧은 본문",
+ "sources": [{"title": "한국민족문화대백과사전 인조반정", "url": "https://encykorea.aks.ac.kr/Article/E0047030"}]
+}
+```
+
+- `target.type`: `landmark`(건물, `key`는 `1750_landmarks.json`의 id), `bridge`(다리, `doseong_cheonggyecheon.json`의 id), `place`(동네 이름, `key`는 `doseong_placenames.json`의 이름).
+- `target.label`: 사람이 읽는 장소 이름. 테스트가 실제 이름과 같은지 확인한다.
+- `year`: 대표 연도 문자열 또는 `null`.
+- `legend`: 유래담·설화·속설이면 `true`. 카드와 안내에 ‘전해지는 이야기’로 표시한다.
+
+## 쓰는 원칙
+
+- 출처 페이지를 직접 열어 확인한 사실만 쓴다. 원문을 옮기지 않고 짧게 새로 쓴다.
+- 자료마다 연도·숫자가 다르면 본문에 둘 다 적거나 단정하지 않는다.
+- 1750년보다 뒤의 사건은 본문에 몇 년 뒤의 일인지 밝힌다.
+- 지도에 둔 사람 수·차림처럼 기록이 없는 표시는 추정이라고 적는다.
+- 출처는 공개 페이지(`https://`)로 한다. 한국민족문화대백과사전(공공누리 제1유형), 우리역사넷, 국가유산청·국가유산포털, 조선왕조실록을 우선하고, 위키백과는 공식 자료로 확인하지 못한 세부에만 함께 쓴다.
+
+## 검사
+
+- Django `test_place_stories_point_at_real_places`: 대상이 실제 건물·다리·동네 이름인지, id 중복, 제목·본문·출처(https) 유무, 페이지와 안내에 나오는지.
+- `scripts/terrain/check_stories_browser.py`: 모든 이야기가 대상에 붙었는지, 이야기가 있는 건물을 눌렀을 때 카드에 제목과 출처 링크가 나오는지.
+
+현재 29개(건물 25, 다리 2, 동네 2).

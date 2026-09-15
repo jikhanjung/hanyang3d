@@ -9,9 +9,31 @@
 .venv/bin/python manage.py runserver 0.0.0.0:8000 --noreload
 ```
 
-첫 화면은 `/`, 도엽 연결은 `/gis/georeferenced/1908_join/index.html`, 지도 비교는 `/gis/georeferenced/review/index.html`입니다. 첫 화면의 파일 수와 검사점 오차는 로컬 카탈로그·실험 JSON에서 읽습니다. DB는 아직 사용하지 않습니다.
+## 화면 (2026-09-15)
 
-현재 서버의 Tailscale 접속 주소는 `http://100.98.176.40:8000/` 또는 `http://m710q.tail339927.ts.net:8000/`입니다. 같은 Tailscale 네트워크에 연결된 기기에서 엽니다. 2026-09-09 서버의 Tailscale IP로 첫 화면·지형 오버레이·판독 화면의 HTTP 200 응답을 확인했습니다. 서버 재부팅 후에는 위 실행 명령으로 다시 시작해야 합니다.
+| 주소 | 내용 |
+|---|---|
+| `/` | 전체 화면 3D 지도(운영 기본 화면) |
+| `/gis/terrain/3d/` | 도구 막대가 있는 3D 지도 |
+| `/guide/` | `docs/landmarks.md`를 그린 건물·시설 안내와 `gis/stories/`의 장소 이야기 |
+| `/credits/` | 출처·저작권 |
+| `/gis/` | 작업 현황(파일 수·검사점 오차는 로컬 카탈로그·실험 JSON에서 읽음) |
+| `/healthz` | 버전·공개 자원 수·누락 파일 보고 |
+| `/v/<버전>/<자원>` | 버전을 붙인 정적 자원(immutable 캐시, ETag/304) |
+
+DB는 사용하지 않습니다. 공개 파일은 `webapp/resources.py`의 목록에 있는 것만 제공하므로, 새 JS 모듈이나 데이터 파일을 추가하면 목록에 넣고 `--noreload` 개발 서버를 다시 시작해야 합니다.
+
+## 개발 서버와 검사
+
+작업 중에는 `.venv/bin/python manage.py runserver 127.0.0.1:18014 --noreload`로 띄웁니다. 브라우저 검사 `scripts/terrain/check_*_browser.py`의 기본 주소가 이 포트입니다. Playwright Chromium에 `--use-angle=vulkan --enable-features=Vulkan --ignore-gpu-blocklist`를 주면 소프트웨어 렌더링에서도 빨리 돕니다.
+
+- `manage.py test`: Django 15개(자원 목록, 버전 경로, 건물 안내, 동네 이름, 장소 이야기 대상 검증 등)
+- 주요 브라우저 검사: `check_walk_collision`(카드·1인칭 클릭·걷기·보행자), `check_new_landmarks`(건물·시전 행랑), `check_gate_models`·`check_gate_orientation`·`check_sungnyemun_connection`(성문), `check_palace_models`(궁궐·궁문), `check_guards`(경비병·궁감), `check_drill`(훈련원), `check_stories`, `check_placenames`
+- 예전 화면 기준이라 깨진 채로 남은 검사: `check_settlement`, `check_walls_alignment`, `check_river_gates`, `check_downstream`, `check_yukjo`의 메뉴 표시 부분
+
+## 이전 검토 화면
+
+도엽 연결은 `/gis/georeferenced/1908_join/index.html`, 지도 비교는 `/gis/georeferenced/review/index.html`입니다. 2026-09-09에는 Tailscale 주소(`http://m710q.tail339927.ts.net:8000/`)로 이 화면들을 확인했습니다.
 
 지도 원본과 생성된 검토 화면은 Git 제외입니다. 다른 서버에서는 assets.csv의 원본을 준비하고 [도엽 연결 재현 명령](../docs/1908_sheet_join.md)을 실행해야 합니다. 테스트 중 지도 제공 검증도 이 로컬 파일을 필요로 합니다.
 
@@ -31,4 +53,4 @@
 
 판독 데이터와 가설 기록은 저장소 파일로 관리합니다. 화면에서 대응점 CSV 또는 TPS 설정 JSON을 저장해도 서버의 기준점 파일이 자동으로 변경되지는 않습니다.
 
-`/gis/terrain/3d/`은 기존 5점 배치를 유지한 3D 지형 화면입니다. `.venv/bin/python scripts/terrain/build_dem.py`로 고도 격자를 준비합니다. [고도 출처·재현·검증](../docs/doseong_terrain3d.md)을 참고하세요.
+3D 지도의 지형·원도 배치는 [고도 출처·재현·검증](../docs/doseong_terrain3d.md)을, 운영 배포는 [배포 안내](../deploy/README.md)를 참고하세요.
