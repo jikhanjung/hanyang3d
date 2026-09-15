@@ -1,16 +1,17 @@
 contract_version = 1
 instance = "hanyang3d"
 image = "honestjung/hanyang3d"
-version = "v0.1.39"
+version = "v0.2.0"
 platform = "linux/amd64"
 settings = "webapp.settings"
 has_database = false
 health_url = "/healthz"
-services = ["hanyang3d"]
+services = ["hanyang3d", "multiplayer"]
+multiplayer_image = "honestjung/hanyang3d-multiplayer"
 
 [verbs]
-build = "bash deploy/build.sh v0.1.39"
-deploy = "bash /srv/hanyang3d/deploy.sh v0.1.39"
+build = "bash deploy/build.sh v0.2.0"
+deploy = "bash /srv/hanyang3d/deploy.sh v0.2.0"
 rollback = "bash /srv/hanyang3d/deploy.sh <previous-version>"
 
 [targets.prod]
@@ -20,5 +21,6 @@ hostname = "cdgts.paleobytes.info"
 domain = "hanyang3d.nopeoplestime.info"
 root = "/srv/hanyang3d"
 expose = "127.0.0.1:8013"
+multiplayer_expose = "127.0.0.1:8015"
 data = "/srv/hanyang3d/data/<version>"
 # Host nginx/TLS configuration: deploy/host/hanyang3d.nginx.conf.

@@ -6,6 +6,7 @@ parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
  page=b.new_page(viewport={'width':1000,'height':750});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+ page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden',timeout=300000)
  assert page.evaluate('!!window.terrain3d?.ready'),errors
  result=page.evaluate('''async()=>{const t=terrain3d,T=await import('/webapp/static/vendor/three/three.module.js');t.renderer.setAnimationLoop(null);const c=t.compass,original=t.camera.quaternion.clone(),out=[];for(const pitch of [0,-Math.PI/6,-Math.PI/2,Math.PI/6])for(const yaw of [0,-Math.PI/2,-Math.PI,Math.PI/2]){t.camera.rotation.set(pitch,yaw,0,'YXZ');t.updateCompass();if(c.camera.quaternion.angleTo(t.camera.quaternion)>1e-7)throw Error('orientation differs');const normal=new T.Vector3(0,1,0).applyQuaternion(c.north.quaternion);if(normal.distanceTo(new T.Vector3(0,1,0))>1e-7)throw Error('needle no longer horizontal');const vertices=c.north.geometry.attributes.position;if(Math.min(...Array.from({length:vertices.count},(_,i)=>vertices.getZ(i)))!==-1)throw Error('north is not -Z');out.push({...document.getElementById('first-person-compass').dataset})}t.camera.quaternion.copy(original);t.updateCompass();return out}''')

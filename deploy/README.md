@@ -4,6 +4,19 @@
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 
+## v0.2.0 함께 걷기 릴리스
+
+`deploy/build.sh v0.2.0`은 웹 이미지와 `honestjung/hanyang3d-multiplayer:v0.2.0`을 함께 빌드하고 각각의 컨테이너를 검사한다. `dist/`에는 기존 파일 외에 `hanyang3d-multiplayer-image-v0.2.0.tar.gz`가 생긴다. 운영에서는 두 이미지를 Docker Hub에서 pull한다.
+
+- 웹: `127.0.0.1:8013`, Colyseus: `127.0.0.1:8015`.
+- Nginx `/multiplayer/`는 Colyseus의 HTTP·WebSocket을 같은 HTTPS 도메인으로 전달한다. 상태 확인은 `/multiplayer/healthz`.
+- Compose의 `multiplayer` 프로필은 릴리스 이미지의 capability label에 따라 `deploy.sh`가 설정한다. v0.1.39 이하로 롤백하면 Colyseus를 중지한다.
+- `.env`의 IMAGE_TAG·DATA_VERSION과 multiplayer 프로필만 갱신한다. 기존 HOST_PORT·기타 설정과 `.env.django`는 보존한다.
+- 최초 업그레이드에서는 현재 `.env`, `.env.django`, Compose·호스트 스크립트·Nginx 설정을 접근 제한된 백업 디렉터리에 보존한 뒤 호스트 묶음을 설치한다. Nginx 설정은 `nginx -t` 통과 후 reload한다.
+- `MULTIPLAYER_PORT` 기본값은 8015, `WALK_ORIGINS` 기본값은 운영 HTTPS 도메인이다. 포트를 바꾸면 Nginx upstream도 맞춘다.
+
+검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
+
 ## 운영 주소
 
 2026-09-12 dolfinid에 배포했다.

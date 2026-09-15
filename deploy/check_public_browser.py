@@ -31,10 +31,11 @@ for path in sorted(public_resource_paths()):
         assert response.status == 200, path
 print('Public HTTPS resources passed:', health, flush=True)
 with sync_playwright() as p:
-    browser = p.chromium.launch(executable_path=args.chromium_path, headless=True, args=['--no-sandbox', '--enable-unsafe-swiftshader'])
+    browser = p.chromium.launch(executable_path=args.chromium_path, headless=True, args=['--no-sandbox', '--use-angle=vulkan', '--enable-features=Vulkan', '--ignore-gpu-blocklist'])
     page = browser.new_page(viewport={'width': 1440, 'height': 1080})
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
+    page.add_init_script("localStorage.setItem('hanyang3d-player-name','배포 검사')")
     page.goto(base + '/', wait_until='domcontentloaded')
     page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden', timeout=300000)
     assert page.evaluate('!!window.terrain3d?.ready'), page.locator('#error').inner_text()

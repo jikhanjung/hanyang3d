@@ -4,6 +4,7 @@
 !.env.example
 !**/.env.django.example
 .venv/
+node_modules/
 .build/
 dist/
 __pycache__/

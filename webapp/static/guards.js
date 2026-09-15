@@ -77,7 +77,9 @@ export function createGuards(feature,w,h,d,gateModel){
    const now=(time/1000)%loop,leg=route.find(r=>now>=r.t0&&now<r.t1)??route[0],k=(now-leg.t0)/Math.max(1e-6,leg.t1-leg.t0);
    const x=leg.a[0]+(leg.b[0]-leg.a[0])*k,z=leg.a[1]+(leg.b[1]-leg.a[1])*k;
    keeper.position.set(x,groundAt?groundAt(x,z):y,z);
-   if(leg.a!==leg.b)keeper.rotation.y=Math.atan2(leg.b[0]-leg.a[0],leg.b[1]-leg.a[1]);
+   // Pauses also need a deterministic heading for clients joining mid-route.
+   const heading=leg.a!==leg.b?leg:route[(route.indexOf(leg)-1+route.length)%route.length];
+   keeper.rotation.y=Math.atan2(heading.b[0]-heading.a[0],heading.b[1]-heading.a[1]);
   };
  }else{
   // One soldier either side of the passage mouth on the face outside the city, looking out along the road.

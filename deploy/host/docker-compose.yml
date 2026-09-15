@@ -26,3 +26,23 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+  multiplayer:
+    profiles: [multiplayer]
+    image: honestjung/hanyang3d-multiplayer:${IMAGE_TAG:?Set IMAGE_TAG}
+    ports:
+      - "127.0.0.1:${MULTIPLAYER_PORT:-8015}:2567"
+    environment:
+      WALK_ORIGINS: ${WALK_ORIGINS:-https://hanyang3d.nopeoplestime.info}
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

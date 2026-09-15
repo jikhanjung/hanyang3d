@@ -23,6 +23,8 @@
 
 DB는 사용하지 않습니다. 공개 파일은 `webapp/resources.py`의 목록에 있는 것만 제공하므로, 새 JS 모듈이나 데이터 파일을 추가하면 목록에 넣고 `--noreload` 개발 서버를 다시 시작해야 합니다.
 
+설정 메뉴의 **함께 걷기**는 별도 Colyseus 서버에 연결해 다른 접속자를 표시합니다. [서버 실행·설정과 검증](../multiplayer/README.md)을 참고하세요. 지도와 혼자 걷기는 Colyseus 없이도 사용할 수 있습니다.
+
 ## 개발 서버와 검사
 
 작업 중에는 `.venv/bin/python manage.py runserver 127.0.0.1:18014 --noreload`로 띄웁니다. 브라우저 검사 `scripts/terrain/check_*_browser.py`의 기본 주소가 이 포트입니다. Playwright Chromium에 `--use-angle=vulkan --enable-features=Vulkan --ignore-gpu-blocklist`를 주면 소프트웨어 렌더링에서도 빨리 돕니다.

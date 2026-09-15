@@ -1,0 +1,20 @@
+FROM node:24-bookworm-slim
+ARG APP_VERSION=v0.2.0
+ARG VCS_REF=unknown
+LABEL org.opencontainers.image.title="Hanyang 3D Multiplayer" \
+      org.opencontainers.image.version=$APP_VERSION \
+      org.opencontainers.image.revision=$VCS_REF
+ENV NODE_ENV=production HANYANG_VERSION=$APP_VERSION WALK_HOST=0.0.0.0 WALK_PORT=2567
+WORKDIR /app/multiplayer
+COPY multiplayer/package.json multiplayer/package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force \
+    && groupadd --gid 10001 hanyang \
+    && useradd --uid 10001 --gid 10001 --no-create-home hanyang
+COPY multiplayer/*.js ./
+COPY webapp/static/tps.js webapp/static/walking_simulation.js webapp/static/player_name.js /app/webapp/static/
+COPY gis/control_points/doseong_modern_preview.json gis/control_points/seoul_terrain_manifest.json /app/gis/control_points/
+COPY gis/roads/doseong_walking_routes.json /app/gis/roads/
+USER 10001:10001
+EXPOSE 2567
+HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 CMD ["node", "healthcheck.js"]
+CMD ["node", "server.js"]

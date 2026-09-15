@@ -5,6 +5,7 @@
 | [초기 조사 원문](HANYANG_3D_RESEARCH_AND_SOURCE_ROADMAP.md) | 자료원과 연구 아이디어를 보존한 출발점 |
 | [실행 계획](plan.md) | 도성 전체 지도·3D 지형 우선순위, 산출물, 완료 기준 |
 | [현재 인계](handoff.md) | 구현 상태(2026-09-15 갱신), 실행·원본 보존·재개 절차, 작업별 요약 |
+| [함께 걷기](../multiplayer/README.md) | Colyseus 서버 실행, 브라우저 접속과 검사, 운영 연결 및 현재 제한 |
 | [도성 전체 개관 우선 결정](decisions/0002-citywide-map-first.md) | 사용자 요청에 따른 우선순위 변경과 3D 지형 목표 |
 | [범위](scope.md) | 파일럿과 제외 범위 |
 | [방법론](methodology.md) | 출처부터 검토까지의 공통 절차 |

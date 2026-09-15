@@ -42,6 +42,7 @@ for version in "${versions[@]}"; do
     if (( dry_run )); then continue; fi
     # An image still in use refuses to go, which is the safety net rather than a problem.
     docker image rm "$repository:$version" >/dev/null 2>&1 || echo "  image in use or absent"
+    docker image rm "honestjung/hanyang3d-multiplayer:$version" >/dev/null 2>&1 || true
     rm -rf -- "data/$version"
     for dir in "${release_dirs[@]}"; do
         rm -f -- "$dir"/*-"$version".tar.gz "$dir"/SHA256SUMS*-"$version"

@@ -12,6 +12,9 @@
 
 ## 작업 기록
 
+- [113: 함께 걷기 v0.2.0 운영 배포](20260915_113_multiplayer_release.md)
+- [112: NPC 동기화와 첫 걷기 이름 입력](20260915_112_shared_npcs_player_names.md)
+- [111: Colyseus로 접속자끼리 함께 걷기](20260915_111_walk_together.md)
 - [110: 조선왕조 주요 사건과 한양 도성 조사 자료집](20260915_110_joseon_event_research.md)
 - [109: README와 문서 현행화](20260915_109_docs_update.md)
 - [108: 경복궁 궁감과 훈련원 훈련 군사](20260915_108_keeper_drill.md)

@@ -3,8 +3,9 @@ import argparse
 from playwright.sync_api import sync_playwright
 parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:18014');parser.add_argument('--chromium-path');args=parser.parse_args()
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--enable-unsafe-swiftshader'])
+ b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=b.new_page(viewport={'width':1100,'height':800});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+ page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=400000)
  page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
  assert page.get_attribute('#map-options-toggle','aria-label')=='설정'

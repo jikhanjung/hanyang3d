@@ -13,6 +13,9 @@ gis/georeferenced/**
 !docs/landmarks.md
 !deploy/
 !deploy/**
+!multiplayer/
+!multiplayer/**
+**/node_modules/**
 **/__pycache__/**
 **/*.pyc
 **/.env

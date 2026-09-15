@@ -8,7 +8,7 @@ parser.add_argument('--url', default='http://127.0.0.1:18014')
 parser.add_argument('--chromium-path', default=os.environ.get('CHROMIUM_PATH'))
 args = parser.parse_args()
 with sync_playwright() as p:
-    browser = p.chromium.launch(executable_path=args.chromium_path, args=['--no-sandbox', '--enable-unsafe-swiftshader'])
+    browser = p.chromium.launch(executable_path=args.chromium_path, args=['--no-sandbox', '--use-angle=vulkan', '--enable-features=Vulkan', '--ignore-gpu-blocklist'])
     context = browser.new_context(viewport={'width':390,'height':844}, is_mobile=True, has_touch=True, device_scale_factor=1)
     page = context.new_page()
     errors = []
@@ -25,6 +25,13 @@ with sync_playwright() as p:
     assert controls['x']+controls['width']<=compass_box['x']
     page.locator('#map-options-toggle').tap()
     page.locator('#first-person3d').tap()
+    page.wait_for_selector('#walk-name-dialog[open]')
+    name_box = page.locator('#walk-name-dialog').bounding_box()
+    assert name_box['x'] >= 0 and name_box['x'] + name_box['width'] <= 390, name_box
+    page.screenshot(path='/tmp/hanyang3d-name-dialog.png')
+    page.fill('#walk-name-input', '검사 나그네')
+    page.locator('#walk-name-form button[type=submit]').tap()
+    page.wait_for_function('terrain3d.firstPerson.active')
     assert page.evaluate('terrain3d.firstPerson.active')
     assert not page.locator('#anchors3d').is_visible()
     assert page.locator('#first-person-map').evaluate('(e)=>getComputedStyle(e).opacity')=='0.7'
@@ -95,5 +102,5 @@ with sync_playwright() as p:
     page.evaluate('terrain3d.renderer.render(terrain3d.scene,terrain3d.camera)')
     page.screenshot(path='/tmp/hanyang3d-mobile-walk.png')
     assert not errors,errors
-    print('Mobile walk passed:',results,'multitouch, focus, cancel, exit and keyboard',flush=True)
+    print('Mobile walk passed:',results,'name entry, multitouch, focus, cancel, exit and keyboard',flush=True)
     browser.close()

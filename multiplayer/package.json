@@ -1,0 +1,18 @@
+{
+  "name": "hanyang3d-multiplayer",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@colyseus/core": "0.18.14",
+    "@colyseus/sdk": "0.18.2",
+    "@colyseus/ws-transport": "0.18.2",
+    "express": "5.2.1"
+  }
+}

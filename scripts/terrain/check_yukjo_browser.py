@@ -6,6 +6,7 @@ parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=b.new_page(viewport={'width':1000,'height':750});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+ page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden',timeout=300000)
  assert page.evaluate('!!window.terrain3d?.ready'),errors
  result=page.evaluate('''async()=>{const t=terrain3d,T=await import('/webapp/static/vendor/three/three.module.js');t.renderer.setAnimationLoop(null);const g=t.buildings.children.find(b=>b.userData.feature.id==='gwanghwamun');t.controls.target.copy(g.position).add(new T.Vector3(0,0,350));t.camera.position.copy(g.position).add(new T.Vector3(380,500,1000));t.controls.update();t.updateBuildingNames();t.updateCompass();t.renderer.render(t.scene,t.camera);return t.buildings.children.filter(b=>b.userData.feature.display_model==='yukjo_compound').map(b=>({id:b.userData.feature.id,parts:b.getObjectByName('yukjo-compound').userData.parts.length,batches:b.getObjectByName('yukjo-compound').userData.batches.length,size:b.userData.feature.symbol_size_m}))}''')

@@ -9,6 +9,7 @@ with sync_playwright() as p:
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.on('console', lambda msg: errors.append(msg.text) if msg.type == 'error' and 'favicon' not in msg.text and '404' not in msg.text else None)
+    page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
     page.goto('http://127.0.0.1:8000/gis/terrain/3d/', wait_until='domcontentloaded')
     page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden', timeout=300000)
     assert page.evaluate('!!window.terrain3d?.ready'), page.locator('#error').inner_text()

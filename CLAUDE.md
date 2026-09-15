@@ -1,6 +1,6 @@
 # Hanyang3D 작업 안내
 
-한양3D는 Django·Three.js 기반의 읽기 전용 지도 서비스다. 현재 DB, 계정, 사용자 업로드는 없다.
+한양3D는 Django·Three.js 기반의 지도 서비스다. 현재 DB, 계정, 사용자 업로드는 없다. 선택 기능인 '함께 걷기'는 별도 Colyseus 프로세스에서 접속자의 이름·위치와 NPC 이동을 메모리에 공유한다. 이름은 브라우저 localStorage에 기억한다. 실행·범위는 `multiplayer/README.md`를 참고한다.
 
 공통 웹 개발·운영 가이드는 `.guides/web/README.md`, 브랜드 관련 참고는 `.guides/branding.md`에서 읽는다. `.guides`는 `../devdocs/guides`를 가리키는 로컬 상대 심볼릭 링크다. 없거나 끊어져 있으면 형제 devdocs 체크아웃이 없는 것이므로 설정을 확인한다. 가이드 원문과 링크는 이 저장소에 커밋하지 않는다.
 

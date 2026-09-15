@@ -22,6 +22,8 @@ import {createCityWall,surfaceIndex} from './city_wall.js';
 import {createPalace,createPalaceGate} from './palace.js';
 import {createJongmyo} from './jongmyo.js';
 import {createWalkJoystick} from './walk_joystick.js';
+import {createWalkTogether} from './walk_together.js';
+import {createWalkProfile,addPlayerNameTag} from './walk_profile.js';
 import {createYukjo,groundYukjo,heightYukjo} from './yukjo.js';
 import {createGroundColors} from './ground_colors.js';
 import {createCompass3D} from './compass3d.js';
@@ -40,7 +42,7 @@ async function main(){
  el('about-close').onclick=closeAbout;
  document.addEventListener('keydown',event=>{if(event.code==='Escape'&&!el('about-panel').hidden)closeAbout()});
  const toolbarControls=[...document.querySelectorAll('.toolbar input,.toolbar select,.toolbar button')].filter(c=>c.id!=='about-open');toolbarControls.forEach(c=>c.disabled=true);
- let granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,palaceWall=null,frameUpdate=()=>{};
+ let granite=null,trees=null,settlement=null,sijeon=null,collision=null,pedestrians=null,firstPerson=null,together=null,palaceWall=null,frameUpdate=()=>{};
 
  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce5e4');
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -833,6 +835,7 @@ async function main(){
   return {show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
  })();
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
+ const walkProfile=createWalkProfile();
  firstPerson=(()=>{
   let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null,walked=0,view=4.5,walker=null;
   const eye=new THREE.Vector3(),boom=new THREE.Vector3();
@@ -861,17 +864,19 @@ async function main(){
   function look(){camera.rotation.set(pitch,yaw,0,'YXZ');place();if(active)navigation.update(yaw,eye)}
   function enter(){
    if(active)return;clearHover();press=null;
+   if(!walkProfile.name){walkProfile.requestName().then(name=>{if(name)enter()});return false}
    saved={position:camera.position.clone(),quaternion:camera.quaternion.clone(),target:controls.target.clone(),fov:camera.fov,near:camera.near};
    const path=pedestrians.routes[0].points,index=Math.floor(path.length*.42),p=path[index],q=path[index+1];
    yaw=Math.atan2(-(q.x-p.x),-(q.z-p.z));pitch=0;
    const ground=groundAt(p.x,p.z);if(ground===null)return;
    controls.enabled=false;active=true;clearInput();lastGround=ground;
    camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();eye.set(p.x,ground+1.65,p.z);
-   if(!walker){walker=createWalker();scene.add(walker.group)}
+   if(!walker){walker=createWalker();addPlayerNameTag(walker.group,walkProfile.name);scene.add(walker.group)}
    walked=0;walker.update(0,false);look();
    navigation.show(yaw,eye);hud.hidden=false;el('first-person3d').textContent='전체 지도 시점';el('first-person3d').setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});
   }
   function exit(){
+   together?.stop();
    if(!active)return;active=false;clearInput();hud.hidden=true;navigation.hide();if(walker)walker.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
    el('first-person3d').textContent='1인칭으로 걷기';el('first-person3d').setAttribute('aria-pressed','false');
@@ -912,7 +917,7 @@ async function main(){
   const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   el('first-person3d').onclick=()=>{active?exit():enter();el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false')};
   el('first-person-exit').onclick=exit;
-  document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['first-person3d','map-options-toggle'].includes(event.target.id))exit()},true);
+  document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['first-person3d','map-options-toggle','walk-together'].includes(event.target.id))exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Touch buttons allow the same walk controls without a hardware keyboard.
   for(const button of hud.querySelectorAll('[data-walk]')){
@@ -922,13 +927,16 @@ async function main(){
   }
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+1.65,z);lastGround=g;yaw=heading;look();return true}
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get view(){return view},get walker(){return walker},enter,exit,update,placeAt};
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt};
  })();
+ const togetherStatus=document.createElement('div');togetherStatus.id='walk-together-status';togetherStatus.hidden=true;togetherStatus.setAttribute('role','status');
+ Object.assign(togetherStatus.style,{position:'absolute',top:'64px',left:'12px',zIndex:'25',background:'#fffdf2eb',padding:'6px 10px',borderRadius:'5px',fontSize:'12px',maxWidth:'calc(100% - 150px)',pointerEvents:'none'});el('scene').append(togetherStatus);
+ together=createWalkTogether({scene,firstPerson,pedestrians,profile:walkProfile,alignment:alignTerrain?'mountains':'base',groundAt:firstPerson.groundAt,endpoint:new URL(JSON.parse(el('multiplayer-url').textContent),location.href).href,mapVersion:JSON.parse(el('map-version').textContent),button:el('walk-together'),status:togetherStatus});
  const orbitNavigation=setupOrbitNavigation(camera,controls,renderer.domElement,ray=>cityWall.raycastGround(ray,true),()=>!!firstPerson?.active,(x,z)=>{
   try{const s=cityWall.supportAt(x,z,.2,.2,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible?s.road.max*exaggeration:-Infinity)}catch{return null}
  });
  renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();el('error').textContent='3D 그래픽 연결이 끊겼습니다. 페이지를 새로 고쳐 주세요.'});
- frameUpdate=dt=>{firstPerson?.update(dt);pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);updateBuildingNames()};
+ frameUpdate=dt=>{firstPerson?.update(dt);together?.update(dt);pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));updateBuildingNames()};
  toolbarControls.forEach(c=>c.disabled=false);el('channel-depth').disabled=!channelState.enabled;
  await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';

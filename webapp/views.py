@@ -42,6 +42,7 @@ def terrain3d(request, canvas_only=False):
         'canvas_only': canvas_only,
         'guide_anchors': render_guide()['anchors'],
         'app_version': settings.APP_VERSION,
+        'multiplayer_url': settings.MULTIPLAYER_URL,
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),
     })
@@ -103,6 +104,7 @@ def credits(request):
     return render(request, 'credits.html', {
         'records': [record for record in assets() if record['id'] == 'asset-0001'],
         'three_license': (vendor / 'three/LICENSE').read_text(),
+        'colyseus_license': (vendor / 'colyseus/LICENSE').read_text(),
     })
 
 
