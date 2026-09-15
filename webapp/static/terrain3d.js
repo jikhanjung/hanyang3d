@@ -8,6 +8,7 @@ import {createHouseSite} from './house_site.js';
 import {createSiteMarker} from './site_marker.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
+import {createDrill} from './drill.js';
 import {createPagoda} from './pagoda.js';
 import {createObservatory} from './observatory.js';
 import {createSettlement} from './settlement.js';
@@ -186,6 +187,7 @@ async function main(){
  const supportSurfaces=[terrain,historical].map(mesh=>({positions:mesh.geometry.attributes.position.array,index:mesh.geometry.index.array}));
  // A coarse X/Z index keeps each footprint test to the triangles near the building.
  const supportNearby=surfaceIndex(supportSurfaces);
+ const drills=[];
  const buildingData=JSON.parse(el('buildings').textContent);
  // Place stories are kept in their own file and attached to the feature they belong to by type and id (or name).
  const storyData=JSON.parse(el('stories')?.textContent??'{"stories":[]}');
@@ -245,7 +247,7 @@ async function main(){
   const box=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color:colors[feature.category]??0x856549,roughness:.8}));
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
-  if(feature.category==='성문'){box.material.visible=false;feature.outer_side=Math.sign(Math.sin(yaw)*(wx-cityCentre.x)+Math.cos(yaw)*(wz-cityCentre.z))||1;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards)box.add(guards)}
+  if(feature.category==='성문'){box.material.visible=false;feature.outer_side=Math.sign(Math.sin(yaw)*(wx-cityCentre.x)+Math.cos(yaw)*(wz-cityCentre.z))||1;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards){box.add(guards);if(guards.userData.update)drills.push(guards)}}
   if(feature.display_model==='throne_hall'){box.material.visible=false;foundation.visible=false;box.add(createThroneHall(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d));const guards=createGuards(feature,w,h,d);if(guards)box.add(guards)}
@@ -253,7 +255,7 @@ async function main(){
   if(feature.display_model==='hall_site'){box.material.visible=false;box.add(createHallSite(feature,w,h,d))}
   if(feature.display_model==='observatory'){box.material.visible=false;foundation.visible=false;box.add(createObservatory(feature,w,h,d))}
   if(feature.display_model==='wongaksa_pagoda'){box.material.visible=false;box.add(createPagoda(feature,w,h,d))}
-  if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d))}
+  if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d));const drill=createDrill(feature,w,h,d);box.add(drill);drills.push(drill)}
   if(feature.display_model==='bell_tower'){box.material.visible=false;box.add(createBellTower(feature,w,h,d))}
   if(feature.display_model==='site_marker'){box.material.visible=false;foundation.visible=false;box.add(createSiteMarker(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.display_model==='house_site'){box.material.visible=false;foundation.visible=false;box.add(createHouseSite(feature,w,h,d));siteMarkers.push({box,foundation})}
@@ -767,7 +769,10 @@ async function main(){
  const walkingData=await(await fetch(asset('/gis/roads/doseong_walking_routes.json'))).json();
  if(walkingData.source_sha256!==exp.input_sha256)throw Error('보행 경로 원도가 현재 지도와 다릅니다.');
  pedestrians=createPedestrians(walkingData,sourceSurface);pedestrians.updateGround(cityWall.supportAt);pedestrians.setHeight(exaggeration);scene.add(pedestrians.group);
- frameUpdate=dt=>{pedestrians.update(dt);updateBuildingNames()};
+ // Moving figures (the drill, the Gyeongbokgung keeper) stand on the ground under their current position, in the
+ // local frame of their building.
+ const groundAt=obj=>(x,z)=>{const p=obj.parent.localToWorld(new THREE.Vector3(x,0,z)),s=cityWall.supportAt(p.x,p.z,.5,.5,0);return s.max*exaggeration+.05-obj.parent.position.y};
+ frameUpdate=dt=>{pedestrians.update(dt);const now=performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(now,groundAt(drill));updateBuildingNames()};
  await stage(7,'숲·사람 표시 완료 · 마무리합니다');
  el('people-focus').onclick=()=>{const p=pedestrians.walkers[20].position;controls.target.copy(p);camera.position.copy(p).add(new THREE.Vector3(18,28,45));controls.update()};
  el('settlement-focus').onclick=()=>{const r=settlement.records.filter(r=>r.shop&&r.displayed).sort((a,b)=>Math.hypot(a.pixel[0]-1520,a.pixel[1]-1440)-Math.hypot(b.pixel[0]-1520,b.pixel[1]-1440))[0];if(!r)return;const target=new THREE.Vector3(r.x,r.floor,r.z);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(100,220,300));controls.update()};
@@ -947,6 +952,6 @@ async function main(){
   for(const seg of wall.segments)collision.add({x:seg.x,z:seg.z,hw:data.width_m/2,hd:seg.length/2,yaw:seg.yaw,visible:()=>wall.group.visible});
  for(const r of sijeon.records)collision.add({x:r.x,z:r.z,hw:r.length/2,hd:(sijeonData.placement.depth_m+.9)/2,yaw:r.yaw,visible:()=>sijeon.group.visible&&r.displayed});
  for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
- window.terrain3d={ready:true,cityCentre,landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
+ window.terrain3d={ready:true,cityCentre,drills,landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

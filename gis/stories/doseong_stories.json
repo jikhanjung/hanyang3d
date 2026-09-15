@@ -578,6 +578,28 @@
      "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000"
     }
    ]
+  },
+  {
+   "id": "gwanghwamun-keeper",
+   "target": {
+    "type": "landmark",
+    "key": "gwanghwamun",
+    "label": "광화문"
+   },
+   "title": "폐허를 지킨 궁감",
+   "year": null,
+   "legend": false,
+   "text": "임진왜란 뒤 경복궁은 다시 짓지 않았지만 궁감(궁궐지기)을 두어 관리했다. 위키백과는 1724년 무렵부터로 적는다. 1729년에는 경복궁 소나무를 몰래 민가에 판 수직군을 처벌했고, 가뭄이 들면 경회루 연못을 쳐냈다. 1764년에는 경복궁을 지키던 위장이 옥토끼·봉황 조각과 태지석을 찾아 올렸다. 영조는 근정전 월대에서 과거와 잔치를 열기도 했다. 지도의 궁감 차림(갓과 도포)은 기록이 아니라 표시용 추정이다.",
+   "sources": [
+    {
+     "title": "유재빈, 「영조대 경복궁 터에서 행한 행사와 궁중 회화」, 『한국미술사학회지』 323 (2024)",
+     "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader"
+    },
+    {
+     "title": "위키백과 경복궁",
+     "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81"
+    }
+   ]
   }
  ],
  "checked": "2026-09-15"

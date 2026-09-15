@@ -39,6 +39,7 @@ def public_resource_paths():
         'webapp/static/throne_hall.js',
         'webapp/static/gate.js',
         'webapp/static/guards.js',
+        'webapp/static/drill.js',
         'gis/placenames/doseong_placenames.json',
         'webapp/static/collision.js',
         'gis/buildings/doseong_sijeon.json',

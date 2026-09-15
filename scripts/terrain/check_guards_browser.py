@@ -21,19 +21,29 @@ with sync_playwright() as p:
       if(!g){if(f.category==='성문'||f.display_model==='palace_gate')out[f.id]=null;continue}
       const [w,h,d]=f.symbol_size_m,gate=bld.getObjectByName('gate-model');const half=(gate?.userData.doorWidth??0)/2;
       out[f.id]={officer:g.userData.officer,soldiers:g.userData.soldiers,figures:g.children.length,
-        onGround:g.children.every(c=>Math.abs(c.position.y+h/2)<1e-6),inFront:g.children.every(c=>c.position.z*(f.outer_side??1)>d/2),
-        outsideCity:f.category!=='성문'||g.children.every(c=>{const p=c.getWorldPosition(bld.position.clone()),cc=terrain3d.cityCentre;return Math.hypot(p.x-cc.x,p.z-cc.z)>Math.hypot(bld.position.x-cc.x,bld.position.z-cc.z)}),
+        onGround:g.children.every(c=>Math.abs(c.position.y+h/2)<1e-6),inFront:g.children.every(c=>c.position.z*(g.userData.kind==='city'?(f.outer_side??1):1)>d/2),keeper:g.userData.keeper,
+        outsideCity:g.userData.kind!=='city'||g.children.every(c=>{const p=c.getWorldPosition(bld.position.clone()),cc=terrain3d.cityCentre;return Math.hypot(p.x-cc.x,p.z-cc.z)>Math.hypot(bld.position.x-cc.x,bld.position.z-cc.z)}),
         clearOfPassage:!gate||g.children.every(c=>Math.abs(c.position.x)>half),inDetail:terrain3d.landmarkLods.find(l=>l.box===bld)?.detail.includes(g)}}
       return out}''')
     for fid, (officer, soldiers) in EXPECTED.items():
         g = info[fid]
         assert g and g['officer'] == officer and g['soldiers'] == soldiers and g['figures'] == soldiers + officer, (fid, g)
         assert g['onGround'] and g['inFront'] and g['outsideCity'] and g['clearOfPassage'] and g['inDetail'], (fid, g)
-    for fid in ('gwanghwamun', 'sukjeongmun'):
-        assert info[fid] is None, (fid, info[fid])
+    # The ruined Gyeongbokgung has one palace keeper at the Gwanghwamun base and no soldiers; the closed north gate none.
+    keeper = info['gwanghwamun']
+    assert keeper and keeper['keeper'] and keeper['figures'] == 1 and keeper['soldiers'] == 0, keeper
+    # The keeper walks: sample a whole loop and require the route to pass out front, through the middle arch and inside.
+    walk = page.evaluate('''()=>{const t=terrain3d,bld=t.buildings.children.find(b=>b.userData.feature.id==='gwanghwamun'),g=bld.getObjectByName('gate-guards'),k=g.children[0];
+      const [w,h,d]=bld.userData.feature.symbol_size_m,gate=bld.getObjectByName('gate-model'),half=gate.userData.doorWidth/2,loop=g.userData.route.loop;
+      let outside=false,inside=false,throughArch=true,animated=t.drills.includes(g);
+      for(let s=0;s<loop;s+=.25){g.userData.update(s*1000);const x=k.position.x,z=k.position.z;if(z>d/2)outside=true;if(z<-d/2-10)inside=true;
+        if(Math.abs(z)<d/2&&Math.abs(x-gate.userData.centres[1])>half-.4)throughArch=false}
+      return {outside,inside,throughArch,animated,loop}}''')
+    assert walk['outside'] and walk['inside'] and walk['throughArch'] and walk['animated'], walk
+    assert info['sukjeongmun'] is None, info['sukjeongmun']
     if args.shots:
         Path(args.shots).mkdir(parents=True, exist_ok=True)
-        for fid, dist in [('donhwamun', 30), ('sungnyemun', 40), ('heunginjimun', 60)]:
+        for fid, dist in [('donhwamun', 30), ('sungnyemun', 40)]:
             page.evaluate('''([id,dist])=>{const t=terrain3d,bld=t.buildings.children.find(b=>b.userData.feature?.id===id);const o=bld.userData.feature.outer_side??1,s=o*Math.sin(bld.rotation.y),c=o*Math.cos(bld.rotation.y),p=bld.position;
               t.controls.target.set(p.x+s*6,p.y-bld.userData.boxHeight/2+2,p.z+c*6);t.camera.position.set(p.x+s*dist+c*dist*.4,p.y+dist*.2,p.z+c*dist-s*dist*.4);t.controls.update();t.updateBuildingNames();t.renderer.render(t.scene,t.camera)}''', [fid, dist])
             page.screenshot(path=f'{args.shots}/guards_{fid}.png')
