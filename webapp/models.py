@@ -170,3 +170,42 @@ class ContentImport(models.Model):
     key = models.CharField(max_length=100, unique=True)
     imported_at = models.DateTimeField(auto_now_add=True)
     metadata = models.JSONField(default=dict)
+
+
+# Game economy. Coins and packs live on the server; the browser only shows what the server answers.
+class Player(models.Model):
+    token = models.UUIDField('플레이어 토큰', unique=True, editable=False)
+    money = models.PositiveIntegerField('엽전(문)', default=0)
+    created_at = models.DateTimeField('처음 방문', auto_now_add=True)
+    last_seen = models.DateTimeField('마지막 활동', auto_now=True)
+    class Meta:
+        verbose_name = '플레이어'
+        verbose_name_plural = '플레이어'
+    def __str__(self): return str(self.token)
+
+
+class PlayerItem(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='items')
+    item = models.CharField('물건 ID', max_length=60)
+    quantity = models.PositiveIntegerField('수량')
+    class Meta:
+        verbose_name = '봇짐 물건'
+        verbose_name_plural = '봇짐 물건'
+        constraints = [models.UniqueConstraint(fields=['player', 'item'], name='player_item_once'),
+                       models.CheckConstraint(condition=Q(quantity__gt=0), name='player_item_positive')]
+
+
+class Trade(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='trades')
+    action = models.CharField('거래', max_length=4, choices=[('buy', '사기'), ('sell', '팔기')])
+    shop = models.CharField('가게', max_length=40)
+    item = models.CharField('물건 ID', max_length=60)
+    quantity = models.PositiveIntegerField('수량')
+    money_delta = models.IntegerField('엽전 변화')
+    money_after = models.PositiveIntegerField('거래 뒤 엽전')
+    created_at = models.DateTimeField('시각', auto_now_add=True)
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = '거래 기록'
+        verbose_name_plural = '거래 기록'
+        indexes = [models.Index(fields=['player', 'created_at'])]

@@ -4,7 +4,8 @@ from django.conf import settings
 from django.http import FileResponse, Http404, HttpResponseNotModified, HttpResponseRedirect, JsonResponse
 from django.utils.http import http_date
 from django.shortcuts import render
-from django.views.decorators.http import require_safe
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.http import require_POST, require_safe
 from .resources import assets, public_resource_paths, resource_path
 from .deployment import runtime_report
 from .guide import render_guide
@@ -32,6 +33,7 @@ def terrain_overlay(request):
 
 
 @require_safe
+@ensure_csrf_cookie
 def terrain3d(request, canvas_only=False):
     experiment = json.loads((settings.BASE_DIR / 'gis/control_points/doseong_modern_preview.json').read_text())
     if settings.CONTENT_SOURCE == 'database':
@@ -122,3 +124,34 @@ def credits(request):
 @require_safe
 def guide(request):
     return render(request, 'guide.html', {'guide': render_guide(), 'stories': stories_by_place()})
+
+
+@require_safe
+@ensure_csrf_cookie
+def player_state(request):
+    from .economy import attach_cookie, player_for, state
+    player, cookie = player_for(request)
+    response = JsonResponse(state(player))
+    response['Cache-Control'] = 'no-store'
+    return attach_cookie(response, cookie)
+
+
+@require_POST
+def shop_trade(request):
+    from .economy import TradeError, attach_cookie, player_for, state, trade
+    try:
+        body = json.loads(request.body or b'{}')
+    except ValueError:
+        body = None
+    player, cookie = player_for(request)
+    if not isinstance(body, dict):
+        response = JsonResponse({'error': '요청 형식이 잘못되었소.', **state(player)}, status=400)
+    else:
+        try:
+            player, message = trade(player, body.get('action'), body.get('shop'), body.get('item'), body.get('quantity'))
+            response = JsonResponse({'message': message, **state(player)})
+        except TradeError as error:
+            player.refresh_from_db()
+            response = JsonResponse({'error': error.message, **state(player)}, status=error.status)
+    response['Cache-Control'] = 'no-store'
+    return attach_cookie(response, cookie)

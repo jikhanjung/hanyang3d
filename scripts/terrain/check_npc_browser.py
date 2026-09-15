@@ -1,7 +1,8 @@
 """Verify NPC conversations and the shop by clicking people on the map.
 
 The keeper and a gate officer open the adventure-style overlay (portrait, name plate, typed text, sourced choices),
-a shopkeeper's 거래하기 opens the shop where buying and selling change the purse and the pack, and a passer-by and a
+a shopkeeper's 거래하기 opens the shop where buying and selling go through the server API (the page shows the
+server's coins and pack), and a passer-by and a
 soldier only greet in a speech bubble.
 """
 import argparse
@@ -41,7 +42,10 @@ with sync_playwright() as p:
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.goto(args.url, wait_until='domcontentloaded')
     page.wait_for_function('window.terrain3d?.ready', timeout=450000)
-    page.evaluate("localStorage.removeItem('hanyang3d-pack')")
+    # Coins and the pack live on the server; the page shows them in the coin display.
+    page.wait_for_function("terrain3d.shop?.state.ready")
+    hud = page.evaluate("document.getElementById('money-hud').textContent")
+    assert hud.startswith('엽전 ') and '냥' in hud, hud
     page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
 
     def click(kind, ident):
@@ -86,16 +90,22 @@ with sync_playwright() as p:
     assert merchant['overlay'] and merchant['name'] == '면포전 상인' and any('거래하기' in o for o in merchant['options']), merchant
     page.click('.npc-line')
     page.locator('.npc-options button', has_text='거래하기').click()
-    shop = page.evaluate("()=>({open:!document.getElementById('shop-window').hidden,title:document.querySelector('.shop-title').textContent,goods:document.querySelectorAll('.shop-goods .shop-slot').length,money:terrain3d.shop.state.money})")
+    page.wait_for_function("terrain3d.shop.state.ready && !terrain3d.shop.busy")
+    shop = page.evaluate("()=>({open:!document.getElementById('shop-window').hidden,title:document.querySelector('.shop-title').textContent,goods:document.querySelectorAll('.shop-goods .shop-slot').length,money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items}})")
     assert shop['open'] and shop['title'].startswith('면포전') and shop['goods'] >= 1, shop
+    owned = sum(shop['items'].values())
     page.locator('.shop-goods .shop-slot').first.click()
-    bought = page.evaluate("()=>({money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items},pack:document.querySelectorAll('.shop-pack .shop-slot').length,saved:localStorage.getItem('hanyang3d-pack')})")
-    assert bought['money'] < shop['money'] and sum(bought['items'].values()) == 1 and bought['pack'] == 1 and bought['saved'], bought
+    page.wait_for_function(f"terrain3d.shop.state.money < {shop['money']} && !terrain3d.shop.busy")
+    bought = page.evaluate("async()=>({money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items},pack:document.querySelectorAll('.shop-pack .shop-slot').length,hud:document.getElementById('money-hud').textContent,server:await (await fetch('/api/player/')).json(),stored:localStorage.getItem('hanyang3d-pack')})")
+    assert sum(bought['items'].values()) == owned + 1 and bought['pack'] >= 1 and bought['stored'] is None, bought
+    assert bought['server'] == {'money': bought['money'], 'items': bought['items']}, bought
     if args.shots:
         page.screenshot(path=f'{args.shots}/npc_shop.png')
     page.locator('.shop-pack .shop-slot').first.click()
-    sold = page.evaluate("()=>({money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items}})")
-    assert bought['money'] < sold['money'] < shop['money'] and not sold['items'], sold
+    page.wait_for_function(f"terrain3d.shop.state.money > {bought['money']} && !terrain3d.shop.busy")
+    sold = page.evaluate("async()=>({money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items},server:await (await fetch('/api/player/')).json()})")
+    assert bought['money'] < sold['money'] < shop['money'] and sum(sold['items'].values()) == owned, sold
+    assert sold['server']['money'] == sold['money'], sold
     page.keyboard.press('Escape')
     assert page.evaluate("document.getElementById('shop-window').hidden")
 

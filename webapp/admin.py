@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.models import BaseInlineFormSet
 
-from .models import Building, Citation, GuideSection, Resource, Story
+from .models import Building, Citation, GuideSection, Player, PlayerItem, Resource, Story, Trade
 
 admin.site.site_header = '한양3D 백오피스'
 admin.site.site_title = '한양3D 관리'
@@ -98,3 +98,31 @@ class ResourceAdmin(StableKeyAdmin):
     list_filter = ['kind', 'renderer']
     search_fields = ['key', 'name', 'path', 'description']
     fields = ['key', 'name', 'kind', 'path', 'renderer', 'description', 'source_url', 'license', 'updated_at']
+
+
+class PlayerItemInline(admin.TabularInline):
+    model = PlayerItem
+    extra = 0
+    readonly_fields = ('item', 'quantity')
+    can_delete = False
+    def has_add_permission(self, request, obj=None): return False
+
+
+@admin.register(Player)
+class PlayerAdmin(admin.ModelAdmin):
+    """Read-only view of anonymous players; coins change only through the trade API."""
+    list_display = ('token', 'money', 'created_at', 'last_seen')
+    readonly_fields = ('token', 'money', 'created_at', 'last_seen')
+    inlines = [PlayerItemInline]
+    def has_add_permission(self, request): return False
+    def has_change_permission(self, request, obj=None): return False
+
+
+@admin.register(Trade)
+class TradeAdmin(admin.ModelAdmin):
+    list_display = ('created_at', 'player', 'action', 'shop', 'item', 'quantity', 'money_delta', 'money_after')
+    list_filter = ('action', 'shop')
+    readonly_fields = list_display
+    def has_add_permission(self, request): return False
+    def has_change_permission(self, request, obj=None): return False
+    def has_delete_permission(self, request, obj=None): return False
