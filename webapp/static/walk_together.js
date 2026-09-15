@@ -78,7 +78,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       previousPlayback = playback.checked; playback.checked = true; playback.disabled = true;
       playback.title = '함께 걷는 동안 보행자는 서버에서 계속 움직입니다.';
       button.textContent = '전체 지도 시점'; button.setAttribute('aria-pressed', 'true');
-      status.textContent = '함께 걷는 중 · 나 포함 1명';
+      status.textContent = '접속자 1명';
       joined.onMessage('npcs', snapshot => { if (room === joined) pedestrians.applySnapshot(snapshot); });
       joined.onMessage('walkers', poses => {
         if (room !== joined) return;
@@ -95,7 +95,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
           peer.target = pose;
         }
         for (const id of peers.keys()) if (!seen.has(id)) remove(id);
-        status.textContent = `함께 걷는 중 · 나 포함 ${peers.size + 1}명`;
+        status.textContent = `접속자 ${peers.size + 1}명`;
       });
       joined.onLeave(() => {
         if (room === joined) { room = null; stop('연결이 끊겼습니다. 1인칭을 눌러 다시 접속하세요.'); }

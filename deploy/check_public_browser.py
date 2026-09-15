@@ -100,7 +100,7 @@ with sync_playwright() as p:
     page.wait_for_function("document.getElementById('walk-together').getAttribute('aria-pressed') === 'true'")
     assert page.evaluate('terrain3d.firstPerson.walker.group.visible && terrain3d.firstPerson.view > 1')
     assert page.evaluate('terrain3d.camera.position.distanceTo(terrain3d.firstPerson.eye) > 1')
-    assert page.locator('#first-person-help').is_visible()
+    assert page.locator('#first-person-help').count() == 0
     open_settings()
     for scale, opacity, road in [('1','50',True),('1.5','50',True),('2','50',True),('2','0',True),('2','0',False),('1','50',True)]:
         page.locator('#height3d').select_option(scale, force=True)

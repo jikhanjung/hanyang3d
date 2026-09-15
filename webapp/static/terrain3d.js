@@ -839,10 +839,10 @@ async function main(){
  firstPerson=(()=>{
   let active=false,saved=null,yaw=0,pitch=0,drag=null,lastGround=null,walked=0,view=4.5,walker=null;
   const eye=new THREE.Vector3(),boom=new THREE.Vector3();
-  const keys=new Set(),touchKeys=new Map(),canvas=renderer.domElement,hud=el('first-person-help');canvas.tabIndex=0;
+  const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick');canvas.tabIndex=0;
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
-  const held=code=>keys.has(code)||[...touchKeys.values()].some(button=>button.dataset.walk===code);
-  function clearInput(){joystick.reset();keys.clear();touchKeys.clear();hud.querySelectorAll('[data-walk]').forEach(b=>b.classList.remove('pressed'));drag=null}
+  const held=code=>keys.has(code);
+  function clearInput(){joystick.reset();keys.clear();drag=null}
   function groundAt(x,z){
    // Clamp exploration to the prepared map; support queries outside it have no triangles.
    // Terrain/map positions are already scaled; road support stores unscaled heights.
@@ -916,15 +916,8 @@ async function main(){
   },{passive:false});
   const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   el('walk-together').addEventListener('click',()=>{el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false')});
-  el('first-person-exit').onclick=exit;
   document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['map-options-toggle','walk-together'].includes(event.target.id))exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
-  // Touch buttons allow the same walk controls without a hardware keyboard.
-  for(const button of hud.querySelectorAll('[data-walk]')){
-   button.addEventListener('pointerdown',event=>{if(!active)return;event.preventDefault();button.setPointerCapture(event.pointerId);touchKeys.set(event.pointerId,button);button.classList.add('pressed')});
-   for(const type of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(type,event=>{touchKeys.delete(event.pointerId);if(![...touchKeys.values()].includes(button))button.classList.remove('pressed')});
-   button.addEventListener('contextmenu',event=>event.preventDefault());
-  }
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+1.65,z);lastGround=g;yaw=heading;look();return true}
   return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
