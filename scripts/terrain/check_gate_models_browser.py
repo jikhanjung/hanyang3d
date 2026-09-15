@@ -29,6 +29,11 @@ with sync_playwright() as p:
         assert v['meshes'] <= 12, (k, v['meshes'])
     assert city['gwanghwamun']['tiers'] == 0 and city['gwanghwamun']['doors'] == 3 and 'gate-roof' not in city['gwanghwamun']['parts']
     assert city['sungnyemun']['tiers'] == 2 and city['donuimun']['tiers'] == 1 and city['changuimun']['tiers'] == 1
+    # The barbican stands outside the city: farther from the wall centre than the gate itself.
+    barbican = page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(x=>x.userData.feature.id==='heunginjimun'),f=b.userData.feature,cc=t.cityCentre;
+      const p=b.position.clone().add(new b.position.constructor(Math.sin(b.rotation.y),0,Math.cos(b.rotation.y)).multiplyScalar((f.outer_side??1)*f.symbol_size_m[2]));
+      return Math.hypot(p.x-cc.x,p.z-cc.z)-Math.hypot(b.position.x-cc.x,b.position.z-cc.z)}''')
+    assert barbican > 0, barbican
     assert 'barbican-wall' in city['heunginjimun']['parts'] and not any('barbican-wall' in v['parts'] for k, v in city.items() if k != 'heunginjimun')
     assert all('merlon' in v['parts'] and 'stone-course' in v['parts'] for v in city.values())
     assert info['donhwamun'] == {**info['donhwamun'], 'kind': 'palace', 'bays': 5, 'tiers': 2} and info['honghwamun']['bays'] == 3

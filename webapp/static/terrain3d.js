@@ -203,6 +203,8 @@ async function main(){
  const wallNodes=[];
  wallData.centerline.slice(0,-1).forEach((a,i)=>{const b=wallData.centerline[i+1],steps=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/3);
   for(let j=0;j<steps;j++){const p=sourceSurface(a[0]+(b[0]-a[0])*j/steps,a[1]+(b[1]-a[1])*j/steps);wallNodes.push([p.x,p.z])}});
+ // The city centre (mean of the wall line) tells which side of a city gate faces out of the city.
+ const cityCentre=wallNodes.reduce((c,[x,z])=>({x:c.x+x/wallNodes.length,z:c.z+z/wallNodes.length}),{x:0,z:0});
  function wallSquareYaw(wx,wz,roadYaw,radius=45){
   const near=wallNodes.filter(([x,z])=>Math.hypot(x-wx,z-wz)<radius);if(near.length<4)return null;
   // Principal direction of the nearby wall nodes.
@@ -243,7 +245,7 @@ async function main(){
   const box=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color:colors[feature.category]??0x856549,roughness:.8}));
   box.position.set(...world(x,y,z));box.position.y+=h/2;
   box.rotation.y=yaw;box.userData={feature,x,y,z,boxHeight:h,support};
-  if(feature.category==='성문'){box.material.visible=false;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards)box.add(guards)}
+  if(feature.category==='성문'){box.material.visible=false;feature.outer_side=Math.sign(Math.sin(yaw)*(wx-cityCentre.x)+Math.cos(yaw)*(wz-cityCentre.z))||1;const gate=gateModel(feature,w,h,d);box.add(gate);const guards=createGuards(feature,w,h,d,gate);if(guards)box.add(guards)}
   if(feature.display_model==='throne_hall'){box.material.visible=false;foundation.visible=false;box.add(createThroneHall(feature,w,h,d))}
   if(feature.display_model==='palace_compound'){box.material.visible=false;box.add(createPalace(feature,w,h,d))}
   if(feature.display_model==='palace_gate'){box.material.visible=false;box.add(createPalaceGate(feature,w,h,d));const guards=createGuards(feature,w,h,d);if(guards)box.add(guards)}
@@ -945,6 +947,6 @@ async function main(){
   for(const seg of wall.segments)collision.add({x:seg.x,z:seg.z,hw:data.width_m/2,hd:seg.length/2,yaw:seg.yaw,visible:()=>wall.group.visible});
  for(const r of sijeon.records)collision.add({x:r.x,z:r.z,hw:r.length/2,hd:(sijeonData.placement.depth_m+.9)/2,yaw:r.yaw,visible:()=>sijeon.group.visible&&r.displayed});
  for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
- window.terrain3d={ready:true,landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
+ window.terrain3d={ready:true,cityCentre,landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});

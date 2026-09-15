@@ -3,7 +3,8 @@ import * as THREE from 'three';
 // Gate guards around 1750. Records name who guarded which gate (훈련도감 at 돈화문, 어영청 at 홍화문, a 수문장 in
 // charge of opening and closing each palace gate), but not how many stood outside at once: the head counts here are
 // display estimates. The officer wears the military dress (구군복: 전립 with a plume, blue 전복 over red-sleeved
-// 동달이, sword); soldiers wear dark coats and 전립 and hold spears. Local +Z is the outer side of the gate.
+// 동달이, sword); soldiers wear dark coats and 전립 and hold spears. Palace gates face local +Z; city gates are
+// guarded on the side outside the city (feature.outer_side).
 const COLORS={skin:0xc5a17e,hat:0x1f1d1c,trousers:0xd9d2c0,boots:0x2a2522,officerCoat:0x3a5b8c,officerSleeve:0xa8342a,soldierCoat:0x2e3440,soldierSleeve:0x3b4250,belt:0x8e2f22,shaft:0x6b4a2e,metal:0xb9bec2,plume:0x2f7c7a};
 function materials(){return Object.fromEntries(Object.entries(COLORS).map(([k,c])=>[k,new THREE.MeshStandardMaterial({color:c,roughness:k==='metal'?.4:1,metalness:k==='metal'?.6:0})]))}
 
@@ -51,9 +52,9 @@ export function createGuards(feature,w,h,d,gateModel){
   for(let i=0;i<post.soldiers;i++){const pair=Math.floor(i/2),side=i%2?1:-1;figure(figures,mats,side*(2.2+pair*1.5),front,y)}
   if(post.officer)figure(figures,mats,-(3.8+Math.ceil(post.soldiers/2)*1.5),front+1,y,{officer:true});
  }else{
-  // One soldier either side of the passage mouth on the outer face.
-  const half=(gateModel?.userData.doorWidth??w*.25)/2,front=d/2+1.2;
-  for(let i=0;i<post.soldiers;i++)figure(figures,mats,(i%2?1:-1)*(half+.9),front,y);
+  // One soldier either side of the passage mouth on the face outside the city, looking out along the road.
+  const out=feature.outer_side??1,half=(gateModel?.userData.doorWidth??w*.25)/2,front=out*(d/2+1.2);
+  for(let i=0;i<post.soldiers;i++)figure(figures,mats,(i%2?1:-1)*(half+.9),front,y,{yaw:out>0?0:Math.PI});
  }
  for(const f of figures)model.add(f);
  model.userData={unit:post.unit,officer:post.officer,soldiers:post.soldiers,figures:figures.length,estimate:true};

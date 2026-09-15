@@ -13,6 +13,7 @@
 ## 작업 기록
 
 - [094: 운영 서버 디스크 정리와 prune.sh](20260914_094_server_disk_prune.md)
+- [106: 도성 문 경비병과 옹성을 성 바깥쪽으로](20260915_106_gate_outer_side.md)
 - [105: 금호문과 경덕궁 흥화문](20260915_105_geumhomun_heunghwamun.md)
 - [104: 장소 이야기와 궁문 경비병](20260915_104_stories_guards.md)
 - [103: 사실적인 건물 4, 주택·시전과 1인칭 클릭](20260915_103_houses_shops_fp_click.md)

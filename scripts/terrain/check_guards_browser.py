@@ -21,19 +21,20 @@ with sync_playwright() as p:
       if(!g){if(f.category==='성문'||f.display_model==='palace_gate')out[f.id]=null;continue}
       const [w,h,d]=f.symbol_size_m,gate=bld.getObjectByName('gate-model');const half=(gate?.userData.doorWidth??0)/2;
       out[f.id]={officer:g.userData.officer,soldiers:g.userData.soldiers,figures:g.children.length,
-        onGround:g.children.every(c=>Math.abs(c.position.y+h/2)<1e-6),inFront:g.children.every(c=>c.position.z>d/2),
+        onGround:g.children.every(c=>Math.abs(c.position.y+h/2)<1e-6),inFront:g.children.every(c=>c.position.z*(f.outer_side??1)>d/2),
+        outsideCity:f.category!=='성문'||g.children.every(c=>{const p=c.getWorldPosition(bld.position.clone()),cc=terrain3d.cityCentre;return Math.hypot(p.x-cc.x,p.z-cc.z)>Math.hypot(bld.position.x-cc.x,bld.position.z-cc.z)}),
         clearOfPassage:!gate||g.children.every(c=>Math.abs(c.position.x)>half),inDetail:terrain3d.landmarkLods.find(l=>l.box===bld)?.detail.includes(g)}}
       return out}''')
     for fid, (officer, soldiers) in EXPECTED.items():
         g = info[fid]
         assert g and g['officer'] == officer and g['soldiers'] == soldiers and g['figures'] == soldiers + officer, (fid, g)
-        assert g['onGround'] and g['inFront'] and g['clearOfPassage'] and g['inDetail'], (fid, g)
+        assert g['onGround'] and g['inFront'] and g['outsideCity'] and g['clearOfPassage'] and g['inDetail'], (fid, g)
     for fid in ('gwanghwamun', 'sukjeongmun'):
         assert info[fid] is None, (fid, info[fid])
     if args.shots:
         Path(args.shots).mkdir(parents=True, exist_ok=True)
-        for fid, dist in [('donhwamun', 30), ('sungnyemun', 40), ('geumhomun', 24), ('heunghwamun', 30)]:
-            page.evaluate('''([id,dist])=>{const t=terrain3d,bld=t.buildings.children.find(b=>b.userData.feature?.id===id);const s=Math.sin(bld.rotation.y),c=Math.cos(bld.rotation.y),p=bld.position;
+        for fid, dist in [('donhwamun', 30), ('sungnyemun', 40), ('heunginjimun', 60)]:
+            page.evaluate('''([id,dist])=>{const t=terrain3d,bld=t.buildings.children.find(b=>b.userData.feature?.id===id);const o=bld.userData.feature.outer_side??1,s=o*Math.sin(bld.rotation.y),c=o*Math.cos(bld.rotation.y),p=bld.position;
               t.controls.target.set(p.x+s*6,p.y-bld.userData.boxHeight/2+2,p.z+c*6);t.camera.position.set(p.x+s*dist+c*dist*.4,p.y+dist*.2,p.z+c*dist-s*dist*.4);t.controls.update();t.updateBuildingNames();t.renderer.render(t.scene,t.camera)}''', [fid, dist])
             page.screenshot(path=f'{args.shots}/guards_{fid}.png')
     assert not errors, errors

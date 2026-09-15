@@ -56,13 +56,13 @@ export function createCityGate(feature,w,h,d){
    box('ridge',0,eave+.35+step*.4+.15,0,(tw+6)-(td+5)*gable+.6,.3,.5,'ridge');
   }
  }
- // The barbican (옹성) of Heunginjimun: a curved outer wall in front of the gate (local +z is the outer side
- // once the gate is road-aligned), with its opening left on one side as in the real barbican.
+ // The barbican (옹성) of Heunginjimun: a curved wall on the outer side of the gate (feature.outer_side, set from
+ // the city centre, says whether that is local +z or -z), with its opening left on one side as in the real barbican.
  if(feature.id==='heunginjimun'){
-  const R=w*.6,segs=16,a0=-Math.PI/2+.08,a1=Math.PI/2-.55,bh=base*.7;
+  const R=w*.6,segs=16,a0=-Math.PI/2+.08,a1=Math.PI/2-.55,bh=base*.7,out=feature.outer_side??1;
   for(let i=0;i<segs;i++){const s0=a0+(a1-a0)*i/segs,s1=a0+(a1-a0)*(i+1)/segs,am=(s0+s1)/2,len=R*(s1-s0)+.25;
-   box('barbican-wall',R*Math.sin(am),bh/2,d/2+R*Math.cos(am),len,bh,1.8,'stone').rotation.y=am;
-   box('barbican-merlon',R*Math.sin(am),bh+.55,d/2+R*Math.cos(am),len*.55,1.1,1.4,'stone').rotation.y=am}
+   box('barbican-wall',R*Math.sin(am),bh/2,out*(d/2+R*Math.cos(am)),len,bh,1.8,'stone').rotation.y=out*am;
+   box('barbican-merlon',R*Math.sin(am),bh+.55,out*(d/2+R*Math.cos(am)),len*.55,1.1,1.4,'stone').rotation.y=out*am}
  }
  // Merge static parts by material; the arch stays its own mesh for the passage checks.
  const buckets=new Map(),v=new THREE.Vector3();
