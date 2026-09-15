@@ -28,7 +28,10 @@ with TemporaryDirectory(prefix='hanyang-maintenance-') as temp:
     root = Path(temp)
     front, back, closed = port(), port(), port()
     shutil.copyfile(host / 'maintenance.html', root / 'maintenance.html')
-    server = 'server {' + (host / 'hanyang3d.nginx.conf').read_text().split('server {')[-1]
+    site = (host / 'hanyang3d.nginx.conf').read_text()
+    # Request-limit zones live at http level above the server blocks; keep them for the isolated config.
+    zones = '\n'.join(re.findall(r'^limit_\w+_zone [^;]+;', site, flags=re.M))
+    server = 'server {' + site.split('server {')[-1]
     server = re.sub(r'^\s*(listen|ssl_\w+)\s+[^;]+;', '', server, flags=re.M)
     server = server.replace('server {', f'server {{\nlisten 127.0.0.1:{front};', 1)
     server = server.replace('/srv/hanyang3d', str(root)).replace('127.0.0.1:8013', f'127.0.0.1:{back}')
@@ -38,6 +41,7 @@ events {{}}
 http {{
     access_log off;
     types {{ text/html html; }}
+    {zones}
     {server}
     server {{
         listen 127.0.0.1:{back};
@@ -71,7 +75,11 @@ http {{
             assert 'text/html' in headers['Content-Type'] and 'utf-8' in headers['Content-Type']
         assert request(base + '/maintenance.html')[0] == 404
         assert request(base + '/')[2] == b'ready'
-        print('PASS: 502/503/504 → Korean HTML / HTTP 503; retry 10s; no cache; internal only; normal response preserved')
+        assert 'max-age=' in (request(base + '/')[1]['Strict-Transport-Security'] or '')
+        # The login form is rate limited per client: a burst beyond the allowance gets 429.
+        statuses = [request(base + '/backoffice/login/')[0] for _ in range(12)]
+        assert statuses[0] == 200 and 429 in statuses, statuses
+        print('PASS: 502/503/504 → Korean HTML / HTTP 503; retry 10s; no cache; internal only; normal response preserved; HSTS; login rate limit 429')
     finally:
         process.terminate()
         process.wait(timeout=10)

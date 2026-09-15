@@ -12,6 +12,8 @@
 
 ## 작업 기록
 
+- [121: 함께 걷기 과부하 차단과 백오피스·HTTPS 보강](20260915_121_walk_backoffice_hardening.md)
+- [120: Codex 작업(111~119) 검토와 수정 계획](20260915_120_codex_review.md)
 - [119: 운영 콘텐츠 DB 전환과 백업 연결](20260915_119_content_database_release.md)
 - [118: 콘텐츠 DB·리소스 목록·백오피스 기반](20260915_118_content_backoffice.md)
 - [117: 1750년 전후의 사건을 장소 이야기로 추가](20260915_117_stories_near_1750.md)

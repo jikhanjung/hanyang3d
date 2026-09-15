@@ -4,7 +4,7 @@ import { npcWorld } from './npc_world.js';
 
 const client = new Client(process.env.WALK_URL || 'http://127.0.0.1:2567');
 const rooms = [];
-const options = { mapVersion: 'connection-check', alignment: 'mountains', protocolVersion: 2, routeKey: npcWorld().routeKey, name: '테스트 나그네' };
+const options = { mapVersion: 'v0.0.0', alignment: 'mountains', protocolVersion: 2, routeKey: npcWorld().routeKey, name: '테스트 나그네' };
 const wait = (predicate, message) => new Promise((resolve, reject) => {
   const started = Date.now();
   const timer = setInterval(() => {
@@ -55,10 +55,14 @@ try {
   a.send('chat', '가'.repeat(201));
   await wait(() => chatErrors.length === 2, 'oversized chat must be rejected');
   assert.equal(messagesB.length, 1);
-  let history;
-  b.onMessage('chat-history', messages => { history = messages; }); b.send('chat-history');
+  let history, historyReplies = 0;
+  b.onMessage('chat-history', messages => { history = messages; historyReplies++; }); b.send('chat-history');
   await wait(() => history?.length === 1, 'recent history must be available');
   assert.deepEqual(history, messagesB);
+  // A session gets the history once; repeating the request must not resend it.
+  b.send('chat-history');
+  await new Promise(resolve => setTimeout(resolve, 300));
+  assert.equal(historyReplies, 1);
   await wait(() => bNpcs && npcHistory.has(bNpcs.tick), 'NPC snapshots must reach both clients');
   assert.deepEqual(bNpcs, npcHistory.get(bNpcs.tick));
   assert.equal(bNpcs.npcs.length, 130);
@@ -69,7 +73,11 @@ try {
   assert.equal(bPoses.find(p => p.id === a.sessionId).x, 1);
   a.send('pose', { x: 8, z: 9, yaw: 2 });
   await wait(() => bPoses.some(p => p.id === a.sessionId && p.x === 8), 'movement must arrive');
-  const otherVersion = await client.joinOrCreate('hanyang_walk', { ...options, mapVersion: 'other-map' }); rooms.push(otherVersion);
+  // A different map version no longer opens its own room; only the map alignment separates spaces.
+  const sameSpace = await client.joinOrCreate('hanyang_walk', { ...options, mapVersion: 'v9.9.9', name: '다른판' }); rooms.push(sameSpace);
+  assert.equal(sameSpace.roomId, a.roomId);
+  await sameSpace.leave(); rooms.splice(rooms.indexOf(sameSpace), 1);
+  const otherVersion = await client.joinOrCreate('hanyang_walk', { ...options, alignment: 'base', routeKey: npcWorld('base').routeKey, name: '기준배치' }); rooms.push(otherVersion);
   otherVersion.onMessage('walkers', () => {});
   let otherNpcs;
   otherVersion.onMessage('npcs', snapshot => { otherNpcs = snapshot; });
@@ -79,8 +87,10 @@ try {
   assert.ok(bNpcs.npcs.every(p => p[7] >= .8 && p[7] < 1.3));
   await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, name: '<script>' }), /이름/);
   await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, routeKey: 'wrong' }), /자료/);
+  await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, mapVersion: 'random-123', name: '위조' }), /자료/);
+  await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, alignment: 'arbitrary', name: '위조' }), /자료/);
   await b.leave();
   rooms.splice(rooms.indexOf(b), 1);
   await wait(() => aPoses.length === 1, 'leaving must remove the character');
-  console.log('PASS: unique names (race/reuse), colors, chat/history/limits, movement, shared NPC ticks, randomized new spaces, version separation, departure');
+  console.log('PASS: unique names (race/reuse), colors, chat/history/limits, movement, shared NPC ticks, randomized new spaces, alignment separation, join checks, departure');
 } finally { await Promise.all(rooms.map(room => room.leave().catch(() => {}))); }

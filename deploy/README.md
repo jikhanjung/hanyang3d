@@ -1,10 +1,12 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.3.0`**, **`honestjung/hanyang3d-multiplayer:v0.2.4`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.3.1`**, **`honestjung/hanyang3d-multiplayer:v0.3.1`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
 ## 함께 걷기 릴리스
+
+`v0.3.1`은 함께 걷기 서버의 입장 검사(방 생성 전 정적 onAuth, 방 수 상한, 채팅 기록 1회)와 Nginx 요청 제한·HSTS를 더해 웹과 멀티플레이 이미지를 함께 빌드한다(`bash deploy/build.sh v0.3.1`, 배포 `bash deploy.sh v0.3.1 v0.3.1`). Nginx 설정 변경은 호스트 묶음의 `hanyang3d.nginx.conf`를 사이트 설정으로 복사하고 `nginx -t` 후 reload한다. [기록](../devlog/20260915_121_walk_backoffice_hardening.md)
 
 `deploy/build.sh v0.3.0 --web-only`로 웹 이미지·지도 데이터·호스트 묶음을 만든다. `MULTIPLAYER_IMAGE_TAG=v0.2.4`는 유지하며 Colyseus 이미지를 다시 빌드하거나 배포하지 않는다. 서버 로직 변경 시에만 멀티플레이 이미지 버전도 갱신한다. `WALK_WORLD_VERSION`(현재 v0.2.4)은 웹 버전과 독립이며 공간·프로토콜 호환성이 바뀔 때 갱신한다.
 

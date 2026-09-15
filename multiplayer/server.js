@@ -21,6 +21,7 @@ const server = new Server({ transport, greet: false, express: app => {
     protocolVersion: 2, npcCount: world.routes.reduce((count, route) => count + route.count, 0),
   }));
 } });
-server.define('hanyang_walk', WalkRoom).filterBy(['mapVersion', 'alignment', 'protocolVersion']);
+// mapVersion is validated in WalkRoom.onAuth but not used as a filter, so clients cannot open rooms at will.
+server.define('hanyang_walk', WalkRoom).filterBy(['alignment', 'protocolVersion']);
 await server.listen(Number(process.env.WALK_PORT || 2567), process.env.WALK_HOST || '127.0.0.1');
 console.log('한양 함께 걷기 서버가 준비되었습니다.');

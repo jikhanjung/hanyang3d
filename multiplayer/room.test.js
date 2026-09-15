@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readPose, readChat } from './room.js';
+import { readPose, readChat, readJoinOptions, roomLimitReached } from './room.js';
 import { normalizePlayerName } from '../webapp/static/player_name.js';
 import { createWalkingSimulation, buildWalkingRoutes } from '../webapp/static/walking_simulation.js';
 import { npcWorld } from './npc_world.js';
@@ -66,4 +66,22 @@ test('random starts vary positions and speeds while preserving routes and repeat
   }
   for (let i = 0; i < 20; i++) { a.step(.1); b.step(.1); }
   assert.deepEqual(a.snapshot(), b.snapshot());
+});
+
+test('join options are checked before any room exists', () => {
+  const routeKey = npcWorld('mountains').routeKey;
+  const ok = { name: '한양 나그네', protocolVersion: 2, alignment: 'mountains', mapVersion: 'v0.2.4', routeKey };
+  assert.deepEqual(readJoinOptions(ok), { name: '한양 나그네' });
+  for (const bad of [{ ...ok, name: '' }, { ...ok, protocolVersion: 3 }, { ...ok, alignment: 'arbitrary' },
+    { ...ok, mapVersion: 'random-123' }, { ...ok, mapVersion: 7 }, { ...ok, routeKey: 'forged' }, {}]) {
+    assert.ok(readJoinOptions(bad).error, JSON.stringify(bad));
+  }
+});
+
+test('no new room past the cap while every room is full', () => {
+  const full = { clients: 32, maxClients: 32 }, open = { clients: 3, maxClients: 32 };
+  assert.equal(roomLimitReached([], 2), false);
+  assert.equal(roomLimitReached([full], 2), false);
+  assert.equal(roomLimitReached([full, full], 2), true);
+  assert.equal(roomLimitReached([full, open], 2), false);
 });

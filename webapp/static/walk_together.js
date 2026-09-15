@@ -21,6 +21,13 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     peers.delete(id);
   }
 
+  // A failed or dropped connection also leaves first person, so the button label and the view agree.
+  // exit() calls stop() itself, so the message is written after it.
+  function fail(message) {
+    if (firstPerson.active) firstPerson.exit();
+    stop(message);
+  }
+
   function stop(message = '') {
     generation++;
     pending = false;
@@ -62,7 +69,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     button.textContent = '접속 취소';
     status.hidden = false; status.textContent = '함께 걸을 공간에 접속 중…';
     const timeout = setTimeout(() => {
-      if (generation === attempt) stop('접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.');
+      if (generation === attempt) fail('접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.');
     }, 10000);
     try {
       const client = new window.Colyseus.Client(endpoint);
@@ -98,10 +105,10 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
         status.textContent = `접속자 ${peers.size + 1}명`;
       });
       joined.onLeave(() => {
-        if (room === joined) { room = null; stop('연결이 끊겼습니다. 1인칭을 눌러 다시 접속하세요.'); }
+        if (room === joined) { room = null; fail('연결이 끊겼습니다. 1인칭을 눌러 다시 접속하세요.'); }
       });
       joined.onError(() => {
-        if (room === joined) stop('연결 오류가 발생했습니다. 1인칭을 눌러 다시 접속하세요.');
+        if (room === joined) fail('연결 오류가 발생했습니다. 1인칭을 눌러 다시 접속하세요.');
       });
       const send = () => {
         if (!firstPerson.active) { stop(); return; }
@@ -111,9 +118,8 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       send(); sendTimer = setInterval(send, 100);
     } catch (error) {
       if (generation === attempt) {
-        stop([4001, 4002, 4003].includes(error.code) ? error.message : '접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.');
+        fail([422, 412, 429, 4003].includes(error.code) ? error.message : '접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.');
         if (error.code === 4003) {
-          firstPerson.exit();
           if (await profile.requestName({ force: true, message: error.message })) start();
         }
       }

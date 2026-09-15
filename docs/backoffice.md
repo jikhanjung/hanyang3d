@@ -55,7 +55,7 @@ DB에서 공개한 변경은 다음 지도·안내 페이지 요청부터 반영
 
 ## 컨테이너의 DB 모드
 
-2026-09-15 운영 웹 v0.3.0을 DB 모드로 전환했다. [운영 백오피스](https://hanyang3d.nopeoplestime.info/backoffice/)의 관리자 ID는 `admin`이다. 초기 비밀번호는 개발 호스트의 Git 제외 파일 `.env.admin`(권한 600)에 전달하며 운영 문서나 저장소에 기록하지 않는다. 첫 로그인 후 관리자 화면에서 비밀번호를 변경할 수 있다. Docker 이미지 자체의 기본값은 기존 배포 호환을 위해 `files`다.
+2026-09-15 운영 웹 v0.3.0을 DB 모드로 전환했다. [운영 백오피스](https://hanyang3d.nopeoplestime.info/backoffice/)의 관리자 계정과 초기 비밀번호는 개발 호스트의 Git 제외 파일 `.env.admin`(권한 600)에 전달하며 운영 문서나 저장소에 기록하지 않는다. 로그인 화면은 Nginx가 IP당 분당 10회(버스트 5)로 제한한다. 첫 로그인 후 관리자 화면에서 비밀번호를 변경할 수 있다. Docker 이미지 자체의 기본값은 기존 배포 호환을 위해 `files`다.
 
 DB 전환 시 `deploy/host/docker-compose.content.yml`을 기본 Compose와 함께 사용한다. `/srv/hanyang3d/content`만 `/content`로 쓰기 마운트하며 원본 지도 `/runtime`은 계속 읽기 전용이다. 백업 디렉터리는 웹 컨테이너에 마운트하지 않는다.
 

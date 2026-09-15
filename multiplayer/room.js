@@ -1,4 +1,4 @@
-import { Room, ServerError } from '@colyseus/core';
+import { Room, ServerError, matchMaker } from '@colyseus/core';
 import { createWalkingSimulation } from '../webapp/static/walking_simulation.js';
 import { normalizePlayerName } from '../webapp/static/player_name.js';
 import { npcWorld } from './npc_world.js';
@@ -18,6 +18,29 @@ export function readChat(value) {
   return text && [...text].length <= 200 ? text : null;
 }
 
+// Errors thrown here become the HTTP status of the matchmaking response, so they use HTTP codes
+// (422 name, 412 data mismatch, 429 full); the duplicate-name check in onJoin keeps its WebSocket code 4003.
+// Rooms are created only after these checks pass, during the matchmaking HTTP request (static onAuth runs
+// before a room exists). Everything a client sends is validated; the room filter is limited to the two map
+// alignments, and no new room is opened past MAX_ROOMS while every existing room is still full.
+export const MAX_ROOMS = Number(process.env.WALK_MAX_ROOMS || 8);
+export const ALIGNMENTS = new Set(['mountains', 'base']);
+
+export function readJoinOptions(options = {}) {
+  const name = normalizePlayerName(options.name);
+  if (!name) return { error: [422, '이름은 1~16자의 문자·숫자·공백·_ . -로 입력해 주세요.'] };
+  if (options.protocolVersion !== 2 || !ALIGNMENTS.has(options.alignment) ||
+      typeof options.mapVersion !== 'string' || !/^v\d+\.\d+\.\d+$/.test(options.mapVersion) ||
+      options.routeKey !== npcWorld(options.alignment).routeKey) {
+    return { error: [412, '지도와 함께 걷기 서버의 자료가 다릅니다. 페이지를 새로 고쳐 주세요.'] };
+  }
+  return { name };
+}
+
+export function roomLimitReached(rooms, max = MAX_ROOMS) {
+  return rooms.length >= max && rooms.every(room => room.clients >= room.maxClients);
+}
+
 const colors = Array.from({ length: 32 }, (_, i) => `hsl(${Math.round(i * 137.508) % 360}, 48%, ${i % 2 ? 44 : 62}%)`);
 
 export class WalkRoom extends Room {
@@ -27,6 +50,7 @@ export class WalkRoom extends Room {
   identities = new Map();
   chatHistory = [];
   lastChat = new Map();
+  historySent = new Set();
   chatSequence = 0;
 
   onCreate(options) {
@@ -38,7 +62,12 @@ export class WalkRoom extends Room {
       const identity = this.identities.get(client.sessionId);
       if (pose && identity) this.players.set(client.sessionId, { id: client.sessionId, ...identity, ...pose });
     });
-    this.onMessage('chat-history', client => client.send('chat-history', this.chatHistory));
+    // Each session gets the history once; repeated requests are ignored so they cannot amplify traffic.
+    this.onMessage('chat-history', client => {
+      if (this.historySent.has(client.sessionId)) return;
+      this.historySent.add(client.sessionId);
+      client.send('chat-history', this.chatHistory);
+    });
     this.onMessage('chat', (client, value) => {
       const identity = this.identities.get(client.sessionId), text = readChat(value), now = Date.now();
       if (!identity) return;
@@ -60,13 +89,13 @@ export class WalkRoom extends Room {
     }, 100);
   }
 
-  onAuth(client, options) {
-    const name = normalizePlayerName(options.name);
-    if (!name) throw new ServerError(4001, '이름은 1~16자의 문자·숫자·공백·_ . -로 입력해 주세요.');
-    if (options.protocolVersion !== 2 || options.routeKey !== this.world.routeKey) {
-      throw new ServerError(4002, '지도와 함께 걷기 서버의 자료가 다릅니다. 페이지를 새로 고쳐 주세요.');
-    }
-    return { name };
+  static async onAuth(token, options) {
+    const checked = readJoinOptions(options);
+    if (checked.error) throw new ServerError(...checked.error);
+    let rooms = [];
+    try { rooms = await matchMaker.query({ name: 'hanyang_walk' }); } catch (error) { console.error('room query failed', error.message); }
+    if (roomLimitReached(rooms)) throw new ServerError(429, '함께 걷기 공간이 모두 찼습니다. 잠시 뒤 다시 시도해 주세요.');
+    return { name: checked.name };
   }
 
   onJoin(client) {
@@ -82,6 +111,7 @@ export class WalkRoom extends Room {
     this.players.delete(client.sessionId);
     this.identities.delete(client.sessionId);
     this.lastChat.delete(client.sessionId);
+    this.historySent.delete(client.sessionId);
     this.broadcast('walkers', [...this.players.values()]);
   }
 }
