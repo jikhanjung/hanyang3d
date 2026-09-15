@@ -21,15 +21,15 @@
 
 ## 운영 주소
 
-2026-09-15 dolfinid에 웹·멀티플레이 v0.3.4(소스 `5ad68b8`)를 DB 모드로 배포했다. 이전 기록: 같은 날 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 처음 배포했다.
+2026-09-15 dolfinid에 웹 v0.3.6(소스 `87fb143`)을 DB 모드로 배포했다. 멀티플레이는 v0.3.4(소스 `5ad68b8`)를 유지한다. 이전 기록: 같은 날 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 처음 배포했다.
 
 - 전체 화면 3D (기본 페이지): https://hanyang3d.nopeoplestime.info/
 - 도구 포함 3D 화면: https://hanyang3d.nopeoplestime.info/gis/terrain/3d/
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.3.4`
-  - digest: `sha256:a9e4b903ae83df6b25c8b2852f7b98e4fcc1cf9e2f396a3ab481bb62dc69582b`
+- 웹: `honestjung/hanyang3d:v0.3.6`
+  - digest: `sha256:75bc6f8b7c174d4f7a4f3bdb5bfb3c5253ebf28f22ee03a8203c640dc74a1b44`
 - 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.3.4`
   - digest: `sha256:2ae04b94ef5af855b2b5bb38259821feb9768fa09b69699413716d7fb4707b79`
 
