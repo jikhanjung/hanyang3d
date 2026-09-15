@@ -26,3 +26,10 @@
 - Django 29개 통과: 참조가 끊긴 모형·다리 행이 건너뛰어지고 보고되며 `/`는 200, `/healthz` 상태 ok와 경고 목록 일치, 운영용 키 검사.
 - 이미지 지원 검사 명령을 로컬 이미지에 돌려 v0.3.1은 통과, 콘텐츠 DB가 없는 이전 이미지는 거부됨을 확인했다.
 - 스키마 검사 명령을 임시 DB에 돌려 깨끗한 DB는 통과, 없는 migration 행(`0099_future`)을 넣으면 종료 코드 1을 확인했다.
+
+## 배포
+
+- dolfinid에 웹 v0.3.2 배포(`bash deploy.sh v0.3.2 v0.3.1`, 멀티플레이 v0.3.1 유지). 배포 전 설정·호스트 파일을 `releases-v0.3.2.*`(권한 700)에 보존. Nginx 사이트 설정은 v0.3.1과 같아 바꾸지 않았다.
+- 새 `deploy.sh`로 배포해 콘텐츠 DB 지원·스키마 검사와 `healthcheck.py --deploy`(콘텐츠 경고 없음, `/`·`/guide/` 200)를 통과했다.
+- 웹 digest `sha256:1e31a62661b01c90d1d2335a6cd44491e319904db80fef23a62e855ed93d11f6`.
+- 운영 확인: `/healthz` v0.3.2(database, 건물 103·이야기 33, `content_warnings` 없음, 백업 실패 없음), `/`·`/guide/`·`/gis/terrain/3d/` 200, HSTS 유지, `/multiplayer/healthz` v0.3.1.
