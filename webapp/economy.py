@@ -92,6 +92,10 @@ def trade(player, action, shop, item, quantity):
         name, unit = data['items'][item]['name'], data['items'][item]['unit']
         stock = PlayerItem.objects.filter(player=player, item=item).first()
         if action == 'buy':
+            # Some goods (a horse's reins) make sense only once in a pack.
+            limit = data['items'][item].get('max_owned')
+            if limit and (stock.quantity if stock else 0) + quantity > limit:
+                raise TradeError(400, f'{name}은(는) {limit}{unit}이면 족하오.')
             cost = data['items'][item]['price'] * quantity
             if player.money < cost:
                 raise TradeError(400, '엽전이 모자라오.')

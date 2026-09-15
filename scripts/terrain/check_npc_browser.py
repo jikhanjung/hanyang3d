@@ -47,7 +47,7 @@ with sync_playwright() as p:
     # Coins and the pack live on the server; the page shows them in the coin display.
     page.wait_for_function("terrain3d.shop?.state.ready")
     # Logging in happens only when entering first person; until then the coin display stays hidden.
-    assert page.evaluate("document.getElementById('money-hud').hidden && !terrain3d.shop.state.loggedIn")
+    assert page.evaluate("document.getElementById('money-hud').hidden && getComputedStyle(document.getElementById('money-hud')).display==='none' && !terrain3d.shop.state.loggedIn")
     page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
 
     def click(kind, ident):
@@ -124,7 +124,7 @@ with sync_playwright() as p:
     assert name in hud and '엽전' in hud, hud
     page.evaluate('terrain3d.firstPerson.exit()')
     # Outside first person the name and coin display is hidden even while logged in.
-    assert page.evaluate("document.getElementById('money-hud').hidden && terrain3d.shop.state.loggedIn")
+    assert page.evaluate("document.getElementById('money-hud').hidden && getComputedStyle(document.getElementById('money-hud')).display==='none' && terrain3d.shop.state.loggedIn")
     click('merchant', merchant_index)
     page.click('.npc-line')
     page.locator('.npc-options button', has_text='거래하기').click()
@@ -164,7 +164,7 @@ with sync_playwright() as p:
     page.evaluate('terrain3d.firstPerson.exit()') if page.evaluate('terrain3d.firstPerson.active') else None
     click('dealer', 0)
     dealer = page.evaluate(state)
-    assert dealer['overlay'] and dealer['name'] == '말 장수' and len(dealer['options']) == 4, dealer
+    assert dealer['overlay'] and dealer['name'] == '말 장수' and len(dealer['options']) == 5 and any('거래하기' in o for o in dealer['options']), dealer
     page.click('.npc-line')
     page.keyboard.press('1')
     page.click('.npc-line')

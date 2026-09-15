@@ -95,6 +95,18 @@ class EconomyTests(TestCase):
         self.assertFalse(PlayerItem.objects.exists())
         self.assertEqual(list(Trade.objects.order_by('created_at').values_list('action', 'money_delta')), [('buy', -2 * price), ('sell', 2 * sell_price('cotton_bolt'))])
 
+    def test_only_one_horse_can_be_owned(self):
+        data = catalog()
+        price = data['items']['horse_reins']['price']
+        self.assertEqual(self.post(action='buy', shop='말 장수', item='horse_reins', quantity=2).status_code, 400)
+        response = self.post(action='buy', shop='말 장수', item='horse_reins', quantity=1)
+        self.assertEqual((response.status_code, response.json()['items']), (200, {'horse_reins': 1}))
+        again = self.post(action='buy', shop='말 장수', item='horse_reins', quantity=1)
+        self.assertEqual(again.status_code, 400)
+        self.assertIn('족하오', again.json()['error'])
+        self.assertEqual(self.client.get('/api/player/').json()['money'], data['wallet']['start'] - price)
+        self.assertEqual(self.post(action='buy', shop='면포전', item='horse_reins', quantity=1).status_code, 400)
+
     def test_invalid_trades_change_nothing(self):
         player = Player.objects.get()
         before = player.money

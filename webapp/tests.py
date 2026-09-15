@@ -176,7 +176,7 @@ class ReviewTests(TestCase):
             shop = data['shops'][zone['hangul']]
             self.assertTrue(shop['items'] and all(item in data['items'] for item in shop['items']), zone['hangul'])
         for item in data['items'].values():
-            self.assertTrue(isinstance(item['price'], int) and item['price'] > 0 and item['icon']['shape'] in ('bolt', 'roll', 'fish'))
+            self.assertTrue(isinstance(item['price'], int) and item['price'] > 0 and item['icon']['shape'] in ('bolt', 'roll', 'fish', 'reins'))
         self.assertContains(self.client.get('/'), 'id="npcs"')
 
     def test_read_only(self):

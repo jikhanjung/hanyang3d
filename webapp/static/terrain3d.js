@@ -9,7 +9,7 @@ import {createSiteMarker} from './site_marker.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
 import {createDrill} from './drill.js';
-import {createHorseDealer} from './horse_dealer.js';
+import {createHorse,createHorseDealer} from './horse_dealer.js';
 import {createNpcDialogue} from './npc_dialogue.js';
 import {createShop} from './shop.js';
 import {createPagoda} from './pagoda.js';
@@ -853,12 +853,15 @@ async function main(){
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  // The shop owns the account state (login, coins); the walking profile takes its name from it.
  const npcData=JSON.parse(el('npcs').textContent);
- shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit()});
+ shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),
+  onUse:id=>npcData.items[id]?.use==='mount'?(firstPerson?.active?firstPerson.setMounted(!firstPerson.mounted):'1인칭에서만 말을 탈 수 있소.'):null});
  const walkProfile=createWalkProfile({account:shop});
  firstPerson=(()=>{
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
   // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S.
-  let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0;
+  // Riding (the reins used from the pack): three times the fast walk, the rider and eye raised by the horse's back.
+  let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0,mounted=false,horse=null;
+  const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
   const positionWorld={alignment:alignTerrain?'mountains':'base',routeKey:pedestrians.routeKey};
   const eye=new THREE.Vector3(),boom=new THREE.Vector3();
   const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick');canvas.tabIndex=0;
@@ -880,8 +883,10 @@ async function main(){
    const ground=groundAt(camera.position.x,camera.position.z);
    if(ground!==null)camera.position.y=Math.max(camera.position.y,ground+.6);
    if(walker){
+    const feet=eye.y-eyeHeight();
     walker.group.visible=view>=.8;
-    walker.group.position.set(eye.x,eye.y-1.65,eye.z);walker.group.rotation.y=yaw+Math.PI;
+    walker.group.position.set(eye.x,feet+(mounted?SADDLE:0),eye.z);walker.group.rotation.y=yaw+Math.PI;
+    if(horse){horse.group.visible=mounted&&view>=.8;horse.group.position.set(eye.x,feet,eye.z);horse.group.rotation.y=yaw+Math.PI}
    }
   }
   function look(){camera.rotation.set(pitch,yaw+lookYaw,0,'YXZ');place();if(active)navigation.update(yaw,eye)}
@@ -896,7 +901,7 @@ async function main(){
    yaw=spawn.yaw;pitch=0;lookYaw=0;
    const ground=groundAt(spawn.x,spawn.z);if(!Number.isFinite(ground))return;
    controls.enabled=false;active=true;clearInput();lastGround=ground;
-   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();eye.set(spawn.x,ground+1.65,spawn.z);
+   camera.near=.08;camera.fov=70;camera.updateProjectionMatrix();mounted=false;eye.set(spawn.x,ground+eyeHeight(),spawn.z);
    if(!walker){walker=createWalker();scene.add(walker.group)}
    if(walker.group.userData.playerName!==walkProfile.name){const tag=walker.group.getObjectByName('player-name');if(tag){tag.material.map.dispose();tag.material.dispose();tag.removeFromParent()}addPlayerNameTag(walker.group,walkProfile.name)}
    walked=0;walker.update(0,false);look();
@@ -905,7 +910,7 @@ async function main(){
   function exit(){
    rememberPosition();
    together?.stop();
-   if(!active)return;active=false;clearInput();hud.hidden=true;shop?.showHud(false);navigation.hide();if(walker)walker.group.visible=false;
+   if(!active)return;active=false;clearInput();hud.hidden=true;shop?.showHud(false);navigation.hide();if(walker)walker.group.visible=false;mounted=false;if(horse)horse.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
   }
   function update(dt){
@@ -913,26 +918,47 @@ async function main(){
    if(lookYaw&&!drag?.look){lookYaw*=Math.exp(-8*Math.min(dt,.1));if(Math.abs(lookYaw)<1e-3)lookYaw=0;look()}
    const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
    const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
-   const speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?8:3)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
+   // Selling the reins (or logging out) takes the horse away.
+   if(mounted&&!(shop?.state.items[RIDE_ITEM]>0))setMounted(false);
+   const speed=(mounted?RIDE:keys.has('ShiftLeft')||keys.has('ShiftRight')?FAST:WALK)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
    let moved=false;
    if(dx||dz){
-    // Buildings, walls, shop rows and other walkers block the character; slide along them.
-    const [x,z]=collision?collision.move(eye.x,eye.z,eye.x+dx,eye.z+dz,.35,(px,pz)=>pedestrians?.near(px,pz,.6)):[eye.x+dx,eye.z+dz];
-    const ground=groundAt(x,z);
-    // Avoid walking off abrupt terrain steps or out of the prepared region.
-    if((x!==eye.x||z!==eye.z)&&ground!==null&&Math.abs(ground-lastGround)<.7){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;lastGround=ground;moved=true}
+    // Buildings, walls, shop rows and other walkers block the character; slide along them. Move in steps of at most
+    // half a metre so a galloping horse cannot pass through a thin wall in one frame.
+    const steps=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.5));
+    for(let i=0;i<steps;i++){
+     const [x,z]=collision?collision.move(eye.x,eye.z,eye.x+dx/steps,eye.z+dz/steps,.35,(px,pz)=>pedestrians?.near(px,pz,.6)):[eye.x+dx/steps,eye.z+dz/steps];
+     const ground=groundAt(x,z);
+     // Avoid walking off abrupt terrain steps or out of the prepared region.
+     if((x!==eye.x||z!==eye.z)&&ground!==null&&Math.abs(ground-lastGround)<.7){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;lastGround=ground;moved=true}else break;
+    }
    }
-   const ground=groundAt(eye.x,eye.z);if(ground!==null){lastGround=ground;eye.y=ground+1.65}
-   walker?.update(walked,moved);
+   const ground=groundAt(eye.x,eye.z);if(ground!==null){lastGround=ground;eye.y=ground+eyeHeight()}
+   walker?.update(walked,moved&&!mounted,mounted);
+   if(mounted)horse.update(performance.now(),moved);
    look();
    if(performance.now()-lastRemembered>=1000)rememberPosition();
+  }
+  const RIDE_ITEM=Object.keys(npcData.items).find(id=>npcData.items[id].use==='mount');
+  // Mount or dismount; returns the message shown in the pack window.
+  function setMounted(on){
+   if(on&&!active)return '1인칭에서만 말을 탈 수 있소.';
+   if(on&&!(shop?.state.items[RIDE_ITEM]>0))return '말고삐가 없소.';
+   mounted=on;
+   if(on&&!horse){horse=createHorse();horse.group.name='player-horse';scene.add(horse.group)}
+   if(horse)horse.group.visible=on;
+   walker?.update(walked,false,on);
+   if(lastGround!==null)eye.y=lastGround+eyeHeight();
+   look();
+   return on?'말에 올랐소. 빨리 달릴 수 있소.':'말에서 내렸소.';
   }
   const movement=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
   document.addEventListener('keydown',event=>{
    if(!active)return;if(event.code==='Escape'){event.preventDefault();exit();return}
    if(event.target.matches?.('input,select,textarea,button'))return;
    if(event.altKey&&event.code==='KeyW'){event.preventDefault();autoRun=!autoRun;return}
+   if(event.code==='KeyI'&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();shop?.togglePack();return}
    if(autoRun&&['KeyW','KeyS','ArrowUp','ArrowDown'].includes(event.code))autoRun=false;
    if(movement.has(event.code)){event.preventDefault();keys.add(event.code)}
   });
@@ -953,8 +979,8 @@ async function main(){
   document.querySelector('.toolbar').addEventListener('click',event=>{if(active&&event.target.closest('button')&&!['map-options-toggle','walk-together'].includes(event.target.id))exit()},true);
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
-  function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+1.65,z);lastGround=g;yaw=heading;look();return true}
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
+  function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;look();return true}
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
  })();
  const togetherStatus=document.createElement('div');togetherStatus.id='walk-together-status';togetherStatus.hidden=true;togetherStatus.setAttribute('role','status');
  Object.assign(togetherStatus.style,{position:'absolute',top:'64px',left:'12px',zIndex:'25',background:'#fffdf2eb',padding:'6px 10px',borderRadius:'5px',fontSize:'12px',maxWidth:'calc(100% - 150px)',pointerEvents:'none'});el('scene').append(togetherStatus);
@@ -1004,7 +1030,7 @@ async function main(){
    if(!horseDealer?.visible)return null;
    const person=horseDealer.userData.person,at=person.getWorldPosition(new THREE.Vector3()),distance=hitTest(event,at,1.9,150);if(distance===null)return null;
    const d=npcData.horse_dealer;
-   return {distance,npc:{key:'horse-dealer',mode:'overlay',portrait:'horseDealer',name:d.name,subtitle:d.subtitle,nodes:d.nodes,position:()=>person.getWorldPosition(feet),maxDistance:150,
+   return {distance,npc:{key:'horse-dealer',mode:'overlay',portrait:'horseDealer',name:d.name,subtitle:d.subtitle,nodes:d.nodes,merchant:{trade:'말 장수',sells:'말'},position:()=>person.getWorldPosition(feet),maxDistance:150,
     finish:()=>horseDealer.userData.stopTalk(),face:camera=>horseDealer.userData.face(camera)}};
   }});
   npcDialogue.register({pick(event,hitTest){

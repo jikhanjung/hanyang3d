@@ -21,15 +21,15 @@
 
 ## 운영 주소
 
-2026-09-16 dolfinid에 웹 v0.3.10(이름·엽전 표시는 1인칭에서만)을 DB 모드로 배포했다. 직전 2026-09-15 웹 v0.3.9(수표교 말 장수·마전교 이야기·궁감의 긴 이야기, digest `sha256:f5e3456e5e59641835c3033e86dd8731e4c24ef8243790d13a213f42964b163a`). 멀티플레이는 v0.3.8(소스 `4867efa`, 1인칭 진입 시 로그인·계정 이름 함께 걷기 입장권)을 유지한다. v0.3.8 배포 때 서버 `.env`에 `WALK_TICKET_SECRET`을 만들어 넣었다(값은 출력·기록하지 않음). 이전 기록: 같은 날 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 처음 배포했다.
+2026-09-16 dolfinid에 웹 v0.3.11(말 장수에게 말 사기·봇짐·말 타기)을 DB 모드로 배포했다. 같은 날 앞서 웹 v0.3.10(이름·엽전 표시는 1인칭에서만, digest `sha256:6e8451f8bdbb7f289809fe7dfb7b7cc8fe2d6fee14c090b8e609ffa80098c050`). 직전 2026-09-15 웹 v0.3.9(수표교 말 장수·마전교 이야기·궁감의 긴 이야기, digest `sha256:f5e3456e5e59641835c3033e86dd8731e4c24ef8243790d13a213f42964b163a`). 멀티플레이는 v0.3.8(소스 `4867efa`, 1인칭 진입 시 로그인·계정 이름 함께 걷기 입장권)을 유지한다. v0.3.8 배포 때 서버 `.env`에 `WALK_TICKET_SECRET`을 만들어 넣었다(값은 출력·기록하지 않음). 이전 기록: 같은 날 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 처음 배포했다.
 
 - 전체 화면 3D (기본 페이지): https://hanyang3d.nopeoplestime.info/
 - 도구 포함 3D 화면: https://hanyang3d.nopeoplestime.info/gis/terrain/3d/
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.3.10`
-  - digest: `sha256:6e8451f8bdbb7f289809fe7dfb7b7cc8fe2d6fee14c090b8e609ffa80098c050`
+- 웹: `honestjung/hanyang3d:v0.3.11`
+  - digest: `sha256:5450a130b8dcd03bf30e6202547a4b925f1f68b72c1815cef9448f8eeb5f75fd`
 - 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.3.8`
   - digest: `sha256:078fe801b3a551f0aac76cd7b97491bd82bebdfae9b08ec0200069aef80eb2dd`
 

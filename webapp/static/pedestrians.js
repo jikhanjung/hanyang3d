@@ -93,10 +93,14 @@ export function createWalker(){
   group.add(leg);group.add(arm);return {side,leg,arm};
  });
  let swing=0;
- function update(distance,moving){
+ function update(distance,moving,seated=false){
   // Ease the stride out when the walker stops so the pose settles upright.
   swing=moving?Math.sin(distance*1.9)*.45:swing*.82;
-  for(const {side,leg,arm} of limbs){leg.rotation.x=swing*side;arm.rotation.x=-swing*side}
+  // On horseback the legs straddle forward and the arms hold the reins.
+  for(const {side,leg,arm} of limbs){
+   if(seated){leg.rotation.set(-1.25,0,side*.3);arm.rotation.set(-.7,0,0)}
+   else{leg.rotation.set(swing*side,0,0);arm.rotation.set(-swing*side,0,0)}
+  }
  }
  update(0,false);
  return {group,update};
