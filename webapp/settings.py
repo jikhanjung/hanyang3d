@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 RUNTIME_DATA_ROOT = Path(os.environ.get('HANYANG_DATA_ROOT', str(BASE_DIR)))
 REQUIRE_DATA_BUNDLE = os.environ.get('HANYANG_REQUIRE_BUNDLE', '0') == '1'
 APP_VERSION = os.environ.get('HANYANG_VERSION', (BASE_DIR / 'deploy/DOCKER_VERSION').read_text().strip())
+WALK_WORLD_VERSION = os.environ.get('HANYANG_WALK_WORLD_VERSION', 'v0.2.4')
 MULTIPLAYER_URL = os.environ.get('HANYANG_MULTIPLAYER_URL', '/multiplayer')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or secrets.token_urlsafe(48)
 DEBUG = False

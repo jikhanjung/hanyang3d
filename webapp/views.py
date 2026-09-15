@@ -46,6 +46,7 @@ def terrain3d(request, canvas_only=False):
         'canvas_only': canvas_only,
         'guide_anchors': render_guide()['anchors'],
         'app_version': settings.APP_VERSION,
+        'walk_world_version': settings.WALK_WORLD_VERSION,
         'multiplayer_url': settings.MULTIPLAYER_URL,
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),

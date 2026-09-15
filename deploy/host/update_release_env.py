@@ -4,7 +4,7 @@ import re
 import sys
 
 
-def update(contents, version, multiplayer):
+def update(contents, version, multiplayer, multiplayer_version=None):
     if not re.fullmatch(r'v\d+\.\d+\.\d+', version):
         raise ValueError('Invalid release version')
     lines = contents.splitlines(keepends=True)
@@ -16,6 +16,10 @@ def update(contents, version, multiplayer):
     if multiplayer:
         profiles.append('multiplayer')
     replacements = {'IMAGE_TAG': version, 'DATA_VERSION': version, 'COMPOSE_PROFILES': ','.join(profiles)}
+    if multiplayer_version is not None:
+        if not re.fullmatch(r'v\d+\.\d+\.\d+', multiplayer_version):
+            raise ValueError('Invalid multiplayer version')
+        replacements['MULTIPLAYER_IMAGE_TAG'] = multiplayer_version
     output, seen = [], set()
     for line in lines:
         match = re.match(r'\s*(?:export\s+)?([A-Za-z_][A-Za-z_0-9]*)\s*=', line)
@@ -33,6 +37,6 @@ def update(contents, version, multiplayer):
 
 
 if __name__ == '__main__':
-    source, destination, version, multiplayer = sys.argv[1:]
+    source, destination, version, multiplayer, *extra = sys.argv[1:]
     path = Path(source)
-    Path(destination).write_text(update(path.read_text() if path.exists() else '', version, multiplayer == '1'))
+    Path(destination).write_text(update(path.read_text() if path.exists() else '', version, multiplayer == '1', extra[0] if extra else None))

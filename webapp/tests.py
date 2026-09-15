@@ -65,6 +65,12 @@ class ReviewTests(TestCase):
         for text in ('FABDEM V1.2', 'CC BY-NC-SA 4.0', '서울역사박물관', 'Three.js', 'Permission is hereby granted'):
             self.assertContains(response, text)
 
+    def test_web_release_does_not_change_walking_world(self):
+        with self.settings(APP_VERSION='v9.9.9'):
+            response = self.client.get('/')
+            self.assertEqual(response.context['walk_world_version'], 'v0.2.4')
+            self.assertEqual(response.context['app_version'], 'v9.9.9')
+
     def test_home_opens_fullscreen_3d(self):
         response = self.client.get('/')
         self.assertContains(response, '<body class="canvas-only">')

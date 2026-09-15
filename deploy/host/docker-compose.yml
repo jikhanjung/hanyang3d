@@ -28,7 +28,7 @@ services:
         max-file: "3"
   multiplayer:
     profiles: [multiplayer]
-    image: honestjung/hanyang3d-multiplayer:${IMAGE_TAG:?Set IMAGE_TAG}
+    image: honestjung/hanyang3d-multiplayer:${MULTIPLAYER_IMAGE_TAG:-${IMAGE_TAG:?Set IMAGE_TAG}}
     ports:
       - "127.0.0.1:${MULTIPLAYER_PORT:-8015}:2567"
     environment:

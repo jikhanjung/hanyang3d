@@ -21,6 +21,13 @@ class ReleaseEnvironmentTests(unittest.TestCase):
         self.assertEqual(module.update(updated, 'v0.2.0', True), updated)
         self.assertEqual(module.update(updated, 'v0.1.39', False), source)
 
+    def test_independent_multiplayer_tag_preserves_content_settings(self):
+        source = 'IMAGE_TAG=v0.2.4\nDATA_VERSION=v0.2.4\nCOMPOSE_FILE=docker-compose.yml:docker-compose.content.yml\nHOST_PORT=8013\n'
+        result = module.update(source, 'v0.3.0', True, 'v0.2.4')
+        self.assertIn('MULTIPLAYER_IMAGE_TAG=v0.2.4\n', result)
+        self.assertIn('COMPOSE_FILE=docker-compose.yml:docker-compose.content.yml\n', result)
+        self.assertEqual(module.update(result, 'v0.3.0', True), result)
+
     def test_failed_upgrade_restores_settings_and_stops_multiplayer(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)

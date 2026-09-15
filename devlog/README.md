@@ -12,6 +12,7 @@
 
 ## 작업 기록
 
+- [119: 운영 콘텐츠 DB 전환과 백업 연결](20260915_119_content_database_release.md)
 - [118: 콘텐츠 DB·리소스 목록·백오피스 기반](20260915_118_content_backoffice.md)
 - [117: 1750년 전후의 사건을 장소 이야기로 추가](20260915_117_stories_near_1750.md)
 - [116: 마지막 걷기 위치 복원과 NPC 무작위 시작](20260915_116_resume_walk_random_npcs.md)

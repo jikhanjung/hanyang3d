@@ -107,9 +107,15 @@ def main():
     parser.add_argument('--database', default='/srv/hanyang3d/content/content.sqlite3')
     parser.add_argument('--directory', default='/srv/hanyang3d/backups/content/hourly')
     parser.add_argument('--keep', type=int, default=HOURLY_KEEP)
+    parser.add_argument('--snapshot', help='Create one pre-deploy snapshot at a new path; no rotation')
     args = parser.parse_args()
     try:
-        path = run_backup(args.database, args.directory, args.keep)
+        if args.snapshot:
+            path = Path(args.snapshot)
+            path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+            backup_database(args.database, path)
+        else:
+            path = run_backup(args.database, args.directory, args.keep)
     except Exception as exc:
         parser.exit(1, f'Backup failed; previous snapshots retained: {exc}\n')
     print('Verified snapshot:', path, flush=True)

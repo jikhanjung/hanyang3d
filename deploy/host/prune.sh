@@ -30,6 +30,10 @@ for version in "${versions[@]}"; do
     (( ${#survivors[@]} >= keep )) && break
     survivors+=("$version")
 done
+mp_current=$(sed -n 's/^MULTIPLAYER_IMAGE_TAG=//p' .env)
+if [[ -n "$mp_current" && " ${survivors[*]} " != *" $mp_current "* ]]; then
+    survivors+=("$mp_current")
+fi
 keeping=" ${survivors[*]} "
 echo "Running $current; keeping${keeping% }."
 

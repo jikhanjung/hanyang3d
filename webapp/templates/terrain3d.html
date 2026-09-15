@@ -55,7 +55,7 @@
 {{ wall|json_script:"wall" }}
 {{ guide_anchors|json_script:'guide-anchors' }}
 {{ multiplayer_url|json_script:'multiplayer-url' }}
-{{ app_version|json_script:'map-version' }}
+{{ walk_world_version|json_script:'map-version' }}
 <script src="/v/{{ app_version }}/webapp/static/vendor/colyseus/colyseus.js"></script>
 <script type="importmap">{"imports":{"three":"/v/{{ app_version }}/webapp/static/vendor/three/three.module.js"}}</script>
 <script src="/v/{{ app_version }}/webapp/static/tps.js"></script><script src="/v/{{ app_version }}/webapp/static/ground_support.js"></script><script src="/v/{{ app_version }}/webapp/static/channel_terrain.js"></script><script type="module" src="/v/{{ app_version }}/webapp/static/terrain3d.js"></script></body></html>
