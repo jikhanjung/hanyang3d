@@ -21,11 +21,11 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     peers.delete(id);
   }
 
-  // A failed or dropped connection also leaves first person, so the button label and the view agree.
-  // exit() calls stop() itself, so the message is written after it.
+  // A failed or dropped connection keeps first person (walking alone still works); the button then leaves first
+  // person, so its label says so.
   function fail(message) {
-    if (firstPerson.active) firstPerson.exit();
     stop(message);
+    if (firstPerson.active) { button.textContent = '전체 지도 시점'; button.setAttribute('aria-pressed', 'true'); }
   }
 
   function stop(message = '') {
@@ -72,8 +72,12 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       if (generation === attempt) fail('접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.');
     }, 10000);
     try {
+      // The web server vouches for the account name with a short-lived signed ticket.
+      const ticketResponse = await fetch('/api/walk-ticket', { credentials: 'same-origin', cache: 'no-store' });
+      if (!ticketResponse.ok) throw Object.assign(new Error('로그인이 확인되지 않았소. 1인칭으로 다시 들어오시오.'), { code: 403 });
+      const { ticket } = await ticketResponse.json();
       const client = new window.Colyseus.Client(endpoint);
-      const joined = await client.joinOrCreate('hanyang_walk', { mapVersion, alignment, protocolVersion: 2, routeKey: pedestrians.routeKey, name: profile.name });
+      const joined = await client.joinOrCreate('hanyang_walk', { mapVersion, alignment, protocolVersion: 2, routeKey: pedestrians.routeKey, name: profile.name, ticket });
       if (generation !== attempt) { await joined.leave(); return; }
       room = joined; pending = false;
       chat.connect();
@@ -118,10 +122,8 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       send(); sendTimer = setInterval(send, 100);
     } catch (error) {
       if (generation === attempt) {
-        fail([422, 412, 429, 4003].includes(error.code) ? error.message : '접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.');
-        if (error.code === 4003) {
-          if (await profile.requestName({ force: true, message: error.message })) start();
-        }
+        fail(error.code === 4003 ? '이 이름으로 이미 함께 걷는 중이오. 다른 창을 닫고 다시 들어오시오.'
+          : [403, 422, 412, 429].includes(error.code) ? error.message : '함께 걷기 서버에 접속하지 못했소. 혼자 걸을 수 있소.');
       }
     } finally { clearTimeout(timeout); }
   }
@@ -143,7 +145,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     }
   }
 
-  button.addEventListener('click', () => room || pending ? firstPerson.exit() : start());
+  button.addEventListener('click', () => room || pending || firstPerson.active ? firstPerson.exit() : start());
   window.addEventListener('pagehide', () => stop());
   return { update, stop, get connected() { return !!room; }, get peers() { return peers; } };
 }

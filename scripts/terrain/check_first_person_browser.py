@@ -1,9 +1,11 @@
 from playwright.sync_api import sync_playwright
+
+from account_login import login
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/home/jikhanjung/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',headless=True,args=['--no-sandbox','--enable-unsafe-swiftshader'])
  page=b.new_page(viewport={'width':1440,'height':1080});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
- page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
  page.goto('http://127.0.0.1:8000/gis/terrain/3d/',wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=300000)
+ login(page)
  page.evaluate('terrain3d.renderer.setAnimationLoop(null)');saved=page.evaluate('terrain3d.camera.position.toArray()')
  page.evaluate('terrain3d.firstPerson.enter()')
  assert page.evaluate('terrain3d.firstPerson.active&&!terrain3d.controls.enabled&&terrain3d.camera.near===.08&&Math.abs(terrain3d.firstPerson.eye.y-terrain3d.firstPerson.ground-1.65)<1e-6')

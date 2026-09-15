@@ -1,5 +1,6 @@
 """Check the public HTTPS deployment and its fully loaded Three.js scene."""
 import argparse
+import secrets
 import json
 import os
 from pathlib import Path
@@ -35,13 +36,12 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={'width': 1440, 'height': 1080})
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
-    page.add_init_script("localStorage.setItem('hanyang3d-player-name','배포 검사')")
     page.goto(base + '/', wait_until='domcontentloaded')
     page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden', timeout=300000)
     assert page.evaluate('!!window.terrain3d?.ready'), page.locator('#error').inner_text()
     assert not page.locator('body > header').is_visible()
     assert not page.locator('#building-info').is_visible()
-    assert not page.locator('footer').is_visible()
+    assert not page.locator('body > footer').is_visible()
     assert page.locator('#map-controls').is_visible()
     assert not page.locator('#anchors3d').is_checked()
     # Reading the rect in the page avoids Playwright's stability wait while the scene renders.
@@ -96,7 +96,12 @@ with sync_playwright() as p:
     assert page.evaluate('terrain3d.historical.material.opacity === 0.3')
     assert not page.locator('#anchors3d').is_visible()
     assert not page.evaluate('terrain3d.labels.visible')
+    # Entering first person asks for an account; a throwaway one is registered (its password is never printed).
     page.locator('#walk-together').click()
+    page.wait_for_selector('#account-overlay:not([hidden])')
+    page.fill('#account-dialog input[name=name]', '배포검사' + str(secrets.randbelow(900000) + 100000))
+    page.fill('#account-dialog input[name=password]', secrets.token_urlsafe(16))
+    page.click('#account-dialog button[value=register]')
     page.wait_for_function("document.getElementById('walk-together').getAttribute('aria-pressed') === 'true'")
     assert page.evaluate('terrain3d.firstPerson.walker.group.visible && terrain3d.firstPerson.view > 1')
     assert page.evaluate('terrain3d.camera.position.distanceTo(terrain3d.firstPerson.eye) > 1')

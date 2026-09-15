@@ -1,17 +1,21 @@
 """Two independent browser sessions: presence, movement, exit and rejoin."""
 import argparse
+import random
 from playwright.sync_api import sync_playwright
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--url', default='http://127.0.0.1:18015')
 args = parser.parse_args()
+suffix = str(random.randint(1000, 9999))
+NAME_A, NAME_B, PASSWORD = '한양 길동' + suffix, '서울 나그네' + suffix, 'walk-check-pass'
+MESSAGE = "document.querySelector('#account-overlay .account-message').textContent"
 
 with sync_playwright() as p:
     browser = p.chromium.launch(args=['--no-sandbox', '--use-angle=vulkan',
         '--enable-features=Vulkan', '--ignore-gpu-blocklist'])
     errors = []
     contexts = [browser.new_context(viewport={'width': 1100, 'height': 800}) for _ in range(2)]
-    contexts[0].add_init_script("""if(location.protocol.startsWith('http')){const key='hanyang3d-walk-position:'+encodeURIComponent('한양 길동')+':mountains';if(localStorage.getItem(key)===null)localStorage.setItem(key,'{broken');}""")
+    contexts[0].add_init_script("""if(location.protocol.startsWith('http')){const key='hanyang3d-walk-position:'+encodeURIComponent('""" + NAME_A + """'.toLowerCase())+':mountains';if(localStorage.getItem(key)===null)localStorage.setItem(key,'{broken');}""")
     pages = [context.new_page() for context in contexts]
     for index, page in enumerate(pages):
         page.on('pageerror', lambda error: errors.append(str(error)))
@@ -28,35 +32,32 @@ with sync_playwright() as p:
         }''')
         assert page.locator('#first-person3d').count() == 0
         assert page.locator('#walk-together').inner_text() == '1인칭'
+        # Entering first person asks for the account (name and password); cancelling stays in the map view.
         if index == 0:
             page.dispatch_event('#walk-together', 'click')
-            page.wait_for_selector('#walk-name-dialog[open]')
-            # Native dialog.close() queues its close event; wait for cancellation
-            # to settle before dispatching a synthetic second click.
-            page.evaluate("document.getElementById('walk-name-dialog').addEventListener('close', () => window.nameDialogClosed = true, {once:true})")
-            page.click('#walk-name-cancel')
-            page.wait_for_function('window.nameDialogClosed === true')
+            page.wait_for_selector('#account-overlay:not([hidden])')
+            page.click('#account-overlay .account-cancel')
+            page.wait_for_selector('#account-overlay', state='hidden')
             assert not page.evaluate('terrain3d.firstPerson.active')
-            page.dispatch_event('#walk-together', 'click')
-        else:
-            page.dispatch_event('#walk-together', 'click')
-        page.wait_for_selector('#walk-name-dialog[open]')
-        page.fill('#walk-name-input', '<script>')
-        page.click('#walk-name-form button[type=submit]')
-        assert page.locator('#walk-name-dialog').evaluate('(d) => d.open')
-        page.fill('#walk-name-input', '한양 길동')
-        page.click('#walk-name-form button[type=submit]')
+        page.dispatch_event('#walk-together', 'click')
+        page.wait_for_selector('#account-overlay:not([hidden])')
+        page.fill('#account-dialog input[name=name]', '<script>')
+        page.fill('#account-dialog input[name=password]', PASSWORD)
+        page.click('#account-dialog button[value=register]')
+        page.wait_for_function(MESSAGE + ".includes('이름은')")
+        page.fill('#account-dialog input[name=name]', NAME_A)
+        page.click('#account-dialog button[value=register]')
         if index == 1:
-            page.wait_for_function("document.getElementById('walk-name-dialog').open && document.getElementById('walk-name-error').textContent.includes('이미 사용')")
+            page.wait_for_function(MESSAGE + ".includes('이미 쓰는')")
             assert not page.evaluate('terrain3d.firstPerson.active')
-            page.fill('#walk-name-input', '서울 나그네')
-            page.click('#walk-name-form button[type=submit]')
+            page.fill('#account-dialog input[name=name]', NAME_B)
+            page.click('#account-dialog button[value=register]')
         page.wait_for_function('terrain3d.firstPerson.active')
     for page in pages:
         page.wait_for_function("document.getElementById('walk-together-status').textContent.includes('2명')", timeout=20000)
         page.wait_for_function("terrain3d.scene.children.filter(o => o.name === 'remote-walker').length === 1")
     a, b = pages
-    for page, expected in [(a, '서울 나그네'), (b, '한양 길동')]:
+    for page, expected in [(a, NAME_B), (b, NAME_A)]:
         assert page.evaluate("terrain3d.scene.children.find(o=>o.name==='remote-walker').userData.playerName") == expected
         page.wait_for_function('terrain3d.pedestrians.networkSnapshot?.npcs.length === 130')
         assert page.is_disabled('#walking3d')
@@ -73,7 +74,7 @@ with sync_playwright() as p:
     a.locator('#walk-chat-input').press('Enter')
     b.wait_for_function("document.getElementById('walk-chat-messages').textContent.includes('안녕하세요')")
     assert b.locator('#walk-chat-messages img').count() == 0
-    assert '한양 길동:' in b.locator('#walk-chat-messages').text_content()
+    assert NAME_A + ':' in b.locator('#walk-chat-messages').text_content()
     a.locator('#walk-chat-input').press('Escape')
     assert not a.locator('#walk-chat').is_visible()
     assert a.evaluate('terrain3d.firstPerson.active')
@@ -112,7 +113,7 @@ with sync_playwright() as p:
     assert b.evaluate("terrain3d.scene.children.filter(o => o.name === 'remote-walker').length") == 0
     assert a.evaluate("document.getElementById('walk-together-status').hidden")
     a.dispatch_event('#walk-together', 'click')
-    assert not a.locator('#walk-name-dialog').evaluate('(d) => d.open')
+    assert a.evaluate("document.getElementById('account-overlay').hidden")
     b.wait_for_function("document.getElementById('walk-together-status').textContent.includes('2명')")
     a.wait_for_function('p => Math.hypot(terrain3d.firstPerson.eye.x-p.x,terrain3d.firstPerson.eye.z-p.z)<1e-6 && Math.abs(terrain3d.firstPerson.yaw-.7)<1e-6', arg=position)
     a.wait_for_function("document.getElementById('walk-chat-messages').textContent.includes('안녕하세요')")

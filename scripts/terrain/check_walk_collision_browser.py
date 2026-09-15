@@ -1,12 +1,14 @@
 """Verify walking collision, pedestrian side-stepping, building popups and the 경복궁 label."""
 import argparse
 from playwright.sync_api import sync_playwright
+
+from account_login import login
 parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:18014');parser.add_argument('--chromium-path');args=parser.parse_args()
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=args.chromium_path,args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
  page=b.new_page(viewport={'width':1100,'height':800});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
- page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_function('window.terrain3d?.ready',timeout=400000)
+ login(page)
  page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
  assert page.get_attribute('#map-options-toggle','aria-label')=='설정'
  assert page.evaluate("terrain3d.districtNames.children.some(c=>c.userData.name==='경복궁')")

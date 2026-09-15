@@ -1,10 +1,15 @@
 import assert from 'node:assert/strict';
 import { Client } from '@colyseus/sdk';
 import { npcWorld } from './npc_world.js';
+import { makeTicket } from './walk_ticket.js';
 
 const client = new Client(process.env.WALK_URL || 'http://127.0.0.1:2567');
 const rooms = [];
-const options = { mapVersion: 'v0.0.0', alignment: 'mountains', protocolVersion: 2, routeKey: npcWorld().routeKey, name: '테스트 나그네' };
+// With WALK_TICKET_SECRET set, every join carries a ticket for its name (as the web server would issue it).
+const secret = process.env.WALK_TICKET_SECRET;
+const baseOptions = { mapVersion: 'v0.0.0', alignment: 'mountains', protocolVersion: 2, routeKey: npcWorld().routeKey };
+const withTicket = value => secret && typeof value.name === 'string' ? { ...value, ticket: makeTicket(value.name, secret) } : value;
+const options = { ...baseOptions, name: '테스트 나그네' };
 const wait = (predicate, message) => new Promise((resolve, reject) => {
   const started = Date.now();
   const timer = setInterval(() => {
@@ -13,10 +18,10 @@ const wait = (predicate, message) => new Promise((resolve, reject) => {
   }, 20);
 });
 try {
-  const a = await client.joinOrCreate('hanyang_walk', { ...options, name: '한양사람' }); rooms.push(a);
+  const a = await client.joinOrCreate('hanyang_walk', withTicket({ ...options, name: '한양사람' })); rooms.push(a);
   const npcHistory = new Map();
   a.onMessage('npcs', state => npcHistory.set(state.tick, state));
-  const b = await client.joinOrCreate('hanyang_walk', { ...options, name: '길동' }); rooms.push(b);
+  const b = await client.joinOrCreate('hanyang_walk', withTicket({ ...options, name: '길동' })); rooms.push(b);
   let bNpcs;
   b.onMessage('npcs', state => { bNpcs = state; });
   a.reconnection.enabled = b.reconnection.enabled = false;
@@ -31,14 +36,14 @@ try {
   assert.equal(bPoses.find(p => p.id === a.sessionId).name, '한양사람');
   assert.notEqual(aPoses[0].color, aPoses[1].color);
   assert.notEqual(aPoses.find(p => p.id === a.sessionId).color, '#000000');
-  await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, name: ' 한양사람 ' }), /이미 사용/);
+  await assert.rejects(client.joinOrCreate('hanyang_walk', withTicket({ ...options, name: ' 한양사람 ' })), /이미 사용/);
   // Reserve names before the first pose, including concurrent case variants.
-  const raced = await Promise.allSettled(['Alice', 'alice'].map(name => client.joinOrCreate('hanyang_walk', { ...options, name })));
+  const raced = await Promise.allSettled(['Alice', 'alice'].map(name => client.joinOrCreate('hanyang_walk', withTicket({ ...options, name }))));
   assert.equal(raced.filter(result => result.status === 'fulfilled').length, 1);
   const reserved = raced.find(result => result.status === 'fulfilled').value; rooms.push(reserved);
   reserved.onMessage('walkers', () => {}); reserved.onMessage('npcs', () => {});
   await reserved.leave(); rooms.splice(rooms.indexOf(reserved), 1);
-  const reused = await client.joinOrCreate('hanyang_walk', { ...options, name: 'ALICE' }); rooms.push(reused);
+  const reused = await client.joinOrCreate('hanyang_walk', withTicket({ ...options, name: 'ALICE' })); rooms.push(reused);
   reused.onMessage('walkers', () => {}); reused.onMessage('npcs', () => {});
   await reused.leave(); rooms.splice(rooms.indexOf(reused), 1);
   const messagesA = [], messagesB = [], chatErrors = [];
@@ -74,10 +79,10 @@ try {
   a.send('pose', { x: 8, z: 9, yaw: 2 });
   await wait(() => bPoses.some(p => p.id === a.sessionId && p.x === 8), 'movement must arrive');
   // A different map version no longer opens its own room; only the map alignment separates spaces.
-  const sameSpace = await client.joinOrCreate('hanyang_walk', { ...options, mapVersion: 'v9.9.9', name: '다른판' }); rooms.push(sameSpace);
+  const sameSpace = await client.joinOrCreate('hanyang_walk', withTicket({ ...options, mapVersion: 'v9.9.9', name: '다른판' })); rooms.push(sameSpace);
   assert.equal(sameSpace.roomId, a.roomId);
   await sameSpace.leave(); rooms.splice(rooms.indexOf(sameSpace), 1);
-  const otherVersion = await client.joinOrCreate('hanyang_walk', { ...options, alignment: 'base', routeKey: npcWorld('base').routeKey, name: '기준배치' }); rooms.push(otherVersion);
+  const otherVersion = await client.joinOrCreate('hanyang_walk', withTicket({ ...options, alignment: 'base', routeKey: npcWorld('base').routeKey, name: '기준배치' })); rooms.push(otherVersion);
   otherVersion.onMessage('walkers', () => {});
   let otherNpcs;
   otherVersion.onMessage('npcs', snapshot => { otherNpcs = snapshot; });
@@ -85,10 +90,10 @@ try {
   await wait(() => otherNpcs, 'new space must publish NPCs');
   assert.notDeepEqual(otherNpcs.npcs.map(p => p[6]), bNpcs.npcs.map(p => p[6]));
   assert.ok(bNpcs.npcs.every(p => p[7] >= .8 && p[7] <= 1.3)); // speeds are rounded to centimetres per second
-  await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, name: '<script>' }), /이름/);
-  await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, routeKey: 'wrong' }), /자료/);
-  await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, mapVersion: 'random-123', name: '위조' }), /자료/);
-  await assert.rejects(client.joinOrCreate('hanyang_walk', { ...options, alignment: 'arbitrary', name: '위조' }), /자료/);
+  await assert.rejects(client.joinOrCreate('hanyang_walk', withTicket({ ...options, name: '<script>' })), /이름|로그인/);
+  await assert.rejects(client.joinOrCreate('hanyang_walk', withTicket({ ...options, routeKey: 'wrong' })), /자료/);
+  await assert.rejects(client.joinOrCreate('hanyang_walk', withTicket({ ...options, mapVersion: 'random-123', name: '위조' })), /자료/);
+  await assert.rejects(client.joinOrCreate('hanyang_walk', withTicket({ ...options, alignment: 'arbitrary', name: '위조' })), /자료/);
   await b.leave();
   rooms.splice(rooms.indexOf(b), 1);
   await wait(() => aPoses.length === 1, 'leaving must remove the character');

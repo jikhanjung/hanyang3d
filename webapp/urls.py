@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/account/register', views.account_register, name='account-register'),
     path('api/account/login', views.account_login, name='account-login'),
     path('api/account/logout', views.account_logout, name='account-logout'),
+    path('api/walk-ticket', views.walk_ticket, name='walk-ticket'),
     path('gis/terrain/3d/', views.terrain3d, name='terrain3d'),
     path('gis/terrain/', views.terrain_overlay, name='terrain-overlay'),
     path('', views.terrain3d, {'canvas_only': True}, name='home'),

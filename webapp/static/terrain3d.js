@@ -841,7 +841,10 @@ async function main(){
   return {show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
  })();
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
- const walkProfile=createWalkProfile();
+ // The shop owns the account state (login, coins); the walking profile takes its name from it.
+ const npcData=JSON.parse(el('npcs').textContent);
+ shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit()});
+ const walkProfile=createWalkProfile({account:shop});
  firstPerson=(()=>{
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
   // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S.
@@ -874,7 +877,7 @@ async function main(){
   function look(){camera.rotation.set(pitch,yaw+lookYaw,0,'YXZ');place();if(active)navigation.update(yaw,eye)}
   function enter(){
    if(active)return;clearHover();press=null;
-   if(!walkProfile.name){walkProfile.requestName().then(name=>{if(name)enter()});return false}
+   if(!walkProfile.name){walkProfile.requestName({message:'1인칭으로 들어가려면 이름을 대시오.'}).then(name=>{if(name)enter()});return false}
    saved={position:camera.position.clone(),quaternion:camera.quaternion.clone(),target:controls.target.clone(),fov:camera.fov,near:camera.near};
    const path=pedestrians.routes[0].points,index=Math.floor(path.length*.42),p=path[index],q=path[index+1];
    let spawn={x:p.x,z:p.z,yaw:Math.atan2(-(q.x-p.x),-(q.z-p.z))};
@@ -952,10 +955,9 @@ async function main(){
  renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();el('error').textContent='3D 그래픽 연결이 끊겼습니다. 페이지를 새로 고쳐 주세요.'});
  // NPC conversations and the shop. Facts in dialogue carry sources; greetings do not.
  {
-  const npcData=JSON.parse(el('npcs').textContent),fill=(text,values)=>text.replace(/\{(\w+)\}/g,(_,k)=>values[k]??'');
+  const fill=(text,values)=>text.replace(/\{(\w+)\}/g,(_,k)=>values[k]??'');
   const fillNodes=(nodes,values)=>Object.fromEntries(Object.entries(nodes).map(([id,n])=>[id,{...n,text:fill(n.text,values)}]));
   const pickOne=(list,seed)=>list[Math.abs(Math.floor(seed))%list.length];
-  shop=createShop({container:el('scene'),data:npcData});
   npcDialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:npcData.note,onAction:(action,npc)=>{if(action==='shop'&&npc.merchant)shop.open(npc.merchant)}});
   const shown=o=>{for(let x=o;x;x=x.parent)if(!x.visible)return false;return true};
   const feet=new THREE.Vector3();

@@ -1,7 +1,7 @@
 """Verify NPC conversations and the shop by clicking people on the map.
 
 The keeper and a gate officer open the adventure-style overlay (portrait, name plate, typed text, sourced choices),
-a shopkeeper's 거래하기 asks for an account (sign up), then opens the shop where buying and selling go through the server API (the page shows the
+a shopkeeper's 거래하기 opens the shop for browsing until the account is given on entering first person, after which buying and selling go through the server API (the page shows the
 server's coins and pack), and a passer-by and a
 soldier only greet in a speech bubble.
 """
@@ -44,8 +44,8 @@ with sync_playwright() as p:
     page.wait_for_function('window.terrain3d?.ready', timeout=450000)
     # Coins and the pack live on the server; the page shows them in the coin display.
     page.wait_for_function("terrain3d.shop?.state.ready")
-    hud = page.evaluate("document.getElementById('money-hud').textContent")
-    assert '로그인' in hud, hud
+    # Logging in happens only when entering first person; until then the coin display stays hidden.
+    assert page.evaluate("document.getElementById('money-hud').hidden && !terrain3d.shop.state.loggedIn")
     page.evaluate('terrain3d.renderer.setAnimationLoop(null)')
 
     def click(kind, ident):
@@ -90,15 +90,27 @@ with sync_playwright() as p:
     assert merchant['overlay'] and merchant['name'] == '면포전 상인' and any('거래하기' in o for o in merchant['options']), merchant
     page.click('.npc-line')
     page.locator('.npc-options button', has_text='거래하기').click()
-    # Not logged in: the account dialog opens first; signing up opens the shop with the starting purse.
-    assert page.evaluate("!document.getElementById('account-overlay').hidden")
+    # Not logged in: the shop opens for browsing only and trading asks to enter first person.
+    page.wait_for_function("!document.getElementById('shop-window').hidden")
+    assert page.evaluate("document.getElementById('account-overlay').hidden && document.getElementById('shop-window').classList.contains('browse-only')")
+    page.locator('.shop-goods .shop-slot').first.click()
+    assert '1인칭' in page.evaluate("document.querySelector('.shop-message').textContent")
+    page.keyboard.press('Escape')
+    # Entering first person asks for the account; signing up shows the purse.
+    page.evaluate('terrain3d.firstPerson.enter()')
+    assert page.evaluate("!document.getElementById('account-overlay').hidden && !terrain3d.firstPerson.active")
     name = '검사' + str(__import__('random').randint(1000, 9999))
     page.fill('#account-dialog input[name=name]', name)
     page.fill('#account-dialog input[name=password]', 'check-password-1')
     page.click('#account-dialog button[value=register]')
-    page.wait_for_function("!document.getElementById('shop-window').hidden && terrain3d.shop.state.loggedIn")
+    page.wait_for_function("terrain3d.firstPerson.active && terrain3d.shop.state.loggedIn")
     hud = page.evaluate("document.getElementById('money-hud').textContent")
     assert name in hud and '엽전' in hud, hud
+    page.evaluate('terrain3d.firstPerson.exit()')
+    click('merchant', merchant_index)
+    page.click('.npc-line')
+    page.locator('.npc-options button', has_text='거래하기').click()
+    page.wait_for_function("!document.getElementById('shop-window').hidden && !document.getElementById('shop-window').classList.contains('browse-only')")
     page.wait_for_function("terrain3d.shop.state.ready && !terrain3d.shop.busy")
     shop = page.evaluate("()=>({open:!document.getElementById('shop-window').hidden,title:document.querySelector('.shop-title').textContent,goods:document.querySelectorAll('.shop-goods .shop-slot').length,money:terrain3d.shop.state.money,items:{...terrain3d.shop.state.items}})")
     assert shop['open'] and shop['title'].startswith('면포전') and shop['goods'] >= 1, shop
@@ -118,13 +130,17 @@ with sync_playwright() as p:
     page.keyboard.press('Escape')
     assert page.evaluate("document.getElementById('shop-window').hidden")
     # Log out, then log back in: the purse comes from the server account.
+    # Logging out also leaves first person; entering again asks for the account.
+    page.evaluate('terrain3d.firstPerson.enter()')
+    assert page.evaluate('terrain3d.firstPerson.active')
     page.click('#money-hud .hud-logout')
-    page.wait_for_function("!terrain3d.shop.state.loggedIn")
-    page.click('#money-hud .hud-main')
+    page.wait_for_function("!terrain3d.shop.state.loggedIn && !terrain3d.firstPerson.active && document.getElementById('money-hud').hidden")
+    page.evaluate('terrain3d.firstPerson.enter()')
     page.fill('#account-dialog input[name=name]', name)
     page.fill('#account-dialog input[name=password]', 'check-password-1')
     page.click('#account-dialog button[value=login]')
     page.wait_for_function(f"terrain3d.shop.state.loggedIn && terrain3d.shop.state.money === {sold['money']}")
+    page.evaluate('terrain3d.firstPerson.exit()')
 
     # Passer-by: greeting bubble only.
     click('walker', 5)

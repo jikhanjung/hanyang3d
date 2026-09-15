@@ -21,6 +21,16 @@ try:
             raise RuntimeError(result.stderr)
         time.sleep(.5)
     subprocess.run(['docker', 'exec', cid, 'node', 'check_connections.js'], check=True)
+    # With a ticket secret the server takes names only from signed walk tickets.
+    cid2 = subprocess.check_output(base[:2] + ['-d', '-e', 'WALK_TICKET_SECRET=smoke-only-secret'] + base[2:] + [image], text=True).strip()
+    try:
+        deadline = time.monotonic() + 30
+        while subprocess.run(['docker', 'exec', cid2, 'node', 'healthcheck.js'], capture_output=True).returncode:
+            if time.monotonic() >= deadline: raise RuntimeError('ticket container did not become healthy')
+            time.sleep(.5)
+        subprocess.run(['docker', 'exec', '-e', 'WALK_TICKET_SECRET=smoke-only-secret', cid2, 'node', 'check_connections.js'], check=True)
+    finally:
+        subprocess.run(['docker', 'rm', '-f', cid2], check=True, stdout=subprocess.DEVNULL)
     assert subprocess.check_output(['docker', 'exec', cid, 'id', '-u'], text=True).strip() == '10001'
     print('Multiplayer container passed:', health)
 finally:

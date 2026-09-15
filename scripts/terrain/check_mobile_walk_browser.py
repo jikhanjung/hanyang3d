@@ -25,12 +25,13 @@ with sync_playwright() as p:
     assert controls['x']+controls['width']<=compass_box['x']
     page.locator('#map-options-toggle').tap()
     page.locator('#walk-together').tap()
-    page.wait_for_selector('#walk-name-dialog[open]')
-    name_box = page.locator('#walk-name-dialog').bounding_box()
+    page.wait_for_selector('#account-overlay:not([hidden])')
+    name_box = page.locator('#account-dialog').bounding_box()
     assert name_box['x'] >= 0 and name_box['x'] + name_box['width'] <= 390, name_box
     page.screenshot(path='/tmp/hanyang3d-name-dialog.png')
-    page.fill('#walk-name-input', '검사 나그네')
-    page.locator('#walk-name-form button[type=submit]').tap()
+    page.fill('#account-dialog input[name=name]', '모바일검사' + str(__import__('random').randint(1000, 9999)))
+    page.fill('#account-dialog input[name=password]', 'check-password-1')
+    page.locator('#account-dialog button[value=register]').tap()
     page.wait_for_function('terrain3d.firstPerson.active')
     page.wait_for_function("document.getElementById('walk-together').getAttribute('aria-pressed') === 'true'")
     assert not page.locator('#anchors3d').is_visible()

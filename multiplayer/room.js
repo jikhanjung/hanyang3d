@@ -2,6 +2,7 @@ import { Room, ServerError, matchMaker } from '@colyseus/core';
 import { createWalkingSimulation } from '../webapp/static/walking_simulation.js';
 import { normalizePlayerName } from '../webapp/static/player_name.js';
 import { npcWorld } from './npc_world.js';
+import { verifyTicket } from './walk_ticket.js';
 
 // Presence prototype: terrain collision remains in the browser. Never use these
 // client-reported positions as authority for combat, trades or rewards.
@@ -21,16 +22,24 @@ export function readChat(value) {
 }
 
 // Errors thrown here become the HTTP status of the matchmaking response, so they use HTTP codes
-// (422 name, 412 data mismatch, 429 full); the duplicate-name check in onJoin keeps its WebSocket code 4003.
+// (403 missing or invalid walk ticket, 422 name, 412 data mismatch, 429 full); the duplicate-name check in onJoin keeps its WebSocket code 4003.
 // Rooms are created only after these checks pass, during the matchmaking HTTP request (static onAuth runs
 // before a room exists). Everything a client sends is validated; the room filter is limited to the two map
 // alignments, and no new room is opened past MAX_ROOMS while every existing room is still full.
 export const MAX_ROOMS = Number(process.env.WALK_MAX_ROOMS || 8);
 export const ALIGNMENTS = new Set(['mountains', 'base']);
 
-export function readJoinOptions(options = {}) {
-  const name = normalizePlayerName(options.name);
-  if (!name) return { error: [422, '이름은 1~16자의 한글·한자·영문·숫자·공백·_ . -로 입력해 주세요.'] };
+// With WALK_TICKET_SECRET set (production) the name comes only from a valid ticket signed by the web server for the
+// logged-in account; without it (local development) the typed name is accepted.
+export function readJoinOptions(options = {}, { secret = process.env.WALK_TICKET_SECRET, now } = {}) {
+  let name;
+  if (secret) {
+    name = verifyTicket(options.ticket, secret, now);
+    if (!name) return { error: [403, '로그인이 확인되지 않았소. 1인칭으로 다시 들어오시오.'] };
+  } else {
+    name = normalizePlayerName(options.name);
+    if (!name) return { error: [422, '이름은 1~16자의 한글·한자·영문·숫자·공백·_ . -로 입력해 주세요.'] };
+  }
   if (options.protocolVersion !== 2 || !ALIGNMENTS.has(options.alignment) ||
       typeof options.mapVersion !== 'string' || !/^v\d+\.\d+\.\d+$/.test(options.mapVersion) ||
       options.routeKey !== npcWorld(options.alignment).routeKey) {

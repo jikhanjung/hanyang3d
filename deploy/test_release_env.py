@@ -55,7 +55,11 @@ exit 0
                                     env={**os.environ, 'PATH': str(mock) + os.pathsep + os.environ['PATH']},
                                     capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
-            self.assertEqual((root / '.env').read_text(), original)
+            # The release keys are restored; only the generated walk ticket secret is kept, because the
+            # rolled-back multiplayer service needs it too.
+            restored = (root / '.env').read_text()
+            self.assertTrue(restored.startswith(original), restored)
+            self.assertRegex(restored[len(original):], r'\AWALK_TICKET_SECRET=[0-9a-f]{64}\n\Z')
             self.assertEqual((root / '.env.django').read_text(), 'DJANGO_SECRET_KEY=unchanged\n')
             self.assertIn('compose --profile multiplayer stop multiplayer', (root / 'docker-calls').read_text())
 

@@ -9,6 +9,8 @@ REQUIRE_DATA_BUNDLE = os.environ.get('HANYANG_REQUIRE_BUNDLE', '0') == '1'
 APP_VERSION = os.environ.get('HANYANG_VERSION', (BASE_DIR / 'deploy/DOCKER_VERSION').read_text().strip())
 WALK_WORLD_VERSION = os.environ.get('HANYANG_WALK_WORLD_VERSION', 'v0.2.4')
 MULTIPLAYER_URL = os.environ.get('HANYANG_MULTIPLAYER_URL', '/multiplayer')
+# Shared with the multiplayer server to sign walk tickets that carry the logged-in account name.
+WALK_TICKET_SECRET = os.environ.get('HANYANG_WALK_TICKET_SECRET', '')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or secrets.token_urlsafe(48)
 if os.environ.get('DJANGO_COOKIE_SECURE', '0') == '1':
     # Behind HTTPS every worker must share one real key: a random fallback differs per worker and

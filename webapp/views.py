@@ -200,3 +200,15 @@ def shop_trade(request):
         player.refresh_from_db()
         response = JsonResponse({'error': error.message, **state(player)}, status=error.status)
     return _no_store(response)
+
+
+@require_safe
+def walk_ticket(request):
+    """A one-minute ticket naming the logged-in account, for joining walking together."""
+    from .economy import player_from_cookie
+    from .walk_ticket import make_ticket
+    player = player_from_cookie(request)
+    if not player or not player.name_key:
+        return _no_store(JsonResponse({'error': '먼저 이름을 대고 들어오시오. (로그인)'}, status=401))
+    secret = settings.WALK_TICKET_SECRET
+    return _no_store(JsonResponse({'name': player.name, 'ticket': make_ticket(player.name, secret) if secret else None}))

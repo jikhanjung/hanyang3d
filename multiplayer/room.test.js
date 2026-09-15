@@ -4,6 +4,7 @@ import { readPose, readChat, readJoinOptions, roomLimitReached, roundPose } from
 import { normalizePlayerName } from '../webapp/static/player_name.js';
 import { createWalkingSimulation, buildWalkingRoutes } from '../webapp/static/walking_simulation.js';
 import { npcWorld } from './npc_world.js';
+import { makeTicket, verifyTicket } from './walk_ticket.js';
 
 test('only finite, bounded coordinates reach other browsers', () => {
   for (const pose of [null, {}, { x: '2', z: 1, yaw: 0 }, { x: NaN, z: 1, yaw: 0 },
@@ -97,4 +98,18 @@ test('look-alike letters cannot imitate names; emoji sequences pass chat', () =>
 
 test('NPC snapshots are rounded to centimetres and keep ids', () => {
   assert.deepEqual(roundPose(['road:1', 1.23456, -2.34567, 3.1, 4, 0, 5.555, 1.004]), ['road:1', 1.23, -2.35, 3.1, 4, 0, 5.56, 1]);
+});
+
+test('walk tickets carry the account name and must be signed and fresh', () => {
+  const secret = 'test-secret', routeKey = npcWorld('mountains').routeKey, now = 1_000_000;
+  const base = { protocolVersion: 2, alignment: 'mountains', mapVersion: 'v0.3.7', routeKey };
+  const ticket = makeTicket('한양 길동', secret, now);
+  assert.equal(verifyTicket(ticket, secret, now + 30), '한양 길동');
+  assert.equal(verifyTicket(ticket, secret, now + 61), null);
+  assert.equal(verifyTicket(ticket, 'other-secret', now), null);
+  assert.equal(verifyTicket(ticket.replace(/.$/, c => c === '0' ? '1' : '0'), secret, now), null);
+  // With a secret the typed name is ignored: only the ticket decides.
+  assert.deepEqual(readJoinOptions({ ...base, ticket, name: '사칭' }, { secret, now }), { name: '한양 길동' });
+  assert.equal(readJoinOptions({ ...base, name: '한양 길동' }, { secret, now }).error[0], 403);
+  assert.deepEqual(readJoinOptions({ ...base, name: '로컬 개발' }, { secret: '' }), { name: '로컬 개발' });
 });

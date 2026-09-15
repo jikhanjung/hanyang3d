@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [128 — 1인칭에 들어갈 때만 로그인, 계정 이름으로 함께 걷기](20260915_128_login_on_first_person_walk_tickets.md)
 - [127: 이름·비밀번호 계정, 1인칭 우클릭 둘러보기와 Alt+W 자동 걷기](20260915_127_accounts_first_person_controls.md)
 - [126: 엽전 표시와 서버에 기록하는 잔고](20260915_126_server_wallet.md)
 - [125: NPC 대화 틀, 옛 게임식 대화창, 시전 가게](20260915_125_npc_dialogue_shop.md)

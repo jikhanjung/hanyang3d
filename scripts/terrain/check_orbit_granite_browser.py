@@ -1,6 +1,8 @@
 """Regress close orbit zoom, live terrain picking, granite and mountain labels."""
 from playwright.sync_api import sync_playwright
 
+from account_login import login
+
 with sync_playwright() as p:
     browser = p.chromium.launch(
         executable_path='/home/jikhanjung/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',
@@ -9,9 +11,9 @@ with sync_playwright() as p:
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.on('console', lambda msg: errors.append(msg.text) if msg.type == 'error' and 'favicon' not in msg.text and '404' not in msg.text else None)
-    page.add_init_script("localStorage.setItem('hanyang3d-player-name','검사 나그네')")
     page.goto('http://127.0.0.1:8000/gis/terrain/3d/', wait_until='domcontentloaded')
     page.wait_for_function('window.terrain3d?.ready || !document.getElementById("loading-retry").hidden', timeout=300000)
+    login(page)
     assert page.evaluate('!!window.terrain3d?.ready'), page.locator('#error').inner_text()
     page.evaluate('terrain3d.renderer.setAnimationLoop(null);terrain3d.controls.enableDamping=false')
     labels = page.evaluate('''()=>{const t=terrain3d;t.updateBuildingNames();return {dots:t.labels.children.length,names:t.mountainNames.children.map(m=>m.userData.name)}}''')

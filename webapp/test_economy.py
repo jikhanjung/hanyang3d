@@ -120,3 +120,21 @@ class EconomyTests(TestCase):
         statuses = [self.post(action='buy', shop='내어물전', item='dried_pollack', quantity=1).status_code for _ in range(6)]
         self.assertEqual(statuses[:5], [200] * 5)
         self.assertEqual(statuses[5], 429)
+
+
+class WalkTicketTests(TestCase):
+    def test_ticket_names_the_logged_in_account(self):
+        import hashlib, hmac, base64
+        from django.test import override_settings
+        client = Client(enforce_csrf_checks=True)
+        client.get('/api/player/')
+        self.assertEqual(client.get('/api/walk-ticket').status_code, 401)
+        client.post('/api/account/register', data=json.dumps({'name': '함께걷기', 'password': 'walk-pass-1'}), content_type='application/json', HTTP_X_CSRFTOKEN=client.cookies['csrftoken'].value)
+        with override_settings(WALK_TICKET_SECRET='ticket-test-secret'):
+            data = client.get('/api/walk-ticket').json()
+        payload, signature = data['ticket'].split('.')
+        self.assertEqual(signature, hmac.new(b'ticket-test-secret', payload.encode(), hashlib.sha256).hexdigest())
+        body = json.loads(base64.urlsafe_b64decode(payload + '=' * (-len(payload) % 4)))
+        self.assertEqual(body['name'], '함께걷기')
+        with override_settings(WALK_TICKET_SECRET=''):
+            self.assertIsNone(client.get('/api/walk-ticket').json()['ticket'])

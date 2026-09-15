@@ -4,6 +4,8 @@ import argparse
 
 from playwright.sync_api import sync_playwright
 
+from account_login import login
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--url', default='http://127.0.0.1:18014')
 args = parser.parse_args()
@@ -13,9 +15,9 @@ with sync_playwright() as p:
     page = b.new_page(viewport={'width': 1100, 'height': 800})
     errors = []
     page.on('pageerror', lambda e: errors.append(str(e)))
-    page.add_init_script("localStorage.setItem('hanyang3d-player-name','조작 검사')")
     page.goto(args.url, wait_until='domcontentloaded')
     page.wait_for_function('window.terrain3d?.ready', timeout=450000)
+    login(page)
     page.evaluate('''()=>{const t=terrain3d,fp=t.firstPerson;fp.enter();t.renderer.setAnimationLoop(null);
       const r=t.sijeon.records.find(r=>r.displayed);fp.placeAt(r.x-Math.sin(r.yaw)*12+Math.cos(r.yaw)*20,r.z-Math.cos(r.yaw)*12-Math.sin(r.yaw)*20,0);t.pedestrians.group.visible=false}''')
     assert page.evaluate('terrain3d.firstPerson.active')

@@ -17,6 +17,10 @@ docker run --rm --read-only --tmpfs /tmp:rw,noexec,nosuid,size=64m \
     --mount "type=bind,src=$PWD/data/$version,dst=/runtime,readonly" \
     --entrypoint python "honestjung/hanyang3d:$version" -c \
     'import os; os.environ.setdefault("DJANGO_SETTINGS_MODULE","webapp.settings"); import django; django.setup(); from webapp.deployment import runtime_report; r=runtime_report(True, check_content=False); print(r); raise SystemExit(r["status"] != "ok")'
+# The walk ticket secret signs account names for walking together; create it once and never print it.
+if [[ -f .env ]] && ! grep -q '^WALK_TICKET_SECRET=' .env; then
+    ( umask 077; printf 'WALK_TICKET_SECRET=%s\n' "$(openssl rand -hex 32)" >> .env )
+fi
 next_env=$(mktemp .env.next.XXXXXX)
 trap 'rm -f "$next_env"' EXIT
 python3 update_release_env.py .env "$next_env" "$version" "$multiplayer" "$mp_version"

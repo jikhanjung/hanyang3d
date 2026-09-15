@@ -6,6 +6,8 @@ services:
       - "127.0.0.1:${HOST_PORT:-8013}:8000"
     env_file:
       - .env.django
+    environment:
+      HANYANG_WALK_TICKET_SECRET: ${WALK_TICKET_SECRET:-}
     volumes:
       - type: bind
         source: ./data/${DATA_VERSION:?Set DATA_VERSION}
@@ -33,6 +35,7 @@ services:
       - "127.0.0.1:${MULTIPLAYER_PORT:-8015}:2567"
     environment:
       WALK_ORIGINS: ${WALK_ORIGINS:-https://hanyang3d.nopeoplestime.info}
+      WALK_TICKET_SECRET: ${WALK_TICKET_SECRET:?Set WALK_TICKET_SECRET}
     read_only: true
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=32m
