@@ -17,3 +17,7 @@
 - `check_guards_browser.py`: 도성 문 경비병이 모두 문 중심보다 도성 중심에서 더 멀리 있는지 확인 추가. 스크린숏 카메라도 바깥쪽에서 본다.
 - `check_gate_models_browser.py`: 옹성 쪽이 문보다 도성 중심에서 더 먼지 확인 추가.
 - guards, gate_models, gate_orientation, walk_collision, Django 테스트 통과.
+
+## 배포
+
+- v0.1.37로 배포했다. Docker Hub digest: `sha256:562da578e1ae076e235570d09ab77a5c1116e3149bd4ae415f7fae235e2c795a`. 공개 healthz 정상, resources 85. 서버 이미지는 v0.1.37과 v0.1.36만 남겼다.
