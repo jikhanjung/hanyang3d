@@ -1,12 +1,12 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.2.0`**, **`honestjung/hanyang3d-multiplayer:v0.2.0`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.2.1`**, **`honestjung/hanyang3d-multiplayer:v0.2.1`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 
-## v0.2.0 함께 걷기 릴리스
+## 함께 걷기 릴리스
 
-`deploy/build.sh v0.2.0`은 웹 이미지와 `honestjung/hanyang3d-multiplayer:v0.2.0`을 함께 빌드하고 각각의 컨테이너를 검사한다. `dist/`에는 기존 파일 외에 `hanyang3d-multiplayer-image-v0.2.0.tar.gz`가 생긴다. 운영에서는 두 이미지를 Docker Hub에서 pull한다.
+`deploy/build.sh v0.2.1`은 웹 이미지와 `honestjung/hanyang3d-multiplayer:v0.2.1`을 함께 빌드하고 각각의 컨테이너를 검사한다. `dist/`에는 기존 파일 외에 `hanyang3d-multiplayer-image-v0.2.1.tar.gz`가 생긴다. 운영에서는 두 이미지를 Docker Hub에서 pull한다.
 
 - 웹: `127.0.0.1:8013`, Colyseus: `127.0.0.1:8015`.
 - Nginx `/multiplayer/`는 Colyseus의 HTTP·WebSocket을 같은 HTTPS 도메인으로 전달한다. 상태 확인은 `/multiplayer/healthz`.
@@ -19,28 +19,28 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 
 ## 운영 주소
 
-2026-09-15 dolfinid에 v0.2.0을 배포했다.
+2026-09-15 dolfinid에 v0.2.1을 배포했다.
 
 - 전체 화면 3D (기본 페이지): https://hanyang3d.nopeoplestime.info/
 - 도구 포함 3D 화면: https://hanyang3d.nopeoplestime.info/gis/terrain/3d/
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.2.0`
-  - digest: `sha256:b77c6a2f9dc55935d92036cfea985546d861bd1e6acbc15ac1a18f539c605c88`
-- 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.2.0`
-  - digest: `sha256:f0f17ac02ce17340d01250046d018edf779901f0ad4767f5225adebab51a0e6f`
+- 웹: `honestjung/hanyang3d:v0.2.1`
+  - digest: `sha256:af1aebaa4e649d6be5f4e2c7beed50a2f8e3cec7c0da93c7fa39d43cd9aa67cc`
+- 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.2.1`
+  - digest: `sha256:9a9e40666e5cac66bc9221f09b70a6deb4e148ebecc0513fd64f4d3420feb280`
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 
-`v0.2.0`은 함께 걷기, 첫 진입 이름 입력·머리 위 이름표, NPC 130명의 서버 동기화를 제공한다. `prune.sh`로 정리할 때는 운영 버전과 직전 버전의 이미지·데이터를 남긴다.
+`v0.2.1`은 ‘1인칭’ 단일 진입, 중복 이름 검사·머리 위 이름표·접속자별 옷 색깔, NPC 130명의 서버 동기화와 문자 채팅을 제공한다. `prune.sh`로 정리할 때는 운영 버전과 직전 버전의 이미지·데이터를 남긴다.
 
 ## 구성과 데이터
 
 - 이미지: Django/Three.js 코드, 카탈로그, GIS 판독·배치 JSON, 배포 도구.
 - 데이터 묶음: 카탈로그 원본 23개와 웹에서 제공하는 파생 산출물 9개. 경로·크기·SHA-256을 `manifest.json`에 기록한다.
 - 컨테이너: Gunicorn, UID/GID `10001`, 읽기 전용 루트와 `/runtime`, 임시 작업용 `/tmp`.
-- `/healthz`: 버전 및 제공 파일 92개의 존재 상태. 데이터 누락·버전 불일치 시 503.
+- `/healthz`: 버전 및 제공 파일 93개의 존재 상태. 데이터 누락·버전 불일치 시 503.
 - 시작 시 전체 데이터 SHA-256 검사. 런타임 healthcheck는 존재·크기·버전을 확인한다.
 - 자료 파일의 기존 인용·이용 조건은 카탈로그에 유지한다. 데이터 묶음은 운영 서버 이전용이며 Docker 이미지에 들어가지 않는다.
 
@@ -49,7 +49,7 @@ DB가 없는 서비스이므로 migrate/seed/DB 백업 단계는 없다.
 원본 및 `gis/georeferenced`가 준비된 현재 작업 디렉터리에서:
 
 ```bash
-bash deploy/build.sh v0.2.0
+bash deploy/build.sh v0.2.1
 ```
 
 원본 해시 검사 → 데이터 묶음 → 이미지 빌드 → 컨테이너 내 Django 검사 → 누락/버전 불일치 시작 차단 검사 → 실제 Gunicorn HTTP 검사 → 내보내기 순서다.
@@ -59,11 +59,11 @@ Docker Hub push나 원격 배포는 빌드 명령에 포함하지 않는다.
 생성 파일(Git 제외):
 
 ```text
-dist/hanyang3d-image-v0.2.0.tar.gz
-dist/hanyang3d-multiplayer-image-v0.2.0.tar.gz
-dist/hanyang3d-data-v0.2.0.tar.gz
-dist/hanyang3d-host-v0.2.0.tar.gz
-dist/SHA256SUMS-v0.2.0
+dist/hanyang3d-image-v0.2.1.tar.gz
+dist/hanyang3d-multiplayer-image-v0.2.1.tar.gz
+dist/hanyang3d-data-v0.2.1.tar.gz
+dist/hanyang3d-host-v0.2.1.tar.gz
+dist/SHA256SUMS-v0.2.1
 ```
 
 후속 버전은 `deploy/DOCKER_VERSION`과 `deploy/deploy.toml`을 갱신한 뒤 같은 명령을 사용한다.
@@ -79,22 +79,22 @@ dist/SHA256SUMS-v0.2.0
 
 ```bash
 ssh dolfinid 'mkdir -p ~/hanyang3d-release'
-scp dist/hanyang3d-data-v0.2.0.tar.gz dist/hanyang3d-host-v0.2.0.tar.gz dist/SHA256SUMS-v0.2.0 dolfinid:~/hanyang3d-release/
+scp dist/hanyang3d-data-v0.2.1.tar.gz dist/hanyang3d-host-v0.2.1.tar.gz dist/SHA256SUMS-v0.2.1 dolfinid:~/hanyang3d-release/
 ```
 
 서버에서:
 
 ```bash
 cd ~/hanyang3d-release
-sha256sum --ignore-missing -c SHA256SUMS-v0.2.0
-docker pull honestjung/hanyang3d:v0.2.0
-docker pull honestjung/hanyang3d-multiplayer:v0.2.0
+sha256sum --ignore-missing -c SHA256SUMS-v0.2.1
+docker pull honestjung/hanyang3d:v0.2.1
+docker pull honestjung/hanyang3d-multiplayer:v0.2.1
 sudo install -d -o "$(id -un)" -g "$(id -gn)" /srv/hanyang3d
-tar -xzf hanyang3d-host-v0.2.0.tar.gz -C /srv/hanyang3d
+tar -xzf hanyang3d-host-v0.2.1.tar.gz -C /srv/hanyang3d
 mkdir -p /srv/hanyang3d/data
-mkdir /srv/hanyang3d/data/v0.2.0
-tar -xzf hanyang3d-data-v0.2.0.tar.gz -C /srv/hanyang3d/data/v0.2.0
-chmod -R a+rX /srv/hanyang3d/data/v0.2.0
+mkdir /srv/hanyang3d/data/v0.2.1
+tar -xzf hanyang3d-data-v0.2.1.tar.gz -C /srv/hanyang3d/data/v0.2.1
+chmod -R a+rX /srv/hanyang3d/data/v0.2.1
 cd /srv/hanyang3d
 cp .env.django.example .env.django
 chmod 600 .env.django
@@ -103,7 +103,7 @@ chmod 600 .env.django
 `.env.django`의 `DJANGO_SECRET_KEY`를 충분히 긴 무작위 값으로 바꾼다. 공개 도메인을 쓸 경우 `DJANGO_ALLOWED_HOSTS`에 그 도메인을 추가한다(healthcheck용 `127.0.0.1,localhost` 유지).
 
 ```bash
-bash deploy.sh v0.2.0
+bash deploy.sh v0.2.1
 curl -f http://127.0.0.1:8013/healthz
 ```
 
@@ -247,3 +247,4 @@ v0.1.38은 경회루 연못을 서쪽 담장에서 약 12 m 띄운 수정이다.
 v0.1.39는 경복궁 터를 오가는 궁감과 훈련원 연병장의 훈련 군사다.
 
 v0.2.0은 Colyseus 기반 함께 걷기, 이름 입력·이름표, 보행자 130명과 궁감·훈련 군사의 공통 시간 동기화를 더한다.
+v0.2.1은 걷기 진입을 ‘1인칭’으로 통합하고 이름 중복 검사, 접속자별 옷 색깔, 공간 내 문자 채팅을 더한다.
