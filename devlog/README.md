@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [139 — 걷는 중 두 번째 점프가 안 되던 문제](20260916_139_second_jump_while_walking.md)
 - [138 — 추정 위치 시설 11곳과 장소 이야기 15편](20260916_138_estimated_landmarks_stories.md)
 - [137 — 난간·기단에서 걸어 나가면 떨어지기](20260916_137_fall_off_edges.md)
 - [136 — 랜드마크 추가 후보와 장소 이야기 조사](20260916_136_landmark_story_research.md)

@@ -1027,7 +1027,11 @@ async function main(){
      // falls away by more than a step (off a rail, a terrace or a bridge) the walker goes airborne and gravity
      // brings them down onto whatever is below, so nowhere is a dead end.
      const feet=lastGround+air,ground=groundAt(x,z,feet);
-     if((x!==eye.x||z!==eye.z)&&ground!==null&&ground-feet<STEP){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;air=grounded?(feet-ground>STEP?feet-ground:0):Math.max(0,feet-ground);if(air===0&&vy<0)vy=0;lastGround=ground;moved=true}else break;
+     if((x!==eye.x||z!==eye.z)&&ground!==null&&ground-feet<STEP){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;
+      // Coming down within a hand of the ground counts as landed; otherwise a downhill stride re-adds a few
+      // millimetres of air every frame and the walker never lands while moving (so a second jump is refused).
+      const landing=!grounded&&vy<=0&&feet-ground<.15;
+      air=grounded?(feet-ground>STEP?feet-ground:0):landing?0:Math.max(0,feet-ground);if(air===0&&vy<0)vy=0;lastGround=ground;moved=true}else break;
     }
    }
    // Standing still on ground that moves (height exaggeration, channel carving) stays on the ground; only walking off

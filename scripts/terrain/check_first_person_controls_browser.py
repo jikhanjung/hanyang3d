@@ -64,6 +64,20 @@ with sync_playwright() as p:
     page.keyboard.press('Space')
     jump = page.evaluate('()=>{const fp=terrain3d.firstPerson;let top=0,t=0;for(let i=0;i<60;i++){fp.update(1/30);top=Math.max(top,fp.air);if(i>2&&fp.air===0){t=i;break}}return {top,landedFrame:t,eye:fp.eye.y-fp.ground}}')
     assert .8 < jump['top'] < 1.2 and jump['landedFrame'] > 10 and abs(jump['eye'] - 1.65) < 1e-6, jump
+    # A second jump while still walking downhill: landing must complete without stopping (a downhill stride used to
+    # re-add a few millimetres of air each frame, so the walker never counted as landed).
+    again = page.evaluate('''() => { const t = terrain3d, fp = t.firstPerson, down = c => document.dispatchEvent(new KeyboardEvent('keydown', {code: c, bubbles: true}));
+      let spot = null, best = 0;
+      for (const route of t.pedestrians.routes) { const pts = route.points;
+        for (let i = 0; i + 8 < pts.length; i++) { const a = pts[i], b = pts[i + 8], ga = fp.groundAt(a.x, a.z), gb = fp.groundAt(b.x, b.z);
+          if (ga !== null && gb !== null && ga - gb > best && !t.collision.hit(a.x, a.z, .5)) { best = ga - gb; spot = {a, b}; } } }
+      if (!spot || best < .2) return {error: 'no downhill stretch found', best};
+      fp.placeAt(spot.a.x, spot.a.z, Math.atan2(-(spot.b.x - spot.a.x), -(spot.b.z - spot.a.z)));
+      window.dispatchEvent(new Event('blur'));
+      down('KeyW'); down('Space'); let first = 0; for (let i = 0; i < 90; i++) { fp.update(1 / 30); first = Math.max(first, fp.air); }
+      const settled = fp.air; down('Space'); let second = 0; for (let i = 0; i < 60; i++) { fp.update(1 / 30); second = Math.max(second, fp.air); }
+      document.dispatchEvent(new KeyboardEvent('keyup', {code: 'KeyW'})); return {first, settled, second}; }''')
+    assert again['first'] > .8 and again['settled'] == 0 and again['second'] > .8, again
     assert not errors, errors
     print('PASS: first-person controls', {'look_offset': round(during['look'], 2), 'turned': round(yaw1 - yaw0, 2), 'auto_run_m': round(moved, 1), 'jump_m': round(jump['top'], 2)}, flush=True)
     b.close()
