@@ -20,9 +20,10 @@ def load_stories():
     return _load(file.stat().st_mtime_ns)
 
 
-def stories_by_place():
+def stories_by_place(lang='ko'):
     # The guide lists stories under the place they belong to, in file order.
+    from .i18n import localize
     groups = {}
-    for story in load_stories()['stories']:
+    for story in localize(load_stories(), lang)['stories']:
         groups.setdefault(story['target']['label'], []).append(story)
     return list(groups.items())

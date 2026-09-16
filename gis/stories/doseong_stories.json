@@ -21,13 +21,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 인조반정",
-     "url": "https://encykorea.aks.ac.kr/Article/E0047030"
+     "url": "https://encykorea.aks.ac.kr/Article/E0047030",
+     "title_en": "Encyclopedia of Korean Culture: The Injo Restoration (Injo banjeong)"
     },
     {
      "title": "한국민족문화대백과사전 서울 창의문",
-     "url": "https://encykorea.aks.ac.kr/Article/E0055516"
+     "url": "https://encykorea.aks.ac.kr/Article/E0055516",
+     "title_en": "Encyclopedia of Korean Culture: Changuimun, Seoul"
     }
-   ]
+   ],
+   "title_en": "The Gate the Coup Came Through",
+   "text_en": "On the night of March 13, 1623, rebel troops gathered at Hongjewon broke through Changuimun and headed for Changdeokgung. That night Gwanghaegun was deposed and Injo took the throne. The gate had long been kept closed because of a geomantic (pungsu) reading that it pressed down on Gyeongbokgung; the present gate tower was built in 1741 (Yeongjo year 17)."
   },
   {
    "id": "segeomjeong-name",
@@ -43,9 +47,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 세검정 터",
-     "url": "https://encykorea.aks.ac.kr/Article/E0029740"
+     "url": "https://encykorea.aks.ac.kr/Article/E0029740",
+     "title_en": "Encyclopedia of Korean Culture: Segeomjeong Site"
     }
-   ]
+   ],
+   "title_en": "The Pavilion Where Swords Were Washed",
+   "text_en": "It is said to have been built in 1747 (Yeongjo year 23) as a resting pavilion for soldiers of the Chongyungcheong. The name carries a story that Yi Gwi, Kim Ryu, and others plotted the Injo Restoration here and washed their swords afterward, but there are several accounts of its origin. When compilation of the Annals (Sillok) was finished, the drafts were washed away in water in a rite called secho, performed in the stream nearby."
   },
   {
    "id": "sukjeongmun-closed",
@@ -61,9 +68,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 숙정문",
-     "url": "https://encykorea.aks.ac.kr/Article/E0031852"
+     "url": "https://encykorea.aks.ac.kr/Article/E0031852",
+     "title_en": "Encyclopedia of Korean Culture: Sukjeongmun"
     }
-   ]
+   ],
+   "title_en": "The North Gate That Stayed Shut",
+   "text_en": "In 1413 (Taejong year 13), the geomancy student Choe Yang-seon submitted that the ridges on either side of Baegak were the two arms of Gyeongbokgung and that the road should be blocked; the gate was closed and pine trees were planted to stop passage. In times of severe drought there was a rain-praying custom of opening this north gate, which corresponds to yin, and closing the south gate, which corresponds to yang."
   },
   {
    "id": "sukjeongmun-three-visits",
@@ -79,13 +89,17 @@
    "sources": [
     {
      "title": "국가유산청 월간 「600여 년의 회한 속에 그늘진 북문, 숙정문」",
-     "url": "https://www.khs.go.kr/cop/bbs/selectBoardArticle.do?nttId=5454&bbsId=BBSMSTR_1008&pageUnit=10&searchtitle=title&mn=NS_01_09_01"
+     "url": "https://www.khs.go.kr/cop/bbs/selectBoardArticle.do?nttId=5454&bbsId=BBSMSTR_1008&pageUnit=10&searchtitle=title&mn=NS_01_09_01",
+     "title_en": "Korea Heritage Service monthly, \"Sukjeongmun, the North Gate Shadowed by Six Hundred Years of Regret\""
     },
     {
      "title": "한국민족문화대백과사전 숙정문",
-     "url": "https://encykorea.aks.ac.kr/Article/E0031852"
+     "url": "https://encykorea.aks.ac.kr/Article/E0031852",
+     "title_en": "Encyclopedia of Korean Culture: Sukjeongmun"
     }
-   ]
+   ],
+   "title_en": "Three Visits to Ward Off Misfortune",
+   "text_en": "A custom is recorded that if a woman visited Sukjeongmun three times before the first full moon of the lunar year, she would escape misfortune that year (some writings cite the Dongguk sesigi as the source). A popular belief that opening the north gate would disturb public morals is also passed down."
   },
   {
    "id": "sungnyemun-plaque",
@@ -101,13 +115,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 서울 숭례문",
-     "url": "https://encykorea.aks.ac.kr/Article/E0028017"
+     "url": "https://encykorea.aks.ac.kr/Article/E0028017",
+     "title_en": "Encyclopedia of Korean Culture: Sungnyemun, Seoul"
     },
     {
      "title": "우리역사넷 숭례문",
-     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300700&code=kc_age_30"
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300700&code=kc_age_30",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Sungnyemun"
     }
-   ]
+   ],
+   "title_en": "The Plaque Hung Vertically",
+   "text_en": "Unlike the other gates, the name plaque of Sungnyemun hangs vertically. In the Five Elements, ye (禮) corresponds to fire and to the south, so the vertically written Sungnye (崇禮) is interpreted as standing up like a flame to block the fire energy of Gwanaksan to the south. There is a record (Jibong yuseol) that Prince Yangnyeong wrote the calligraphy on the plaque, but opinions differ."
   },
   {
    "id": "heunginjimun-name",
@@ -123,9 +141,12 @@
    "sources": [
     {
      "title": "우리역사넷 흥인지문",
-     "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_30&levelId=kc_r301000"
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_30&levelId=kc_r301000",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Heunginjimun"
     }
-   ]
+   ],
+   "title_en": "An Extra Character and a Barbican",
+   "text_en": "Among the four great gates, only Heunginjimun has a four-character name. An interpretation holds that because the east side of the capital was low and open, making the terrain weak, the character ji (之) was added to strengthen it. The semicircular barbican (ongseong) around the outside of the gate is a defensive structure open on only one side, allowing an enemy approaching the gate to be attacked from several directions."
   },
   {
    "id": "gwanghuimun-funerals",
@@ -141,13 +162,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 광희문",
-     "url": "https://encykorea.aks.ac.kr/Article/E0005355"
+     "url": "https://encykorea.aks.ac.kr/Article/E0005355",
+     "title_en": "Encyclopedia of Korean Culture: Gwanghuimun"
     },
     {
      "title": "한양도성박물관 「광희문, 수구문, 시구문」",
-     "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1002&seq=20201215133223916&sso=ok"
+     "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1002&seq=20201215133223916&sso=ok",
+     "title_en": "Seoul City Wall Museum, \"Gwanghuimun, Sugumun, Sigumun\""
     }
-   ]
+   ],
+   "title_en": "The Gate Funerals Passed Through",
+   "text_en": "It was built in 1396 together with the city wall, and in 1719 a gate tower was built and a plaque hung. Because it was close to the outlet where the Cheonggyecheon flowed out, it was called Sugumun (Water Outlet Gate), and it was the gate through which funeral processions from inside the capital went out to the burial grounds east of the wall. There is also a view that the name \"Sigumun\" (Corpse Gate) only became widespread in the later part of the Japanese colonial period."
   },
   {
    "id": "jongru-curfew",
@@ -163,13 +188,17 @@
    "sources": [
     {
      "title": "우리역사넷 「시보, 인정과 파루」",
-     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_015_0040_0020_0030&whereStr="
+     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_015_0040_0020_0030&whereStr=",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): \"Timekeeping, Injeong and Paru\""
     },
     {
      "title": "우리역사넷 보신각 동종",
-     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300520"
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300520",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): The Bosingak Bell"
     }
-   ]
+   ],
+   "title_en": "Injeong and Paru",
+   "text_en": "At nightfall the bell at the Jongru was rung 28 times for injeong, closing the city gates and halting traffic, and at dawn it was rung 33 times for paru to open them. The 28 stands for the 28 lunar mansions of the sky, and the 33 for the 33 heavens of Buddhism. Uri Yeoksa Net writes that paru was sounded with a drum, and the hours differ slightly from source to source."
   },
   {
    "id": "wongaksa-yeonbangwon",
@@ -185,13 +214,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 서울 원각사",
-     "url": "https://encykorea.aks.ac.kr/Article/E0040579"
+     "url": "https://encykorea.aks.ac.kr/Article/E0040579",
+     "title_en": "Encyclopedia of Korean Culture: Wongaksa, Seoul"
     },
     {
      "title": "국가유산포털 서울 원각사지 십층석탑",
-     "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&VdkVgwKey=11%2C00020000%2C11"
+     "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&VdkVgwKey=11%2C00020000%2C11",
+     "title_en": "Korea Heritage Portal: Ten-story Stone Pagoda at the Wongaksa Temple Site, Seoul"
     }
-   ]
+   ],
+   "title_en": "A Temple Turned Gisaeng House",
+   "text_en": "Sejo built Wongaksa on the site of the Goryeo temple Heungboksa, and when the ten-story stone pagoda was completed in 1467 he held a lantern festival. In 1504 (Yeonsangun year 10) the Jangagwon (Bureau of Music) was moved here and called Yeonbangwon, housing gisaeng and musicians; in 1512 (Jungjong year 7) the buildings were torn down, leaving only the pagoda and a stele. In 1750 the pagoda still stood alone, with no temple."
   },
   {
    "id": "gyeongdeok-rename",
@@ -207,9 +240,12 @@
    "sources": [
     {
      "title": "우리역사넷 경희궁",
-     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300210&code=kc_age_30"
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300210&code=kc_age_30",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Gyeonghuigung"
     }
-   ]
+   ],
+   "title_en": "A Name Changed in 1760",
+   "text_en": "Gwanghaegun began building this palace in 1617 after hearing that a royal aura hung over the site of the former house of Wonjong (Injo's father). In 1760 Yeongjo renamed it Gyeonghuigung because the palace name Gyeongdeok (慶德) sounded the same as Wonjong's posthumous title Gyeongdeok (敬德). In 1750, the reference year of this map, it was still Gyeongdeokgung."
   },
   {
    "id": "changgyeong-imo",
@@ -225,13 +261,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 임오화변",
-     "url": "https://encykorea.aks.ac.kr/Article/E0076535"
+     "url": "https://encykorea.aks.ac.kr/Article/E0076535",
+     "title_en": "Encyclopedia of Korean Culture: The Imo Incident (Imo hwabyeon)"
     },
     {
      "title": "창경궁 문정전 안내",
-     "url": "https://cgg.cha.go.kr/agapp/public/html/HtmlPage.do?pg=/cgg/01/virtual_01.jsp&pageNo=79010000&siteCd=CGG"
+     "url": "https://cgg.cha.go.kr/agapp/public/html/HtmlPage.do?pg=/cgg/01/virtual_01.jsp&pageNo=79010000&siteCd=CGG",
+     "title_en": "Changgyeonggung Munjeongjeon information sign"
     }
-   ]
+   ],
+   "title_en": "The Imo Incident",
+   "text_en": "In the intercalary 5th month of 1762 (Yeongjo year 38), Yeongjo deposed the crown prince, who had been serving as regent, and had him shut in a rice chest in front of Munjeongjeon (then called Hwiryeongjeon) at Changgyeonggung; the prince died after eight days (some sources say seven). Yeongjo later granted him the posthumous title \"Sado.\" This happened 12 years after this map's year of 1750."
   },
   {
    "id": "tangpyeongbi-text",
@@ -247,9 +287,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 탕평비",
-     "url": "https://encykorea.aks.ac.kr/Article/E0058858"
+     "url": "https://encykorea.aks.ac.kr/Article/E0058858",
+     "title_en": "Encyclopedia of Korean Culture: Tangpyeongbi"
     }
-   ]
+   ],
+   "title_en": "Mix Widely, Take No Sides",
+   "text_en": "A stele erected in 1742 (Yeongjo year 18) on Bansugyo at the entrance to Sungkyunkwan, with the inscription written in Yeongjo's own hand. The text, adapted from a passage in the Analects, says that to mix widely without forming factions is the impartial mind of the gentleman, while to form factions without mixing widely is the selfish intent of the petty man. It showed the meaning of tangpyeong (impartiality) to the students who would become the officials of the future."
   },
   {
    "id": "sungkyun-strike",
@@ -265,9 +308,12 @@
    "sources": [
     {
      "title": "우리역사넷 「성균관」",
-     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_002_0040_0010_0040_0030"
+     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_002_0040_0010_0040_0030",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): \"Sungkyunkwan\""
     }
-   ]
+   ],
+   "title_en": "The Students' Dining Hall Strike",
+   "text_en": "Students of Sungkyunkwan joined together to submit memorials, and when the king's reply displeased them they staged a gwondang, refusing to enter the dining hall. As a stronger measure they carried out a gonggwan, emptying Sungkyunkwan and leaving en masse, and the court usually sent a royal secretary or a high minister to placate them."
   },
   {
    "id": "sungkyun-banchon",
@@ -283,9 +329,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 반촌",
-     "url": "https://encykorea.aks.ac.kr/Article/E0021564"
+     "url": "https://encykorea.aks.ac.kr/Article/E0021564",
+     "title_en": "Encyclopedia of Korean Culture: Banchon"
     }
-   ]
+   ],
+   "title_en": "Banchon",
+   "text_en": "The villages east and west of Sungkyunkwan were called Banchon, and the banin attached to Sungkyunkwan lived there. The banin slaughtered the cattle used in sacrificial rites and ran the capital's butcher shops (hyeonbang) as their exclusive business, and it is said that at one time even police officers could not enter freely."
   },
   {
    "id": "daebodan-ming",
@@ -301,9 +350,12 @@
    "sources": [
     {
      "title": "우리역사넷 대보단",
-     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300280&code=kc_age_30"
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300280&code=kc_age_30",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Daebodan"
     }
-   ]
+   ],
+   "title_en": "An Altar for the Fallen Ming",
+   "text_en": "In 1704 (Sukjong year 30), sixty years after the fall of the Ming, this altar was built in the rear garden of Changdeokgung to offer rites to the Ming emperor Shenzong (Wanli), who had sent reinforcements during the Imjin War. In 1749 (Yeongjo year 25) the Ming founder Taizu (Hongwu) and the last emperor, Yizong (Chongzhen), were added, so that around 1750 three emperors were enshrined. The rites continued until 1894."
   },
   {
    "id": "mohwagwan-envoys",
@@ -319,13 +371,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 모화관",
-     "url": "https://encykorea.aks.ac.kr/Article/E0018585"
+     "url": "https://encykorea.aks.ac.kr/Article/E0018585",
+     "title_en": "Encyclopedia of Korean Culture: Mohwagwan"
     },
     {
      "title": "한국민족문화대백과사전 영은문",
-     "url": "https://encykorea.aks.ac.kr/Article/E0037621"
+     "url": "https://encykorea.aks.ac.kr/Article/E0037621",
+     "title_en": "Encyclopedia of Korean Culture: Yeongeunmun"
     }
-   ]
+   ],
+   "title_en": "Where the King Received Envoys",
+   "text_en": "In 1407 (Taejong year 7) the Mohwaru pavilion was built outside the West Gate, and it was later enlarged and named Mohwagwan. When a Chinese envoy arrived carrying an imperial edict, the king went out to this spot to receive him, and the envoy changed his clothes at Mohwagwan before entering the capital. In 1896 Dongnimmun (Independence Gate) was erected on the site of Yeongeunmun in front of it."
   },
   {
    "id": "yeongeunmun-name",
@@ -341,9 +397,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 영은문",
-     "url": "https://encykorea.aks.ac.kr/Article/E0037621"
+     "url": "https://encykorea.aks.ac.kr/Article/E0037621",
+     "title_en": "Encyclopedia of Korean Culture: Yeongeunmun"
     }
-   ]
+   ],
+   "title_en": "A Gate Renamed",
+   "text_en": "The red spiked gate (hongsalmun) in front of Mohwagwan was rebuilt in 1537 and named Yeongjomun, but in 1539, on the advice of a Ming envoy, it was renamed Yeongeunmun, meaning the gate for receiving imperial grace. Yeongeunmun was demolished around 1895 and Dongnimmun (Independence Gate) was built on its site."
   },
   {
    "id": "hyeminseo-clinic",
@@ -359,9 +418,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 혜민서",
-     "url": "https://encykorea.aks.ac.kr/Article/E0063592"
+     "url": "https://encykorea.aks.ac.kr/Article/E0063592",
+     "title_en": "Encyclopedia of Korean Culture: Hyeminseo"
     }
-   ]
+   ],
+   "title_en": "The People's Pharmacy",
+   "text_en": "A government office that sold medicine to the common people and treated their illnesses. It began in 1392 as the Hyemingoguk, became the Hyeminguk, and in 1466 became the Hyeminseo. Medical professors taught medicine there, and female physicians (uinyeo) attached to it were responsible for treating women."
   },
   {
    "id": "hullyeonwon-exam",
@@ -377,9 +439,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 훈련원",
-     "url": "https://encykorea.aks.ac.kr/Article/E0065795"
+     "url": "https://encykorea.aks.ac.kr/Article/E0065795",
+     "title_en": "Encyclopedia of Korean Culture: Hullyeonwon"
     }
-   ]
+   ],
+   "title_en": "The Military Examination Ground",
+   "text_en": "The office that administered the military examination (mugwa). In the preliminary round, 70 candidates from Hanseong and 120 from the provinces, 190 in all, were selected; the second round narrowed them to 28, and the palace examination determined their ranking. It was also involved in battle-formation drills twice a month and taught military texts."
   },
   {
    "id": "jeonokseo-jail",
@@ -395,9 +460,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 전옥서",
-     "url": "https://encykorea.aks.ac.kr/Article/E0049540"
+     "url": "https://encykorea.aks.ac.kr/Article/E0049540",
+     "title_en": "Encyclopedia of Korean Culture: Jeonokseo"
     }
-   ]
+   ],
+   "title_en": "A Jail for Those Awaiting Judgment",
+   "text_en": "A prison attached to the Ministry of Punishments (Hyeongjo), located next to the Uigeumbu in Seorinbang. It mainly held people whose sentences had not yet been decided, and officials of the ministry took turns inspecting it. In 1895 it became the Gamokseo."
   },
   {
    "id": "gwangtong-stones",
@@ -413,9 +481,12 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 광교",
-     "url": "https://encykorea.aks.ac.kr/Article/E0005063"
+     "url": "https://encykorea.aks.ac.kr/Article/E0005063",
+     "title_en": "Encyclopedia of Korean Culture: Gwanggyo"
     }
-   ]
+   ],
+   "title_en": "A Bridge Built from a Queen's Tomb Stones",
+   "text_en": "In 1410 (Taejong year 10), after a flood washed away the earthen bridge, it was rebuilt in stone using stonework such as the screen stones from Jeongneung, the tomb of Queen Sindeok, which had been moved outside the capital. The story is told together with the bad relations between Taejong and Queen Sindeok, Taejo's second queen. The area around the bridge was the busiest shopping district in the capital."
   },
   {
    "id": "supyo-level",
@@ -431,13 +502,17 @@
    "sources": [
     {
      "title": "우리역사넷 수표와 수표교",
-     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300695&code=kc_age_30"
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300695&code=kc_age_30",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): The Water Gauge and Supyogyo"
     },
     {
      "title": "한국민족문화대백과사전 준천사",
-     "url": "https://encykorea.aks.ac.kr/Article/E0053649"
+     "url": "https://encykorea.aks.ac.kr/Article/E0053649",
+     "title_en": "Encyclopedia of Korean Culture: Juncheonsa"
     }
-   ]
+   ],
+   "title_en": "The Gyeongjin Ground Level",
+   "text_en": "After a water gauge (supyo) for measuring the stream's water level was erected in 1441 (Sejong year 23), the bridge came to be called Supyogyo. In 1760, after Yeongjo completed a dredging (juncheon) of the streambed that mobilized about 200,000 people over 57 days, the characters Gyeongjin jipyeong (庚辰地平, \"ground level of the Gyeongjin year\") were carved on a pier so the bed would be kept at that level thereafter. When the dredging was finished, the Juncheonsa was established as a permanent office."
   },
   {
    "id": "supyo-majeon",
@@ -453,25 +528,32 @@
    "sources": [
     {
      "title": "조선왕조실록 태종 10년(1410) 2월 7일",
-     "url": "https://sillok.history.go.kr/id/kca_11002007_008"
+     "url": "https://sillok.history.go.kr/id/kca_11002007_008",
+     "title_en": "Annals of the Joseon Dynasty, Taejong year 10 (1410), 2nd month, day 7"
     },
     {
      "title": "조선왕조실록 영조 20년(1744) 8월 26일",
-     "url": "https://sillok.history.go.kr/id/kua_12008026_001"
+     "url": "https://sillok.history.go.kr/id/kua_12008026_001",
+     "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 8th month, day 26"
     },
     {
      "title": "조선왕조실록 세종 23년(1441) 8월 18일",
-     "url": "https://sillok.history.go.kr/id/kda_12308018_004"
+     "url": "https://sillok.history.go.kr/id/kda_12308018_004",
+     "title_en": "Annals of the Joseon Dynasty, Sejong year 23 (1441), 8th month, day 18"
     },
     {
      "title": "한국민족문화대백과사전 수표교",
-     "url": "https://encykorea.aks.ac.kr/Article/E0031766"
+     "url": "https://encykorea.aks.ac.kr/Article/E0031766",
+     "title_en": "Encyclopedia of Korean Culture: Supyogyo"
     },
     {
      "title": "우리역사넷 『한국문화사』 유분각전",
-     "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020"
+     "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Hanguk munhwasa (Korean Cultural History): The Yubungakjeon (licensed shops)"
     }
-   ]
+   ],
+   "title_en": "Majeongyo and the Vanished Cattle and Horse Market",
+   "text_en": "When the sites of the licensed shops were set in 1410 (Taejong year 10), the cattle and horse market was assigned to the streamside below Jangtongbang. In 1744 (Yeongjo year 20) the court cited Majeongyo (馬廛橋, Horse Market Bridge), another name for Supyogyo, as evidence that the cattle and horse market (Umajeon) had existed there in the early days of the dynasty, and reported that encroachment by various military garrisons had wiped out the market and turned the site into fields, proposing that it be reestablished; Yeongjo approved. Whether it actually reopened has not been confirmed. In the Annals of Sejong for 1441 the bridge is written as 馬前橋 (Majeongyo, with different characters), so the interpretation that the name came from the market is regarded as the understanding of 18th-century officials. Lists of licensed shops from the late Joseon period show a separate horse market (馬廛) inside the East Gate."
   },
   {
    "id": "sogong-princess",
@@ -487,13 +569,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 서울특별시 중구",
-     "url": "https://encykorea.aks.ac.kr/Article/E0067021"
+     "url": "https://encykorea.aks.ac.kr/Article/E0067021",
+     "title_en": "Encyclopedia of Korean Culture: Jung-gu, Seoul"
     },
     {
      "title": "한국민족문화대백과사전 남별궁",
-     "url": "https://encykorea.aks.ac.kr/Article/E0011914"
+     "url": "https://encykorea.aks.ac.kr/Article/E0011914",
+     "title_en": "Encyclopedia of Korean Culture: Nambyeolgung"
     }
-   ]
+   ],
+   "title_en": "The Little Princess's Neighborhood",
+   "text_en": "Because the house of Princess Gyeongjeong, Taejong's second daughter, stood here (the \"Little Princess's House,\" Sogongjudaek), the area was called Jageungongjugol, or Sogongju-dong. In 1583 Seonjo gave this house to his son Prince Uian, and after the Imjin War, from 1593, it was called Nambyeolgung and used to receive Chinese envoys."
   },
   {
    "id": "myeongnye-catholics",
@@ -509,13 +595,17 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 추조적발사건",
-     "url": "https://encykorea.aks.ac.kr/Article/E0057898"
+     "url": "https://encykorea.aks.ac.kr/Article/E0057898",
+     "title_en": "Encyclopedia of Korean Culture: The Chujo Discovery Incident (Chujo jeokbal sageon)"
     },
     {
      "title": "한국민족문화대백과사전 명례방공동체",
-     "url": "https://encykorea.aks.ac.kr/Article/E0069925"
+     "url": "https://encykorea.aks.ac.kr/Article/E0069925",
+     "title_en": "Encyclopedia of Korean Culture: The Myeongnyebang Community"
     }
-   ]
+   ],
+   "title_en": "The Prayer Meeting at Kim Beom-u's House",
+   "text_en": "Yi Seung-hun, who returned in 1784 after being baptized in Beijing, held Catholic gatherings with Yi Byeok and others at the house of Kim Beom-u in Myeongnyebang. In the spring of 1785 (Jeongjo year 9) the Ministry of Punishments uncovered the meeting; the yangban were released, and only Kim Beom-u, a jungin, was sent into exile. This happened 35 years after this map's year of 1750."
   },
   {
    "id": "donhwamun-guards",
@@ -531,17 +621,22 @@
    "sources": [
     {
      "title": "한국민족문화대백과사전 수문장청",
-     "url": "https://encykorea.aks.ac.kr/Article/E0031377"
+     "url": "https://encykorea.aks.ac.kr/Article/E0031377",
+     "title_en": "Encyclopedia of Korean Culture: Sumunjangcheong"
     },
     {
      "title": "우리역사넷 신편 한국사 「궁성 파수」",
-     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Sinpyeon Hanguksa (New History of Korea), \"Palace Wall Watch\""
     },
     {
      "title": "조선왕조실록사전 표신",
-     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29"
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29",
+     "title_en": "Dictionary of the Annals of the Joseon Dynasty: Pyosin"
     }
-   ]
+   ],
+   "title_en": "The People Who Guarded the Gate",
+   "text_en": "Opening and closing the palace gates and inspecting those who passed through was the duty of the gate captains (sumunjang). Under the Sokdaejeon of 1746, the Sumunjangcheong became an office with 23 gate captains, who took turns on duty guarding each gate. Watch duty outside the walls of Changdeokgung was divided among the three military garrisons: the Hullyeon dogam guarded Donhwamun, the Geumwiyeong guarded Geumhomun, and the Eoyeongcheong guarded Honghwamun. To open a gate at night, a royal messenger (seonjeongwan) had to show a warrant token (pyosin). The number of guards placed on the map is an estimate for display, not a matter of record."
   },
   {
    "id": "honghwamun-guards",
@@ -557,13 +652,17 @@
    "sources": [
     {
      "title": "우리역사넷 신편 한국사 「궁성 파수」",
-     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Sinpyeon Hanguksa (New History of Korea), \"Palace Wall Watch\""
     },
     {
      "title": "한국민족문화대백과사전 구군복",
-     "url": "https://encykorea.aks.ac.kr/Article/E0005662"
+     "url": "https://encykorea.aks.ac.kr/Article/E0005662",
+     "title_en": "Encyclopedia of Korean Culture: Gugunbok"
     }
-   ]
+   ],
+   "title_en": "The Gate Guarded by the Eoyeongcheong",
+   "text_en": "When watch duty outside the walls of Changdeokgung and Changgyeonggung was divided among the three military garrisons, Honghwamun, the main gate of Changgyeonggung, fell to the Eoyeongcheong. Opening and closing the gate was the separate duty of the gate captains (sumunjang). The guards' clothing is modeled on the military officer's gugunbok (jeollip hat, dongdari, jeonbok vest, and hwando sword), and the number of men is an estimate for display."
   },
   {
    "id": "geumhomun-officials",
@@ -579,17 +678,22 @@
    "sources": [
     {
      "title": "국가유산청 「궁궐의 현판과 주련 – 창덕궁 궁문」",
-     "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02"
+     "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02",
+     "title_en": "Korea Heritage Service, \"Palace Plaques and Pillar Couplets: The Gates of Changdeokgung\""
     },
     {
      "title": "성종실록 6년 8월 23일",
-     "url": "https://sillok.history.go.kr/id/kia_10608023_007"
+     "url": "https://sillok.history.go.kr/id/kia_10608023_007",
+     "title_en": "Annals of Seongjong, year 6, 8th month, day 23"
     },
     {
      "title": "우리역사넷 신편 한국사 「궁성 파수」",
-     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+     "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Sinpyeon Hanguksa (New History of Korea), \"Palace Wall Watch\""
     }
-   ]
+   ],
+   "title_en": "The West Gate for Officials",
+   "text_en": "In 1475 (Seongjong year 6), Seo Geo-jeong named the gate by taking geum (金), signifying the west, and ho (虎) from the White Tiger. Unlike the main gate Donhwamun, officials of offices inside the palace such as the Seungjeongwon and Hongmungwan came and went through this gate. When watch duty outside the walls of Changdeokgung was divided among the three military garrisons, Geumhomun fell to the Geumwiyeong. In 1926 Song Hak-seon carried out an attack aimed at the Governor-General of Korea in front of this gate."
   },
   {
    "id": "heunghwamun-travels",
@@ -605,13 +709,17 @@
    "sources": [
     {
      "title": "위키백과 흥화문",
-     "url": "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8"
+     "url": "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8",
+     "title_en": "Wikipedia (Korean): Heunghwamun"
     },
     {
      "title": "국가유산포털 경희궁 흥화문",
-     "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000"
+     "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000",
+     "title_en": "Korea Heritage Portal: Heunghwamun, Gyeonghuigung"
     }
-   ]
+   ],
+   "title_en": "A Main Gate Moved Three Times",
+   "text_en": "This was the main gate, standing at the southeast corner of Gyeongdeokgung and facing east. As the palace was demolished during the Japanese colonial period, it was moved to the south wall in 1915, and in 1932 it became the main gate of Bangmunsa in Jangchung-dong, a temple honoring Ito Hirobumi. It continued to serve as the front gate even after a hotel was built on that site, and in 1988 it returned to the grounds of Gyeonghuigung, but it stands in a place other than its original location."
   },
   {
    "id": "gwanghwamun-keeper",
@@ -627,13 +735,17 @@
    "sources": [
     {
      "title": "유재빈, 「영조대 경복궁 터에서 행한 행사와 궁중 회화」, 『한국미술사학회지』 323 (2024)",
-     "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader"
+     "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader",
+     "title_en": "Yu Jae-bin, \"Events Held on the Site of Gyeongbokgung in Yeongjo's Reign and Court Painting,\" Korean Journal of Art History 323 (2024)"
     },
     {
      "title": "위키백과 경복궁",
-     "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81"
+     "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81",
+     "title_en": "Wikipedia (Korean): Gyeongbokgung"
     }
-   ]
+   ],
+   "title_en": "The Palace Keeper Who Watched Over the Ruins",
+   "text_en": "Gyeongbokgung was not rebuilt after the Imjin War, but a palace keeper (gunggam) was posted to look after it. Wikipedia dates this from around 1724. In 1729 guards who had secretly sold Gyeongbokgung pine trees to private households were punished, and in times of drought the Gyeonghoeru pond was dredged. In 1764 the officer guarding Gyeongbokgung found and submitted carvings of a jade rabbit and a phoenix and a placenta-jar stone (taejiseok). Yeongjo also held civil service examinations and banquets on the stone terrace of Geunjeongjeon. The keeper's dress on the map (a gat hat and a dopo robe) is an estimate for display, not a matter of record."
   },
   {
    "id": "jongmyo-regency",
@@ -649,9 +761,12 @@
    "sources": [
     {
      "title": "영조실록 25년 음력 1월 27일 제1기사 — 왕세자의 대리청정 고유",
-     "url": "https://sillok.history.go.kr/id/kua_12501027_001"
+     "url": "https://sillok.history.go.kr/id/kua_12501027_001",
+     "title_en": "Annals of Yeongjo, year 25, 1st lunar month, day 27, entry 1: Announcement of the crown prince's regency"
     }
-   ]
+   ],
+   "title_en": "News That the Crown Prince Would Govern",
+   "text_en": "One year before 1750, Yeongjo announced at Jongmyo his decision to entrust state affairs to the crown prince as regent (daericheongjeong), and proclaimed it throughout the country. The royal edict of the 27th day of the 1st lunar month spoke of accumulated illness and a long-held wish to step back, and expressed the intent to keep state business from falling behind and to have the crown prince learn government thoroughly. The crown prince was to handle state affairs except for matters of official appointments, the military, and punishments. A decision that changed the division of governing duties in the palace was thus proclaimed together with a rite informing the ancestors."
   },
   {
    "id": "honghwamun-military-tax",
@@ -667,13 +782,17 @@
    "sources": [
     {
      "title": "영조실록 26년 음력 5월 19일 제1기사 — 홍화문의 양역 의견 청취",
-     "url": "https://sillok.history.go.kr/id/kua_12605019_001"
+     "url": "https://sillok.history.go.kr/id/kua_12605019_001",
+     "title_en": "Annals of Yeongjo, year 26, 5th lunar month, day 19, entry 1: Hearing opinions on military service at Honghwamun"
     },
     {
      "title": "영조실록 26년 음력 7월 2일 제3기사 — 양역 절목을 가져다 보다",
-     "url": "https://sillok.history.go.kr/id/kua_12607002_003"
+     "url": "https://sillok.history.go.kr/id/kua_12607002_003",
+     "title_en": "Annals of Yeongjo, year 26, 7th lunar month, day 2, entry 3: Reviewing the military service regulations"
     }
-   ]
+   ],
+   "title_en": "Asking About the Burden of Military Service at the Palace Gate",
+   "text_en": "On the 19th day of the 5th lunar month of 1750, Yeongjo came out to Honghwamun and asked how the burden of military service should be reformed. Some fifty people took part, including residents of the five districts and royal guards, and he heard opinions on the hopo, a levy on each household, versus the gyeolpo, a levy on land. Most of those present answered that the hopo was more convenient, but the historian of the Annals (Sillok) criticized Bak Mun-su for having instructed the residents beforehand to answer in favor of the hopo. This discussion led, by way of a review of the military service regulations in the 7th month, to the Equalized Tax Law (Gyunyeokbeop). The scene leaves behind both an attempt to hear the people's circumstances and the question of whether their voices were properly conveyed."
   },
   {
    "id": "bibyeonsa-city-defense",
@@ -689,9 +808,12 @@
    "sources": [
     {
      "title": "영조실록 27년 음력 9월 11일 제2기사 — 수성윤음",
-     "url": "https://sillok.history.go.kr/id/kua_12709011_002"
+     "url": "https://sillok.history.go.kr/id/kua_12709011_002",
+     "title_en": "Annals of Yeongjo, year 27, 9th lunar month, day 11, entry 2: The Suseong yuneum (instruction on defending the capital)"
     }
-   ]
+   ],
+   "title_en": "Which Stretch of Wall Will Our Neighborhood Defend?",
+   "text_en": "On the 11th day of the 9th lunar month of 1751, one year after 1750, Yeongjo issued the Suseong yuneum, a royal instruction setting out the policy for defending the capital. His concern was that if residents were suddenly called up, confusion could arise because they would not know which garrison to follow or where to go. The Bibyeonsa (Border Defense Council) was ordered to supplement the defense regulations and distribute them to the five districts of Hanyang. It was preparation so that people would know in ordinary times which garrison they belonged to and which place they were to defend, and in an emergency would follow their district officials up onto the wall."
   },
   {
    "id": "heunginjimun-workers-relief",
@@ -707,13 +829,17 @@
    "sources": [
     {
      "title": "영조실록 36년 음력 2월 19일 제1기사 — 준천소에 쌀과 감곽을 내려 역군을 먹이게 하다",
-     "url": "https://sillok.history.go.kr/id/kua_13602019_001"
+     "url": "https://sillok.history.go.kr/id/kua_13602019_001",
+     "title_en": "Annals of Yeongjo, year 36, 2nd lunar month, day 19, entry 1: Rice and seaweed granted to the Juncheonso to feed the workers"
     },
     {
      "title": "영조실록 36년 음력 2월 20일 제1기사 — 흥인문에서 내린 부역민·천변 주민 지원 명령",
-     "url": "https://sillok.history.go.kr/id/kua_13602020_001"
+     "url": "https://sillok.history.go.kr/id/kua_13602020_001",
+     "title_en": "Annals of Yeongjo, year 36, 2nd lunar month, day 20, entry 1: Orders issued at Heunginmun to support the laborers and streamside residents"
     }
-   ]
+   ],
+   "title_en": "Those Who Came to Work and Those Who Lost Their Homes",
+   "text_en": "In 1760, ten years after 1750, on the 20th day of the 2nd lunar month, while the dredging of the Cheonggyecheon was in full swing, Yeongjo stopped at Heunginjimun and issued measures for the people who had turned out for the labor. The day before, he had given rice and seaweed to the dredging office (Juncheonso) to feed the workers. He ordered that the people of Jeju who had volunteered be given ample provisions for their journey home, and that the capital residents who had come to work also be given additional rice. The streamside residents whose houses had been torn down were to be cared for by the relief office (Jinhyulcheong). The records surrounding the dredging also preserve the meals of those who lent their labor and the circumstances of those who lost their homes."
   },
   {
    "id": "gungisi-supplies",
@@ -729,9 +855,12 @@
    "sources": [
     {
      "title": "군기시",
-     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EA%B8%B0%EC%8B%9C(%E8%BB%8D%E5%99%A8%E5%AF%BA)"
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EA%B8%B0%EC%8B%9C(%E8%BB%8D%E5%99%A8%E5%AF%BA)",
+     "title_en": "Gungisi"
     }
-   ]
+   ],
+   "title_en": "More Than Weapons Moved an Army",
+   "text_en": "The Gungisi (Armory) supplied not only bows, arrows, and gunpowder weapons but also the flags and various equipment the army used. In the late Joseon period, however, the military garrisons also made what they needed themselves. The Gungisi was one of several centers responsible for military production. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "yeonghwadang-exams",
@@ -747,17 +876,22 @@
    "sources": [
     {
      "title": "영화당",
-     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%81%ED%99%94%EB%8B%B9(%E6%9A%8E%E8%8A%B1%E5%A0%82)"
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%81%ED%99%94%EB%8B%B9(%E6%9A%8E%E8%8A%B1%E5%A0%82)",
+     "title_en": "Yeonghwadang"
     },
     {
      "title": "숙종실록 1692년 음력 4월 16일 영화당 보수",
-     "url": "https://sillok.history.go.kr/id/ksa_11804016_001"
+     "url": "https://sillok.history.go.kr/id/ksa_11804016_001",
+     "title_en": "Annals of Sukjong, 1692, 4th lunar month, day 16: Repair of Yeonghwadang"
     },
     {
      "title": "숙종실록 1692년 음력 5월 12일 영화당 완료",
-     "url": "https://sillok.history.go.kr/id/ksa_11805012_002"
+     "url": "https://sillok.history.go.kr/id/ksa_11805012_002",
+     "title_en": "Annals of Sukjong, 1692, 5th lunar month, day 12: Completion of Yeonghwadang"
     }
-   ]
+   ],
+   "title_en": "The Day the Garden Became an Examination Hall",
+   "text_en": "The wide open space in front of Yeonghwadang was not only a place for quietly viewing the scenery. Examinations to select civil and military talent and various events were held here. In 1692 Sukjong had Yeonghwadang repaired for use in examinations and royal attendance, and the work was completed the following month. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "cheonguijeong-farming",
@@ -773,13 +907,17 @@
    "sources": [
     {
      "title": "궁궐의 연표",
-     "url": "https://royal.cha.go.kr/ROYAL/contents/R311020000.do"
+     "url": "https://royal.cha.go.kr/ROYAL/contents/R311020000.do",
+     "title_en": "Chronology of the Palaces"
     },
     {
      "title": "농민들의 삶을 헤아리기 위해 만든 초가 정자, 창덕궁 청의정",
-     "url": "https://ncms.nculture.org/pavilion/story/2377"
+     "url": "https://ncms.nculture.org/pavilion/story/2377",
+     "title_en": "Cheonguijeong at Changdeokgung, a thatched pavilion built to consider the lives of farmers"
     }
-   ]
+   ],
+   "title_en": "A Thatched Roof in the Palace",
+   "text_en": "Cheonguijeong is a thatched pavilion among ornate tile-roofed buildings. The small rice paddy beside it and the thatched roof invite reflection on the meaning of farming even inside the palace. The pavilions of the Ongnyucheon area, including Cheonguijeong, are recorded as having been built in 1636. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "munheongak-books",
@@ -795,13 +933,17 @@
    "sources": [
     {
      "title": "문헌각",
-     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AC%B8%ED%97%8C%EA%B0%81(%E6%96%87%E7%8D%BB%E9%96%A3)"
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AC%B8%ED%97%8C%EA%B0%81(%E6%96%87%E7%8D%BB%E9%96%A3)",
+     "title_en": "Munheongak"
     },
     {
      "title": "국립고궁박물관 궁궐지 번역 문헌각명",
-     "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=212&um=s"
+     "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=212&um=s",
+     "title_en": "National Palace Museum of Korea, translated Gunggwolji: Inscription for Munheongak"
     }
-   ]
+   ],
+   "title_en": "A House for the Books",
+   "text_en": "The palace's books, too, moved among various storage places. Sukjong's inscription for Munheongak explains that books were gathered in the library building beside Gyeonghyeondang, and that records of good and evil deeds were taken as material for learning. Munheongak was a space for storing books beside the hall where state affairs were conducted. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "aeryeonjeong-lotus",
@@ -817,9 +959,12 @@
    "sources": [
     {
      "title": "궁궐의 현판과 주련: 애련정",
-     "url": "https://m.cha.go.kr/newsBbz/selectNewsBbzView.do?edate=&mn=&newsItemId=155693299&pageIndex=10&sdate=&sectionId=ocp&strValue=&strWhere="
+     "url": "https://m.cha.go.kr/newsBbz/selectNewsBbzView.do?edate=&mn=&newsItemId=155693299&pageIndex=10&sdate=&sectionId=ocp&strValue=&strWhere=",
+     "title_en": "Palace Plaques and Pillar Couplets: Aeryeonjeong"
     }
-   ]
+   ],
+   "title_en": "The Pavilion That Loved the Lotus",
+   "text_en": "Sukjong named the pavilion Aeryeonjeong, seeing in the lotus a pure and steadfast virtue. Old records say it was built in the middle of the pond, but the present pavilion sits on the edge. The garden, too, has changed in appearance over the long years. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "chwiunjeong-before-nakseonjae",
@@ -835,13 +980,17 @@
    "sources": [
     {
      "title": "취운정 건립·제영시 수록 면",
-     "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=56&um=s"
+     "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=56&um=s",
+     "title_en": "Page recording the construction of Chwiunjeong and poems on it"
     },
     {
      "title": "창덕궁 건축물 연대 해설",
-     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_039_0070_0040_0020"
+     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_039_0070_0040_0020",
+     "title_en": "Commentary on the dates of Changdeokgung buildings"
     }
-   ]
+   ],
+   "title_en": "A Neighbor Older Than Nakseonjae",
+   "text_en": "Chwiunjeong, found today near Nakseonjae, is a pavilion built before Nakseonjae. The record of its construction goes back to 1686. Not all the buildings seen in the same area date from the same period. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "taegojeong-gathering",
@@ -857,21 +1006,27 @@
    "sources": [
     {
      "title": "태고정",
-     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%EA%B3%A0%EC%A0%95(%E5%A4%AA%E5%8F%A4%E4%BA%AD)"
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%EA%B3%A0%EC%A0%95(%E5%A4%AA%E5%8F%A4%E4%BA%AD)",
+     "title_en": "Taegojeong"
     },
     {
      "title": "우리역사넷 청풍계의 태고정과 상춘 모임",
-     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_019_0040_0020_0030"
+     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_019_0040_0020_0030",
+     "title_en": "Uri Yeoksa Net (National Institute of Korean History): Taegojeong in Cheongpunggye and the spring gathering"
     },
     {
      "title": "정조실록 1790년 음력 2월 28일 태고정 방문",
-     "url": "https://sillok.history.go.kr/id/kva_11402028_002"
+     "url": "https://sillok.history.go.kr/id/kva_11402028_002",
+     "title_en": "Annals of Jeongjo, 1790, 2nd lunar month, day 28: Visit to Taegojeong"
     },
     {
      "title": "서울시 청풍계와 청운동의 백세청풍",
-     "url": "https://mediahub.seoul.go.kr/archives/2007584"
+     "url": "https://mediahub.seoul.go.kr/archives/2007584",
+     "title_en": "Seoul Metropolitan Government: Cheongpunggye and the Baekse cheongpung inscription in Cheongun-dong"
     }
-   ]
+   ],
+   "title_en": "An Ancient Stillness Named for a Valley",
+   "text_en": "At Taegojeong in Cheongpunggye, literati gathered to enjoy the scenery. A spring gathering in 1620 was preserved in a painting, and there is a record that Jeongjo stopped to rest here in 1790. The pavilion now placed on the map is at an estimated position, meant to mark the area of that valley. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "guksadang-moved",
@@ -887,9 +1042,12 @@
    "sources": [
     {
      "title": "인왕산 국사당",
-     "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677"
+     "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677",
+     "title_en": "Guksadang on Inwangsan"
     }
-   ]
+   ],
+   "title_en": "The Shrine Moved from Namsan to Inwangsan",
+   "text_en": "The Guksadang now on Inwangsan was originally on Namsan. It was relocated during the Japanese colonial period because of the construction of the Chosen Shrine. To find this shrine in old Hanyang, one must look to the Namsan of that time rather than its present address. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "dohwaseo-painters",
@@ -905,13 +1063,17 @@
    "sources": [
     {
      "title": "도화서",
-     "url": "https://encykorea.aks.ac.kr/Article/E0015927"
+     "url": "https://encykorea.aks.ac.kr/Article/E0015927",
+     "title_en": "Dohwaseo"
     },
     {
      "title": "기로회와 기록화 관련 해설",
-     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_019_0050_0010_0010"
+     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_019_0050_0010_0010",
+     "title_en": "Commentary on the Giro Gathering and documentary painting"
     }
-   ]
+   ],
+   "title_en": "Painters, Too, Served the State",
+   "text_en": "The painters of the Dohwaseo (Bureau of Painting) produced the pictures the state required. Learning and being evaluated in painting skill were also tied to the work of the office. The palace events preserved in documentary paintings have come down to the present through the labor of the people who painted them. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "jeyonggam-textiles",
@@ -927,9 +1089,12 @@
    "sources": [
     {
      "title": "제용감",
-     "url": "https://encykorea.aks.ac.kr/Article/E0051344"
+     "url": "https://encykorea.aks.ac.kr/Article/E0051344",
+     "title_en": "Jeyonggam"
     }
-   ]
+   ],
+   "title_en": "Behind a Single Court Garment",
+   "text_en": "Royal clothing required fabric and dyes, and the work of procuring them. The Jeyonggam handled duties related to textiles and clothing, dyeing and weaving. Behind every garment of the court were people who managed the goods and supplied the skills. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "jeonsaengseo-animals",
@@ -945,9 +1110,12 @@
    "sources": [
     {
      "title": "전생서",
-     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%83%9D%EC%84%9C(%E5%85%B8%E7%89%B2%E7%BD%B2)"
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%83%9D%EC%84%9C(%E5%85%B8%E7%89%B2%E7%BD%B2)",
+     "title_en": "Jeonsaengseo"
     }
-   ]
+   ],
+   "title_en": "Before the Rites: Raising the Animals",
+   "text_en": "State sacrificial rites were not prepared only on the day the ceremony was held. The Jeonsaengseo was responsible for raising the livestock needed for state rites and the like. The office and its pens south of Namsan were part of the capital's infrastructure supporting the rituals of the palaces and altars. The position and appearance of the building on the map are rough estimates."
   },
   {
    "id": "sayeogwon-conversation",
@@ -963,9 +1131,12 @@
    "sources": [
     {
      "title": "노걸대",
-     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r200130"
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r200130",
+     "title_en": "Nogeoldae"
     }
-   ]
+   ],
+   "title_en": "They Studied Haggling, Too",
+   "text_en": "The language that interpreters learned was not limited to diplomatic documents. The Chinese textbook Nogeoldae (Lao Qida) contained greetings on the road, staying at an inn, and dialogues for bargaining over prices. To do business in a foreign country, one had to learn everyday speech as well."
   },
   {
    "id": "jangagwon-musicians",
@@ -981,9 +1152,12 @@
    "sources": [
     {
      "title": "왕실의 음악 기관, 장악원",
-     "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_023_0070_0020_0010"
+     "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_023_0070_0020_0010",
+     "title_en": "The Jangagwon, the royal music institution"
     }
-   ]
+   ],
+   "title_en": "The Musicians' Work Goes On After the Banquet",
+   "text_en": "The musicians of the Jangagwon (Bureau of Music) were responsible for the music not only of court banquets but of sacrificial rites, court assemblies, and various ceremonies. The ensemble changed according to the nature of the event. Behind each splendid performance lay the professional work of preparing the music and leading the performers."
   },
   {
    "id": "giroso-paintings",
@@ -999,9 +1173,12 @@
    "sources": [
     {
      "title": "기로회와 기록화 관련 해설",
-     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_019_0050_0010_0010"
+     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_019_0050_0010_0010",
+     "title_en": "Commentary on the Giro Gathering and documentary painting"
     }
-   ]
+   ],
+   "title_en": "The Giroso's Celebration Preserved in Paintings",
+   "text_en": "The events commemorating Sukjong's entry into the Giroso (Hall of Elder Statesmen) were preserved in several scenes in the Gisa gyecheop album. Not only the participants inside the building but also the people assisting with the banquet and the musicians are depicted. Following a single painting, one can look at the various spaces in which the celebration was held."
   },
   {
    "id": "pyeongsiseo-sinhae",
@@ -1017,9 +1194,12 @@
    "sources": [
     {
      "title": "신해통공",
-     "url": "https://contents.history.go.kr/mobile/hm/view.do?levelId=hm_106_0080"
+     "url": "https://contents.history.go.kr/mobile/hm/view.do?levelId=hm_106_0080",
+     "title_en": "Sinhae tonggong"
     }
-   ]
+   ],
+   "title_en": "Could Anyone Sell Goods?",
+   "text_en": "Commerce in Hanyang involved conflict over the right to sell goods and its enforcement. The Sinhae tonggong of 1791 restricted the monopoly right to suppress unlicensed shops (geumnanjeongwon), except for the six licensed shops (yukuijeon). Chae Je-gong's proposal also set out how the Pyeongsiseo, the Ministry of Punishments, and the Hanseongbu were to handle matters."
   }
  ],
  "checked": "2026-09-15"

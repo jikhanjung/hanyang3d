@@ -160,7 +160,12 @@ class ContentTests(TestCase):
 
     def test_import_preserves_data_and_editorial_changes(self):
         source = json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text())
-        self.assertEqual(load_stories(), source)
+        from .i18n import localize
+        # The database adds label_en for targets; otherwise Korean and English match the file.
+        loaded = load_stories()
+        self.assertEqual(localize(loaded, 'ko'), localize(source, 'ko'))
+        self.assertEqual([s['title_en'] for s in loaded['stories']], [s['title_en'] for s in source['stories']])
+        self.assertTrue(all(s['text_en'] for s in loaded['stories']))
         self.assertEqual(Building.objects.count(), 114)
         self.assertEqual(Resource.objects.count(), 112)
         originals = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']

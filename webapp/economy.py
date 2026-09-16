@@ -101,7 +101,8 @@ def trade(player, action, shop, item, quantity, lang='ko'):
         player = Player.objects.select_for_update().get(pk=player.pk)
         if Trade.objects.filter(player=player, created_at__gte=timezone.now() - timedelta(seconds=1)).count() >= TRADES_PER_SECOND:
             raise TradeError(429, t('너무 빨리 거래하고 있소. 잠시 뒤에 하시오.', lang))
-        name, unit = data['items'][item]['name'], data['items'][item]['unit']
+        row = data['items'][item]
+        name, unit = (row.get('name_en') or row['name'], row.get('unit_en') or row['unit']) if lang == 'en' else (row['name'], row['unit'])
         stock = PlayerItem.objects.filter(player=player, item=item).first()
         if action == 'buy':
             # Some goods (a horse's reins) make sense only once in a pack.

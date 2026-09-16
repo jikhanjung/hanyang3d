@@ -169,8 +169,8 @@ export function createShop({container,data,onLogout,onUse}){
  function open(merchant){
   const trade=data.shops[merchant.trade];if(!trade)return;
   shop={...trade,trade:merchant.trade};quantity=1;
-  $('.shop-title').textContent=merchant.trade+(merchant.hanja?` (${merchant.hanja})`:'');
-  $('.shop-trade').textContent=merchant.sells?t('{sells}을 파는 가게',{sells:merchant.sells}):'';
+  $('.shop-title').textContent=t(merchant.trade)+(merchant.hanja&&lang!=='en'?` (${merchant.hanja})`:'');
+  $('.shop-trade').textContent=merchant.sells?t('{sells}을 파는 가게',{sells:t(merchant.sells)}):'';
   message('');win.hidden=false;render();refresh();
  }
  function close(){shop=null;win.hidden=true;tip.hidden=true}

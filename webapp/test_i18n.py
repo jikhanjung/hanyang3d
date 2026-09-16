@@ -47,3 +47,32 @@ class LanguageTests(TestCase):
             self.assertTrue(value.strip(), key)
             self.assertEqual(set(re.findall(r'\{\w+\}', key)), set(re.findall(r'\{\w+\}', value)), key)
         self.assertEqual(t('없는 문구', 'en'), '없는 문구')
+
+    def test_english_content_on_map_guide_and_shop(self):
+        buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']
+        gate = next(f for f in buildings if f['id'] == 'sungnyemun')
+        stories = json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text())['stories']
+        npcs = json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text())
+        import re
+        def embedded(response, element):
+            return json.loads(re.search(r'<script id="%s" type="application/json">(.*?)</script>' % element, response.content.decode(), re.S).group(1))
+        page = self.client.get('/?lang=en')
+        features = {f['id']: f for f in embedded(page, 'buildings')['features']}
+        self.assertEqual(features['sungnyemun']['name'], gate['name_en'])
+        self.assertEqual(features['sungnyemun']['info']['summary'], gate['info']['summary_en'])
+        self.assertNotIn('name_en', features['sungnyemun'])
+        self.assertEqual(embedded(page, 'stories')['stories'][0]['title'], stories[0]['title_en'])
+        self.assertEqual(embedded(page, 'npcs')['keeper']['name'], npcs['keeper']['name_en'])
+        korean = self.client.get('/?lang=ko')
+        self.assertEqual({f['id']: f for f in embedded(korean, 'buildings')['features']}['sungnyemun']['name'], gate['name'])
+        self.assertNotIn('name_en', embedded(korean, 'npcs')['keeper'])
+        guide = self.client.get('/guide/?lang=en')
+        self.assertContains(guide, 'id="숭례문"')
+        self.assertContains(guide, 'Sungnyemun')
+        self.assertContains(guide, stories[0]['title_en'])
+
+    def test_place_and_bridge_names_carry_english(self):
+        places = json.loads((settings.BASE_DIR / 'gis/placenames/doseong_placenames.json').read_text())['features']
+        self.assertTrue(all(p.get('name_en') for p in places))
+        bridges = json.loads((settings.BASE_DIR / 'gis/waterways/doseong_cheonggyecheon.json').read_text())['bridges']
+        self.assertEqual([b['name_en'][:9] for b in bridges], ['Mojeongyo', 'Gwangtong', 'Jangtongg', 'Supyogyo '])

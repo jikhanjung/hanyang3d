@@ -355,7 +355,7 @@ async function main(){
  // Names like "창덕궁 · 인정전 일대" put the palace name where it was and the hall name on the modelled hall.
  // The palace tag stays first per building (checks look it up by feature id) and is lifted one line on screen.
  const nameTags=buildings.children.flatMap(building=>{
-  const [name,detail]=building.userData.feature.name.split(' · '),hall=detail?.endsWith(' 일대')?detail.replace(/ 일대$/,''):null;
+  const [name,detail]=building.userData.feature.name.split(' · '),hall=detail?.endsWith(' 일대')?detail.replace(/ 일대$/,''):/ area$/i.test(detail??'')?detail.replace(/ area$/i,''):null;
   const {tag,aspect}=nameSprite(name);
   tag.renderOrder=5;tag.userData={name,featureId:building.userData.feature.id,role:hall?'palace':'building'};buildingNames.add(tag);
   if(!hall)return [{building,tag,aspect}];
@@ -366,7 +366,7 @@ async function main(){
  // The ten Yukjo street offices share one "육조거리" label from afar and show their own names up close.
  const YUKJO_STREET=new Set(['uijeongbu','ijo','hojo','hanseongbu','yejo','jungchubu','saheonbu','byeongjo','hyeongjo','gongjo']),YUKJO_NEAR_M=1200;
  const yukjoOffices=nameTags.filter(n=>YUKJO_STREET.has(n.tag.userData.featureId)).map(n=>n.building);
- const yukjoStreetTag=nameSprite('육조거리');yukjoStreetTag.tag.renderOrder=5;yukjoStreetTag.tag.userData={name:'육조거리',role:'street'};buildingNames.add(yukjoStreetTag.tag);
+ const yukjoStreetTag=nameSprite(t('육조거리'));yukjoStreetTag.tag.renderOrder=5;yukjoStreetTag.tag.userData={name:'육조거리',role:'street'};buildingNames.add(yukjoStreetTag.tag);
  const mountainNames=new THREE.Group();mountainNames.name='mountain-name-labels';scene.add(mountainNames);
  const districtNames=new THREE.Group();districtNames.name='district-name-labels';scene.add(districtNames);
  function placeTag(name,x,y,group){
@@ -377,14 +377,14 @@ async function main(){
  // Lowland anchors (e.g. 만리창) only stretch the outskirts; mountain name tags come from the ridge anchors.
  const mountainTags=exp.terrain_alignment.anchors.filter(p=>p.kind!=='lowland').map(p=>{
   const name=p.name.startsWith('백악')?'북악산':p.name.replace(' 능선','');
-  const [x,y]=alignTerrain?project(p.lon,p.lat):warp(...p.pixel);return placeTag(name,x,y,mountainNames);
+  const [x,y]=alignTerrain?project(p.lon,p.lat):warp(...p.pixel);return placeTag(t(name),x,y,mountainNames);
  });
  // Approximate area labels, not surveyed points or historical administrative boundaries.
  // Seochon follows the drawn palace wall and upstream channel, not a historical center.
  // Area descriptions: hanok.seoul.go.kr/front/kor/town/town01.do and town02.do.
  // 경복궁 sits at the centre of its drawn wall; the palace itself is not modelled.
  const districtTags=[{name:'북촌',pixel:[1445,965]},{name:'서촌',pixel:[1042,1085]},{name:'경복궁',pixel:[1153,983]}].map(p=>{
-  const [x,y]=warp(...p.pixel);return placeTag(p.name,x,y,districtNames);
+  const [x,y]=warp(...p.pixel);const made=placeTag(t(p.name),x,y,districtNames);made.tag.userData.name=p.name;return made;
  });
  // Neighbourhood names from the map; missing data only hides the layer.
  let placeNames=null;
@@ -1106,7 +1106,7 @@ async function main(){
    let best=null;
    for(const model of guardModels){
     if(!shown(model))continue;
-    const feature=model.parent.userData.feature,gate=feature.name.split(' · ')[0],unit=model.userData.unit;
+    const feature=model.parent.userData.feature,gate=feature.name.split(' · ')[0],unit=t(model.userData.unit);
     for(const person of model.children){
      const role=person.userData.role;if(!role)continue;
      const at=person.getWorldPosition(new THREE.Vector3()),distance=hitTest(event,at,1.9,role==='keeper'?300:150);
@@ -1126,8 +1126,8 @@ async function main(){
    if(!sijeon?.group.visible)return null;let best=null;
    for(const k of sijeon.keepers()){
     const distance=hitTest(event,k.position,1.8,120);if(distance===null||(best&&best.distance<=distance))continue;
-    const values={shop:`${k.trade}(${k.hanja})`,sells:k.sells,about:npcData.shops[k.trade]?.about??''};
-    best={distance,npc:{key:'merchant:'+k.index,mode:'overlay',portrait:'merchant',name:t('{shop} 상인',{shop:k.trade}),subtitle:t('{sells}을 파는 시전',{sells:k.sells}),nodes:fillNodes(npcData.merchant.nodes,values),merchant:k,position:()=>k.position,maxDistance:120}};
+    const values={shop:lang==='en'?t(k.trade):`${k.trade}(${k.hanja})`,sells:t(k.sells),about:npcData.shops[k.trade]?.about??''};
+    best={distance,npc:{key:'merchant:'+k.index,mode:'overlay',portrait:'merchant',name:t('{shop} 상인',{shop:t(k.trade)}),subtitle:t('{sells}을 파는 시전',{sells:t(k.sells)}),nodes:fillNodes(npcData.merchant.nodes,values),merchant:k,position:()=>k.position,maxDistance:120}};
    }
    return best;
   }});

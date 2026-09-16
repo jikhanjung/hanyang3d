@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [141 — 언어 선택 2단계: 콘텐츠 영어 번역](20260917_141_language_content_translation.md)
 - [140 — 언어 선택(KO | EN) 1단계: 화면 문구와 서버 응답](20260916_140_language_switch_ui.md)
 - [139 — 걷는 중 두 번째 점프가 안 되던 문제](20260916_139_second_jump_while_walking.md)
 - [138 — 추정 위치 시설 11곳과 장소 이야기 15편](20260916_138_estimated_landmarks_stories.md)

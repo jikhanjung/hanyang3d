@@ -363,7 +363,8 @@
         ],
         "method": "원도 붉은 진입로를 판독한 북측 경사로 끝·상판 북단·상판 남단·남측 경사로 끝. 기존 교량 기호 픽셀과 별도의 배치 근거.",
         "status": "approximate_manual_source_road_reading"
-      }
+      },
+      "name_en": "Mojeongyo (Mojeon Bridge)"
     },
     {
       "id": "gwangtong",
@@ -408,7 +409,8 @@
         ],
         "method": "원도 붉은 진입로를 판독한 북측 경사로 끝·상판 북단·상판 남단·남측 경사로 끝. 기존 교량 기호 픽셀과 별도의 배치 근거.",
         "status": "approximate_manual_source_road_reading"
-      }
+      },
+      "name_en": "Gwangtonggyo (Gwangtong Bridge)"
     },
     {
       "id": "jangtong",
@@ -453,7 +455,8 @@
         ],
         "method": "원도 붉은 진입로를 판독한 북측 경사로 끝·상판 북단·상판 남단·남측 경사로 끝. 기존 교량 기호 픽셀과 별도의 배치 근거.",
         "status": "approximate_manual_source_road_reading"
-      }
+      },
+      "name_en": "Jangtonggyo (Jangtong Bridge)"
     },
     {
       "id": "supyo",
@@ -498,7 +501,8 @@
         ],
         "method": "원도 붉은 진입로를 판독한 북측 경사로 끝·상판 북단·상판 남단·남측 경사로 끝. 기존 교량 기호 픽셀과 별도의 배치 근거.",
         "status": "approximate_manual_source_road_reading"
-      }
+      },
+      "name_en": "Supyogyo (Supyo Bridge)"
     }
   ],
   "limitations": [

@@ -57,9 +57,13 @@
         "sources": [
           {
             "title": "궁능유적본부 창덕궁",
-            "url": "https://royal.khs.go.kr/ROYAL/contents/R102010000.do"
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R102010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Changdeokgung"
           }
-        ]
+        ],
+        "summary_en": "The second palace of Joseon. After Gyeongbokgung burned in the Imjin War (1592), it long served as the main palace. The area around Injeongjeon, its throne hall, is marked.",
+        "period_en": "Founded 1405. Destroyed by fire 1592, rebuilt around 1610. Extant.",
+        "in_1750_en": "Used as the palace where the king resided."
       },
       "throne_hall": {
         "bays": [
@@ -72,7 +76,8 @@
         ],
         "roof_tiers": 2,
         "terrace_tiers": 2
-      }
+      },
+      "name_en": "Changdeokgung · Injeongjeon Hall area"
     },
     {
       "id": "changgyeong",
@@ -126,9 +131,13 @@
         "sources": [
           {
             "title": "궁능유적본부 창경궁",
-            "url": "https://royal.khs.go.kr/ROYAL/contents/R103010000.do"
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R103010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Changgyeonggung"
           }
-        ]
+        ],
+        "summary_en": "A palace King Seongjong built by expanding the site of Suganggung; together with Changdeokgung it formed the Eastern Palace (Donggwol). The area around Myeongjeongjeon, its throne hall, is marked.",
+        "period_en": "Founded 1484. Destroyed in the Imjin War, rebuilt around 1616. Became Changgyeongwon park under Japanese rule; restored in the 1980s. Extant.",
+        "in_1750_en": "Existed."
       },
       "throne_hall": {
         "bays": [
@@ -141,7 +150,8 @@
         ],
         "roof_tiers": 1,
         "terrace_tiers": 2
-      }
+      },
+      "name_en": "Changgyeonggung · Myeongjeongjeon Hall area"
     },
     {
       "id": "donhwamun",
@@ -193,11 +203,16 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 돈화문",
-            "url": "https://encykorea.aks.ac.kr/Article/E0016240"
+            "url": "https://encykorea.aks.ac.kr/Article/E0016240",
+            "title_en": "Encyclopedia of Korean Culture: Donhwamun"
           }
-        ]
+        ],
+        "summary_en": "The south main gate of Changdeokgung. The source map shows the inscription 敦化門 and a gate symbol.",
+        "period_en": "Founded 1412. Destroyed in the Imjin War, rebuilt around 1609. Extant.",
+        "in_1750_en": "Existed."
       },
-      "palace_gate_bays": 5
+      "palace_gate_bays": 5,
+      "name_en": "Donhwamun · Main Gate of Changdeokgung"
     },
     {
       "id": "geumwiyeong",
@@ -273,22 +288,30 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 금위영",
-            "url": "https://encykorea.aks.ac.kr/Article/E0007930"
+            "url": "https://encykorea.aks.ac.kr/Article/E0007930",
+            "title_en": "Encyclopedia of Korean Culture: Geumwiyeong"
           },
           {
             "title": "우리역사넷 금위영 1682~1895",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300110&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300110&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Geumwiyeong 1682–1895"
           },
           {
             "title": "위키백과 금위영",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B8%88%EC%9C%84%EC%98%81"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B8%88%EC%9C%84%EC%98%81",
+            "title_en": "Wikipedia (Korean): Geumwiyeong"
           },
           {
             "title": "종로구 문화관광 금위영서영터",
-            "url": "https://tour.jongno.go.kr/tour/tour/indvdlz/view.do?nttId=26815&viewType=BODY&dongCode=1111014900"
+            "url": "https://tour.jongno.go.kr/tour/tour/indvdlz/view.do?nttId=26815&viewType=BODY&dongCode=1111014900",
+            "title_en": "Jongno-gu Culture and Tourism: Geumwiyeong West Camp site"
           }
-        ]
-      }
+        ],
+        "summary_en": "One of the Five Military Commands, charged with defending the capital, guarding Changdeokgung and Changgyeonggung, and escorting royal processions. Its headquarters stood west of Donhwamun, in present-day Unni-dong.",
+        "period_en": "Established 1682 by merging the Jeongchogun and Hullyeon Byeoldae. Absorbed into the Jangeoyeong in 1881; abolished 1895.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows it as 禁衛營 west of Donhwamun next to the Bibyeonsa, so it is placed at that inscription."
+      },
+      "name_en": "Geumwiyeong (Royal Guard Command)"
     },
     {
       "id": "gwansanggam",
@@ -365,22 +388,30 @@
         "sources": [
           {
             "title": "위키백과 관상감",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B4%80%EC%83%81%EA%B0%90"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B4%80%EC%83%81%EA%B0%90",
+            "title_en": "Wikipedia (Korean): Gwansanggam"
           },
           {
             "title": "우리역사넷 관상감의 관장업무와 직제",
-            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_027_0020_0020_0010_0010"
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_027_0020_0020_0010_0010",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Duties and organization of the Gwansanggam"
           },
           {
             "title": "위키백과 서울 관상감 관천대",
-            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EA%B4%80%EC%83%81%EA%B0%90_%EA%B4%80%EC%B2%9C%EB%8C%80"
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EA%B4%80%EC%83%81%EA%B0%90_%EA%B4%80%EC%B2%9C%EB%8C%80",
+            "title_en": "Wikipedia (Korean): Gwansanggam Gwancheondae, Seoul"
           },
           {
             "title": "국가유산포털 서울 관상감 관천대",
-            "url": "http://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121117400000"
+            "url": "http://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121117400000",
+            "title_en": "Korea Heritage Portal: Gwansanggam Gwancheondae, Seoul"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of astronomy, geography, calendars, weather observation, and water clocks. Its stone observatory platform (Gwancheondae), used to observe the stars, survives in place in front of the Hyundai Gye-dong building in present-day Wonseo-dong.",
+        "period_en": "Renamed from Seounggwan to Gwansanggam in 1466. Demoted to Saryeokseo in 1506, then restored. Became the Gwansangso in 1894. The Gwancheondae is thought to have been built under King Sejong in 1434 and is extant (Treasure).",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows it as 觀象監 outside the west wall of Changdeokgung, south of the Jamungam, so it is placed at that inscription. This is about 120 m from the position obtained by converting the Gwancheondae remains (206 Wonseo-dong) to source-map coordinates and correcting against Donhwamun."
+      },
+      "name_en": "Gwansanggam (Astronomy Office)"
     },
     {
       "id": "dongmyo",
@@ -454,18 +485,25 @@
         "sources": [
           {
             "title": "위키백과 서울 동관왕묘",
-            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EB%8F%99%EA%B4%80%EC%99%95%EB%AC%98"
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EB%8F%99%EA%B4%80%EC%99%95%EB%AC%98",
+            "title_en": "Wikipedia (Korean): Donggwanwangmyo, Seoul"
           },
           {
             "title": "국가유산포털 서울 동관왕묘",
-            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121101420000"
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121101420000",
+            "title_en": "Korea Heritage Portal: Donggwanwangmyo, Seoul"
           },
           {
             "title": "우리역사넷 관왕묘와 무성왕묘",
-            "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_007_0060_0010_0030_0010"
+            "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_007_0060_0010_0030_0010",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Guan Yu shrines and the Museongwang shrine"
           }
-        ]
-      }
+        ],
+        "summary_en": "A shrine to Guan Yu, the Shu Han general. Because it stands outside Heunginjimun it is called Dongmyo (East Shrine). Ming forces in the Imjin War asked for it to be built, saying Guan Yu had aided them.",
+        "period_en": "Begun 1599, completed 1601 (Seonjo year 34). The Wanli Emperor of Ming sent the name plaque and construction funds. In 1691 (Sukjong year 17) King Sukjong performed the rites in person. Rites discontinued 1908. Extant (Treasure).",
+        "in_1750_en": "Existed. The Doseong Daejido shows 關王廟 outside Heunginjimun, so it is placed just south of that inscription where there is no road."
+      },
+      "name_en": "Donggwanwangmyo (East Guan Yu Shrine)"
     },
     {
       "id": "pyeongsiseo",
@@ -533,18 +571,25 @@
         "sources": [
           {
             "title": "조선왕조실록사전 평시서",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Pyeongsiseo"
           },
           {
             "title": "위키백과 평시서",
-            "url": "https://ko.wikipedia.org/wiki/%ED%8F%89%EC%8B%9C%EC%84%9C"
+            "url": "https://ko.wikipedia.org/wiki/%ED%8F%89%EC%8B%9C%EC%84%9C",
+            "title_en": "Wikipedia (Korean): Pyeongsiseo"
           },
           {
             "title": "한양도성박물관 도성대지도",
-            "url": "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR"
+            "url": "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR",
+            "title_en": "Seoul City Wall Museum: Doseong Daejido"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that supervised the licensed market merchants (sijeon). It regulated prices, inspected weights and measures such as rulers, measuring cups, and scales, and handled market licenses and the merchants' monopoly rights (geumnanjeon-gwon).",
+        "period_en": "Established 1392 as the Gyeongsiseo; renamed Pyeongsiseo in 1466. First located in Gyeonpyeong-bang, later moved to Gyeonghaeng-bang. Abolished 1894.",
+        "in_1750_en": "Existed. A sheet of the Doseong Daejido shows 平市署 just north of the Unjongga market shops and south of the Wongaksa pagoda, so it is placed at that inscription."
+      },
+      "name_en": "Pyeongsiseo (Market Supervisory Office)"
     },
     {
       "id": "yeonghuijeon",
@@ -615,14 +660,20 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 영희전",
-            "url": "https://encykorea.aks.ac.kr/Article/E0037870"
+            "url": "https://encykorea.aks.ac.kr/Article/E0037870",
+            "title_en": "Encyclopedia of Korean Culture: Yeonghuijeon"
           },
           {
             "title": "서울역사아카이브 도성대지도 부분도11",
-            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=dae3d5ce-3616-4256-a8b9-ab636d8d8723&fileSn=1100&type=C&upperNodeId=CTGRY780"
+            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=dae3d5ce-3616-4256-a8b9-ab636d8d8723&fileSn=1100&type=C&upperNodeId=CTGRY780",
+            "title_en": "Seoul History Archive: Doseong Daejido, sheet 11"
           }
-        ]
-      }
+        ],
+        "summary_en": "A portrait hall (jinjeon) that enshrined the portraits of past kings including Taejo, Sejo, Wonjong, and Sukjong and held rites for them. It stood near the former Jungbu Police Station site in present-day Jeo-dong, Jung-gu.",
+        "period_en": "Began 1619 as the Nambyeoljeon. Rebuilt 1677; renamed Yeonghuijeon 1690. Rebuilt with five chambers in 1748. Portrait of King Sunjo added 1857. Moved to the Gyeongmogung site in 1899.",
+        "in_1750_en": "Existed. This was just after the 1748 rebuilding with five chambers. The Doseong Daejido draws it as 永禧殿 surrounded by trees and walls south of Hundo-bang, so it is placed at that drawing."
+      },
+      "name_en": "Yeonghuijeon (Royal Portrait Hall)"
     },
     {
       "id": "honghwamun",
@@ -674,11 +725,16 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 홍화문",
-            "url": "https://encykorea.aks.ac.kr/Article/E0064444"
+            "url": "https://encykorea.aks.ac.kr/Article/E0064444",
+            "title_en": "Encyclopedia of Korean Culture: Honghwamun"
           }
-        ]
+        ],
+        "summary_en": "The east main gate of Changgyeonggung.",
+        "period_en": "Founded 1484. Destroyed in the Imjin War, rebuilt around 1616. Extant.",
+        "in_1750_en": "Existed. No gate symbol was found on the source map, so it is placed relative to the front of the model."
       },
-      "palace_gate_bays": 3
+      "palace_gate_bays": 3,
+      "name_en": "Honghwamun · Main Gate of Changgyeonggung"
     },
     {
       "id": "geumhomun",
@@ -745,20 +801,27 @@
         "sources": [
           {
             "title": "국가유산청 「궁궐의 현판과 주련 – 창덕궁 궁문」",
-            "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02"
+            "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02",
+            "title_en": "Korea Heritage Service, \"Plaques and Couplets of the Palaces – Gates of Changdeokgung\""
           },
           {
             "title": "성종실록 6년 8월 23일",
-            "url": "https://sillok.history.go.kr/id/kia_10608023_007"
+            "url": "https://sillok.history.go.kr/id/kia_10608023_007",
+            "title_en": "Annals of Seongjong, year 6, 8th month, day 23"
           },
           {
             "title": "위키백과 창덕궁 금호문",
-            "url": "https://ko.wikipedia.org/wiki/%EC%B0%BD%EB%8D%95%EA%B6%81_%EA%B8%88%ED%98%B8%EB%AC%B8"
+            "url": "https://ko.wikipedia.org/wiki/%EC%B0%BD%EB%8D%95%EA%B6%81_%EA%B8%88%ED%98%B8%EB%AC%B8",
+            "title_en": "Wikipedia (Korean): Geumhomun, Changdeokgung"
           }
-        ]
+        ],
+        "summary_en": "A gate in the west wall of Changdeokgung. Its name comes from geum (金), the Five Phases element of the west, and ho (虎), the white tiger that guards the west. Officials of offices inside the palace such as the Seungjeongwon and Hongmungwan used it. It is a one-bay raised gate (sotseuldaemun) with a gabled roof.",
+        "period_en": "Named by Seo Geo-jeong in 1475 (Seongjong year 6) (Annals of Seongjong). When it was rebuilt after Changdeokgung burned in the Imjin War has not been confirmed. Extant.",
+        "in_1750_en": "Existed. The map sheet draws it as a gate in the west wall of Changdeokgung, so it is placed there facing west. The model is a simplified one-bay raised gate."
       },
       "palace_gate_bays": 1,
-      "palace_gate_roof": "gable"
+      "palace_gate_roof": "gable",
+      "name_en": "Geumhomun · West Gate of Changdeokgung"
     },
     {
       "id": "heunghwamun",
@@ -821,16 +884,22 @@
         "sources": [
           {
             "title": "국가유산포털 경희궁 흥화문",
-            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000"
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000",
+            "title_en": "Korea Heritage Portal: Heunghwamun, Gyeonghuigung"
           },
           {
             "title": "위키백과 흥화문",
-            "url": "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8"
+            "url": "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8",
+            "title_en": "Wikipedia (Korean): Heunghwamun"
           }
-        ]
+        ],
+        "summary_en": "The main gate of Gyeongdeokgung (Gyeonghuigung from 1760). It stood at the southeast corner of the palace facing east, flanked by Heungwonmun and Gaeyangmun. It is a single-story hip-roofed gate three bays wide and two bays deep.",
+        "period_en": "Built under Gwanghaegun. The Korea Heritage Portal gives 1616 (Gwanghaegun year 8), Wikipedia gives 1618. Moved to the palace's south wall in 1915 and to the main gate of Bangmunsa temple in Jangchung-dong in 1932; returned to the present Gyeonghuigung site in 1988. Its original position is near the present Salvation Army building.",
+        "in_1750_en": "Existed. The map sheet draws it as a gate in the east wall of Gyeongdeokgung, so it is placed there facing east. The model is a simplified three-bay single-story hip-roofed gate."
       },
       "palace_gate_bays": 3,
-      "palace_gate_roof": "hip"
+      "palace_gate_roof": "hip",
+      "name_en": "Heunghwamun · Main Gate of Gyeongdeokgung"
     },
     {
       "id": "gyeongdeok",
@@ -884,13 +953,18 @@
         "sources": [
           {
             "title": "우리역사넷 경희궁 1617",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300210&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300210&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Gyeonghuigung 1617"
           },
           {
             "title": "궁능유적본부 경희궁",
-            "url": "https://royal.khs.go.kr/ROYAL/contents/R110000000.do"
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R110000000.do",
+            "title_en": "Royal Palaces and Tombs Center: Gyeonghuigung"
           }
-        ]
+        ],
+        "summary_en": "A secondary palace Gwanghaegun built in the west of the capital. Today's Gyeonghuigung.",
+        "period_en": "Begun 1617. Renamed Gyeonghuigung 1760. Fire 1829, rebuilt 1831. Most halls dismantled 1865; demolished after 1907. Sungjeongjeon was moved in 1926 and became Jeonggagwon at Dongguk University.",
+        "in_1750_en": "Existed under the name Gyeongdeokgung."
       },
       "throne_hall": {
         "bays": [
@@ -903,7 +977,8 @@
         ],
         "roof_tiers": 1,
         "terrace_tiers": 2
-      }
+      },
+      "name_en": "Gyeongdeokgung · Sungjeongjeon Hall area"
     },
     {
       "id": "jongmyo",
@@ -949,10 +1024,15 @@
         "sources": [
           {
             "title": "궁능유적본부 종묘 연혁",
-            "url": "https://royal.khs.go.kr/ROYAL/contents/R105010000.do"
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R105010000.do",
+            "title_en": "Royal Palaces and Tombs Center: History of Jongmyo"
           }
-        ]
-      }
+        ],
+        "summary_en": "The royal shrine housing the spirit tablets of past kings and queens. The main hall (Jeongjeon) is shown as a 15-bay gable-roofed building.",
+        "period_en": "Founded 1395. Destroyed in the Imjin War, rebuilt 1608. The main hall grew to 15 bays in 1726 and 19 bays in 1836. Extant.",
+        "in_1750_en": "Existed. The model's 15 bays match the 1726–1835 configuration."
+      },
+      "name_en": "Jongmyo (Royal Ancestral Shrine) · Main Hall area"
     },
     {
       "id": "eoyeongcheong",
@@ -1015,18 +1095,25 @@
         "sources": [
           {
             "title": "위키백과 어영청",
-            "url": "https://ko.wikipedia.org/wiki/%EC%96%B4%EC%98%81%EC%B2%AD"
+            "url": "https://ko.wikipedia.org/wiki/%EC%96%B4%EC%98%81%EC%B2%AD",
+            "title_en": "Wikipedia (Korean): Eoyeongcheong"
           },
           {
             "title": "우리역사넷 어영청",
-            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_030_0040_0050_0010_0020"
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_030_0040_0050_0010_0020",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Eoyeongcheong"
           },
           {
             "title": "우리역사넷 오군영 1593~1884",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300820&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300820&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): The Five Military Commands 1593–1884"
           }
-        ]
-      }
+        ],
+        "summary_en": "One of the Five Military Commands, charged with guarding the king and defending the capital. King Hyojong expanded it greatly for his planned northern expedition. Its 505-bay headquarters stood in Yeonhwa-bang, east of the main gate of Jongmyo.",
+        "period_en": "Created 1623 as the king's bodyguard; reorganized 1652. Merged into the Jangeoyeong in 1881, became the Chongeoyeong in 1884, abolished 1894.",
+        "in_1750_en": "Existed. The inscription on the source map could not be read, so the marker site in Inui-dong was corrected against the south gate of Jongmyo on the source map and placed clear of the road."
+      },
+      "name_en": "Eoyeongcheong (Royal Guard Command)"
     },
     {
       "id": "sajik",
@@ -1075,10 +1162,15 @@
         "sources": [
           {
             "title": "궁능유적본부 사직단",
-            "url": "https://royal.khs.go.kr/ROYAL/contents/R311030000.do"
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R311030000.do",
+            "title_en": "Royal Palaces and Tombs Center: Sajikdan"
           }
-        ]
-      }
+        ],
+        "summary_en": "The altar where sacrifices were offered to the gods of soil and grain.",
+        "period_en": "Laid out with the building of the capital in early Joseon. Exact year unconfirmed. Extant.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Sajikdan (Altar of Soil and Grain)"
     },
     {
       "id": "sungkyun",
@@ -1127,10 +1219,15 @@
         "sources": [
           {
             "title": "국가유산 디지털 서비스 서울 문묘와 성균관",
-            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101410000&ctptUid=13898859667928200187"
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101410000&ctptUid=13898859667928200187",
+            "title_en": "Korea Heritage Digital Service: Munmyo and Seonggyungwan, Seoul"
           }
-        ]
-      }
+        ],
+        "summary_en": "A complex combining the Munmyo, the shrine to Confucius, and Seonggyungwan, the highest institution of learning.",
+        "period_en": "Founded in early Joseon. Destroyed in the Imjin War and rebuilt in the early 17th century. Exact years unconfirmed. Extant.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Munmyo and Seonggyungwan"
     },
     {
       "id": "gwanghwamun",
@@ -1188,11 +1285,16 @@
         "sources": [
           {
             "title": "Wikidata 광화문",
-            "url": "https://www.wikidata.org/wiki/Q485034"
+            "url": "https://www.wikidata.org/wiki/Q485034",
+            "title_en": "Wikidata: Gwanghwamun"
           }
-        ]
+        ],
+        "summary_en": "The main gate of Gyeongbokgung.",
+        "period_en": "Founded 1395. Destroyed in the Imjin War, rebuilt 1865–1868. After relocation, destruction, and restoration, returned to its original position in 2010.",
+        "in_1750_en": "Had no gate tower. Lay in ruins along with Gyeongbokgung. The model shows only the stone base with three arches to mark the position."
       },
-      "gate_tiers": 0
+      "gate_tiers": 0,
+      "name_en": "Gwanghwamun"
     },
     {
       "id": "gyeonghoeru_pond",
@@ -1258,10 +1360,15 @@
         "sources": [
           {
             "title": "위키백과 경회루",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8",
+            "title_en": "Wikipedia (Korean): Gyeonghoeru"
           }
-        ]
-      }
+        ],
+        "summary_en": "The artificial pond in the west of Gyeongbokgung. It was enlarged in 1412, and Gyeonghoeru pavilion stood on the east island within it. The pavilion burned in the Imjin War, but its 48 dragon-carved stone pillars remained standing in the pond.",
+        "period_en": "Pond enlarged and pavilion built 1412. Pavilion destroyed 1592, leaving only the stone pillars. Gyeonghoeru rebuilt 1867.",
+        "in_1750_en": "Only the pond and stone pillars remained. The Doseong Daejido draws a pond, rows of pillars, and two islands inside the wall. Since the actual pond abuts the west wall, it is shown farther west than the drawing and at half size."
+      },
+      "name_en": "Site of Gyeonghoeru"
     },
     {
       "id": "geunjeongjeon_site",
@@ -1330,13 +1437,18 @@
         "sources": [
           {
             "title": "위키백과 근정전",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B7%BC%EC%A0%95%EC%A0%84"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B7%BC%EC%A0%95%EC%A0%84",
+            "title_en": "Wikipedia (Korean): Geunjeongjeon"
           },
           {
             "title": "국가유산청 경복궁 근정전",
-            "url": "https://www.heritage.go.kr/heri/gungDetail/gogungDetail.do?serial_number=161&detail_code=11&gung_number=1"
+            "url": "https://www.heritage.go.kr/heri/gungDetail/gogungDetail.do?serial_number=161&detail_code=11&gung_number=1",
+            "title_en": "Korea Heritage Service: Geunjeongjeon, Gyeongbokgung"
           }
-        ]
+        ],
+        "summary_en": "The site where Geunjeongjeon, the throne hall of Gyeongbokgung, stood. In 1750 only the two-tier stone terrace and foundation stones remained without a building; state examinations were held here and successful candidates announced.",
+        "period_en": "Founded 1395. Destroyed in the Imjin War, 1592. Rebuilt 1865–1867.",
+        "in_1750_en": "No building. The site with only its terrace and foundation stones is shown. The source map shows no buildings inside the wall, so the position is set by the proportions of Gwanghwamun and the wall."
       },
       "hall_site": {
         "hall_m": [
@@ -1348,7 +1460,8 @@
           5
         ],
         "tiers": 2
-      }
+      },
+      "name_en": "Site of Geunjeongjeon Hall"
     },
     {
       "id": "sajeongjeon_site",
@@ -1421,10 +1534,15 @@
         "sources": [
           {
             "title": "위키백과 사정전",
-            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%A0%95%EC%A0%84"
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%A0%95%EC%A0%84",
+            "title_en": "Wikipedia (Korean): Sajeongjeon"
           }
-        ]
-      }
+        ],
+        "summary_en": "The site where Sajeongjeon, the council hall of Gyeongbokgung, stood. Here the king handled daily state affairs; it stood just north of Geunjeongjeon.",
+        "period_en": "Founded 1395. Destroyed 1592. Rebuilt 1867.",
+        "in_1750_en": "No building. The site with only its platform and foundation stones is shown. The source map shows no buildings inside the wall, so it is placed on the axis north of Geunjeongjeon with the actual spacing reduced."
+      },
+      "name_en": "Site of Sajeongjeon Hall"
     },
     {
       "id": "gangnyeongjeon_site",
@@ -1497,10 +1615,15 @@
         "sources": [
           {
             "title": "위키백과 강녕전",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B0%95%EB%85%95%EC%A0%84"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B0%95%EB%85%95%EC%A0%84",
+            "title_en": "Wikipedia (Korean): Gangnyeongjeon"
           }
-        ]
-      }
+        ],
+        "summary_en": "The site where Gangnyeongjeon, the king's residence hall, stood. It was north of Sajeongjeon.",
+        "period_en": "Founded 1395. Destroyed 1592. Rebuilt 1865.",
+        "in_1750_en": "No building. The site with only its platform and foundation stones is shown. The source map shows no buildings inside the wall, so it is placed on the axis north of Geunjeongjeon with the actual spacing reduced."
+      },
+      "name_en": "Site of Gangnyeongjeon Hall"
     },
     {
       "id": "gyotaejeon_site",
@@ -1573,10 +1696,15 @@
         "sources": [
           {
             "title": "위키백과 교태전",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B5%90%ED%83%9C%EC%A0%84"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B5%90%ED%83%9C%EC%A0%84",
+            "title_en": "Wikipedia (Korean): Gyotaejeon"
           }
-        ]
-      }
+        ],
+        "summary_en": "The site where Gyotaejeon, the queen's residence hall, stood. It was north of Gangnyeongjeon, at the innermost point of the central axis of Gyeongbokgung.",
+        "period_en": "Founded 1395. Destroyed 1592. Rebuilt 1865. Moved to Changdeokgung in 1918 and restored in 1995.",
+        "in_1750_en": "No building. The site with only its platform and foundation stones is shown. The source map shows no buildings inside the wall, so it is placed on the axis north of Geunjeongjeon with the actual spacing reduced."
+      },
+      "name_en": "Site of Gyotaejeon Hall"
     },
     {
       "id": "heunginjimun",
@@ -1634,14 +1762,20 @@
         "sources": [
           {
             "title": "Wikipedia Heunginjimun",
-            "url": "https://en.wikipedia.org/wiki/Heunginjimun"
+            "url": "https://en.wikipedia.org/wiki/Heunginjimun",
+            "title_en": "Wikipedia: Heunginjimun"
           },
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           }
-        ]
-      }
+        ],
+        "summary_en": "The East Great Gate of the Seoul City Wall. The wall was first built in 1396 with four great gates and four small gates.",
+        "period_en": "Founded in early Joseon. The building rebuilt in 1869 is extant.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Heunginjimun (East Great Gate)"
     },
     {
       "id": "sungnyemun",
@@ -1699,14 +1833,20 @@
         "sources": [
           {
             "title": "Wikipedia Sungnyemun",
-            "url": "https://en.wikipedia.org/wiki/Sungnyemun"
+            "url": "https://en.wikipedia.org/wiki/Sungnyemun",
+            "title_en": "Wikipedia: Sungnyemun"
           },
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           }
-        ]
-      }
+        ],
+        "summary_en": "The South Great Gate of the Seoul City Wall. The wall was first built in 1396 with four great gates and four small gates.",
+        "period_en": "Completed 1398. Fire 2008, restored 2013. Extant.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Sungnyemun (South Great Gate)"
     },
     {
       "id": "donuimun",
@@ -1773,14 +1913,20 @@
         "sources": [
           {
             "title": "Wikipedia Donuimun",
-            "url": "https://en.wikipedia.org/wiki/Donuimun"
+            "url": "https://en.wikipedia.org/wiki/Donuimun",
+            "title_en": "Wikipedia: Donuimun"
           },
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           }
-        ]
-      }
+        ],
+        "summary_en": "The West Great Gate of the Seoul City Wall. Also called Saemun (New Gate).",
+        "period_en": "Founded in early Joseon. Demolished in 1915 and sold as building materials.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Donuimun (West Great Gate)"
     },
     {
       "id": "changuimun",
@@ -1837,10 +1983,15 @@
         "sources": [
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           }
-        ]
-      }
+        ],
+        "summary_en": "The north small gate of the Seoul City Wall.",
+        "period_en": "Founded in early Joseon. Extant. Year the gate tower was rebuilt unconfirmed.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Changuimun (Northwest Small Gate)"
     },
     {
       "id": "sukjeongmun",
@@ -1897,10 +2048,15 @@
         "sources": [
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           }
-        ]
-      }
+        ],
+        "summary_en": "The North Great Gate of the Seoul City Wall.",
+        "period_en": "Founded in early Joseon. Gate tower rebuilt after 1968.",
+        "in_1750_en": "The gate existed. Whether it had a gate tower at the time is unconfirmed."
+      },
+      "name_en": "Sukjeongmun (North Great Gate)"
     },
     {
       "id": "hyehwamun",
@@ -1957,10 +2113,15 @@
         "sources": [
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           }
-        ]
-      }
+        ],
+        "summary_en": "The east small gate of the Seoul City Wall.",
+        "period_en": "Founded in early Joseon. Gate tower removed 1928, arch removed 1938. Restored at a spot other than the original.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Hyehwamun (Northeast Small Gate)"
     },
     {
       "id": "gwanghuimun",
@@ -2017,14 +2178,20 @@
         "sources": [
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           },
           {
             "title": "위키백과 광희문",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B4%91%ED%9D%AC%EB%AC%B8"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B4%91%ED%9D%AC%EB%AC%B8",
+            "title_en": "Wikipedia (Korean): Gwanghuimun"
           }
-        ]
-      }
+        ],
+        "summary_en": "The south small gate of the Seoul City Wall.",
+        "period_en": "Founded in early Joseon. Gate tower collapsed 1915. Restored at a spot other than the original.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Gwanghuimun (Southeast Small Gate)"
     },
     {
       "id": "souimun",
@@ -2081,10 +2248,15 @@
         "sources": [
           {
             "title": "서울 한양도성 도성의 역사",
-            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "Seoul City Wall: History of the Wall"
           }
-        ]
-      }
+        ],
+        "summary_en": "The west small gate of the Seoul City Wall.",
+        "period_en": "Founded in early Joseon. Demolished 1914.",
+        "in_1750_en": "Existed."
+      },
+      "name_en": "Souimun (Southwest Small Gate)"
     },
     {
       "id": "yejo",
@@ -2151,10 +2323,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The ministry in charge of rites, diplomacy, state examinations, and education.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Yejo (Ministry of Rites)"
     },
     {
       "id": "jungchubu",
@@ -2221,10 +2398,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that gave honorary posts to high officials without a current position.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Jungchubu (Office of Senior Officials)"
     },
     {
       "id": "saheonbu",
@@ -2291,10 +2473,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of inspecting officials and policing public morals.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Saheonbu (Office of Inspector-General)"
     },
     {
       "id": "byeongjo",
@@ -2361,10 +2548,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The ministry in charge of military appointments and military administration.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Byeongjo (Ministry of War)"
     },
     {
       "id": "hyeongjo",
@@ -2431,10 +2623,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The ministry in charge of law, litigation, and punishment.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Hyeongjo (Ministry of Justice)"
     },
     {
       "id": "gongjo",
@@ -2501,10 +2698,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The ministry in charge of construction, crafts, and forestry.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Gongjo (Ministry of Works)"
     },
     {
       "id": "uijeongbu",
@@ -2571,10 +2773,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The highest organ of state affairs, led by the Chief, Left, and Right State Councilors.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Uijeongbu (State Council)"
     },
     {
       "id": "ijo",
@@ -2641,10 +2848,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The ministry in charge of civil official appointments.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Ijo (Ministry of Personnel)"
     },
     {
       "id": "hanseongbu",
@@ -2711,10 +2923,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of administration and public order in the capital and its surroundings.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Hanseongbu (Capital Magistracy)"
     },
     {
       "id": "hojo",
@@ -2781,10 +2998,15 @@
         "sources": [
           {
             "title": "서울 S-MAP 조선시대의 육조거리 시간여행",
-            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+            "url": "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g",
+            "title_en": "Seoul S-MAP: Time Travel to Yukjo Street in the Joseon Period"
           }
-        ]
-      }
+        ],
+        "summary_en": "The ministry in charge of household registers, taxes, and state finances.",
+        "period_en": "Established in early Joseon. The Gabo Reform of 1894 greatly changed the government structure, and most buildings were demolished in the early 20th century. Demolition years for individual offices unconfirmed.",
+        "in_1750_en": "The institution existed. The model layout follows sources from around 1863."
+      },
+      "name_en": "Hojo (Ministry of Taxation)"
     },
     {
       "id": "jeongdojeon_site",
@@ -2844,14 +3066,20 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 정도전",
-            "url": "https://encykorea.aks.ac.kr/Article/E0050380"
+            "url": "https://encykorea.aks.ac.kr/Article/E0050380",
+            "title_en": "Encyclopedia of Korean Culture: Jeong Do-jeon"
           },
           {
             "title": "위키백과 사복시",
-            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C"
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C",
+            "title_en": "Wikipedia (Korean): Saboksi"
           }
-        ]
-      }
+        ],
+        "summary_en": "Said to be where Jeong Do-jeon, a founding contributor of Joseon, lived. It is the area of today's Jongno-gu Office.",
+        "period_en": "After Jeong Do-jeon (1342–1398) died in the First Strife of Princes in 1398, the house did not survive.",
+        "in_1750_en": "There was no house. The Saboksi stood in this area. Only a marker recalling the old site is placed."
+      },
+      "name_en": "Site of Jeong Do-jeon's House"
     },
     {
       "id": "songsiyeol_site",
@@ -2912,10 +3140,15 @@
         "sources": [
           {
             "title": "국가유산포털 우암 송시열 집터",
-            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaKdcd=21&ccbaAsno=0000570000000&ccbaCtcd=11"
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaKdcd=21&ccbaAsno=0000570000000&ccbaCtcd=11",
+            "title_en": "Korea Heritage Portal: Site of Uam Song Si-yeol's House"
           }
-        ]
-      }
+        ],
+        "summary_en": "The Seoul house site of Uam Song Si-yeol. The rock inscription Jeungjubyeongnip and the Uamgugi stele survive.",
+        "period_en": "The 17th century, when Song Si-yeol (1607–1689) lived here. The house building does not survive.",
+        "in_1750_en": "Did not exist as Song Si-yeol's house. This is a marker recalling the old site."
+      },
+      "name_en": "Site of Song Si-yeol's House"
     },
     {
       "id": "jongru",
@@ -2984,14 +3217,20 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 보신각 터",
-            "url": "https://encykorea.aks.ac.kr/Article/E0023446"
+            "url": "https://encykorea.aks.ac.kr/Article/E0023446",
+            "title_en": "Encyclopedia of Korean Culture: Bosingak site"
           },
           {
             "title": "국가유산포털 옛 보신각 동종",
-            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121100020000"
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121100020000",
+            "title_en": "Korea Heritage Portal: Old Bosingak Bronze Bell"
           }
-        ]
-      }
+        ],
+        "summary_en": "The bell pavilion that hung the bell announcing the curfew hours of the capital. It is the site of today's Bosingak.",
+        "period_en": "The bell was first hung in 1398 and moved to the Jongno crossroads in 1413. Rebuilt in 1440 as a two-story 5 × 4-bay building, but destroyed in the Imjin War. Rebuilt 1619 as a single-story bell pavilion. Named Bosingak by plaque in 1895. The present building was rebuilt in 1979.",
+        "in_1750_en": "The single-story pavilion built in 1619 held the bell cast in 1468 (3.18 m tall)."
+      },
+      "name_en": "Jongnu (Bell Tower)"
     },
     {
       "id": "wongaksa_pagoda",
@@ -3060,18 +3299,25 @@
         "sources": [
           {
             "title": "국가유산포털 서울 원각사지 십층석탑",
-            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100020000"
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100020000",
+            "title_en": "Korea Heritage Portal: Ten-story Stone Pagoda at Wongaksa Temple Site, Seoul"
           },
           {
             "title": "우리역사넷 원각사지 십층석탑 1467",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300756&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300756&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Ten-story Stone Pagoda of Wongaksa, 1467"
           },
           {
             "title": "위키백과 서울 원각사지 십층석탑",
-            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EC%9B%90%EA%B0%81%EC%82%AC%EC%A7%80_%EC%8B%AD%EC%B8%B5%EC%84%9D%ED%83%91"
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EC%9B%90%EA%B0%81%EC%82%AC%EC%A7%80_%EC%8B%AD%EC%B8%B5%EC%84%9D%ED%83%91",
+            "title_en": "Wikipedia (Korean): Ten-story Stone Pagoda at Wongaksa Temple Site, Seoul"
           }
-        ]
-      }
+        ],
+        "summary_en": "The marble ten-story pagoda of Wongaksa, a temple founded by King Sejo. The temple vanished but the pagoda remained and was called the White Pagoda (Baektap) in late Joseon. It is the site of today's Tapgol Park.",
+        "period_en": "Wongaksa founded 1465, pagoda erected 1467. The temple ceased to exist in 1504. Around the Imjin War the top three stories fell and were left beside it; they were put back in 1947. Extant (National Treasure).",
+        "in_1750_en": "Only seven stories stood, with the top three lying on the ground beside the pagoda. The source map is torn at this spot, so the modern position was corrected against Jangtonggyo and Supyogyo bridges on the source map and placed north of the midpoint between the two bridges."
+      },
+      "name_en": "Ten-story Stone Pagoda of Wongaksa"
     },
     {
       "id": "uigeumbu",
@@ -3131,10 +3377,15 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 의금부",
-            "url": "https://encykorea.aks.ac.kr/Article/E0043266"
+            "url": "https://encykorea.aks.ac.kr/Article/E0043266",
+            "title_en": "Encyclopedia of Korean Culture: Uigeumbu"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that, under royal command, tried serious crimes such as treason. It stood northwest of the Jongno crossroads.",
+        "period_en": "Established in early Joseon. Reorganized around 1894. Exact years unconfirmed.",
+        "in_1750_en": "Existed. Positioned by the inscription 義禁府 on a sheet of the Doseong Daejido."
+      },
+      "name_en": "Uigeumbu (State Tribunal)"
     },
     {
       "id": "jwaporocheong",
@@ -3193,10 +3444,15 @@
         "sources": [
           {
             "title": "우리역사넷 포도청",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Podocheong"
           }
-        ]
-      }
+        ],
+        "summary_en": "The police bureau responsible for public order in the east of the capital. Its site is said to be around the Dansungsa cinema in today's Myo-dong.",
+        "period_en": "Established in early Joseon. Reorganized into the Gyeongmucheong in 1894.",
+        "in_1750_en": "Existed. Placed at the inscription 左捕廳 on a sheet of the Doseong Daejido."
+      },
+      "name_en": "Jwapodocheong (Left Police Bureau)"
     },
     {
       "id": "uporocheong",
@@ -3255,10 +3511,15 @@
         "sources": [
           {
             "title": "우리역사넷 포도청",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Podocheong"
           }
-        ]
-      }
+        ],
+        "summary_en": "The police bureau responsible for public order in the west of the capital. Its site is said to be around today's Jongno 1-ga.",
+        "period_en": "Established in early Joseon. Reorganized into the Gyeongmucheong in 1894.",
+        "in_1750_en": "Existed. No symbol was found on the source map, so it is placed at an indicative position."
+      },
+      "name_en": "Upodocheong (Right Police Bureau)"
     },
     {
       "id": "hyeminseo",
@@ -3325,18 +3586,25 @@
         "sources": [
           {
             "title": "위키백과 혜민서",
-            "url": "https://ko.wikipedia.org/wiki/%ED%98%9C%EB%AF%BC%EC%84%9C"
+            "url": "https://ko.wikipedia.org/wiki/%ED%98%9C%EB%AF%BC%EC%84%9C",
+            "title_en": "Wikipedia (Korean): Hyeminseo"
           },
           {
             "title": "우리역사넷 혜민서",
-            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_025_0040_0010_0020_0050"
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_025_0040_0010_0020_0050",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Hyeminseo"
           },
           {
             "title": "우리역사넷 교과서 용어해설 혜민서",
-            "url": "https://contents.history.go.kr/front/tg/view.do?levelId=tg_003_0730"
+            "url": "https://contents.history.go.kr/front/tg/view.do?levelId=tg_003_0730",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History), textbook glossary: Hyeminseo"
           }
-        ]
-      }
+        ],
+        "summary_en": "The medical office that treated the common people, dispensed medicine, and trained female physicians. Its site is near today's Euljiro 3-ga Station.",
+        "period_en": "Established 1392 as the Hyemingoguk; renamed Hyeminguk 1414 and Hyeminseo 1466. Abolished 1882.",
+        "in_1750_en": "Existed. A sheet of the Doseong Daejido shows 惠民署 in a yellow box, so it is placed at that inscription."
+      },
+      "name_en": "Hyeminseo (Public Dispensary)"
     },
     {
       "id": "hullyeonwon",
@@ -3401,10 +3669,15 @@
         "sources": [
           {
             "title": "서울시 이순신의 무과시험장, 훈련원 터",
-            "url": "https://mediahub.seoul.go.kr/archives/180498"
+            "url": "https://mediahub.seoul.go.kr/archives/180498",
+            "title_en": "Seoul Metropolitan Government: Yi Sun-sin's military examination ground, Hullyeonwon site"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of the military examinations, martial arts training, and instruction in military tactics. South of its hall was a ground for archery and examinations.",
+        "period_en": "Established 1392 as the Hullyeongwan. Moved to this site under King Taejong and renamed Hullyeonwon in 1466. Date of abolition unconfirmed.",
+        "in_1750_en": "Existed. Placed at the inscription 訓鍊院 on the source map."
+      },
+      "name_en": "Hullyeonwon (Military Training Office)"
     },
     {
       "id": "yuksanggung",
@@ -3474,18 +3747,25 @@
         "sources": [
           {
             "title": "궁능유적본부 칠궁 소개·역사",
-            "url": "https://royal.khs.go.kr/ROYAL/contents/R107010000.do"
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R107010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Chilgung introduction and history"
           },
           {
             "title": "우리역사넷 육상궁 1725",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300763&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300763&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Yuksanggung 1725"
           },
           {
             "title": "한양도성박물관 도성대지도",
-            "url": "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR"
+            "url": "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR",
+            "title_en": "Seoul City Wall Museum: Doseong Daejido"
           }
-        ]
-      }
+        ],
+        "summary_en": "The shrine of Royal Noble Consort Sukbin Choe, mother of King Yeongjo. Yeongjo raised his mother's status and elevated it to a gung (palace shrine). It is the site of today's Chilgung.",
+        "period_en": "Built 1725 as the Sukbinmyo. Renamed Yuksangmyo 1744 and Yuksanggung 1753. Fire 1882, rebuilt 1883. Other consorts' shrines were moved here under Gojong and Sunjong, and it became the Chilgung (Seven Shrines) in 1929. Extant.",
+        "in_1750_en": "In 1750 it was the Yuksangmyo; it became Yuksanggung in 1753. The Doseong Daejido writes 毓祥宮, showing the map was drawn after 1753. It is placed at that inscription."
+      },
+      "name_en": "Yuksanggung (Shrine of Lady Choe)"
     },
     {
       "id": "gyeongmogung",
@@ -3535,14 +3815,20 @@
         "sources": [
           {
             "title": "우리역사넷 경모궁 1764",
-            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300150&code=kc_age_30"
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300150&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Gyeongmogung 1764"
           },
           {
             "title": "한국민족문화대백과사전 경모궁",
-            "url": "https://encykorea.aks.ac.kr/Article/E0002406"
+            "url": "https://encykorea.aks.ac.kr/Article/E0002406",
+            "title_en": "Encyclopedia of Korean Culture: Gyeongmogung"
           }
-        ]
-      }
+        ],
+        "summary_en": "The shrine of Crown Prince Sado. Its site is the area of today's Seoul National University Hospital.",
+        "period_en": "Built 1764 as the Sueunmyo. Renamed Gyeongmogung 1776. Abolished 1899 when Sado was posthumously honored as King Jangjo and his tablet moved to Jongmyo.",
+        "in_1750_en": "Did not exist. It was built after the map's reference date."
+      },
+      "name_en": "Gyeongmogung (Shrine of Crown Prince Sado)"
     },
     {
       "id": "jamungam",
@@ -3614,10 +3900,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 자문감",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%90%EB%AC%B8%EA%B0%90(%E7%B4%AB%E9%96%80%E7%9B%A3)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%90%EB%AC%B8%EA%B0%90(%E7%B4%AB%E9%96%80%E7%9B%A3)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Jamungam"
           }
-        ]
-      }
+        ],
+        "summary_en": "Another name for the Seongonggam, which handled repairs and construction of buildings inside and outside the palaces; its hall stood outside Geumhomun of Changdeokgung.",
+        "period_en": "Seongonggam established 1392. The name Jamungam was used from King Taejong's reign. Demoted to a junior third-rank office in the Sokdaejeon code. Continued to the end of Joseon.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 紫門監 west of Geumhomun of Changdeokgung, so it is placed at that inscription."
+      },
+      "name_en": "Jamungam (Palace Works Office)"
     },
     {
       "id": "uibinbu",
@@ -3689,10 +3980,15 @@
         "sources": [
           {
             "title": "위키백과 의빈부",
-            "url": "https://ko.wikipedia.org/wiki/%EC%9D%98%EB%B9%88%EB%B6%80"
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%98%EB%B9%88%EB%B6%80",
+            "title_en": "Wikipedia (Korean): Uibinbu"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office to which royal sons-in-law, husbands of the daughters of kings and crown princes, belonged. It stood in Won-dong west of Changdeokgung.",
+        "period_en": "Established 1444 as the Bumabu; renamed Uibinbu 1466. Changed to the Uibinwon in 1894 and merged into the Jongjeongbu.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 儀賓府 outside the west wall of Changdeokgung, so it is placed at that inscription."
+      },
+      "name_en": "Uibinbu (Office of Royal Sons-in-law)"
     },
     {
       "id": "bibyeonsa",
@@ -3768,14 +4064,20 @@
         "sources": [
           {
             "title": "위키백과 비변사",
-            "url": "https://ko.wikipedia.org/wiki/%EB%B9%84%EB%B3%80%EC%82%AC"
+            "url": "https://ko.wikipedia.org/wiki/%EB%B9%84%EB%B3%80%EC%82%AC",
+            "title_en": "Wikipedia (Korean): Bibyeonsa"
           },
           {
             "title": "조선왕조실록사전 비변사",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%B9%84%EB%B3%80%EC%82%AC(%E5%82%99%E9%82%8A%E5%8F%B8)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%B9%84%EB%B3%80%EC%82%AC(%E5%82%99%E9%82%8A%E5%8F%B8)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Bibyeonsa"
           }
-        ]
-      }
+        ],
+        "summary_en": "A council created to handle frontier military matters that, after the Imjin War, became the highest office of late Joseon, deciding state affairs in general. Its hall stood in front of Donhwamun of Changdeokgung.",
+        "period_en": "Set up as a temporary body during the Sampo Japanese Uprising of 1510. Made permanent 1555. After the Imjin War it took charge of politics, the economy, and diplomacy as well. Abolished 1865 and absorbed into the Uijeongbu.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 備邊司 west of Donhwamun next to the Geumwiyeong, so it is placed at that inscription."
+      },
+      "name_en": "Bibyeonsa (Border Defense Council)"
     },
     {
       "id": "changuigung",
@@ -3848,10 +4150,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 창의궁",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%B0%BD%EC%9D%98%EA%B6%81(%E5%BD%B0%E7%BE%A9%E5%AE%AE)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%B0%BD%EC%9D%98%EA%B6%81(%E5%BD%B0%E7%BE%A9%E5%AE%AE)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Changuigung"
           }
-        ]
-      }
+        ],
+        "summary_en": "The house where King Yeongjo lived as Prince Yeoning before becoming king. It stood in Uitong-bang opposite Yeongchumun of Gyeongbokgung, and after his accession Yeongjo called it his former residence (jamjeo) and visited it often. It is the area of the lacebark pine in today's Tongui-dong.",
+        "period_en": "In 1707 King Sukjong bought the Inpyeongwi residence and gave it to Prince Yeoning. In 1721 the prince became heir to the throne and entered the palace. The Hyojangmyo was built inside it in 1729 and the Uisomyo in 1752. Abolished 1907 and taken into state ownership.",
+        "in_1750_en": "Existed. As Yeongjo's former residence it held the Hyojangmyo, and the Uisomyo was added in 1752. Sheet 4 of the Doseong Daejido shows 彰義宮 outside the west wall of Gyeongbokgung, so it is placed at that inscription."
+      },
+      "name_en": "Changuigung (Yeongjo's Former Residence)"
     },
     {
       "id": "bongsangsi",
@@ -3923,10 +4230,15 @@
         "sources": [
           {
             "title": "위키백과 봉상시",
-            "url": "https://ko.wikipedia.org/wiki/%EB%B4%89%EC%83%81%EC%8B%9C"
+            "url": "https://ko.wikipedia.org/wiki/%EB%B4%89%EC%83%81%EC%8B%9C",
+            "title_en": "Wikipedia (Korean): Bongsangsi"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of state sacrifices, posthumous titles, and the royal ceremonial fields. It stood behind the west side of Yukjo Street.",
+        "period_en": "Established 1392. Changed to the Jeonnongsi in 1409 and back to Bongsangsi in 1421. Renamed Bongsangsa 1895, abolished 1907.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows 奉常寺 behind and west of the Gongjo, so it is placed at that inscription."
+      },
+      "name_en": "Bongsangsi (Office of State Rites)"
     },
     {
       "id": "sayeogwon",
@@ -3998,10 +4310,15 @@
         "sources": [
           {
             "title": "위키백과 사역원",
-            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%97%AD%EC%9B%90"
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%97%AD%EC%9B%90",
+            "title_en": "Wikipedia (Korean): Sayeogwon"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that taught Chinese, Mongolian, Jurchen, and Japanese and handled interpretation and translation. It stood west of Yukjo Street, on the west side of today's Sejong Center for the Performing Arts.",
+        "period_en": "Established 1393. Abolished in the Gabo Reform of 1894.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows 司譯院 west of the Hyeongjo, so it is placed at that inscription."
+      },
+      "name_en": "Sayeogwon (Bureau of Interpreters)"
     },
     {
       "id": "uiyeonggo",
@@ -4073,10 +4390,15 @@
         "sources": [
           {
             "title": "위키백과 의영고",
-            "url": "https://ko.wikipedia.org/wiki/%EC%9D%98%EC%98%81%EA%B3%A0"
+            "url": "https://ko.wikipedia.org/wiki/%EC%9D%98%EC%98%81%EA%B3%A0",
+            "title_en": "Wikipedia (Korean): Uiyeonggo"
           }
-        ]
-      }
+        ],
+        "summary_en": "A storehouse office under the Hojo that handled palace supplies such as oil, honey, beeswax, and pepper.",
+        "period_en": "Established 1392. Abolished 1882.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows 義盈庫 north of the Sayeogwon, so it is placed at that inscription."
+      },
+      "name_en": "Uiyeonggo (Palace Provisions Storehouse)"
     },
     {
       "id": "saboksi",
@@ -4148,10 +4470,15 @@
         "sources": [
           {
             "title": "위키백과 사복시",
-            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C"
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C",
+            "title_en": "Wikipedia (Korean): Saboksi"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of the king's horses and carriages, harness, and stock breeding. It is the site of today's Jongno-gu Office, facing the Hanseongbu and Hojo on the east side of Yukjo Street across the Junghakcheon stream. It is also said to be the site of Jeong Do-jeon's house.",
+        "period_en": "Established 1392. Changed to the Taeboksi in 1894 and abolished 1895.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows it under its alternate name 太僕寺 east of the Junghakcheon, so it is placed at that inscription. The marker for Jeong Do-jeon's house site is to the southwest of this."
+      },
+      "name_en": "Saboksi (Royal Stables Office)"
     },
     {
       "id": "jangheunggo",
@@ -4227,14 +4554,20 @@
         "sources": [
           {
             "title": "조선왕조실록사전 장흥고",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%ED%9D%A5%EA%B3%A0(%E9%95%B7%E8%88%88%E5%BA%AB)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%ED%9D%A5%EA%B3%A0(%E9%95%B7%E8%88%88%E5%BA%AB)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Jangheunggo"
           },
           {
             "title": "위키백과 장흥고",
-            "url": "https://ko.wikipedia.org/wiki/%EC%9E%A5%ED%9D%A5%EA%B3%A0"
+            "url": "https://ko.wikipedia.org/wiki/%EC%9E%A5%ED%9D%A5%EA%B3%A0",
+            "title_en": "Wikipedia (Korean): Jangheunggo"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office under the Hojo that procured goods such as mats and oiled paper. It stood in Indal-bang in the western district, the area of today's Naeja-dong.",
+        "period_en": "Established 1392. Placed under the Hojo in 1405. Absorbed into the Gungnaebu in 1894.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows 長興庫 south of Jeokseon-bang, so it is placed at that inscription."
+      },
+      "name_en": "Jangheunggo (Supplies Storehouse)"
     },
     {
       "id": "naesusa",
@@ -4306,10 +4639,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 내수사",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%88%98%EC%82%AC(%E5%85%A7%E9%9C%80%E5%8F%B8)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%88%98%EC%82%AC(%E5%85%A7%E9%9C%80%E5%8F%B8)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Naesusa"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that managed the royal family's rice, cloth, sundry goods, and slaves. Formally a state agency, in practice it handled the king's private property. Today's Naesu-dong takes its name from it.",
+        "period_en": "Reorganized from the Naesuso into the Naesusa in 1466. Abolished 1910.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows 內需司 behind the west side of Yukjo Street, so it is placed at that inscription."
+      },
+      "name_en": "Naesusa (Royal Household Treasury)"
     },
     {
       "id": "daebodan",
@@ -4380,10 +4718,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 대보단",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%8C%80%EB%B3%B4%EB%8B%A8(%E5%A4%A7%E5%A0%B1%E5%A3%87)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%8C%80%EB%B3%B4%EB%8B%A8(%E5%A4%A7%E5%A0%B1%E5%A3%87)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Daebodan"
           }
-        ]
-      }
+        ],
+        "summary_en": "An altar built west of the rear garden of Changdeokgung to honor the Wanli Emperor of Ming, who sent troops during the Imjin War. Under Yeongjo it was greatly rebuilt with the Hongwu and Chongzhen emperors added.",
+        "period_en": "Built 1704 on the former Byeoldaeyeong site outside Yogeummun in the rear garden of Changdeokgung. Greatly rebuilt in 1749 on the Ming model, adding the Hongwu and Chongzhen emperors. Abolished 1884.",
+        "in_1750_en": "Existed. This was just after the major rebuilding of 1749. Sheet 2 of the Doseong Daejido shows 大報壇 northwest of the rear garden of Changdeokgung, so it is placed at that inscription as a low platform."
+      },
+      "name_en": "Daebodan (Altar to the Ming Emperors)"
     },
     {
       "id": "jangwonseo",
@@ -4455,10 +4798,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 장원서",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%EC%9B%90%EC%84%9C(%E6%8E%8C%E8%8B%91%E7%BD%B2)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%EC%9B%90%EC%84%9C(%E6%8E%8C%E8%8B%91%E7%BD%B2)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Jangwonseo"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that maintained the palace gardens, flowers, and fruit trees and handled fruit for royal tribute. It stood at the mouth of Samcheong-dong.",
+        "period_en": "Sangnimwon from 1394. Renamed Jangwonseo 1466. Abolished 1882.",
+        "in_1750_en": "Existed. Sheet 2 of the Doseong Daejido shows 掌苑署 south of the Samcheong-dong gate, so it is placed at that inscription."
+      },
+      "name_en": "Jangwonseo (Palace Gardens Office)"
     },
     {
       "id": "seonhyechang_buk",
@@ -4530,10 +4878,15 @@
         "sources": [
           {
             "title": "위키백과 선혜청",
-            "url": "https://ko.wikipedia.org/wiki/%EC%84%A0%ED%98%9C%EC%B2%AD"
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%A0%ED%98%9C%EC%B2%AD",
+            "title_en": "Wikipedia (Korean): Seonhyecheong"
           }
-        ]
-      }
+        ],
+        "summary_en": "The north storehouse of the Seonhyecheong, which stored the tribute rice (daedongmi). It stood at the mouth of Samcheong-dong.",
+        "period_en": "The Seonhyecheong was established in 1608 with the introduction of the Daedong tax law. The north storehouse was placed in Samcheong-dong. Seonhyecheong abolished 1894.",
+        "in_1750_en": "Existed. Sheet 2 of the Doseong Daejido shows 宣惠倉 north of the mouth of Samcheong-dong, so it is placed at that inscription."
+      },
+      "name_en": "Seonhyecheong North Storehouse"
     },
     {
       "id": "bugyeong",
@@ -4609,14 +4962,20 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 북영",
-            "url": "https://encykorea.aks.ac.kr/Article/E0024695"
+            "url": "https://encykorea.aks.ac.kr/Article/E0024695",
+            "title_en": "Encyclopedia of Korean Culture: Bugyeong"
           },
           {
             "title": "위키백과 훈련도감",
-            "url": "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%A0%A8%EB%8F%84%EA%B0%90"
+            "url": "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%A0%A8%EB%8F%84%EA%B0%90",
+            "title_en": "Wikipedia (Korean): Hullyeon Dogam"
           }
-        ]
-      }
+        ],
+        "summary_en": "A detachment of the Hullyeon Dogam (Military Training Command) stationed outside Hongbungmun north of Changdeokgung, in today's Wonseo-dong. Also called the Hunguk.",
+        "period_en": "The Hullyeon Dogam was established 1593. The Bugyeong stood at 1 Wonseo-dong outside Hongbungmun of Changdeokgung, with buildings of 235 bays. Hullyeon Dogam abolished 1882.",
+        "in_1750_en": "Existed. Sheet 2 of the Doseong Daejido shows 北營 outside the northwest wall of Changdeokgung, south of the Daebodan, so it is placed at that inscription."
+      },
+      "name_en": "Bugyeong (North Camp)"
     },
     {
       "id": "donghwalinseo",
@@ -4688,10 +5047,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 활인서",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%99%9C%EC%9D%B8%EC%84%9C(%E6%B4%BB%E4%BA%BA%E7%BD%B2)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%99%9C%EC%9D%B8%EC%84%9C(%E6%B4%BB%E4%BA%BA%E7%BD%B2)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Hwalinseo"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that treated and relieved the sick in the capital. The Donghwalinseo was outside the east small gate (Hyehwamun) and the Seohwalinseo outside the west small gate.",
+        "period_en": "Dongseo Daebiwon from 1392. Renamed Dongseo Hwalinwon 1414 and Hwalinseo 1466. Abolished 1882.",
+        "in_1750_en": "Existed. Sheet 3 of the Doseong Daejido shows 活人署 outside Hyehwamun, so it is placed at that inscription."
+      },
+      "name_en": "Donghwalinseo (East Relief Clinic)"
     },
     {
       "id": "tangpyeongbi",
@@ -4762,10 +5126,15 @@
         "sources": [
           {
             "title": "위키백과 탕평비",
-            "url": "https://ko.wikipedia.org/wiki/%ED%83%95%ED%8F%89%EB%B9%84"
+            "url": "https://ko.wikipedia.org/wiki/%ED%83%95%ED%8F%89%EB%B9%84",
+            "title_en": "Wikipedia (Korean): Tangpyeongbi"
           }
-        ]
-      }
+        ],
+        "summary_en": "The pavilion protecting the Tangpyeongbi stele, which Yeongjo erected at the entrance to Seonggyungwan in 1742 to convey his policy of impartiality (tangpyeong) to the students.",
+        "period_en": "Erected 1742. Extant.",
+        "in_1750_en": "Existed, in its eighth year. Sheet 3 of the Doseong Daejido writes 碑閣 at the entrance to Seonggyungwan with a drawing of a small building, so it is placed there."
+      },
+      "name_en": "Tangpyeongbi Pavilion"
     },
     {
       "id": "eouigung",
@@ -4842,14 +5211,20 @@
         "sources": [
           {
             "title": "조선왕조실록사전 어의궁",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%96%B4%EC%9D%98%EA%B6%81(%E6%96%BC%E7%BE%A9%E5%AE%AE)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%96%B4%EC%9D%98%EA%B6%81(%E6%96%BC%E7%BE%A9%E5%AE%AE)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Eouigung"
           },
           {
             "title": "서울역사아카이브 도성대지도 부분도6",
-            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=8d0c01f5-d2dc-4b74-a478-2597699c6758&fileSn=1100&type=C&upperNodeId=CTGRY780"
+            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=8d0c01f5-d2dc-4b74-a478-2597699c6758&fileSn=1100&type=C&upperNodeId=CTGRY780",
+            "title_en": "Seoul History Archive: Doseong Daejido, sheet 6"
           }
-        ]
-      }
+        ],
+        "summary_en": "The former residence where King Hyojong lived as Grand Prince Bongnim, called the Lower Eouigung. It later became the detached palace where kings and crown princes held their weddings, and was also known as Joyangnu. It is today's Yeonji-dong.",
+        "period_en": "Grand Prince Bongnim (Hyojong) began living here after his wedding in 1631. Wedding palace in late Joseon. In 1907 its property passed to the Imperial Household Property Office by order of the Gungnaebu.",
+        "in_1750_en": "Existed. Sheet 6 of the Doseong Daejido shows 本宮 in Sunggyo-bang east of Changgyeonggung, so it is placed at that inscription."
+      },
+      "name_en": "Eouigung (Bongung)"
     },
     {
       "id": "hunguk",
@@ -4925,14 +5300,20 @@
         "sources": [
           {
             "title": "한국민족문화대백과사전 훈련도감",
-            "url": "https://encykorea.aks.ac.kr/Article/E0065793"
+            "url": "https://encykorea.aks.ac.kr/Article/E0065793",
+            "title_en": "Encyclopedia of Korean Culture: Hullyeon Dogam"
           },
           {
             "title": "위키백과 훈련도감",
-            "url": "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%A0%A8%EB%8F%84%EA%B0%90"
+            "url": "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%A0%A8%EB%8F%84%EA%B0%90",
+            "title_en": "Wikipedia (Korean): Hullyeon Dogam"
           }
-        ]
-      }
+        ],
+        "summary_en": "The Sinyeong, headquarters of the Hullyeon Dogam. It stood outside Heunghwamun of Gyeongdeokgung (Gyeonghuigung) in today's Sinmunno 1-ga, with 197 bays. It was responsible for defending the capital and guarding the palace.",
+        "period_en": "The Hullyeon Dogam was established 1593 and given five camps in 1594. The Sinyeong was a 197-bay hall outside Heunghwamun. Hullyeon Dogam abolished 1882.",
+        "in_1750_en": "Existed. Sheet 7 of the Doseong Daejido shows 訓局新營 outside Heunghwamun of Gyeongdeokgung, so it is placed at that inscription. It was formerly placed south of the Hojo following Yukjo Street sources from around 1863, but has been moved to the inscription on the source map."
+      },
+      "name_en": "Hunguk Sinyeong (Training Command Hall)"
     },
     {
       "id": "bibyeonsa_gyeongdeok",
@@ -5008,14 +5389,20 @@
         "sources": [
           {
             "title": "위키백과 비변사",
-            "url": "https://ko.wikipedia.org/wiki/%EB%B9%84%EB%B3%80%EC%82%AC"
+            "url": "https://ko.wikipedia.org/wiki/%EB%B9%84%EB%B3%80%EC%82%AC",
+            "title_en": "Wikipedia (Korean): Bibyeonsa"
           },
           {
             "title": "서울역사아카이브 도성대지도 부분도7",
-            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=edc4aa41-2b9b-48ea-8577-c79aad2c0e7d&fileSn=1100&type=C&upperNodeId=CTGRY780"
+            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=edc4aa41-2b9b-48ea-8577-c79aad2c0e7d&fileSn=1100&type=C&upperNodeId=CTGRY780",
+            "title_en": "Seoul History Archive: Doseong Daejido, sheet 7"
           }
-        ]
-      }
+        ],
+        "summary_en": "The Bibyeonsa hall outside Heunghwamun of Gyeongdeokgung. When Yeongjo resided at Gyeongdeokgung, the Bibyeonsa, which oversaw state affairs, kept a hall near the palace as well. The source map records it separately from the Bibyeonsa in front of Donhwamun.",
+        "period_en": "The Bibyeonsa became a permanent office in 1555. Abolished 1865.",
+        "in_1750_en": "Existed. Sheet 7 of the Doseong Daejido shows 備邊司 outside Heunghwamun of Gyeongdeokgung, east of the Hunguk Sinyeong, so it is placed at that inscription. The same name also appears in front of Donhwamun."
+      },
+      "name_en": "Bibyeonsa (in front of Gyeongdeokgung)"
     },
     {
       "id": "seongonggam",
@@ -5087,10 +5474,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 선공감",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%84%A0%EA%B3%B5%EA%B0%90(%E7%B9%95%E5%B7%A5%E7%9B%A3)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%84%A0%EA%B3%B5%EA%B0%90(%E7%B9%95%E5%B7%A5%E7%9B%A3)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Seongonggam"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office under the Gongjo in charge of civil engineering and building repairs. It also handled construction, coffin making, and the supply of firewood.",
+        "period_en": "Established 1392. Merged into the Jeongaksa in 1894.",
+        "in_1750_en": "Existed. Sheet 7 of the Doseong Daejido shows 繕工監 outside the south wall of Gyeongdeokgung, so it is placed at that inscription."
+      },
+      "name_en": "Seongonggam (Public Works Office)"
     },
     {
       "id": "myeongnyegung",
@@ -5163,10 +5555,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 명례궁",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%85%EB%A1%80%EA%B6%81(%E6%98%8E%E7%A6%AE%E5%AE%AE)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%85%EB%A1%80%EA%B6%81(%E6%98%8E%E7%A6%AE%E5%AE%AE)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Myeongnyegung"
           }
-        ]
-      }
+        ],
+        "summary_en": "The former house of Grand Prince Wolsan, used by King Seonjo as a temporary palace after the Imjin War, and later a royal estate that raised and managed the royal privy purse. It is the site of today's Deoksugung.",
+        "period_en": "Used by Seonjo as a temporary palace from 1593. Given the name Gyeongungung in 1611. The name Myeongnyegung first appears in 1623. Its role shrank with Gojong's expansion of Gyeongungung in 1897, and it was wound up in 1907.",
+        "in_1750_en": "Existed. Sheet 7 of the Doseong Daejido shows 明禮宮 in Myeongnye-bang to the southwest, so it is placed at that inscription."
+      },
+      "name_en": "Myeongnyegung (Royal Estate)"
     },
     {
       "id": "seonhyecheong",
@@ -5242,14 +5639,20 @@
         "sources": [
           {
             "title": "위키백과 선혜청",
-            "url": "https://ko.wikipedia.org/wiki/%EC%84%A0%ED%98%9C%EC%B2%AD"
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%A0%ED%98%9C%EC%B2%AD",
+            "title_en": "Wikipedia (Korean): Seonhyecheong"
           },
           {
             "title": "조선왕조실록사전 남대문시장",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EB%8C%80%EB%AC%B8%EC%8B%9C%EC%9E%A5(%E5%8D%97%E5%A4%A7%E9%96%80%E5%B8%82%E5%A0%B4)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EB%8C%80%EB%AC%B8%EC%8B%9C%EC%9E%A5(%E5%8D%97%E5%A4%A7%E9%96%80%E5%B8%82%E5%A0%B4)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Namdaemun Market"
           }
-        ]
-      }
+        ],
+        "summary_en": "The main office and new storehouse of the Seonhyecheong, the largest fiscal agency of late Joseon, which managed the rice, cloth, and money collected under the Daedong tax law. It stood inside Sungnyemun, on the site of today's Namdaemun Market.",
+        "period_en": "Established 1608 with the introduction of the Daedong law. Besides the main office (new storehouse) inside Sungnyemun, it had north, south, and separate storehouses. Abolished 1894.",
+        "in_1750_en": "Existed. Sheet 10 of the Doseong Daejido shows 宣惠新倉 in Sinchang-dong inside Sungnyemun, so it is placed at that inscription."
+      },
+      "name_en": "Seonhyecheong New Storehouse"
     },
     {
       "id": "taepyeonggwan",
@@ -5321,10 +5724,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 태평관",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%ED%8F%89%EA%B4%80(%E5%A4%AA%E5%B9%B3%E9%A4%A8)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%ED%8F%89%EA%B4%80(%E5%A4%AA%E5%B9%B3%E9%A4%A8)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Taepyeonggwan"
           }
-        ]
-      }
+        ],
+        "summary_en": "The lodge where envoys from Ming China stayed. Heavily damaged in the Imjin War, after which envoys lodged at the Nambyeolgung instead, but some buildings remained and were used for banquets. It is today's Seosomun-dong.",
+        "period_en": "Newly built after the move of the capital to Hanyang in 1395. Destroyed in the Imjin War, after which the Nambyeolgung became the envoys' lodge. The remaining buildings were used for banquets, and after 1908 the area became official residences.",
+        "in_1750_en": "Existed. With Ming already fallen it was no longer used to lodge envoys, but sheet 10 of the Doseong Daejido shows 大平館, so it is placed at that inscription."
+      },
+      "name_en": "Taepyeonggwan (Ming Envoys' Lodge)"
     },
     {
       "id": "yebinsi",
@@ -5396,10 +5804,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 예빈시",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%88%EB%B9%88%EC%8B%9C(%E7%A6%AE%E8%B3%93%E5%AF%BA)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%88%EB%B9%88%EC%8B%9C(%E7%A6%AE%E8%B3%93%E5%AF%BA)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Yebinsi"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of entertaining envoys and providing food for royal relatives and high ministers. It was in Yangsaeng-bang in the western district before moving inside the Nambyeolgung in 1778.",
+        "period_en": "Established 1392. Moved from south of the Uijeongbu to Yangsaeng-bang in the western district, then inside the Nambyeolgung in 1778. Abolished 1894.",
+        "in_1750_en": "Existed, at the time in Yangsaeng-bang. Sheet 10 of the Doseong Daejido shows 禮賓寺 east of the inscription Yangsaeng-bang, so it is placed at that inscription."
+      },
+      "name_en": "Yebinsi (Office of Receptions)"
     },
     {
       "id": "nammyo",
@@ -5472,10 +5885,15 @@
         "sources": [
           {
             "title": "위키백과 남묘",
-            "url": "https://ko.wikipedia.org/wiki/%EB%82%A8%EB%AC%98"
+            "url": "https://ko.wikipedia.org/wiki/%EB%82%A8%EB%AC%98",
+            "title_en": "Wikipedia (Korean): Nammyo"
           }
-        ]
-      }
+        ],
+        "summary_en": "A shrine to Guan Yu, called Nammyo (South Shrine) because it stood outside Sungnyemun. It was the first Guan Yu shrine, built by Ming forces during the Imjin War.",
+        "period_en": "Built 1598 outside Sungnyemun. Burned 1952 and rebuilt 1957. Moved to Sadang-dong, Dongjak-gu in 1979.",
+        "in_1750_en": "Existed. Sheet 10 of the Doseong Daejido shows 關王廟 south of and outside Sungnyemun, so it is placed at that inscription. It is outside the city wall."
+      },
+      "name_en": "Namgwanwangmyo (South Guan Yu Shrine)"
     },
     {
       "id": "eoyeongchang",
@@ -5547,10 +5965,15 @@
         "sources": [
           {
             "title": "위키백과 남창 (조선)",
-            "url": "https://ko.wikipedia.org/wiki/%EB%82%A8%EC%B0%BD_(%EC%A1%B0%EC%84%A0)"
+            "url": "https://ko.wikipedia.org/wiki/%EB%82%A8%EC%B0%BD_(%EC%A1%B0%EC%84%A0)",
+            "title_en": "Wikipedia (Korean): Namchang (Joseon)"
           }
-        ]
-      }
+        ],
+        "summary_en": "The south storehouse (Namchang) of the Eoyeongcheong. It stood north of the Namsoyeong, with 137 bays.",
+        "period_en": "Newly built 1692 as the Eoyeongcheong south storehouse. Eoyeongcheong abolished 1894.",
+        "in_1750_en": "Existed. Sheet 12 of the Doseong Daejido shows 御營倉 north of the Namsoyeong, so it is placed at that inscription."
+      },
+      "name_en": "Eoyeongchang (Eoyeongcheong Storehouse)"
     },
     {
       "id": "namsoyeong",
@@ -5622,10 +6045,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 남소영",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EC%86%8C%EC%98%81(%E5%8D%97%E5%B0%8F%E7%87%9F)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EC%86%8C%EC%98%81(%E5%8D%97%E5%B0%8F%E7%87%9F)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Namsoyeong"
           }
-        ]
-      }
+        ],
+        "summary_en": "A detachment of the Eoyeongcheong, a military camp and gunpowder store at the foot of Namsan beside the south small gate. Jangchungdan was later built on its site.",
+        "period_en": "Established 1695. Hall of 194 bays, powder magazine of 52 bays. Abolished around 1895; Jangchungdan built on the site in 1900.",
+        "in_1750_en": "Existed. Sheet 12 of the Doseong Daejido shows 南小營 at the foot of Mongmyeoksan inside the south small gate, so it is placed at that inscription."
+      },
+      "name_en": "Namsoyeong (South Small Camp)"
     },
     {
       "id": "sohyeonmyo",
@@ -5702,14 +6130,20 @@
         "sources": [
           {
             "title": "조선왕조실록사전 소현묘",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%86%8C%ED%98%84%EB%AC%98(%E6%98%AD%E9%A1%AF%E5%BB%9F)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%86%8C%ED%98%84%EB%AC%98(%E6%98%AD%E9%A1%AF%E5%BB%9F)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Sohyeonmyo"
           },
           {
             "title": "서울역사아카이브 도성대지도 부분도1",
-            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=8574fb02-d3c9-4b3b-9098-4393d481c4d6&fileSn=1100&type=C&upperNodeId=CTGRY780"
+            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=8574fb02-d3c9-4b3b-9098-4393d481c4d6&fileSn=1100&type=C&upperNodeId=CTGRY780",
+            "title_en": "Seoul History Archive: Doseong Daejido, sheet 1"
           }
-        ]
-      }
+        ],
+        "summary_en": "The shrine housing the spirit tablets of Crown Prince Sohyeon, eldest son of King Injo, and his consort, Crown Princess Kang. It stood next to Yuksanggung, and in 1776 the tablets were moved to the tomb and it became Yeonggyeongjeon.",
+        "period_en": "After Crown Prince Sohyeon's death in 1645 he was enshrined together at the Sunhoemyo, which was enlarged to four bays. Crown Princess Kang's tablet enshrined 1718. In 1776 the tablets were moved to the tomb and it was renamed Yeonggyeongjeon.",
+        "in_1750_en": "Existed. Sheet 1 of the Doseong Daejido shows 昭顯廟 west of Yuksanggung, so it is placed at that inscription."
+      },
+      "name_en": "Sohyeonmyo (Shrine of Crown Prince Sohyeon)"
     },
     {
       "id": "segeomjeong",
@@ -5780,10 +6214,15 @@
         "sources": [
           {
             "title": "위키백과 세검정 (서울)",
-            "url": "https://ko.wikipedia.org/wiki/%EC%84%B8%EA%B2%80%EC%A0%95_(%EC%84%9C%EC%9A%B8)"
+            "url": "https://ko.wikipedia.org/wiki/%EC%84%B8%EA%B2%80%EC%A0%95_(%EC%84%9C%EC%9A%B8)",
+            "title_en": "Wikipedia (Korean): Segeomjeong (Seoul)"
           }
-        ]
-      }
+        ],
+        "summary_en": "A pavilion on the rocks of the Hongjecheon stream outside Changuimun. It is said to be where the draft records (sacho) were washed clean after the Annals (Sillok) were completed. Burned 1941 and rebuilt 1977.",
+        "period_en": "Founded around 1500–1505, by estimate. Rebuilt in 1747 under Yeongjo. Destroyed 1941, restored 1977. Seoul Monument.",
+        "in_1750_en": "Existed. This was just after the 1747 rebuilding. Sheet 1 of the Doseong Daejido shows 洗劍亭 beside the Hongjecheon outside Changuimun, so it is placed at that inscription as a small pavilion. It is outside the city wall."
+      },
+      "name_en": "Segeomjeong Pavilion"
     },
     {
       "id": "nambyeolgung",
@@ -5860,14 +6299,20 @@
         "sources": [
           {
             "title": "조선왕조실록사전 남별궁",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EB%B3%84%EA%B6%81(%E5%8D%97%E5%88%A5%E5%AE%AE)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EB%B3%84%EA%B6%81(%E5%8D%97%E5%88%A5%E5%AE%AE)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Nambyeolgung"
           },
           {
             "title": "서울역사아카이브 도성대지도 부분도11",
-            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=dae3d5ce-3616-4256-a8b9-ab636d8d8723&fileSn=1100&type=C&upperNodeId=CTGRY780"
+            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=dae3d5ce-3616-4256-a8b9-ab636d8d8723&fileSn=1100&type=C&upperNodeId=CTGRY780",
+            "title_en": "Seoul History Archive: Doseong Daejido, sheet 11"
           }
-        ]
-      }
+        ],
+        "summary_en": "A royal estate King Seonjo built on the house site of Princess Gyeongjeong, daughter of Taejong, and gave to Prince Uian. After the Imjin War it became the place where Chinese envoys lodged and were entertained. In 1897 the Hwangudan altar was built on its site. It is the site of today's Westin Josun Hotel in Sogong-dong.",
+        "period_en": "Built by Seonjo in 1583 with some 200 bays and given to Prince Uian. Envoys' lodge after the Imjin War. From Sukjong's reign the Yeongjeop Dogam handled envoy receptions. Disappeared with the building of the Hwangudan in 1897.",
+        "in_1750_en": "Existed. At the time it hosted Qing envoys. Sheet 11 of the Doseong Daejido shows 南別宮 at the mouth of Sogong-dong, so it is placed at that inscription."
+      },
+      "name_en": "Nambyeolgung (South Detached Palace)"
     },
     {
       "id": "donghak",
@@ -5939,10 +6384,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 동학",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%8F%99%ED%95%99(%E6%9D%B1%E5%AD%B8)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%8F%99%ED%95%99(%E6%9D%B1%E5%AD%B8)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Donghak"
           }
-        ]
-      }
+        ],
+        "summary_en": "One of the four government Confucian secondary schools (sahak), placed in the eastern district of Hanseongbu. Moved to Changseon-bang in 1438; after the Imjin War it survived in little more than name.",
+        "period_en": "Built between 1422 and 1435. Moved to Changseon-bang in 1438. Nominal after the Imjin War. Disappeared with the introduction of modern education in the late Joseon period.",
+        "in_1750_en": "Existed. Sheet 9 of the Doseong Daejido shows 東學 north of Changseon-bang, so it is placed at that inscription."
+      },
+      "name_en": "Donghak (East School)"
     },
     {
       "id": "suncheong",
@@ -6018,14 +6468,20 @@
         "sources": [
           {
             "title": "조선왕조실록사전 순청",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%9C%EC%B2%AD(%E5%B7%A1%E5%BB%B3)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%9C%EC%B2%AD(%E5%B7%A1%E5%BB%B3)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Suncheong"
           },
           {
             "title": "서울역사아카이브 도성대지도 부분도8",
-            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=fe073a1b-2a35-41c6-98da-3c21d7a4ba20&fileSn=1100&type=C&upperNodeId=CTGRY780"
+            "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=fe073a1b-2a35-41c6-98da-3c21d7a4ba20&fileSn=1100&type=C&upperNodeId=CTGRY780",
+            "title_en": "Seoul History Archive: Doseong Daejido, sheet 8"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of crime and fire prevention in the capital, announcing the hours, and night patrols. Divided into left and right offices in 1465.",
+        "period_en": "Existed from early Joseon. Split into the Jwasuncheong and Usuncheong in 1465. Transferred to the Gyeongmucheong in 1894.",
+        "in_1750_en": "Existed. Sheet 8 of the Doseong Daejido shows 巡廳 south of the Jwapodocheong and north of Unjongga, so it is placed at that inscription."
+      },
+      "name_en": "Suncheong (Night Patrol Office)"
     },
     {
       "id": "jangagwon",
@@ -6097,10 +6553,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 장악원",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%EC%95%85%EC%9B%90(%E6%8E%8C%E6%A8%82%E9%99%A2)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%EC%95%85%EC%9B%90(%E6%8E%8C%E6%A8%82%E9%99%A2)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Jangagwon"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office under the Yejo in charge of the music and dance for state rites such as the Jongmyo rites, the Sajik rites, and royal banquets.",
+        "period_en": "Established 1457 as the Jangakseo; Jangagwon from 1466. Placed under the Gungnaebu in 1894, abolished 1895.",
+        "in_1750_en": "Existed. Sheet 8 of the Doseong Daejido shows 掌樂院 west of the Hyeminseo and south of the Cheonggyecheon, so it is placed at that inscription."
+      },
+      "name_en": "Jangagwon (Court Music Office)"
     },
     {
       "id": "jongchinbu",
@@ -6172,10 +6633,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 종친부",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A2%85%EC%B9%9C%EB%B6%80(%E5%AE%97%E8%A6%AA%E5%BA%9C)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A2%85%EC%B9%9C%EB%B6%80(%E5%AE%97%E8%A6%AA%E5%BA%9C)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Jongchinbu"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that managed the royal clan, kept the genealogies and portraits of past kings, and handled the clothing of the king and queen. It stood in Gwangwang-bang in the northern district east of Gyeongbokgung, the area of today's National Museum of Modern and Contemporary Art, Seoul.",
+        "period_en": "Renamed from the Jaenaejegunso to the Jongchinbu in 1430. Abolished with the creation of the Jongjeongbu in 1895.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 宗親府 in Gwangwang-bang east of Gyeongbokgung, so it is placed at that inscription."
+      },
+      "name_en": "Jongchinbu (Office of Royal Relatives)"
     },
     {
       "id": "saganwon",
@@ -6251,14 +6717,20 @@
         "sources": [
           {
             "title": "조선왕조실록사전 사간원",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EA%B0%84%EC%9B%90(%E5%8F%B8%E8%AB%AB%E9%99%A2)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EA%B0%84%EC%9B%90(%E5%8F%B8%E8%AB%AB%E9%99%A2)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Saganwon"
           },
           {
             "title": "위키백과 사간원",
-            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EA%B0%84%EC%9B%90"
+            "url": "https://ko.wikipedia.org/wiki/%EC%82%AC%EA%B0%84%EC%9B%90",
+            "title_en": "Wikipedia (Korean): Saganwon"
           }
-        ]
-      }
+        ],
+        "summary_en": "The remonstrance office that admonished the king for his faults and impeached officials. Today's Sagan-dong in Jongno-gu takes its name from it.",
+        "period_en": "Established 1401 by making the Nangsa of the Munhabu independent. Abolished in the Gabo Reform of 1894.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 司諫院 southwest of the Jongchinbu, so it is placed at that inscription."
+      },
+      "name_en": "Saganwon (Office of Censors)"
     },
     {
       "id": "bukbu",
@@ -6330,10 +6802,15 @@
         "sources": [
           {
             "title": "위키백과 오부 (한성부)",
-            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)",
+            "title_en": "Wikipedia (Korean): Obu (Hanseongbu)"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that administered residents of the northern area, one of the five districts (bu) of Hanseongbu.",
+        "period_en": "From the creation of the five districts in early Joseon to the end of the dynasty. Exact years of establishment and abolition not confirmed.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 北部 south of the Saganwon, so it is placed at that inscription."
+      },
+      "name_en": "Hanseongbu North District Office"
     },
     {
       "id": "junghak",
@@ -6405,10 +6882,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 중학",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A4%91%ED%95%99(%E4%B8%AD%E5%AD%B8)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A4%91%ED%95%99(%E4%B8%AD%E5%AD%B8)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Junghak"
           }
-        ]
-      }
+        ],
+        "summary_en": "One of the four schools (sahak) of Hanseongbu, a government school that taught Confucian students. Today's Junghak-dong in Jongno-gu takes its name from it.",
+        "period_en": "Built 1422. Nominal after the Imjin War. Disappeared with the introduction of modern education in the late Joseon period.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 中學 beside the inscription Junghak-gye in Gwangwang-bang, so it is placed at that inscription."
+      },
+      "name_en": "Junghak (Central School)"
     },
     {
       "id": "jeonokseo",
@@ -6480,10 +6962,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 전옥서",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%98%A5%EC%84%9C(%E5%85%B8%E7%8D%84%E7%BD%B2)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%98%A5%EC%84%9C(%E5%85%B8%E7%8D%84%E7%BD%B2)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Jeonokseo"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that managed prisoners held in jail. It stood in Seorin-bang in the central district, today's Seorin-dong.",
+        "period_en": "Established 1392. Abolished in 1894 when the Gamokseo was created.",
+        "in_1750_en": "Existed. Sheet 8 of the Doseong Daejido shows 典獄署 southeast of the Uigeumbu and south of Unjongga, with 典獄後洞 beside it, so it is placed at that inscription."
+      },
+      "name_en": "Jeonokseo (Prison Office)"
     },
     {
       "id": "sujingung",
@@ -6556,10 +7043,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 수진궁",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%98%EC%A7%84%EA%B6%81(%E5%A3%BD%E9%80%B2%E5%AE%AE)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%98%EC%A7%84%EA%B6%81(%E5%A3%BD%E9%80%B2%E5%AE%AE)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Sujingung"
           }
-        ]
-      }
+        ],
+        "summary_en": "Begun as the estate of Grand Prince Jean, son of King Yejong, it became in late Joseon a memorial estate that held rites for grand princes and princes who died without heirs, princesses who died before marriage, and consorts without heirs. It is the area of today's Jongno-gu Office in Susong-dong.",
+        "period_en": "Residence newly built after Grand Prince Jean's death in 1544. Memorial estate in late Joseon. Its office abolished 1907; survived until 1909.",
+        "in_1750_en": "Existed. On the Doseong Daejido the character 宮 straddles the boundary of sheets 5 and 8 next to the name box 壽進坊, so it is placed there. The full name of the estate could not be read in one piece."
+      },
+      "name_en": "Sujingung (Royal Memorial Estate)"
     },
     {
       "id": "giroso",
@@ -6631,10 +7123,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 기로소",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B8%B0%EB%A1%9C%EC%86%8C(%E8%80%86%E8%80%81%E6%89%80)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B8%B0%EB%A1%9C%EC%86%8C(%E8%80%86%E8%80%81%E6%89%80)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Giroso"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office established to honor high civil officials over seventy. Kings too entered it in old age. It stood in Jingcheong-bang in the central district, the area of today's Jongno 1-ga (the Kyobo Building site).",
+        "period_en": "Began when Taejo entered at age 60; name fixed as Chisa Giroso in 1428. Independent office 1765. Abolished 1909.",
+        "in_1750_en": "Existed. Sheet 7 of the Doseong Daejido clearly writes 耆老所 at its upper right, at the southeast corner of Yukjo Street, so it is placed at that inscription."
+      },
+      "name_en": "Giroso (Hall of Elder Statesmen)"
     },
     {
       "id": "saonseo",
@@ -6706,10 +7203,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 사온서",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Saonseo"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of wine and sweet rice drink for the palace. It stood in Jeokseon-bang in the western district.",
+        "period_en": "Established 1392. Date of abolition unknown; some estimate it disappeared before the early 17th century.",
+        "in_1750_en": "Uncertain. The dictionary estimates abolition before the early 17th century, but sheet 4 of the Doseong Daejido has the inscription 司醞署 in Jeokseon-bang, so it is placed there. Whether the office still existed or only the old name was recorded could not be confirmed."
+      },
+      "name_en": "Saonseo (Palace Wine Office)"
     },
     {
       "id": "gyeonggi_gamyeong",
@@ -6781,10 +7283,15 @@
         "sources": [
           {
             "title": "위키백과 경기감영",
-            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EA%B8%B0%EA%B0%90%EC%98%81"
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EA%B8%B0%EA%B0%90%EC%98%81",
+            "title_en": "Wikipedia (Korean): Gyeonggi Gamyeong"
           }
-        ]
-      }
+        ],
+        "summary_en": "The provincial office where the governor of Gyeonggi-do served. It stood southwest outside Donuimun, in today's Pyeong-dong, Jongno-gu (the Red Cross Hospital area).",
+        "period_en": "Established 1413 in Suwon, soon moved to Gwangju, and to Hanseong around 1460. Abolished 1895 under the 23-district system.",
+        "in_1750_en": "Existed. The Doseong Daejido shows 京畿監營 beside Gyeonggyo bridge outside Donuimun, so it is placed at that inscription. It is outside the city wall."
+      },
+      "name_en": "Gyeonggi Gamyeong (Provincial Office)"
     },
     {
       "id": "mohwagwan",
@@ -6856,10 +7363,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 모화관",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Mohwagwan"
           }
-        ]
-      }
+        ],
+        "summary_en": "The place where Chinese envoys were welcomed and sent off. It stood northwest outside Donuimun, in today's Hyeonjeo-dong, Seodaemun-gu (the Independence Gate area).",
+        "period_en": "Built 1407 as the Mohwaru, renamed Mohwagwan 1430. Changed to the Dongnipgwan in 1897 after the Independence Gate was built in 1896.",
+        "in_1750_en": "Existed. The Doseong Daejido has a square box that appears to read 慕華館 beside the road northwest outside Donuimun, so it is placed there. It is outside the city wall."
+      },
+      "name_en": "Mohwagwan (Envoy Reception Hall)"
     },
     {
       "id": "yeongeunmun",
@@ -6930,10 +7442,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 모화관",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Mohwagwan"
           }
-        ]
-      }
+        ],
+        "summary_en": "The gate erected in front of the Mohwagwan to welcome Chinese envoys. It was demolished in 1896 and the Independence Gate built just behind its site; two foundation stones remain.",
+        "period_en": "Erected 1537 as the Yeongjomun, renamed Yeongeunmun 1538. Demolished around the founding of the Korean Empire. Foundation stones designated a Historic Site in 1963.",
+        "in_1750_en": "Existed. The Doseong Daejido has a square box that appears to read 迎恩門 beside the road south of the Mohwagwan, so it is placed there as a small gate marker. It is outside the city wall."
+      },
+      "name_en": "Yeongeunmun (Envoy Welcoming Gate)"
     },
     {
       "id": "jeonuigam",
@@ -7005,10 +7522,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 전의감",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%9D%98%EA%B0%90(%E5%85%B8%E9%86%AB%E7%9B%A3)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%9D%98%EA%B0%90(%E5%85%B8%E9%86%AB%E7%9B%A3)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Jeonuigam"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of medicinal materials for the royal family and medicines bestowed on officials. It also handled medical education and the medical examinations.",
+        "period_en": "Established 1392, succeeding the Jeonuisi of Goryeo. Abolished in the Gabo Reform of 1894.",
+        "in_1750_en": "Existed. The lower part of sheet 5 of the Doseong Daejido shows 典醫監 in Gyeonpyeong-bang, so it is placed at that inscription."
+      },
+      "name_en": "Jeonuigam (Royal Medical Office)"
     },
     {
       "id": "chunghunbu",
@@ -7080,10 +7602,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 충훈부",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%B6%A9%ED%9B%88%EB%B6%80(%E5%BF%A0%E5%8B%B3%E5%BA%9C)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%B6%A9%ED%9B%88%EB%B6%80(%E5%BF%A0%E5%8B%B3%E5%BA%9C)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Chunghunbu"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that managed and honored merit subjects and their descendants. Early in Jungjong's reign it moved to Gwanin-bang in the central district, the area of today's Insa-dong and Gwanhun-dong.",
+        "period_en": "Gongsin Dogam from 1392, Chunghunsa 1434, Chunghunbu 1454. Changed to the Gigongguk in 1894 and merged into the Uijeongbu.",
+        "in_1750_en": "Existed. Sheet 5 of the Doseong Daejido shows 忠勳府 north of Gwanin-bang, so it is placed at that inscription."
+      },
+      "name_en": "Chunghunbu (Office of Merit Subjects)"
     },
     {
       "id": "jungbu",
@@ -7159,14 +7686,20 @@
         "sources": [
           {
             "title": "서울& 오늘날 종로구청 격…한성판윤은 어전회의도 참석 (2018)",
-            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html"
+            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html",
+            "title_en": "Seoul&: \"Like today's Jongno-gu Office… the Hanseong magistrate even attended royal councils\" (2018)"
           },
           {
             "title": "위키백과 오부 (한성부)",
-            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)",
+            "title_en": "Wikipedia (Korean): Obu (Hanseongbu)"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that administered residents of the central area of the capital, one of the five districts (bu) of Hanseongbu. The marker for its site is at the Sewoon Arcade in front of Jongmyo.",
+        "period_en": "From the creation of the five districts in early Joseon to the end of the dynasty. Exact years of establishment and abolition not confirmed.",
+        "in_1750_en": "Existed. Sheet 8 of the Doseong Daejido shows 中部 south of the east end of Unjongga, so it is placed at that inscription."
+      },
+      "name_en": "Hanseongbu Central District Office"
     },
     {
       "id": "nambu",
@@ -7242,14 +7775,20 @@
         "sources": [
           {
             "title": "서울& 오늘날 종로구청 격…한성판윤은 어전회의도 참석 (2018)",
-            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html"
+            "url": "https://www.seouland.com/arti/culture/culture_general/3813.html",
+            "title_en": "Seoul&: \"Like today's Jongno-gu Office… the Hanseong magistrate even attended royal councils\" (2018)"
           },
           {
             "title": "위키백과 오부 (한성부)",
-            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+            "url": "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)",
+            "title_en": "Wikipedia (Korean): Obu (Hanseongbu)"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office that administered residents of the southern area, one of the five districts (bu) of Hanseongbu. The marker for its site is between exits 7 and 8 of Euljiro 1-ga Station.",
+        "period_en": "From the creation of the five districts in early Joseon to the end of the dynasty. Exact years of establishment and abolition not confirmed.",
+        "in_1750_en": "Existed. Sheet 8 of the Doseong Daejido shows 南部 at its lower left, beside the road south of the Cheonggyecheon, so it is placed at that inscription."
+      },
+      "name_en": "Hanseongbu South District Office"
     },
     {
       "id": "sajaegam",
@@ -7321,10 +7860,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 사재감",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%9E%AC%EA%B0%90(%E5%8F%B8%E5%AE%B0%E7%9B%A3)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%9E%AC%EA%B0%90(%E5%8F%B8%E5%AE%B0%E7%9B%A3)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Sajaegam"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office under the Hojo in charge of fish, meat, firewood, and the like for the palace. It was in Uitong-bang in the northern district before moving to Sunhwa-bang.",
+        "period_en": "Established 1392. Abolished in the administrative reform of 1882.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows 司宰監 between Sunhwa-bang and Uitong-bang west of Gyeongbokgung, so it is placed at that inscription."
+      },
+      "name_en": "Sajaegam (Palace Provisions Office)"
     },
     {
       "id": "naejasi",
@@ -7396,10 +7940,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 내자시",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%9E%90%EC%8B%9C(%E5%85%A7%E8%B3%87%E5%AF%BA)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%9E%90%EC%8B%9C(%E5%85%A7%E8%B3%87%E5%AF%BA)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Naejasi"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office under the Hojo that supplied the royal household with rice, flour, wine, sauces, and provisions for banquets. It was in Indal-bang in the western district; today's Naeja-dong takes its name from it.",
+        "period_en": "Renamed from the Naebusi to the Naejasi in 1401. Abolished 1882.",
+        "in_1750_en": "Existed. Sheet 4 of the Doseong Daejido shows 內資寺 west of Jeokseon-bang, so it is placed at that inscription."
+      },
+      "name_en": "Naejasi (Palace Supplies Office)"
     },
     {
       "id": "manrichang",
@@ -7473,10 +8022,15 @@
         "sources": [
           {
             "title": "위키백과 효창공원",
-            "url": "https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%B0%BD%EA%B3%B5%EC%9B%90"
+            "url": "https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%B0%BD%EA%B3%B5%EC%9B%90",
+            "title_en": "Wikipedia (Korean): Hyochang Park"
           }
-        ]
-      }
+        ],
+        "summary_en": "A storehouse of the Seonhyecheong. It stood in the pine grove in front of Hyochangwon, the area of today's Hyochang Park. Japanese troops camped here during the Sino-Japanese War of 1894.",
+        "period_en": "Years of establishment and abolition not confirmed. Japanese troops camped on the storehouse site during the Sino-Japanese War of 1894.",
+        "in_1750_en": "Believed to have existed. The Doseong Daejido shows 萬里倉 toward Yongsan in the southwest, so it is placed at that inscription. This inscription also serves as the southwest corner control point for georeferencing. It is outside the city wall."
+      },
+      "name_en": "Mallichang (Seonhyecheong Storehouse)"
     },
     {
       "id": "gunjagam",
@@ -7548,10 +8102,15 @@
         "sources": [
           {
             "title": "조선왕조실록사전 군자감",
-            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EC%9E%90%EA%B0%90(%E8%BB%8D%E8%B3%87%E7%9B%A3)"
+            "url": "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EC%9E%90%EA%B0%90(%E8%BB%8D%E8%B3%87%E7%9B%A3)",
+            "title_en": "Dictionary of the Annals of the Joseon Dynasty: Gunjagam"
           }
-        ]
-      }
+        ],
+        "summary_en": "The Yongsan riverside storehouse (ganggam) of the Gunjagam, an office under the Hojo in charge of military supplies such as provisions. From the late 18th century only the riverside storehouse remained, said to hold 300,000 seok of grain.",
+        "period_en": "Gunjagam established 1392; riverside storehouse set up on the Yongsan river in 1413. Abolished in the Gabo Reform of 1894.",
+        "in_1750_en": "Existed. The Doseong Daejido shows 軍資監 toward Yongsan, south of the Mallichang in the southwest, so it is placed at that inscription. It is taken to be the Yongsan riverside storehouse, not the main office inside the city. It is outside the city wall."
+      },
+      "name_en": "Gunjagam Riverside Storehouse"
     },
     {
       "id": "gungisi",
@@ -7626,14 +8185,20 @@
         "sources": [
           {
             "title": "군기시",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EA%B8%B0%EC%8B%9C(%E8%BB%8D%E5%99%A8%E5%AF%BA)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EA%B8%B0%EC%8B%9C(%E8%BB%8D%E5%99%A8%E5%AF%BA)",
+            "title_en": "Gungisi"
           },
           {
             "title": "군기시유적전시실 소개",
-            "url": "https://museum.seoul.go.kr/www/intro/annexIntro/annex_gun/annex_gun_02.jsp?sso=ok"
+            "url": "https://museum.seoul.go.kr/www/intro/annexIntro/annex_gun/annex_gun_02.jsp?sso=ok",
+            "title_en": "Introduction to the Gungisi Remains Exhibition Hall"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office under the Byeongjo that made weapons, flags, and other military equipment. In the later period it shared this role with the military commands' own production.",
+        "period_en": "Renamed from the Gungigam to the Gungisi in 1466. Abolished 1884. This is the institution's history; the lifespan of individual halls is separate.",
+        "in_1750_en": "Existed. The excavated area on the City Hall site was georeferenced by estimate to north of Sungnyemun on the source map. This is not a reconstruction of the building site's 1750 plan."
+      },
+      "name_en": "Gungisi (Arms Manufactory)"
     },
     {
       "id": "yeonghwadang",
@@ -7712,22 +8277,29 @@
         "sources": [
           {
             "title": "영화당",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%81%ED%99%94%EB%8B%B9(%E6%9A%8E%E8%8A%B1%E5%A0%82)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%81%ED%99%94%EB%8B%B9(%E6%9A%8E%E8%8A%B1%E5%A0%82)",
+            "title_en": "Yeonghwadang"
           },
           {
             "title": "숙종실록 1692년 음력 4월 16일 영화당 보수",
-            "url": "https://sillok.history.go.kr/id/ksa_11804016_001"
+            "url": "https://sillok.history.go.kr/id/ksa_11804016_001",
+            "title_en": "Annals of Sukjong, 1692, 4th lunar month, day 16: repair of Yeonghwadang"
           },
           {
             "title": "숙종실록 1692년 음력 5월 12일 영화당 완료",
-            "url": "https://sillok.history.go.kr/id/ksa_11805012_002"
+            "url": "https://sillok.history.go.kr/id/ksa_11805012_002",
+            "title_en": "Annals of Sukjong, 1692, 5th lunar month, day 12: completion of Yeonghwadang"
           }
-        ]
+        ],
+        "summary_en": "A hall in the rear garden of Changdeokgung from which state examinations and events on Chundangdae were directed.",
+        "period_en": "Year of founding unknown. Records of a repair order and its completion in 1692. It existed before the repair.",
+        "in_1750_en": "Existed. Estimated location in the Chundangdae area behind Changdeokgung. A five-bay hall was used as reference, but the dimensions and the extent of the event ground are approximate."
       },
       "pavilion": {
         "roof": "hip",
         "bays": 5
-      }
+      },
+      "name_en": "Yeonghwadang Hall"
     },
     {
       "id": "cheonguijeong",
@@ -7802,19 +8374,25 @@
         "sources": [
           {
             "title": "궁궐의 연표",
-            "url": "https://royal.cha.go.kr/ROYAL/contents/R311020000.do"
+            "url": "https://royal.cha.go.kr/ROYAL/contents/R311020000.do",
+            "title_en": "Chronology of the Palaces"
           },
           {
             "title": "농민들의 삶을 헤아리기 위해 만든 초가 정자, 창덕궁 청의정",
-            "url": "https://ncms.nculture.org/pavilion/story/2377"
+            "url": "https://ncms.nculture.org/pavilion/story/2377",
+            "title_en": "Cheonguijeong, Changdeokgung: a thatched pavilion built to understand the lives of farmers"
           }
-        ]
+        ],
+        "summary_en": "A thatched pavilion in the Ongnyucheon area of Changdeokgung. It is described as a place, together with a small rice paddy, for reflecting on the meaning of farming.",
+        "period_en": "Recorded as built 1636. This does not mean the surviving members and the present shape of the paddy are all the same as at the time.",
+        "in_1750_en": "There is evidence it existed. Placed by estimate in the Ongnyucheon area. The thatched roof and paddy are abbreviated representations, and the cultivated area in 1750 is undetermined."
       },
       "pavilion": {
         "roof": "thatch",
         "bays": 1,
         "rice": true
-      }
+      },
+      "name_en": "Cheonguijeong Pavilion"
     },
     {
       "id": "munheongak",
@@ -7889,19 +8467,25 @@
         "sources": [
           {
             "title": "문헌각",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AC%B8%ED%97%8C%EA%B0%81(%E6%96%87%E7%8D%BB%E9%96%A3)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AC%B8%ED%97%8C%EA%B0%81(%E6%96%87%E7%8D%BB%E9%96%A3)",
+            "title_en": "Munheongak"
           },
           {
             "title": "국립고궁박물관 궁궐지 번역 문헌각명",
-            "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=212&um=s"
+            "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=212&um=s",
+            "title_en": "National Palace Museum of Korea, translation of the Gunggwolji: Inscription on Munheongak"
           }
-        ]
+        ],
+        "summary_en": "A building in Gyeongdeokgung that stored books. King Sukjong's inscription describes the storage of books in the library building beside Gyeonghyeondang.",
+        "period_en": "Described as built in 1700. Date of demolition and the changes to the individual building are undetermined.",
+        "in_1750_en": "Taken to have remained as the library of Gyeongdeokgung. Only its relation to Gyeonghyeondang is confirmed, so it is placed by estimate within the palace grounds."
       },
       "pavilion": {
         "roof": "hip",
         "bays": 3,
         "enclosed": true
-      }
+      },
+      "name_en": "Munheongak (Palace Library)"
     },
     {
       "id": "aeryeonjeong",
@@ -7972,15 +8556,20 @@
         "sources": [
           {
             "title": "궁궐의 현판과 주련: 애련정",
-            "url": "https://m.cha.go.kr/newsBbz/selectNewsBbzView.do?edate=&mn=&newsItemId=155693299&pageIndex=10&sdate=&sectionId=ocp&strValue=&strWhere="
+            "url": "https://m.cha.go.kr/newsBbz/selectNewsBbzView.do?edate=&mn=&newsItemId=155693299&pageIndex=10&sdate=&sectionId=ocp&strValue=&strWhere=",
+            "title_en": "Plaques and Couplets of the Palaces: Aeryeonjeong"
           }
-        ]
+        ],
+        "summary_en": "A pavilion in the rear garden of Changdeokgung named by King Sukjong with the virtues of the lotus in mind.",
+        "period_en": "Built 1692. The position in the middle of the pond given in records differs from the present position at the pond's edge, and the date of the move is undetermined.",
+        "in_1750_en": "Existed. The pavilion and pond are placed roughly in the rear garden area. The exact position of the pavilion in 1750 and the shape of the pond are estimates."
       },
       "pavilion": {
         "roof": "pyramid",
         "bays": 1,
         "pond": true
-      }
+      },
+      "name_en": "Aeryeonjeong Pavilion"
     },
     {
       "id": "chwiunjeong",
@@ -8055,18 +8644,24 @@
         "sources": [
           {
             "title": "취운정 건립·제영시 수록 면",
-            "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=56&um=s"
+            "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=56&um=s",
+            "title_en": "Page recording the construction of Chwiunjeong and poems on it"
           },
           {
             "title": "창덕궁 건축물 연대 해설",
-            "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_039_0070_0040_0020"
+            "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_039_0070_0040_0020",
+            "title_en": "Commentary on the dates of Changdeokgung buildings"
           }
-        ]
+        ],
+        "summary_en": "A small pavilion of the Eastern Palace. It was built earlier than the neighboring Nakseonjae of today.",
+        "period_en": "Recorded as built 1686. Nakseonjae dates to 1847, a separate date.",
+        "in_1750_en": "Existed. Placed by estimate in the hilly area between the southeast of Changdeokgung and Changgyeonggung. The later Nakseonjae buildings are not included."
       },
       "pavilion": {
         "roof": "pyramid",
         "bays": 1
-      }
+      },
+      "name_en": "Chwiunjeong Pavilion"
     },
     {
       "id": "taegojeong",
@@ -8149,26 +8744,34 @@
         "sources": [
           {
             "title": "태고정",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%EA%B3%A0%EC%A0%95(%E5%A4%AA%E5%8F%A4%E4%BA%AD)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%EA%B3%A0%EC%A0%95(%E5%A4%AA%E5%8F%A4%E4%BA%AD)",
+            "title_en": "Taegojeong"
           },
           {
             "title": "우리역사넷 청풍계의 태고정과 상춘 모임",
-            "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_019_0040_0020_0030"
+            "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_019_0040_0020_0030",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Taegojeong at Cheongpunggye and the spring gatherings"
           },
           {
             "title": "정조실록 1790년 음력 2월 28일 태고정 방문",
-            "url": "https://sillok.history.go.kr/id/kva_11402028_002"
+            "url": "https://sillok.history.go.kr/id/kva_11402028_002",
+            "title_en": "Annals of Jeongjo, 1790, 2nd lunar month, day 28: visit to Taegojeong"
           },
           {
             "title": "서울시 청풍계와 청운동의 백세청풍",
-            "url": "https://mediahub.seoul.go.kr/archives/2007584"
+            "url": "https://mediahub.seoul.go.kr/archives/2007584",
+            "title_en": "Seoul Metropolitan Government: Cheongpunggye and the Baekse Cheongpung of Cheongun-dong"
           }
-        ]
+        ],
+        "summary_en": "The thatched pavilion of Kim Sang-yong's house at Cheongpunggye. Records survive of literati gatherings and a visit by a later king.",
+        "period_en": "Described as built in 1607, with records of a gathering in 1620 and a royal visit in 1790. Its survival in 1750 is an estimate based on sources before and after.",
+        "in_1750_en": "Estimated to have still existed in 1750. Placed in the Cheongun-dong and Cheongpunggye area; the exact lot of the old house is undetermined."
       },
       "pavilion": {
         "roof": "thatch",
         "bays": 1
-      }
+      },
+      "name_en": "Taegojeong Pavilion, Cheongpunggye"
     },
     {
       "id": "namsan_guksadang",
@@ -8243,19 +8846,25 @@
         "sources": [
           {
             "title": "인왕산 국사당",
-            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677"
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677",
+            "title_en": "Inwangsan Guksadang"
           },
           {
             "title": "서울 국사당의 역사적 변천과 기능",
-            "url": "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE08734618"
+            "url": "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE08734618",
+            "title_en": "The historical changes and functions of Seoul's Guksadang"
           }
-        ]
+        ],
+        "summary_en": "A shrine originally on Namsan. It is distinguished from the present Guksadang, which was moved to Inwangsan around 1925.",
+        "period_en": "On Namsan during the Joseon period. Exact year of founding and the building's appearance in 1750 are undetermined. Moved to Inwangsan around 1925.",
+        "in_1750_en": "Shown by estimate as the shrine on Namsan. The present Inwangsan address and the set of shamanic paintings are not projected back."
       },
       "pavilion": {
         "roof": "hip",
         "bays": 3,
         "enclosed": true
-      }
+      },
+      "name_en": "Namsan Guksadang (Mountain Shrine)"
     },
     {
       "id": "dohwaseo",
@@ -8330,14 +8939,20 @@
         "sources": [
           {
             "title": "도화서",
-            "url": "https://encykorea.aks.ac.kr/Article/E0015927"
+            "url": "https://encykorea.aks.ac.kr/Article/E0015927",
+            "title_en": "Dohwaseo"
           },
           {
             "title": "도화서 터에 대한 연구",
-            "url": "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10555498"
+            "url": "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10555498",
+            "title_en": "A study of the Dohwaseo site"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office concerned with state painting production and the training of court painters. It is described together with the painters' profession and documentary paintings.",
+        "period_en": "An institution continuing through the Joseon period as the Dohwawon and Dohwaseo. The date of the hall's relocation and its lot in 1750 are subject to further review.",
+        "in_1750_en": "The institution existed. Placed by estimate in the Gyeonpyeong-bang area; no particular marker or modern building site is fixed."
+      },
+      "name_en": "Dohwaseo (Royal Painting Bureau)"
     },
     {
       "id": "jeyonggam",
@@ -8412,14 +9027,20 @@
         "sources": [
           {
             "title": "제용감",
-            "url": "https://encykorea.aks.ac.kr/Article/E0051344"
+            "url": "https://encykorea.aks.ac.kr/Article/E0051344",
+            "title_en": "Jeyonggam"
           },
           {
             "title": "한국민족문화대백과사전 종로구의 제용감·도화서",
-            "url": "https://encykorea.aks.ac.kr/Article/E0067017"
+            "url": "https://encykorea.aks.ac.kr/Article/E0067017",
+            "title_en": "Encyclopedia of Korean Culture: Jeyonggam and Dohwaseo in Jongno-gu"
           }
-        ]
-      }
+        ],
+        "summary_en": "The office in charge of the royal family's textiles and clothing and related work such as dyeing and weaving.",
+        "period_en": "Renamed Jeyonggam in 1409 and described as surviving until 1904. The institution's history and the locations of individual workshops are different matters.",
+        "in_1750_en": "The institution existed. Placed by estimate in the Susong-dong and Sujin-bang area. It is not asserted that every process of dyeing and weaving took place within this lot."
+      },
+      "name_en": "Jeyonggam (Royal Textiles Office)"
     },
     {
       "id": "jeonsaengseo",
@@ -8494,14 +9115,20 @@
         "sources": [
           {
             "title": "전생서",
-            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%83%9D%EC%84%9C(%E5%85%B8%E7%89%B2%E7%BD%B2)"
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%83%9D%EC%84%9C(%E5%85%B8%E7%89%B2%E7%BD%B2)",
+            "title_en": "Jeonsaengseo"
           },
           {
             "title": "서울시 후암동 전생서 터",
-            "url": "https://mediahub.seoul.go.kr/archives/2013958"
+            "url": "https://mediahub.seoul.go.kr/archives/2013958",
+            "title_en": "Seoul Metropolitan Government: Jeonsaengseo site in Huam-dong"
           }
-        ]
-      }
+        ],
+        "summary_en": "An office south of Namsan that raised the livestock needed for state sacrifices and palace events.",
+        "period_en": "Renamed from the Jeonguseo in 1460. Its organization is recorded in the Sokdaejeon code of Yeongjo's reign. Described as abolished in 1895.",
+        "in_1750_en": "The institution existed. Shown by estimate in the Dunji-bang and Huam-dong area south of Namsan, outside the city wall. The layout of the stalls and the number of animals are not reproduced."
+      },
+      "name_en": "Jeonsaengseo (Sacrificial Livestock Office)"
     }
   ],
   "size_policy": "Representative single-building-scale approximate envelopes in metres, not compound bounds or measured historical reconstructions. Axis order: width, height, depth. Sizes are explicit modelling assumptions except the Sajik single-altar reference.",

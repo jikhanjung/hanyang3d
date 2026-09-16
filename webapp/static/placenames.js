@@ -22,7 +22,7 @@ export function createPlaceNames(data,{warp,world,height,camera,canvas}){
  const group=new THREE.Group();group.name='place-name-labels';
  const labels=data.features.map(feature=>{
   const style=STYLE[feature.kind]??STYLE.other,[x,y]=warp(...feature.pixel);
-  const {tag,aspect,height:px}=sprite(feature.name,style);
+  const {tag,aspect,height:px}=sprite(document.documentElement.lang==='en'&&feature.name_en?feature.name_en:feature.name,style);
   // Cards read the same fields as building cards; there is no footprint or source reference link.
   tag.userData={feature:{...feature,note:feature.info.summary,placeName:true},x,y,base:height(x,y),aspect,px};
   group.add(tag);return tag;

@@ -56,3 +56,26 @@ class LanguageMiddleware:
 def context(request):
     lang = getattr(request, 'lang', 'ko')
     return {'lang': lang, 'i18n_dict': catalog() if lang == 'en' else {}}
+
+
+def localize(data, lang):
+    """Return a copy of JSON-like content with `<field>_en` values swapped into `<field>` for English.
+
+    Data files and database rows carry English beside Korean (name / name_en, text / text_en, greetings /
+    greetings_en …). For Korean the `_en` keys are dropped; for English a non-empty `_en` value replaces the
+    Korean one and a missing or empty one leaves the Korean text, so untranslated content still shows.
+    """
+    if isinstance(data, list):
+        return [localize(item, lang) for item in data]
+    if not isinstance(data, dict):
+        return data
+    out = {}
+    for key, value in data.items():
+        if key.endswith('_en'):
+            continue
+        out[key] = localize(value, lang)
+    if lang == 'en':
+        for key, value in data.items():
+            if key.endswith('_en') and value not in ('', None, []):
+                out[key[:-3]] = localize(value, lang)
+    return out

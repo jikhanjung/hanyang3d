@@ -49,10 +49,16 @@ def render_markdown(text):
         heading = re.match(r'^(#{1,3})\s+(.*)$', line)
         if heading:
             level, text = len(heading.group(1)), heading.group(2).strip()
+            # "Heading {#id}" pins the anchor (the English guide keeps the Korean ids the map links to).
+            pinned = re.match(r'^(.*?)\s*\{#([^}]+)\}$', text)
+            if pinned:
+                text, forced = pinned.group(1).strip(), pinned.group(2).strip()
+            else:
+                forced = None
             if level == 1:
                 title = text
             else:
-                ident = anchor(text)
+                ident = forced or anchor(text)
                 if ident in anchors:
                     ident = f'{ident}-{anchors.count(ident) + 1}'
                 anchors.append(ident)
@@ -98,8 +104,35 @@ def render_markdown(text):
     return {'title': title, 'body': '\n'.join(parts), 'toc': toc, 'anchors': anchors}
 
 
-def render_guide():
+def render_guide(lang='ko'):
     if settings.CONTENT_SOURCE == 'database':
         from .content import guide_markdown
-        return render_markdown(guide_markdown())
-    return render_markdown((settings.BASE_DIR / GUIDE).read_text())
+        return render_markdown(guide_markdown(lang))
+    text = (settings.BASE_DIR / GUIDE).read_text()
+    if lang == 'en':
+        text = english_guide(text)
+    return render_markdown(text)
+
+
+def english_guide(text):
+    """File mode: swap sections for docs/landmarks_en.json entries (title_en/body_en by Korean heading)."""
+    import json
+    path = settings.BASE_DIR / 'docs/landmarks_en.json'
+    if not path.exists():
+        return text
+    table = json.loads(path.read_text())
+    out, lines, i = [], text.splitlines(), 0
+    while i < len(lines):
+        heading = re.match(r'^(#{1,3})\s+(.*)$', lines[i])
+        if heading and heading.group(2).strip() in table and table[heading.group(2).strip()].get('body_en') is not None:
+            entry, level = table[heading.group(2).strip()], heading.group(1)
+            out.append(f"{level} {entry.get('title_en') or heading.group(2).strip()} {{#{anchor(heading.group(2).strip())}}}")
+            out.append('')
+            out.append(entry['body_en'])
+            i += 1
+            while i < len(lines) and not re.match(r'^#{1,3}\s', lines[i]):
+                i += 1
+            continue
+        out.append(lines[i])
+        i += 1
+    return '\n'.join(out)

@@ -92,6 +92,8 @@ class GuideSection(EditedModel):
     title = models.CharField('제목', max_length=240)
     level = models.PositiveSmallIntegerField('제목 단계', choices=[(1, '문서 제목'), (2, '분류'), (3, '건물 설명')], default=3)
     body = models.TextField('상세 설명', blank=True, help_text='문단·목록·표·링크를 Markdown으로 작성합니다. HTML은 표시하지 않습니다.')
+    title_en = models.CharField('제목(영어)', max_length=240, blank=True)
+    body_en = models.TextField('상세 설명(영어)', blank=True, help_text='비워 두면 영어 화면에서도 한국어 설명을 보여 줍니다.')
     position = models.PositiveIntegerField('표시 순서', default=0)
     published = models.BooleanField('공개', default=False)
     class Meta:
@@ -108,6 +110,10 @@ class Building(EditedModel):
     summary = models.TextField('짧은 소개', blank=True)
     period = models.TextField('존재 시기', blank=True)
     in_1750 = models.TextField('1750년 무렵', blank=True)
+    name_en = models.CharField('이름(영어)', max_length=240, blank=True)
+    summary_en = models.TextField('짧은 소개(영어)', blank=True)
+    period_en = models.TextField('존재 시기(영어)', blank=True)
+    in_1750_en = models.TextField('1750년 무렵(영어)', blank=True)
     guide_section = models.ForeignKey(GuideSection, verbose_name='상세 설명', null=True, blank=True, on_delete=models.PROTECT, related_name='buildings')
     model_resource = models.ForeignKey(Resource, verbose_name='건물 모형', on_delete=models.PROTECT, limit_choices_to={'kind': 'model'}, related_name='buildings')
     map_config = models.JSONField('배치·모형 매개변수', validators=[validate_map_config], help_text='원도 좌표·크기 등 지도 배치 설정입니다. 고급 편집 항목입니다.')
@@ -134,6 +140,8 @@ class Story(EditedModel):
     year = models.CharField('연도', max_length=80, blank=True)
     legend = models.BooleanField('전해지는 이야기', default=False)
     text = models.TextField('본문')
+    title_en = models.CharField('제목(영어)', max_length=240, blank=True)
+    text_en = models.TextField('본문(영어)', blank=True)
     position = models.PositiveIntegerField('표시 순서', default=0)
     published = models.BooleanField('공개', default=False)
     class Meta:
@@ -157,6 +165,7 @@ class Citation(models.Model):
     story = models.ForeignKey(Story, null=True, blank=True, on_delete=models.CASCADE, related_name='citations')
     title = models.CharField('출처 이름', max_length=300)
     url = models.URLField('URL', max_length=1500, validators=[validate_public_url])
+    title_en = models.CharField('출처 이름(영어)', max_length=300, blank=True)
     position = models.PositiveIntegerField('표시 순서', default=0)
     class Meta:
         ordering = ['position', 'id']
@@ -174,6 +183,9 @@ class Item(EditedModel):
     unit = models.CharField('단위', max_length=10, help_text='필·쾌·두름·개 등')
     price = models.PositiveIntegerField('값(문)', validators=[MinValueValidator(1)], help_text='1냥 = 100문. 기록에서 확인하지 않은 놀이용 값입니다.')
     description = models.TextField('설명', blank=True)
+    name_en = models.CharField('이름(영어)', max_length=80, blank=True)
+    unit_en = models.CharField('단위(영어)', max_length=20, blank=True)
+    description_en = models.TextField('설명(영어)', blank=True)
     icon_shape = models.CharField('아이콘 모양', max_length=20, choices=[('bolt', '옷감 필'), ('roll', '옷감 두루마리'), ('fish', '어물'), ('reins', '고삐')])
     icon_color = models.CharField('아이콘 색', max_length=7, validators=[RegexValidator(r'^#[0-9a-fA-F]{6}$', '#rrggbb 형식으로 입력하세요.')])
     use = models.CharField('쓰임', max_length=20, blank=True, choices=[('', '없음'), ('mount', '말 타기')])
@@ -186,7 +198,8 @@ class Item(EditedModel):
         verbose_name_plural = '물건·가격'
     def __str__(self): return f'{self.name} ({self.price}문)'
     def as_catalog(self):
-        row = {'name': self.name, 'unit': self.unit, 'price': self.price, 'icon': {'shape': self.icon_shape, 'color': self.icon_color}, 'desc': self.description}
+        row = {'name': self.name, 'unit': self.unit, 'price': self.price, 'icon': {'shape': self.icon_shape, 'color': self.icon_color}, 'desc': self.description,
+               'name_en': self.name_en, 'unit_en': self.unit_en, 'desc_en': self.description_en}
         if self.use:
             row['use'] = self.use
         if self.max_owned:
@@ -197,6 +210,7 @@ class Item(EditedModel):
 class Shop(EditedModel):
     key = models.CharField('가게 이름', max_length=60, unique=True, help_text='시전 구역 이름(예: 면포전) 또는 인물 가게(말 장수)와 같아야 합니다.')
     about = models.TextField('소개', blank=True)
+    about_en = models.TextField('소개(영어)', blank=True)
     items = models.ManyToManyField(Item, verbose_name='파는 물건', related_name='shops', blank=True)
     position = models.PositiveIntegerField('표시 순서', default=0)
     published = models.BooleanField('공개', default=True)

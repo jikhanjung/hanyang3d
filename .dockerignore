@@ -11,6 +11,7 @@ gis/georeferenced/**
 !data/catalog/assets.csv
 !data/catalog/sources.csv
 !docs/landmarks.md
+!docs/landmarks_en.json
 !deploy/
 !deploy/**
 !multiplayer/

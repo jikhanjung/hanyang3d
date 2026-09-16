@@ -47,6 +47,14 @@ with sync_playwright() as p:
     page.evaluate("()=>{const t=terrain3d,b=t.buildings.children.find(x=>x.userData.feature.id==='sungnyemun');t.showBuilding?.(b)}")
     if args.shots:
         page.screenshot(path=f'{args.shots}/language_en.png')
+    # Content: building names and dialogue come translated from the server; the guide keeps Korean anchors.
+    content = page.evaluate('''()=>{const t=terrain3d,b=t.buildings.children.find(x=>x.userData.feature.id==='sungnyemun').userData.feature;
+      const n=JSON.parse(document.getElementById('npcs').textContent);const s=JSON.parse(document.getElementById('stories').textContent).stories[0];
+      return {name:b.name,summary:b.info.summary.slice(0,40),keeper:n.keeper.name,hello:n.keeper.nodes.hello.text.slice(0,30),story:s.title,label:[...t.buildingNames.children].map(o=>o.userData?.name).find(x=>x&&/Sungnyemun/.test(x))||null}}''')
+    hangul = lambda text: any('\uac00' <= ch <= '\ud7a3' for ch in text)
+    assert content['name'].startswith('Sungnyemun') and not hangul(content['summary']) and not hangul(content['keeper']) and not hangul(content['hello']) and not hangul(content['story']), content
+    guide = page.request.get(args.url + '/guide/')
+    assert 'id="숭례문"' in guide.text() and 'Sungnyemun' in guide.text()
     # Server error message in English: a bad name on register.
     err = page.evaluate('''async()=>{const csrf=document.cookie.match(/csrftoken=([^;]+)/)?.[1];
       const r=await fetch('/api/account/register',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({name:'<bad>',password:'abcdefgh'})});return (await r.json()).error}''')
@@ -57,5 +65,5 @@ with sync_playwright() as p:
     page.wait_for_function("document.documentElement.lang === 'ko'")
     assert page.locator('#walk-together').inner_text() == '1인칭'
     assert not errors, errors
-    print('PASS: language switch', {'first_person': 'First person', 'error_en': err[:40]}, flush=True)
+    print('PASS: language switch', {'first_person': 'First person', 'building': content['name'], 'keeper': content['keeper'], 'error_en': err[:40]}, flush=True)
     b.close()

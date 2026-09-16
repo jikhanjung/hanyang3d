@@ -61,17 +61,20 @@ class Command(BaseCommand):
             model_key = next((k for k, row in MODEL_RESOURCES.items() if row[2] == renderer), 'box')
             if category == '성문': model_key = 'city_gate'
             if key == 'jongmyo': model_key = 'jongmyo'
-            b = Building(key=key, name=name, category=category, summary=info['summary'], period=info['period'], in_1750=info['in_1750'], map_config=data, model_resource=resources[model_key], guide_section=section_for(name.split(' · ')[0]), position=i, published=True)
+            name_en = data.pop('name_en', '')
+            b = Building(key=key, name=name, category=category, summary=info['summary'], period=info['period'], in_1750=info['in_1750'], map_config=data, model_resource=resources[model_key], guide_section=section_for(name.split(' · ')[0]), position=i, published=True,
+                         name_en=name_en, summary_en=info.get('summary_en', ''), period_en=info.get('period_en', ''), in_1750_en=info.get('in_1750_en', ''))
             b.full_clean(); b.save(); by_key[key] = b
             for j, src in enumerate(info['sources']):
-                citation = Citation(building=b, position=j, **src)
+                citation = Citation(building=b, position=j, title=src['title'], url=src['url'], title_en=src.get('title_en', ''))
                 citation.full_clean(); citation.save()
         for i, row in enumerate(stories['stories']):
             target = row['target']
-            s = Story(key=row['id'], building=by_key[target['key']] if target['type'] == 'landmark' else None, target_type=target['type'], target_key='' if target['type'] == 'landmark' else target['key'], title=row['title'], year=row['year'] or '', legend=row['legend'], text=row['text'], position=i, published=True)
+            s = Story(key=row['id'], building=by_key[target['key']] if target['type'] == 'landmark' else None, target_type=target['type'], target_key='' if target['type'] == 'landmark' else target['key'], title=row['title'], year=row['year'] or '', legend=row['legend'], text=row['text'], position=i, published=True,
+                      title_en=row.get('title_en', ''), text_en=row.get('text_en', ''))
             s.full_clean(); s.save()
             for j, src in enumerate(row['sources']):
-                citation = Citation(story=s, position=j, **src)
+                citation = Citation(story=s, position=j, title=src['title'], url=src['url'], title_en=src.get('title_en', ''))
                 citation.full_clean(); citation.save()
         ContentImport.objects.create(key=IMPORT_KEY, metadata={'buildings': {k:v for k,v in buildings.items() if k != 'features'}, 'stories': {k:v for k,v in stories.items() if k != 'stories'}})
         self.stdout.write(f'건물 {Building.objects.count()}, 이야기 {Story.objects.count()}, 상세 설명 {GuideSection.objects.count()}, 리소스 {Resource.objects.count()}')

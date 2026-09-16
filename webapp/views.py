@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST, require_safe
 from .resources import assets, public_resource_paths, resource_path
-from .i18n import t
+from .i18n import localize, t
 from .deployment import runtime_report
 from .guide import render_guide
 from .stories import load_stories, stories_by_place
@@ -46,13 +46,13 @@ def terrain3d(request, canvas_only=False):
     water = json.loads((settings.BASE_DIR / 'gis/waterways/doseong_cheonggyecheon.json').read_text())
     wall = json.loads((settings.BASE_DIR / 'gis/walls/doseong_city_wall.json').read_text())
     return render(request, 'terrain3d.html', {
-        'experiment': experiment, 'buildings': buildings, 'water': water, 'wall': wall, 'stories': load_stories(),
+        'experiment': experiment, 'buildings': localize(buildings, request.lang), 'water': localize(water, request.lang), 'wall': wall, 'stories': localize(load_stories(), request.lang),
         'canvas_only': canvas_only,
-        'guide_anchors': render_guide()['anchors'],
+        'guide_anchors': render_guide(request.lang)['anchors'],
         'app_version': settings.APP_VERSION,
         'walk_world_version': settings.WALK_WORLD_VERSION,
         'multiplayer_url': settings.MULTIPLAYER_URL,
-        'npcs': catalog(),
+        'npcs': localize(catalog(), request.lang),
         'wall_line': ' '.join(f'{x},{y}' for x, y in wall['centerline']),
         'water_line': ' '.join(f'{x},{y}' for x, y in water['centerline']),
     })
@@ -125,7 +125,7 @@ def credits(request):
 
 @require_safe
 def guide(request):
-    return render(request, 'guide.html', {'guide': render_guide(), 'stories': stories_by_place()})
+    return render(request, 'guide.html', {'guide': render_guide(request.lang), 'stories': stories_by_place(request.lang)})
 
 
 @require_safe

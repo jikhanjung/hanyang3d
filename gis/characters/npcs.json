@@ -11,29 +11,36 @@
     "options": [
      {
       "label": "이 궁은 어쩌다 이렇게 되었소?",
-      "next": "history"
+      "next": "history",
+      "label_en": "How did the palace come to this?"
      },
      {
       "label": "연못의 돌기둥은 무엇이오?",
-      "next": "pond"
+      "next": "pond",
+      "label_en": "What are the stone pillars in the pond?"
      },
      {
       "label": "궁감은 무슨 일을 하시오?",
-      "next": "duty"
+      "next": "duty",
+      "label_en": "What does a palace keeper do?"
      },
      {
       "label": "요즘 궁터에 무슨 일이 있었소?",
-      "next": "trees"
+      "next": "trees",
+      "label_en": "Anything happen here lately?"
      },
      {
       "label": "처음부터 옛날이야기를 들려주시오. (긴 이야기)",
-      "next": "tale_taejo"
+      "next": "tale_taejo",
+      "label_en": "Tell the old tale from the start. (Long)"
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "Come in, traveler. This is the old site of Gyeongbokgung. What would you like to know?"
    },
    "history": {
     "text": "이 궁은 태조 임금 때인 1395년에 지은 조선의 으뜸 궁궐이었소. 임진년(1592) 난리에 모두 타 버리고, 지금은 이렇게 담과 터만 남았다오.",
@@ -41,19 +48,23 @@
     "sources": [
      {
       "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
      }
     ],
     "options": [
      {
       "label": "다른 이야기도 들려주시오.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "Tell me something else."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "This was the foremost palace of Joseon, built in 1395 in the reign of King Taejo. In the troubles of the imjin year (1592) it all burned down, and now only the walls and the grounds remain, as you see."
    },
    "pond": {
     "text": "저기 연못 가운데 돌기둥들 보이시오? 경회루 자리요. 태종 임금 때(1412) 연못을 넓히며 크게 지은 누각인데, 누각은 불타고 돌기둥만 줄지어 남았지.",
@@ -61,23 +72,28 @@
     "sources": [
      {
       "title": "위키백과 경회루(태종실록·춘성유기 인용)",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8"
+      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8",
+      "title_en": "Wikipedia (Korean): Gyeonghoeru (citing the Annals of Taejong and Chunseong yugi)"
      }
     ],
     "options": [
      {
       "label": "연못은 누가 돌보오?",
-      "next": "drought"
+      "next": "drought",
+      "label_en": "Who looks after the pond?"
      },
      {
       "label": "다른 이야기도 들려주시오.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "Tell me something else."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "Do you see the stone pillars in the middle of the pond there? That is where Gyeonghoeru stood. It was a great pavilion raised in King Taejong's reign (1412), when the pond was widened. The pavilion burned, and only the rows of stone pillars are left."
    },
    "duty": {
     "text": "나라에서는 이 빈 궁을 그냥 버려두지 않고, 나 같은 궁감을 두어 담이며 나무며 연못을 돌보게 하였소.",
@@ -85,23 +101,28 @@
     "sources": [
      {
       "title": "유재빈, 「영조대 경복궁 터에서 행한 행사와 궁중 회화」, 『한국미술사학회지』 323 (2024)",
-      "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader"
+      "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader",
+      "title_en": "Yoo Jae-bin, \"Events Held on the Gyeongbokgung Site in the Reign of Yeongjo and Court Painting,\" Korean Journal of Art History 323 (2024)"
      },
      {
       "title": "위키백과 경복궁",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81"
+      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81",
+      "title_en": "Wikipedia (Korean): Gyeongbokgung"
      }
     ],
     "options": [
      {
       "label": "다른 이야기도 들려주시오.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "Tell me something else."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "The state did not simply abandon this empty palace. It appointed palace keepers like me to look after the walls, the trees and the pond."
    },
    "trees": {
     "text": "스무 해쯤 전(1729)엔 바람에 쓰러진 나무를 치우던 수직군들이 멀쩡한 나무까지 베어 민가에 팔아먹었다고, 사헌부에서 관원들을 잡아 죄를 묻자고 아뢰었다오. 그 뒤로는 나무 한 그루도 조심스럽지.",
@@ -109,23 +130,28 @@
     "sources": [
      {
       "title": "영조실록 5년 3월 27일 제2기사 — 사헌부가 경복궁 나무를 판 수직군 문제를 아뢰다",
-      "url": "https://sillok.history.go.kr/id/kua_10503027_002"
+      "url": "https://sillok.history.go.kr/id/kua_10503027_002",
+      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 5 (1729), 3rd month, day 27, entry 2: the Inspector-General reports on guards who sold Gyeongbokgung trees"
      }
     ],
     "options": [
      {
       "label": "가물 때는 어찌하오?",
-      "next": "drought"
+      "next": "drought",
+      "label_en": "What do you do in a drought?"
      },
      {
       "label": "다른 이야기도 들려주시오.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "Tell me something else."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "Some twenty years ago (1729), the guards sent to clear trees felled by the wind cut down sound trees as well and sold them to private houses, so the Office of the Inspector-General petitioned to arrest the officials and try them. Since then, we are careful with every single tree."
    },
    "drought": {
     "text": "가물면 경회루 연못도 친다오. 계해년(1743)에 연못을 쳐냈고, 이듬해에는 가뭄이 길어 오부 사람들과 군사들이 개천과 도랑, 이 연못까지 쳐냈지.",
@@ -133,23 +159,28 @@
     "sources": [
      {
       "title": "영조실록 19년 4월 16일 제1기사 — 경회루의 연못을 준설하게 하다",
-      "url": "https://sillok.history.go.kr/id/kua_11904016_001"
+      "url": "https://sillok.history.go.kr/id/kua_11904016_001",
+      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 19 (1743), 4th month, day 16, entry 1: the Gyeonghoeru pond is ordered dredged"
      },
      {
       "title": "영조실록 20년 5월 10일 제2기사 — 가뭄에 계천·도랑·경회루 연지를 치게 하다",
-      "url": "https://sillok.history.go.kr/id/kua_12005010_002"
+      "url": "https://sillok.history.go.kr/id/kua_12005010_002",
+      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 5th month, day 10, entry 2: in a drought the stream, ditches and Gyeonghoeru pond are ordered dredged"
      }
     ],
     "options": [
      {
       "label": "다른 이야기도 들려주시오.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "Tell me something else."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "When there is a drought, we dredge the Gyeonghoeru pond too. In the gyehae year (1743) the pond was dredged, and the next year the drought ran so long that people from the five districts and the soldiers dredged the stream, the ditches and even this pond."
    },
    "tale_taejo": {
     "text": "허허, 옛날이야기라. 그럼 처음부터 하리다. 우리 태조 대왕 이성계께서는 원래 고려의 장수셨소. 홍건적이며 왜구를 여러 번 물리치셨고, 경신년(1380)에는 황산에서 왜구를 크게 이기셨지. 무진년(1388)에 위화도에서 군사를 돌려 개경으로 돌아오셨고, 임신년(1392) 7월 개경 수창궁에서 마침내 왕위에 오르셨소. 실록에는 신하들이 간곡히 청하여 받으셨다고 적혀 있다오.",
@@ -157,23 +188,28 @@
     "sources": [
      {
       "title": "한국민족문화대백과사전 태조",
-      "url": "https://encykorea.aks.ac.kr/Article/E0059033"
+      "url": "https://encykorea.aks.ac.kr/Article/E0059033",
+      "title_en": "Encyclopedia of Korean Culture: Taejo"
      },
      {
       "title": "조선왕조실록 태조 1년(1392) 7월 17일",
-      "url": "https://sillok.history.go.kr/id/kaa_10107017_001"
+      "url": "https://sillok.history.go.kr/id/kaa_10107017_001",
+      "title_en": "Annals of the Joseon Dynasty, Taejo year 1 (1392), 7th month, day 17"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_capital"
+      "next": "tale_capital",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "Ha, an old tale, is it? Then I shall begin at the beginning. Our great King Taejo, Yi Seong-gye, was originally a general of Goryeo. He drove back the Red Turbans and the Japanese raiders many times, and in the gyeongsin year (1380) he won a great victory over the raiders at Hwangsan. In the mujin year (1388) he turned his army back at Wihwa Island and returned to Gaegyeong, and in the imsin year (1392), in the 7th month, he at last took the throne at Suchang Palace in Gaegyeong. The Annals record that he accepted it only after the officials earnestly begged him."
    },
    "tale_capital": {
     "text": "임금이 되시고는 새 도읍을 찾으셨소. 즉위하신 그해에 한양으로 옮기라 하셨다가 신하들이 말려 거두셨고, 이듬해(1393)에는 계룡산에 도읍 공사까지 벌이셨는데 하륜이 반대하여 그만두었다오. 갑술년(1394) 8월에 무악과 한양을 몸소 둘러보셨는데, 이때 왕사 무학 스님도 불러 함께 보셨지. 그러고는 한양으로 정하셨소.",
@@ -181,39 +217,47 @@
     "sources": [
      {
       "title": "우리역사넷 한양 천도 1394",
-      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i306100&code=kc_age_30"
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i306100&code=kc_age_30",
+      "title_en": "Uri Yeoksa Net (National Institute of Korean History): Moving the capital to Hanyang, 1394"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_legend"
+      "next": "tale_legend",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "Once he was king, he looked for a new capital. In the very year he took the throne he ordered a move to Hanyang, but the officials talked him out of it. The next year (1393) he even began building a capital at Mount Gyeryong, but Ha Ryun objected and it was stopped. In the gapsul year (1394), in the 8th month, he went in person to look over Muak and Hanyang, and he summoned the royal preceptor, the monk Muhak, to look with him. Then he settled on Hanyang."
    },
    "tale_legend": {
     "text": "이건 옛 사람들 사이에 도는 이야기요, 사실인지는 모르오. 무학 스님이 대궐을 지으려는데 자꾸 무너졌더라오. 한 노인이 나타나 이 땅은 학이 날개를 편 모양이니 날개부터 눌러야 한다며 성부터 쌓으라 일렀다지. 또 노인이 십 리를 더 가라 해서 왕십리라는 이름이 붙었다는 말도 있소. 『지봉유설』 같은 책에도 실린 설화라오.",
     "sources": [
      {
       "title": "한국민족문화대백과사전 무학대사 설화",
-      "url": "https://encykorea.aks.ac.kr/Article/E0019294"
+      "url": "https://encykorea.aks.ac.kr/Article/E0019294",
+      "title_en": "Encyclopedia of Korean Culture: Legends of Master Muhak"
      }
     ],
     "legend": true,
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_move"
+      "next": "tale_move",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "Now this is a story that goes around among the old folk, and I cannot say whether it is true. When the monk Muhak tried to build the palace, it kept collapsing. An old man appeared and said that this land has the shape of a crane with its wings spread, so the wings must be pressed down first, and told him to build the city wall before anything else. Some also say the old man told him to go ten li further, and that is how Wangsimni got its name. It is a tale that appears in books like the Jibong yuseol."
    },
    "tale_move": {
     "text": "갑술년(1394) 10월에 도읍을 한양으로 옮기셨소. 궁궐 짓는 도감을 두고 그해 겨울에 공사를 시작해서, 이듬해(1395) 9월에 종묘와 새 궁궐이 다 지어졌지. 그날 새 대궐 뜰에 장끼 한 마리가 날아들었다는 것까지 실록에 적혀 있다 하오. 옛 사람들은 그런 것도 다 적어 두었다오.",
@@ -221,27 +265,33 @@
     "sources": [
      {
       "title": "조선왕조실록 태조 3년(1394) 10월 25일",
-      "url": "https://sillok.history.go.kr/id/kaa_10310025_001"
+      "url": "https://sillok.history.go.kr/id/kaa_10310025_001",
+      "title_en": "Annals of the Joseon Dynasty, Taejo year 3 (1394), 10th month, day 25"
      },
      {
       "title": "조선왕조실록 태조 4년(1395) 9월 29일 종묘·새 궁궐 완공",
-      "url": "https://sillok.history.go.kr/id/kaa_10409029_006"
+      "url": "https://sillok.history.go.kr/id/kaa_10409029_006",
+      "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 9th month, day 29: completion of Jongmyo and the new palace"
      },
      {
       "title": "조선왕조실록 태조 4년(1395) 9월 29일 꿩 기사",
-      "url": "https://sillok.history.go.kr/id/kaa_10409029_002"
+      "url": "https://sillok.history.go.kr/id/kaa_10409029_002",
+      "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 9th month, day 29: the pheasant entry"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_name"
+      "next": "tale_name",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "In the gapsul year (1394), in the 10th month, the capital was moved to Hanyang. A directorate for building the palace was set up, work began that winter, and by the 9th month of the next year (1395) the Jongmyo shrine and the new palace were finished. They say the Annals even record that on that day a cock pheasant flew into the courtyard of the new palace. The old folk wrote down everything, you see."
    },
    "tale_name": {
     "text": "궁궐 이름은 정도전이 지었소. 태조께서 새 궁궐과 전각 이름을 지으라 하시자, 『시경』의 ‘이미 술에 취하고 덕에 배불렀으니 군자께서 큰 복을 누리소서’라는 구절에서 ‘경복(景福)’ 두 글자를 따 왔지. 근정전, 사정전, 강녕전 같은 이름도 이때 붙였는데, 이름마다 임금이 지녀야 할 마음가짐을 담았다오.",
@@ -249,23 +299,28 @@
     "sources": [
      {
       "title": "조선왕조실록 태조 4년(1395) 10월 7일",
-      "url": "https://sillok.history.go.kr/id/kaa_10410007_002"
+      "url": "https://sillok.history.go.kr/id/kaa_10410007_002",
+      "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 10th month, day 7"
      },
      {
       "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_strife"
+      "next": "tale_strife",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "The palace was named by Jeong Do-jeon. When Taejo ordered him to name the new palace and its halls, he took the two characters 'Gyeongbok' (景福), meaning 'great blessing', from a line in the Classic of Poetry: 'Already drunk with wine and filled with virtue, may the lord enjoy great blessings.' Names like Geunjeongjeon, Sajeongjeon and Gangnyeongjeon were given at the same time, and each one holds a lesson on the frame of mind a king should keep."
    },
    "tale_strife": {
     "text": "그런데 좋은 날만 있었겠소. 무인년(1398) 8월, 태조의 아드님 방원 대군이 군사를 일으켜 정도전과 남은 무리를 쳤소. 그들이 송현에 모여 있던 집을 에워싸 불을 지르니, 정도전은 이웃집으로 달아났다가 붙잡혀 죽었다 하오. 세자 방석과 그 형 방번도 이 난리에 목숨을 잃었지. 이 궁궐 문밖 행랑 언저리까지 난리 통이었다오.",
@@ -273,23 +328,28 @@
     "sources": [
      {
       "title": "조선왕조실록 태조 7년(1398) 8월 26일",
-      "url": "https://sillok.history.go.kr/id/kaa_10708026_001"
+      "url": "https://sillok.history.go.kr/id/kaa_10708026_001",
+      "title_en": "Annals of the Joseon Dynasty, Taejo year 7 (1398), 8th month, day 26"
      },
      {
       "title": "한국민족문화대백과사전 제1차 왕자의 난",
-      "url": "https://encykorea.aks.ac.kr/Article/E0051385"
+      "url": "https://encykorea.aks.ac.kr/Article/E0051385",
+      "title_en": "Encyclopedia of Korean Culture: The First Strife of the Princes"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_away"
+      "next": "tale_away",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "But it was not all good days. In the muin year (1398), in the 8th month, Taejo's son Prince Bang-won raised troops and struck at Jeong Do-jeon and Nam Eun's party. They surrounded the house at Songhyeon where those men had gathered and set it afire; Jeong Do-jeon fled to a neighbor's house, they say, but was caught and killed. The crown prince Bang-seok and his elder brother Bang-beon also lost their lives in the strife. The turmoil reached as far as the corridors outside this palace gate."
    },
    "tale_away": {
     "text": "난리가 끝나고 정종 임금이 서셨는데, 기묘년(1399)에 도읍을 다시 개경으로 옮기셨소. 이 궁은 한동안 텅 비었지. 태종 임금께서 을유년(1405)에 한양으로 도로 오셨는데, 그해 창덕궁을 따로 지으셨소. 이 경복궁에서 있었던 일을 꺼리셨다고들 하오. 그 뒤로 임금들이 창덕궁을 더 좋아하셨다오.",
@@ -297,27 +357,33 @@
     "sources": [
      {
       "title": "한국민족문화대백과사전 정종",
-      "url": "https://encykorea.aks.ac.kr/Article/E0050884"
+      "url": "https://encykorea.aks.ac.kr/Article/E0050884",
+      "title_en": "Encyclopedia of Korean Culture: Jeongjong"
      },
      {
       "title": "한국민족문화대백과사전 창덕궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0055378"
+      "url": "https://encykorea.aks.ac.kr/Article/E0055378",
+      "title_en": "Encyclopedia of Korean Culture: Changdeokgung"
      },
      {
       "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_sejong"
+      "next": "tale_sejong",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "When the strife was over, King Jeongjong came to the throne, and in the gimyo year (1399) he moved the capital back to Gaegyeong. This palace stood empty for a time. King Taejong returned to Hanyang in the eulyu year (1405), but that same year he built Changdeokgung separately. People say he shrank from what had happened here at Gyeongbokgung. From then on the kings preferred Changdeokgung."
    },
    "tale_sejong": {
     "text": "그래도 세종 대왕 때는 이 궁이 참 번듯했소. 궁 안에 집현전을 두고 학자들을 가까이하셨고, 간의대를 마련해 하늘을 살피셨지. 병오년(1426)에는 집현전 학자들에게 문 이름을 짓게 하셔서 광화문, 건춘문, 영추문, 영제교 같은 이름이 그때 붙었소. 문은 태조 때 섰지만 이름은 그때 얻은 거요. 무오년(1438)에는 장영실이 만든 옥루를 흠경각에 두었는데, 종이로 만든 산 위로 해가 뜨고 졌다 하오.",
@@ -325,35 +391,43 @@
     "sources": [
      {
       "title": "한국민족문화대백과사전 집현전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0055081"
+      "url": "https://encykorea.aks.ac.kr/Article/E0055081",
+      "title_en": "Encyclopedia of Korean Culture: Jiphyeonjeon"
      },
      {
       "title": "조선왕조실록 세종 8년(1426) 10월 26일",
-      "url": "https://sillok.history.go.kr/id/kda_10810026_003"
+      "url": "https://sillok.history.go.kr/id/kda_10810026_003",
+      "title_en": "Annals of the Joseon Dynasty, Sejong year 8 (1426), 10th month, day 26"
      },
      {
       "title": "한국민족문화대백과사전 옥루",
-      "url": "https://encykorea.aks.ac.kr/Article/E0038703"
+      "url": "https://encykorea.aks.ac.kr/Article/E0038703",
+      "title_en": "Encyclopedia of Korean Culture: Ongnu (jade clepsydra)"
      },
      {
       "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
      },
      {
       "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_fire1553"
+      "next": "tale_fire1553",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "Still, in the days of King Sejong the Great this palace was a fine sight. He set up the Jiphyeonjeon, the Hall of Worthies, inside the palace and kept the scholars close, and he built the Ganuidae observatory to watch the heavens. In the byeongo year (1426) he had the Jiphyeonjeon scholars name the gates, and that is when Gwanghwamun, Geonchunmun, Yeongchumun and the Yeongjegyo bridge got their names. The gates had stood since Taejo's time, but the names came then. In the muo year (1438) the jade clepsydra made by Jang Yeong-sil was placed in the Heumgyeonggak, and they say the sun rose and set over a mountain made of paper."
    },
    "tale_fire1553": {
     "text": "명종 임금 때 계축년(1553) 9월에는 궁 안에 큰불이 났소. 강녕전에서 불이 나 사정전과 흠경각까지 탔고, 대대로 내려온 보물과 책들이 재가 되었지. 겨우 책 몇 궤짝을 연못의 작은 배에 실어 건졌다 하오. 근정전은 무사했고, 이듬해에 다시 지었다오.",
@@ -361,31 +435,38 @@
     "sources": [
      {
       "title": "조선왕조실록 명종 8년(1553) 9월 14일",
-      "url": "https://sillok.history.go.kr/id/kma_10809014_001"
+      "url": "https://sillok.history.go.kr/id/kma_10809014_001",
+      "title_en": "Annals of the Joseon Dynasty, Myeongjong year 8 (1553), 9th month, day 14"
      },
      {
       "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
      },
      {
       "title": "한국민족문화대백과사전 경복궁 사정전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002445"
+      "url": "https://encykorea.aks.ac.kr/Article/E0002445",
+      "title_en": "Encyclopedia of Korean Culture: Sajeongjeon Hall, Gyeongbokgung"
      },
      {
       "title": "한국민족문화대백과사전 옥루",
-      "url": "https://encykorea.aks.ac.kr/Article/E0038703"
+      "url": "https://encykorea.aks.ac.kr/Article/E0038703",
+      "title_en": "Encyclopedia of Korean Culture: Ongnu (jade clepsydra)"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_imjin"
+      "next": "tale_imjin",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "In King Myeongjong's reign, in the gyechuk year (1553), in the 9th month, a great fire broke out inside the palace. It started in Gangnyeongjeon and burned Sajeongjeon and the Heumgyeonggak as well, and treasures and books handed down for generations turned to ash. They say only a few chests of books were saved by loading them onto a small boat on the pond. Geunjeongjeon was spared, and the rest was rebuilt the following year."
    },
    "tale_imjin": {
     "text": "그리고 임진년(1592)이오. 왜적이 충주를 깨뜨렸다는 소식에 선조 임금께서 밤에 서쪽으로 피란을 떠나셨소. 실록에는 임금이 떠나시자 난민들이 먼저 노비 문서가 있는 장례원과 형조에 불을 지르고, 궁궐 창고를 털고 불을 놓아 경복궁·창덕궁·창경궁이 한꺼번에 사라졌다고 적혀 있소. 왜적이 들어와 태웠다는 말도 전하니, 누가 불을 놓았는지는 나도 딱 잘라 말 못 하겠소.",
@@ -393,27 +474,33 @@
     "sources": [
      {
       "title": "선조수정실록 25년(1592) 4월 14일",
-      "url": "https://sillok.history.go.kr/id/knb_12504014_028"
+      "url": "https://sillok.history.go.kr/id/knb_12504014_028",
+      "title_en": "Revised Annals of Seonjo, year 25 (1592), 4th month, day 14"
      },
      {
       "title": "한국민족문화대백과사전 임진왜란",
-      "url": "https://encykorea.aks.ac.kr/Article/E0047674"
+      "url": "https://encykorea.aks.ac.kr/Article/E0047674",
+      "title_en": "Encyclopedia of Korean Culture: The Imjin War"
      },
      {
       "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_ruins"
+      "next": "tale_ruins",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "And then came the imjin year (1592). At the news that the Japanese had broken through at Chungju, King Seonjo fled westward in the night. The Annals record that once the king had gone, rioters first set fire to the Jangnyewon and the Ministry of Punishments, where the slave registers were kept, then looted the palace storehouses and set them alight, so that Gyeongbokgung, Changdeokgung and Changgyeonggung vanished all at once. Others say the Japanese came in and burned them, so who lit the fire I cannot say for sure."
    },
    "tale_ruins": {
     "text": "난리가 끝나고 창덕궁은 다시 지었지만, 이 궁은 끝내 다시 짓지 못했소. 그 뒤로는 창덕궁이 으뜸 궁궐 노릇을 하고 있지. 임진년부터 올해까지 따져 보면 벌써 백오십팔 년째 이렇게 담과 터만 남아 있다오. 나 같은 궁감이 풀 베고 나무 지키며 빈 터를 돌보는 거요.",
@@ -421,27 +508,33 @@
     "sources": [
      {
       "title": "한국민족문화대백과사전 창덕궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0055378"
+      "url": "https://encykorea.aks.ac.kr/Article/E0055378",
+      "title_en": "Encyclopedia of Korean Culture: Changdeokgung"
      },
      {
       "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434"
+      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
      },
      {
       "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do"
+      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
      }
     ],
     "options": [
      {
       "label": "그래서 어찌 되었소?",
-      "next": "tale_1747"
+      "next": "tale_1747",
+      "label_en": "And then what happened?"
      },
      {
       "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "That is enough of the tale for now."
      }
-    ]
+    ],
+    "text_en": "When the war was over, Changdeokgung was rebuilt, but this palace never was. Since then Changdeokgung has served as the principal palace. Counting from the imjin year to this year, it is already the hundred and fifty-eighth year that only the walls and grounds have remained like this. Palace keepers like me cut the grass, guard the trees and look after the empty site."
    },
    "tale_1747": {
     "text": "그래도 이 빈 터가 아주 잊힌 건 아니오. 삼 년 전 정묘년(1747)에 인원왕후께 존호를 올린 경사를 기념하여, 저 옛 근정전 터에서 정시를 열었소. 임금께서 시를 지으시고 신하 쉰 명이 화답했지. 그 모습을 그린 병풍도 있다 하오. 자, 내 이야기는 여기까지요. 길게 들어 주어 고맙소.",
@@ -449,25 +542,32 @@
     "sources": [
      {
       "title": "국가유산청 보도자료 「친림광화문내근정전정시시도」",
-      "url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156686659&pWise=sub&pWiseSub=J2"
+      "url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156686659&pWise=sub&pWiseSub=J2",
+      "title_en": "Korea Heritage Service press release: \"Painting of the Royal Visit to the Special Examination at the Geunjeongjeon Site inside Gwanghwamun\""
      },
      {
       "title": "국가유산포털 친림광화문내근정전정시시도",
-      "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2111101380000&pageNo=1_1_1_1"
+      "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2111101380000&pageNo=1_1_1_1",
+      "title_en": "National Heritage Portal: Painting of the Royal Visit to the Special Examination at the Geunjeongjeon Site inside Gwanghwamun"
      }
     ],
     "options": [
      {
       "label": "다른 이야기도 들려주시오.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "Tell me something else."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "Still, this empty site is not wholly forgotten. Three years ago, in the jeongmyo year (1747), to mark the joyful occasion of an honorific title being offered to Queen Dowager Inwon, a special examination was held on the old site of Geunjeongjeon over there. The king composed a poem and fifty officials answered it in verse. There is even a folding screen painted of the scene, they say. Well, that is the end of my tale. Thank you for listening so long."
    }
-  }
+  },
+  "name_en": "Gyeongbokgung palace keeper",
+  "subtitle_en": "The one who keeps the empty palace"
  },
  "pedestrian": {
   "name": "길 가는 사람",
@@ -484,6 +584,21 @@
     "장 보러 가는 길이에요.",
     "조심히 가세요."
    ]
+  },
+  "name_en": "Passer-by",
+  "greetings_en": {
+   "male": [
+    "Good day to you.",
+    "A fine day, is it not?",
+    "Where are you headed?",
+    "I am in a hurry, so excuse me."
+   ],
+   "female": [
+    "Hello there.",
+    "What lovely weather.",
+    "I am on my way to the market.",
+    "Mind how you go."
+   ]
   }
  },
  "merchant": {
@@ -494,38 +609,46 @@
     "options": [
      {
       "label": "무엇을 파는 가게요?",
-      "next": "about"
+      "next": "about",
+      "label_en": "What does this shop sell?"
      },
      {
       "label": "물건을 보여 주시오. (거래하기)",
-      "action": "shop"
+      "action": "shop",
+      "label_en": "Show me your goods. (Trade)"
      },
      {
       "label": "다음에 오겠소.",
-      "action": "close"
+      "action": "close",
+      "label_en": "I will come another time."
      }
-    ]
+    ],
+    "text_en": "Welcome, good customer. This is the {shop}. We stock only the finest {sells}."
    },
    "about": {
     "text": "{about}",
     "sources": [
      {
       "title": "우리역사넷 육의전",
-      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010"
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010",
+      "title_en": "Uri Yeoksa Net (National Institute of Korean History): The Six Licensed Shops (Yugujeon)"
      }
     ],
     "options": [
      {
       "label": "물건을 보여 주시오. (거래하기)",
-      "action": "shop"
+      "action": "shop",
+      "label_en": "Show me your goods. (Trade)"
      },
      {
       "label": "다음에 오겠소.",
-      "action": "close"
+      "action": "close",
+      "label_en": "I will come another time."
      }
     ]
    }
-  }
+  },
+  "name_en": "Market merchant"
  },
  "shops": {
   "선전": {
@@ -534,40 +657,46 @@
     "silk_red",
     "silk_blue",
     "silk_gold"
-   ]
+   ],
+   "about_en": "This is a licensed shop selling silk brought in from China. It ranks first among the Six Licensed Shops, so its dues to the state are the largest, too."
   },
   "면포전": {
    "about": "무명을 파는 시전이오. 무명은 돈처럼도 쓰여서, 육의전에 드는 큰 가게라오.",
    "items": [
     "cotton_bolt",
     "cotton_fine"
-   ]
+   ],
+   "about_en": "This is a licensed shop selling cotton cloth. Cotton is used like money as well, so ours is a big shop among the Six Licensed Shops."
   },
   "면주전": {
    "about": "우리 땅에서 짠 명주를 파는 시전이오. 육의전에 드는 가게라오.",
    "items": [
     "mingju_white",
     "mingju_pink"
-   ]
+   ],
+   "about_en": "This is a licensed shop selling silk woven here in our own land. It is one of the Six Licensed Shops."
   },
   "내어물전": {
    "about": "말린 어물과 소금에 절인 어물을 파는 시전이오. 육의전에 드는 어물전이라오.",
    "items": [
     "dried_pollack",
     "dried_croaker"
-   ]
+   ],
+   "about_en": "This is a licensed shop selling dried fish and salted fish. It is the fish shop among the Six Licensed Shops."
   },
   "저포전": {
    "about": "모시를 파는 시전이오. 육의전에 드는 가게라오.",
    "items": [
     "ramie_bolt"
-   ]
+   ],
+   "about_en": "This is a licensed shop selling ramie cloth. It is one of the Six Licensed Shops."
   },
   "말 장수": {
    "about": "수표교 어귀에서 말을 파는 장수요.",
    "items": [
     "horse_reins"
-   ]
+   ],
+   "about_en": "I am a dealer selling horses at the foot of Supyo Bridge."
   }
  },
  "items": {
@@ -579,7 +708,10 @@
     "shape": "bolt",
     "color": "#b8322f"
    },
-   "desc": "중국에서 들여온 붉은 비단 한 필."
+   "desc": "중국에서 들여온 붉은 비단 한 필.",
+   "name_en": "Red silk",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of red silk brought in from China."
   },
   "silk_blue": {
    "name": "쪽빛 비단",
@@ -589,7 +721,10 @@
     "shape": "bolt",
     "color": "#2f5f9e"
    },
-   "desc": "중국에서 들여온 쪽빛 비단 한 필."
+   "desc": "중국에서 들여온 쪽빛 비단 한 필.",
+   "name_en": "Indigo silk",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of indigo silk brought in from China."
   },
   "silk_gold": {
    "name": "노란 비단",
@@ -599,7 +734,10 @@
     "shape": "bolt",
     "color": "#d6a53a"
    },
-   "desc": "귀한 노란 비단 한 필."
+   "desc": "귀한 노란 비단 한 필.",
+   "name_en": "Yellow silk",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of precious yellow silk."
   },
   "cotton_bolt": {
    "name": "무명",
@@ -609,7 +747,10 @@
     "shape": "roll",
     "color": "#f1ead8"
    },
-   "desc": "흰 무명 한 필. 옷감으로도, 셈을 치를 때도 쓰였다."
+   "desc": "흰 무명 한 필. 옷감으로도, 셈을 치를 때도 쓰였다.",
+   "name_en": "Cotton cloth",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of white cotton cloth. Used for clothing and for settling accounts alike."
   },
   "cotton_fine": {
    "name": "고운 무명",
@@ -619,7 +760,10 @@
     "shape": "roll",
     "color": "#e7dcc1"
    },
-   "desc": "올이 고운 무명 한 필."
+   "desc": "올이 고운 무명 한 필.",
+   "name_en": "Fine cotton cloth",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of finely woven cotton cloth."
   },
   "mingju_white": {
    "name": "흰 명주",
@@ -629,7 +773,10 @@
     "shape": "bolt",
     "color": "#efd9c6"
    },
-   "desc": "우리 땅에서 짠 흰 명주 한 필."
+   "desc": "우리 땅에서 짠 흰 명주 한 필.",
+   "name_en": "White Korean silk",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of white silk woven in our own land."
   },
   "mingju_pink": {
    "name": "분홍 명주",
@@ -639,7 +786,10 @@
     "shape": "bolt",
     "color": "#e8c9c2"
    },
-   "desc": "물들인 분홍 명주 한 필."
+   "desc": "물들인 분홍 명주 한 필.",
+   "name_en": "Pink Korean silk",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of silk dyed pink."
   },
   "dried_pollack": {
    "name": "북어",
@@ -649,7 +799,10 @@
     "shape": "fish",
     "color": "#a38d6c"
    },
-   "desc": "말린 명태 스무 마리를 한 쾌로 묶었다."
+   "desc": "말린 명태 스무 마리를 한 쾌로 묶었다.",
+   "name_en": "Dried pollack",
+   "unit_en": "string",
+   "desc_en": "Twenty dried pollack tied into one string."
   },
   "dried_croaker": {
    "name": "굴비",
@@ -659,7 +812,10 @@
     "shape": "fish",
     "color": "#b7955e"
    },
-   "desc": "소금에 절여 말린 조기 한 두름."
+   "desc": "소금에 절여 말린 조기 한 두름.",
+   "name_en": "Dried croaker",
+   "unit_en": "bunch",
+   "desc_en": "A bunch of salted and dried yellow croaker."
   },
   "ramie_bolt": {
    "name": "모시",
@@ -669,7 +825,10 @@
     "shape": "roll",
     "color": "#dfe6cf"
    },
-   "desc": "시원한 모시 한 필."
+   "desc": "시원한 모시 한 필.",
+   "name_en": "Ramie cloth",
+   "unit_en": "bolt",
+   "desc_en": "A bolt of cool ramie cloth."
   },
   "horse_reins": {
    "name": "말고삐",
@@ -681,7 +840,10 @@
    },
    "desc": "말 장수에게서 산 말 한 필의 고삐. 1인칭에서 봇짐을 열고 오른쪽 클릭하면 말에 오르고, 다시 오른쪽 클릭하면 내린다.",
    "use": "mount",
-   "max_owned": 1
+   "max_owned": 1,
+   "name_en": "Horse reins",
+   "unit_en": "piece",
+   "desc_en": "The reins of a horse bought from the horse dealer. In first-person view, open your pack and right-click to mount the horse; right-click again to dismount."
   }
  },
  "wallet": {
@@ -694,6 +856,12 @@
    "수상한 자는 들이지 않소.",
    "날이 저물면 문을 닫으니 서두르시오.",
    "무슨 일이오? 볼일이 있으면 수문장께 여쭈시오."
+  ],
+  "greetings_en": [
+   "I am guarding the gate. Move along.",
+   "No suspicious persons are let through.",
+   "The gate closes at dusk, so make haste.",
+   "What is it? If you have business, ask the gatekeeper officer."
   ]
  },
  "officer": {
@@ -704,21 +872,26 @@
     "options": [
      {
       "label": "수문장은 어떤 관원이오?",
-      "next": "office"
+      "next": "office",
+      "label_en": "What kind of official are you?"
      },
      {
       "label": "궁성은 누가 지키오?",
-      "next": "guard"
+      "next": "guard",
+      "label_en": "Who guards the palace walls?"
      },
      {
       "label": "밤에도 문을 열 수 있소?",
-      "next": "night"
+      "next": "night",
+      "label_en": "Can the gate be opened at night?"
      },
      {
       "label": "수고하시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Keep up the good work."
      }
-    ]
+    ],
+    "text_en": "I am the gatekeeper officer of {gate}. My charge is to open and close this gate and to watch those who pass through. What would you like to know?"
    },
    "office": {
     "text": "궁궐 문을 여닫는 일은 우리 수문장이 맡는다오. 몇 해 전(1746) 『속대전』에서 수문장청이 관청으로 자리를 잡았고, 수문장은 스물세 명이오. 번갈아 입직하며 문을 지키지.",
@@ -726,59 +899,72 @@
     "sources": [
      {
       "title": "한국민족문화대백과사전 수문장청",
-      "url": "https://encykorea.aks.ac.kr/Article/E0031377"
+      "url": "https://encykorea.aks.ac.kr/Article/E0031377",
+      "title_en": "Encyclopedia of Korean Culture: Sumunjangcheong (Gatekeepers' Office)"
      }
     ],
     "options": [
      {
       "label": "다른 것도 묻겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "I have another question."
      },
      {
       "label": "수고하시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Keep up the good work."
      }
-    ]
+    ],
+    "text_en": "Opening and closing the palace gates is the duty of us gatekeeper officers. A few years ago (1746) the Sok Daejeon (Supplement to the Great Code) established the Gatekeepers' Office as a proper government office, and there are twenty-three gatekeeper officers. We take turns on duty and keep the gates."
    },
    "guard": {
     "text": "창덕궁 궁성 밖 파수는 세 군영이 나누어 맡소. 돈화문은 훈련도감, 금호문은 금위영, 홍화문은 어영청 몫이오. 문을 여닫는 일은 따로 우리 수문장이 하고.",
     "sources": [
      {
       "title": "우리역사넷 신편 한국사 「궁성 파수」",
-      "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040"
+      "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040",
+      "title_en": "Uri Yeoksa Net (National Institute of Korean History), New History of Korea: \"Guarding the palace walls\""
      }
     ],
     "options": [
      {
       "label": "다른 것도 묻겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "I have another question."
      },
      {
       "label": "수고하시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Keep up the good work."
      }
-    ]
+    ],
+    "text_en": "The watch outside the walls of Changdeokgung is shared among three military commands. Donhwamun falls to the Hullyeon Dogam (Military Training Command), Geumhomun to the Geumwiyeong (Capital Garrison), and Honghwamun to the Eoyeongcheong (Royal Guards Command). Opening and closing the gates is a separate matter, done by us gatekeeper officers."
    },
    "night": {
     "text": "밤에 닫힌 궁문은 함부로 열지 않소. 급한 일이 있으면 선전관이 표신을 보여야만 문을 연다오.",
     "sources": [
      {
       "title": "조선왕조실록사전 표신",
-      "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29"
+      "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29",
+      "title_en": "Encyclopedia of the Annals of the Joseon Dynasty: Pyosin (gate tally)"
      }
     ],
     "options": [
      {
       "label": "다른 것도 묻겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "I have another question."
      },
      {
       "label": "수고하시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Keep up the good work."
      }
-    ]
+    ],
+    "text_en": "A palace gate closed for the night is not opened lightly. If there is urgent business, the gate is opened only when a royal messenger shows a gate tally (pyosin)."
    }
-  }
+  },
+  "subtitle_en": "{unit} · Official who opens and closes the palace gate"
  },
  "horse_dealer": {
   "name": "말 장수",
@@ -789,25 +975,31 @@
     "options": [
      {
       "label": "우마전이 어떻게 되었소?",
-      "next": "closed"
+      "next": "closed",
+      "label_en": "What became of the Umajeon?"
      },
      {
       "label": "이 다리를 왜 마전교라 부르오?",
-      "next": "bridge"
+      "next": "bridge",
+      "label_en": "Why is this bridge called Majeongyo?"
      },
      {
       "label": "언제부터 여기서 말을 팔았소?",
-      "next": "origin"
+      "next": "origin",
+      "label_en": "How long have horses been sold here?"
      },
      {
       "label": "말을 한 필 사고 싶소. (거래하기)",
-      "action": "shop"
+      "action": "shop",
+      "label_en": "I want to buy a horse. (Trade)"
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "Come, have a look. See this one? Sturdy, is he not? There used to be an Umajeon, the cattle and horse market the state set up, at the foot of this bridge, but these days it is in a sorry state."
    },
    "closed": {
     "text": "몇 해 전(1744)에 조정에서도 이야기가 나왔다오. 여러 군문이 전을 침범하는 통에 전이 없어지고, 그 자리는 논밭으로 갈아엎었다지. 평시서 제조에게 다시 세우게 하자고 아뢰어 임금께서 허락하셨다는데, 나는 아직 소식을 기다리는 중이오.",
@@ -815,19 +1007,23 @@
     "sources": [
      {
       "title": "조선왕조실록 영조 20년(1744) 8월 26일",
-      "url": "https://sillok.history.go.kr/id/kua_12008026_001"
+      "url": "https://sillok.history.go.kr/id/kua_12008026_001",
+      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 8th month, day 26"
      }
     ],
     "options": [
      {
       "label": "다른 것도 묻겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "I have another question."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "A few years ago (1744) it even came up at court. The various military commands kept encroaching on the market until it disappeared, and the site was plowed up into fields. It was proposed that the director of the Pyeongsiseo (market office) be made to set it up again, and the king approved, they say, but I am still waiting for word."
    },
    "bridge": {
     "text": "그때 조정에서는 마전교(馬廛橋)라는 이름만 봐도 국초부터 우마전이 여기 있었던 걸 알 수 있다고 아뢰었소. 그런데 세종 임금 때(1441) 개천에 수표를 세운 기록에는 馬前橋라고 적혀 있다 하니, 이름 풀이는 사람마다 조금씩 다르오. 수표를 세운 뒤로 수표교라고들 부르지.",
@@ -835,27 +1031,33 @@
     "sources": [
      {
       "title": "조선왕조실록 영조 20년(1744) 8월 26일",
-      "url": "https://sillok.history.go.kr/id/kua_12008026_001"
+      "url": "https://sillok.history.go.kr/id/kua_12008026_001",
+      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 8th month, day 26"
      },
      {
       "title": "조선왕조실록 세종 23년(1441) 8월 18일",
-      "url": "https://sillok.history.go.kr/id/kda_12308018_004"
+      "url": "https://sillok.history.go.kr/id/kda_12308018_004",
+      "title_en": "Annals of the Joseon Dynasty, Sejong year 23 (1441), 8th month, day 18"
      },
      {
       "title": "한국민족문화대백과사전 수표교",
-      "url": "https://encykorea.aks.ac.kr/Article/E0031766"
+      "url": "https://encykorea.aks.ac.kr/Article/E0031766",
+      "title_en": "Encyclopedia of Korean Culture: Supyogyo"
      }
     ],
     "options": [
      {
       "label": "다른 것도 묻겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "I have another question."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "At that time the court said that the very name Majeongyo (馬廛橋, 'horse market bridge') showed that the Umajeon had been here since the founding of the dynasty. But the record of setting up the water gauge in the stream in King Sejong's reign (1441) is said to write it as 馬前橋, so people read the name a little differently. Since the water gauge was set up, folk call it Supyogyo, the Water Gauge Bridge."
    },
    "origin": {
     "text": "태종 임금 때(1410) 시전 자리를 정하면서 소와 말은 장통방 아래 개천가로 정했다고 하오. 그러니 개천가 말 시장은 나라 처음부터 있던 셈이지. 요즘 시전 목록에는 동대문 안에 마전이 따로 있다고도 하오.",
@@ -863,28 +1065,37 @@
     "sources": [
      {
       "title": "조선왕조실록 태종 10년(1410) 2월 7일",
-      "url": "https://sillok.history.go.kr/id/kca_11002007_008"
+      "url": "https://sillok.history.go.kr/id/kca_11002007_008",
+      "title_en": "Annals of the Joseon Dynasty, Taejong year 10 (1410), 2nd month, day 7"
      },
      {
       "title": "한국민족문화대백과사전 시전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0032450"
+      "url": "https://encykorea.aks.ac.kr/Article/E0032450",
+      "title_en": "Encyclopedia of Korean Culture: Sijeon (licensed shops)"
      },
      {
       "title": "우리역사넷 『한국문화사』 유분각전",
-      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020"
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020",
+      "title_en": "Uri Yeoksa Net (National Institute of Korean History), Cultural History of Korea: Yubungakjeon (shops with assigned dues)"
      }
     ],
     "options": [
      {
       "label": "다른 것도 묻겠소.",
-      "next": "hello"
+      "next": "hello",
+      "label_en": "I have another question."
      },
      {
       "label": "잘 있으시오.",
-      "action": "close"
+      "action": "close",
+      "label_en": "Farewell."
      }
-    ]
+    ],
+    "text_en": "In King Taejong's reign (1410), when the sites of the licensed shops were fixed, cattle and horses were assigned to the bank of the stream below Jangtongbang, they say. So the horse market by the stream has been here since the very start of the dynasty. The recent lists of licensed shops also mention a separate horse market inside the East Gate."
    }
-  }
- }
+  },
+  "name_en": "Horse dealer",
+  "subtitle_en": "Foot of Supyo Bridge (Majeongyo) · A man who has brought out horses to sell"
+ },
+ "note_en": "The characters' manner of speech and lines are invented on the basis of records. Lines that state facts carry a source. Shop prices are play values not confirmed in the records."
 }

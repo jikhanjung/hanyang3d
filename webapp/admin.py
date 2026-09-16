@@ -22,7 +22,7 @@ class CitationFormSet(BaseInlineFormSet):
 class CitationInline(admin.TabularInline):
     model = Citation
     extra = 1
-    fields = ['title', 'url', 'position']
+    fields = ['title', 'title_en', 'url', 'position']
     formset = CitationFormSet
 
 
@@ -52,6 +52,7 @@ class BuildingAdmin(StableKeyAdmin):
     fieldsets = [
         ('건물', {'fields': ['key', 'name', 'category', 'published', 'position']}),
         ('설명', {'fields': ['summary', 'period', 'in_1750', 'guide_section']}),
+        ('영어', {'fields': ['name_en', 'summary_en', 'period_en', 'in_1750_en'], 'classes': ['collapse']}),
         ('모형', {'fields': ['model_resource']}),
         ('고급 배치 설정', {'fields': ['map_config'], 'classes': ['collapse']}),
         ('기록', {'fields': ['updated_at']}),
@@ -79,6 +80,7 @@ class StoryAdmin(StableKeyAdmin):
     inlines = [StoryCitationInline]
     fieldsets = [
         ('이야기', {'fields': ['key', 'title', 'year', 'legend', 'text', 'published', 'position']}),
+        ('영어', {'fields': ['title_en', 'text_en'], 'classes': ['collapse']}),
         ('연결할 장소', {'fields': ['target_type', 'building', 'target_key']}),
         ('기록', {'fields': ['updated_at']}),
     ]
@@ -89,7 +91,7 @@ class GuideSectionAdmin(StableKeyAdmin):
     list_display = ['title', 'level', 'published', 'position', 'updated_at']
     list_filter = ['published', 'level']
     search_fields = ['title', 'body', 'buildings__name']
-    fields = ['key', 'title', 'level', 'body', 'published', 'position', 'updated_at']
+    fields = ['key', 'title', 'level', 'body', 'title_en', 'body_en', 'published', 'position', 'updated_at']
 
 
 @admin.register(Resource)
@@ -106,7 +108,7 @@ class ItemAdmin(StableKeyAdmin):
     list_editable = ['price', 'published']
     list_filter = ['published', 'use', 'icon_shape']
     search_fields = ['key', 'name', 'description']
-    fields = ['key', 'name', 'unit', 'price', 'description', 'icon_shape', 'icon_color', 'use', 'max_owned', 'published', 'position', 'updated_at']
+    fields = ['key', 'name', 'unit', 'price', 'description', 'name_en', 'unit_en', 'description_en', 'icon_shape', 'icon_color', 'use', 'max_owned', 'published', 'position', 'updated_at']
 
 
 @admin.register(Shop)
@@ -115,7 +117,7 @@ class ShopAdmin(StableKeyAdmin):
     list_filter = ['published']
     search_fields = ['key', 'about', 'items__name']
     filter_horizontal = ['items']
-    fields = ['key', 'about', 'items', 'published', 'position', 'updated_at']
+    fields = ['key', 'about', 'about_en', 'items', 'published', 'position', 'updated_at']
 
 
 class PlayerItemInline(admin.TabularInline):

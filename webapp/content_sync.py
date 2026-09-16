@@ -27,7 +27,7 @@ from .models import Building, Citation, ContentImport, GuideSection, Item, Resou
 
 SYNC_KEY = 'content-sync-v1'
 ECONOMY_IMPORT_KEY = 'economy-import-v1'
-ITEM_FIELDS = ('name', 'unit', 'price', 'description', 'icon_shape', 'icon_color', 'use', 'max_owned')
+ITEM_FIELDS = ('name', 'unit', 'price', 'description', 'icon_shape', 'icon_color', 'use', 'max_owned', 'name_en', 'unit_en', 'description_en')
 
 
 def fingerprint(value):
@@ -44,35 +44,53 @@ def model_key_for(feature):
     return next((k for k, row in MODEL_RESOURCES.items() if row[2] == renderer), 'box')
 
 
+EN_KEYS = ('name_en', 'summary_en', 'period_en', 'in_1750_en', 'title_en', 'text_en', 'unit_en', 'description_en', 'about_en')
+
+
 def json_building(feature):
-    config = {k: v for k, v in feature.items() if k not in ('id', 'name', 'category', 'info', 'display_model')}
+    config = {k: v for k, v in feature.items() if k not in ('id', 'name', 'name_en', 'category', 'info', 'display_model')}
     info = feature['info']
     return {'name': feature['name'], 'category': feature['category'], 'summary': info['summary'], 'period': info['period'],
             'in_1750': info['in_1750'], 'map_config': config, 'model': model_key_for(feature),
-            'sources': [{'title': s['title'], 'url': s['url']} for s in info['sources']]}
+            'sources': [{'title': s['title'], 'url': s['url'], 'title_en': s.get('title_en', '')} for s in info['sources']],
+            'name_en': feature.get('name_en', ''), 'summary_en': info.get('summary_en', ''), 'period_en': info.get('period_en', ''),
+            'in_1750_en': info.get('in_1750_en', '')}
 
 
 def db_building(b):
     return {'name': b.name, 'category': b.category, 'summary': b.summary, 'period': b.period, 'in_1750': b.in_1750,
             'map_config': b.map_config, 'model': b.model_resource.renderer,
-            'sources': [{'title': c.title, 'url': c.url} for c in b.citations.all()]}
+            'sources': [{'title': c.title, 'url': c.url, 'title_en': c.title_en} for c in b.citations.all()],
+            'name_en': b.name_en, 'summary_en': b.summary_en, 'period_en': b.period_en, 'in_1750_en': b.in_1750_en}
 
 
 def json_story(row):
     return {'target': {'type': row['target']['type'], 'key': row['target']['key']}, 'title': row['title'],
             'year': row['year'] or '', 'legend': row['legend'], 'text': row['text'],
-            'sources': [{'title': s['title'], 'url': s['url']} for s in row['sources']]}
+            'sources': [{'title': s['title'], 'url': s['url'], 'title_en': s.get('title_en', '')} for s in row['sources']],
+            'title_en': row.get('title_en', ''), 'text_en': row.get('text_en', '')}
 
 
 def db_story(s):
     key = s.building.key if s.building_id else s.target_key
     return {'target': {'type': s.target_type, 'key': key}, 'title': s.title, 'year': s.year, 'legend': s.legend,
-            'text': s.text, 'sources': [{'title': c.title, 'url': c.url} for c in s.citations.all()]}
+            'text': s.text, 'sources': [{'title': c.title, 'url': c.url, 'title_en': c.title_en} for c in s.citations.all()],
+            'title_en': s.title_en, 'text_en': s.text_en}
+
+
+def strip_en(data):
+    """The same record as it was fingerprinted before English fields existed (for baselines recorded then)."""
+    if isinstance(data, dict):
+        return {k: strip_en(v) for k, v in data.items() if not k.endswith('_en')}
+    if isinstance(data, list):
+        return [strip_en(v) for v in data]
+    return data
 
 
 def json_item(row):
     return {'name': row['name'], 'unit': row['unit'], 'price': row['price'], 'description': row.get('desc', ''),
-            'icon_shape': row['icon']['shape'], 'icon_color': row['icon']['color'], 'use': row.get('use', ''), 'max_owned': row.get('max_owned')}
+            'icon_shape': row['icon']['shape'], 'icon_color': row['icon']['color'], 'use': row.get('use', ''), 'max_owned': row.get('max_owned'),
+            'name_en': row.get('name_en', ''), 'unit_en': row.get('unit_en', ''), 'description_en': row.get('desc_en', '')}
 
 
 def db_item(i):
@@ -80,11 +98,11 @@ def db_item(i):
 
 
 def json_shop(row):
-    return {'about': row.get('about', ''), 'items': sorted(row['items'])}
+    return {'about': row.get('about', ''), 'items': sorted(row['items']), 'about_en': row.get('about_en', '')}
 
 
 def db_shop(s):
-    return {'about': s.about, 'items': sorted(i.key for i in s.items.all())}
+    return {'about': s.about, 'items': sorted(i.key for i in s.items.all()), 'about_en': s.about_en}
 
 
 def _apply_item(item, data):
@@ -94,7 +112,7 @@ def _apply_item(item, data):
 
 
 def _apply_shop(shop, data):
-    shop.about = data['about']
+    shop.about, shop.about_en = data['about'], data.get('about_en', '')
     shop.full_clean(); shop.save()
     shop.items.set(Item.objects.filter(key__in=data['items']))
 
@@ -121,13 +139,14 @@ class SyncReport:
 def _replace_citations(owner_field, owner, sources):
     Citation.objects.filter(**{owner_field: owner}).delete()
     for i, src in enumerate(sources):
-        citation = Citation(**{owner_field: owner}, position=i, **src)
+        citation = Citation(**{owner_field: owner}, position=i, title=src['title'], url=src['url'], title_en=src.get('title_en', ''))
         citation.full_clean(); citation.save()
 
 
 def _apply_building(b, data, position):
     b.name, b.category, b.summary, b.period, b.in_1750 = data['name'], data['category'], data['summary'], data['period'], data['in_1750']
     b.map_config = data['map_config']
+    b.name_en, b.summary_en, b.period_en, b.in_1750_en = data.get('name_en', ''), data.get('summary_en', ''), data.get('period_en', ''), data.get('in_1750_en', '')
     b.model_resource = Resource.objects.get(kind='model', renderer=data['model'])
     if b.position is None:
         b.position = position
@@ -141,6 +160,7 @@ def _apply_story(s, data):
     s.building = Building.objects.get(key=target['key']) if target['type'] == 'landmark' else None
     s.target_key = '' if target['type'] == 'landmark' else target['key']
     s.title, s.year, s.legend, s.text = data['title'], data['year'], data['legend'], data['text']
+    s.title_en, s.text_en = data.get('title_en', ''), data.get('text_en', '')
     s.full_clean(); s.save()
     _replace_citations('story', s, data['sources'])
 
@@ -184,6 +204,8 @@ def _sync_kind(kind, items, rows, to_data, db_data, create, update, baseline, im
         current = fingerprint(db_data(row))
         if base is None and row.updated_at <= imported_at:
             base = current  # untouched since the one-time import
+        elif base is not None and base != current and base == fingerprint(strip_en(db_data(row))):
+            base = current  # recorded before the English fields existed; the Korean part is unchanged
         if current == new:
             baseline[key] = new
         elif base is None:
@@ -199,13 +221,13 @@ def _sync_kind(kind, items, rows, to_data, db_data, create, update, baseline, im
     report.only_in_db.extend(f'{kind} {key}' for key in rows if key not in seen)
 
 
-def sync_content(buildings_data, stories_data, guide_markdown=None, apply=False, economy_data=None):
+def sync_content(buildings_data, stories_data, guide_markdown=None, apply=False, economy_data=None, guide_en=None):
     report = SyncReport(applied=apply)
     imported = ContentImport.objects.get(key=IMPORT_KEY)
     with transaction.atomic():
         # Created inside the transaction so a preview (rolled back) leaves no sync state behind.
         state, _ = ContentImport.objects.get_or_create(key=SYNC_KEY, defaults={'metadata': {'buildings': {}, 'stories': {}}})
-        baseline = {kind: dict(state.metadata.get(kind, {})) for kind in ('buildings', 'stories', 'items', 'shops')}
+        baseline = {kind: dict(state.metadata.get(kind, {})) for kind in ('buildings', 'stories', 'items', 'shops', 'guide_en')}
         def create_building(key, data, position):
             b = Building(key=key, published=True, position=position, guide_section=_section_for(data['name'].split(' · ')[0], key, guide_markdown))
             _apply_building(b, data, position)
@@ -236,6 +258,23 @@ def sync_content(buildings_data, stories_data, guide_markdown=None, apply=False,
                        {s.key: s for s in Shop.objects.prefetch_related('items')}, None, db_shop, create_shop, lambda s, d, p: _apply_shop(s, d),
                        baseline['shops'], economy.imported_at, report)
 
+        # English guide sections (docs/landmarks_en.json, keyed by Korean heading): filled or updated for sections
+        # whose English has not been edited in the back office; a section's Korean text is never touched here.
+        if guide_en is not None:
+            def db_section_en(g):
+                return {'title_en': g.title_en, 'body_en': g.body_en}
+            def apply_section_en(g, data, position=None):
+                g.title_en, g.body_en = data.get('title_en', ''), data.get('body_en', '')
+                g.full_clean(); g.save()
+            sections = {g.title: g for g in GuideSection.objects.all()}
+            items = [(title, {'title_en': v.get('title_en', ''), 'body_en': v.get('body_en', '')}) for title, v in guide_en.items() if title in sections]
+            # A section with no English yet has no edit to protect (sections seeded by a later sync are saved after
+            # the import time and would otherwise count as edited).
+            for title, g in sections.items():
+                if not g.title_en and not g.body_en and title not in baseline['guide_en']:
+                    baseline['guide_en'][title] = fingerprint({'title_en': '', 'body_en': ''})
+            _sync_kind('guide-en', items, {t: sections[t] for t, _ in items}, None, db_section_en, lambda k, d, p: None,
+                       apply_section_en, baseline['guide_en'], imported.imported_at, report)
         if guide_markdown is not None:
             from .content import guide_markdown as db_guide
             import re

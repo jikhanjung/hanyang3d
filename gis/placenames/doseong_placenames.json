@@ -64,7 +64,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jinjang-bang"
   },
   {
    "id": "place-0001",
@@ -106,7 +107,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yangdeok-bang"
   },
   {
    "id": "place-0002",
@@ -148,7 +150,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwanghwa-bang"
   },
   {
    "id": "place-0003",
@@ -190,7 +193,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gahoe-bang"
   },
   {
    "id": "place-0004",
@@ -232,7 +236,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sunggyo-bang"
   },
   {
    "id": "place-0005",
@@ -281,7 +286,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwangwang-bang"
   },
   {
    "id": "place-0006",
@@ -323,7 +329,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sunhwa-bang"
   },
   {
    "id": "place-0007",
@@ -365,7 +372,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Junsu-bang"
   },
   {
    "id": "place-0008",
@@ -407,7 +415,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Uitong-bang"
   },
   {
    "id": "place-0009",
@@ -449,7 +458,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Anguk-bang"
   },
   {
    "id": "place-0010",
@@ -491,7 +501,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Indal-bang"
   },
   {
    "id": "place-0011",
@@ -533,7 +544,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeokseon-bang"
   },
   {
    "id": "place-0012",
@@ -575,7 +587,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwanin-bang"
   },
   {
    "id": "place-0013",
@@ -617,7 +630,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gyeonpyeong-bang"
   },
   {
    "id": "place-0014",
@@ -659,7 +673,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeongseon-bang"
   },
   {
    "id": "place-0015",
@@ -701,7 +716,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang"
   },
   {
    "id": "place-0016",
@@ -743,7 +759,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sujin-bang"
   },
   {
    "id": "place-0017",
@@ -785,7 +802,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sungsinbang-gye"
   },
   {
    "id": "place-0018",
@@ -827,7 +845,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Inchangbang-gye"
   },
   {
    "id": "place-0019",
@@ -869,7 +888,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Changseon-bang"
   },
   {
    "id": "place-0020",
@@ -911,7 +931,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwangtong-bang"
   },
   {
    "id": "place-0021",
@@ -953,7 +974,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daepyeong-bang"
   },
   {
    "id": "place-0022",
@@ -995,7 +1017,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Nakseon-bang"
   },
   {
    "id": "place-0023",
@@ -1037,7 +1060,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hwanghwa-bang"
   },
   {
    "id": "place-0024",
@@ -1079,7 +1103,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Banseok-bang"
   },
   {
    "id": "place-0025",
@@ -1121,7 +1146,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hundo-bang"
   },
   {
    "id": "place-0026",
@@ -1163,7 +1189,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seongmyeong-bang"
   },
   {
    "id": "place-0027",
@@ -1205,7 +1232,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Myeongcheol-bang"
   },
   {
    "id": "place-0028",
@@ -1247,7 +1275,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Myeongnye-bang"
   },
   {
    "id": "place-0029",
@@ -1289,7 +1318,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hohyeon-bang"
   },
   {
    "id": "place-0030",
@@ -1331,7 +1361,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yangsaeng-bang"
   },
   {
    "id": "place-0031",
@@ -1373,7 +1404,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seogang-bang"
   },
   {
    "id": "place-0032",
@@ -1415,7 +1447,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dumo-bang"
   },
   {
    "id": "place-0033",
@@ -1457,7 +1490,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hangang-bang"
   },
   {
    "id": "place-0034",
@@ -1499,7 +1533,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan-bang"
   },
   {
    "id": "place-0035",
@@ -1541,7 +1576,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bulgwangni-gye"
   },
   {
    "id": "place-0036",
@@ -1583,7 +1619,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seonhyecheong-gye"
   },
   {
    "id": "place-0037",
@@ -1625,7 +1662,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jojiseo-gye"
   },
   {
    "id": "place-0038",
@@ -1667,7 +1705,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gyeongnicheong-gye"
   },
   {
    "id": "place-0039",
@@ -1716,7 +1755,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Uiri-gye"
   },
   {
    "id": "place-0040",
@@ -1758,7 +1798,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Suyuchon-gye"
   },
   {
    "id": "place-0041",
@@ -1800,7 +1841,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gaori-gye"
   },
   {
    "id": "place-0042",
@@ -1842,7 +1884,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Neungdong-gye"
   },
   {
    "id": "place-0043",
@@ -1884,7 +1927,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seonggyungwan-gye"
   },
   {
    "id": "place-0044",
@@ -1926,7 +1970,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jinjangbang-gye"
   },
   {
    "id": "place-0045",
@@ -1968,7 +2013,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Wangjeongdong-gye"
   },
   {
    "id": "place-0046",
@@ -2010,7 +2056,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yangdeokbang-gye"
   },
   {
    "id": "place-0047",
@@ -2052,7 +2099,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwanghwabang-gye"
   },
   {
    "id": "place-0048",
@@ -2094,7 +2142,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sajaegam-gye"
   },
   {
    "id": "place-0049",
@@ -2136,7 +2185,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sunggyo-bang Il-gye"
   },
   {
    "id": "place-0050",
@@ -2178,7 +2228,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gahoebang-gye"
   },
   {
    "id": "place-0051",
@@ -2220,7 +2271,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hudong-gye"
   },
   {
    "id": "place-0052",
@@ -2269,7 +2321,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwangwangbang-gye"
   },
   {
    "id": "place-0053",
@@ -2311,7 +2364,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Junsubang-gye"
   },
   {
    "id": "place-0054",
@@ -2353,7 +2407,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Angukbang-gye"
   },
   {
    "id": "place-0055",
@@ -2395,7 +2450,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sumundong-gye"
   },
   {
    "id": "place-0056",
@@ -2437,7 +2493,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gobyeongjo-gye"
   },
   {
    "id": "place-0057",
@@ -2479,7 +2536,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonchumun-gye"
   },
   {
    "id": "place-0058",
@@ -2521,7 +2579,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Geondeokbang-gye"
   },
   {
    "id": "place-0059",
@@ -2563,7 +2622,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sageori-gye"
   },
   {
    "id": "place-0060",
@@ -2605,7 +2665,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Suseonggungnae-gye"
   },
   {
    "id": "place-0061",
@@ -2647,7 +2708,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gimmannyeon-gye"
   },
   {
    "id": "place-0062",
@@ -2689,7 +2751,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sipjagak-gye"
   },
   {
    "id": "place-0063",
@@ -2731,7 +2794,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sujin-bang Songhyeon-gye"
   },
   {
    "id": "place-0064",
@@ -2773,7 +2837,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Uijeongbunae-gye"
   },
   {
    "id": "place-0065",
@@ -2815,7 +2880,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yejonae-gye"
   },
   {
    "id": "place-0066",
@@ -2857,7 +2923,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Junghangnae-gye"
   },
   {
    "id": "place-0067",
@@ -2899,7 +2966,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Saondong-gye"
   },
   {
    "id": "place-0068",
@@ -2941,7 +3009,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jungchubu-gye"
   },
   {
    "id": "place-0069",
@@ -2983,7 +3052,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seokgandong-gye"
   },
   {
    "id": "place-0070",
@@ -3025,7 +3095,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonuigam-gye"
   },
   {
    "id": "place-0071",
@@ -3067,7 +3138,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Anam-gye"
   },
   {
    "id": "place-0072",
@@ -3109,7 +3181,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daesadongipae-gye"
   },
   {
    "id": "place-0073",
@@ -3151,7 +3224,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeyongha-gye"
   },
   {
    "id": "place-0074",
@@ -3193,7 +3267,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ijonae-gye"
   },
   {
    "id": "place-0075",
@@ -3235,7 +3310,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Saheonbunae-gye"
   },
   {
    "id": "place-0076",
@@ -3277,7 +3353,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Naehaengnang-gye"
   },
   {
    "id": "place-0077",
@@ -3319,7 +3396,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daesadongilpae-gye"
   },
   {
    "id": "place-0078",
@@ -3361,7 +3439,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sajikdong-gye"
   },
   {
    "id": "place-0079",
@@ -3403,7 +3482,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Naesusa-gye"
   },
   {
    "id": "place-0080",
@@ -3445,7 +3525,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yulhakcheong-gye"
   },
   {
    "id": "place-0081",
@@ -3487,7 +3568,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hanseongbunae-gye"
   },
   {
    "id": "place-0082",
@@ -3529,7 +3611,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Donnyeongsang-gye"
   },
   {
    "id": "place-0083",
@@ -3571,7 +3654,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Eouidong-gye"
   },
   {
    "id": "place-0084",
@@ -3613,7 +3697,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cheongnyangni-gye"
   },
   {
    "id": "place-0085",
@@ -3655,7 +3740,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Imison-gye"
   },
   {
    "id": "place-0086",
@@ -3697,7 +3783,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daesadongsampae-gye"
   },
   {
    "id": "place-0087",
@@ -3739,7 +3826,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sujin-bang Sabok-gye"
   },
   {
    "id": "place-0088",
@@ -3781,7 +3869,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Handodongbyeon-gye"
   },
   {
    "id": "place-0089",
@@ -3823,7 +3912,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sayeogwon-gye"
   },
   {
    "id": "place-0090",
@@ -3865,7 +3955,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang Yeonji-gye"
   },
   {
    "id": "place-0091",
@@ -3907,7 +3998,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daesadongsapae-gye"
   },
   {
    "id": "place-0092",
@@ -3949,7 +4041,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hojonae-gye"
   },
   {
    "id": "place-0093",
@@ -3991,7 +4084,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bongsangsinae-gye"
   },
   {
    "id": "place-0094",
@@ -4033,7 +4127,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Byeongjonae-gye"
   },
   {
    "id": "place-0095",
@@ -4075,7 +4170,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Panjeong-gye"
   },
   {
    "id": "place-0096",
@@ -4117,7 +4213,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Pajajeon-gye"
   },
   {
    "id": "place-0097",
@@ -4159,7 +4256,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Uijeonil-gye"
   },
   {
    "id": "place-0098",
@@ -4201,7 +4299,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daemyodong-gye"
   },
   {
    "id": "place-0099",
@@ -4243,7 +4342,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gaejeongdong-gye"
   },
   {
    "id": "place-0100",
@@ -4285,7 +4385,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jonggyeon-gye"
   },
   {
    "id": "place-0101",
@@ -4327,7 +4428,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jungeomuljeonsampae-gye"
   },
   {
    "id": "place-0102",
@@ -4369,7 +4471,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Donghangnae-gye"
   },
   {
    "id": "place-0103",
@@ -4418,7 +4521,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jongmyodong-gye"
   },
   {
    "id": "place-0104",
@@ -4460,7 +4564,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang Yeonsam-gye"
   },
   {
    "id": "place-0105",
@@ -4502,7 +4607,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jungeomuljeonilpae-gye"
   },
   {
    "id": "place-0106",
@@ -4544,7 +4650,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Geumbunae-gye"
   },
   {
    "id": "place-0107",
@@ -4593,7 +4700,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sangsadong-gye"
   },
   {
    "id": "place-0108",
@@ -4635,7 +4743,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dangpidong-gye"
   },
   {
    "id": "place-0109",
@@ -4677,7 +4786,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang Buksam-gye"
   },
   {
    "id": "place-0110",
@@ -4719,7 +4829,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonseolsa-gye"
   },
   {
    "id": "place-0111",
@@ -4761,7 +4872,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sangmijeon-gye"
   },
   {
    "id": "place-0112",
@@ -4803,7 +4915,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sujin-bang Jonghyeon-gye"
   },
   {
    "id": "place-0113",
@@ -4845,7 +4958,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Haengnang-gye"
   },
   {
    "id": "place-0114",
@@ -4887,7 +5001,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sangeomuljeon-gye"
   },
   {
    "id": "place-0115",
@@ -4929,7 +5044,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang Il-gye"
   },
   {
    "id": "place-0116",
@@ -4971,7 +5087,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang I-gye"
   },
   {
    "id": "place-0117",
@@ -5013,7 +5130,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Donghakdong-gye"
   },
   {
    "id": "place-0118",
@@ -5055,7 +5173,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sagijeon-gye"
   },
   {
    "id": "place-0119",
@@ -5097,7 +5216,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mokjeong-gye"
   },
   {
    "id": "place-0120",
@@ -5139,7 +5259,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Changseonbang-gye"
   },
   {
    "id": "place-0121",
@@ -5181,7 +5302,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Socheonbyeon-gye"
   },
   {
    "id": "place-0122",
@@ -5223,7 +5345,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Changseon-bang Iri-gye"
   },
   {
    "id": "place-0123",
@@ -5265,7 +5388,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sinsadong-gye"
   },
   {
    "id": "place-0124",
@@ -5307,7 +5431,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bunjeonjungno-gye"
   },
   {
    "id": "place-0125",
@@ -5349,7 +5474,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sinmunnae-gye"
   },
   {
    "id": "place-0126",
@@ -5391,7 +5517,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang Bunyuk-gye"
   },
   {
    "id": "place-0127",
@@ -5433,7 +5560,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seocheonsu-gye"
   },
   {
    "id": "place-0128",
@@ -5475,7 +5603,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jongnuseobyeon-gye"
   },
   {
    "id": "place-0129",
@@ -5517,7 +5646,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jungno-gye"
   },
   {
    "id": "place-0130",
@@ -5559,7 +5689,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonokhudong-gye"
   },
   {
    "id": "place-0131",
@@ -5601,7 +5732,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Baengnipjeon-gye"
   },
   {
    "id": "place-0132",
@@ -5643,7 +5775,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hampyeongjuin-gye"
   },
   {
    "id": "place-0133",
@@ -5685,7 +5818,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Podocheong-gye"
   },
   {
    "id": "place-0134",
@@ -5727,7 +5861,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Iryeongdae-gye"
   },
   {
    "id": "place-0135",
@@ -5776,7 +5911,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gosaekjeong-gye"
   },
   {
    "id": "place-0136",
@@ -5818,7 +5954,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gyeongyeonggo-gye"
   },
   {
    "id": "place-0137",
@@ -5860,7 +5997,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dongnyeongdong-gye"
   },
   {
    "id": "place-0138",
@@ -5902,7 +6040,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang Jungno-gye"
   },
   {
    "id": "place-0139",
@@ -5944,7 +6083,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeongmanseok-gye"
   },
   {
    "id": "place-0140",
@@ -5986,7 +6126,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Wonjujuin-gye"
   },
   {
    "id": "place-0141",
@@ -6035,7 +6176,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hasunwon-gye"
   },
   {
    "id": "place-0142",
@@ -6077,7 +6219,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bangjong-gye"
   },
   {
    "id": "place-0143",
@@ -6119,7 +6262,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gajwadong-gye"
   },
   {
    "id": "place-0144",
@@ -6161,7 +6305,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jangsaengdong-gye"
   },
   {
    "id": "place-0145",
@@ -6203,7 +6348,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bipadong-gye"
   },
   {
    "id": "place-0146",
@@ -6245,7 +6391,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Wangsimni-gye"
   },
   {
    "id": "place-0147",
@@ -6287,7 +6434,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bangnaejong-gye"
   },
   {
    "id": "place-0148",
@@ -6329,7 +6477,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seohangnae-gye"
   },
   {
    "id": "place-0149",
@@ -6371,7 +6520,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gyunjangni-gye"
   },
   {
    "id": "place-0150",
@@ -6413,7 +6563,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yusaik-gye"
   },
   {
    "id": "place-0151",
@@ -6455,7 +6606,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhwa-bang Cheonbyeon-gye"
   },
   {
    "id": "place-0152",
@@ -6497,7 +6649,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cheongjujuin-gye"
   },
   {
    "id": "place-0153",
@@ -6539,7 +6692,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sodabangbukbyeon-gye"
   },
   {
    "id": "place-0154",
@@ -6581,7 +6735,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Uiseongjeong-gye"
   },
   {
    "id": "place-0155",
@@ -6623,7 +6778,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Josehong-gye"
   },
   {
    "id": "place-0156",
@@ -6665,7 +6821,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwangjugyeongjuin-gye"
   },
   {
    "id": "place-0157",
@@ -6707,7 +6864,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cheongseonggun-gye"
   },
   {
    "id": "place-0158",
@@ -6749,7 +6907,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Supyodongbyeon-gye"
   },
   {
    "id": "place-0159",
@@ -6791,7 +6950,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seohakdong-gye"
   },
   {
    "id": "place-0160",
@@ -6833,7 +6993,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonhuigung-gye"
   },
   {
    "id": "place-0161",
@@ -6882,7 +7043,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwangtong-bang Mojeon-gye"
   },
   {
    "id": "place-0162",
@@ -6931,7 +7093,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mojeon-gye"
   },
   {
    "id": "place-0163",
@@ -6973,7 +7136,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwangtong-bang Seongcheon-gye"
   },
   {
    "id": "place-0164",
@@ -7015,7 +7179,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeungsanni-gye"
   },
   {
    "id": "place-0165",
@@ -7057,7 +7222,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hahongmun-gye"
   },
   {
    "id": "place-0166",
@@ -7099,7 +7265,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dojadong-gye"
   },
   {
    "id": "place-0167",
@@ -7141,7 +7308,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Donghaengnang-gye"
   },
   {
    "id": "place-0168",
@@ -7183,7 +7351,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Heukjeongdong-gye"
   },
   {
    "id": "place-0169",
@@ -7225,7 +7394,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daedabangbukbyeon-gye"
   },
   {
    "id": "place-0170",
@@ -7267,7 +7437,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sodabangnambyeon-gye"
   },
   {
    "id": "place-0171",
@@ -7309,7 +7480,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bosimnae-gye"
   },
   {
    "id": "place-0172",
@@ -7351,7 +7523,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bosiboe-gye"
   },
   {
    "id": "place-0173",
@@ -7393,7 +7566,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jungnyangpo-gye"
   },
   {
    "id": "place-0174",
@@ -7435,7 +7609,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seonsan-gye"
   },
   {
    "id": "place-0175",
@@ -7477,7 +7652,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sojeongdong-gye"
   },
   {
    "id": "place-0176",
@@ -7519,7 +7695,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Majangni-gye"
   },
   {
    "id": "place-0177",
@@ -7561,7 +7738,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hyeminseo-gye"
   },
   {
    "id": "place-0178",
@@ -7603,7 +7781,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Suhadong-gye"
   },
   {
    "id": "place-0179",
@@ -7645,7 +7824,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cheongnyeongwi-gye"
   },
   {
    "id": "place-0180",
@@ -7687,7 +7867,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gurigae-gye"
   },
   {
    "id": "place-0181",
@@ -7729,7 +7910,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Chwihyeondong-gye"
   },
   {
    "id": "place-0182",
@@ -7771,7 +7953,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Buwolbyeon-gye"
   },
   {
    "id": "place-0183",
@@ -7820,7 +8003,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonseongwi-gye"
   },
   {
    "id": "place-0184",
@@ -7862,7 +8046,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Nobyeongmun-gye"
   },
   {
    "id": "place-0185",
@@ -7904,7 +8089,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Susaengni-gye"
   },
   {
    "id": "place-0186",
@@ -7946,7 +8132,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seomunwolbyeon-gye"
   },
   {
    "id": "place-0187",
@@ -7988,7 +8175,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jukjeondong-gye"
   },
   {
    "id": "place-0188",
@@ -8030,7 +8218,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mijeonsang-gye"
   },
   {
    "id": "place-0189",
@@ -8072,7 +8261,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seongsanni-gye"
   },
   {
    "id": "place-0190",
@@ -8114,7 +8304,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hundo-bang Jeongseung-gye"
   },
   {
    "id": "place-0191",
@@ -8156,7 +8347,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seosomunoe-gye"
   },
   {
    "id": "place-0192",
@@ -8198,7 +8390,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seosomunnae-gye"
   },
   {
    "id": "place-0193",
@@ -8240,7 +8433,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ahyeon-gye"
   },
   {
    "id": "place-0194",
@@ -8282,7 +8476,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sindangni-gye"
   },
   {
    "id": "place-0195",
@@ -8324,7 +8519,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hundo-bang Bakjeong-gye"
   },
   {
    "id": "place-0196",
@@ -8366,7 +8562,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sogongdong-gye"
   },
   {
    "id": "place-0197",
@@ -8408,7 +8605,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seogang-bang Ahyeon-gye"
   },
   {
    "id": "place-0198",
@@ -8457,7 +8655,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bongungnae-gye"
   },
   {
    "id": "place-0199",
@@ -8499,7 +8698,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Waegwandong-gye"
   },
   {
    "id": "place-0200",
@@ -8541,7 +8741,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hapjeongni-gye"
   },
   {
    "id": "place-0201",
@@ -8583,7 +8784,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mijeonha-gye"
   },
   {
    "id": "place-0202",
@@ -8625,7 +8827,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mangwonjeongsam-gye"
   },
   {
    "id": "place-0203",
@@ -8667,7 +8870,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeouido-gye"
   },
   {
    "id": "place-0204",
@@ -8709,7 +8913,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daepyeonggwan-gye"
   },
   {
    "id": "place-0205",
@@ -8751,7 +8956,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Namsodong-gye"
   },
   {
    "id": "place-0206",
@@ -8793,7 +8999,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ssangnimundong-gye"
   },
   {
    "id": "place-0207",
@@ -8835,7 +9042,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seokgyoha-gye"
   },
   {
    "id": "place-0208",
@@ -8877,7 +9085,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seogang-bang Sangjeon-gye"
   },
   {
    "id": "place-0209",
@@ -8919,7 +9128,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Myeongnye-bang Bu-gye"
   },
   {
    "id": "place-0210",
@@ -8961,7 +9171,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Changjeonni-gye"
   },
   {
    "id": "place-0211",
@@ -9003,7 +9214,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Eoyeongchang-gye"
   },
   {
    "id": "place-0212",
@@ -9045,7 +9257,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Myeongnyedong-gye"
   },
   {
    "id": "place-0213",
@@ -9087,7 +9300,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jujadong-gye"
   },
   {
    "id": "place-0214",
@@ -9129,7 +9343,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hohyeondong-gye"
   },
   {
    "id": "place-0215",
@@ -9171,7 +9386,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jangheungdong-gye"
   },
   {
    "id": "place-0216",
@@ -9213,7 +9429,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yangsaeng-bang Changdong-gye"
   },
   {
    "id": "place-0217",
@@ -9255,7 +9472,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seokgyosang-gye"
   },
   {
    "id": "place-0218",
@@ -9297,7 +9515,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gusucheolli-gye"
   },
   {
    "id": "place-0219",
@@ -9339,7 +9558,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Danginni-gye"
   },
   {
    "id": "place-0220",
@@ -9381,7 +9601,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonji-gye"
   },
   {
    "id": "place-0221",
@@ -9423,7 +9644,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Geumwiyeongchang-gye"
   },
   {
    "id": "place-0222",
@@ -9465,7 +9687,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Suilli-gye"
   },
   {
    "id": "place-0223",
@@ -9507,7 +9730,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sucheolli-gye"
   },
   {
    "id": "place-0224",
@@ -9549,7 +9773,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sinsucheolli-gye"
   },
   {
    "id": "place-0225",
@@ -9591,7 +9816,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hajungni-gye"
   },
   {
    "id": "place-0226",
@@ -9633,7 +9859,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sinjeongni-gye"
   },
   {
    "id": "place-0227",
@@ -9675,7 +9902,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Heukseongni-gye"
   },
   {
    "id": "place-0228",
@@ -9717,7 +9945,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dumopo-gye"
   },
   {
    "id": "place-0229",
@@ -9759,7 +9988,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seokgyo-gye"
   },
   {
    "id": "place-0230",
@@ -9801,7 +10031,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dumo-bang Jungchon-gye"
   },
   {
    "id": "place-0231",
@@ -9843,7 +10074,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gongdeongni-gye"
   },
   {
    "id": "place-0232",
@@ -9885,7 +10117,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ongmakhari-gye"
   },
   {
    "id": "place-0233",
@@ -9927,7 +10160,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dojeodong-gye"
   },
   {
    "id": "place-0234",
@@ -9969,7 +10203,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seogang-bang Yuldo-gye"
   },
   {
    "id": "place-0235",
@@ -10011,7 +10246,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonsaengseonae-gye"
   },
   {
    "id": "place-0236",
@@ -10053,7 +10289,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan-bang Cheongil-gye"
   },
   {
    "id": "place-0237",
@@ -10095,7 +10332,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ongmaksangni-gye"
   },
   {
    "id": "place-0238",
@@ -10137,7 +10375,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonsaengseooe-gye"
   },
   {
    "id": "place-0239",
@@ -10179,7 +10418,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan-bang Cheongi-gye"
   },
   {
    "id": "place-0240",
@@ -10221,7 +10461,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Tojeongni-gye"
   },
   {
    "id": "place-0241",
@@ -10263,7 +10504,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cheongpa-gye"
   },
   {
    "id": "place-0242",
@@ -10305,7 +10547,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan-bang Cheongsam-gye"
   },
   {
    "id": "place-0243",
@@ -10347,7 +10590,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mallichang-gye"
   },
   {
    "id": "place-0244",
@@ -10389,7 +10633,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan-bang Mapo-gye"
   },
   {
    "id": "place-0245",
@@ -10431,7 +10676,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dohwadong-gye"
   },
   {
    "id": "place-0246",
@@ -10473,7 +10719,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan-bang Cheongsa-gye"
   },
   {
    "id": "place-0247",
@@ -10515,7 +10762,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Itaewon-gye"
   },
   {
    "id": "place-0248",
@@ -10557,7 +10805,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan-bang Cheongo-gye"
   },
   {
    "id": "place-0249",
@@ -10599,7 +10848,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hyeongjejeong-gye"
   },
   {
    "id": "place-0250",
@@ -10641,7 +10891,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hangang-bang Hangang-gye"
   },
   {
    "id": "place-0251",
@@ -10683,7 +10934,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Juseongni-gye"
   },
   {
    "id": "place-0252",
@@ -10725,7 +10977,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mongnoejeong-gye"
   },
   {
    "id": "place-0253",
@@ -10767,7 +11020,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jieodun-gye"
   },
   {
    "id": "place-0254",
@@ -10809,7 +11063,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seobinggoil-gye"
   },
   {
    "id": "place-0255",
@@ -10851,7 +11106,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Waseo-gye"
   },
   {
    "id": "place-0256",
@@ -10893,7 +11149,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sinchonni-gye"
   },
   {
    "id": "place-0257",
@@ -10935,7 +11192,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sachonni-gye"
   },
   {
    "id": "place-0258",
@@ -10977,7 +11235,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Baegun-dong"
   },
   {
    "id": "place-0259",
@@ -11019,7 +11278,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Heungdeok-dong"
   },
   {
    "id": "place-0260",
@@ -11061,7 +11321,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Won-dong"
   },
   {
    "id": "place-0261",
@@ -11103,7 +11364,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwan-dong"
   },
   {
    "id": "place-0262",
@@ -11152,7 +11414,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jangui-dong"
   },
   {
    "id": "place-0263",
@@ -11194,7 +11457,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Baekja-dong"
   },
   {
    "id": "place-0264",
@@ -11236,7 +11500,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sodae-dong"
   },
   {
    "id": "place-0265",
@@ -11278,7 +11543,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Nugak-dong"
   },
   {
    "id": "place-0266",
@@ -11320,7 +11586,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hoe-dong"
   },
   {
    "id": "place-0267",
@@ -11362,7 +11629,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gyesaeng-dong"
   },
   {
    "id": "place-0268",
@@ -11404,7 +11672,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dae-dong"
   },
   {
    "id": "place-0269",
@@ -11446,7 +11715,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Soanguk-dong"
   },
   {
    "id": "place-0270",
@@ -11488,7 +11758,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Anguk-dong"
   },
   {
    "id": "place-0271",
@@ -11530,7 +11801,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Maehwa-dong"
   },
   {
    "id": "place-0272",
@@ -11572,7 +11844,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Byeokjang-dong"
   },
   {
    "id": "place-0273",
@@ -11614,7 +11887,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sangsa-dong"
   },
   {
    "id": "place-0274",
@@ -11656,7 +11930,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Chebucheong-dong"
   },
   {
    "id": "place-0275",
@@ -11698,7 +11973,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sumun-dong"
   },
   {
    "id": "place-0276",
@@ -11740,7 +12016,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Doga-dong"
   },
   {
    "id": "place-0277",
@@ -11782,7 +12059,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "I-dong"
   },
   {
    "id": "place-0278",
@@ -11824,7 +12102,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Songmok-dong"
   },
   {
    "id": "place-0279",
@@ -11866,7 +12145,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Saon-dong"
   },
   {
    "id": "place-0280",
@@ -11908,7 +12188,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ingnang-dong"
   },
   {
    "id": "place-0281",
@@ -11950,7 +12231,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Eunhaeng-dong"
   },
   {
    "id": "place-0282",
@@ -11992,7 +12274,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sajik-dong"
   },
   {
    "id": "place-0283",
@@ -12034,7 +12317,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Doyeom-dong"
   },
   {
    "id": "place-0284",
@@ -12076,7 +12360,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Majeon-dong"
   },
   {
    "id": "place-0285",
@@ -12118,7 +12403,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeonji-dong"
   },
   {
    "id": "place-0286",
@@ -12160,7 +12446,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Nujeong-dong"
   },
   {
    "id": "place-0287",
@@ -12202,7 +12489,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Naengjeong-dong"
   },
   {
    "id": "place-0288",
@@ -12244,7 +12532,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Uiyeonggo-dong"
   },
   {
    "id": "place-0289",
@@ -12286,7 +12575,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daechang-dong"
   },
   {
    "id": "place-0290",
@@ -12328,7 +12618,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonseok-dong"
   },
   {
    "id": "place-0291",
@@ -12370,7 +12661,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sulla-dong"
   },
   {
    "id": "place-0292",
@@ -12412,7 +12704,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sohanhak-dong"
   },
   {
    "id": "place-0293",
@@ -12454,7 +12747,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Geumbuhu-dong"
   },
   {
    "id": "place-0294",
@@ -12496,7 +12790,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gaejeong-dong"
   },
   {
    "id": "place-0295",
@@ -12538,7 +12833,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Songjeong-dong"
   },
   {
    "id": "place-0296",
@@ -12580,7 +12876,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daemyo-dong"
   },
   {
    "id": "place-0297",
@@ -12622,7 +12919,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daesa-dong"
   },
   {
    "id": "place-0298",
@@ -12671,7 +12969,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sangsa-dong"
   },
   {
    "id": "place-0299",
@@ -12713,7 +13012,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Changnimjeong-dong"
   },
   {
    "id": "place-0300",
@@ -12755,7 +13055,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daejeonjeong-dong"
   },
   {
    "id": "place-0301",
@@ -12797,7 +13098,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sain-dong"
   },
   {
    "id": "place-0302",
@@ -12839,7 +13141,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonuigam-dong"
   },
   {
    "id": "place-0303",
@@ -12881,7 +13184,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sujin-dong"
   },
   {
    "id": "place-0304",
@@ -12923,7 +13227,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Duseok-dong"
   },
   {
    "id": "place-0305",
@@ -12965,7 +13270,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dangpi-dong"
   },
   {
    "id": "place-0306",
@@ -13007,7 +13313,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Samganjeong-dong"
   },
   {
    "id": "place-0307",
@@ -13049,7 +13356,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Geopyeong-dong"
   },
   {
    "id": "place-0308",
@@ -13091,7 +13399,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeomjeon-dong"
   },
   {
    "id": "place-0309",
@@ -13133,7 +13442,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dongnyeong-dong"
   },
   {
    "id": "place-0310",
@@ -13175,7 +13485,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gyeongjuinjeong-dong"
   },
   {
    "id": "place-0311",
@@ -13217,7 +13528,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sagijeon-dong"
   },
   {
    "id": "place-0312",
@@ -13259,7 +13571,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jeonokhu-dong"
   },
   {
    "id": "place-0313",
@@ -13301,7 +13614,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hap-dong"
   },
   {
    "id": "place-0314",
@@ -13343,7 +13657,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Bipa-dong"
   },
   {
    "id": "place-0315",
@@ -13385,7 +13700,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dongsanjeong-dong"
   },
   {
    "id": "place-0316",
@@ -13427,7 +13743,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hongmun-dong"
   },
   {
    "id": "place-0317",
@@ -13469,7 +13786,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dabang-dong"
   },
   {
    "id": "place-0318",
@@ -13511,7 +13829,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Do-dong"
   },
   {
    "id": "place-0319",
@@ -13553,7 +13872,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Heukjeong-dong"
   },
   {
    "id": "place-0320",
@@ -13602,7 +13922,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sallim-dong"
   },
   {
    "id": "place-0321",
@@ -13644,7 +13965,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ipjeong-dong"
   },
   {
    "id": "place-0322",
@@ -13686,7 +14008,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Beoljeong-dong"
   },
   {
    "id": "place-0323",
@@ -13728,7 +14051,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sosallim-dong"
   },
   {
    "id": "place-0324",
@@ -13770,7 +14094,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sojeong-dong"
   },
   {
    "id": "place-0325",
@@ -13812,7 +14137,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daedongjeong-dong"
   },
   {
    "id": "place-0326",
@@ -13854,7 +14180,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mijang-dong"
   },
   {
    "id": "place-0327",
@@ -13896,7 +14223,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Suha-dong"
   },
   {
    "id": "place-0328",
@@ -13938,7 +14266,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Chwihyeon-dong"
   },
   {
    "id": "place-0329",
@@ -13980,7 +14309,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dae-dong"
   },
   {
    "id": "place-0330",
@@ -14022,7 +14352,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jukjeon-dong"
   },
   {
    "id": "place-0331",
@@ -14064,7 +14395,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Geoncheon-dong"
   },
   {
    "id": "place-0332",
@@ -14106,7 +14438,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sajeong-dong"
   },
   {
    "id": "place-0333",
@@ -14148,7 +14481,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gung-dong"
   },
   {
    "id": "place-0334",
@@ -14190,7 +14524,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Nuguk-dong"
   },
   {
    "id": "place-0335",
@@ -14232,7 +14567,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sugeun-dong"
   },
   {
    "id": "place-0336",
@@ -14274,7 +14610,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cha-dong"
   },
   {
    "id": "place-0337",
@@ -14316,7 +14653,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jipgeo-dong"
   },
   {
    "id": "place-0338",
@@ -14358,7 +14696,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cheoncho-dong"
   },
   {
    "id": "place-0339",
@@ -14400,7 +14739,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeomjeong-dong"
   },
   {
    "id": "place-0340",
@@ -14442,7 +14782,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seokjeong-dong"
   },
   {
    "id": "place-0341",
@@ -14484,7 +14825,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Naengjeong-dong"
   },
   {
    "id": "place-0342",
@@ -14526,7 +14868,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sanggwan-dong"
   },
   {
    "id": "place-0343",
@@ -14568,7 +14911,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hagwan-dong"
   },
   {
    "id": "place-0344",
@@ -14610,7 +14954,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ijeon-dong"
   },
   {
    "id": "place-0345",
@@ -14659,7 +15004,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Panjeong-dong"
   },
   {
    "id": "place-0346",
@@ -14701,7 +15047,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dangpi-dong"
   },
   {
    "id": "place-0347",
@@ -14743,7 +15090,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sinchang-dong"
   },
   {
    "id": "place-0348",
@@ -14785,7 +15133,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gwanjeong-dong"
   },
   {
    "id": "place-0349",
@@ -14827,7 +15176,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Soryong-dong"
   },
   {
    "id": "place-0350",
@@ -14869,7 +15219,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sogong-dong"
   },
   {
    "id": "place-0351",
@@ -14911,7 +15262,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Myeongnye-dong"
   },
   {
    "id": "place-0352",
@@ -14953,7 +15305,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daeryong-dong"
   },
   {
    "id": "place-0353",
@@ -14995,7 +15348,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gaejeong-dong"
   },
   {
    "id": "place-0354",
@@ -15037,7 +15391,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hallim-dong"
   },
   {
    "id": "place-0355",
@@ -15079,7 +15434,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Waegwan-dong"
   },
   {
    "id": "place-0356",
@@ -15121,7 +15477,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ojeong-dong"
   },
   {
    "id": "place-0357",
@@ -15163,7 +15520,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Tarak-dong"
   },
   {
    "id": "place-0358",
@@ -15205,7 +15563,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Namsomun-dong"
   },
   {
    "id": "place-0359",
@@ -15247,7 +15606,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gyeongjuinjeong-dong"
   },
   {
    "id": "place-0360",
@@ -15296,7 +15656,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Saengmin-dong"
   },
   {
    "id": "place-0361",
@@ -15338,7 +15699,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dongsan-dong"
   },
   {
    "id": "place-0362",
@@ -15380,7 +15742,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Muksa-dong"
   },
   {
    "id": "place-0363",
@@ -15422,7 +15785,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ssangnimun-dong"
   },
   {
    "id": "place-0364",
@@ -15464,7 +15828,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Hohyeon-dong"
   },
   {
    "id": "place-0365",
@@ -15506,7 +15871,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Pil-dong"
   },
   {
    "id": "place-0366",
@@ -15548,7 +15914,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jangheung-dong"
   },
   {
    "id": "place-0367",
@@ -15590,7 +15957,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Chang-dong"
   },
   {
    "id": "place-0368",
@@ -15632,7 +16000,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Juja-dong"
   },
   {
    "id": "place-0369",
@@ -15674,7 +16043,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Nanjang-dong"
   },
   {
    "id": "place-0370",
@@ -15716,7 +16086,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Nadaejang-dong"
   },
   {
    "id": "place-0371",
@@ -15758,7 +16129,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeomjeong-dong"
   },
   {
    "id": "place-0372",
@@ -15800,7 +16172,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Majomi-dong"
   },
   {
    "id": "place-0373",
@@ -15842,7 +16215,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Imun-dong"
   },
   {
    "id": "place-0374",
@@ -15876,7 +16250,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yeoseokhyeon"
   },
   {
    "id": "place-0375",
@@ -15910,7 +16285,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Saeogyo"
   },
   {
    "id": "place-0376",
@@ -15944,7 +16320,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Songhyeon"
   },
   {
    "id": "place-0377",
@@ -15978,7 +16355,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Namjeongmunhyeon"
   },
   {
    "id": "place-0378",
@@ -16012,7 +16390,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ahyeon"
   },
   {
    "id": "place-0379",
@@ -16046,7 +16425,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Naehan-ri"
   },
   {
    "id": "place-0380",
@@ -16080,7 +16460,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Wangsimni"
   },
   {
    "id": "place-0381",
@@ -16114,7 +16495,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jungnyangpo"
   },
   {
    "id": "place-0382",
@@ -16148,7 +16530,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Sindang-ri"
   },
   {
    "id": "place-0383",
@@ -16182,7 +16565,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daehyeon"
   },
   {
    "id": "place-0384",
@@ -16216,7 +16600,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Jonghyeon"
   },
   {
    "id": "place-0385",
@@ -16250,7 +16635,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mallihyeon"
   },
   {
    "id": "place-0386",
@@ -16284,7 +16670,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Seogang"
   },
   {
    "id": "place-0387",
@@ -16318,7 +16705,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Gongdeok-ri"
   },
   {
    "id": "place-0388",
@@ -16352,7 +16740,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Heukseok"
   },
   {
    "id": "place-0389",
@@ -16386,7 +16775,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Daehyeon"
   },
   {
    "id": "place-0390",
@@ -16420,7 +16810,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Usuhyeon"
   },
   {
    "id": "place-0391",
@@ -16454,7 +16845,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Ongmak"
   },
   {
    "id": "place-0392",
@@ -16488,7 +16880,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Dumopo"
   },
   {
    "id": "place-0393",
@@ -16522,7 +16915,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Tojeong-ri"
   },
   {
    "id": "place-0394",
@@ -16556,7 +16950,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Cheongpa"
   },
   {
    "id": "place-0395",
@@ -16590,7 +16985,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Mapo"
   },
   {
    "id": "place-0396",
@@ -16624,7 +17020,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Yongsan"
   },
   {
    "id": "place-0397",
@@ -16658,7 +17055,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Juseong-ri"
   },
   {
    "id": "place-0398",
@@ -16692,7 +17090,8 @@
       "url": "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveList.do?ctgryId=CTGRY780&type=C"
      }
     ]
-   }
+   },
+   "name_en": "Noryang"
   }
  ]
 }

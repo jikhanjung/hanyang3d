@@ -18,6 +18,7 @@ class Command(BaseCommand):
             json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text()),
             (settings.BASE_DIR / 'docs/landmarks.md').read_text(),
             apply=options['apply'],
-            economy_data=json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text()))
+            economy_data=json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text()),
+            guide_en=json.loads((settings.BASE_DIR / 'docs/landmarks_en.json').read_text()) if (settings.BASE_DIR / 'docs/landmarks_en.json').exists() else None)
         for line in report.lines():
             self.stdout.write(line)
