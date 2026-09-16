@@ -107,6 +107,12 @@ with sync_playwright() as p:
     assert ledge['edge'] > .9 and ledge['walkedZ'] < -ledge['halfDepth'], ledge
     assert ledge['localZ'] > -ledge['halfDepth'] + .2 and ledge['air'] == 0 and abs(ledge['feetAboveLowerTop']) < .1, ledge
 
+    # Ground moving under a standing walker (height exaggeration) is not a fall: the feet stay on the ground.
+    scaled = page.evaluate('''() => { const fp = terrain3d.firstPerson, out = [];
+      for (const v of ['2', '1']) { const e = document.getElementById('height3d'); e.value = v; e.onchange(); fp.update(0); out.push({air: fp.air, eye: fp.eye.y - fp.ground}); }
+      return out; }''')
+    assert all(s['air'] == 0 and abs(s['eye'] - 1.65) < .05 for s in scaled), scaled
+
     assert not errors, errors
     print('PASS: walk surfaces', {'bridge_eye_above_deck': round(deck['eyeAboveTop'], 2), 'terrace_eye_above_floor': round(up['eyeAboveTop'], 2),
                                   'stopped_at_side_x': round(side['local'][0], 2), 'half_width': w / 2, 'fell_m': round(fall['dropped'], 2), 'jump_edge_m': round(ledge['edge'], 2), 'landed_local_z': round(ledge['localZ'], 1)}, flush=True)

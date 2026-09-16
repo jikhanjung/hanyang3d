@@ -1022,7 +1022,9 @@ async function main(){
      if((x!==eye.x||z!==eye.z)&&ground!==null&&ground-feet<STEP){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;air=grounded?(feet-ground>STEP?feet-ground:0):Math.max(0,feet-ground);if(air===0&&vy<0)vy=0;lastGround=ground;moved=true}else break;
     }
    }
-   const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){const drop=lastGround+air-ground;air=grounded?(drop>STEP?drop:0):Math.max(0,drop);if(air===0&&vy<0)vy=0;lastGround=ground}
+   // Standing still on ground that moves (height exaggeration, channel carving) stays on the ground; only walking off
+   // an edge above, or a jump, leaves the feet in the air here.
+   const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){air=air===0&&vy===0?0:Math.max(0,lastGround+air-ground);if(air===0&&vy<0)vy=0;lastGround=ground}
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
    walker?.update(walked,moved&&!mounted,mounted);
    if(mounted)horse.update(performance.now(),moved);

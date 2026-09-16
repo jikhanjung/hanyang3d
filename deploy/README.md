@@ -21,15 +21,15 @@
 
 ## 운영 주소
 
-2026-09-16 dolfinid에 웹 v0.3.16(청계천 물이 물길을 채워 보이게)을 DB 모드로 배포했다. 같은 날 앞서 웹 v0.3.15(모바일 점프 버튼, digest `sha256:b74a912fe2f3e9bd4d33f6cc66b0e2d201a6c3bd97ca0b0c898b2227c45c85ff`). 멀티플레이는 v0.3.14(1인칭 정원 10명, `WALK_MAX_PLAYERS`)를 유지한다. 같은 날 앞서 웹 v0.3.14(digest `sha256:80b433fc27e135670347bae16b9344c98c0c36647b0b0e40f67099ddcaafb44a`). 같은 날 앞서 v0.3.13(다리·건물터 오르기, 점프와 점프 동기화, 백업 여유 공간 기준 완화·degraded 상태에서도 웹 시작; 웹 digest `sha256:6e117076e89c67ac536c8bac10829ad38860b26140a7996503451923e51f66c0`). 첫 배포 시도는 백업 실패 표시로 웹이 시작하지 않아 되돌려졌다(devlog 133 장애 기록). 같은 날 앞서 웹·멀티플레이 v0.3.12(말값 9냥, 물건·가격과 가게를 콘텐츠 DB로 — migration `0004_items_shops`, 함께 걷기에 말 탄 모습; 웹 digest `sha256:7ea8c1f50378f719dc2b6881d55887eb69277c5a0a5b075ffafc0b8d01ec13a9`). 같은 날 앞서 웹 v0.3.11(말 장수에게 말 사기·봇짐·말 타기, digest `sha256:5450a130b8dcd03bf30e6202547a4b925f1f68b72c1815cef9448f8eeb5f75fd`). 같은 날 앞서 웹 v0.3.10(이름·엽전 표시는 1인칭에서만, digest `sha256:6e8451f8bdbb7f289809fe7dfb7b7cc8fe2d6fee14c090b8e609ffa80098c050`). 직전 2026-09-15 웹 v0.3.9(수표교 말 장수·마전교 이야기·궁감의 긴 이야기, digest `sha256:f5e3456e5e59641835c3033e86dd8731e4c24ef8243790d13a213f42964b163a`). 멀티플레이는 v0.3.8(소스 `4867efa`, 1인칭 진입 시 로그인·계정 이름 함께 걷기 입장권)을 유지한다. v0.3.8 배포 때 서버 `.env`에 `WALK_TICKET_SECRET`을 만들어 넣었다(값은 출력·기록하지 않음). 이전 기록: 같은 날 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 처음 배포했다.
+2026-09-16 dolfinid에 웹 v0.3.17(난간·기단에서 걸어 나가면 떨어지기)을 DB 모드로 배포했다. 같은 날 앞서 웹 v0.3.16(청계천 물이 물길을 채워 보이게, digest `sha256:21eada5ec3d0123dd9d7b02342263f1b7ff2036b853c3a4585c57b16591d42c8`). 같은 날 앞서 웹 v0.3.15(모바일 점프 버튼, digest `sha256:b74a912fe2f3e9bd4d33f6cc66b0e2d201a6c3bd97ca0b0c898b2227c45c85ff`). 멀티플레이는 v0.3.14(1인칭 정원 10명, `WALK_MAX_PLAYERS`)를 유지한다. 같은 날 앞서 웹 v0.3.14(digest `sha256:80b433fc27e135670347bae16b9344c98c0c36647b0b0e40f67099ddcaafb44a`). 같은 날 앞서 v0.3.13(다리·건물터 오르기, 점프와 점프 동기화, 백업 여유 공간 기준 완화·degraded 상태에서도 웹 시작; 웹 digest `sha256:6e117076e89c67ac536c8bac10829ad38860b26140a7996503451923e51f66c0`). 첫 배포 시도는 백업 실패 표시로 웹이 시작하지 않아 되돌려졌다(devlog 133 장애 기록). 같은 날 앞서 웹·멀티플레이 v0.3.12(말값 9냥, 물건·가격과 가게를 콘텐츠 DB로 — migration `0004_items_shops`, 함께 걷기에 말 탄 모습; 웹 digest `sha256:7ea8c1f50378f719dc2b6881d55887eb69277c5a0a5b075ffafc0b8d01ec13a9`). 같은 날 앞서 웹 v0.3.11(말 장수에게 말 사기·봇짐·말 타기, digest `sha256:5450a130b8dcd03bf30e6202547a4b925f1f68b72c1815cef9448f8eeb5f75fd`). 같은 날 앞서 웹 v0.3.10(이름·엽전 표시는 1인칭에서만, digest `sha256:6e8451f8bdbb7f289809fe7dfb7b7cc8fe2d6fee14c090b8e609ffa80098c050`). 직전 2026-09-15 웹 v0.3.9(수표교 말 장수·마전교 이야기·궁감의 긴 이야기, digest `sha256:f5e3456e5e59641835c3033e86dd8731e4c24ef8243790d13a213f42964b163a`). 멀티플레이는 v0.3.8(소스 `4867efa`, 1인칭 진입 시 로그인·계정 이름 함께 걷기 입장권)을 유지한다. v0.3.8 배포 때 서버 `.env`에 `WALK_TICKET_SECRET`을 만들어 넣었다(값은 출력·기록하지 않음). 이전 기록: 같은 날 웹 v0.3.0(소스 `3c12cc8`)을 DB 모드로 처음 배포했다.
 
 - 전체 화면 3D (기본 페이지): https://hanyang3d.nopeoplestime.info/
 - 도구 포함 3D 화면: https://hanyang3d.nopeoplestime.info/gis/terrain/3d/
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.3.16`
-  - digest: `sha256:21eada5ec3d0123dd9d7b02342263f1b7ff2036b853c3a4585c57b16591d42c8`
+- 웹: `honestjung/hanyang3d:v0.3.17`
+  - digest: `sha256:92b253978729d298155a0075bc17a398d4035bc805c90b796b77042149cc595d`
 - 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.3.14`
   - digest: `sha256:5087e2d162ce62d7b6b1c7c76733b2b12c5681167c30f156ac2ba55a607a2f03`
 
