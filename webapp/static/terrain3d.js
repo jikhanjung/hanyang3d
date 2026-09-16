@@ -1015,13 +1015,14 @@ async function main(){
     const steps=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.5));
     for(let i=0;i<steps;i++){
      const [x,z]=collision?collision.move(eye.x,eye.z,eye.x+dx/steps,eye.z+dz/steps,.35,(px,pz)=>pedestrians?.near(px,pz,.6)):[eye.x+dx/steps,eye.z+dz/steps];
-     // Surfaces count from the feet, so a jump can land on a ledge up to a step above the feet. Dropping more
-     // than a step below the ground (off a bridge into the channel) is refused even in the air.
+     // Surfaces count from the feet, so a jump can land on a ledge up to a step above the feet. Where the ground
+     // falls away by more than a step (off a rail, a terrace or a bridge) the walker goes airborne and gravity
+     // brings them down onto whatever is below, so nowhere is a dead end.
      const feet=lastGround+air,ground=groundAt(x,z,feet);
-     if((x!==eye.x||z!==eye.z)&&ground!==null&&ground-feet<STEP&&lastGround-ground<STEP){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;air=grounded?0:Math.max(0,feet-ground);if(air===0&&vy<0)vy=0;lastGround=ground;moved=true}else break;
+     if((x!==eye.x||z!==eye.z)&&ground!==null&&ground-feet<STEP){walked+=Math.hypot(x-eye.x,z-eye.z);eye.x=x;eye.z=z;air=grounded?(feet-ground>STEP?feet-ground:0):Math.max(0,feet-ground);if(air===0&&vy<0)vy=0;lastGround=ground;moved=true}else break;
     }
    }
-   const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){air=grounded?0:Math.max(0,lastGround+air-ground);if(air===0&&vy<0)vy=0;lastGround=ground}
+   const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){const drop=lastGround+air-ground;air=grounded?(drop>STEP?drop:0):Math.max(0,drop);if(air===0&&vy<0)vy=0;lastGround=ground}
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
    walker?.update(walked,moved&&!mounted,mounted);
    if(mounted)horse.update(performance.now(),moved);

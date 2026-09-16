@@ -2,7 +2,8 @@
 
 - From the end of the 수표교 ramp to the middle of the deck: the eye ends 1.65 m above the deck top.
 - Up the south stairs of 근정전 터 to the upper terrace: the eye ends 1.65 m above the hall floor.
-- Walking straight at the side of the terrace (1.3 m high) is stopped at the edge; a jump (Space) lands on it.
+- Walking straight at the side of the terrace (1.3 m high) is stopped at the edge; a jump (Space) lands on it; walking off
+  the top falls back to the ground.
 """
 import argparse
 
@@ -59,6 +60,24 @@ with sync_playwright() as p:
     side = page.evaluate(WALK, {'find': hall, 'start': [w / 2 + 4, 0, 0], 'goal': [0, 0, 0], 'frames': 300, 'top': floor})
     assert side['local'][0] > w / 2 - .6 and abs(side['eyeAboveGround'] - 1.65) < .05, side
 
+    # Walking off the terrace edge is not a dead end: the walker falls and lands on the ground beside it.
+    fall = page.evaluate('''async ({hall, w}) => {
+      const T = await import('/webapp/static/vendor/three/three.module.js');
+      const t = terrain3d, fp = t.firstPerson, o = eval(hall);
+      const s = o.localToWorld(new T.Vector3(w / 2 - 3, 0, 4)), g = o.localToWorld(new T.Vector3(w / 2 + 20, 0, 4));
+      fp.placeAt(s.x, s.z, Math.atan2(-(g.x - s.x), -(g.z - s.z)));
+      const top = fp.ground;
+      window.dispatchEvent(new Event('blur'));
+      document.dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyW', bubbles: true}));
+      let maxAir = 0;
+      for (let i = 0; i < 120; i++) { fp.update(1 / 30); maxAir = Math.max(maxAir, fp.air); }
+      document.dispatchEvent(new KeyboardEvent('keyup', {code: 'KeyW'}));
+      for (let i = 0; i < 30; i++) fp.update(1 / 30);
+      const local = o.worldToLocal(fp.eye.clone());
+      return {localX: local.x, maxAir, air: fp.air, dropped: top - fp.ground, eyeAboveGround: fp.eye.y - fp.ground};
+    }''', {'hall': hall, 'w': w})
+    assert fall['localX'] > w / 2 + 1 and fall['maxAir'] > .5 and fall['air'] == 0 and fall['dropped'] > 1 and abs(fall['eyeAboveGround'] - 1.65) < .05, fall
+
     # A jump from beside a terrace lands on it where walking could not climb: the north side of 교태전 터 stands about
     # 1.5 m above the ground there (a jump reaches about 1 m, plus one step).
     ledge = page.evaluate('''async () => {
@@ -90,5 +109,5 @@ with sync_playwright() as p:
 
     assert not errors, errors
     print('PASS: walk surfaces', {'bridge_eye_above_deck': round(deck['eyeAboveTop'], 2), 'terrace_eye_above_floor': round(up['eyeAboveTop'], 2),
-                                  'stopped_at_side_x': round(side['local'][0], 2), 'half_width': w / 2, 'jump_edge_m': round(ledge['edge'], 2), 'landed_local_z': round(ledge['localZ'], 1)}, flush=True)
+                                  'stopped_at_side_x': round(side['local'][0], 2), 'half_width': w / 2, 'fell_m': round(fall['dropped'], 2), 'jump_edge_m': round(ledge['edge'], 2), 'landed_local_z': round(ledge['localZ'], 1)}, flush=True)
     b.close()
