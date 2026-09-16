@@ -25,6 +25,7 @@ HANYANG_MULTIPLAYER_URL=http://127.0.0.1:2567 \
 - Django `HANYANG_MULTIPLAYER_URL`: 브라우저가 접속할 HTTP(S) 주소. 기본 `/multiplayer`.
 - Colyseus `WALK_HOST`: 바인드 주소, 기본 `127.0.0.1`.
 - Colyseus `WALK_PORT`: 기본 `2567`.
+- Colyseus `WALK_MAX_PLAYERS`: 1인칭으로 동시에 걸을 수 있는 사람 수, 기본 10. 모든 방의 접속자를 합쳐 세며, 넘으면 입장을 429로 거절한다. 방 하나의 정원(`maxClients`)도 이 값이다.
 - Colyseus `WALK_ORIGINS`: 허용할 브라우저 Origin을 쉼표로 구분. 기본 `http://127.0.0.1:18014,http://localhost:18014`.
 
 다른 기기에서 시험할 때는 두 서버의 바인드 주소와 방화벽을 확인하고 `HANYANG_MULTIPLAYER_URL`에 그 기기에서 접근할 수 있는 서버 주소, `WALK_ORIGINS`에 실제 지도 주소를 설정한다.

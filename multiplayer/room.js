@@ -30,6 +30,9 @@ export function readChat(value) {
 // before a room exists). Everything a client sends is validated; the room filter is limited to the two map
 // alignments, and no new room is opened past MAX_ROOMS while every existing room is still full.
 export const MAX_ROOMS = Number(process.env.WALK_MAX_ROOMS || 8);
+// The host is small, so first person is capped at WALK_MAX_PLAYERS people across every room; entry is refused with 429
+// once that many are already walking.
+export const MAX_PLAYERS = Number(process.env.WALK_MAX_PLAYERS || 10);
 export const ALIGNMENTS = new Set(['mountains', 'base']);
 
 // With WALK_TICKET_SECRET set (production) the name comes only from a valid ticket signed by the web server for the
@@ -55,13 +58,17 @@ export function roomLimitReached(rooms, max = MAX_ROOMS) {
   return rooms.length >= max && rooms.every(room => room.clients >= room.maxClients);
 }
 
+export function playerLimitReached(rooms, max = MAX_PLAYERS) {
+  return rooms.reduce((total, room) => total + room.clients, 0) >= max;
+}
+
 const round = value => Math.round(value * 100) / 100;
 export const roundPose = pose => [pose[0], ...pose.slice(1).map(round)];
 
 const colors = Array.from({ length: 32 }, (_, i) => `hsl(${Math.round(i * 137.508) % 360}, 48%, ${i % 2 ? 44 : 62}%)`);
 
 export class WalkRoom extends Room {
-  maxClients = 32;
+  maxClients = MAX_PLAYERS;
   maxMessagesPerSecond = 30;
   players = new Map();
   identities = new Map();
@@ -113,6 +120,7 @@ export class WalkRoom extends Room {
     if (checked.error) throw new ServerError(...checked.error);
     let rooms = [];
     try { rooms = await matchMaker.query({ name: 'hanyang_walk' }); } catch (error) { console.error('room query failed', error.message); }
+    if (playerLimitReached(rooms)) throw new ServerError(429, `지금은 ${MAX_PLAYERS}명까지 1인칭으로 걸을 수 있소. 잠시 뒤에 다시 들어오시오.`);
     if (roomLimitReached(rooms)) throw new ServerError(429, '함께 걷기 공간이 모두 찼습니다. 잠시 뒤 다시 시도해 주세요.');
     return { name: checked.name };
   }

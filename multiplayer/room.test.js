@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readPose, readChat, readJoinOptions, roomLimitReached, roundPose } from './room.js';
+import { readPose, readChat, readJoinOptions, roomLimitReached, playerLimitReached, roundPose } from './room.js';
 import { normalizePlayerName } from '../webapp/static/player_name.js';
 import { createWalkingSimulation, buildWalkingRoutes } from '../webapp/static/walking_simulation.js';
 import { npcWorld } from './npc_world.js';
@@ -89,6 +89,13 @@ test('no new room past the cap while every room is full', () => {
   assert.equal(roomLimitReached([full], 2), false);
   assert.equal(roomLimitReached([full, full], 2), true);
   assert.equal(roomLimitReached([full, open], 2), false);
+});
+
+test('first person is capped at a total number of walkers', () => {
+  assert.equal(playerLimitReached([], 10), false);
+  assert.equal(playerLimitReached([{ clients: 4 }, { clients: 5 }], 10), false);
+  assert.equal(playerLimitReached([{ clients: 4 }, { clients: 6 }], 10), true);
+  assert.equal(playerLimitReached([{ clients: 12 }], 10), true);
 });
 
 test('look-alike letters cannot imitate names; emoji sequences pass chat', () => {

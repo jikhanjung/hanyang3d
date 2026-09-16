@@ -128,6 +128,8 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       if (generation === attempt) {
         fail(error.code === 4003 ? '이 이름으로 이미 함께 걷는 중이오. 다른 창을 닫고 다시 들어오시오.'
           : [403, 422, 412, 429].includes(error.code) ? error.message : '함께 걷기 서버에 접속하지 못했소. 혼자 걸을 수 있소.');
+        // A full server (429) is a cap on first person itself, so leave it rather than walking alone.
+        if (error.code === 429 && firstPerson.active) firstPerson.exit();
       }
     } finally { clearTimeout(timeout); }
   }
