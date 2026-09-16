@@ -16,6 +16,8 @@
 
 ## 작업 기록
 
+- [136 — 랜드마크 추가 후보와 장소 이야기 조사](20260916_136_landmark_story_research.md)
+- [136 — 청계천 물이 물길을 가득 채워 보이게](20260916_136_water_fills_channel.md)
 - [135 — 모바일 점프 버튼](20260916_135_mobile_jump_button.md)
 - [134 — 1인칭 정원 10명](20260916_134_first_person_player_cap.md)
 - [133 — 1인칭으로 다리와 경복궁 건물터 위에 오르기](20260916_133_walk_bridges_hall_sites.md)

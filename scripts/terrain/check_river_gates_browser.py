@@ -10,7 +10,7 @@ with sync_playwright() as p:
  page=b.new_page(viewport={'width':1440,'height':1080});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto(args.url,wait_until='networkidle');page.wait_for_function('window.terrain3d?.ready',timeout=240000);page.wait_for_timeout(500)
  assert page.evaluate('terrain3d.bridges.children.length')==4
- assert page.evaluate('terrain3d.waterLayer.children.length')==5
+ assert page.evaluate('terrain3d.waterLayer.children.length')==5  # sheet, two bank strips, two hems (water body below the surface)
  assert page.evaluate('terrain3d.buildings.children.filter(b=>b.children.some(c=>c.name==="gate-model")).length')==9
  # Test actual stone arch geometry: rays through the passage must not hit stone.
  assert page.evaluate('''async()=>{const T=await import('/webapp/static/vendor/three/three.module.js');terrain3d.scene.updateMatrixWorld(true);return terrain3d.buildings.children.filter(b=>b.userData.feature.category==='성문').every(b=>{const m=b.children[0],arch=m.getObjectByName('stone-arch');const pier=new T.Vector3(b.userData.feature.symbol_size_m[0]*.45,m.userData.archTestY,100);b.localToWorld(pier);if(!new T.Raycaster(pier,new T.Vector3(0,0,-1).transformDirection(b.matrixWorld),0,200).intersectObject(arch,false).length)return false;return m.userData.centres.every(x=>{const origin=new T.Vector3(x,m.userData.archTestY,100);b.localToWorld(origin);return new T.Raycaster(origin,new T.Vector3(0,0,-1).transformDirection(b.matrixWorld),0,200).intersectObject(arch,false).length===0})})}''')

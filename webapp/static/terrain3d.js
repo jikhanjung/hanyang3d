@@ -478,6 +478,10 @@ async function main(){
  const river=ribbon(riverEdges,0x278fb0,.35);river.name='cheonggyecheon-water';
  // Low schematic bank edges; this does not excavate or reconstruct the riverbed.
  for(const side of [0,1]){const bank=ribbon(riverEdges.map(pair=>{const p=pair[side].clone(),q=p.clone();q.y+=.65;return [p,q]}),0x8b9180,.35);bank.userData.bank=true;bank.userData.centres=river.userData.centres;}
+ // The water is a sheet at the surface; a face hangs from each of its edges down past the carved bed, so the channel
+ // reads as full of water rather than a sheet floating over an empty trench. The hem depth follows the channel depth.
+ const WATER_BODY_EXTRA=1;
+ for(const side of [0,1]){const face=ribbon(riverEdges.map(pair=>{const q=pair[side].clone(),p=q.clone();p.y-=2+WATER_BODY_EXTRA;return [p,q]}),0x2384a6,.35);face.userData.body=true;face.userData.centres=river.userData.centres;face.name='cheonggyecheon-water-body'}
  attachStories('bridge',waterData.bridges);
  for(const feature of waterData.bridges){
   const road=feature.road_connections.pixel_points.map(p=>sourceSurface(...p)),ends=road.slice(1,3),mid=ends[0].clone().add(ends[1]).multiplyScalar(.5),direction=ends[1].clone().sub(ends[0]);
@@ -756,11 +760,39 @@ async function main(){
   });
   waterLayer.children.forEach((mesh,layer)=>{
    mesh.geometry.userData.heights=waterBaselines[layer].map((h,i)=>{
-    if(!enabled)return h;
+    // Without carving the sheet lies on the ground, so the hems fold up to the surface instead of poking out of slopes.
+    if(!enabled)return mesh.userData.body&&i%2===0?waterBaselines[layer][i+1]:h;
     const centre=mesh.userData.centres[Math.floor(i/2)],match=ChannelTerrain.nearest(centre.x,centre.z,channelPath);
-    return match.level+.35+(mesh.userData.bank?(i%2)*.65:0);
+    return match.level+.35+(mesh.userData.bank?(i%2)*.65:0)-(mesh.userData.body&&i%2===0?depth+WATER_BODY_EXTRA:0);
    });
   });
+  // The carved bed keeps its full depth out to the recorded bank line and only then climbs a 20 m shoulder, so the
+  // water level meets the bank well outside the drawn sheet. Widen the sheet (and the hems and bank strips that share
+  // its edges) to where the carved ground rises through the water level, so no dry bed shows beside the water.
+  const [sheet,bankA,bankB,bodyA,bodyB]=waterLayer.children,ground_m=ground;
+  const sideMeshes=[[bankA,bodyA],[bankB,bodyB]];
+  riverEdges.forEach((pair,i)=>{
+   const centre=sheet.userData.centres[i];
+   pair.forEach((edge,side)=>{
+    let x=edge.x,z=edge.z;
+    if(enabled){
+     const nx=edge.x-centre.x,nz=edge.z-centre.z,base=Math.hypot(nx,nz)||1,ux=nx/base,uz=nz/base;
+     // Along the outward normal the distance to the centreline is d itself, so the carve profile can be evaluated
+     // directly from the original ground height instead of sampling the carved mesh.
+     const match=ChannelTerrain.nearest(centre.x,centre.z,channelPath),level=match.level+.35;
+     for(let d=base;d<=base+22;d+=.5){
+      const qx=centre.x+ux*d,qz=centre.z+uz*d;
+      let original;try{original=height(cx+qx/ground_m,cy-qz/ground_m)}catch{break}
+      const carved=ChannelTerrain.carvedHeight(original,{distance:d,level:match.level,width:match.width},depth);
+      if(carved>=level-.05){x=centre.x+ux*(d-.3);z=centre.z+uz*(d-.3);break}
+      x=qx;z=qz;
+     }
+    }
+    const sp=sheet.geometry.attributes.position;sp.setX(i*2+side,x);sp.setZ(i*2+side,z);
+    for(const mesh of sideMeshes[side]){const a=mesh.geometry.attributes.position;for(const k of [i*2,i*2+1]){a.setX(k,x);a.setZ(k,z)}}
+   });
+  });
+  for(const mesh of waterLayer.children){mesh.geometry.attributes.position.needsUpdate=true;mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere()}
   roadLayer.geometry.userData.heights=[...terrain.geometry.userData.heights];
   updateBridgeGround(surfaces);
   cityWall.updateGround(surfaces,roadLayer.geometry.userData.heights);palaceWall.updateGroundFrom(cityWall.supportAt);sijeon?.updateGround(cityWall.supportAt);settlement?.updateGround(cityWall.supportAt);pedestrians?.updateGround(cityWall.supportAt);trees?.updateGround(cityWall.supportAt);
