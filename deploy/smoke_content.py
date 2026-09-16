@@ -28,7 +28,7 @@ try:
             try:
                 with urlopen(url + '/healthz', timeout=2) as response: report = json.load(response)
                 assert report['status'] == 'ok' and report['content_source'] == 'database', report
-                assert report['content'] == {'buildings': 103, 'stories': 34}, report
+                assert report['content'] == {'buildings': 114, 'stories': 49}, report
                 return url
             except OSError:
                 if time.monotonic() > deadline: raise
@@ -44,7 +44,7 @@ try:
     subprocess.run(['docker', 'exec', cid, 'python', 'manage.py', 'import_content'], check=True)
     subprocess.run(['docker', 'exec', cid, 'python', 'manage.py', 'backup_content', '/tmp/backup.sqlite3'], check=True)
     with urlopen(url + '/', timeout=10) as response: assert b'persisted-content-check' in response.read()
-    print('PASS: DB image initialization, backoffice/static, 103 buildings/34 stories, persisted edit after restart, non-overwriting import and verified backup')
+    print('PASS: DB image initialization, backoffice/static, 114 buildings/49 stories, persisted edit after restart, non-overwriting import and verified backup')
 finally:
     if cid: subprocess.run(['docker', 'rm', '-f', cid], stdout=subprocess.DEVNULL)
     subprocess.run(['docker', 'volume', 'rm', volume], check=True, stdout=subprocess.DEVNULL)

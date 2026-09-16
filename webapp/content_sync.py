@@ -10,7 +10,7 @@ at the last sync tells who changed a row since then:
 - new in JSON → create; deleted in the back office after a sync → leave deleted; only in the database → report.
 
 Before the first sync there is no fingerprint; a row counts as untouched when it has not been saved since the
-import (`updated_at` not later than the import time). Guide sections are only compared, not changed.
+import (`updated_at` not later than the import time). Existing guide sections are only compared, not changed; new buildings may seed their missing sections.
 
 Goods and shops (from gis/characters/npcs.json) follow the same rules; their untouched time is the goods seed of
 migration 0004 (`economy-import-v1`).
@@ -145,9 +145,25 @@ def _apply_story(s, data):
     _replace_citations('story', s, data['sources'])
 
 
-def _section_for(label):
+def _section_for(label, key=None, markdown=None):
     from .guide import anchor
-    return next((g for g in GuideSection.objects.all() if anchor(g.title) == label), None)
+    section = next((g for g in GuideSection.objects.all() if anchor(g.title) == label), None)
+    if section is not None or not key or markdown is None:
+        return section
+    # Seed the description of a newly added building only. Existing editorial sections
+    # are never overwritten, including when a later sync changes the source Markdown.
+    import re
+    headings = list(re.finditer(r'^(#{1,3})\s+(.+)$', markdown, re.M))
+    for i, heading in enumerate(headings):
+        if len(heading[1]) == 3 and anchor(heading[2]) == label:
+            end = headings[i + 1].start() if i + 1 < len(headings) else len(markdown)
+            section, _ = GuideSection.objects.get_or_create(
+                key=f'landmark-{key}', defaults={'title': heading[2], 'level': 3,
+                'body': markdown[heading.end():end].strip(),
+                'position': max((g.position for g in GuideSection.objects.all()), default=0) + 1,
+                'published': True})
+            return section
+    return None
 
 
 def _sync_kind(kind, items, rows, to_data, db_data, create, update, baseline, imported_at, report):
@@ -191,7 +207,7 @@ def sync_content(buildings_data, stories_data, guide_markdown=None, apply=False,
         state, _ = ContentImport.objects.get_or_create(key=SYNC_KEY, defaults={'metadata': {'buildings': {}, 'stories': {}}})
         baseline = {kind: dict(state.metadata.get(kind, {})) for kind in ('buildings', 'stories', 'items', 'shops')}
         def create_building(key, data, position):
-            b = Building(key=key, published=True, position=position, guide_section=_section_for(data['name'].split(' · ')[0]))
+            b = Building(key=key, published=True, position=position, guide_section=_section_for(data['name'].split(' · ')[0], key, guide_markdown))
             _apply_building(b, data, position)
         _sync_kind('building', [(f['id'], json_building(f)) for f in buildings_data['features']],
                    {b.key: b for b in Building.objects.select_related('model_resource').prefetch_related('citations')},

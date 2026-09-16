@@ -19,6 +19,7 @@ function mergeByMaterial(model){
 
 // Schematic royal hall + forecourt, scaled to the existing landmark footprint.
 export function createPalace(feature,w,h,d){
+ if(feature.pavilion)return createGardenPavilion(feature,w,h,d);
  const model=new THREE.Group();model.name='palace-compound';
  const tiers=feature.palace_roof_tiers??1;
  const mats=palaceMaterials();
@@ -67,6 +68,56 @@ export function createPalace(feature,w,h,d){
  box('central-path',0,h*.038,d*.24,w*.12,.06,d*.24,'stone');
  mergeByMaterial(model);
  model.userData={conceptual:true,roofTiers:tiers,parts,footprint:[w,d],period:feature.temporal};return model;
+}
+
+// Small standalone halls and open pavilions. Dimensions and garden patches are conceptual,
+// while material/roof choices are recorded separately from historical existence in each feature.
+export function createGardenPavilion(feature,w,h,d){
+ const model=new THREE.Group();model.name='garden-pavilion';
+ const cfg=feature.pavilion,thatched=cfg.roof==='thatch';
+ const colors={stone:0xb4ac99,wood:0x76503a,wall:0xd8cbb0,roof:thatched?0xa99768:0x485150,
+  floor:0x9e805c,water:0x648f87,soil:0x999077,rice:0x789354};
+ const mats=Object.fromEntries(Object.entries(colors).map(([k,color])=>[k,new THREE.MeshStandardMaterial({color,roughness:1,side:k==='roof'?THREE.DoubleSide:THREE.FrontSide})]));
+ const parts=[];
+ const add=(name,g,m,x,y,z)=>{const mesh=new THREE.Mesh(g,mats[m]);mesh.name=name;mesh.position.set(x,y-h/2,z);model.add(mesh);parts.push(name);return mesh};
+ const box=(name,m,x,y,z,sx,sy,sz)=>add(name,new THREE.BoxGeometry(sx,sy,sz),m,x,y,z);
+ const garden=cfg.pond||cfg.rice,hw=w*(garden ? .48 : .86),hd=d*(garden ? .42 : .8),hz=garden?-d*.17:0;
+ const base=.45,eave=h*.63,rise=h*.30,bays=cfg.bays??1;
+ box('stone-platform','stone',0,.14,hz,hw+.65,.28,hd+.65);
+ box('timber-floor','floor',0,base-.08,hz,hw,.18,hd);
+ for(let i=0;i<=bays;i++)for(const side of [-1,1]){
+  const x=-hw*.44+hw*.88*i/bays,z=hz+side*hd*.43;
+  add('column',new THREE.CylinderGeometry(.13,.17,eave-base,8),'wood',x,(base+eave)/2,z);
+ }
+ for(const side of [-1,1])box('eave-beam','wood',0,eave-.06,hz+side*hd*.43,hw+.15,.22,.25);
+ if(cfg.enclosed){
+  box('hall-walls','wall',0,(eave+base)/2,hz,hw*.85,eave-base,hd*.8);
+  for(let i=0;i<bays;i++){
+   const x=-hw*.42+hw*.84*(i+.5)/bays;
+   box('wooden-door','wood',x,base+(eave-base)*.45,hz+hd*.405,hw*.72/bays,(eave-base)*.82,.1);
+  }
+ }else{
+  for(const side of [-1,1])box('side-railing','wood',side*hw*.44,base+.65,hz,.12,.13,hd*.86);
+  box('back-railing','wood',0,base+.65,hz-hd*.43,hw*.88,.13,.12);
+ }
+ if(thatched){
+  const roof=add('thatched-roof',new THREE.ConeGeometry(1,rise,4,1,false,Math.PI/4),'roof',0,eave+rise/2,hz);
+  roof.scale.set((hw+1.3)/Math.SQRT2,1,(hd+1.3)/Math.SQRT2);
+ }else if(cfg.roof==='pyramid'){
+  const roof=add('pavilion-roof',new THREE.ConeGeometry(1,rise,4,1,false,Math.PI/4),'roof',0,eave+rise/2,hz);
+  roof.scale.set((hw+1.3)/Math.SQRT2,1,(hd+1.3)/Math.SQRT2);
+ }else add('hip-gable-roof',hipGableRoof(hw+1.2,hd+1.2,rise,.3,.3),'roof',0,eave,hz);
+ for(let i=0;i<3;i++)box('entrance-step','stone',0,.06+i*.12,hz+hd/2+.7-i*.2,Math.min(2.5,hw*.5),.12,.45);
+ if(cfg.pond){
+  box('pond-bank','stone',0,.03,d*.25,w*.9,.06,d*.35);
+  box('pond-water','water',0,.07,d*.25,w*.82,.02,d*.29);
+ }
+ if(cfg.rice){
+  box('rice-bed','soil',0,.03,d*.25,w*.85,.06,d*.33);
+  for(let row=0;row<4;row++)box('rice-row','rice',0,.16,d*.13+row*d*.075,w*.76,.25,.22);
+ }
+ model.userData={conceptual:true,parts,roof:cfg.roof,bays,footprint:[w,d],position_status:feature.position_status};
+ mergeByMaterial(model);return model;
 }
 
 // Two-storey timber palace gate (돈화문·홍화문): a low stone platform, three to five door bays between red

@@ -106,6 +106,26 @@ class SyncTests(TestCase):
         self.assertIn('story git-new-story', report.kept_deleted)
         self.assertFalse(Story.objects.filter(key='git-new-story').exists())
 
+    def test_new_building_guide_preview_and_editorial_preservation(self):
+        from .content_sync import sync_content
+        buildings, stories = self.data()
+        feature = copy.deepcopy(buildings['features'][-1])
+        feature.update(id='new-estimated-site', name='추정 시설')
+        buildings['features'].append(feature)
+        guide = '## 추가 시설\n\n### 추정 시설\n\n추정 위치의 설명.\n\n### 다음 시설\n\n다른 설명.'
+        report = sync_content(buildings, stories, guide_markdown=guide)
+        self.assertIn('building new-estimated-site', report.created)
+        self.assertFalse(GuideSection.objects.filter(title='추정 시설').exists())
+        self.assertFalse(Building.objects.filter(key='new-estimated-site').exists())
+        sync_content(buildings, stories, guide_markdown=guide, apply=True)
+        section = Building.objects.get(key='new-estimated-site').guide_section
+        self.assertEqual(section.body, '추정 위치의 설명.')
+        section.body = '편집자가 보완한 설명'; section.save()
+        report = sync_content(buildings, stories, guide_markdown=guide, apply=True)
+        self.assertEqual(report.created, [])
+        section.refresh_from_db()
+        self.assertEqual(section.body, '편집자가 보완한 설명')
+
 
 class SecretKeyTests(SimpleTestCase):
     def test_production_secret_requirement(self):
@@ -141,7 +161,7 @@ class ContentTests(TestCase):
     def test_import_preserves_data_and_editorial_changes(self):
         source = json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text())
         self.assertEqual(load_stories(), source)
-        self.assertEqual(Building.objects.count(), 103)
+        self.assertEqual(Building.objects.count(), 114)
         self.assertEqual(Resource.objects.count(), 111)
         originals = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']
         for original, actual in zip(originals, load_buildings()['features']):
@@ -230,7 +250,7 @@ class ContentTests(TestCase):
             path = Path(root) / 'export.json'
             call_command('export_content', str(path), stdout=StringIO())
             data = json.loads(path.read_text())
-            self.assertEqual(sum(r['model'] == 'webapp.building' for r in data), 103)
+            self.assertEqual(sum(r['model'] == 'webapp.building' for r in data), 114)
             self.assertTrue(all(r['model'].startswith('webapp.') for r in data))
             self.assertNotIn('Test-password', path.read_text())
             with self.assertRaises(CommandError): call_command('export_content', str(path), stdout=StringIO())

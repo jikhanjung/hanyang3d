@@ -293,7 +293,14 @@ async function main(){
   const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25);
   // A hall is a wall block with a pitched roof of ordinary house pitch; the rise never scales with the plot.
   const hall=(x,z,hw,hd,hh,ry=0)=>{push(new THREE.BoxGeometry(hw,hh,hd),wall,x,ground+.6+hh/2,z,ry);push(roof(hw+1.6,hd+1.6,Math.min(3.2,1.2+hd*.16)),tile,x,ground+.6+hh,z,ry)};
-  if(feature.display_model==='yukjo_compound'){
+  if(feature.pavilion){
+   const garden=feature.pavilion.pond||feature.pavilion.rice;
+   const hw=w*(garden ? .48 : .86),hd=d*(garden ? .42 : .8),hz=garden?-d*.17:0;
+   push(new THREE.BoxGeometry(hw,.5,hd),0xb4ac99,0,ground+.25,hz,0,false);
+   for(const x of [-hw*.42,hw*.42])for(const z of [-hd*.4,hd*.4])push(new THREE.BoxGeometry(.35,h*.6,.35),0x76503a,x,ground+h*.3,hz+z,0,false);
+   if(feature.pavilion.enclosed)push(new THREE.BoxGeometry(hw*.85,h*.55,hd*.8),wall,0,ground+h*.3,hz);
+   push(roof(hw+1.2,hd+1.2,h*.3),feature.pavilion.roof==='thatch'?0xa99768:tile,0,ground+h*.63,hz,0,false);
+  }else if(feature.display_model==='yukjo_compound'){
    // Mirror the detailed layout: plate, enclosure wall, front row with the gate, main hall and two side halls.
    push(new THREE.BoxGeometry(w,.6,d),0xc6b48f,0,ground+.3,0,0,false);
    const gateW=Math.min(13,w*.24),front=d/2-5,run=(w-gateW)/2-2;
@@ -573,6 +580,7 @@ async function main(){
   head.append(title,kind,close);popup.append(head);
   const para=(label,text)=>{if(!text)return;const p=document.createElement('p');if(label){const b=document.createElement('b');b.textContent=label+' ';p.append(b)}p.append(text);popup.append(p)};
   para('',info.summary);para('존재 시기',info.period);para('1750년 무렵',info.in_1750);
+  if(f.position_status==='estimated_region')para('위치·모형','추정 위치 · 개략 모형. '+(f.source_position?.note||''));
   if(info.stories?.length){
    const label=document.createElement('p');label.className='popup-stories';label.textContent='이야기';popup.append(label);
    for(const story of info.stories){

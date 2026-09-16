@@ -714,6 +714,312 @@
      "url": "https://sillok.history.go.kr/id/kua_13602020_001"
     }
    ]
+  },
+  {
+   "id": "gungisi-supplies",
+   "target": {
+    "type": "landmark",
+    "key": "gungisi",
+    "label": "군기시"
+   },
+   "title": "군사를 움직인 것은 무기만이 아니었다",
+   "year": "조선 후기",
+   "legend": false,
+   "text": "군기시는 활과 화살, 화약 무기뿐 아니라 군대가 쓰는 깃발과 여러 기물도 마련했습니다. 다만 조선 후기에는 군영들도 필요한 물건을 직접 만들었습니다. 군기시는 군수 생산을 맡은 여러 거점 가운데 하나였습니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "군기시",
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EA%B8%B0%EC%8B%9C(%E8%BB%8D%E5%99%A8%E5%AF%BA)"
+    }
+   ]
+  },
+  {
+   "id": "yeonghwadang-exams",
+   "target": {
+    "type": "landmark",
+    "key": "yeonghwadang",
+    "label": "영화당"
+   },
+   "title": "후원이 시험장이 되는 날",
+   "year": "1692",
+   "legend": false,
+   "text": "영화당 앞의 넓은 공간은 조용히 경치를 보는 곳만은 아니었습니다. 문무 인재를 뽑는 시험과 여러 행사가 이곳에서 열렸습니다. 숙종은 1692년 시험과 친림에 쓸 영화당을 고치게 했고, 이듬달 공사가 마무리되었습니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "영화당",
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%81%ED%99%94%EB%8B%B9(%E6%9A%8E%E8%8A%B1%E5%A0%82)"
+    },
+    {
+     "title": "숙종실록 1692년 음력 4월 16일 영화당 보수",
+     "url": "https://sillok.history.go.kr/id/ksa_11804016_001"
+    },
+    {
+     "title": "숙종실록 1692년 음력 5월 12일 영화당 완료",
+     "url": "https://sillok.history.go.kr/id/ksa_11805012_002"
+    }
+   ]
+  },
+  {
+   "id": "cheonguijeong-farming",
+   "target": {
+    "type": "landmark",
+    "key": "cheonguijeong",
+    "label": "청의정"
+   },
+   "title": "궁궐에도 초가지붕이 있다",
+   "year": "1636",
+   "legend": false,
+   "text": "청의정은 화려한 기와집 사이의 초가 정자입니다. 곁의 작은 논과 초가지붕은 궁궐 안에서도 농사의 의미를 돌아보게 합니다. 청의정을 포함한 옥류천의 정자들은 1636년에 조성된 것으로 기록되어 있습니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "궁궐의 연표",
+     "url": "https://royal.cha.go.kr/ROYAL/contents/R311020000.do"
+    },
+    {
+     "title": "농민들의 삶을 헤아리기 위해 만든 초가 정자, 창덕궁 청의정",
+     "url": "https://ncms.nculture.org/pavilion/story/2377"
+    }
+   ]
+  },
+  {
+   "id": "munheongak-books",
+   "target": {
+    "type": "landmark",
+    "key": "munheongak",
+    "label": "문헌각"
+   },
+   "title": "책이 머물 집을 마련하다",
+   "year": "1700",
+   "legend": false,
+   "text": "궁궐의 책도 여러 보관처를 옮겨 다녔습니다. 숙종의 문헌각명은 경현당 옆 서각에 책을 모아 두고 선행과 악행의 기록을 배움의 자료로 삼았다고 설명합니다. 문헌각은 정사를 보는 전각 곁에서 서적을 보관하던 공간이었습니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "문헌각",
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AC%B8%ED%97%8C%EA%B0%81(%E6%96%87%E7%8D%BB%E9%96%A3)"
+    },
+    {
+     "title": "국립고궁박물관 궁궐지 번역 문헌각명",
+     "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=212&um=s"
+    }
+   ]
+  },
+  {
+   "id": "aeryeonjeong-lotus",
+   "target": {
+    "type": "landmark",
+    "key": "aeryeonjeong",
+    "label": "애련정"
+   },
+   "title": "연꽃을 사랑한 정자",
+   "year": "1692",
+   "legend": false,
+   "text": "숙종은 연꽃에서 맑고 굳은 덕을 떠올리며 정자에 애련정이라는 이름을 붙였습니다. 옛 기록에는 연못 가운데 세웠다고 되어 있지만 지금의 정자는 가장자리에 걸쳐 있습니다. 정원도 오랜 세월 동안 모습이 바뀌었습니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "궁궐의 현판과 주련: 애련정",
+     "url": "https://m.cha.go.kr/newsBbz/selectNewsBbzView.do?edate=&mn=&newsItemId=155693299&pageIndex=10&sdate=&sectionId=ocp&strValue=&strWhere="
+    }
+   ]
+  },
+  {
+   "id": "chwiunjeong-before-nakseonjae",
+   "target": {
+    "type": "landmark",
+    "key": "chwiunjeong",
+    "label": "취운정"
+   },
+   "title": "낙선재보다 오래된 이웃",
+   "year": "1686",
+   "legend": false,
+   "text": "오늘날 낙선재 주변에서 만나는 취운정은 낙선재보다 먼저 지어진 정자입니다. 취운정의 건립 기록은 1686년으로 거슬러 올라갑니다. 같은 구역에 보이는 건물들이 모두 같은 시대에 생긴 것은 아닙니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "취운정 건립·제영시 수록 면",
+     "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=56&um=s"
+    },
+    {
+     "title": "창덕궁 건축물 연대 해설",
+     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_039_0070_0040_0020"
+    }
+   ]
+  },
+  {
+   "id": "taegojeong-gathering",
+   "target": {
+    "type": "landmark",
+    "key": "taegojeong",
+    "label": "청풍계 태고정"
+   },
+   "title": "계곡에 붙인 오래된 고요함",
+   "year": "1607·1620·1790",
+   "legend": false,
+   "text": "청풍계의 태고정에서는 문인들이 경치를 즐기며 모임을 가졌습니다. 1620년의 상춘 모임은 그림으로도 남았고, 1790년에는 정조가 이곳에 들러 쉬었다는 기록이 있습니다. 지금 지도에 놓은 정자는 그 계곡 권역을 기억하기 위한 추정 위치입니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "태고정",
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%EA%B3%A0%EC%A0%95(%E5%A4%AA%E5%8F%A4%E4%BA%AD)"
+    },
+    {
+     "title": "우리역사넷 청풍계의 태고정과 상춘 모임",
+     "url": "https://contents.history.go.kr/mobile/km/view.do?levelId=km_019_0040_0020_0030"
+    },
+    {
+     "title": "정조실록 1790년 음력 2월 28일 태고정 방문",
+     "url": "https://sillok.history.go.kr/id/kva_11402028_002"
+    },
+    {
+     "title": "서울시 청풍계와 청운동의 백세청풍",
+     "url": "https://mediahub.seoul.go.kr/archives/2007584"
+    }
+   ]
+  },
+  {
+   "id": "guksadang-moved",
+   "target": {
+    "type": "landmark",
+    "key": "namsan_guksadang",
+    "label": "남산 국사당"
+   },
+   "title": "남산에서 인왕산으로 옮겨 간 사당",
+   "year": "조선시대·1925년경",
+   "legend": false,
+   "text": "지금 인왕산에 있는 국사당은 원래 남산에 있었습니다. 일제강점기 조선신궁 건립으로 자리를 옮겼습니다. 옛 한양에서 이 사당을 찾으려면 현재의 주소가 아니라 당시의 남산을 살펴야 합니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "인왕산 국사당",
+     "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677"
+    }
+   ]
+  },
+  {
+   "id": "dohwaseo-painters",
+   "target": {
+    "type": "landmark",
+    "key": "dohwaseo",
+    "label": "도화서"
+   },
+   "title": "화가도 국가의 일을 맡았다",
+   "year": "조선시대",
+   "legend": false,
+   "text": "도화서의 화원들은 나라에서 필요로 하는 그림을 그렸습니다. 그림 실력을 배우고 평가받는 과정도 관청의 일과 연결되었습니다. 기록화에 남은 궁궐 행사는 행사를 그린 사람들의 노동을 통해 오늘날까지 전해집니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "도화서",
+     "url": "https://encykorea.aks.ac.kr/Article/E0015927"
+    },
+    {
+     "title": "기로회와 기록화 관련 해설",
+     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_019_0050_0010_0010"
+    }
+   ]
+  },
+  {
+   "id": "jeyonggam-textiles",
+   "target": {
+    "type": "landmark",
+    "key": "jeyonggam",
+    "label": "제용감"
+   },
+   "title": "궁중의 옷 한 벌이 오기까지",
+   "year": "조선시대",
+   "legend": false,
+   "text": "왕실의 의복에는 옷감과 색, 이를 마련하는 일이 필요했습니다. 제용감은 직물과 의복, 염색과 직조에 관련된 업무를 맡았습니다. 궁중의 옷 한 벌 뒤에도 물품을 관리하고 기술을 제공한 사람들이 있었습니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "제용감",
+     "url": "https://encykorea.aks.ac.kr/Article/E0051344"
+    }
+   ]
+  },
+  {
+   "id": "jeonsaengseo-animals",
+   "target": {
+    "type": "landmark",
+    "key": "jeonsaengseo",
+    "label": "전생서"
+   },
+   "title": "제사 전의 일, 가축을 돌보다",
+   "year": "조선시대",
+   "legend": false,
+   "text": "국가의 제사는 의식을 올리는 날에만 준비되는 일이 아니었습니다. 전생서는 제향 등에 필요한 가축을 기르는 일을 맡았습니다. 남산 남쪽의 관청과 사육 공간은 궁궐·제단의 의례를 뒷받침하는 수도의 기반이었습니다. 지도상의 위치와 건물 모습은 개략적인 추정입니다.",
+   "sources": [
+    {
+     "title": "전생서",
+     "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%83%9D%EC%84%9C(%E5%85%B8%E7%89%B2%E7%BD%B2)"
+    }
+   ]
+  },
+  {
+   "id": "sayeogwon-conversation",
+   "target": {
+    "type": "landmark",
+    "key": "sayeogwon",
+    "label": "사역원"
+   },
+   "title": "흥정하는 말도 공부했다",
+   "year": "조선시대",
+   "legend": false,
+   "text": "역관이 배우는 말에는 외교 문서만 있었던 것이 아닙니다. 중국어 교재 『노걸대』에는 여행길의 인사, 여관에서 묵는 일, 물건 값을 흥정하는 대화가 담겼습니다. 낯선 나라에서 일을 하려면 생활 속 말도 익혀야 했습니다.",
+   "sources": [
+    {
+     "title": "노걸대",
+     "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r200130"
+    }
+   ]
+  },
+  {
+   "id": "jangagwon-musicians",
+   "target": {
+    "type": "landmark",
+    "key": "jangagwon",
+    "label": "장악원"
+   },
+   "title": "잔치가 끝나도 음악인의 일은 계속된다",
+   "year": "조선시대",
+   "legend": false,
+   "text": "장악원의 음악인들은 궁중 잔치뿐 아니라 제사와 조회, 여러 의례의 음악을 맡았습니다. 행사의 성격에 따라 악대도 달라졌습니다. 한 번의 화려한 연주 뒤에는 연주를 준비하고 사람들을 이끄는 전문적인 일이 있었습니다.",
+   "sources": [
+    {
+     "title": "왕실의 음악 기관, 장악원",
+     "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_023_0070_0020_0010"
+    }
+   ]
+  },
+  {
+   "id": "giroso-paintings",
+   "target": {
+    "type": "landmark",
+    "key": "giroso",
+    "label": "기로소"
+   },
+   "title": "기로소의 경사가 그림으로 남다",
+   "year": "1719",
+   "legend": false,
+   "text": "숙종이 기로소에 들어간 일을 기념한 행사들은 『기사계첩』에 여러 장면으로 남았습니다. 건물 안의 참석자뿐 아니라 연회를 돕는 사람과 악대도 그려져 있습니다. 한 폭의 그림을 따라가면 경사를 치르던 여러 공간을 함께 살펴볼 수 있습니다.",
+   "sources": [
+    {
+     "title": "기로회와 기록화 관련 해설",
+     "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_019_0050_0010_0010"
+    }
+   ]
+  },
+  {
+   "id": "pyeongsiseo-sinhae",
+   "target": {
+    "type": "landmark",
+    "key": "pyeongsiseo",
+    "label": "평시서"
+   },
+   "title": "누구나 물건을 팔 수 있었을까",
+   "year": "1791",
+   "legend": false,
+   "text": "한양의 상업에는 물건을 파는 권리와 단속을 둘러싼 갈등이 있었습니다. 1791년 신해통공은 육의전을 제외한 금난전권을 제한했습니다. 채제공의 건의에는 평시서와 형조, 한성부가 어떻게 처리해야 하는지도 나옵니다.",
+   "sources": [
+    {
+     "title": "신해통공",
+     "url": "https://contents.history.go.kr/mobile/hm/view.do?levelId=hm_106_0080"
+    }
+   ]
   }
  ],
  "checked": "2026-09-15"
