@@ -873,7 +873,11 @@ async function main(){
   const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
   const positionWorld={alignment:alignTerrain?'mountains':'base',routeKey:pedestrians.routeKey};
   const eye=new THREE.Vector3(),boom=new THREE.Vector3();
-  const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick');canvas.tabIndex=0;
+  const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick'),jumpButton=el('walk-jump');canvas.tabIndex=0;
+  // One jump at a time: Space on a keyboard, the on-screen button on phones.
+  function jump(){if(!active||air!==0||vy!==0)return false;vy=JUMP_SPEED;return true}
+  jumpButton.addEventListener('pointerdown',event=>{event.preventDefault();jumpButton.classList.add('pressed');jump()});
+  for(const type of ['pointerup','pointercancel','pointerleave'])jumpButton.addEventListener(type,()=>jumpButton.classList.remove('pressed'));
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
   const held=code=>keys.has(code);
   function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false}
@@ -952,12 +956,12 @@ async function main(){
    if(!walker){walker=createWalker();scene.add(walker.group)}
    if(walker.group.userData.playerName!==walkProfile.name){const tag=walker.group.getObjectByName('player-name');if(tag){tag.material.map.dispose();tag.material.dispose();tag.removeFromParent()}addPlayerNameTag(walker.group,walkProfile.name)}
    walked=0;walker.update(0,false);look();
-   navigation.show(yaw,eye);hud.hidden=false;shop?.showHud(true);canvas.focus({preventScroll:true});
+   navigation.show(yaw,eye);hud.hidden=false;jumpButton.hidden=false;shop?.showHud(true);canvas.focus({preventScroll:true});
   }
   function exit(){
    rememberPosition();
    together?.stop();
-   if(!active)return;active=false;clearInput();hud.hidden=true;shop?.showHud(false);navigation.hide();if(walker)walker.group.visible=false;mounted=false;if(horse)horse.group.visible=false;
+   if(!active)return;active=false;clearInput();hud.hidden=true;jumpButton.hidden=true;shop?.showHud(false);navigation.hide();if(walker)walker.group.visible=false;mounted=false;if(horse)horse.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
   }
   function update(dt){
@@ -1011,7 +1015,7 @@ async function main(){
    if(event.target.matches?.('input,select,textarea,button'))return;
    if(event.altKey&&event.code==='KeyW'){event.preventDefault();autoRun=!autoRun;return}
    if(event.code==='KeyI'&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();shop?.togglePack();return}
-   if(event.code==='Space'){event.preventDefault();if(!event.repeat&&air===0&&vy===0)vy=JUMP_SPEED;return}
+   if(event.code==='Space'){event.preventDefault();if(!event.repeat)jump();return}
    if(autoRun&&['KeyW','KeyS','ArrowUp','ArrowDown'].includes(event.code))autoRun=false;
    if(movement.has(event.code)){event.preventDefault();keys.add(event.code)}
   });
@@ -1033,7 +1037,7 @@ async function main(){
   el('focus-building').addEventListener('click',()=>{if(active)exit()},true);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;look();return true}
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
+  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
  })();
  const togetherStatus=document.createElement('div');togetherStatus.id='walk-together-status';togetherStatus.hidden=true;togetherStatus.setAttribute('role','status');
  Object.assign(togetherStatus.style,{position:'absolute',top:'64px',left:'12px',zIndex:'25',background:'#fffdf2eb',padding:'6px 10px',borderRadius:'5px',fontSize:'12px',maxWidth:'calc(100% - 150px)',pointerEvents:'none'});el('scene').append(togetherStatus);

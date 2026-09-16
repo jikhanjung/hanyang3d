@@ -116,6 +116,13 @@ with sync_playwright() as p:
     assert page.evaluate('terrain3d.firstPerson.active')
     page.evaluate('terrain3d.renderer.render(terrain3d.scene,terrain3d.camera)')
     page.screenshot(path='/tmp/hanyang3d-mobile-walk.png')
+    # Jump button: same bottom edge as the joystick, the minimap above it, and a tap lifts the walker.
+    jump_box = page.locator('#walk-jump').bounding_box(); joy_box = page.locator('#walk-joystick').bounding_box(); map_box = page.locator('#first-person-map').bounding_box()
+    assert jump_box and abs((jump_box['y'] + jump_box['height']) - (joy_box['y'] + joy_box['height'])) < 2, (jump_box, joy_box)
+    assert map_box['y'] + map_box['height'] <= jump_box['y'] - 4, (map_box, jump_box)
+    page.locator('#walk-jump').tap()
+    jumped = page.evaluate('()=>{const fp=terrain3d.firstPerson;let top=0;for(let i=0;i<15;i++){fp.update(1/30);top=Math.max(top,fp.air)}return top}')
+    assert jumped > .5, jumped
     assert not errors,errors
-    print('Mobile walk passed:',results,'name entry, multitouch, focus, cancel, exit, keyboard and chat',flush=True)
+    print('Mobile walk passed:',results,'name entry, multitouch, focus, cancel, exit, keyboard, chat and jump button',flush=True)
     browser.close()

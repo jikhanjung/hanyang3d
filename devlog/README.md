@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [135 — 모바일 점프 버튼](20260916_135_mobile_jump_button.md)
 - [134 — 1인칭 정원 10명](20260916_134_first_person_player_cap.md)
 - [133 — 1인칭으로 다리와 경복궁 건물터 위에 오르기](20260916_133_walk_bridges_hall_sites.md)
 - [132 — 말값 9냥, 물건·가격을 DB로, 함께 걷기에 말 탄 모습](20260916_132_goods_db_shared_riding.md)
