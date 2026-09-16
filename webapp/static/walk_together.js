@@ -2,6 +2,9 @@ import { createWalker } from './pedestrians.js';
 import { createHorse } from './horse_dealer.js';
 import { addPlayerNameTag } from './walk_profile.js';
 import { createWalkChat } from './walk_chat.js';
+import {t,lang,setLang} from './i18n.js';
+// Server messages are Korean dictionary keys; one carries the player cap as a number.
+const tMsg = m => { const n = String(m ?? '').match(/\d+/)?.[0]; return n ? t(m.replace(n, '{n}'), {n}) : t(m); };
 
 // Must match the rider height in terrain3d.js first person.
 const SADDLE = .35;
@@ -29,7 +32,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
   // person, so its label says so.
   function fail(message) {
     stop(message);
-    if (firstPerson.active) { button.textContent = '전체 지도 시점'; button.setAttribute('aria-pressed', 'true'); }
+    if (firstPerson.active) { button.textContent = t('전체 지도 시점'); button.setAttribute('aria-pressed', 'true'); }
   }
 
   function stop(message = '') {
@@ -43,7 +46,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     chat.disconnect();
     if (previousPlayback !== null) { playback.checked = previousPlayback; playback.disabled = false; playback.title = ''; previousPlayback = null; }
     [...peers.keys()].forEach(remove);
-    button.textContent = '1인칭';
+    button.textContent = t('1인칭');
     button.setAttribute('aria-pressed', 'false');
     status.textContent = message;
     status.hidden = !message;
@@ -70,15 +73,15 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     if (!firstPerson.active) return;
     const attempt = ++generation;
     pending = true;
-    button.textContent = '접속 취소';
-    status.hidden = false; status.textContent = '함께 걸을 공간에 접속 중…';
+    button.textContent = t('접속 취소');
+    status.hidden = false; status.textContent = t('함께 걸을 공간에 접속 중…');
     const timeout = setTimeout(() => {
-      if (generation === attempt) fail('접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.');
+      if (generation === attempt) fail(t('접속하지 못했습니다. 1인칭을 눌러 다시 시도하세요.'));
     }, 10000);
     try {
       // The web server vouches for the account name with a short-lived signed ticket.
       const ticketResponse = await fetch('/api/walk-ticket', { credentials: 'same-origin', cache: 'no-store' });
-      if (!ticketResponse.ok) throw Object.assign(new Error('로그인이 확인되지 않았소. 1인칭으로 다시 들어오시오.'), { code: 403 });
+      if (!ticketResponse.ok) throw Object.assign(new Error(t('로그인이 확인되지 않았소. 1인칭으로 다시 들어오시오.')), { code: 403 });
       const { ticket } = await ticketResponse.json();
       const client = new window.Colyseus.Client(endpoint);
       const joined = await client.joinOrCreate('hanyang_walk', { mapVersion, alignment, protocolVersion: 2, routeKey: pedestrians.routeKey, name: profile.name, ticket });
@@ -91,9 +94,9 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       joined.send('chat-history');
       joined.reconnection.enabled = false;
       previousPlayback = playback.checked; playback.checked = true; playback.disabled = true;
-      playback.title = '함께 걷는 동안 보행자는 서버에서 계속 움직입니다.';
-      button.textContent = '전체 지도 시점'; button.setAttribute('aria-pressed', 'true');
-      status.textContent = '접속자 1명';
+      playback.title = t('함께 걷는 동안 보행자는 서버에서 계속 움직입니다.');
+      button.textContent = t('전체 지도 시점'); button.setAttribute('aria-pressed', 'true');
+      status.textContent = t('접속자 1명');
       joined.onMessage('npcs', snapshot => { if (room === joined) pedestrians.applySnapshot(snapshot); });
       joined.onMessage('walkers', poses => {
         if (room !== joined) return;
@@ -110,13 +113,13 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
           peer.target = pose;
         }
         for (const id of peers.keys()) if (!seen.has(id)) remove(id);
-        status.textContent = `접속자 ${peers.size + 1}명`;
+        status.textContent = t('접속자 {n}명', {n: peers.size + 1});
       });
       joined.onLeave(() => {
-        if (room === joined) { room = null; fail('연결이 끊겼습니다. 1인칭을 눌러 다시 접속하세요.'); }
+        if (room === joined) { room = null; fail(t('연결이 끊겼습니다. 1인칭을 눌러 다시 접속하세요.')); }
       });
       joined.onError(() => {
-        if (room === joined) fail('연결 오류가 발생했습니다. 1인칭을 눌러 다시 접속하세요.');
+        if (room === joined) fail(t('연결 오류가 발생했습니다. 1인칭을 눌러 다시 접속하세요.'));
       });
       const send = () => {
         if (!firstPerson.active) { stop(); return; }
@@ -126,8 +129,8 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       send(); sendTimer = setInterval(send, 100);
     } catch (error) {
       if (generation === attempt) {
-        fail(error.code === 4003 ? '이 이름으로 이미 함께 걷는 중이오. 다른 창을 닫고 다시 들어오시오.'
-          : [403, 422, 412, 429].includes(error.code) ? error.message : '함께 걷기 서버에 접속하지 못했소. 혼자 걸을 수 있소.');
+        fail(error.code === 4003 ? t('이 이름으로 이미 함께 걷는 중이오. 다른 창을 닫고 다시 들어오시오.')
+          : [403, 422, 412, 429].includes(error.code) ? tMsg(error.message) : t('함께 걷기 서버에 접속하지 못했소. 혼자 걸을 수 있소.'));
         // A full server (429) is a cap on first person itself, so leave it rather than walking alone.
         if (error.code === 429 && firstPerson.active) firstPerson.exit();
       }

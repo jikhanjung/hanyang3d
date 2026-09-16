@@ -162,7 +162,7 @@ class ContentTests(TestCase):
         source = json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text())
         self.assertEqual(load_stories(), source)
         self.assertEqual(Building.objects.count(), 114)
-        self.assertEqual(Resource.objects.count(), 111)
+        self.assertEqual(Resource.objects.count(), 112)
         originals = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']
         for original, actual in zip(originals, load_buildings()['features']):
             for key, value in original.items():

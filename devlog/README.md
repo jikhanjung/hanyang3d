@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [140 — 언어 선택(KO | EN) 1단계: 화면 문구와 서버 응답](20260916_140_language_switch_ui.md)
 - [139 — 걷는 중 두 번째 점프가 안 되던 문제](20260916_139_second_jump_while_walking.md)
 - [138 — 추정 위치 시설 11곳과 장소 이야기 15편](20260916_138_estimated_landmarks_stories.md)
 - [137 — 난간·기단에서 걸어 나가면 떨어지기](20260916_137_fall_off_edges.md)

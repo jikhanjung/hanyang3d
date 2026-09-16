@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {t,lang,setLang} from './i18n.js';
 
 // A world-fixed horizontal compass, viewed with the map camera's exact orientation.
 export function createCompass3D(element){
@@ -37,7 +38,7 @@ export function createCompass3D(element){
   if(Math.hypot(direction.x,direction.z)>1e-8)heading=(Math.atan2(direction.x,-direction.z)*180/Math.PI+360)%360;
   const pitch=Math.asin(THREE.MathUtils.clamp(direction.y,-1,1))*180/Math.PI;
   element.dataset.yaw=heading.toFixed(2);element.dataset.pitch=pitch.toFixed(2);
-  element.setAttribute('aria-label',`북쪽을 가리키는 수평 나침반. 시선 방위 ${Math.round(heading)%360}도, 상하 기울기 ${Math.round(pitch)}도`);
+  element.setAttribute('aria-label',t('북쪽을 가리키는 수평 나침반. 시선 방위 {h}도, 상하 기울기 {p}도',{h:Math.round(heading)%360,p:Math.round(pitch)}));
   renderer.render(scene,camera);
  }
  return {update,renderer,scene,camera,north,south,ring};

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {t,lang,setLang} from './i18n.js';
 
 // NPC conversation framework with two presentations.
 // - 'bubble': a short greeting in a speech bubble over the person's head, gone after a few seconds.
@@ -20,7 +21,7 @@ export function createNpcDialogue({camera,canvas,container,note,onAction}){
  const sources=document.createElement('p');sources.className='npc-sources';
  const options=document.createElement('ol');options.className='npc-options';
  const footnote=document.createElement('small');footnote.className='npc-note';footnote.textContent=note;
- const close=document.createElement('button');close.type='button';close.className='npc-close';close.textContent='✕';close.setAttribute('aria-label','대화 닫기');
+ const close=document.createElement('button');close.type='button';close.className='npc-close';close.textContent='✕';close.setAttribute('aria-label',t('대화 닫기'));
  main.append(text,sources,options,footnote);box.append(close,side,main);overlay.append(box);container.append(overlay);
  const bubble=document.createElement('div');bubble.id='npc-bubble';bubble.hidden=true;bubble.setAttribute('aria-live','polite');container.append(bubble);
  close.onclick=()=>end();
@@ -90,9 +91,9 @@ export function createNpcDialogue({camera,canvas,container,note,onAction}){
   const full=node.text;let shown=0;text.textContent='';options.hidden=true;
   typing={full,timer:setInterval(()=>{shown+=2;text.textContent=full.slice(0,shown);if(shown>=full.length)finishTyping()},25)};
   sources.replaceChildren();sources.hidden=!node.sources?.length;
-  if(node.sources?.length){sources.append((node.year?node.year+' · ':'')+'출처: ');node.sources.forEach((s,i)=>{const a=document.createElement('a');a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=s.title;if(i)sources.append(', ');sources.append(a)})}
+  if(node.sources?.length){sources.append((node.year?node.year+' · ':'')+t('출처: '));node.sources.forEach((s,i)=>{const a=document.createElement('a');a.href=s.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=s.title;if(i)sources.append(', ');sources.append(a)})}
   options.replaceChildren();
-  (node.options??[{label:'잘 있으시오.',action:'close'}]).forEach((option,i)=>{
+  (node.options??[{label:t('잘 있으시오.'),action:'close'}]).forEach((option,i)=>{
    const li=document.createElement('li'),button=document.createElement('button');button.type='button';
    button.textContent=`${i+1}. ${option.label}`;button.onclick=()=>choose(option);li.append(button);options.append(li);
   });

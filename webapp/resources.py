@@ -48,6 +48,7 @@ def public_resource_paths():
         'webapp/static/guards.js',
         'webapp/static/drill.js',
         'webapp/static/npc_dialogue.js',
+        'webapp/static/i18n.js',
         'webapp/static/horse_dealer.js',
         'webapp/static/shop.js',
         'gis/placenames/doseong_placenames.json',

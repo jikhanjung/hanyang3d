@@ -49,13 +49,15 @@ MIDDLEWARE = ['django.middleware.security.SecurityMiddleware',
               'django.middleware.csrf.CsrfViewMiddleware',
               'django.contrib.auth.middleware.AuthenticationMiddleware',
               'django.contrib.messages.middleware.MessageMiddleware',
-              'django.middleware.clickjacking.XFrameOptionsMiddleware']
+              'django.middleware.clickjacking.XFrameOptionsMiddleware',
+              'webapp.i18n.LanguageMiddleware']
 TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates',
               'DIRS': [BASE_DIR / 'webapp/templates'], 'APP_DIRS': True,
               'OPTIONS': {'context_processors': [
                   'django.template.context_processors.request',
                   'django.contrib.auth.context_processors.auth',
-                  'django.contrib.messages.context_processors.messages']}}]
+                  'django.contrib.messages.context_processors.messages',
+                  'webapp.i18n.context']}}]
 LANGUAGE_CODE = 'ko-kr'
 TIME_ZONE = 'Asia/Seoul'
 USE_TZ = True

@@ -15,6 +15,7 @@ from django.db import IntegrityError, transaction
 from django.utils import timezone
 
 from .models import LoginAttempt, Player
+from .i18n import t
 
 PASSWORD_MIN = 6
 PASSWORD_MAX = 128
@@ -54,17 +55,18 @@ def client_ip_hash(request):
     return hmac.new(settings.SECRET_KEY.encode(), ip.encode(), hashlib.sha256).hexdigest()
 
 
-def _check_password_rules(password):
+def _check_password_rules(password, lang='ko'):
     if not isinstance(password, str) or not PASSWORD_MIN <= len(password) <= PASSWORD_MAX:
-        raise AccountError(400, f'비밀번호는 {PASSWORD_MIN}자 이상으로 정하시오.')
+        raise AccountError(400, t('비밀번호는 {n}자 이상으로 정하시오.', lang, n=PASSWORD_MIN))
 
 
 def register(request, current, name, password, start_money):
     """Create an account; a nameless (anonymous) current player is upgraded and keeps its purse."""
+    lang = getattr(request, 'lang', 'ko')
     clean = normalize_name(name)
     if not clean:
-        raise AccountError(400, '이름은 1~16자의 한글·한자·영문·숫자·공백·_ . -로 정하시오.')
-    _check_password_rules(password)
+        raise AccountError(400, t('이름은 1~16자의 한글·한자·영문·숫자·공백·_ . -로 정하시오.', lang))
+    _check_password_rules(password, lang)
     try:
         with transaction.atomic():
             if current and not current.name_key:
@@ -75,23 +77,24 @@ def register(request, current, name, password, start_money):
             player.name, player.name_key, player.password = clean, name_key(clean), make_password(password)
             player.save()
     except IntegrityError:
-        raise AccountError(409, '이미 쓰는 이름이오. 다른 이름을 고르시오.')
+        raise AccountError(409, t('이미 쓰는 이름이오. 다른 이름을 고르시오.', lang))
     return player
 
 
 def login(request, name, password):
+    lang = getattr(request, 'lang', 'ko')
     clean = normalize_name(name)
     key = name_key(clean) if clean else ''
     ip = client_ip_hash(request)
     since = timezone.now() - FAILURE_WINDOW
     if LoginAttempt.objects.filter(created_at__gte=since, name_key=key).count() >= FAILURES_ALLOWED or \
             LoginAttempt.objects.filter(created_at__gte=since, ip_hash=ip).count() >= FAILURES_ALLOWED:
-        raise AccountError(429, '로그인을 너무 여러 번 틀렸소. 잠시 뒤에 다시 하시오.')
+        raise AccountError(429, t('로그인을 너무 여러 번 틀렸소. 잠시 뒤에 다시 하시오.', lang))
     player = Player.objects.filter(name_key=key).first() if clean else None
     # check_password runs even for unknown names so timing does not reveal which names exist.
     valid = check_password(password if isinstance(password, str) else '', player.password if player else make_password(None))
     if not player or not valid:
         LoginAttempt.objects.create(name_key=key, ip_hash=ip)
-        raise AccountError(401, '이름이나 비밀번호가 맞지 않소.')
+        raise AccountError(401, t('이름이나 비밀번호가 맞지 않소.', lang))
     LoginAttempt.objects.filter(name_key=key).delete()
     return player

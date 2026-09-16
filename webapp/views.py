@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST, require_safe
 from .resources import assets, public_resource_paths, resource_path
+from .i18n import t
 from .deployment import runtime_report
 from .guide import render_guide
 from .stories import load_stories, stories_by_place
@@ -155,12 +156,12 @@ def account_register(request):
     from .economy import attach_cookie, catalog, cookie_value, player_from_cookie, state
     body = _json_body(request)
     if body is None:
-        return _no_store(JsonResponse({'error': '요청 형식이 잘못되었소.', 'logged_in': False}, status=400))
+        return _no_store(JsonResponse({'error': t('요청 형식이 잘못되었소.', request.lang), 'logged_in': False}, status=400))
     try:
         player = register(request, player_from_cookie(request), body.get('name'), body.get('password'), catalog()['wallet']['start'])
     except AccountError as error:
         return _no_store(JsonResponse({'error': error.message, 'logged_in': False}, status=error.status))
-    return _no_store(attach_cookie(JsonResponse({'message': f'{player.name}, 어서 오시오.', **state(player)}), cookie_value(player)))
+    return _no_store(attach_cookie(JsonResponse({'message': t('{name}, 어서 오시오.', request.lang, name=player.name), **state(player)}), cookie_value(player)))
 
 
 @require_POST
@@ -169,7 +170,7 @@ def account_login(request):
     from .economy import attach_cookie, cookie_value, state
     body = _json_body(request)
     if body is None:
-        return _no_store(JsonResponse({'error': '요청 형식이 잘못되었소.', 'logged_in': False}, status=400))
+        return _no_store(JsonResponse({'error': t('요청 형식이 잘못되었소.', request.lang), 'logged_in': False}, status=400))
     try:
         player = login(request, body.get('name'), body.get('password'))
     except AccountError as error:
@@ -193,9 +194,9 @@ def shop_trade(request):
     if not player or not player.name_key:
         return _no_store(JsonResponse({'error': '먼저 이름을 대고 들어오시오. (로그인)', 'logged_in': False}, status=401))
     if body is None:
-        return _no_store(JsonResponse({'error': '요청 형식이 잘못되었소.', **state(player)}, status=400))
+        return _no_store(JsonResponse({'error': t('요청 형식이 잘못되었소.', request.lang), **state(player)}, status=400))
     try:
-        player, message = trade(player, body.get('action'), body.get('shop'), body.get('item'), body.get('quantity'))
+        player, message = trade(player, body.get('action'), body.get('shop'), body.get('item'), body.get('quantity'), request.lang)
         response = JsonResponse({'message': message, **state(player)})
     except TradeError as error:
         player.refresh_from_db()

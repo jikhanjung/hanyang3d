@@ -31,6 +31,7 @@ import {createYukjo,groundYukjo,heightYukjo} from './yukjo.js';
 import {createGroundColors} from './ground_colors.js';
 import {createCompass3D} from './compass3d.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
+import {t,lang,setLang} from './i18n.js';
 
 const el=id=>document.getElementById(id),R=6378137,H=Math.PI*R;
 // Resources share the versioned prefix this module was loaded from (/v/<version>/ or /), so a release can be cached forever.
@@ -73,7 +74,7 @@ async function main(){
   const job=new Promise((resolve,reject)=>{
    worker=new Worker(new URL('./terrain_worker.js',import.meta.url));
    worker.onmessage=({data})=>{worker.terminate();data.error?reject(Error(data.error)):resolve(data)};
-   worker.onerror=event=>{worker.terminate();reject(Error(event.message||'지형 계산을 완료하지 못했습니다.'))};
+   worker.onerror=event=>{worker.terminate();reject(Error(event.message||t('지형 계산을 완료하지 못했습니다.')))};
    worker.postMessage({geometry,path});
   });
   job.cancel=()=>worker.terminate();
@@ -130,23 +131,23 @@ async function main(){
   return {...result,source,key};
  }
  const matchAt=(matches,i)=>({distance:matches[i*3],level:matches[i*3+1],width:matches[i*3+2]});
- await stage(0,'고도 자료를 불러오는 중입니다');
+ await stage(0,t('고도 자료를 불러오는 중입니다'));
  const response=await fetch(asset('/gis/georeferenced/terrain3d/dem.json'));
- if(!response.ok)throw Error('고도 자료를 불러오지 못했습니다.');
+ if(!response.ok)throw Error(t('고도 자료를 불러오지 못했습니다.'));
  const dem=await response.json(),exp=JSON.parse(el('experiment').textContent);
  const points=[...exp.landmarks,...exp.suggested_anchors];
  const alignTerrain=new URLSearchParams(location.search).get('alignment')!=='base';
  el('align-terrain').checked=alignTerrain;el('align-terrain').onchange=()=>{const url=new URL(location.href);url.searchParams.set('alignment',el('align-terrain').checked?'mountains':'base');location.href=url};
  const warp=DoseongWarp.fitTerrainTPS(points.map(p=>p.pixel),points.map(p=>project(p.lon,p.lat)),alignTerrain?exp.terrain_alignment:null);
  const [xmin,ymin,xmax,ymax]=dem.bounds_3857,n=dem.size;
- if(dem.elevations.length!==n*n||!dem.elevations.every(Number.isFinite))throw Error('고도 격자가 올바르지 않습니다.');
+ if(dem.elevations.length!==n*n||!dem.elevations.every(Number.isFinite))throw Error(t('고도 격자가 올바르지 않습니다.'));
  const cx=(xmin+xmax)/2,cy=(ymin+ymax)/2;
  const latitude=2*Math.atan(Math.exp(cy/R))-Math.PI/2,ground=Math.cos(latitude);
  let exaggeration=1;
  const world=(x,y,h)=>[(x-cx)*ground,h*exaggeration,-(y-cy)*ground];
  function height(x,y){
   const u=(x-xmin)/(xmax-xmin)*(n-1),v=(ymax-y)/(ymax-ymin)*(n-1);
-  if(u<0||v<0||u>n-1||v>n-1)throw Error('원도 배치가 준비된 고도 범위를 벗어났습니다.');
+  if(u<0||v<0||u>n-1||v>n-1)throw Error(t('원도 배치가 준비된 고도 범위를 벗어났습니다.'));
   const i=Math.min(n-2,Math.floor(u)),j=Math.min(n-2,Math.floor(v)),a=u-i,b=v-j,k=j*n+i,z=dem.elevations;
   return (1-b)*((1-a)*z[k]+a*z[k+1])+b*((1-a)*z[k+n]+a*z[k+n+1]);
  }
@@ -165,18 +166,18 @@ async function main(){
     indices.push(...tri);
    }
   }
-  if(textured&&folded)throw Error('원도 격자 접힘이 발견되어 3D 표시를 중단했습니다.');
+  if(textured&&folded)throw Error(t('원도 격자 접힘이 발견되어 3D 표시를 중단했습니다.'));
   const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));geometry.setIndex(indices);geometry.computeVertexNormals();geometry.userData.heights=heights;return geometry;
  }
  const terrain=new THREE.Mesh(grid(n-1,n-1,(u,v)=>[xmin+u*(xmax-xmin),ymax-v*(ymax-ymin)]),surfaceMaterial);scene.add(terrain);
  const initial=world(...warp(1560,1470),150);controls.target.set(...initial);camera.position.set(initial[0],6200,initial[2]+7600);controls.update();
- await stage(1,'지형 표시 완료 · 도성대지도를 불러오는 중입니다');
+ await stage(1,t('지형 표시 완료 · 도성대지도를 불러오는 중입니다'));
  const texture=await new THREE.TextureLoader().loadAsync(asset(exp.image_url));texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
  const [iw,ih]=exp.image_size;
  const historical=new THREE.Mesh(grid(128,112,(u,v)=>warp(u*iw,v*ih),true),new THREE.MeshStandardMaterial({map:texture,transparent:true,opacity:Number(el('opacity3d').value)/100,roughness:1,side:THREE.DoubleSide,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2}));historical.renderOrder=1;scene.add(historical);
  const mapGround=terrain; // One physical surface for terrain, map and road overlays.
  const sourceImagePositions=historical.geometry.attributes.position.clone();
- await stage(2,'지도 표시 완료 · 주요 건물과 문을 준비합니다');
+ await stage(2,t('지도 표시 완료 · 주요 건물과 문을 준비합니다'));
  const labels=new THREE.Group();labels.visible=el('anchors3d').checked;scene.add(labels);
  const dotCanvas=document.createElement('canvas');dotCanvas.width=32;dotCanvas.height=32;
  const dotContext=dotCanvas.getContext('2d');dotContext.beginPath();dotContext.arc(16,16,12,0,Math.PI*2);dotContext.fillStyle='#167bb5';dotContext.fill();dotContext.strokeStyle='#ffffff';dotContext.lineWidth=4;dotContext.stroke();
@@ -203,7 +204,7 @@ async function main(){
  const siteMarkers=[];
  const colors={'궁궐':0xb66841,'제례':0x786091,'교육':0x397b83,'관청':0x4b6b9b,'상업':0xa48734,'성문':0x98564b,'집터':0x8a8577,'시설':0x7f6a4c,'탑':0xd8d4c8,'궁가':0xa87a55};
  const wallData=JSON.parse(el('wall').textContent);
- if(wallData.source_sha256!==exp.input_sha256)throw Error('성벽 판독 원본이 현재 원도와 다릅니다.');
+ if(wallData.source_sha256!==exp.input_sha256)throw Error(t('성벽 판독 원본이 현재 원도와 다릅니다.'));
  // A gate stands square to the wall it pierces: its yaw is the wall's local direction turned 90°, on whichever
  // side faces the road axis read from the map. 숭례문 is the exception: there the wall is bent to the gate's
  // transverse axis instead (wall_connection in city_wall.js), so its road-axis yaw is kept.
@@ -225,7 +226,7 @@ async function main(){
  for(const feature of buildingData.features){
   let x,y;
   if(feature.source_position){
-   if(feature.source_position.source_sha256!==exp.input_sha256)throw Error('문 위치 판독 원본이 현재 원도와 다릅니다.');
+   if(feature.source_position.source_sha256!==exp.input_sha256)throw Error(t('문 위치 판독 원본이 현재 원도와 다릅니다.'));
    const p=sourceSurface(...feature.source_position.pixel);
    x=cx+p.x/ground;y=cy-p.z/ground;
   }else [x,y]=project(feature.lon,feature.lat);
@@ -239,7 +240,7 @@ async function main(){
    feature.symbol_size_m=[w,h,d];
   }
   if(feature.road_axis){
-   if(feature.road_axis.source_sha256!==exp.input_sha256)throw Error('문 진입로 판독 원본이 현재 원도와 다릅니다.');
+   if(feature.road_axis.source_sha256!==exp.input_sha256)throw Error(t('문 진입로 판독 원본이 현재 원도와 다릅니다.'));
    const [a,b]=feature.road_axis.pixel_points.map(p=>warp(...p));
    // Local +z is the open passage; world +z points south.
    yaw=Math.atan2(b[0]-a[0],-(b[1]-a[1]));
@@ -446,12 +447,12 @@ async function main(){
   }
  }
  frameUpdate=()=>updateBuildingNames();
- await stage(3,'주요 건물·문 표시 완료 · 물길을 준비합니다');
+ await stage(3,t('주요 건물·문 표시 완료 · 물길을 준비합니다'));
  const waterData=JSON.parse(el('water').textContent),waterLayer=new THREE.Group(),bridges=new THREE.Group();scene.add(waterLayer);scene.add(bridges);
- if(waterData.source_sha256!==exp.input_sha256)throw Error('물길 판독 원본이 현재 원도와 다릅니다.');
+ if(waterData.source_sha256!==exp.input_sha256)throw Error(t('물길 판독 원본이 현재 원도와 다릅니다.'));
  function sourceSurface(px,py){
   const cols=128,rows=112,u=px/iw*cols,v=py/ih*rows,i=Math.min(cols-1,Math.floor(u)),j=Math.min(rows-1,Math.floor(v)),a=u-i,b=v-j;
-  if(i<0||j<0||u>cols||v>rows)throw Error('물길 판독점이 원도 밖에 있습니다.');
+  if(i<0||j<0||u>cols||v>rows)throw Error(t('물길 판독점이 원도 밖에 있습니다.'));
   const k=j*(cols+1)+i,ids=a>=b?[k,k+1,k+cols+2]:[k,k+cols+1,k+cols+2],weights=a>=b?[1-a,a-b,b]:[1-b,b-a,a];
   const p=new THREE.Vector3(),positions=sourceImagePositions;
   ids.forEach((id,c)=>p.addScaledVector(new THREE.Vector3().fromBufferAttribute(positions,id),weights[c]));
@@ -570,24 +571,24 @@ async function main(){
  const popup=document.createElement('section');popup.id='building-popup';popup.hidden=true;popup.setAttribute('aria-live','polite');el('scene').append(popup);
  function renderPopup(box){
   const f=box?.userData.feature;popup.hidden=!f;if(!f)return;
-  const info=f.info??{summary:f.note,sources:f.reference?[{title:'참고 자료',url:f.reference}]:[]};
+  const info=f.info??{summary:f.note,sources:f.reference?[{title:t('참고 자료'),url:f.reference}]:[]};
   popup.replaceChildren();
   const head=document.createElement('header');
   const title=document.createElement('strong');title.textContent=f.name.split(' · ')[0];
   const kind=document.createElement('small');kind.textContent=f.category;
-  const close=document.createElement('button');close.type='button';close.textContent='닫기';close.setAttribute('aria-label','건물 정보 닫기');
+  const close=document.createElement('button');close.type='button';close.textContent=t('닫기');close.setAttribute('aria-label',t('건물 정보 닫기'));
   close.onclick=()=>{selected=null;clearHover()};
   head.append(title,kind,close);popup.append(head);
   const para=(label,text)=>{if(!text)return;const p=document.createElement('p');if(label){const b=document.createElement('b');b.textContent=label+' ';p.append(b)}p.append(text);popup.append(p)};
-  para('',info.summary);para('존재 시기',info.period);para('1750년 무렵',info.in_1750);
-  if(f.position_status==='estimated_region')para('위치·모형','추정 위치 · 개략 모형. '+(f.source_position?.note||''));
+  para('',info.summary);para(t('존재 시기'),info.period);para(t('1750년 무렵'),info.in_1750);
+  if(f.position_status==='estimated_region')para(t('위치·모형'),t('추정 위치 · 개략 모형. ')+(f.source_position?.note||''));
   if(info.stories?.length){
-   const label=document.createElement('p');label.className='popup-stories';label.textContent='이야기';popup.append(label);
+   const label=document.createElement('p');label.className='popup-stories';label.textContent=t('이야기');popup.append(label);
    for(const story of info.stories){
     const p=document.createElement('p');p.className='story';
     const t=document.createElement('b');t.textContent=story.title;p.append(t);
     if(story.year){const y=document.createElement('small');y.textContent=' ('+story.year+')';p.append(y)}
-    if(story.legend){const tag=document.createElement('span');tag.className='legend';tag.textContent='전해지는 이야기';p.append(tag)}
+    if(story.legend){const tag=document.createElement('span');tag.className='legend';tag.textContent=t('전해지는 이야기');p.append(tag)}
     p.append(document.createElement('br'),story.text,' ');
     story.sources.forEach((source,i)=>{const a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=source.title;const s=document.createElement('small');s.append(i?', ':'— ',a);p.append(s)});
     popup.append(p);
@@ -596,17 +597,17 @@ async function main(){
   if(info.sources?.length){
    const list=document.createElement('ul');
    for(const source of info.sources){const li=document.createElement('li'),a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=source.title;li.append(a);list.append(li)}
-   const label=document.createElement('p');label.className='popup-sources';label.textContent='출처';popup.append(label,list);
+   const label=document.createElement('p');label.className='popup-sources';label.textContent=t('출처');popup.append(label,list);
   }
   // Link to the same building in the site's guide page when it has a section there.
   const guideKey=f.guide_key??f.name.split(' · ')[0];
-  if(guideAnchors.has(guideKey)){const p=document.createElement('p'),a=document.createElement('a');a.href='/guide/#'+encodeURIComponent(guideKey);a.target='_blank';a.textContent='건물 안내에서 자세히 보기';p.append(a);popup.append(p)}
+  if(guideAnchors.has(guideKey)){const p=document.createElement('p'),a=document.createElement('a');a.href='/guide/#'+encodeURIComponent(guideKey);a.target='_blank';a.textContent=t('건물 안내에서 자세히 보기');p.append(a);popup.append(p)}
  }
  function showBuilding(box){
   const f=box?.userData.feature;
-  el('building-name').textContent=f?f.name+' · '+f.category:'박스에 커서를 올리거나 클릭하면 이름을 볼 수 있습니다.';
+  el('building-name').textContent=f?f.name+' · '+t(f.category):t('박스에 커서를 올리거나 클릭하면 이름을 볼 수 있습니다.');
   el('building-name').style.fontWeight=f?'bold':'';
-  el('building-note').textContent=!f?'':f.placeName?' — '+f.note:' — '+f.note+' · 개략 크기 '+f.symbol_size_m[0]+' × '+f.symbol_size_m[2]+' m / 높이 '+f.symbol_size_m[1]+' m · '+(f.category==='교량'?'다리 구조는 개념 모형':'지형 받침은 개관용 가정');
+  el('building-note').textContent=!f?'':f.placeName?' — '+f.note:' — '+f.note+' · '+t('개략 크기 {w} × {d} m / 높이 {h} m',{w:f.symbol_size_m[0],d:f.symbol_size_m[2],h:f.symbol_size_m[1]})+' · '+(f.category==='교량'?t('다리 구조는 개념 모형'):t('지형 받침은 개관용 가정'));
   el('building-reference').hidden=!f?.reference;
   if(f?.reference)el('building-reference').href=f.reference;else el('building-reference').removeAttribute('href');
   el('clear-building').hidden=!selected;
@@ -690,7 +691,7 @@ async function main(){
  // Display only the source-map river; omit the later modern downstream extension.
  const mainPath=ChannelTerrain.profile(historicNodes),northPath=[],joinIndex=mainPath.length-1;
  const channelPath=mainPath;
- await stage(4,'물길 표시 완료 · 하천 주변 지형을 계산합니다');
+ await stage(4,t('물길 표시 완료 · 하천 주변 지형을 계산합니다'));
  const surfaceBaselines=[];
  for(const mesh of [terrain]){
   const refineStart=performance.now(),old=mesh.geometry,refined=await refineTerrainCached({positions:old.attributes.position.array,index:old.index.array,uv:old.attributes.uv.array,colors:old.attributes.color.array},channelPath);
@@ -725,13 +726,13 @@ async function main(){
   }
  }
  const overlayIndex=[];for(let i=0;i<canonical.index.count;i+=3){const ids=[canonical.index.getX(i),canonical.index.getX(i+1),canonical.index.getX(i+2)];if(ids.every(j=>inside[j]))overlayIndex.push(...ids)}
- if(!overlayIndex.length)throw Error('지형 위의 지도 좌표를 계산하지 못했습니다.');
+ if(!overlayIndex.length)throw Error(t('지형 위의 지도 좌표를 계산하지 못했습니다.'));
  const overlayGeometry=new THREE.BufferGeometry();
  for(const name of ['position','normal','color'])overlayGeometry.setAttribute(name,canonical.attributes[name]);
  overlayGeometry.setAttribute('uv',new THREE.BufferAttribute(overlayUV,2));overlayGeometry.setIndex(overlayIndex);overlayGeometry.userData.heights=canonical.userData.heights;
  historical.geometry.dispose();historical.geometry=overlayGeometry;
  const roadRecord=await (await fetch(asset('/gis/roads/doseong_road_mask.json'))).json();
- if(roadRecord.source_sha256!==exp.input_sha256)throw Error('길 판독 원본이 현재 원도와 다릅니다.');
+ if(roadRecord.source_sha256!==exp.input_sha256)throw Error(t('길 판독 원본이 현재 원도와 다릅니다.'));
  const roadTexture=await new THREE.TextureLoader().loadAsync(asset(roadRecord.mask_url));roadTexture.colorSpace=THREE.SRGBColorSpace;
  const roadLayer=new THREE.Mesh(historical.geometry.clone(),new THREE.MeshBasicMaterial({map:roadTexture,color:roadRecord.display_color,transparent:true,opacity:.8,alphaTest:.04,depthWrite:false,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3}));
  roadLayer.geometry.userData={heights:[...historical.geometry.userData.heights]};
@@ -741,9 +742,9 @@ async function main(){
  const channelState={enabled:true,depth:2,maxCut:0,path:channelPath,mainPath,northPath,joinIndex};
  const cityWall=createCityWall(wallData,sourceSurface,buildings);scene.add(cityWall.group);
  const palaceResponse=await fetch(asset('/gis/walls/gyeongbokgung_wall.json'));
- if(!palaceResponse.ok)throw Error('경복궁 담장 자료를 불러오지 못했습니다.');
+ if(!palaceResponse.ok)throw Error(t('경복궁 담장 자료를 불러오지 못했습니다.'));
  const palaceData=await palaceResponse.json();
- if(palaceData.source_sha256!==exp.input_sha256)throw Error('경복궁 담장 판독 원본이 현재 원도와 다릅니다.');
+ if(palaceData.source_sha256!==exp.input_sha256)throw Error(t('경복궁 담장 판독 원본이 현재 원도와 다릅니다.'));
  palaceWall=createCityWall(palaceData,sourceSurface,buildings);palaceWall.group.name='gyeongbokgung-wall';scene.add(palaceWall.group);
  granite=createGranite([surfaceMaterial,historical.material],sourceSurface);
  el('granite3d').onchange=e=>{granite.setEnabled(e.target.checked);renderDirty=true};
@@ -807,38 +808,38 @@ async function main(){
   buildings.children.forEach(b=>groundYukjo(b,cityWall.supportAt));
   Object.assign(channelState,{enabled,depth,maxCut});
   el('channel-depth').disabled=!enabled;
-  el('channel-status').textContent=enabled?`개념 하도 보정 · 수면 아래 ${depth} m · 현대 지형 대비 최대 낮춤 ${maxCut.toFixed(1)} m · 역사적 깊이 미확정`:'원래 고도 표시 · 청계천은 원도 위치의 지형 표면을 따릅니다.';
+  el('channel-status').textContent=enabled?t('개념 하도 보정 · 수면 아래 {depth} m · 현대 지형 대비 최대 낮춤 {cut} m · 역사적 깊이 미확정',{depth,cut:maxCut.toFixed(1)}):t('원래 고도 표시 · 청계천은 원도 위치의 지형 표면을 따릅니다.');
   el('height3d').onchange();
  }
  el('carve3d').onchange=applyChannel;
  el('channel-depth').oninput=()=>{el('channel-depth-value').textContent=el('channel-depth').value+' m'};
  el('channel-depth').onchange=applyChannel;
  applyChannel();
- await stage(5,'하천·성벽·길 표시 완료 · 주택과 상가를 배치합니다');
+ await stage(5,t('하천·성벽·길 표시 완료 · 주택과 상가를 배치합니다'));
  const sijeonData=await(await fetch(asset('/gis/buildings/doseong_sijeon.json'))).json();
- if(sijeonData.source_sha256!==exp.input_sha256)throw Error('시전 배치의 길 판독 원본이 현재 원도와 다릅니다.');
+ if(sijeonData.source_sha256!==exp.input_sha256)throw Error(t('시전 배치의 길 판독 원본이 현재 원도와 다릅니다.'));
  sijeon=createSijeon(sijeonData,sourceSurface,buildings);sijeon.updateGround(cityWall.supportAt);sijeon.updateHeights(exaggeration);scene.add(sijeon.group);
  const sijeonBlockers=sijeon.records.map(r=>({x:r.x,z:r.z,radius:Math.hypot(r.length,sijeonData.placement.depth_m)/2+2}));
  const settlementData=await(await fetch(asset('/gis/buildings/doseong_settlement.json'))).json();
- if(settlementData.source_sha256!==exp.input_sha256)throw Error('추정 건물 배치 원본이 현재 원도와 다릅니다.');
+ if(settlementData.source_sha256!==exp.input_sha256)throw Error(t('추정 건물 배치 원본이 현재 원도와 다릅니다.'));
  settlement=createSettlement(settlementData,sourceSurface,(x,z)=>height(cx+x/ground,cy-z/ground),buildings,channelPath,sijeonBlockers);settlement.updateGround(cityWall.supportAt);settlement.updateHeights(exaggeration);scene.add(settlement.group);
- await stage(6,'주택·상가 표시 완료 · 숲과 걷는 사람을 준비합니다');
+ await stage(6,t('주택·상가 표시 완료 · 숲과 걷는 사람을 준비합니다'));
  const treeResponse=await fetch(asset('/gis/vegetation/doseong_trees.json'));
- if(!treeResponse.ok)throw Error('수목 배치 자료를 불러오지 못했습니다.');
+ if(!treeResponse.ok)throw Error(t('수목 배치 자료를 불러오지 못했습니다.'));
  const treeData=await treeResponse.json();
- if(treeData.source_sha256!==exp.input_sha256)throw Error('수목 배치 원도가 현재 지도와 다릅니다.');
+ if(treeData.source_sha256!==exp.input_sha256)throw Error(t('수목 배치 원도가 현재 지도와 다릅니다.'));
  trees=createTrees(treeData,sourceSurface,buildings,settlement,channelPath,{segments:[...cityWall.segments,...palaceWall.segments]},granite);trees.updateGround(cityWall.supportAt);trees.updateHeights(exaggeration);scene.add(trees.group);
  const groundColors=createGroundColors(surfaceMaterial,terrain.geometry,trees.records);
  await yieldPaint();
  el('trees-focus').onclick=()=>{const r=trees.records.find(r=>r.region==='gyeongbok');if(!r)return;controls.target.set(r.x,r.floor,r.z);camera.position.copy(controls.target).add(new THREE.Vector3(120,240,320));controls.update()};
  const walkingData=await(await fetch(asset('/gis/roads/doseong_walking_routes.json'))).json();
- if(walkingData.source_sha256!==exp.input_sha256)throw Error('보행 경로 원도가 현재 지도와 다릅니다.');
+ if(walkingData.source_sha256!==exp.input_sha256)throw Error(t('보행 경로 원도가 현재 지도와 다릅니다.'));
  pedestrians=createPedestrians(walkingData,sourceSurface);pedestrians.updateGround(cityWall.supportAt);pedestrians.setHeight(exaggeration);scene.add(pedestrians.group);
  // Moving figures (the drill, the Gyeongbokgung keeper) stand on the ground under their current position, in the
  // local frame of their building.
  const groundAt=obj=>(x,z)=>{const p=obj.parent.localToWorld(new THREE.Vector3(x,0,z)),s=cityWall.supportAt(p.x,p.z,.5,.5,0);return s.max*exaggeration+.05-obj.parent.position.y};
  frameUpdate=dt=>{pedestrians.update(dt);const now=performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(now,groundAt(drill));if(horseDealer){horseDealer.visible=bridges.visible;if(horseDealer.visible)horseDealer.userData.update(now,groundAt(horseDealer))}updateBuildingNames()};
- await stage(7,'숲·사람 표시 완료 · 마무리합니다');
+ await stage(7,t('숲·사람 표시 완료 · 마무리합니다'));
  el('people-focus').onclick=()=>{const p=pedestrians.walkers[20].position;controls.target.copy(p);camera.position.copy(p).add(new THREE.Vector3(18,28,45));controls.update()};
  el('settlement-focus').onclick=()=>{const r=settlement.records.filter(r=>r.shop&&r.displayed).sort((a,b)=>Math.hypot(a.pixel[0]-1520,a.pixel[1]-1440)-Math.hypot(b.pixel[0]-1520,b.pixel[1]-1440))[0];if(!r)return;const target=new THREE.Vector3(r.x,r.floor,r.z);controls.target.copy(target);camera.position.copy(target).add(new THREE.Vector3(100,220,300));controls.update()};
  let osmTexture=null;
@@ -846,7 +847,7 @@ async function main(){
   const zoom=12,span=2*H/2**zoom,tx0=Math.floor((xmin+H)/span),tx1=Math.floor((xmax+H)/span),ty0=Math.floor((H-ymax)/span),ty1=Math.floor((H-ymin)/span);
   const canvas=document.createElement('canvas');canvas.width=2048;canvas.height=2048;const ctx=canvas.getContext('2d');
   await Promise.all(Array.from({length:ty1-ty0+1},(_,j)=>Array.from({length:tx1-tx0+1},(_,i)=>[tx0+i,ty0+j])).flat().map(async([x,y])=>{
-   const img=new Image();img.crossOrigin='anonymous';await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(Error('OSM 타일을 불러오지 못했습니다. 고도 지형으로 표시합니다.'));img.src=`https://tile.openstreetmap.org/${zoom}/${x}/${y}.png`});
+   const img=new Image();img.crossOrigin='anonymous';await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(Error(t('OSM 타일을 불러오지 못했습니다. 고도 지형으로 표시합니다.')));img.src=`https://tile.openstreetmap.org/${zoom}/${x}/${y}.png`});
    ctx.drawImage(img,((x*span-H)-xmin)/(xmax-xmin)*2048,(ymax-(H-y*span))/(ymax-ymin)*2048,span/(xmax-xmin)*2048,span/(ymax-ymin)*2048);
   }));
   const t=new THREE.CanvasTexture(canvas);t.colorSpace=THREE.SRGBColorSpace;return t;
@@ -901,7 +902,7 @@ async function main(){
  // The shop owns the account state (login, coins); the walking profile takes its name from it.
  const npcData=JSON.parse(el('npcs').textContent);
  shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),
-  onUse:id=>npcData.items[id]?.use==='mount'?(firstPerson?.active?firstPerson.setMounted(!firstPerson.mounted):'1인칭에서만 말을 탈 수 있소.'):null});
+  onUse:id=>npcData.items[id]?.use==='mount'?(firstPerson?.active?firstPerson.setMounted(!firstPerson.mounted):t('1인칭에서만 말을 탈 수 있소.')):null});
  const walkProfile=createWalkProfile({account:shop});
  firstPerson=(()=>{
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
@@ -983,7 +984,7 @@ async function main(){
   function look(){camera.rotation.set(pitch,yaw+lookYaw,0,'YXZ');place();if(active)navigation.update(yaw,eye)}
   function enter(){
    if(active)return;clearHover();press=null;
-   if(!walkProfile.name){walkProfile.requestName({message:'1인칭으로 들어가려면 이름을 대시오.'}).then(name=>{if(name)enter()});return false}
+   if(!walkProfile.name){walkProfile.requestName({message:t('1인칭으로 들어가려면 이름을 대시오.')}).then(name=>{if(name)enter()});return false}
    saved={position:camera.position.clone(),quaternion:camera.quaternion.clone(),target:controls.target.clone(),fov:camera.fov,near:camera.near};
    const path=pedestrians.routes[0].points,index=Math.floor(path.length*.42),p=path[index],q=path[index+1];
    let spawn={x:p.x,z:p.z,yaw:Math.atan2(-(q.x-p.x),-(q.z-p.z))};
@@ -1046,15 +1047,15 @@ async function main(){
   const RIDE_ITEM=Object.keys(npcData.items).find(id=>npcData.items[id].use==='mount');
   // Mount or dismount; returns the message shown in the pack window.
   function setMounted(on){
-   if(on&&!active)return '1인칭에서만 말을 탈 수 있소.';
-   if(on&&!(shop?.state.items[RIDE_ITEM]>0))return '말고삐가 없소.';
+   if(on&&!active)return t('1인칭에서만 말을 탈 수 있소.');
+   if(on&&!(shop?.state.items[RIDE_ITEM]>0))return t('말고삐가 없소.');
    mounted=on;
    if(on&&!horse){horse=createHorse();horse.group.name='player-horse';scene.add(horse.group)}
    if(horse)horse.group.visible=on;
    walker?.update(walked,false,on);
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
    look();
-   return on?'말에 올랐소. 빨리 달릴 수 있소.':'말에서 내렸소.';
+   return on?t('말에 올랐소. 빨리 달릴 수 있소.'):t('말에서 내렸소.');
   }
   const movement=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
   document.addEventListener('keydown',event=>{
@@ -1092,7 +1093,7 @@ async function main(){
  const orbitNavigation=setupOrbitNavigation(camera,controls,renderer.domElement,ray=>cityWall.raycastGround(ray,true),()=>!!firstPerson?.active,(x,z)=>{
   try{const s=cityWall.supportAt(x,z,.2,.2,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible?s.road.max*exaggeration:-Infinity)}catch{return null}
  });
- renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();el('error').textContent='3D 그래픽 연결이 끊겼습니다. 페이지를 새로 고쳐 주세요.'});
+ renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();el('error').textContent=t('3D 그래픽 연결이 끊겼습니다. 페이지를 새로 고쳐 주세요.')});
  // NPC conversations and the shop. Facts in dialogue carry sources; greetings do not.
  {
   const fill=(text,values)=>text.replace(/\{(\w+)\}/g,(_,k)=>values[k]??'');
@@ -1114,8 +1115,8 @@ async function main(){
      let npc;
      if(role==='keeper')npc={key:'keeper',mode:'overlay',portrait:'keeper',name:npcData.keeper.name,subtitle:npcData.keeper.subtitle,nodes:npcData.keeper.nodes,position,maxDistance:300,
       begin:()=>model.userData.startTalk(),finish:()=>model.userData.stopTalk(),face:camera=>{model.userData.talk.face=model.worldToLocal(camera.clone())}};
-     else if(role==='officer')npc={key:'officer:'+feature.id,mode:'overlay',portrait:'officer',name:gate+' 수문장',subtitle:fill(npcData.officer.subtitle,{unit}),nodes:fillNodes(npcData.officer.nodes,{gate,unit}),position};
-     else npc={key:'soldier:'+feature.id,mode:'bubble',portrait:'soldier',name:(feature.category==='성문'?gate:unit)+' 군사',nodes:{hello:{text:pickOne(npcData.soldier.greetings,at.x+at.z)}},position};
+     else if(role==='officer')npc={key:'officer:'+feature.id,mode:'overlay',portrait:'officer',name:t('{gate} 수문장',{gate}),subtitle:fill(npcData.officer.subtitle,{unit}),nodes:fillNodes(npcData.officer.nodes,{gate,unit}),position};
+     else npc={key:'soldier:'+feature.id,mode:'bubble',portrait:'soldier',name:t('{unit} 군사',{unit:feature.category==='성문'?gate:unit}),nodes:{hello:{text:pickOne(npcData.soldier.greetings,at.x+at.z)}},position};
      best={distance,npc};
     }
    }
@@ -1126,7 +1127,7 @@ async function main(){
    for(const k of sijeon.keepers()){
     const distance=hitTest(event,k.position,1.8,120);if(distance===null||(best&&best.distance<=distance))continue;
     const values={shop:`${k.trade}(${k.hanja})`,sells:k.sells,about:npcData.shops[k.trade]?.about??''};
-    best={distance,npc:{key:'merchant:'+k.index,mode:'overlay',portrait:'merchant',name:k.trade+' 상인',subtitle:k.sells+'을 파는 시전',nodes:fillNodes(npcData.merchant.nodes,values),merchant:k,position:()=>k.position,maxDistance:120}};
+    best={distance,npc:{key:'merchant:'+k.index,mode:'overlay',portrait:'merchant',name:t('{shop} 상인',{shop:k.trade}),subtitle:t('{sells}을 파는 시전',{sells:k.sells}),nodes:fillNodes(npcData.merchant.nodes,values),merchant:k,position:()=>k.position,maxDistance:120}};
    }
    return best;
   }});
@@ -1149,8 +1150,8 @@ async function main(){
  }
  frameUpdate=dt=>{firstPerson?.update(dt);together?.update(dt);npcDialogue?.update();pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));if(horseDealer){horseDealer.visible=bridges.visible;if(horseDealer.visible)horseDealer.userData.update(time,groundAt(horseDealer))}updateBuildingNames()};
  toolbarControls.forEach(c=>c.disabled=false);el('channel-depth').disabled=!channelState.enabled;
- await stage(8,'모든 요소를 불러왔습니다');loading.ready=true;el('scene-loading').hidden=true;
- el('status').textContent='3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽';
+ await stage(8,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
+ el('status').textContent=t('3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽');
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
  // Collision world for walking, built once every layer has placed its buildings.
  collision=createCollision();
@@ -1174,4 +1175,4 @@ async function main(){
  for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
  window.terrain3d={ready:true,cityCentre,drills,guardModels,horseDealer,get npcDialogue(){return npcDialogue},get shop(){return shop},landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
-main().catch(error=>{el('error').textContent='일부 요소를 불러오지 못했습니다: '+(error.message||'지도 또는 화면 자료 요청에 실패했습니다.');el('status').textContent='현재까지 준비된 화면을 유지합니다.';el('loading-message').textContent='불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.';el('loading-retry').hidden=false;console.error(error)});
+main().catch(error=>{el('error').textContent=t('일부 요소를 불러오지 못했습니다: ')+(error.message||t('지도 또는 화면 자료 요청에 실패했습니다.'));el('status').textContent=t('현재까지 준비된 화면을 유지합니다.');el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;console.error(error)});
