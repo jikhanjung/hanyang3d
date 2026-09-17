@@ -1156,9 +1156,20 @@ async function main(){
  // Collision world for walking, built once every layer has placed its buildings.
  collision=createCollision();
  for(const b of buildings.children){
-  // Gates are open passages; hall sites are walkable terraces (their height comes from first-person groundAt).
-  const f=b.userData.feature;if(f.category==='성문'||f.display_model==='palace_gate'||f.display_model==='hall_site')continue;
+  // Hall sites are walkable terraces (their height comes from first-person groundAt).
+  const f=b.userData.feature;if(f.display_model==='hall_site')continue;
   const [w,,d]=f.symbol_size_m,frame={x:b.position.x,z:b.position.z,yaw:b.rotation.y},shown=()=>buildings.visible&&b.visible;
+  // Gates block everything except their passages: the arched openings of a city gate (from the gate model), the
+  // door bays of a palace gate (outer bays are plastered walls). Solid stretches are added as blocks along local x.
+  const gate=b.getObjectByName('gate-model');
+  if(gate?.userData.centres||f.display_model==='palace_gate'){
+   let open,depth;
+   if(gate?.userData.centres){const {centres,doorWidth}=gate.userData;open=centres.map(c=>[c-doorWidth/2,c+doorWidth/2]);depth=d/2}
+   else{const bays=f.palace_gate_bays??3,doorBays=Math.min(3,bays),gw=w*.8,bayW=gw/bays,half=doorBays*bayW/2;open=[[-half,half]];depth=d*.3}
+   const edges=[-w/2,...open.flat(),w/2];
+   for(let i=0;i<edges.length;i+=2){const a=edges[i],c=edges[i+1];if(c-a>.2)collision.addLocal(frame,(a+c)/2,0,(c-a)/2,depth,shown)}
+   continue;
+  }
   if(f.display_model==='house_site'||f.display_model==='training_ground'){
    // Walled compounds block only their walls, leaving the south gate open.
    const t=1.2,gate=Math.min(9,w*.2),run=(w-gate)/2;

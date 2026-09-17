@@ -113,7 +113,33 @@ with sync_playwright() as p:
       return out; }''')
     assert all(s['air'] == 0 and abs(s['eye'] - 1.65) < .05 for s in scaled), scaled
 
+    # Gates: the stone base beside the arch blocks, the arched passage lets the walker through (Sungnyemun); a
+    # palace gate blocks its outer wall bays and opens its door bays (Donhwamun).
+    gates = page.evaluate('''async () => {
+      const T = await import('/webapp/static/vendor/three/three.module.js');
+      const t = terrain3d, fp = t.firstPerson, out = {};
+      const run = (id, lx, into) => {
+        const o = t.buildings.children.find(b => b.userData.feature.id === id), [w, h, d] = o.userData.feature.symbol_size_m;
+        const s = o.localToWorld(new T.Vector3(lx, 0, -d / 2 - 6)), g = o.localToWorld(new T.Vector3(lx, 0, d / 2 + 6));
+        fp.placeAt(s.x, s.z, Math.atan2(-(g.x - s.x), -(g.z - s.z)));
+        window.dispatchEvent(new Event('blur'));
+        document.dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyW', bubbles: true}));
+        for (let i = 0; i < 400; i++) { fp.update(1 / 30); if (o.worldToLocal(fp.eye.clone()).z > d / 2 + 4) break; }
+        document.dispatchEvent(new KeyboardEvent('keyup', {code: 'KeyW'}));
+        return {localZ: o.worldToLocal(fp.eye.clone()).z, halfDepth: d / 2};
+      };
+      const gate = t.buildings.children.find(b => b.userData.feature.id === 'sungnyemun').getObjectByName('gate-model').userData;
+      out.arch = run('sungnyemun', gate.centres[0], true);
+      out.wall = run('sungnyemun', gate.centres[0] + gate.doorWidth / 2 + 3, false);
+      const dh = t.buildings.children.find(b => b.userData.feature.id === 'donhwamun');
+      out.door = run('donhwamun', 0, true);
+      out.bay = run('donhwamun', dh.userData.feature.symbol_size_m[0] * .38, false);
+      return out;
+    }''')
+    assert gates['arch']['localZ'] > gates['arch']['halfDepth'] and gates['door']['localZ'] > gates['door']['halfDepth'], gates
+    assert gates['wall']['localZ'] < -gates['wall']['halfDepth'] and gates['bay']['localZ'] < -gates['bay']['halfDepth'] * .5, gates
+
     assert not errors, errors
     print('PASS: walk surfaces', {'bridge_eye_above_deck': round(deck['eyeAboveTop'], 2), 'terrace_eye_above_floor': round(up['eyeAboveTop'], 2),
-                                  'stopped_at_side_x': round(side['local'][0], 2), 'half_width': w / 2, 'fell_m': round(fall['dropped'], 2), 'jump_edge_m': round(ledge['edge'], 2), 'landed_local_z': round(ledge['localZ'], 1)}, flush=True)
+                                  'stopped_at_side_x': round(side['local'][0], 2), 'half_width': w / 2, 'fell_m': round(fall['dropped'], 2), 'jump_edge_m': round(ledge['edge'], 2), 'landed_local_z': round(ledge['localZ'], 1), 'gate_arch_through': round(gates['arch']['localZ'], 1), 'gate_wall_stopped_at': round(gates['wall']['localZ'], 1)}, flush=True)
     b.close()
