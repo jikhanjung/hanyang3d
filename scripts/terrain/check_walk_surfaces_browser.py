@@ -134,10 +134,20 @@ with sync_playwright() as p:
       const dh = t.buildings.children.find(b => b.userData.feature.id === 'donhwamun');
       out.door = run('donhwamun', 0, true);
       out.bay = run('donhwamun', dh.userData.feature.symbol_size_m[0] * .38, false);
+      // Heunginjimun's barbican: walking straight at its curved wall from outside the city is stopped before the gate.
+      const hg = t.buildings.children.find(b => b.userData.feature.id === 'heunginjimun'), hf = hg.userData.feature, [hw, hh, hd] = hf.symbol_size_m, outSide = hf.outer_side ?? 1;
+      const R = hw * .6, s = hg.localToWorld(new T.Vector3(0, 0, outSide * (hd / 2 + R + 8))), g = hg.localToWorld(new T.Vector3(0, 0, 0));
+      fp.placeAt(s.x, s.z, Math.atan2(-(g.x - s.x), -(g.z - s.z)));
+      window.dispatchEvent(new Event('blur'));
+      document.dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyW', bubbles: true}));
+      for (let i = 0; i < 400; i++) fp.update(1 / 30);
+      document.dispatchEvent(new KeyboardEvent('keyup', {code: 'KeyW'}));
+      out.barbican = {localZ: outSide * hg.worldToLocal(fp.eye.clone()).z, wallZ: hd / 2 + R};
       return out;
     }''')
     assert gates['arch']['localZ'] > gates['arch']['halfDepth'] and gates['door']['localZ'] > gates['door']['halfDepth'], gates
     assert gates['wall']['localZ'] < -gates['wall']['halfDepth'] and gates['bay']['localZ'] < -gates['bay']['halfDepth'] * .5, gates
+    assert gates['barbican']['localZ'] > gates['barbican']['wallZ'] + .5, gates
 
     assert not errors, errors
     print('PASS: walk surfaces', {'bridge_eye_above_deck': round(deck['eyeAboveTop'], 2), 'terrace_eye_above_floor': round(up['eyeAboveTop'], 2),

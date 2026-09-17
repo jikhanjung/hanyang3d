@@ -1168,6 +1168,14 @@ async function main(){
    else{const bays=f.palace_gate_bays??3,doorBays=Math.min(3,bays),gw=w*.8,bayW=gw/bays,half=doorBays*bayW/2;open=[[-half,half]];depth=d*.3}
    const edges=[-w/2,...open.flat(),w/2];
    for(let i=0;i<edges.length;i+=2){const a=edges[i],c=edges[i+1];if(c-a>.2)collision.addLocal(frame,(a+c)/2,0,(c-a)/2,depth,shown)}
+   // The barbican of Heunginjimun: the same 16 wall pieces as gate.js draws, one oriented block each.
+   if(f.id==='heunginjimun'){
+    const R=w*.6,segs=16,a0=-Math.PI/2+.08,a1=Math.PI/2-.55,out=f.outer_side??1,c=Math.cos(frame.yaw),sn=Math.sin(frame.yaw);
+    for(let i=0;i<segs;i++){
+     const s0=a0+(a1-a0)*i/segs,s1=a0+(a1-a0)*(i+1)/segs,am=(s0+s1)/2,len=R*(s1-s0)+.25,lx=R*Math.sin(am),lz=out*(d/2+R*Math.cos(am));
+     collision.add({x:frame.x+lx*c+lz*sn,z:frame.z-lx*sn+lz*c,hw:len/2,hd:.9,yaw:frame.yaw+out*am,visible:shown});
+    }
+   }
    continue;
   }
   if(f.display_model==='house_site'||f.display_model==='training_ground'){
