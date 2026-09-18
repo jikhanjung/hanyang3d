@@ -30,7 +30,62 @@ export function createLandmark1907(f,w,h,d){
   for(let i=0;i<4;i++)box('hall-door',x+(i/4-.375)*hw,eave*.43,z+hd/2+.06,hw/5,eave*.65,.15,'door');
   roof(x,eave,z,hw+2,hd+2,2.5);
  };
- if(kind==='bukmyo'){
+ if(kind==='commemorative_pavilion'){
+  box('terrace',0,.45,0,w*.86,.9,d*.72,'stone');
+  // Open three-by-two-bay pavilion; the monument remains visible between posts.
+  for(let i=0;i<=3;i++)for(let j=0;j<=2;j++)if(i===0||i===3||j===0||j===2)post((i/3-.5)*w*.65,(j/2-.5)*d*.5,.9,4.7);
+  box('painted-beam',0,5.5,0,w*.74,.45,d*.6,'trim');roof(0,5.75,0,w*.94,d*.8,2.1);
+  const turtle=add('turtle-base',new THREE.SphereGeometry(1,12,8),0,1.28,0,'stone');turtle.scale.set(1.5,.48,1.8);
+  cylinder('stele-plinth',0,1.7,0,1,1.1,.4,'stone',8);
+  box('memorial-stele',0,2.9,0,1.5,2.1,.55,'stone');roof(0,4,0,2.1,1.1,.65);
+  for(const side of [-1,1])box('stone-gate-post',side*1.65,1.45,d*.43,.5,2.9,.5,'stone');
+  box('manse-gate-lintel',0,2.85,d*.43,4.1,.55,.65,'stone');
+  for(let i=0;i<3;i++)box('entry-step',0,.12+i*.12,d*.34-i*.45,3.1,.24+i*.24,.55,'stone');
+  group.userData.plan='open-pavilion-stele-manse-gate';
+ }else if(kind==='octagonal_bandstand'){
+  const r=w*.39;
+  cylinder('octagonal-terrace',0,.45,0,r+.6,r+.9,.9,'stone',8);
+  for(let i=0;i<8;i++){
+   const a=i*Math.PI/4,x=Math.sin(a)*r*.82,z=Math.cos(a)*r*.82;post(x,z,.9,4.4);
+   const beam=box('octagonal-beam',Math.sin(a+Math.PI/8)*r*.76,5.25,Math.cos(a+Math.PI/8)*r*.76,r*.66,.45,.4,'trim');beam.rotation.y=a+Math.PI/8;
+  }
+  cylinder('octagonal-eaves',0,5.6,0,r*.91,r*1.23,.65,'roof',8);
+  cylinder('octagonal-roof',0,6.7,0,.45,r*1.19,1.65,'roof',8);
+  cylinder('finial',0,7.8,0,.08,.32,.65,'gold',8);
+  for(let i=0;i<3;i++)box('entry-step',0,.12+i*.12,r+1-i*.5,2.8,.24+i*.24,.65,'stone');
+  group.userData.sides=8;group.userData.plan='open-octagonal-bandstand';
+ }else if(kind==='jeonggwanheon'){
+  box('stone-platform',0,.35,0,w,.7,d,'stone');
+  box('inner-grey-brick-hall',0,2.6,-d*.1,w*.63,3.8,d*.56,'stone');
+  for(let i=0;i<=7;i++)for(const side of [-1,1])post((i/7-.5)*w*.88,side*d*.4,.7,4.5,'cream');
+  for(let j=1;j<5;j++)for(const side of [-1,1])post(side*w*.44,(j/5-.5)*d*.8,.7,4.5,'cream');
+  for(let i=0;i<7;i++){
+   const x=(i/7-3/7)*w*.88;
+   box('inner-window',x,2.8,d*.18,w*.065,2,.13,'glass');
+   if(i!==3){box('veranda-railing',x,1.65,d*.4,w*.1,.15,.15,'gold');for(let k=-1;k<=1;k++)box('baluster',x+k*w*.03,1.25,d*.4,.08,.85,.08,'trim')}
+  }
+  roof(0,5.3,0,w,d,2.5);group.userData.bays=[7,5];group.userData.plan='inner-hall-open-veranda';
+ }else if(kind==='dondeokjeon'){
+  box('platform',0,.35,0,w,.7,d,'stone');
+  box('guest-hall',0,5.3,-d*.06,w*.84,9.6,d*.7,'brick');
+  for(const y of [.9,5.3,10.1])box('stone-belt',0,y,-d*.06,w*.88,.35,d*.74,'stone');
+  for(let floor=0;floor<2;floor++)for(let i=0;i<7;i++)for(const side of [-1,1]){
+   const x=(i-3)*w*.113,z=-d*.06+side*d*.357,y=2.8+floor*4.55;
+   box('window-surround',x,y,z,w*.075,2.8,.24,'cream');box('blue-window-frame',x,y,z+side*.14,w*.058,2.5,.1,'trim');box('window',x,y,z+side*.2,w*.044,2.15,.08,'glass');
+  }
+  // Repeated open arches on both storeys of the front veranda.
+  for(let floor=0;floor<2;floor++){
+   const base=.7+floor*4.6;box('veranda-floor',0,base,d*.36,w*.9,.3,d*.2,'stone');
+   for(let i=0;i<=7;i++)post((i/7-.5)*w*.86,d*.43,base,4.4,'stone');
+   for(let i=0;i<7;i++){
+    const radius=w*.86/14,shape=new THREE.Shape();shape.absarc(0,0,radius,0,Math.PI,false);shape.lineTo(-radius+.22,0);shape.absarc(0,0,radius-.22,Math.PI,0,true);shape.closePath();
+    add('veranda-arch',new THREE.ExtrudeGeometry(shape,{depth:.25,bevelEnabled:false}),((i+.5)/7-.5)*w*.86,base+3.2,d*.43,'stone');
+   }
+  }
+  roof(0,10.4,-d*.06,w*.94,d*.86,3.4,1);
+  for(const side of [-1,1]){box('front-end-bay',side*w*.39,10.9,d*.29,w*.13,2,d*.28,'brick');gable(side*w*.39,11.9,d*.29,w*.18,d*.32,1.9)}
+  group.userData.plan='two-storey-guest-hall-arched-veranda';
+ }else if(kind==='bukmyo'){
   // Photo: raised main hall, three front bays, broad stair and side ranges.
   const hw=w*.4,hd=d*.32,hz=-d*.2;
   box('raised-stone-terrace',0,.95,hz,hw+3,1.9,hd+3,'stone');box('main-hall',0,4.3,hz,hw,4.8,hd,'door');

@@ -166,7 +166,7 @@ class ContentTests(TestCase):
         self.assertEqual(localize(loaded, 'ko'), localize(source, 'ko'))
         self.assertEqual([s['title_en'] for s in loaded['stories']], [s['title_en'] for s in source['stories']])
         self.assertTrue(all(s['text_en'] for s in loaded['stories']))
-        self.assertEqual(Building.objects.count(), 180)
+        self.assertEqual(Building.objects.count(), 184)
         self.assertEqual(Resource.objects.count(), 129)
         originals = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']
         for original, actual in zip(originals, load_buildings()['features']):
@@ -255,7 +255,7 @@ class ContentTests(TestCase):
             path = Path(root) / 'export.json'
             call_command('export_content', str(path), stdout=StringIO())
             data = json.loads(path.read_text())
-            self.assertEqual(sum(r['model'] == 'webapp.building' for r in data), 180)
+            self.assertEqual(sum(r['model'] == 'webapp.building' for r in data), 184)
             self.assertTrue(all(r['model'].startswith('webapp.') for r in data))
             self.assertNotIn('Test-password', path.read_text())
             with self.assertRaises(CommandError): call_command('export_content', str(path), stdout=StringIO())

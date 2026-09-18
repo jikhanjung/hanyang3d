@@ -4711,6 +4711,308 @@
           }
         ]
       }
+    },
+    {
+      "id": "gyeonggi-monument-1907",
+      "name": "1907년 칭경기념비전",
+      "name_en": "Gojong Commemorative Pavilion (1907)",
+      "category": "기념·문화",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "commemorative_pavilion",
+      "symbol_size_m": [
+        12,
+        8.5,
+        14
+      ],
+      "display_yaw_deg": 0,
+      "lod_distance_m": 1400,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          764,
+          2205
+        ],
+        "anchor": "building_center",
+        "method": "estimated_within_map_precinct",
+        "note": "황토현 사거리 북동쪽, 종로 북측의 작은 필지에 추정 배치. 지도에 개별 전각을 확정 판독한 것은 아니며 현존 위치 관계를 참고했다."
+      },
+      "position_status": "estimated",
+      "size_status": "estimated_not_measured",
+      "model_note": "프로젝트 제작 개념 모형. 배치·치수·색채 추정; 사진·실측의 정밀 복원 아님.",
+      "temporal": {
+        "existence": {
+          "start_year": 1903,
+          "end_year": null,
+          "status": "documented_with_date_uncertainty"
+        },
+        "depiction": {
+          "start_year": 1903,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0003945",
+          "https://www.minjok.or.kr/archives/117388"
+        ],
+        "note": "1902년 기념 사업 · 1903년 완공설 병기"
+      },
+      "info": {
+        "summary": "고종 즉위 40주년과 기로소 입사를 기념한 비석을 보호하는 전각입니다. 황토현 사거리에 자리해 대한제국의 도시 정비와 황제국의 상징을 보여줍니다. 비석·기와지붕·기둥과 만세문을 단순화했습니다. 일반 해설의 1902년 건립과 연구의 1903년 완공 설명이 달라, 완공 모습은 보수적으로 1903년부터 표시하도록 기록했습니다. 당시 필지와 치수는 추정입니다.",
+        "summary_en": "A pavilion sheltering the monument to Gojong’s fortieth regnal anniversary. The open hall, stele and stone entrance are simplified. Sources give 1902 for erection and 1903 for completion; this completed model uses 1903 conservatively. Placement and dimensions are estimates.",
+        "period": "1902년 기념 사업 · 1903년 완공설 병기",
+        "period_en": "1902 commemoration / 1903 completion account",
+        "in_1750": "1750년에는 이 건물이 없었음.",
+        "in_1750_en": "This building did not exist in 1750.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과 — 칭경기념비",
+            "title_en": "AKS — Gojong monument",
+            "url": "https://encykorea.aks.ac.kr/Article/E0003945"
+          },
+          {
+            "title": "민족문제연구소 — 기념비전과 도로원표",
+            "title_en": "Institute for Research in Collaborationist Activities — Monument history",
+            "url": "https://www.minjok.or.kr/archives/117388"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tapgol-palgakjeong-1907",
+      "name": "1907년 탑골공원 팔각정",
+      "name_en": "Tapgol Park Pavilion (1907)",
+      "category": "기념·문화",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "octagonal_bandstand",
+      "symbol_size_m": [
+        16,
+        8.5,
+        16
+      ],
+      "display_yaw_deg": 0,
+      "lod_distance_m": 1400,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1228,
+          2208
+        ],
+        "anchor": "building_center",
+        "method": "estimated_within_map_precinct",
+        "note": "원도 파고다공원의 타원형 내부, 기존 원각사지 석탑 남쪽에 추정 배치. 공원 구역은 판독 가능하나 팔각정 자체의 기호는 식별하지 못했다."
+      },
+      "position_status": "estimated",
+      "size_status": "estimated_not_measured",
+      "model_note": "프로젝트 제작 개념 모형. 배치·치수·색채 추정; 사진·실측의 정밀 복원 아님.",
+      "temporal": {
+        "existence": {
+          "start_year": 1902,
+          "end_year": null,
+          "status": "documented_with_date_uncertainty"
+        },
+        "depiction": {
+          "start_year": 1902,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=2111100730000&ctptUid=13898859705367503382",
+          "https://mediahub.seoul.go.kr/archives/2005551"
+        ],
+        "note": "고종대 건립 · 1902년 안내를 참고"
+      },
+      "info": {
+        "summary": "파고다공원 안에 세운 팔각 정자입니다. 황실공원의 음악 연주 등과 연결되는 장소로, 종로에 등장한 새로운 공원 문화를 보여줍니다. 1907년 장면에서는 여덟 기둥과 팔각 지붕·기단으로 표현했습니다. 일반 공개는 1913년부터라는 국가유산 설명을 따르며, 1919년 독립선언과 관련된 후대 기념물은 넣지 않았습니다. 1902년 건립 안내를 참고했지만 정확한 당시 위치·규모는 추정입니다.",
+        "summary_en": "An open octagonal pavilion in Pagoda Park, associated with imperial park music. Eight posts, an octagonal roof and a terrace form this estimated model. Public opening in 1913 and the independence declaration in 1919 belong to later history; later monuments are excluded.",
+        "period": "고종대 건립 · 1902년 안내를 참고",
+        "period_en": "Gojong era · 1902 according to Seoul guidance",
+        "in_1750": "1750년에는 이 건물이 없었음.",
+        "in_1750_en": "This building did not exist in 1750.",
+        "sources": [
+          {
+            "title": "국가유산청 — 탑골공원 팔각정",
+            "title_en": "Korea Heritage Service — Tapgol pavilion",
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=2111100730000&ctptUid=13898859705367503382"
+          },
+          {
+            "title": "서울시 — 탑골공원",
+            "title_en": "Seoul — Tapgol Park",
+            "url": "https://mediahub.seoul.go.kr/archives/2005551"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dondeokjeon-1907",
+      "name": "1907년 돈덕전",
+      "name_en": "Dondeokjeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "dondeokjeon",
+      "symbol_size_m": [
+        32,
+        14,
+        22
+      ],
+      "display_yaw_deg": -8,
+      "lod_distance_m": 1400,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          583,
+          2403
+        ],
+        "anchor": "building_center",
+        "method": "estimated_within_map_precinct",
+        "note": "원도 경운궁 본궁 서북쪽 궁역에 추정 배치. 중화전 서북쪽·중명전 동쪽 관계를 참고했으며 개별 건물 기호 확정 판독은 아님."
+      },
+      "position_status": "estimated",
+      "size_status": "estimated_not_measured",
+      "model_note": "프로젝트 제작 개념 모형. 배치·치수·색채 추정; 사진·실측의 정밀 복원 아님.",
+      "temporal": {
+        "existence": {
+          "start_year": 1903,
+          "end_year": 1926,
+          "status": "documented_with_date_uncertainty",
+          "end_year_range": [
+            1921,
+            1926
+          ]
+        },
+        "depiction": {
+          "start_year": 1903,
+          "end_year": 1926,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20230925142548033336&schM=view",
+          "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800"
+        ],
+        "note": "1902–1903년 건립 · 1921–1926년 훼철; 돈덕전의 종료 1926은 훼철 범위 상한이며 정확한 철거 연도가 아님."
+      },
+      "info": {
+        "summary": "1902–1903년에 지은 서양식 영빈관입니다. 외국 사절을 맞는 황궁의 공간이었고, 1907년 8월 27일 순종의 황제 즉위식이 열렸습니다. 고종의 강제 퇴위와 순종 즉위가 이어지는 시기의 중요한 장소입니다. 두 층의 본체와 아치가 반복되는 베란다, 지붕을 개념적으로 표현했습니다. 배치·치수·색채·장식은 추정이며 현재 재건 건물의 실내를 복원한 모형은 아닙니다.",
+        "summary_en": "Built in 1902–1903 as an imperial guest hall. Sunjong’s enthronement took place here on 27 August 1907 following Gojong’s forced abdication. Two storeys and repeated veranda arches are simplified; location, dimensions, colours and ornament are estimates.",
+        "period": "1902–1903년 건립 · 1921–1926년 훼철",
+        "period_en": "Built 1902–1903 · demolished within 1921–1926",
+        "in_1750": "1750년에는 이 건물이 없었음.",
+        "in_1750_en": "This building did not exist in 1750.",
+        "sources": [
+          {
+            "title": "궁능유적본부 — 돈덕전 개관",
+            "title_en": "Royal Palaces and Tombs Center — Dondeokjeon",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20230925142548033336&schM=view"
+          },
+          {
+            "title": "우리역사넷 — 순종",
+            "title_en": "National Institute of Korean History — Sunjong",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jeonggwanheon-1907",
+      "name": "1907년 정관헌",
+      "name_en": "Jeonggwanheon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "jeonggwanheon",
+      "symbol_size_m": [
+        25,
+        8,
+        17
+      ],
+      "display_yaw_deg": -8,
+      "lod_distance_m": 1400,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          666,
+          2396
+        ],
+        "anchor": "building_center",
+        "method": "estimated_within_map_precinct",
+        "note": "원도 경운궁 본궁 북쪽 구역, 중화전 북동쪽에 추정 배치. 정관헌의 후원 위치 관계를 참고했으며 개별 기호 확정 판독은 아님."
+      },
+      "position_status": "estimated",
+      "size_status": "estimated_not_measured",
+      "model_note": "프로젝트 제작 개념 모형. 배치·치수·색채 추정; 사진·실측의 정밀 복원 아님.",
+      "temporal": {
+        "existence": {
+          "start_year": 1900,
+          "end_year": null,
+          "status": "documented_with_date_uncertainty"
+        },
+        "depiction": {
+          "start_year": 1900,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=79%2C00820000%2C11&pageNo=1_1_1_1",
+          "https://www.culture.go.kr/portal/cltKnw/artCont/view.do?cdVal=E&knwldgClsfCd=E111&knwldgClsfSubCd=&knwldgSn=807&menuNo=200022",
+          "https://dh.aks.ac.kr/sillokwiki/index.php/정관헌(靜觀軒)"
+        ],
+        "note": "1900년 안내 · 1901년 어진 봉안 기록"
+      },
+      "info": {
+        "summary": "서양식 열주와 베란다에 전통 지붕 형식을 결합한 궁중 건물입니다. 국가유산 안내는 1900년으로 설명하고, 1901년 태조의 어진을 임시 봉안한 기록도 있습니다. 7칸×5칸의 기둥 배열과 내부 벽돌 공간·열린 앞마루를 단순화했습니다. 사바틴 설계설은 확정된 사실로 다루지 않았습니다. 현재 실측 모델을 사용한 것이 아니라 당시 건축을 설명하는 개념 모형이며 위치·치수·색채는 추정입니다.",
+        "summary_en": "A palace hall combining a veranda and Western columns with a traditional roof form. Heritage guidance dates it to 1900, and a 1901 record describes temporary enshrinement of Taejo’s portrait. This conceptual seven-by-five-bay model uses estimated dimensions and placement; the proposed attribution to Sabatin is not treated as established.",
+        "period": "1900년 안내 · 1901년 어진 봉안 기록",
+        "period_en": "Dated 1900 in heritage guidance · recorded use in 1901",
+        "in_1750": "1750년에는 이 건물이 없었음.",
+        "in_1750_en": "This building did not exist in 1750.",
+        "sources": [
+          {
+            "title": "국가유산포털 — 정관헌",
+            "title_en": "Korea Heritage Portal — Jeonggwanheon",
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?VdkVgwKey=79%2C00820000%2C11&pageNo=1_1_1_1"
+          },
+          {
+            "title": "문화포털 — 정관헌 건축",
+            "title_en": "Culture Portal — Jeonggwanheon architecture",
+            "url": "https://www.culture.go.kr/portal/cltKnw/artCont/view.do?cdVal=E&knwldgClsfCd=E111&knwldgClsfSubCd=&knwldgSn=807&menuNo=200022"
+          },
+          {
+            "title": "실록위키 — 정관헌",
+            "title_en": "Sillokwiki — Jeonggwanheon",
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/정관헌(靜觀軒)"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
     }
   ]
 }

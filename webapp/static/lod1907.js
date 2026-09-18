@@ -10,7 +10,22 @@ export function prepareLandmarkLod(model){
  const box=(x,y,z,a,b,c,mat='wall')=>add(new THREE.BoxGeometry(a,b,c),x,y,z,mat);
  const roof=(x,y,z,a,b,rise=3)=>add(hipGableRoof(a,b,rise,.3,.55),x,y,z,'roof');
  const kind=f.landmark_kind;
- if(kind==='bukmyo'){
+ if(kind==='octagonal_bandstand'){
+  add(new THREE.CylinderGeometry(w*.39+.6,w*.39+.9,.9,8),0,.45,0,'stone');
+  for(let i=0;i<8;i++){const a=i*Math.PI/4;box(Math.sin(a)*w*.32,3,Math.cos(a)*w*.32,.45,4.5,.45)}
+  add(new THREE.CylinderGeometry(.45,w*.465,2.3,8),0,6.4,0,'roof');
+ }else if(kind==='commemorative_pavilion'){
+  box(0,.45,0,w*.86,.9,d*.72,'stone');box(0,2.8,0,1.5,3,.65,'stone');
+  for(const x of [-1,1])for(const z of [-1,1])box(x*w*.325,3.2,z*d*.25,.5,4.7,.5);
+  roof(0,5.75,0,w*.94,d*.8,2.1);
+ }else if(kind==='jeonggwanheon'){
+  box(0,.35,0,w,.7,d,'stone');box(0,2.6,-d*.1,w*.63,3.8,d*.56,'stone');
+  for(let i=0;i<=7;i++)box((i/7-.5)*w*.88,2.95,d*.4,.4,4.5,.4);
+  roof(0,5.3,0,w,d,2.5);
+ }else if(kind==='dondeokjeon'){
+  box(0,.35,0,w,.7,d,'stone');box(0,5.3,-d*.06,w*.84,9.6,d*.7,'brick');roof(0,10.4,-d*.06,w*.94,d*.86,3.4);
+  for(let i=0;i<=7;i++)box((i/7-.5)*w*.86,5.3,d*.43,.5,9.2,.5,'stone');
+ }else if(kind==='bukmyo'){
   box(0,.95,-d*.2,w*.4+3,1.9,d*.32+3,'stone');box(0,4.3,-d*.2,w*.4,4.8,d*.32);const r=roof(0,6.9,-d*.2,d*.32+3,w*.4+3,3.2);r.rotation.y=Math.PI/2;
   for(const side of [-1,1]){box(side*w*.36,1.9,d*.1,w*.16,3.8,d*.55);roof(side*w*.36,3.8,d*.1,w*.16+2,d*.55+2,2.5)}
  }else if(kind==='bookshop'){
