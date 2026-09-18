@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [194 — 명동성당 내부 보행 성능](20260919_194_cathedral_interior_performance.md)
 - [193 — v0.5.20 배포](20260918_193_deploy_v0520.md)
 - [192 — 명동성당 근거리 세부와 내부](20260918_192_myeongdong_interior.md)
 

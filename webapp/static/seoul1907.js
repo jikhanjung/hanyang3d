@@ -201,16 +201,19 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
  walking.pedestrians.setVehicleAvoider((p,old,dt)=>trams.avoid(p,old,dt,(x,z,r)=>walking.collision.hit(x,z,r)));
  await stage(5,t('사람 표시 완료 · 마무리합니다'));
  updateLayers();
- // Broad-phase bounds avoid raycasting every building for every DOM label.
+ // Broad-phase bounds avoid raycasting every building for every DOM label. The ray then tests the building's
+ // coarse LOD silhouette, whatever its visibility: the detailed cathedral alone has tens of thousands of triangles
+ // and every on-screen label would otherwise cross it from inside, at several milliseconds per label.
  scene.updateMatrixWorld(true);
- const occluders=buildings.map(model=>({model,bounds:new THREE.Box3().setFromObject(model)}));
+ const occluders=buildings.map(model=>({model,bounds:new THREE.Box3().setFromObject(model),silhouette:model.userData.lod?.proxy??null}));
  const labelRay=new THREE.Raycaster(),labelDirection=new THREE.Vector3();
  const labelOccluded=(point,owner)=>{
   const distance=camera.position.distanceTo(point);
   if(distance<.1)return false;
   labelRay.set(camera.position,labelDirection.copy(point).sub(camera.position).normalize());labelRay.far=distance-.05;
-  for(const {model,bounds} of occluders){
+  for(const {model,bounds,silhouette} of occluders){
    if(model===owner||!model.visible||!labelRay.ray.intersectsBox(bounds))continue;
+   if(silhouette){if(labelRay.intersectObject(silhouette,true).length)return true;continue}
    const hits=labelRay.intersectObject(model,true);
    if(hits.some(hit=>{let o=hit.object;while(o){if(!o.visible)return false;o=o.parent}return true}))return true;
   }

@@ -169,8 +169,11 @@ export function createCathedral1907(feature,w,h,d){
   group.traverse(m=>{if(!m.isMesh||walkSurfaces.includes(m))return;const g=m.geometry.index?m.geometry.toNonIndexed():m.geometry,p=g.attributes.position;if(!buckets.has(m.material))buckets.set(m.material,[]);const values=buckets.get(m.material);for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m.matrixWorld);values.push(v.x,v.y,v.z)}if(g!==m.geometry)g.dispose();m.geometry.dispose()});
   group.clear();const meshes=[];for(const [mat,values] of buckets){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(values,3));g.computeVertexNormals();const m=new THREE.Mesh(g,mat);m.name=label;group.add(m);meshes.push(m)}return meshes;
  }
- // Camera clipping uses the shell only; floor meshes remain dedicated walking targets.
- const cameraShell=batch(model,'cathedral-shell');model.add(...walkSurfaces);batch(close,'cathedral-fine');model.add(close);
+ // Camera clipping tests the unmerged shell parts kept in a hidden group: each has its own bounding sphere, so the
+ // boom ray checks a few walls rather than every triangle of the merged shell. Floors stay dedicated walking targets.
+ const clip=new THREE.Group();clip.name='cathedral-camera-clip';clip.visible=false;
+ model.traverse(m=>{if(!m.isMesh||walkSurfaces.includes(m))return;const c=new THREE.Mesh(m.geometry,m.material);c.position.copy(m.position);c.rotation.copy(m.rotation);clip.add(c)});
+ batch(model,'cathedral-shell');model.add(...walkSurfaces,clip);batch(close,'cathedral-fine');model.add(close);const cameraShell=[clip];
  Object.assign(model.userData,{conceptual:true,kind:'cathedral',period:feature.temporal,parts,blockingRects:blocks,walkSurfaces,closeDetail:close,closeDistance:260,cameraShell,
   // A short, slightly lowered orbit target keeps the preview at eye level within the map's pitch limit.
   interior:{entry:[0,front+td/2+2],view:[0,2.0,front-4],target:[0,1.65,front-7],bounds:[-nw/2,back,nw/2,front+td/2],estimated:true},accessFront:Math.max(d/2,front+td/2+1),accessHeight:base});

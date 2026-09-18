@@ -47,7 +47,7 @@ with tempfile.TemporaryDirectory() as tmp:
       const p=b.localToWorld(new T.Vector3(8.1,-b.userData.feature.symbol_size_m[1]/2,11));fp.placeAt(p.x,p.z,b.rotation.y+Math.PI/2);fp.update(0);
       const clipped=fp.eye.distanceTo(s.camera.position)<fp.view-.3;
       fp.exit();const levels=[];for(const distance of [100,600,4000,100]){s.camera.position.copy(b.position).add(new T.Vector3(0,0,distance));updateLandmarkLod(b,s.camera);levels.push([b.userData.lod.detail.visible,b.userData.lod.proxy.visible,b.userData.closeDetail.visible])}
-      let meshes=0,triangles=0,finite=true;b.traverse(o=>{if(!o.isMesh)return;meshes++;const p=o.geometry.attributes.position;triangles+=(o.geometry.index?.count??p.count)/3;for(let i=0;i<p.array.length;i++)if(!Number.isFinite(p.array[i]))finite=false});
+      let meshes=0,triangles=0,finite=true;b.traverse(o=>{if(!o.isMesh||!o.visible||o.parent.name==="cathedral-camera-clip")return;meshes++;const p=o.geometry.attributes.position;triangles+=(o.geometry.index?.count??p.count)/3;for(let i=0;i<p.array.length;i++)if(!Number.isFinite(p.array[i]))finite=false});
       return {clipped,levels,meshes,triangles,finite};
      }""")
      assert geometry['clipped'] and geometry['finite'],geometry
