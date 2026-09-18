@@ -3,11 +3,13 @@ import {hipGableRoof,createThroneHall} from './throne_hall.js';
 import {createCityGate} from './gate.js';
 import {createPalaceGate,createGardenPavilion} from './palace.js';
 import {createPagoda} from './pagoda.js';
+import {createCathedral1907} from './cathedral1907.js';
 
 // Project-authored, deliberately simplified period models. Dimensions are seed estimates.
 // All models share the existing renderer convention: ground is local y = -h/2.
 export function createLandmark1907(f,w,h,d){
  const kind=f.landmark_kind;
+ if(f.id==='myeongdong-cathedral-1907')return createCathedral1907(f,w,h,d);
  if(f.display_model==='throne_hall')return createThroneHall(f,w,h,d);
  if(kind==='city_gate')return createCityGate({...f,id:f.gate_identity},w,h,d);
  if(kind==='palace_gate')return createPalaceGate(f,w,h,d);

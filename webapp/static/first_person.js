@@ -8,7 +8,7 @@ const el=id=>document.getElementById(id);
 
 // Shared controls for both eras; terrain, collision and map HUD belong to the scene.
 export function createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile,navigation,positionWorld,
- terrainGround,getWalkables,getSurfaceVersion=()=>1,getCollision=()=>null,onBeforeEnter=()=>{},onExit=()=>{},walkerFactory=createWalker}){
+ terrainGround,getWalkables,getSurfaceVersion=()=>1,getCollision=()=>null,getCameraObstacles=()=>[],onBeforeEnter=()=>{},onExit=()=>{},walkerFactory=createWalker}){
 
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
   // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S. Space jumps.
@@ -18,7 +18,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const JUMP_SPEED=4.5,GRAVITY=9.8;
   const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
 
-  const eye=new THREE.Vector3(),boom=new THREE.Vector3();
+  const eye=new THREE.Vector3(),boom=new THREE.Vector3(),cameraRay=new THREE.Raycaster(),cameraDirection=new THREE.Vector3();
   const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick'),jumpButton=el('walk-jump');canvas.tabIndex=0;
   // One jump at a time: Space on a keyboard, the on-screen button on phones.
   function jump(){if(!active||air!==0||vy!==0)return false;vy=JUMP_SPEED;return true}
@@ -76,6 +76,11 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    boom.set(0,0,1).applyEuler(camera.rotation).multiplyScalar(view);
    // Lift with the boom so the character sits low in frame instead of blocking the view.
    camera.position.copy(eye).add(boom);camera.position.y+=view*.22;
+   const obstacles=getCameraObstacles();
+   if(obstacles.length){
+    cameraDirection.copy(camera.position).sub(eye);const length=cameraDirection.length();
+    if(length>.001){cameraRay.set(eye,cameraDirection.normalize());cameraRay.far=length;const hit=cameraRay.intersectObjects(obstacles,true)[0];if(hit)camera.position.copy(eye).addScaledVector(cameraDirection,Math.max(.05,hit.distance-.18))}
+   }
    const ground=groundAt(camera.position.x,camera.position.z);
    if(ground!==null)camera.position.y=Math.max(camera.position.y,ground+.6);
    if(walker){

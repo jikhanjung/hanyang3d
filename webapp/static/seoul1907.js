@@ -72,6 +72,16 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   const panel=el('building-info');panel.replaceChildren();panel.hidden=false;panel.dataset.kind='building';
   const close=document.createElement('button');close.textContent='×';close.setAttribute('aria-label',t('닫기'));close.onclick=()=>panel.hidden=true;panel.append(close);
   for(const text of [f.name,f.info.period,f.info.summary]){const p=document.createElement('p');p.textContent=text;panel.append(p)}
+  if(model.userData.interior){
+   const enter=document.createElement('button');enter.id='cathedral-interior-view';enter.textContent=t('성당 내부 보기');enter.style.cssText='float:none;display:block;min-height:44px;margin:8px 0';
+   enter.onclick=()=>{
+    const interior=model.userData.interior,h=f.symbol_size_m[1],point=coords=>model.localToWorld(new THREE.Vector3(coords[0],coords[1]-h/2,coords[2]));
+    const p=point(interior.view),q=point(interior.target);
+    if(walking?.firstPerson.active){walking.firstPerson.clearInput();walking.firstPerson.placeAt(p.x,p.z,model.rotation.y)}
+    else{camera.position.copy(p);controls.target.copy(q);controls.update()}
+    updateLandmarkLod(model,camera);panel.hidden=true;needsRender=true;
+   };panel.append(enter);
+  }
   const storyteller=walking?.stationary.records.find(r=>r.role==='storyteller'&&r.building===f.id);
   if(storyteller){
    const talk=document.createElement('button');talk.id='bookshop-talk';talk.textContent=t('책방 주인과 이야기하기');talk.style.cssText='float:none;display:block;min-height:44px;margin:8px 0';

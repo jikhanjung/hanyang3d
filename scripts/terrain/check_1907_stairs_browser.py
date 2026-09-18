@@ -39,7 +39,7 @@ with tempfile.TemporaryDirectory() as tmp:
        }
        const side=b.localToWorld(new T.Vector3(w/2-.2,-h/2,0)),sideGround=s.groundAt(side.x,side.z)+.025;
        const sideBlocked=b.userData.groundFloor-sideGround>.7?s.firstPerson.groundAt(side.x,side.z,sideGround)===null:true;
-       const landing=world(end);b.visible=false;const hiddenGround=s.firstPerson.groundAt(landing.x,landing.z);b.visible=true;const hiddenStable=Math.abs(hiddenGround-(s.groundAt(landing.x,landing.z)+.025))<1e-5;const wall=b.localToWorld(new T.Vector3(0,0,b.userData.hallCenterZ??0)),wallBlocked=!!s.walking.collision.hit(wall.x,wall.z,.35);
+       const landing=world(end);b.visible=false;const hiddenGround=s.firstPerson.groundAt(landing.x,landing.z);b.visible=true;const hiddenStable=Math.abs(hiddenGround-(s.groundAt(landing.x,landing.z)+.025))<1e-5;const obstacle=b.userData.blockingRects[0],wall=b.localToWorld(new T.Vector3(obstacle.x,0,obstacle.z)),wallBlocked=!!s.walking.collision.hit(wall.x,wall.z,.35);
        results.push({id:f.id,fail,sideBlocked,hiddenStable,wallBlocked,rise:highest-s.groundAt(start.x,start.z),stairs:!!b.getObjectByName('access-stairs')});
       }
       return results;

@@ -957,10 +957,10 @@
           "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
         ]
       },
-      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "model_note": "외형·삼랑식 구성은 건축 설명을 참고한 자체 제작 모형. 내부 기둥·궁륭·색유리·의자·제단은 추정 표현이며 1907년 실측 복원이 아니다. 근거리 세부와 내부는 260m 기준 LOD로 표시한다.",
       "info": {
-        "summary": "종현의 고딕 벽돌 성당. 십자형 본당·첨두 창·전면 종탑과 첨탑을 표현했다. 원도의 십자형 기호를 읽어 배치했다. 위치와 치수는 추정한 개념 모형이다.",
-        "summary_en": "A Gothic brick cathedral represented with a cruciform nave, pointed windows, a bell tower and spire. Position and dimensions are approximate.",
+        "summary": "종현의 고딕 벽돌 성당. 삼랑식 본당, 첨두아치·창, 부축벽, 종탑과 팔각 계단탑을 단순화했다. 1인칭으로 정문을 지나 내부를 둘러볼 수 있다. 내부 기둥·천장·색유리·의자·제단의 세부와 배치, 진입 계단은 추정 표현이며 1907년 실측 복원이 아니다.",
+        "summary_en": "A Gothic brick cathedral with a nave and side aisles, pointed arches and windows, buttresses, bell tower and octagonal stair turrets. Walk through the front doorway in first person to explore the interior. Interior details, stained glass patterns, seating, altar and approach stairs are interpretive, not a measured reconstruction of 1907.",
         "period": "1898년 이후 존속 · 1907년 기준",
         "period_en": "Present from 1898 · shown for 1907",
         "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
@@ -975,6 +975,11 @@
             "title": "서울역사박물관 — 최신경성전도",
             "title_en": "Seoul Museum of History — 1907 map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "한국민족문화대백과사전 — 서울 명동성당",
+            "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
+            "url": "https://encykorea.aks.ac.kr/Article/E0018240"
           }
         ]
       }

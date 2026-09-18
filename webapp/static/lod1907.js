@@ -5,7 +5,7 @@ import {hipGableRoof} from './throne_hall.js';
 const mats={stone:new THREE.MeshStandardMaterial({color:0xbdb6a5}),wall:new THREE.MeshStandardMaterial({color:0xc9bb9f}),roof:new THREE.MeshStandardMaterial({color:0x3e484c}),brick:new THREE.MeshStandardMaterial({color:0x965a44}),water:new THREE.MeshStandardMaterial({color:0x688d86})};
 export function prepareLandmarkLod(model){
  const f=model.userData.feature,[w,h,d]=f.symbol_size_m,proxy=new THREE.Group(),detail=new THREE.Group();detail.name='landmark-detail';proxy.name='landmark-proxy';
- for(const child of [...model.children])if(child.name!=='terrain-foundation'&&child.name!=='access-stairs'){model.remove(child);detail.add(child)}
+ for(const child of [...model.children])if(child.name!=='terrain-foundation'&&child.name!=='access-stairs'&&child!==model.userData.closeDetail){model.remove(child);detail.add(child)}
  const add=(g,x,y,z,mat)=>{const m=new THREE.Mesh(g,mats[mat]);m.position.set(x,y-h/2,z);proxy.add(m);return m};
  const box=(x,y,z,a,b,c,mat='wall')=>add(new THREE.BoxGeometry(a,b,c),x,y,z,mat);
  const roof=(x,y,z,a,b,rise=3)=>add(hipGableRoof(a,b,rise,.3,.55),x,y,z,'roof');
@@ -79,4 +79,5 @@ export function prepareLandmarkLod(model){
 }
 export function updateLandmarkLod(model,camera){
  const lod=model.userData.lod;if(!lod)return;const distance=camera.position.distanceTo(model.position),near=distance<lod.threshold*(lod.near?1.1:.9);if(near!==lod.near){lod.near=near;lod.detail.visible=near;lod.proxy.visible=!near}
+ const close=model.userData.closeDetail;if(close)close.visible=near&&distance<(model.userData.closeDistance??260)*(close.visible?1.1:.9);
 }
