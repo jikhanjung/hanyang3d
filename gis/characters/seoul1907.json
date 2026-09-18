@@ -3649,5 +3649,121 @@
       "valid_to": 1908,
       "position_status": "fictional_narrator_at_estimated_bookshop"
     }
-  ]
+  ],
+  "horse_dealer": {
+    "name": "말 장수",
+    "name_en": "Horse dealer",
+    "subtitle": "수표교 북쪽 · 말을 데리고 나온 가상 상인",
+    "subtitle_en": "North of Supyo Bridge · Fictional itinerant horse dealer",
+    "placement": {
+      "pixel": [
+        1280,
+        2352
+      ],
+      "yaw_deg": 180,
+      "position_status": "fictional_placement_not_documented_1907_horse_market",
+      "note": "수표교 북쪽 물길과 도로 밖의 추정 자리. 1750년 우마전의 1907년 존속이나 실제 상인 필지를 입증하지 않음. 말 4필·매는 난간·색·가격은 놀이용 설정.",
+      "temporal": {
+        "start_year": 1907,
+        "end_year": 1908,
+        "status": "depiction_interval_not_person_lifespan"
+      }
+    },
+    "nodes": {
+      "hello": {
+        "text": "말을 보러 오셨소? 다리 어귀를 막으면 오가는 이들이 불편하니 길에서 조금 물러나 매어 두었지요. 털빛만 보고 고르지 말고, 어떤 길을 다닐지부터 생각해 보시오. 종로에는 전차가 다니는 세상이지만, 말 한 필을 데리고 길을 나서는 일에는 여전히 손이 많이 갑니다. 가까이서 살펴보시겠소, 아니면 요즘 거리 이야기부터 들으시겠소?",
+        "text_en": "Come to see the horses? I keep them back from the bridge approach so people can pass. Think about the roads you mean to travel, not just the color of a coat. Trams now run along Jongno, but taking a horse on a journey still calls for care. Would you like a closer look, or shall we talk about the changing streets?",
+        "options": [
+          {
+            "label": "말을 사고 싶소. (거래)",
+            "label_en": "I would like to buy a horse. (Trade)",
+            "action": "shop"
+          },
+          {
+            "label": "전차가 생겨 거리가 달라졌겠소.",
+            "label_en": "How have trams changed the streets?",
+            "next": "street"
+          },
+          {
+            "label": "늘 여기서 말을 파시오?",
+            "label_en": "Do you always trade here?",
+            "next": "place"
+          },
+          {
+            "label": "산 말은 어떻게 타면 되오?",
+            "label_en": "How do I ride after buying?",
+            "next": "ride"
+          },
+          {
+            "label": "다음에 보세.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "street": {
+        "text": "사람이 걷는 길에 전차까지 지나다니니, 말고삐를 잡은 사람도 주위를 더 살펴야지요. 종로의 전차는 이제 낯선 구경거리만은 아니오. 먼 길을 걷지 않아도 되는 편리함이 있지만, 사람과 짐이 모인 길에서는 서로 길을 내주어야 합니다. 나는 말들을 선로 가까이에 묶어 두지 않소. 손님도 말을 데리고 나가거든 전차가 오는지 먼저 살펴주시오. 큰길이 바뀌어도 조심해서 다녀야 한다는 사정은 같지 않겠소?",
+        "text_en": "With trams passing along streets used by walkers, anyone holding a rein must pay attention. The tram on Jongno is no longer merely a novelty. It saves a long walk, yet crowded streets still require people to make room for one another. I keep my horses away from the tracks. If you take one out, look for an approaching car before crossing. Streets change, but care is still needed.",
+        "sources": [
+          {
+            "title": "서울역사박물관 — 경성에 부는 개화의 바람",
+            "title_en": "Seoul Museum of History — Winds of modernization",
+            "url": "https://museum.seoul.go.kr/chd/board/NR_boardView.do?bbsCd=1026&seq=20170223173235969"
+          }
+        ],
+        "knowledge_mode": "fictional_dialogue_in_historical_setting",
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "label_en": "Another question.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 보세.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "place": {
+        "text": "오늘은 이 다리 북쪽에 말을 데리고 나와 있소. 다만 내가 여기 있다고 해서 이 자리가 나라에서 정해 둔 말시장이라고 여기지는 마시오. 옛 장터 이야기는 옛 장터 이야기이고, 지금 말을 데리고 나온 내 사정은 또 다르지요. 길을 막지 않을 만한 곳에서 손님을 기다리는 중이오. 말을 사겠다면 차분히 둘러보고, 길을 물으러 왔다면 잠시 쉬었다 가시오.",
+        "text_en": "Today I have brought the horses to the north side of this bridge. Do not take my presence as proof that this is an officially established horse market. Stories about old markets are one thing; a dealer bringing horses here today is another. I am waiting where I will not block the road. Take your time looking, or rest a moment if you only stopped to ask the way.",
+        "knowledge_mode": "fictional_placement_not_historical_testimony",
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "label_en": "Another question.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 보세.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "ride": {
+        "text": "거래 창에서 말 한 필의 고삐를 사면 봇짐에 들어가오. 1인칭으로 걷는 동안 봇짐을 열어 고삐 옆의 쓰기를 누르면 말에 오르고, 한 번 더 누르면 내릴 수 있소. 손전화 화면에서도 같은 버튼을 쓰면 되지요. 여기서 치르는 엽전과 값은 이 지도 안에서 쓰는 놀이용 셈이오. 올해 한성의 실제 말값이나 화폐를 그대로 옮긴 것은 아니니 그 점은 알아두시오.",
+        "text_en": "Buy a set of horse reins in the trade window and it goes into your pack. While walking in first person, open the pack and press Use beside the reins to mount; press it again to dismount. The same button works on a phone. Coins and prices here belong to the game, not a reconstruction of actual horse prices or currency in Seoul this year.",
+        "knowledge_mode": "game_instructions",
+        "options": [
+          {
+            "label": "그럼 거래해 봅시다.",
+            "label_en": "Let us trade.",
+            "action": "shop"
+          },
+          {
+            "label": "다른 것도 묻겠소.",
+            "label_en": "Another question.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 보세.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      }
+    }
+  }
 }

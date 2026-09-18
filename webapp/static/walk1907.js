@@ -8,6 +8,7 @@ import {createWalkTogether} from './walk_together.js';
 import {createNpcDialogue} from './npc_dialogue.js';
 import {createPerson1907,createStationaryPeople1907} from './people1907.js';
 import {createNavigation1907} from './navigation1907.js';
+import {createHorseDealer} from './horse_dealer.js';
 const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
 
 export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture}){
@@ -33,6 +34,13 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  }
  for(const s of infrastructure.wall.segments)collision.add({x:s.x,z:s.z,hw:infraData.wall.width_m/2,hd:s.length/2,yaw:s.yaw,visible:()=>infrastructure.wall.group.visible});
  const stationary=createStationaryPeople1907(buildings,data,groundAt);scene.add(stationary.group);
+ const horseData=data.horse_dealer,horsePerson=createPerson1907({merchant:true});
+ const horseDealer=createHorseDealer({position:surface(...horseData.placement.pixel),yaw:horseData.placement.yaw_deg*Math.PI/180,personModel:horsePerson.group});
+ horseDealer.name='horse-dealer-1907';horseDealer.userData.temporal=horseData.placement.temporal;scene.add(horseDealer);
+ horseDealer.userData.update(0,groundAt);
+ // Keep the hitching rail and horses off the walking corridor.
+ const horseFrame={x:horseDealer.position.x,z:horseDealer.position.z,yaw:horseDealer.rotation.y};
+ collision.addLocal(horseFrame,3.5,.6,2.4,1.5,()=>horseDealer.visible);
  const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
  const profile=createWalkProfile({account:shop}),navigation=createNavigation1907(geometry,texture);
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
@@ -45,12 +53,14 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='shop')shop.open(npc.merchant)}});
  const nodes=(source,trade)=>Object.fromEntries(Object.entries(source).map(([key,n])=>[key,{...n,text:n.text.replaceAll('{shop}',trade??'')} ]));
  const npcFor=r=>({key:r.key,name:data[r.role].name,subtitle:data[r.role].subtitle,portrait:data[r.role].portrait??(r.role==='guard'?'guard1907':'merchant'),nodes:nodes(data[r.role].nodes,r.trade),position:()=>r.position,merchant:r.role==='merchant'?{trade:r.trade,sells:r.trade}:null,maxDistance:100,begin:()=>firstPerson.clearInput()});
+ const horseNpc=()=>({key:'horse-dealer-1907',name:horseData.name,subtitle:horseData.subtitle,portrait:'horseDealer',nodes:horseData.nodes,position:()=>horseDealer.position,merchant:{trade:'말 장수',sells:'말'},maxDistance:100,begin:()=>firstPerson.clearInput(),finish:()=>horseDealer.userData.stopTalk(),face:p=>horseDealer.userData.face(p)});
+ dialogue.register({pick(event,hitTest){if(!horseDealer.visible)return null;const distance=hitTest(event,horseDealer.position,1.95,100);return distance===null?null:{distance,npc:horseNpc()}}});
  dialogue.register({pick(event,hitTest){let best=null;if(stationary.group.visible)for(const r of stationary.records){if(!r.person.group.visible)continue;const distance=hitTest(event,r.position,1.95,100);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:npcFor(r)}}return best}});
  dialogue.register({pick(event,hitTest){let best=null;if(pedestrians.group.visible)for(const w of pedestrians.walkers){const distance=hitTest(event,w.position,1.95,80);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:{key:w.id,name:data.pedestrian.name,portrait:'walker1907',nodes:data.pedestrian.nodes,position:()=>w.position,maxDistance:100,begin:()=>firstPerson.clearInput()}}}return best}});
  let press=null;const canvas=renderer.domElement;
  canvas.addEventListener('pointerdown',e=>{if(e.button===0)press={x:e.clientX,y:e.clientY,id:e.pointerId}});
  canvas.addEventListener('pointerup',e=>{if(!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
- el('people3d').addEventListener('change',()=>stationary.group.visible=el('people3d').checked);
- function update(dt){firstPerson.update(dt);together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);dialogue.update()}
- return {firstPerson,pedestrians,stationary,collision,shop,dialogue,together,update,npcFor};
+ el('people3d').addEventListener('change',()=>{stationary.group.visible=el('people3d').checked;horseDealer.visible=el('people3d').checked});
+ function update(dt){firstPerson.update(dt);together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);if(horseDealer.visible)horseDealer.userData.update(performance.now(),groundAt);dialogue.update()}
+ return {firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor};
 }

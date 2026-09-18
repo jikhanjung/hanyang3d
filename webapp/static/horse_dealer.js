@@ -35,7 +35,7 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
 // garrison encroachment, and the king allowed it to be set up again (영조실록 20년 8월 26일). Whether it reopened is not
 // confirmed, so the dealer stands by the road with a few horses tied to a rail. His dress (패랭이, plain coat), the number
 // of horses and their coats are display estimates, not a record.
-export function createHorseDealer({position,yaw=0}){
+export function createHorseDealer({position,yaw=0,personModel=null}){
  const group=new THREE.Group();group.name='horse-dealer';group.position.copy(position);group.rotation.y=yaw;
  const material=color=>new THREE.MeshStandardMaterial({color,roughness:1});
  const m={coat:material(0x8a6f4e),trousers:material(0xd9d2c0),skin:material(0xc5a17e),hat:material(0xb99a62),boots:material(0x2a2522),rope:material(0x9c8660),wood:material(0x6e5539)};
@@ -47,6 +47,10 @@ export function createHorseDealer({position,yaw=0}){
  for(const side of [-1,1])add(person,new THREE.BoxGeometry(.12,.6,.14),m.coat,side*.28,1.25,0);
  add(person,new THREE.SphereGeometry(.13,10,8),m.skin,0,1.73,0);
  add(person,new THREE.ConeGeometry(.34,.22,14),m.hat,0,1.9,0);
+ if(personModel){
+  for(const mesh of [...person.children]){person.remove(mesh);mesh.geometry.dispose()}
+  person.add(personModel);
+ }
 
  // The horse on the dealer's lead, and more horses tied to a rail beside him (bay, chestnut, dark and grey coats).
  const horses=[];

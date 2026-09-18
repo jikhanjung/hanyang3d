@@ -16,6 +16,8 @@
 
 ## 작업 기록
 
+- [187 — 1907년 말 장수](20260918_187_1907_horse_dealer.md)
+
 - [186 — 1907년 광통교 원위치 교정](20260918_186_gwangtong_original_location.md)
 
 - [185 — 1907년 후속 건물·이야기 후보](20260918_185_next_buildings_and_stories.md)

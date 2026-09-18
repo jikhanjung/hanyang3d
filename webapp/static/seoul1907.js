@@ -122,6 +122,14 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   if(innerWidth<=600){el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')}
   showTramInfo();
  };
+ el('horse-focus').onclick=()=>{
+  if(original)el('view').click();walking.firstPerson.exit();walking.dialogue.end();el('building-info').hidden=true;
+  el('people3d').checked=true;el('people3d').dispatchEvent(new Event('change'));
+  const horse=walking.horseDealer,p=horse.position;
+  controls.target.copy(p).add(new THREE.Vector3(2,1,0).applyAxisAngle(new THREE.Vector3(0,1,0),horse.rotation.y));
+  camera.position.copy(p).add(new THREE.Vector3(8,6,12).applyAxisAngle(new THREE.Vector3(0,1,0),horse.rotation.y));controls.update();needsRender=true;
+  el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false');
+ };
  let scenePress=null;
  const canvas=renderer.domElement;
  canvas.addEventListener('pointerdown',e=>{if(e.button===0)scenePress={x:e.clientX,y:e.clientY,id:e.pointerId,moved:false}});

@@ -8,6 +8,30 @@ from .resources import public_resource_paths, resource_path
 
 @override_settings(CONTENT_SOURCE='files')
 class Seoul1907Tests(TestCase):
+    def test_horse_dealer_period_dialogue_and_trade(self):
+        response = self.client.get('/1907/')
+        dealer = response.context['people1907']['horse_dealer']
+        self.assertContains(response, 'id="horse-focus"')
+        self.assertEqual(dealer['placement']['temporal']['start_year'], 1907)
+        self.assertIn('fictional', dealer['placement']['position_status'])
+        nodes = dealer['nodes']
+        reached, pending = set(), ['hello']
+        while pending:
+            key = pending.pop()
+            if key in reached:
+                continue
+            reached.add(key)
+            for option in nodes[key]['options']:
+                if 'next' in option:
+                    self.assertIn(option['next'], nodes)
+                    pending.append(option['next'])
+        self.assertEqual(reached, set(nodes))
+        self.assertTrue(any(o.get('action') == 'shop' for o in nodes['hello']['options']))
+        english = self.client.get('/1907/?lang=en').context['people1907']['horse_dealer']
+        self.assertEqual(english['name'], 'Horse dealer')
+        for key in nodes:
+            self.assertNotEqual(nodes[key]['text'], english['nodes'][key]['text'])
+
     def test_bookseller_dialogue_graph_and_provenance(self):
         response = self.client.get('/1907/')
         data = response.context['people1907']
