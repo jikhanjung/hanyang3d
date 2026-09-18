@@ -28,20 +28,34 @@
 #npc-overlay,#account-overlay{z-index:1100}#shop-window{z-index:1102}#pack-window{z-index:1101}#money-hud{z-index:1002;top:65px;left:12px;transform:none}#npc-bubble{z-index:1003}
 @media(max-width:600px){#first-person-map{width:120px;bottom:112px}#money-hud{top:auto;bottom:145px}#notice{display:none}}
 
+/* Match the compact 1750 settings: two columns on desktop, one on phones. */
+.toolbar:has(#options.open){width:340px}
+#options.open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;max-height:calc(100dvh - 100px);overflow:auto;align-items:start}
+#options>.map-opacity,#options>#walk-together,#options>.landmark-select,#options>.map-actions,#options>#source-link{grid-column:1/-1}
+#options>#walk-together{justify-self:start}
+#options .layer-group{min-width:0}
+#options .layer-group label{white-space:normal;align-items:flex-start}
+#options input[type=checkbox]{flex:none;margin-top:4px}
+#options .map-opacity input{min-width:0;flex:1}#opacity-value{flex:none}
+#options select{min-width:0;max-width:100%}
+#options>.landmark-select{min-width:0}#landmark{min-width:0;max-width:100%;flex:1}
+.map-actions{display:flex;flex-wrap:wrap;gap:6px 10px}
+#source-link{border-top:1px solid #9aaa9b55;padding-top:6px}
+@media(max-width:600px){.toolbar:has(#options.open){width:250px}#options.open{grid-template-columns:minmax(0,1fr);max-height:calc(100dvh - 90px)}#options button{padding:4px 7px;font-size:12px}}
 </style></head>
 <body><main id="scene"><div id="first-person-map" hidden><canvas id="walking-minimap" width="240" height="240"></canvas></div><div id="walk-joystick" hidden aria-label="{% t '이동' %}"><span class="joystick-knob"></span></div><button id="walk-jump" type="button" hidden aria-label="{% t '점프' %}">{% t '점프' %}</button></main><div id="original" hidden></div>
 <div id="labels"></div><aside id="building-info" hidden aria-live="polite"></aside>
 <div class="toolbar"><button id="menu" aria-label="{% t '설정' %}" aria-controls="options" aria-expanded="false"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button><strong class="map-title">{% t '한양3D' %}<small>{{ app_version }} · {% t '1907년경' %}</small></strong><div id="options">
 <label>{% t '시대' %}<select id="era"><option value="/">{% t '1750년경' %}</option><option value="/1907/" selected>{% t '1907년경' %}</option></select></label>
-<label class="map-opacity">{% t '옛지도' %}<input id="opacity" type="range" min="0" max="100" value="50"><output id="opacity-value">50%</output></label>
+<button id="walk-together" aria-pressed="false">{% t '1인칭' %}</button>
+<label class="map-opacity">{% t '옛지도' %}<input id="opacity" aria-label="{% t '옛 지도 불투명도' %}" type="range" min="0" max="100" value="50"><output id="opacity-value">50%</output></label>
 <fieldset class="layer-group"><legend>{% t '건물' %}</legend><label><input id="buildings3d" type="checkbox" checked>{% t '주요 건물·시설' %}</label></fieldset>
 <fieldset class="layer-group"><legend>{% t '길·물길·성벽' %}</legend><label><input id="roads3d" type="checkbox" checked>{% t '큰길' %}</label><label><input id="walls3d" type="checkbox" checked>{% t '성벽' %}</label><label><input id="water3d" type="checkbox" checked>{% t '청계천·다리' %}</label></fieldset>
-<fieldset class="layer-group"><legend>{% t '이름' %}</legend><label><input id="names3d" type="checkbox" checked>{% t '건물·다리 이름' %}</label></fieldset>
-<label>{% t '건물' %}<select id="landmark"><option value="">{% t '건물로 이동' %}</option></select></label>
-<fieldset class="layer-group"><legend>{% t '사람' %}</legend><label><input id="people3d" type="checkbox" checked>{% t '행인·상인·경비병' %}</label><label><input id="walking3d" type="checkbox" checked>{% t '보행자 이동' %}</label><button id="horse-focus">{% t '말 장수 보기' %}</button></fieldset>
-<fieldset class="layer-group"><legend>{% t '전차' %}</legend><label><input id="trams3d" type="checkbox" checked>{% t '종로 전차·선로' %}</label><button id="tram-focus">{% t '전차 보기' %}</button></fieldset>
-<button id="walk-together" aria-pressed="false">{% t '1인칭' %}</button>
-<button id="view" aria-pressed="false">{% t '원본 지도' %}</button><button id="reset">{% t '전체 보기' %}</button>
+<fieldset class="layer-group"><legend>{% t '사람·이름' %}</legend><label><input id="people3d" type="checkbox" checked>{% t '행인·상인·경비병' %}</label><label><input id="walking3d" type="checkbox" checked>{% t '보행 재생' %}</label><label><input id="names3d" type="checkbox" checked>{% t '건물·다리 이름' %}</label></fieldset>
+<fieldset class="layer-group"><legend>{% t '전차' %}</legend><label><input id="trams3d" type="checkbox" checked>{% t '종로 전차·선로' %}</label></fieldset>
+<label class="landmark-select">{% t '건물' %}<select id="landmark"><option value="">{% t '건물로 이동' %}</option></select></label>
+<div class="map-actions"><button id="horse-focus">{% t '말 장수 보기' %}</button><button id="tram-focus">{% t '전차 보기' %}</button></div>
+<div class="map-actions"><button id="view" aria-pressed="false">{% t '원본 지도' %}</button><button id="reset">{% t '전체 보기' %}</button></div>
 <a id="source-link" href="{{ map.source_url }}" target="_blank" rel="noopener">{% t '서울역사박물관 소장' %}</a><span class="lang-switch" role="group" aria-label="{% t '언어' %}"><a href="?lang=ko" hreflang="ko"{% if lang == 'ko' %} aria-current="true"{% endif %}>KO</a> | <a href="?lang=en" hreflang="en"{% if lang == 'en' %} aria-current="true"{% endif %}>EN</a></span></div></div>
 <div id="compass"></div><div id="notice">{% t '최신경성전도 · 지형 위 추정 배치 · 현대 FABDEM 고도' %}</div><a id="credit" href="/credits/" aria-label="{% t '출처·저작권' %}"><span class="credits-text">{% t '출처·저작권' %}</span><span class="credits-symbol" aria-hidden="true">©</span></a><div id="status" role="status" hidden></div>{% include "scene_loading.html" with loading_steps=6 %}
 {{ trams1907|json_script:'trams-1907' }}{{ npcs|json_script:'npcs' }}{{ people1907|json_script:'people-1907' }}{{ walking1907|json_script:'walking-1907' }}{{ multiplayer_url|json_script:'multiplayer-url' }}{{ walk_world_version|json_script:'map-version' }}{{ infrastructure|json_script:'infrastructure-1907' }}{{ map|json_script:'map-config' }}{{ buildings|json_script:'buildings-1907' }}{{ i18n_dict|json_script:'i18n' }}

@@ -29,6 +29,7 @@ def public_resource_paths():
         'webapp/static/lod1907.js',
         'gis/walls/seoul1907_infrastructure.json',
         'webapp/static/landmarks1907.js',
+        'webapp/static/building_access1907.js',
         'gis/control_points/seoul1907.json',
         'gis/georeferenced/seoul1907/map.jpg',
         'gis/georeferenced/terrain3d/dem.json',

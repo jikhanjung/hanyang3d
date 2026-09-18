@@ -9,6 +9,7 @@ function materials(){return Object.fromEntries(Object.entries(PALETTE).map(([k,c
 function mergeByMaterial(model){
  const buckets=new Map(),v=new THREE.Vector3();
  for(const mesh of [...model.children]){
+  if(mesh.userData.walkable)continue;
   mesh.updateMatrix();const g=mesh.geometry.index?mesh.geometry.toNonIndexed():mesh.geometry,p=g.attributes.position;
   if(!buckets.has(mesh.material))buckets.set(mesh.material,[]);const values=buckets.get(mesh.material);
   for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(mesh.matrix);values.push(v.x,v.y,v.z)}
@@ -46,8 +47,9 @@ export function hipGableRoof(width,depth,rise,lift=.5,gableFrac=.55){
 export function createThroneHall(feature,w,h,d){
  const spec=feature.throne_hall??{};
  const [cols,rows]=spec.bays??[5,4],[hallW,hallD]=spec.hall_m??[30,20],roofTiers=spec.roof_tiers??feature.palace_roof_tiers??1,terraceTiers=spec.terrace_tiers??2;
- const model=new THREE.Group();model.name='throne-hall';const mats=materials(),parts=[];
- const box=(name,x,y,z,sx,sy,sz,material,ry=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mats[material]);m.position.set(x,y-h/2,z);m.rotation.y=ry;m.name=name;model.add(m);parts.push(name);return m};
+ const model=new THREE.Group();model.name='throne-hall';const mats=materials(),parts=[],walkSurfaces=[],blockingRects=[];
+ const surfaces=new Set(['courtyard','central-path','gate-platform','gate-step','lower-terrace','upper-terrace','stair','hall-floor']);
+ const box=(name,x,y,z,sx,sy,sz,material,ry=0)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mats[material]);m.position.set(x,y-h/2,z);m.rotation.y=ry;m.name=name;model.add(m);parts.push(name);if(surfaces.has(name)){m.userData.walkable=true;walkSurfaces.push(m)}if(name==='cloister-wall'||name==='hall-walls')blockingRects.push({x,z,hw:sx/2,hd:sz/2});return m};
  const roof=(name,x,z,width,depth,eave,rise,lift,ry=0)=>{const m=new THREE.Mesh(hipGableRoof(width,depth,rise,lift),mats.roof);m.position.set(x,eave-h/2,z);m.rotation.y=ry;m.name=name;model.add(m);parts.push(name);
   const r=box('ridge',x,eave+rise+.15,z,width-depth*.55*2+.6,.32,.5,'ridge',ry);r.rotation.y=ry;return m};
  // Courtyard with cloister ring, inner gate on the south, and rank stones beside the central path.
@@ -62,6 +64,8 @@ export function createThroneHall(feature,w,h,d){
  // Inner gate (정문): taller three-bay gate on the south wall.
  const gH=5.2;
  box('gate-platform',0,.4,cd/2-clW/2,gateW+2,.8,clW+3,'stone');
+ for(const side of [-1,1])box('gate-step',0,.2,cd/2-clW/2+side*((clW+3)/2+.4),gateW,.4,.8,'stone');
+ for(let i=0;i<=3;i++)for(const zz of [-1,1])blockingRects.push({x:-gateW/2+i*gateW/3,z:cd/2-clW/2+zz*(clW/2+.4),hw:.28,hd:.28});
  for(let i=0;i<=3;i++)for(const zz of [-1,1]){const c=new THREE.Mesh(new THREE.CylinderGeometry(.24,.28,gH,10),mats.column);c.position.set(-gateW/2+i*gateW/3,.8+gH/2-h/2,cd/2-clW/2+zz*(clW/2+.4));c.name='gate-column';model.add(c);parts.push(c.name)}
  box('gate-beam',0,.8+gH-.3,cd/2-clW/2,gateW+.8,.6,clW+1.4,'beam');
  roof('gate-roof',0,cd/2-clW/2,gateW+4,clW+5,.8+gH+.3,3.4,.5);
@@ -75,8 +79,12 @@ export function createThroneHall(feature,w,h,d){
  box('lower-terrace',0,lowH/2+.2,hz,tW,lowH,tD,'stone');
  if(terraceTiers===2)box('upper-terrace',0,lowH+upH/2+.2,hz,tW*.78,upH,tD*.76,'stone');
  const top=.2+lowH+upH;
- for(let i=0;i<Math.round(tW/3);i++)for(const zz of [-1,1])box('balustrade-post',-tW/2+.3+i*(tW-.6)/Math.round(tW/3),lowH+.2+.45,hz+zz*(tD/2-.3),.28,.9,.28,'paleStone');
- const stairs=(base,height,front,width)=>{for(let s=0;s<4;s++){const sh=height*(s+1)/4;box('stair',0,base+sh/2,front+(3-s)*.7+.35,width,sh,.7,'stone')}};
+ for(let i=0;i<Math.round(tW/3);i++)for(const zz of [-1,1]){
+  const x=-tW/2+.3+i*(tW-.6)/Math.round(tW/3);
+  if(zz===1&&Math.abs(x)<Math.min(12,hallW*.4)/2+.3)continue;
+  box('balustrade-post',x,lowH+.2+.45,hz+zz*(tD/2-.3),.28,.9,.28,'paleStone');
+ }
+ const stairs=(base,height,front,width)=>{for(let s=0;s<4;s++){const sh=height*(s+1)/4;box('stair',0,base+sh/2,front+(3-s)*.7+.35,width,sh,.72,'stone')}};
  stairs(.2,lowH,hz+tD/2,Math.min(12,hallW*.4));if(terraceTiers===2)stairs(.2+lowH,upH,hz+tD*.76/2,Math.min(10,hallW*.33));
  // The hall: round red columns on stone footings, plaster walls with lattice doors between them,
  // a painted beam and bracket band, and the roof(s).
@@ -101,6 +109,6 @@ export function createThroneHall(feature,w,h,d){
   roof('upper-roof',0,hz,hallW*.8+7,hallD*.75+6,ub+uH+.5,h*.2,.8);
  }
  mergeByMaterial(model);
- model.userData={conceptual:true,roofTiers,terraceTiers,bays:[cols,rows],hallM:[hallW,hallD],parts,footprint:[w,d],hallCenterZ:hz,period:feature.temporal};
+ model.userData={conceptual:true,roofTiers,terraceTiers,bays:[cols,rows],hallM:[hallW,hallD],parts,footprint:[w,d],hallCenterZ:hz,period:feature.temporal,walkSurfaces,blockingRects,accessFront:Math.max(d/2,cd/2+2.3),accessHeight:.4};
  return model;
 }

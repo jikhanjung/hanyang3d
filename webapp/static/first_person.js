@@ -44,6 +44,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   }
   // Returns the highest walkable top, null when there is none, or BLOCKED when (while walking) a surface rises more
   // than a step but less than head height above the footing: the side of a terrace is a wall, a deck overhead is not.
+  // Solid building foundations also block taller faces; unlike a bridge, there is no passage underneath them.
   const HEADROOM=2.2,BLOCKED=Symbol('blocked');
   function surfaceAt(x,z,reference=null){
    let best=null,blocked=false;
@@ -54,7 +55,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
      // Skip invisible placeholder boxes and downward faces (the underside of a double-sided deck).
      if(hit.object.material?.visible===false||!hit.face)continue;
      if(normal.copy(hit.face.normal).transformDirection(hit.object.matrixWorld).y<.5)continue;
-     if(reference!==null&&hit.point.y>reference+STEP){if(hit.point.y<reference+HEADROOM)blocked=true;continue}
+     if(reference!==null&&hit.point.y>reference+STEP){if(hit.object.userData.solidSupport||hit.point.y<reference+HEADROOM)blocked=true;continue}
      if(best===null||hit.point.y>best)best=hit.point.y;
     }
    }

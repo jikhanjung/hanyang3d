@@ -21,7 +21,9 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  for(const b of buildings){
   const f=b.userData.feature,[w,,d]=f.symbol_size_m,frame={x:b.position.x,z:b.position.z,yaw:b.rotation.y},shown=()=>b.visible;
   const gate=b.userData.centres?b:b.getObjectByName('gate-model');
-  if(gate?.userData.centres||f.landmark_kind==='palace_gate'){
+  if(b.userData.blockingRects){
+   for(const r of b.userData.blockingRects)collision.addLocal(frame,r.x,r.z,r.hw,r.hd,shown);
+  }else if(gate?.userData.centres||f.landmark_kind==='palace_gate'){
    let open,depth;
    if(gate?.userData.centres){const {centres,doorWidth}=gate.userData;open=centres.map(c=>[c-doorWidth/2,c+doorWidth/2]);depth=d/2}
    else{const bays=f.palace_gate_bays??3,half=Math.min(3,bays)*w*.8/bays/2;open=[[-half,half]];depth=d*.3}
@@ -46,7 +48,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
   positionWorld:{alignment:'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
   terrainGround:(x,z)=>{const y=groundAt(x,z);return y===null?null:y+.025},
-  getWalkables:()=>infrastructure.bridges.children.map(o=>[o,()=>infrastructure.bridges.visible]),
+  getWalkables:()=>[...infrastructure.bridges.children.map(o=>[o,()=>infrastructure.bridges.visible]),...buildings.flatMap(b=>(b.userData.walkSurfaces??[]).map(o=>[o,()=>b.visible]))],
   onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
  const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
  together=createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});

@@ -9,6 +9,7 @@ import {t} from './i18n.js';
 import {createInfrastructure1907} from './infrastructure1907.js';
 import {prepareLandmarkLod,updateLandmarkLod} from './lod1907.js';
 import {createLandmark1907} from './landmarks1907.js';
+import {addBuildingAccess1907} from './building_access1907.js';
 const el=id=>document.getElementById(id),base=new URL('../../',import.meta.url),asset=p=>new URL(p.replace(/^\//,''),base).href;
 const cfg=JSON.parse(el('map-config').textContent);
 el('menu').onclick=()=>{const open=el('options').classList.toggle('open');el('menu').setAttribute('aria-expanded',String(open))};
@@ -96,6 +97,7 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   foundation.position.y=(floor-bottom)/2+bottom-floor-h/2;foundation.name='terrain-foundation';model.add(foundation);
   model.position.set(center.x,floor+h/2,center.z);model.rotation.y=yaw;
   hall.y=floor+h;Object.assign(model.userData,{feature:f,hallPosition:hall,groundFloor:floor});scene.add(model);buildings.push(model);
+  addBuildingAccess1907(model,groundAt);
   const label=document.createElement('button');label.className='building-label';label.textContent=f.name.replace(/^1907년 /,'').replace(/ \(1907\)$/,'');label.onclick=()=>showBuilding(model);el('labels').append(label);labels.push({label,point:hall,owner:model,layer:'building'});prepareLandmarkLod(model);
   const option=document.createElement('option');option.value=f.id;option.textContent=f.name;el('landmark').append(option);
  }

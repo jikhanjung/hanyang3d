@@ -333,6 +333,8 @@ export function createLandmark1907(f,w,h,d){
    const shape=new THREE.Shape();shape.moveTo(-.8,0);shape.lineTo(-.8,4);shape.lineTo(0,5.4);shape.lineTo(.8,4);shape.lineTo(.8,0);shape.closePath();add('pointed-window',new THREE.ShapeGeometry(shape),side*(naveW/2+.03),eave*.25,zz+1.6,'glass',Math.PI/2);
   }
   group.userData.plan='pre-extension-cross';
+  group.userData.blockingRects=[{x:0,z:0,hw:naveW/2+.7,hd:naveD/2},{x:0,z:-d*.12,hw:w/2,hd:d*.11},{x:towerX,z:towerZ,hw:towerW/2,hd:towerW/2}];
+  group.userData.accessX=towerX;
  }else throw Error('Unknown 1907 landmark kind: '+kind);
  // Batch static geometry by material: one draw call per palette colour.
  const textured=group.children.filter(m=>m.isMesh&&m.material.map);
