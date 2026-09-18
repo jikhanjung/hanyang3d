@@ -124,3 +124,14 @@ test('walk tickets carry the account name and must be signed and fresh', () => {
   assert.equal(readJoinOptions({ ...base, name: '한양 길동' }, { secret, now }).error[0], 403);
   assert.deepEqual(readJoinOptions({ ...base, name: '로컬 개발' }, { secret: '' }), { name: '로컬 개발' });
 });
+
+test('1907 uses separate route identities and cannot join a 1750 room with its route key', () => {
+  const modern=npcWorld('seoul1907'),old=npcWorld('mountains');
+  assert.equal(modern.routes.length,8);
+  assert.equal(createWalkingSimulation(modern.routes).walkers.length,128);
+  assert.notEqual(modern.routeKey,old.routeKey);
+  assert.ok(modern.routes.every(r=>r.points.every(p=>Number.isFinite(p.x)&&Number.isFinite(p.z))));
+  const options={name:'경성 검사',protocolVersion:2,alignment:'seoul1907',mapVersion:'v0.2.4',routeKey:modern.routeKey};
+  assert.deepEqual(readJoinOptions(options),{name:options.name});
+  assert.equal(readJoinOptions({...options,alignment:'mountains'}).error[0],412);
+});

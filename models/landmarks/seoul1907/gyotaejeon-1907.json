@@ -1,0 +1,78 @@
+{
+  "model_id": "gyotaejeon-1907-concept-v1",
+  "feature_id": "gyotaejeon-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1888,
+  "valid_to": 1918,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1888,
+      "end_year": null,
+      "status": "documented_rebuild_or_relocation"
+    },
+    "depiction": {
+      "start_year": 1888,
+      "end_year": 1918,
+      "reference_year": 1907,
+      "status": "simplified_period_model",
+      "end_year_precision": "circa_1918_after_1917_Changdeokgung_fire"
+    },
+    "sources": [
+      "https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿)"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "gyotaejeon-1907",
+    "category": "궁궐",
+    "scene_year": 1907,
+    "display_model": "landmark_1907",
+    "landmark_kind": "residence",
+    "symbol_size_m": [
+      40,
+      10,
+      28
+    ],
+    "display_yaw_deg": 3.735,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        785,
+        1711
+      ],
+      "anchor": "structure_center",
+      "method": "manual_map_reading",
+      "note": "1876년 소실 뒤 1888년 재건된 왕비의 침전. 원도 交泰殿 구역의 추정 중심. 1917년 창덕궁 화재 후 1918년경 해체·이전 이전 모습이며 1995년 복원 건물이 아니다."
+    },
+    "size_status": "estimated_not_measured",
+    "position_status": "approximate_map_reading",
+    "model_note": "1876년 소실 뒤 1888년 재건된 왕비의 침전. 원도 交泰殿 구역의 추정 중심. 1917년 창덕궁 화재 후 1918년경 해체·이전 이전 모습이며 1995년 복원 건물이 아니다. 건물과 부속시설 치수·장식은 실측 복원이 아니다.",
+    "bays": [
+      7,
+      4
+    ]
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿)",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_map_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

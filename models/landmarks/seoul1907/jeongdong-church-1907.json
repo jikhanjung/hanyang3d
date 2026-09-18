@@ -1,0 +1,74 @@
+{
+  "model_id": "jeongdong-church-1907-concept-v1",
+  "feature_id": "jeongdong-church-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1897,
+  "valid_to": 1926,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1897,
+      "end_year": null,
+      "status": "documented"
+    },
+    "depiction": {
+      "start_year": 1897,
+      "end_year": 1926,
+      "reference_year": 1907,
+      "status": "simplified_period_model",
+      "end_reason": "plan enlarged; building remained"
+    },
+    "sources": [
+      "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c354b2fc-4c84-496f-822e-e8d78bbd6488"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "jeongdong-church-1907",
+    "scene_year": 1907,
+    "category": "종교·의례",
+    "landmark_kind": "church",
+    "display_model": "landmark_1907",
+    "symbol_size_m": [
+      23,
+      19,
+      29
+    ],
+    "display_yaw_deg": -35,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        507,
+        2440
+      ],
+      "anchor": "structure_center",
+      "method": "estimated_block_from_source_map",
+      "note": "기존 현대좌표 역변환점 [549,2453]이 원도 사선 도로 위였으므로 도로 남서측 건물 구획 [507,2440]으로 이동. 교회 단독 글씨·필지 경계 확정은 아니며 구획 내 추정 배치."
+    },
+    "position_status": "estimated_source_map_block",
+    "size_status": "estimated_not_measured",
+    "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c354b2fc-4c84-496f-822e-e8d78bbd6488",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_source_map_block",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

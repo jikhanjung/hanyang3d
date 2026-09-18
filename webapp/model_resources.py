@@ -1,5 +1,6 @@
 """Approved procedural renderers. Executable code stays in versioned resources."""
 MODEL_RESOURCES = {
+    'landmark_1907': ('1907년 건축물', 'webapp/static/landmarks1907.js', 'landmark_1907'),
     'box': ('기본 상자', 'webapp/static/terrain3d.js', ''),
     'city_gate': ('도성 문', 'webapp/static/gate.js', 'conceptual_gate_with_open_arch_and_roof'),
     'jongmyo': ('종묘 정전', 'webapp/static/jongmyo.js', 'jongmyo_15_chambers'),

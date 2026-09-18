@@ -1,0 +1,76 @@
+{
+  "model_id": "hoedong-seogwan-1907-concept-v1",
+  "feature_id": "hoedong-seogwan-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1907,
+  "valid_to": 1908,
+  "temporal_status": {
+    "existence": {
+      "start_year": null,
+      "end_year": null,
+      "status": "unknown_individual_building_dates"
+    },
+    "depiction": {
+      "start_year": 1907,
+      "end_year": 1908,
+      "reference_year": 1907,
+      "status": "estimated_1907_bookshop_not_1915_photo_reconstruction"
+    },
+    "sources": [
+      "https://dh.aks.ac.kr/~jisun/edu/index.php/회동서관_터"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "hoedong-seogwan-1907",
+    "scene_year": 1907,
+    "category": "상업",
+    "display_model": "landmark_1907",
+    "landmark_kind": "bookshop",
+    "symbol_size_m": [
+      15,
+      7,
+      11
+    ],
+    "display_yaw_deg": -86.265,
+    "variant": 0,
+    "lod_distance_m": 1500,
+    "position_status": "estimated_near_gwangtonggyo_east_based_on_site_marker",
+    "size_status": "estimated_not_measured",
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1001,
+        2337
+      ],
+      "anchor": "compound_center",
+      "method": "modern_site_marker_affine_then_map_block_adjustment",
+      "note": "DH Edu 표석 좌표 37.568293400535,126.98293458879의 역변환은 약 [988,2352]. 광통교 동변 설명과 원도 길·물길을 참고해 동쪽 필지 [1001,2337]에 추정 배치. 표석은 건물 중심이나 1907년 필지의 실측 근거가 아니다."
+    },
+    "model_note": "상점 형식의 기와지붕·목조 전면·책 진열을 단순화한 추정 모형. 1915년경 사진을 1907년의 확정 외관으로 소급하지 않는다."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://dh.aks.ac.kr/~jisun/edu/index.php/회동서관_터",
+    "https://www.donga.com/news/Culture/article/all/20080702/8597188/1",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_near_gwangtonggyo_east_based_on_site_marker",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

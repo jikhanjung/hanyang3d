@@ -86,3 +86,7 @@ location /multiplayer/ {
 ## SDK
 
 브라우저 SDK는 `@colyseus/sdk` 0.18.2의 `dist/colyseus.js`와 MIT 라이선스를 `webapp/static/vendor/colyseus/`에 보존한다. 서버 버전과 의존성은 `package-lock.json`에 고정한다.
+
+## 1907년 경성 공간
+
+`alignment=seoul1907`을 추가했다. 1750년 `mountains`/`base`와 별도 방이며, 1907년의 지도 정합·8개 길·128명 NPC를 사용한다. `map1907_transform.js`를 브라우저와 공유하고 routeKey로 불일치를 차단한다. 프로토콜 2와 기존 계정·채팅을 유지한다. 이 기능은 웹과 멀티플레이 이미지 모두 갱신해야 운영에서 작동한다. [자료·복식·기능](../docs/seoul1907_people_and_walking.md).

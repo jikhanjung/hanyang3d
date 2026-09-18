@@ -1,0 +1,106 @@
+{
+  "scene_year": 1907,
+  "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+  "name": "종로 전차",
+  "name_en": "Jongno tram",
+  "active_from": 1899,
+  "active_until": null,
+  "operator": "한미전기회사",
+  "source_urls": [
+    "https://encykorea.aks.ac.kr/Article/E0049706",
+    "https://dh.aks.ac.kr/sillokwiki/index.php/전차(電車)",
+    "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020",
+    "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1026&seq=00000000000022320&sso=ok"
+  ],
+  "route": {
+    "id": "jongno-interior",
+    "pixels": [
+      [
+        550,
+        2204
+      ],
+      [
+        650,
+        2207
+      ],
+      [
+        750,
+        2213
+      ],
+      [
+        850,
+        2222
+      ],
+      [
+        1006,
+        2239
+      ],
+      [
+        1150,
+        2249
+      ],
+      [
+        1300,
+        2252
+      ],
+      [
+        1500,
+        2253
+      ],
+      [
+        1700,
+        2261
+      ],
+      [
+        1878,
+        2272
+      ],
+      [
+        1990,
+        2282
+      ]
+    ],
+    "method": "1907 원도의 종로 붉은 전기철도 실선을 직접 판독. 건물과 같은 지도·지형 보정 사용.",
+    "note": "돈의문 동쪽부터 흥인지문 서쪽까지의 도성 내부 발췌 구간. 양 끝은 시각화 경계이며 역사적 종점이나 정류장이 아니다."
+  },
+  "simulation": {
+    "vehicles": 1,
+    "speed_mps": 3.6,
+    "end_pause_seconds": 8,
+    "note": "왕복·속도·대기·차량 수는 시각화 설정. 역사적 시각표 재현이 아니다."
+  },
+  "model": {
+    "length_m": 8,
+    "width_m": 2.1,
+    "height_m": 3.3,
+    "gauge_m": 1.067,
+    "note": "초기 개방차를 단순화한 자체 모형. 중앙 객실·개방 좌석·양끝 승강대·트롤리 폴. 치수, 궤간, 갈색·크림색 도장과 가선주 간격은 도식적 설정이며 1907년 특정 차량 실측값이 아니다.",
+    "occupants": {
+      "driver": 1,
+      "passengers": 4,
+      "note": "운전수와 남녀 승객의 수·좌석·옷 색상은 재현용 설정. 운전수 모자는 특정 회사 제복의 확정 복원이 아니다."
+    }
+  },
+  "sources": [
+    {
+      "title": "한국민족문화대백과 — 전차",
+      "title_en": "Encyclopedia of Korean Culture — Trams",
+      "url": "https://encykorea.aks.ac.kr/Article/E0049706"
+    },
+    {
+      "title": "실록위키 — 전차",
+      "title_en": "Sillokwiki — Trams",
+      "url": "https://dh.aks.ac.kr/sillokwiki/index.php/전차(電車)"
+    },
+    {
+      "title": "우리역사넷 — 전기와 함께 들어 온 전차",
+      "title_en": "Our History Net — Electricity and trams",
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+    },
+    {
+      "title": "서울역사박물관 — 대한제국기 전차표",
+      "title_en": "Seoul Museum of History — Korean Empire tram tickets",
+      "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1026&seq=00000000000022320&sso=ok"
+    }
+  ]
+}

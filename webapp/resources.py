@@ -15,6 +15,22 @@ def public_resource_paths():
     # Only catalogued originals and selected review artifacts are web-accessible.
     allowed = {a['local_path'] for a in assets()}
     allowed.update({
+        'webapp/static/seoul1907.js',
+        'webapp/static/trams1907.js',
+        'gis/transport/seoul1907_trams.json',
+        'webapp/static/first_person.js',
+        'webapp/static/adventure.css',
+        'webapp/static/map1907_transform.js',
+        'webapp/static/walk1907.js',
+        'webapp/static/people1907.js',
+        'webapp/static/navigation1907.js',
+
+        'webapp/static/infrastructure1907.js',
+        'webapp/static/lod1907.js',
+        'gis/walls/seoul1907_infrastructure.json',
+        'webapp/static/landmarks1907.js',
+        'gis/control_points/seoul1907.json',
+        'gis/georeferenced/seoul1907/map.jpg',
         'gis/georeferenced/terrain3d/dem.json',
         'gis/georeferenced/terrain3d/channel_refined.bin.gz',
         'gis/walls/doseong_city_wall.json',

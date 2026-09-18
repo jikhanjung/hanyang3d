@@ -1,0 +1,79 @@
+{
+  "model_id": "bukmyo-1907-concept-v1",
+  "feature_id": "bukmyo-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1883,
+  "valid_to": 1908,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1883,
+      "end_year": null,
+      "status": "documented_foundation_demolition_unknown"
+    },
+    "depiction": {
+      "start_year": 1883,
+      "end_year": 1908,
+      "reference_year": 1907,
+      "status": "shrine_before_ritual_merger_not_demolition_date"
+    },
+    "sources": [
+      "https://www.oknews.news/news/articleView.html?idxno=15929",
+      "https://www.museum.go.kr/MUSEUM/contents/M0502000000.do?relicId=4342&schM=view&searchId=search",
+      "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "bukmyo-1907",
+    "scene_year": 1907,
+    "category": "제례",
+    "display_model": "landmark_1907",
+    "landmark_kind": "bukmyo",
+    "symbol_size_m": [
+      70,
+      11,
+      46
+    ],
+    "display_yaw_deg": 3.735,
+    "variant": 0,
+    "lod_distance_m": 2100,
+    "position_status": "approximate_labeled_compound_reading",
+    "size_status": "estimated_not_measured",
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1738,
+        1202
+      ],
+      "anchor": "compound_center",
+      "method": "manual_labeled_compound_reading",
+      "note": "원도 北廟 글씨 바로 서쪽의 닫힌 장방형 구획 내부. 성균관 북쪽이며 개별 정전 중심·축 방향은 추정."
+    },
+    "model_note": "기사에 국립중앙박물관 제공으로 실린 정전 사진을 참조. 높은 석축·넓은 계단·보이는 정면 3칸·창호·측면 건물을 표현. 촬영연도 미확정, 담장·출입문·전체 평면·색상·치수는 추정. 사진을 텍스처로 복제하지 않음."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://www.oknews.news/news/articleView.html?idxno=15929",
+    "https://www.museum.go.kr/MUSEUM/contents/M0502000000.do?relicId=4342&schM=view&searchId=search",
+    "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_labeled_compound_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

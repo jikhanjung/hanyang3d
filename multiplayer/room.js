@@ -33,7 +33,7 @@ export const MAX_ROOMS = Number(process.env.WALK_MAX_ROOMS || 8);
 // The host is small, so first person is capped at WALK_MAX_PLAYERS people across every room; entry is refused with 429
 // once that many are already walking.
 export const MAX_PLAYERS = Number(process.env.WALK_MAX_PLAYERS || 10);
-export const ALIGNMENTS = new Set(['mountains', 'base']);
+export const ALIGNMENTS = new Set(['mountains', 'base', 'seoul1907']);
 
 // With WALK_TICKET_SECRET set (production) the name comes only from a valid ticket signed by the web server for the
 // logged-in account; without it (local development) the typed name is accepted.

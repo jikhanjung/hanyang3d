@@ -7,7 +7,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from webapp.content import IMPORT_KEY
+from webapp.content import IMPORT_KEY, building_seeds
 from webapp.guide import anchor
 from webapp.model_resources import MODEL_RESOURCES
 from webapp.models import Building, Citation, ContentImport, GuideSection, Resource, Story
@@ -26,7 +26,7 @@ class Command(BaseCommand):
             return
         if any(m.objects.exists() for m in (Building, Story, GuideSection, Resource)):
             raise CommandError('콘텐츠가 이미 존재합니다. 빈 DB에서만 최초 가져오기를 실행할 수 있습니다.')
-        buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())
+        buildings = building_seeds()
         stories = json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text())
         guide = (settings.BASE_DIR / 'docs/landmarks.md').read_text()
         resources = {}

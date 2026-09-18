@@ -33,16 +33,27 @@ def sources(obj):
     return [{'title': c.title, 'url': c.url, 'title_en': c.title_en} for c in obj.citations.all()]
 
 
+def building_seeds():
+    """Both periods share the editable DB, but have separate scene payloads."""
+    result = json.loads((settings.BASE_DIR / "gis/buildings/1750_landmarks.json").read_text())
+    result["features"].extend(json.loads((settings.BASE_DIR / "gis/buildings/1907_landmarks.json").read_text())["features"])
+    return result
+
+
 # A database row may refer to a model renderer, bridge or place name that a newer image no longer has.
 # Such rows are skipped (or shown without their model) so the page still renders, and each one is
 # reported in `problems` so the deployment check can fail loudly instead.
-def load_buildings(problems=None):
+def load_buildings(problems=None, *, scene_year=1750):
     problems = [] if problems is None else problems
     metadata = ContentImport.objects.get(key=IMPORT_KEY).metadata
     result = copy.deepcopy(metadata['buildings'])
+    if scene_year == 1907:
+        result = {'schema_version': 1, 'scene_year': 1907}
     result['features'] = []
     for b in Building.objects.filter(published=True).select_related('model_resource', 'guide_section').prefetch_related('citations'):
         feature = copy.deepcopy(b.map_config)
+        if scene_year is not None and feature.get("scene_year", 1750) != scene_year:
+            continue
         feature.update(id=b.key, name=b.name, category=b.category)
         from .model_resources import MODEL_RESOURCES
         entry = MODEL_RESOURCES.get(b.model_resource.renderer)
@@ -85,10 +96,12 @@ def load_stories(problems=None):
 def guide_markdown(lang='ko'):
     # English headings keep the Korean anchor ({#…}) so links from the map popups still land on the section.
     def heading(s):
-        if lang == 'en' and s.title_en:
+        title = s.title_en if lang == 'en' and s.title_en else s.title
+        visible = title.replace('(추정)', '').replace(' (estimated)', '').replace(', estimated)', ')').rstrip()
+        if visible != s.title:
             from .guide import anchor
-            return '#' * s.level + ' ' + s.title_en + ' {#' + anchor(s.title) + '}'
-        return '#' * s.level + ' ' + s.title
+            return '#' * s.level + ' ' + visible + ' {#' + anchor(s.title) + '}'
+        return '#' * s.level + ' ' + visible
     body = (lambda s: s.body_en if lang == 'en' and s.body_en else s.body)
     return '\n\n'.join(heading(s) + '\n\n' + body(s) for s in GuideSection.objects.filter(published=True))
 
@@ -96,6 +109,6 @@ def guide_markdown(lang='ko'):
 def content_problems():
     """Render every public content payload once and return the references that had to be skipped."""
     problems = []
-    load_buildings(problems)
+    load_buildings(problems, scene_year=None)
     load_stories(problems)
     return problems

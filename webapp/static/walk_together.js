@@ -9,7 +9,7 @@ const tMsg = m => { const n = String(m ?? '').match(/\d+/)?.[0]; return n ? t(m.
 // Must match the rider height in terrain3d.js first person.
 const SADDLE = .35;
 
-export function createWalkTogether({ scene, firstPerson, pedestrians, profile, groundAt, endpoint, mapVersion, alignment, button, status }) {
+export function createWalkTogether({ scene, firstPerson, pedestrians, profile, groundAt, endpoint, mapVersion, alignment, button, status, walkerFactory=createWalker }) {
   const peers = new Map();
   let room = null, generation = 0, pending = false, sendTimer = null, previousPlayback = null;
   const playback = document.getElementById('walking3d');
@@ -53,7 +53,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
   }
 
   function add(pose) {
-    const walker = createWalker();
+    const walker = walkerFactory();
     walker.group.name = 'remote-walker';
     walker.group.userData.playerId = pose.id;
     walker.group.getObjectByName('walker-body').material.color.set(pose.color);

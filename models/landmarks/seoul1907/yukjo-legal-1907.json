@@ -1,0 +1,80 @@
+{
+  "model_id": "yukjo-legal-1907-concept-v1",
+  "feature_id": "yukjo-legal-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1907,
+  "valid_to": 1908,
+  "temporal_status": {
+    "existence": {
+      "start_year": null,
+      "end_year": null,
+      "status": "unknown_individual_building_dates"
+    },
+    "depiction": {
+      "start_year": 1907,
+      "end_year": 1908,
+      "reference_year": 1907,
+      "status": "single_year_estimated_streetscape"
+    },
+    "sources": [
+      "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+    ],
+    "occupancy": {
+      "start_date": null,
+      "end_date": null,
+      "status": "institution_name_period_not_building_dates"
+    }
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "yukjo-legal-1907",
+    "scene_year": 1907,
+    "category": "관청",
+    "display_model": "landmark_1907",
+    "landmark_kind": "government_compound",
+    "symbol_size_m": [
+      85,
+      9,
+      72
+    ],
+    "display_yaw_deg": -86.265,
+    "variant": 1,
+    "lod_distance_m": 2100,
+    "position_status": "estimated_source_map_block",
+    "size_status": "estimated_not_measured",
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        805,
+        2012
+      ],
+      "anchor": "compound_center",
+      "method": "estimated_block_from_source_map",
+      "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+    },
+    "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://theme.archives.go.kr/next/place/observatory.do?flag=02",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_source_map_block",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

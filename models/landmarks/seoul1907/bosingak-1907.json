@@ -1,0 +1,81 @@
+{
+  "model_id": "bosingak-1907-concept-v1",
+  "feature_id": "bosingak-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1869,
+  "valid_to": 1915,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1869,
+      "end_year": null,
+      "status": "documented_rebuild"
+    },
+    "depiction": {
+      "start_year": 1869,
+      "end_year": 1915,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://encykorea.aks.ac.kr/Article/E0023446",
+      "https://seoulcitywall.seoul.go.kr/content/8.do"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "bosingak-1907",
+    "category": "누각",
+    "scene_year": 1907,
+    "display_model": "landmark_1907",
+    "landmark_kind": "bell_pavilion",
+    "gate_identity": "bosingak",
+    "gate_tiers": 1,
+    "symbol_size_m": [
+      20,
+      10,
+      14
+    ],
+    "display_yaw_deg": 3.735,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1026,
+        2256
+      ],
+      "anchor": "structure_center",
+      "method": "manual_street_corner_reading",
+      "note": "원도의 붉은 동서 도로와 남북 도로가 만나는 사거리 중심 약 [1006,2237]을 기준으로 남동쪽 모서리 안쪽 [1026,2256]에 배치. 사용자 방향 정정에 따라 북동쪽 배치를 폐기. 20×14m 모형이 동쪽 도로 경계(x 약 1017), 남쪽 도로 경계(y 약 2246)와 겹치지 않게 이격한 추정 위치.",
+      "intersection_pixel": [
+        1006,
+        2237
+      ]
+    },
+    "position_status": "estimated_street_corner",
+    "size_status": "estimated_not_measured",
+    "model_note": "1869년 재건된 3×2칸 단층 팔작지붕 종루. 1895년 보신각 현판을 받았고 1915년 뒤로 이전하기 전의 추정 자리이다. 치수·장식은 실측 복원이 아닌 개념 표현."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://encykorea.aks.ac.kr/Article/E0023446",
+    "https://seoulcitywall.seoul.go.kr/content/8.do",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_street_corner",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

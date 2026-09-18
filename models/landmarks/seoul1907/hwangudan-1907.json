@@ -1,0 +1,73 @@
+{
+  "model_id": "hwangudan-1907-concept-v1",
+  "feature_id": "hwangudan-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1897,
+  "valid_to": 1913,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1897,
+      "end_year": 1913,
+      "status": "documented"
+    },
+    "depiction": {
+      "start_year": 1897,
+      "end_year": 1913,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr="
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "hwangudan-1907",
+    "scene_year": 1907,
+    "category": "종교·의례",
+    "landmark_kind": "altar",
+    "display_model": "landmark_1907",
+    "symbol_size_m": [
+      48,
+      5,
+      48
+    ],
+    "display_yaw_deg": 3.735,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        847,
+        2548
+      ],
+      "anchor": "structure_center",
+      "method": "manual_map_reading",
+      "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+    },
+    "position_status": "approximate_source_map_reading",
+    "size_status": "estimated_not_measured",
+    "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr=",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_source_map_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

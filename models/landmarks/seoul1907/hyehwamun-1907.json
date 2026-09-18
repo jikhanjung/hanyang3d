@@ -1,0 +1,77 @@
+{
+  "model_id": "hyehwamun-1907-concept-v1",
+  "feature_id": "hyehwamun-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1744,
+  "valid_to": 1928,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1744,
+      "end_year": null,
+      "status": "documented_rebuild"
+    },
+    "depiction": {
+      "start_year": 1744,
+      "end_year": 1928,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://culture.seoul.go.kr/culture/bbs/B0000001/view.do?menuNo=200050&nttId=4462&pageIndex=17",
+      "https://seoulcitywall.seoul.go.kr/content/8.do"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "hyehwamun-1907",
+    "category": "성문",
+    "scene_year": 1907,
+    "display_model": "landmark_1907",
+    "landmark_kind": "city_gate",
+    "gate_identity": "hyehwamun",
+    "gate_tiers": 1,
+    "symbol_size_m": [
+      18,
+      13,
+      11
+    ],
+    "display_yaw_deg": 65,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1984,
+        1395
+      ],
+      "anchor": "structure_center",
+      "method": "manual_map_reading",
+      "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정."
+    },
+    "position_status": "approximate_map_reading",
+    "size_status": "estimated_not_measured",
+    "model_note": "1744년 중건 문루가 남아 있던 동소문. 1928년 문루 철거, 1938년 육축 철거와 현재 복원 위치를 구별한다. 치수·장식은 실측 복원이 아닌 개념 표현."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://culture.seoul.go.kr/culture/bbs/B0000001/view.do?menuNo=200050&nttId=4462&pageIndex=17",
+    "https://seoulcitywall.seoul.go.kr/content/8.do",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_map_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

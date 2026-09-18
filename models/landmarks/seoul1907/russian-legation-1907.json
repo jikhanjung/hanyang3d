@@ -1,0 +1,78 @@
+{
+  "model_id": "russian-legation-1907-concept-v1",
+  "feature_id": "russian-legation-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1890,
+  "valid_to": 1950,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1890,
+      "end_year": null,
+      "status": "approximate",
+      "start_precision": "circa",
+      "note": "착공·완공 연대 서술 차이 있음. 한국전쟁 파괴 연도 미확정, 남은 탑과 본관 구별 필요."
+    },
+    "depiction": {
+      "start_year": 1890,
+      "end_year": 1950,
+      "reference_year": 1907,
+      "status": "simplified_period_model",
+      "end_precision": "Korean War 1950–1953; conservative display cutoff"
+    },
+    "sources": [
+      "https://contents.history.go.kr/front/ki/printViewPopup.do?levelId=ki_060_07000",
+      "https://encykorea.aks.ac.kr/Article/E0005711"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "russian-legation-1907",
+    "scene_year": 1907,
+    "category": "외교시설",
+    "landmark_kind": "legation",
+    "display_model": "landmark_1907",
+    "symbol_size_m": [
+      42,
+      22,
+      28
+    ],
+    "display_yaw_deg": -25,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        447,
+        2326
+      ],
+      "anchor": "structure_center",
+      "method": "manual_precinct_reading",
+      "note": "원도 露國領事館 표기 아래 담장 구역의 건물 기호를 기준으로 한 추정 위치. 건물 중심과 탑의 정확한 위치는 미확정."
+    },
+    "position_status": "estimated_precinct_location",
+    "size_status": "estimated_not_measured",
+    "model_note": "2층 벽돌조·측면 탑·연창이라는 문헌상 특징만 반영. 전체 평면·박공 배치·색은 추정이며 현존 탑만 복제한 모형 아님."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://contents.history.go.kr/front/ki/printViewPopup.do?levelId=ki_060_07000",
+    "https://encykorea.aks.ac.kr/Article/E0005711",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_precinct_location",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

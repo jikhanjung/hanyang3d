@@ -1,0 +1,86 @@
+{
+  "model_id": "sungjeongjeon-1907-concept-v1",
+  "feature_id": "sungjeongjeon-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1618,
+  "valid_to": 1926,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1618,
+      "end_year": null,
+      "status": "documented"
+    },
+    "depiction": {
+      "start_year": 1618,
+      "end_year": 1926,
+      "reference_year": 1907,
+      "status": "simplified_period_model",
+      "end_reason": "sold and relocated; not destroyed"
+    },
+    "sources": [
+      "https://encykorea.aks.ac.kr/Article/E0003036"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "sungjeongjeon-1907",
+    "category": "궁궐",
+    "scene_year": 1907,
+    "display_model": "throne_hall",
+    "symbol_size_m": [
+      75,
+      15,
+      95
+    ],
+    "display_yaw_deg": 93.735,
+    "throne_hall": {
+      "bays": [
+        5,
+        4
+      ],
+      "hall_m": [
+        25,
+        18
+      ],
+      "roof_tiers": 1,
+      "terrace_tiers": 2
+    },
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        374,
+        2131
+      ],
+      "anchor": "hall_center",
+      "method": "modern_reference_inverse_affine",
+      "note": "경희궁 현대 위치 참고값을 역변환해 원도의 慶熙宮 구역과 대조한 추정 위치. 원도는 전각을 생략하여 숭정전 기호 판독이 아니다."
+    },
+    "size_status": "estimated_not_measured",
+    "model_note": "문헌상의 5×4칸 단층 정전·동향 설명을 참고. 원도에는 전각 기호가 없으므로 위치·회랑·크기는 추정.",
+    "landmark_kind": "throne_hall",
+    "position_status": "estimated_precinct_location"
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://encykorea.aks.ac.kr/Article/E0003036",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_precinct_location",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

@@ -147,7 +147,10 @@ def _apply_building(b, data, position):
     b.name, b.category, b.summary, b.period, b.in_1750 = data['name'], data['category'], data['summary'], data['period'], data['in_1750']
     b.map_config = data['map_config']
     b.name_en, b.summary_en, b.period_en, b.in_1750_en = data.get('name_en', ''), data.get('summary_en', ''), data.get('period_en', ''), data.get('in_1750_en', '')
-    b.model_resource = Resource.objects.get(kind='model', renderer=data['model'])
+    name, path, renderer = MODEL_RESOURCES[data['model']]
+    b.model_resource, _ = Resource.objects.get_or_create(
+        key='model-' + data['model'].replace('_', '-'),
+        defaults={'name': name, 'kind': 'model', 'path': path, 'renderer': data['model']})
     if b.position is None:
         b.position = position
     b.full_clean(); b.save()

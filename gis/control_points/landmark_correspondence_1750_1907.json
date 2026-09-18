@@ -1,0 +1,2557 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-18",
+  "purpose": "Cross-map place identities; NOT surveyed control points",
+  "fit_status": "not_fitted",
+  "correspondences": [
+    {
+      "place_id": "changdeok",
+      "feature_1750": "changdeok",
+      "feature_1907": "injeongjeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1749,
+              1020
+            ],
+            "method": "manual_drawn_palace_roof_group",
+            "note": "원도 동궐 구역에서 서쪽 붉은 전각 지붕 무리의 중심을 육안 판독했다. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다. 돈화문 기호와의 상대 위치를 맞추려고 함께 옮겼다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1370,
+              1785
+            ],
+            "anchor": "hall_center",
+            "method": "manual_map_reading",
+            "note": "정규화한 최신경성전도의 인정전 표기 옆 전각 기호를 육안 판독한 추정 중심. 원도 자체의 축척·묘사 오차 포함."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "changgyeong",
+      "feature_1750": "changgyeong",
+      "feature_1907": "myeongjeongjeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1916,
+              1013
+            ],
+            "method": "modern_site_pair_midpoint",
+            "note": "창경궁과 홍화문의 중간 지점이 기존 현대 위경도 위치와 맞도록 서쪽으로 약 22 m 옮긴 표시 위치다. 원도 전각 지붕 판독값이 아니다. 종로1가 사거리 보정점을 넣어 원도 변형이 바뀐 뒤 다시 계산했다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1554,
+              1830
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "donhwamun",
+      "feature_1750": "donhwamun",
+      "feature_1907": "donhwamun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1717,
+              1064
+            ],
+            "method": "manual_drawn_gate_symbol",
+            "note": "원도의 敦化門 글씨 아래 문 기호와 남향 길 시작점을 육안 판독했다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1325,
+              1859
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "敦化門 세로 글씨 바로 아래, 붉은 담장 선의 문 기호 중심. 종전 [1324,1898]에서 원도 위쪽으로 39px 보정(지상 약 81m); 도로 교차점과 구별."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "dongmyo",
+      "feature_1750": "dongmyo",
+      "feature_1907": "dongmyo-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              2748,
+              1413
+            ],
+            "method": "label_read_on_source_map_shifted_clear_of_roads",
+            "note": "흥인지문 밖 동쪽 길 남쪽에 네모 칸 글씨 關王廟가 (2750, 1393)에 있다. 그 자리는 길 판독 마스크와 겹쳐, 겹치지 않는 가장 가까운 곳으로 36 m 남쪽에 두었다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              2490,
+              2238
+            ],
+            "anchor": "structure_center",
+            "method": "estimated_region_on_source_map",
+            "note": "흥인지문 밖 동쪽 큰길 남쪽 구획에 추정. 원도 개별 사당 기호 미확정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "honghwamun",
+      "feature_1750": "honghwamun",
+      "feature_1907": "honghwamun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1937,
+              1013
+            ],
+            "method": "modern_site_pair_midpoint",
+            "note": "창경궁 모형 동쪽 약 45 m. 창경궁과의 중간 지점이 기존 현대 위경도 위치와 맞는다. 원도 문 기호 판독값이 아니다. 종로1가 사거리 보정점을 넣어 원도 변형이 바뀐 뒤 다시 계산했다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1612,
+              1840
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "geumhomun",
+      "feature_1750": "geumhomun",
+      "feature_1907": "geumhomun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1688,
+              1028
+            ],
+            "method": "manual_detail_sheet_gate_symbol",
+            "note": "부분도에서 창덕궁 서쪽 담 위의 金虎門 문 기호를 읽었다. 부분도 asset-0018 픽셀 [1953, 512]을 부분도 정합으로 전체도 좌표에 옮겼다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1303,
+              1780
+            ],
+            "anchor": "structure_center",
+            "method": "estimated_region_on_source_map",
+            "note": "돈화문 북서쪽 궁장 꺾임 부근. 문 이름 판독이 아닌 궁장 권역 추정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "heunghwamun",
+      "feature_1750": "heunghwamun",
+      "feature_1907": "heunghwamun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              949,
+              1441
+            ],
+            "method": "manual_detail_sheet_gate_symbol",
+            "note": "부분도에서 경덕궁 동쪽 담 위의 興化門 문 기호(붉은 지붕 표시)를 읽었다. 부분도 asset-0020 픽셀 [1228, 420]을 부분도 정합으로 전체도 좌표에 옮겼다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              590,
+              2166
+            ],
+            "anchor": "structure_center",
+            "method": "estimated_region_on_source_map",
+            "note": "원도 경희궁 남동쪽 경계, 큰길 북쪽 구획 추정. 현 위치 소급 아님."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "gyeongdeok",
+      "feature_1750": "gyeongdeok",
+      "feature_1907": "sungjeongjeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              880,
+              1380
+            ],
+            "method": "manual_site_inside_drawn_enclosure",
+            "note": "원도의 나무와 담장 안에 표시한 개략 시설 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              374,
+              2131
+            ],
+            "anchor": "hall_center",
+            "method": "modern_reference_inverse_affine",
+            "note": "경희궁 현대 위치 참고값을 역변환해 원도의 慶熙宮 구역과 대조한 추정 위치. 원도는 전각을 생략하여 숭정전 기호 판독이 아니다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "jongmyo",
+      "feature_1750": "jongmyo",
+      "feature_1907": "jongmyo-jeongjeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": null
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1495,
+              2021
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "sajik",
+      "feature_1750": "sajik",
+      "feature_1907": "sajik-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              820,
+              1200
+            ],
+            "method": "manual_site_inside_drawn_enclosure",
+            "note": "원도의 나무와 담장 안에 표시한 개략 시설 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              390,
+              1890
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_compound_reading",
+            "note": "원도 社稷 글씨 옆 이중 제단 경계 중심."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "sungkyun",
+      "feature_1750": "sungkyun",
+      "feature_1907": "sungkyun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              2010,
+              770
+            ],
+            "method": "manual_site_inside_drawn_enclosure",
+            "note": "원도의 문묘·성균관 건물과 담장 안 개략 대표 위치. 위경도는 현대 위치 참고값이며 화면 배치는 이 원도 좌표를 사용한다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1608,
+              1446
+            ],
+            "anchor": "structure_center",
+            "method": "manual_labeled_compound_reading",
+            "note": "원도의 成均館 세로 표기 및 둘러싼 장방형 구획 내부 중심을 판독. 기존 권역 추정 [1530,1420]에서 동쪽으로 정정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "gwanghwamun",
+      "feature_1750": "gwanghwamun",
+      "feature_1907": "gwanghwamun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": null
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              765,
+              1917
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "gyeonghoeru_pond",
+      "feature_1750": "gyeonghoeru_pond",
+      "feature_1907": "gyeonghoeru-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1098,
+              1000
+            ],
+            "method": "drawn_pond_shifted_to_west_wall",
+            "detail_asset": "asset-0017",
+            "note": "원도 부분도 4의 연못 그림(1111~1173, 966~1032)은 담장 안 가운데 가까이 있으나, 실제 경회루 연못은 경복궁 서쪽 담장에 붙어 있다. 그림의 남북 위치를 살리고 서쪽 담장(x≈1069~1077) 안쪽으로 옮기되, 담장과 연못 둑 사이에 약 12 m 틈을 두었다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              739,
+              1724
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "geunjeongjeon_site",
+      "feature_1750": "geunjeongjeon_site",
+      "feature_1907": "geunjeongjeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1153,
+              1058
+            ],
+            "method": "proportional_inside_drawn_palace_wall",
+            "note": "원도 담장 안 남북 비율(광화문에서 신무문까지의 72% 지점, 담장 가운데 축). 원도에는 건물이 없다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              777,
+              1795
+            ],
+            "anchor": "hall_center",
+            "method": "manual_map_reading",
+            "note": "정규화한 북쪽 위 지도(2667×3750)의 근정전 기호 중심. 건물 중심을 배치 기준으로 삼으며 조정 중심과 구분한다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "sajeongjeon_site",
+      "feature_1750": "sajeongjeon_site",
+      "feature_1907": "sajeongjeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1153,
+              1024
+            ],
+            "method": "proportional_inside_drawn_palace_wall",
+            "note": "근정전 터 북쪽 중심축. 원도에는 건물이 없다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              780,
+              1758
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1867년 중건된 편전. 원도 思政殿 표기를 기준으로 배치한 단층 5×3칸 전각."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "gangnyeongjeon_site",
+      "feature_1750": "gangnyeongjeon_site",
+      "feature_1907": "gangnyeongjeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1153,
+              998
+            ],
+            "method": "proportional_inside_drawn_palace_wall",
+            "note": "근정전 터 북쪽 중심축. 원도에는 건물이 없다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              783,
+              1736
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1876년 화재 뒤 1888년 재건된 왕의 침전. 1917년 창덕궁 화재 이후 1918년경 해체·이전된 목재와 현재 복원 건물을 구별한다. 원도 康寧殿 표기를 기준으로 단층 7×4칸을 개념 표현."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "gyotaejeon_site",
+      "feature_1750": "gyotaejeon_site",
+      "feature_1907": "gyotaejeon-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1153,
+              978
+            ],
+            "method": "proportional_inside_drawn_palace_wall",
+            "note": "근정전 터 북쪽 중심축. 원도에는 건물이 없다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              785,
+              1711
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1876년 소실 뒤 1888년 재건된 왕비의 침전. 원도 交泰殿 구역의 추정 중심. 1917년 창덕궁 화재 후 1918년경 해체·이전 이전 모습이며 1995년 복원 건물이 아니다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "heunginjimun",
+      "feature_1750": "heunginjimun",
+      "feature_1907": "heunginjimun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": null
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              2130,
+              2300
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "sungnyemun",
+      "feature_1750": "sungnyemun",
+      "feature_1907": "sungnyemun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": null
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              615,
+              2783
+            ],
+            "anchor": "structure_center",
+            "method": "manual_gate_symbol_reading",
+            "note": "원도 崇禮門 글씨 위의 붉은 문루 기호 중심. 기존 [635,2767]에서 [615,2783]으로 남서쪽 이동. 주변 붉은 길과 톱니 모양 성곽선을 구별해 다시 판독."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "donuimun",
+      "feature_1750": "donuimun",
+      "feature_1907": "donuimun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": null
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              394,
+              2301
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정. 위에서 본 반시계방향 45도 회전(65→110도). 톱니형 성곽선과 사선 도로를 구별해 성벽 연결 재판독."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "changuimun",
+      "feature_1750": "changuimun",
+      "feature_1907": "changuimun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "pixel": [
+              710,
+              670
+            ],
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              434,
+              980
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정. 위에서 본 시계방향 70도 회전(-42→-112도)."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "sukjeongmun",
+      "feature_1750": "sukjeongmun",
+      "feature_1907": "sukjeongmun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "pixel": [
+              1406,
+              556
+            ],
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1388,
+              1120
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "원도 백악 동쪽 성곽의 숙정문 표기 부근. 문루 없이 석축 홍예만 표현하며 세부 위치·치수 추정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1907년 모형은 문루 없는 육축. 현재 문루 소급 금지.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "hyehwamun",
+      "feature_1750": "hyehwamun",
+      "feature_1907": "hyehwamun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "pixel": [
+              2352,
+              825
+            ],
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1984,
+              1395
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "gwanghuimun",
+      "feature_1750": "gwanghuimun",
+      "feature_1907": "gwanghuimun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "pixel": [
+              2525,
+              1842
+            ],
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              2103,
+              2665
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "souimun",
+      "feature_1750": "souimun",
+      "feature_1907": "souimun-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "pixel": [
+              867,
+              1765
+            ],
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0"
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              475,
+              2480
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_reading",
+            "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "jongru",
+      "feature_1750": "jongru",
+      "feature_1907": "bosingak-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1444,
+              1451
+            ],
+            "method": "southeast_block_of_drawn_jongno_crossing",
+            "note": "부분도 8에서 확인한 운종가 네거리 `(1417, 1442)`의 남동쪽 블록에 두었다. 원도 길 판독 자료로 도로에 걸치지 않는 가장 가까운 자리를 골랐다. 鍾樓 글씨는 네거리 남동쪽에 적혀 있으나 건물 기호는 확인하지 못했다.",
+            "detail_asset": "asset-0002"
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1026,
+              2256
+            ],
+            "anchor": "structure_center",
+            "method": "manual_street_corner_reading",
+            "note": "원도의 붉은 동서 도로와 남북 도로가 만나는 사거리 중심 약 [1006,2237]을 기준으로 남동쪽 모서리 안쪽 [1026,2256]에 배치. 사용자 방향 정정에 따라 북동쪽 배치를 폐기. 20×14m 모형이 동쪽 도로 경계(x 약 1017), 남쪽 도로 경계(y 약 2246)와 겹치지 않게 이격한 추정 위치.",
+            "intersection_pixel": [
+              1006,
+              2237
+            ]
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "1750년 종루와 1869년 중건 보신각의 연혁 대응. 단순 고정 기준점으로 사용 금지.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "wongaksa_pagoda",
+      "feature_1750": "wongaksa_pagoda",
+      "feature_1907": "wongaksa_pagoda-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1591,
+              1406
+            ],
+            "method": "modern_site_with_offset_interpolated_from_drawn_bridges",
+            "note": "원도의 이 자리는 찢겨 그림이 없다. 현대 위치를 그대로 환산하면 (1637, 1395)로 원도의 수표교보다 동쪽에 놓여, 원도에서 판독한 장통교 (1523, 1554)·수표교 (1625, 1565)와 두 다리의 현대 위치(OSM) 환산값의 차이를 구하고, 탑이 두 다리 사이 동서 비율 0.56 지점에 있다는 점으로 차이를 보간해 적용했다. 수표교는 원도에서 현대 환산값보다 171 m 서쪽에 그려져 있다. 길 판독 마스크와 겹치지 않는다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1221,
+              2183
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_compound_reading",
+            "note": "원도 パゴダ公園 표기와 공원 경계 안. 개별 탑 기호 중심은 추정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "yuksanggung",
+      "feature_1750": "yuksanggung",
+      "feature_1907": "yuksanggung-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1023,
+              757
+            ],
+            "method": "label_read_on_source_map",
+            "note": "경복궁 담장 서북쪽의 노란 테 가로 글씨 毓祥宮의 중심을 읽었다. 길 판독 마스크와 겹치지 않고 경복궁 담장에서 175 m 떨어져 있다."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              625,
+              1323
+            ],
+            "anchor": "structure_center",
+            "method": "manual_map_compound_reading",
+            "note": "毓祥宮 글씨 북서쪽의 작은 전각 구획. 글씨 동쪽 큰 궁장 구획과 구별한 추정 판독."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "yeonghwadang",
+      "feature_1750": "yeonghwadang",
+      "feature_1907": "yeonghwadang-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1770,
+              900
+            ],
+            "method": "estimated_region_not_label_read",
+            "note": "창덕궁 정전 북쪽 후원 권역과 부용지 동쪽이라는 문헌 관계를 참고한 추정 배치. 정밀 평면은 미확정."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1416,
+              1650
+            ],
+            "anchor": "structure_center",
+            "method": "estimated_region_on_source_map",
+            "note": "주합루 부근 후원 권역 추정. 원도 영화당 단독 기호 미확정."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    },
+    {
+      "place_id": "namsan_guksadang",
+      "feature_1750": "namsan_guksadang",
+      "feature_1907": "namsan_guksadang-1907",
+      "observations": [
+        {
+          "scene_year": 1750,
+          "source_position": {
+            "source_asset": "asset-0001",
+            "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
+            "pixel": [
+              1570,
+              2210
+            ],
+            "method": "estimated_region_not_label_read",
+            "note": "남산 정상 권역을 원도에서 추정 배치. 현존 인왕산 국사당 위치와 다르다. 당시 담장·건물 치수는 미확정."
+          }
+        },
+        {
+          "scene_year": 1907,
+          "source_position": {
+            "source_asset": "asset-0024",
+            "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+            "pixel": [
+              1300,
+              3390
+            ],
+            "anchor": "structure_center",
+            "method": "estimated_region_on_source_map",
+            "note": "남산 정상 권역 추정. 원도 국사당 이름이나 건물 기호를 직접 판독한 좌표가 아님."
+          }
+        }
+      ],
+      "role": "candidate_only",
+      "accepted_for_fit": false,
+      "continuity_note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "review_required": [
+        "same physical anchor",
+        "relocation and rebuilding",
+        "independent map reading",
+        "regional uncertainty"
+      ]
+    }
+  ],
+  "inventory_review": [
+    {
+      "feature_1750": "changdeok",
+      "name": "창덕궁 · 인정전 일대",
+      "status": "1907년 표시",
+      "feature_1907": "injeongjeon-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://royal.khs.go.kr/ROYAL/contents/R102010000.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "changgyeong",
+      "name": "창경궁 · 명정전 일대",
+      "status": "1907년 표시",
+      "feature_1907": "myeongjeongjeon-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://royal.khs.go.kr/ROYAL/contents/R103010000.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "donhwamun",
+      "name": "돈화문 · 창덕궁 정문",
+      "status": "1907년 표시",
+      "feature_1907": "donhwamun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0016240"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "geumwiyeong",
+      "name": "금위영",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1895년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0007930",
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300110&code=kc_age_30",
+        "https://ko.wikipedia.org/wiki/%EA%B8%88%EC%9C%84%EC%98%81",
+        "https://tour.jongno.go.kr/tour/tour/indvdlz/view.do?nttId=26815&viewType=BODY&dongCode=1111014900"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "gwansanggam",
+      "name": "관상감",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EA%B4%80%EC%83%81%EA%B0%90",
+        "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_027_0020_0020_0010_0010",
+        "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EA%B4%80%EC%83%81%EA%B0%90_%EA%B4%80%EC%B2%9C%EB%8C%80",
+        "http://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121117400000"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "dongmyo",
+      "name": "동관왕묘",
+      "status": "1907년 표시",
+      "feature_1907": "dongmyo-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EB%8F%99%EA%B4%80%EC%99%95%EB%AC%98",
+        "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121101420000",
+        "https://contents.history.go.kr/mobile/km/view.do?levelId=km_007_0060_0010_0030_0010"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "pyeongsiseo",
+      "name": "평시서",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%8F%89%EC%8B%9C%EC%84%9C(%E5%B9%B3%E5%B8%82%E7%BD%B2)",
+        "https://ko.wikipedia.org/wiki/%ED%8F%89%EC%8B%9C%EC%84%9C",
+        "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "yeonghuijeon",
+      "name": "영희전",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1899년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0037870",
+        "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=dae3d5ce-3616-4256-a8b9-ab636d8d8723&fileSn=1100&type=C&upperNodeId=CTGRY780"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "honghwamun",
+      "name": "홍화문 · 창경궁 정문",
+      "status": "1907년 표시",
+      "feature_1907": "honghwamun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0064444"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "geumhomun",
+      "name": "금호문 · 창덕궁 서쪽 문",
+      "status": "1907년 표시",
+      "feature_1907": "geumhomun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02",
+        "https://sillok.history.go.kr/id/kia_10608023_007",
+        "https://ko.wikipedia.org/wiki/%EC%B0%BD%EB%8D%95%EA%B6%81_%EA%B8%88%ED%98%B8%EB%AC%B8"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "heunghwamun",
+      "name": "흥화문 · 경덕궁 정문",
+      "status": "1907년 표시",
+      "feature_1907": "heunghwamun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_2_0&ccbaCpno=2111100190000",
+        "https://ko.wikipedia.org/wiki/%ED%9D%A5%ED%99%94%EB%AC%B8"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "gyeongdeok",
+      "name": "경덕궁 · 숭정전 일대",
+      "status": "1907년 표시",
+      "feature_1907": "sungjeongjeon-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300210&code=kc_age_30",
+        "https://royal.khs.go.kr/ROYAL/contents/R110000000.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "jongmyo",
+      "name": "종묘 · 정전 일대",
+      "status": "1907년 표시",
+      "feature_1907": "jongmyo-jeongjeon-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://royal.khs.go.kr/ROYAL/contents/R105010000.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "eoyeongcheong",
+      "name": "어영청",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%96%B4%EC%98%81%EC%B2%AD",
+        "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_030_0040_0050_0010_0020",
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o300820&code=kc_age_30"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "sajik",
+      "name": "사직단",
+      "status": "1907년 표시",
+      "feature_1907": "sajik-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://royal.khs.go.kr/ROYAL/contents/R311030000.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "sungkyun",
+      "name": "문묘·성균관",
+      "status": "1907년 표시",
+      "feature_1907": "sungkyun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101410000&ctptUid=13898859667928200187"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "gwanghwamun",
+      "name": "광화문",
+      "status": "1907년 표시",
+      "feature_1907": "gwanghwamun-1907",
+      "note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "baseline_sources": [
+        "https://www.wikidata.org/wiki/Q485034"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "gyeonghoeru_pond",
+      "name": "경회루 터",
+      "status": "1907년 표시",
+      "feature_1907": "gyeonghoeru-1907",
+      "note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "geunjeongjeon_site",
+      "name": "근정전 터",
+      "status": "1907년 표시",
+      "feature_1907": "geunjeongjeon-1907",
+      "note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EA%B7%BC%EC%A0%95%EC%A0%84",
+        "https://www.heritage.go.kr/heri/gungDetail/gogungDetail.do?serial_number=161&detail_code=11&gung_number=1"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "sajeongjeon_site",
+      "name": "사정전 터",
+      "status": "1907년 표시",
+      "feature_1907": "sajeongjeon-1907",
+      "note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%A0%95%EC%A0%84"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "gangnyeongjeon_site",
+      "name": "강녕전 터",
+      "status": "1907년 표시",
+      "feature_1907": "gangnyeongjeon-1907",
+      "note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EA%B0%95%EB%85%95%EC%A0%84"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "gyotaejeon_site",
+      "name": "교태전 터",
+      "status": "1907년 표시",
+      "feature_1907": "gyotaejeon-1907",
+      "note": "1750년 터/소실 상태와 19세기 중건 건물을 구분.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EA%B5%90%ED%83%9C%EC%A0%84"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "heunginjimun",
+      "name": "흥인지문",
+      "status": "1907년 표시",
+      "feature_1907": "heunginjimun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://en.wikipedia.org/wiki/Heunginjimun",
+        "https://seoulcitywall.seoul.go.kr/content/8.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "sungnyemun",
+      "name": "숭례문",
+      "status": "1907년 표시",
+      "feature_1907": "sungnyemun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://en.wikipedia.org/wiki/Sungnyemun",
+        "https://seoulcitywall.seoul.go.kr/content/8.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "donuimun",
+      "name": "돈의문",
+      "status": "1907년 표시",
+      "feature_1907": "donuimun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://en.wikipedia.org/wiki/Donuimun",
+        "https://seoulcitywall.seoul.go.kr/content/8.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "changuimun",
+      "name": "창의문",
+      "status": "1907년 표시",
+      "feature_1907": "changuimun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://seoulcitywall.seoul.go.kr/content/8.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "sukjeongmun",
+      "name": "숙정문",
+      "status": "1907년 표시",
+      "feature_1907": "sukjeongmun-1907",
+      "note": "1907년 모형은 문루 없는 육축. 현재 문루 소급 금지.",
+      "baseline_sources": [
+        "https://seoulcitywall.seoul.go.kr/content/8.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "hyehwamun",
+      "name": "혜화문",
+      "status": "1907년 표시",
+      "feature_1907": "hyehwamun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://seoulcitywall.seoul.go.kr/content/8.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "gwanghuimun",
+      "name": "광희문",
+      "status": "1907년 표시",
+      "feature_1907": "gwanghuimun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://seoulcitywall.seoul.go.kr/content/8.do",
+        "https://ko.wikipedia.org/wiki/%EA%B4%91%ED%9D%AC%EB%AC%B8"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "souimun",
+      "name": "소의문",
+      "status": "1907년 표시",
+      "feature_1907": "souimun-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://seoulcitywall.seoul.go.kr/content/8.do"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "yejo",
+      "name": "예조",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jungchubu",
+      "name": "중추부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "saheonbu",
+      "name": "사헌부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "byeongjo",
+      "name": "병조",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "hyeongjo",
+      "name": "형조",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "gongjo",
+      "name": "공조",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "uijeongbu",
+      "name": "의정부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "ijo",
+      "name": "이조",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "hanseongbu",
+      "name": "한성부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "hojo",
+      "name": "호조",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://openlab.eseoul.go.kr/gallery/viewStoryMapContent.do?scid=NJDK-f3GQKD_3BA4XkZM5g"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jeongdojeon_site",
+      "name": "정도전 집터",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1398년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0050380",
+        "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "songsiyeol_site",
+      "name": "송시열 집터",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaKdcd=21&ccbaAsno=0000570000000&ccbaCtcd=11"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jongru",
+      "name": "종루",
+      "status": "1907년 표시",
+      "feature_1907": "bosingak-1907",
+      "note": "1750년 종루와 1869년 중건 보신각의 연혁 대응. 단순 고정 기준점으로 사용 금지.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0023446",
+        "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1121100020000"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "wongaksa_pagoda",
+      "name": "원각사지 십층석탑",
+      "status": "1907년 표시",
+      "feature_1907": "wongaksa_pagoda-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=1111100020000",
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300756&code=kc_age_30",
+        "https://ko.wikipedia.org/wiki/%EC%84%9C%EC%9A%B8_%EC%9B%90%EA%B0%81%EC%82%AC%EC%A7%80_%EC%8B%AD%EC%B8%B5%EC%84%9D%ED%83%91"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "uigeumbu",
+      "name": "의금부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0043266"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jwaporocheong",
+      "name": "좌포도청",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "uporocheong",
+      "name": "우포도청",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o301320&code=kc_age_30"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "hyeminseo",
+      "name": "혜민서",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%ED%98%9C%EB%AF%BC%EC%84%9C",
+        "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_025_0040_0010_0020_0050",
+        "https://contents.history.go.kr/front/tg/view.do?levelId=tg_003_0730"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "hullyeonwon",
+      "name": "훈련원",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://mediahub.seoul.go.kr/archives/180498"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "yuksanggung",
+      "name": "육상궁",
+      "status": "1907년 표시",
+      "feature_1907": "yuksanggung-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://royal.khs.go.kr/ROYAL/contents/R107010000.do",
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300763&code=kc_age_30",
+        "https://museum.seoul.go.kr/scwm/relic/RelicView.do?mcsjgbnc=PS01003026001&mcseqno1=014165&mcseqno2=00000&cdLanguage=KOR"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "gyeongmogung",
+      "name": "경모궁",
+      "status": "1750년 목록 연대 재검토",
+      "feature_1907": null,
+      "note": "기존 기록 시작 1764년. 1750년 실제 존재로 단정 금지; 1907년 형상/위치 별도 확인 필요.",
+      "baseline_sources": [
+        "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300150&code=kc_age_30",
+        "https://encykorea.aks.ac.kr/Article/E0002406"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jamungam",
+      "name": "자문감",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%90%EB%AC%B8%EA%B0%90(%E7%B4%AB%E9%96%80%E7%9B%A3)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "uibinbu",
+      "name": "의빈부",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%9D%98%EB%B9%88%EB%B6%80"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "bibyeonsa",
+      "name": "비변사",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1865년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EB%B9%84%EB%B3%80%EC%82%AC",
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%B9%84%EB%B3%80%EC%82%AC(%E5%82%99%E9%82%8A%E5%8F%B8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "changuigung",
+      "name": "창의궁",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1907년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%B0%BD%EC%9D%98%EA%B6%81(%E5%BD%B0%E7%BE%A9%E5%AE%AE)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "bongsangsi",
+      "name": "봉상시",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1907년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EB%B4%89%EC%83%81%EC%8B%9C"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "sayeogwon",
+      "name": "사역원",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%82%AC%EC%97%AD%EC%9B%90"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "uiyeonggo",
+      "name": "의영고",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%9D%98%EC%98%81%EA%B3%A0"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "saboksi",
+      "name": "사복시",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1895년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%82%AC%EB%B3%B5%EC%8B%9C"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jangheunggo",
+      "name": "장흥고",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%ED%9D%A5%EA%B3%A0(%E9%95%B7%E8%88%88%E5%BA%AB)",
+        "https://ko.wikipedia.org/wiki/%EC%9E%A5%ED%9D%A5%EA%B3%A0"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "naesusa",
+      "name": "내수사",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%88%98%EC%82%AC(%E5%85%A7%E9%9C%80%E5%8F%B8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "daebodan",
+      "name": "대보단",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1884년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%8C%80%EB%B3%B4%EB%8B%A8(%E5%A4%A7%E5%A0%B1%E5%A3%87)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jangwonseo",
+      "name": "장원서",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%EC%9B%90%EC%84%9C(%E6%8E%8C%E8%8B%91%E7%BD%B2)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "seonhyechang_buk",
+      "name": "선혜청 북창",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%84%A0%ED%98%9C%EC%B2%AD"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "bugyeong",
+      "name": "북영",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0024695",
+        "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%A0%A8%EB%8F%84%EA%B0%90"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "donghwalinseo",
+      "name": "동활인서",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%99%9C%EC%9D%B8%EC%84%9C(%E6%B4%BB%E4%BA%BA%E7%BD%B2)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "tangpyeongbi",
+      "name": "탕평비각",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%ED%83%95%ED%8F%89%EB%B9%84"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "eouigung",
+      "name": "어의궁(본궁)",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1907년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%96%B4%EC%9D%98%EA%B6%81(%E6%96%BC%E7%BE%A9%E5%AE%AE)",
+        "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=8d0c01f5-d2dc-4b74-a478-2597699c6758&fileSn=1100&type=C&upperNodeId=CTGRY780"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "hunguk",
+      "name": "훈국신영",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0065793",
+        "https://ko.wikipedia.org/wiki/%ED%9B%88%EB%A0%A8%EB%8F%84%EA%B0%90"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "bibyeonsa_gyeongdeok",
+      "name": "비변사(경덕궁 앞)",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1865년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EB%B9%84%EB%B3%80%EC%82%AC",
+        "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=edc4aa41-2b9b-48ea-8577-c79aad2c0e7d&fileSn=1100&type=C&upperNodeId=CTGRY780"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "seongonggam",
+      "name": "선공감",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%84%A0%EA%B3%B5%EA%B0%90(%E7%B9%95%E5%B7%A5%E7%9B%A3)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "myeongnyegung",
+      "name": "명례궁",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1907년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%85%EB%A1%80%EA%B6%81(%E6%98%8E%E7%A6%AE%E5%AE%AE)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "seonhyecheong",
+      "name": "선혜청 신창",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%84%A0%ED%98%9C%EC%B2%AD",
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EB%8C%80%EB%AC%B8%EC%8B%9C%EC%9E%A5(%E5%8D%97%E5%A4%A7%E9%96%80%E5%B8%82%E5%A0%B4)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "taepyeonggwan",
+      "name": "태평관",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%ED%8F%89%EA%B4%80(%E5%A4%AA%E5%B9%B3%E9%A4%A8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "yebinsi",
+      "name": "예빈시",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%88%EB%B9%88%EC%8B%9C(%E7%A6%AE%E8%B3%93%E5%AF%BA)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "nammyo",
+      "name": "남관왕묘",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EB%82%A8%EB%AC%98"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "eoyeongchang",
+      "name": "어영창",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EB%82%A8%EC%B0%BD_(%EC%A1%B0%EC%84%A0)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "namsoyeong",
+      "name": "남소영",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1895년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EC%86%8C%EC%98%81(%E5%8D%97%E5%B0%8F%E7%87%9F)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "sohyeonmyo",
+      "name": "소현묘",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1776년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%86%8C%ED%98%84%EB%AC%98(%E6%98%AD%E9%A1%AF%E5%BB%9F)",
+        "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=8574fb02-d3c9-4b3b-9098-4393d481c4d6&fileSn=1100&type=C&upperNodeId=CTGRY780"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "segeomjeong",
+      "name": "세검정",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%84%B8%EA%B2%80%EC%A0%95_(%EC%84%9C%EC%9A%B8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "nambyeolgung",
+      "name": "남별궁",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1897년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%A8%EB%B3%84%EA%B6%81(%E5%8D%97%E5%88%A5%E5%AE%AE)",
+        "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=dae3d5ce-3616-4256-a8b9-ab636d8d8723&fileSn=1100&type=C&upperNodeId=CTGRY780"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "donghak",
+      "name": "동학(동부학당)",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%8F%99%ED%95%99(%E6%9D%B1%E5%AD%B8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "suncheong",
+      "name": "순청",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%9C%EC%B2%AD(%E5%B7%A1%E5%BB%B3)",
+        "https://museum.seoul.go.kr/archive/archiveNew/NR_archiveView.do?ctgryId=CTGRY780&fileId=fe073a1b-2a35-41c6-98da-3c21d7a4ba20&fileSn=1100&type=C&upperNodeId=CTGRY780"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jangagwon",
+      "name": "장악원",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1895년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%9E%A5%EC%95%85%EC%9B%90(%E6%8E%8C%E6%A8%82%E9%99%A2)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jongchinbu",
+      "name": "종친부",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1895년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A2%85%EC%B9%9C%EB%B6%80(%E5%AE%97%E8%A6%AA%E5%BA%9C)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "saganwon",
+      "name": "사간원",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EA%B0%84%EC%9B%90(%E5%8F%B8%E8%AB%AB%E9%99%A2)",
+        "https://ko.wikipedia.org/wiki/%EC%82%AC%EA%B0%84%EC%9B%90"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "bukbu",
+      "name": "한성부 북부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "junghak",
+      "name": "중학(중부학당)",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A4%91%ED%95%99(%E4%B8%AD%E5%AD%B8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jeonokseo",
+      "name": "전옥서",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%98%A5%EC%84%9C(%E5%85%B8%E7%8D%84%E7%BD%B2)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "sujingung",
+      "name": "수진궁",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%88%98%EC%A7%84%EA%B6%81(%E5%A3%BD%E9%80%B2%E5%AE%AE)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "giroso",
+      "name": "기로소",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B8%B0%EB%A1%9C%EC%86%8C(%E8%80%86%E8%80%81%E6%89%80)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "saonseo",
+      "name": "사온서",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "gyeonggi_gamyeong",
+      "name": "경기감영",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1895년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%EA%B2%BD%EA%B8%B0%EA%B0%90%EC%98%81"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "mohwagwan",
+      "name": "모화관",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1897년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "yeongeunmun",
+      "name": "영은문",
+      "status": "1907년 원형 제외",
+      "feature_1907": null,
+      "note": "기존 연혁의 1895년 철거를 따름. 주초와 후대 독립문은 별도 객체 후보.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%AA%A8%ED%99%94%EA%B4%80(%E6%85%95%E8%8F%AF%E9%A4%A8)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jeonuigam",
+      "name": "전의감",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%9D%98%EA%B0%90(%E5%85%B8%E9%86%AB%E7%9B%A3)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "chunghunbu",
+      "name": "충훈부",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%B6%A9%ED%9B%88%EB%B6%80(%E5%BF%A0%E5%8B%B3%E5%BA%9C)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jungbu",
+      "name": "한성부 중부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://www.seouland.com/arti/culture/culture_general/3813.html",
+        "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "nambu",
+      "name": "한성부 남부",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://www.seouland.com/arti/culture/culture_general/3813.html",
+        "https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B6%80_(%ED%95%9C%EC%84%B1%EB%B6%80)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "sajaegam",
+      "name": "사재감",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%9E%AC%EA%B0%90(%E5%8F%B8%E5%AE%B0%E7%9B%A3)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "naejasi",
+      "name": "내자시",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1882년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EB%82%B4%EC%9E%90%EC%8B%9C(%E5%85%A7%E8%B3%87%E5%AF%BA)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "manrichang",
+      "name": "만리창",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%B0%BD%EA%B3%B5%EC%9B%90"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "gunjagam",
+      "name": "군자감 강감",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1894년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "http://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EC%9E%90%EA%B0%90(%E8%BB%8D%E8%B3%87%E7%9B%A3)"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "gungisi",
+      "name": "군기시",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1884년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EA%B5%B0%EA%B8%B0%EC%8B%9C(%E8%BB%8D%E5%99%A8%E5%AF%BA)",
+        "https://museum.seoul.go.kr/www/intro/annexIntro/annex_gun/annex_gun_02.jsp?sso=ok"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "yeonghwadang",
+      "name": "영화당",
+      "status": "1907년 표시",
+      "feature_1907": "yeonghwadang-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%98%81%ED%99%94%EB%8B%B9(%E6%9A%8E%E8%8A%B1%E5%A0%82)",
+        "https://sillok.history.go.kr/id/ksa_11804016_001",
+        "https://sillok.history.go.kr/id/ksa_11805012_002"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "cheonguijeong",
+      "name": "청의정",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://royal.cha.go.kr/ROYAL/contents/R311020000.do",
+        "https://ncms.nculture.org/pavilion/story/2377"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "munheongak",
+      "name": "문헌각",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EB%AC%B8%ED%97%8C%EA%B0%81(%E6%96%87%E7%8D%BB%E9%96%A3)",
+        "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=212&um=s"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "aeryeonjeong",
+      "name": "애련정",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://m.cha.go.kr/newsBbz/selectNewsBbzView.do?edate=&mn=&newsItemId=155693299&pageIndex=10&sdate=&sectionId=ocp&strValue=&strWhere="
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "chwiunjeong",
+      "name": "취운정",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=219&callmode=admin&catimage=&eclang=ko&start=56&um=s",
+        "https://contents.history.go.kr/mobile/km/view.do?levelId=km_039_0070_0040_0020"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "taegojeong",
+      "name": "청풍계 태고정",
+      "status": "1907년 형상·위치 미확인",
+      "feature_1907": null,
+      "note": "기존 연혁은 검토 출발점. 1907년 직접 근거·원도 위치를 확보하기 전 표시 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%EA%B3%A0%EC%A0%95(%E5%A4%AA%E5%8F%A4%E4%BA%AD)",
+        "https://contents.history.go.kr/mobile/km/view.do?levelId=km_019_0040_0020_0030",
+        "https://sillok.history.go.kr/id/kva_11402028_002",
+        "https://mediahub.seoul.go.kr/archives/2007584"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "namsan_guksadang",
+      "name": "남산 국사당",
+      "status": "1907년 표시",
+      "feature_1907": "namsan_guksadang-1907",
+      "note": "동일 장소의 중건·확장·형태 변화는 1907년 개별 자료를 따름.",
+      "baseline_sources": [
+        "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677",
+        "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE08734618"
+      ],
+      "evidence_level": "1907_feature_sources"
+    },
+    {
+      "feature_1750": "dohwaseo",
+      "name": "도화서",
+      "status": "용도·건물 존속 미확인",
+      "feature_1907": null,
+      "note": "갑오개혁 등 관제 개편 이후 기관명과 남은 청사를 구분해 재조사. 기존 관청 모형 자동 복제 안 함.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0015927",
+        "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10555498"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jeyonggam",
+      "name": "제용감",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1904년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://encykorea.aks.ac.kr/Article/E0051344",
+        "https://encykorea.aks.ac.kr/Article/E0067017"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    },
+    {
+      "feature_1750": "jeonsaengseo",
+      "name": "전생서",
+      "status": "기관 폐지·이전/건물 미확인",
+      "feature_1907": null,
+      "note": "기존 기록 종료 1895년. 기관 폐지가 건물 철거를 뜻하지 않으므로 동일 관아 모형은 보류.",
+      "baseline_sources": [
+        "https://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%83%9D%EC%84%9C(%E5%85%B8%E7%89%B2%E7%BD%B2)",
+        "https://mediahub.seoul.go.kr/archives/2013958"
+      ],
+      "evidence_level": "existing_seed_review_not_newly_verified"
+    }
+  ]
+}

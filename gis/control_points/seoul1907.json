@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "title": "실측상밀 최신경성전도",
+  "year": 1907,
+  "edition": "1907년 11월 수정 재판",
+  "source_id": "src-0029",
+  "source_url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001",
+  "source_asset": "asset-0024",
+  "input_sha256": "315099958ad1810ff95392b3473129742996b1dffb393be2625ca73a5abc331f",
+  "original_url": "/data/maps/src-0029/asset-0024.jpg",
+  "image_url": "/gis/georeferenced/seoul1907/map.jpg",
+  "image_size": [
+    2667,
+    3750
+  ],
+  "image_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+  "crop": [
+    115,
+    560,
+    2580,
+    3530
+  ],
+  "method": "affine_least_squares",
+  "coefficient_order": "[1, pixel_x, pixel_y] @ coefficients -> EPSG:3857",
+  "coefficients": [
+    [
+      14132696.414329538,
+      4524540.121761631
+    ],
+    [
+      2.6095453800923445,
+      0.23240620564456194
+    ],
+    [
+      0.1707176444517824,
+      -2.615000407539373
+    ]
+  ],
+  "controls": [
+    {
+      "name": "숭례문",
+      "pixel": [
+        635,
+        2767
+      ],
+      "lon": 126.97528,
+      "lat": 37.56,
+      "reference": "https://en.wikipedia.org/wiki/Sungnyemun",
+      "status": "proposed_visual_anchor",
+      "note": "회전 적용 이미지의 문 기호 중심 육안 판독. 기존 프로젝트 현대 참고 좌표 재사용; 측량 기준점이 아님.",
+      "residual_ground_m": 2.29
+    },
+    {
+      "name": "흥인지문",
+      "pixel": [
+        2130,
+        2300
+      ],
+      "lon": 127.0096389,
+      "lat": 37.5711528,
+      "reference": "https://en.wikipedia.org/wiki/Heunginjimun",
+      "status": "proposed_visual_anchor",
+      "note": "회전 적용 이미지의 문 기호 중심 육안 판독. 기존 프로젝트 현대 참고 좌표 재사용; 측량 기준점이 아님.",
+      "residual_ground_m": 0.91
+    },
+    {
+      "name": "돈의문 터",
+      "pixel": [
+        394,
+        2301
+      ],
+      "lon": 126.968975,
+      "lat": 37.5682444,
+      "reference": "https://en.wikipedia.org/wiki/Donuimun",
+      "status": "proposed_visual_anchor",
+      "note": "회전 적용 이미지의 문 기호 중심 육안 판독. 기존 프로젝트 현대 참고 좌표 재사용; 측량 기준점이 아님.",
+      "residual_ground_m": 4.16
+    },
+    {
+      "name": "광화문",
+      "pixel": [
+        765,
+        1917
+      ],
+      "lon": 126.9770194,
+      "lat": 37.5760444,
+      "reference": "https://www.wikidata.org/wiki/Q485034",
+      "status": "proposed_visual_anchor",
+      "note": "회전 적용 이미지의 문 기호 중심 육안 판독. 기존 프로젝트 현대 참고 좌표 재사용; 측량 기준점이 아님.",
+      "residual_ground_m": 2.78
+    }
+  ],
+  "checks": [
+    {
+      "name": "광화문사거리",
+      "pixel": [
+        747,
+        2220
+      ],
+      "lon": 126.9771452,
+      "lat": 37.5702093,
+      "reference": "https://www.openstreetmap.org/#map=19/37.5702093/126.9771452",
+      "note": "적합에 쓰지 않은 육안 교차점. 현대 교차 중심과 역사적 동일성 미검증.",
+      "residual_ground_m": 17.38
+    },
+    {
+      "name": "종로1가사거리",
+      "pixel": [
+        1000,
+        2230
+      ],
+      "lon": 126.9829606,
+      "lat": 37.5702118,
+      "reference": "https://www.openstreetmap.org/#map=19/37.5702118/126.9829606",
+      "note": "적합에 쓰지 않은 육안 교차점. 현대 교차 중심과 역사적 동일성 미검증.",
+      "residual_ground_m": 42.71
+    }
+  ],
+  "limitations": [
+    "육안 기준점과 현대 참고 좌표에 따른 초벌 배치. 정밀 필지 경계나 실측 복원이 아님.",
+    "검사점 2개는 적합에서 제외했으나 공인 측량점은 아님.",
+    "FABDEM 현대 지형 사용. 1907년 지형 및 건물·도로의 3D 복원은 아님.",
+    "원도 도곽을 잘라 지형에 올림. 제목·범례를 포함한 전체 이미지는 원본 보기에서 제공."
+  ],
+  "local_calibration": {
+    "method": "compact_wendland_c2_pixel_displacement",
+    "status": "provisional_contour_alignment",
+    "date": "2026-09-18",
+    "limitations": "원도의 닫힌 등고선과 현대 FABDEM 능선을 수동 대응한 시각적 국부 정합. 역사적 지형 복원이나 독립 측량 정확도 검증이 아님. FABDEM 높이는 변경하지 않음.",
+    "anchors": [
+      {
+        "id": "baegak-north-contour",
+        "pixel": [
+          905,
+          737
+        ],
+        "target_affine_pixel": [
+          811.39,
+          739.46
+        ],
+        "radius_px": 450,
+        "weight_px": [
+          -85.38796301693652,
+          -2.2451517870412916
+        ],
+        "note": "백악산 글자 북쪽의 닫힌 등고선 → 가까운 북쪽 능선의 국부 고점. 봉우리 동일성은 잠정."
+      },
+      {
+        "id": "baegak-southwest-contour",
+        "pixel": [
+          767,
+          957
+        ],
+        "target_affine_pixel": [
+          680.26,
+          1001.23
+        ],
+        "radius_px": 450,
+        "weight_px": [
+          -77.70502454005663,
+          44.46756148505082
+        ],
+        "note": "남서쪽 닫힌 등고선 → FABDEM 백악 주봉. 글자 위치와 주봉 위치를 구분."
+      },
+      {
+        "id": "namsan-main-contour",
+        "pixel": [
+          1240,
+          3310
+        ],
+        "target_affine_pixel": [
+          1120.09,
+          3240.13
+        ],
+        "radius_px": 600,
+        "weight_px": [
+          -120.30336843784961,
+          -70.09921068094849
+        ],
+        "note": "남산 주 정상부 닫힌 등고선 → FABDEM 정상부 국부 최고점."
+      },
+      {
+        "id": "namsan-east-preserve",
+        "pixel": [
+          1412,
+          3515
+        ],
+        "target_affine_pixel": [
+          1412,
+          3515
+        ],
+        "radius_px": 350,
+        "weight_px": [
+          31.549466657873104,
+          18.383464559966548
+        ],
+        "note": "이미 근접한 남동쪽 고점은 고정."
+      },
+      {
+        "id": "changuimun-preserve",
+        "pixel": [
+          434,
+          980
+        ],
+        "target_affine_pixel": [
+          434,
+          980
+        ],
+        "radius_px": 250,
+        "weight_px": [
+          1.3708529684343413,
+          -0.7844858041244765
+        ],
+        "note": "최근 판독한 창의문 중심 고정."
+      }
+    ]
+  }
+}

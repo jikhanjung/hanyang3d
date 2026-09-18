@@ -3,6 +3,7 @@ import json
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
+from webapp.content import building_seeds
 from webapp.content_sync import sync_content
 
 
@@ -14,7 +15,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         report = sync_content(
-            json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text()),
+            building_seeds(),
             json.loads((settings.BASE_DIR / 'gis/stories/doseong_stories.json').read_text()),
             (settings.BASE_DIR / 'docs/landmarks.md').read_text(),
             apply=options['apply'],

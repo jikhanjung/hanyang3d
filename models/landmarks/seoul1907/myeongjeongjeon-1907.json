@@ -1,0 +1,85 @@
+{
+  "model_id": "myeongjeongjeon-1907-concept-v1",
+  "feature_id": "myeongjeongjeon-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1616,
+  "valid_to": null,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1616,
+      "end_year": null,
+      "status": "documented"
+    },
+    "depiction": {
+      "start_year": 1616,
+      "end_year": null,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20240904134731840421&schBcid=normal1&schM=view"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "myeongjeongjeon-1907",
+    "scene_year": 1907,
+    "category": "궁궐",
+    "landmark_kind": "throne_hall",
+    "display_model": "throne_hall",
+    "symbol_size_m": [
+      70,
+      15,
+      90
+    ],
+    "display_yaw_deg": 93.735,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1554,
+        1830
+      ],
+      "anchor": "structure_center",
+      "method": "manual_map_reading",
+      "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+    },
+    "position_status": "approximate_source_map_reading",
+    "size_status": "estimated_not_measured",
+    "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+    "throne_hall": {
+      "bays": [
+        5,
+        3
+      ],
+      "hall_m": [
+        24,
+        14
+      ],
+      "roof_tiers": 1,
+      "terrace_tiers": 2
+    }
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20240904134731840421&schBcid=normal1&schM=view",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_source_map_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

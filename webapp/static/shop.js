@@ -84,9 +84,9 @@ export function createShop({container,data,onLogout,onUse}){
  $('.shop-close').onclick=()=>close();
  win.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{quantity=Number(b.dataset.q);render()});
  const tip=$('.shop-tip');
- // Pack window (봇짐): what the server says the player owns; right-click uses an item (the reins mount the horse).
+ // Pack window: explicit use buttons support touch and keyboard; right-click stays as a shortcut.
  const packWin=document.createElement('section');packWin.id='pack-window';packWin.hidden=true;packWin.setAttribute('role','dialog');packWin.setAttribute('aria-label',t('봇짐'));
- packWin.innerHTML=`<header><strong>${t('내 봇짐')}</strong><small>${t('오른쪽 클릭: 쓰기')}</small><button type="button" class="pack-close">${t('닫기')}</button></header>
+ packWin.innerHTML=`<header><strong>${t('내 봇짐')}</strong><small>${t('물건 옆의 쓰기 버튼으로 사용')}</small><button type="button" class="pack-close">${t('닫기')}</button></header>
  <div class="shop-grid pack-items"></div><footer><span class="pack-money"></span><p class="pack-message" aria-live="polite"></p></footer>`;
  container.append(packWin);
  packWin.querySelector('.pack-close').onclick=()=>closePack();
@@ -105,11 +105,13 @@ export function createShop({container,data,onLogout,onUse}){
    cell.append(drawIcon(item.icon));
    const name=document.createElement('span');name.className='slot-name';name.textContent=item.name;cell.append(name);
    const n=document.createElement('span');n.className='slot-count';n.textContent=state.items[id];cell.append(n);
-   const usable=item.use?t(' · 오른쪽 클릭으로 쓰기'):'';
+   const usable=item.use?t(' · 쓰기 가능'):'';
    cell.setAttribute('aria-label',`${item.name} ${state.items[id]}${item.unit}${usable}`);
    cell.onclick=()=>packMessage(t('{name} (한 {unit}) — {desc}',{name:item.name,unit:item.unit,desc:item.desc}));
    cell.oncontextmenu=event=>{event.preventDefault();useItem(id)};
-   return cell;
+   const entry=document.createElement('div');entry.className='pack-entry';entry.append(cell);
+   if(item.use){const use=document.createElement('button');use.type='button';use.className='pack-use';use.dataset.item=id;use.textContent=t('쓰기');use.setAttribute('aria-label',t('{name} 쓰기',{name:item.name}));use.onclick=()=>useItem(id);entry.append(use)}
+   return entry;
   }));
   if(!ids.length){const empty=document.createElement('p');empty.className='shop-empty';empty.textContent=t('봇짐이 비었소.');grid.append(empty)}
  }

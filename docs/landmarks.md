@@ -898,3 +898,628 @@
 - **위치 근거**: 남산 남쪽 도성 밖 둔지방·후암동 권역을 원도 남쪽에 추정 배치. 확인되지 않은 축사의 경계를 그린 것은 아니다.
 - **모형**: 추정 위치·개략 모형. 정자·청사·정원의 형태만 축약했으며 칸수·치수·담장 범위는 별도 고증이 필요하다.
 - **출처**: [전생서](https://dh.aks.ac.kr/sillokwiki/index.php/%EC%A0%84%EC%83%9D%EC%84%9C%28%E5%85%B8%E7%89%B2%E7%BD%B2%29), [서울시 후암동 전생서 터](https://mediahub.seoul.go.kr/archives/2013958)
+
+
+## 1907년 궁궐
+
+1750년의 건물과 분리한 항목이다. [1907년 지도](/1907/)에서 볼 수 있다.
+
+### 1907년 근정전
+
+1867년 중건된 경복궁 정전. 5×5칸, 중층 팔작지붕, 이중 월대와 조정을 단순화했다. 위치와 치수는 추정이며 정밀 복원이 아니다.
+
+1867년 중건 · 1907년 모습의 개념 모형
+
+[문화포털 — 경복궁 근정전](https://www.culture.go.kr/portal/cltKnw/usePtt/viewOrigin.do?did=60910&menuNo=200059)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 중화전
+
+1906년 중건된 중화전. 1907년 지도에서 위치를 읽어 단순화했다. 1904년 화재 이후 다시 지은 단층 지붕을 표현한다. 조정·회랑·문의 치수와 형태는 추정이다.
+
+1906년 중건 · 1907년 모습의 개념 모형
+
+[국가기록원 — 덕수궁](https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 인정전
+
+1804년 중건된 인정전. 1907년 지도에서 위치를 읽어 단순화했다. 1908년 개수 이후의 실내 장식은 표현하지 않는다. 조정·회랑·문의 치수와 형태는 추정이다.
+
+1804년 중건 · 1907년 모습의 개념 모형
+
+[국립고궁박물관 — 창덕궁 인정전](https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=161&callmode=admin&catimage=&eclang=ko&start=26&um=s)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+
+## 1907년 추가 건물·시설
+
+### 1907년 경회루
+
+경복궁 연못 위의 연회 누각. 정면 7칸·측면 5칸과 아래층 돌기둥 48개를 표현했다. 연못 윤곽은 직사각형으로 단순화했다. 위치와 치수는 추정한 개념 모형이다.
+
+1867년 이후 존속 · 1907년 기준
+
+[우리역사넷 — 궁궐 건축](https://contents.history.go.kr/front/nh/view.do?levelId=nh_035_0040_0020_0050_0020)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 광화문
+
+경복궁 남문. 세 홍예 통로와 중층 문루를 표현했다. 1920년대 이전 위치를 원도에서 읽었다. 위치와 치수는 추정한 개념 모형이다.
+
+1867년 이후 존속 · 1907년 기준
+
+[궁능유적본부 경복궁 역사](https://royal.khs.go.kr/ROYAL/contents/R101010000.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 대한문
+
+1906년 대한문으로 이름을 바꾼 덕수궁 정문. 단층 문루를 원도 위치에 배치했으며 1970년 이전의 자리다. 위치와 치수는 추정한 개념 모형이다.
+
+1906년 이후 존속 · 1907년 기준
+
+[국가기록원 — 대한문 이설](https://theme.archives.go.kr/next/daily/viewMain.do?selectDay=20120102)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 숭례문
+
+석축 위 중층 우진각 문루와 홍예 통로. 1907년 전후 철거된 인접 성벽의 시점을 확정하지 않아 성벽은 붙이지 않았다. 위치와 치수는 추정한 개념 모형이다.
+
+1398년 이후 존속 · 1907년 기준
+
+[서울 한양도성 — 도성의 역사](https://seoulcitywall.seoul.go.kr/content/8.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 흥인지문
+
+1869년 중건된 동문. 중층 팔작지붕과 성 바깥쪽 옹성을 표현했다. 위치와 치수는 추정한 개념 모형이다.
+
+1869년 이후 존속 · 1907년 기준
+
+[우리역사넷 — 궁궐 건축](https://contents.history.go.kr/front/nh/view.do?levelId=nh_035_0040_0020_0050_0020)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 명정전
+
+창경궁의 동향 정전. 단층 팔작지붕·5×3칸과 조정을 표현했다. 동물원·식물원이 들어오기 전 궁궐 장면이다. 위치와 치수는 추정한 개념 모형이다.
+
+1616년 이후 존속 · 1907년 기준
+
+[궁능유적본부 — 명정전](https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20240904134731840421&schBcid=normal1&schM=view)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 종묘 정전
+
+1836년 증축 뒤의 신실 19칸을 표현했다. 1750년 장면의 15칸 정전과 구분한다. 위치와 치수는 추정한 개념 모형이다.
+
+1608년 이후 존속 · 1907년 기준
+
+[궁능유적본부 — 종묘 연혁](https://royal.cha.go.kr/ROYAL/contents/R105010000.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 영녕전
+
+1836년 증축 뒤의 16칸. 가운데 네 칸의 지붕을 높이고 좌우 신실을 낮춘 별묘로 표현했다. 위치와 치수는 추정한 개념 모형이다.
+
+1608년 이후 존속 · 1907년 기준
+
+[궁능유적본부 — 종묘 연혁](https://royal.cha.go.kr/ROYAL/contents/R105010000.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 환구단
+
+대한제국 황제 즉위와 하늘 제사를 위한 원형 제단. 세 겹 단과 계단을 단순화했다. 1913년 철거되었다. 위치와 치수는 추정한 개념 모형이다.
+
+1897년 이후 존속 · 1907년 기준
+
+[우리역사넷 — 환구단과 황궁우](https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr=)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 황궁우
+
+환구단 북쪽의 팔각 삼층 건물. 신위판을 모시던 공간으로 제단과 별도 객체다. 원도에서 개별 전각 식별이 어려워 북쪽 구역에 추정 배치했다. 위치와 치수는 추정한 개념 모형이다.
+
+1899년 이후 존속 · 1907년 기준
+
+[우리역사넷 — 환구단과 황궁우](https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr=)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 명동성당
+
+종현의 고딕 벽돌 성당. 십자형 본당·첨두 창·전면 종탑과 첨탑을 표현했다. 원도의 십자형 기호를 읽어 배치했다. 위치와 치수는 추정한 개념 모형이다.
+
+1898년 이후 존속 · 1907년 기준
+
+[국가기록원 — 명동성당](https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 정동교회
+
+1897년 봉헌된 붉은 벽돌 교회. 1926년 증축 전 십자형 평면과 낮은 종탑을 표현했다. 현대 위치와 원도 구역을 대조한 추정 위치다. 위치와 치수는 추정한 개념 모형이다.
+
+1897년 이후 존속 · 1907년 기준
+
+[한국관광공사 — 서울 정동교회](https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c354b2fc-4c84-496f-822e-e8d78bbd6488)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 돈화문
+
+창덕궁 정문. 중층 문루와 정면 5칸을 표현했다. 원도의 敦化門 표기 남쪽 문 기호를 읽었다. 위치와 치수는 추정한 개념 모형이다.
+
+1609년 이후 존속 · 1907년 기준
+
+[한국민족문화대백과 — 돈화문](https://encykorea.aks.ac.kr/Article/E0016240)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 홍화문
+
+창경궁 동문. 정면 3칸의 중층 문루를 동향으로 배치했다. 위치와 치수는 추정한 개념 모형이다.
+
+1616년 이후 존속 · 1907년 기준
+
+[한국민족문화대백과 — 홍화문](https://encykorea.aks.ac.kr/Article/E0064444)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 숭정전
+
+경희궁 정전. 5×4칸 단층 팔작지붕을 표현했다. 원도에 전각 기호가 없어 궁궐 구역 안 추정 위치이며 회랑은 개념 표현이다. 1926년 매각·이전된 전각과 현재 복원 건물을 구분한다.
+
+1618년 창건 · 1926년 이전 전 위치의 개념 모형
+
+[한국민족문화대백과 — 경희궁](https://encykorea.aks.ac.kr/Article/E0003036)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 러시아 공사관
+
+아관파천 때 고종이 머문 공사관. 2층 벽돌 본관과 한쪽 탑을 단순화했다. 1890년경 건립 및 한국전쟁 중 대부분 파괴로 기록되며, 본관 평면·지붕·색상·탑 위치는 추정이다.
+
+1890년경 건립 · 한국전쟁 이전 외형의 개념 모형
+
+[우리역사넷 — 러시아 공사관](https://contents.history.go.kr/front/ki/printViewPopup.do?levelId=ki_060_07000)
+[한국민족문화대백과 — 구 러시아공사관](https://encykorea.aks.ac.kr/Article/E0005711)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 돈의문
+
+1711년 중건 기록을 참고한 단층 문루. 1915년 철거 전 서대문이다. 위치와 크기는 추정이다.
+
+1711년 중건 기준 · 1915년 철거·이전·문루 소실 이전
+
+[건축·연대 참고](https://encykorea.aks.ac.kr/Article/E0016076)
+[서울시 한양도성 — 역사](https://seoulcitywall.seoul.go.kr/content/8.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 소의문
+
+1744년 문루 개축·개칭 후의 서소문. 1914년 철거 전 단층 문루를 단순화했다. 위치와 크기는 추정이다.
+
+1744년 중건 기준 · 1914년 철거·이전·문루 소실 이전
+
+[건축·연대 참고](https://encykorea.aks.ac.kr/Article/E0030248)
+[서울시 한양도성 — 역사](https://seoulcitywall.seoul.go.kr/content/8.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 광희문
+
+남동쪽 수구문. 1915년 문루 붕괴 전 모습이며 1975년 이전·복원된 현재 위치를 사용하지 않았다. 위치와 크기는 추정이다.
+
+1719년 중건 기준 · 1915년 철거·이전·문루 소실 이전
+
+[건축·연대 참고](https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1159&seq=20201229144907966&sso=ok)
+[서울시 한양도성 — 역사](https://seoulcitywall.seoul.go.kr/content/8.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 혜화문
+
+1744년 중건 문루가 남아 있던 동소문. 1928년 문루 철거, 1938년 육축 철거와 현재 복원 위치를 구별한다. 위치와 크기는 추정이다.
+
+1744년 중건 기준 · 1928년 철거·이전·문루 소실 이전
+
+[건축·연대 참고](https://culture.seoul.go.kr/culture/bbs/B0000001/view.do?menuNo=200050&nttId=4462&pageIndex=17)
+[서울시 한양도성 — 역사](https://seoulcitywall.seoul.go.kr/content/8.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 창의문
+
+1741년 중건 문루를 참고한 창의문. 원도 彰義門 기호 위치에 배치했다. 위치와 크기는 추정이다.
+
+1741년 중건 기준 · 1907년 모습
+
+[건축·연대 참고](https://seoulcitywall.seoul.go.kr/wallcourse/6.do)
+[서울시 한양도성 — 역사](https://seoulcitywall.seoul.go.kr/content/8.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 보신각
+
+원도의 붉은 도로 사거리 남동쪽 모서리 안쪽으로 위치를 보정했다. 기단·지붕이 도로를 침범하지 않도록 이격한 추정 위치다.
+
+1869년 재건된 3×2칸 단층 팔작지붕 종루. 1895년 보신각 현판을 받았고 1915년 뒤로 이전하기 전의 추정 자리이다. 위치와 크기는 추정이다.
+
+1869년 중건 기준 · 1915년 철거·이전·문루 소실 이전
+
+[건축·연대 참고](https://encykorea.aks.ac.kr/Article/E0023446)
+[서울시 한양도성 — 역사](https://seoulcitywall.seoul.go.kr/content/8.do)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 사정전
+
+1867년 중건된 편전. 원도 思政殿 표기를 기준으로 배치한 단층 5×3칸 전각.
+
+1867년 기준 · 1907년 모습
+
+[건축·연대 참고](https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_30&levelId=kc_r300205)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 강녕전
+
+1876년 화재 뒤 1888년 재건된 왕의 침전. 1917년 창덕궁 화재 이후 1918년경 해체·이전된 목재와 현재 복원 건물을 구별한다. 원도 康寧殿 표기를 기준으로 단층 7×4칸을 개념 표현.
+
+1888년 기준 · 1918년경 이전·화재 이전
+
+[건축·연대 참고](https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿))
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 교태전
+
+1876년 소실 뒤 1888년 재건된 왕비의 침전. 원도 交泰殿 구역의 추정 중심. 1917년 창덕궁 화재 후 1918년경 해체·이전 이전 모습이며 1995년 복원 건물이 아니다.
+
+1888년 기준 · 1918년경 이전·화재 이전
+
+[건축·연대 참고](https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿))
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 향원정
+
+원도 향원지 섬에 표시한 육각 이층 정자와 북쪽 취향교. 건립은 종래 1873년설과 달리 목재 연륜 조사로 1885년경이 제시된다. 연못·섬·교량은 추정 크기.
+
+1885년 기준 · 1907년 모습
+
+[건축·연대 참고](https://digital.khs.go.kr/heri/heriDetail.do?ctptUid=13898859672787200591)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 집옥재
+
+1891년 경복궁으로 옮겨 지은 고종의 서재. 중국식 벽돌 측벽의 집옥재와 서쪽 팔우정·동쪽 협길당을 단순화했다. 원도 북부 전각군 안의 추정 위치이며 개별 건물 식별은 확정하지 않았다.
+
+1891년 기준 · 1907년 모습
+
+[건축·연대 참고](https://sillok.history.go.kr/id/kza_12807013_001)
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 중명전
+
+원도 漱玉軒(수옥헌) 표시와 미국 영사관 서쪽 구역을 참고한 추정 위치. 1901년 재건 후 고종의 거처·집무 공간으로 사용된 이층 벽돌 건물. 1905년 을사늑약의 현장. 1925년 화재 이전 외형을 개념 표현.
+
+1901년 기준 · 1925년경 이전·화재 이전
+
+[건축·연대 참고](https://dh.aks.ac.kr/sillokwiki/index.php/중명전(重明殿))
+[서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 숙정문
+
+북쪽 숙정문을 문루 없는 홍예 석축으로 표현했다. 1976년 새로 세운 현재 문루를 1907년 장면에 넣지 않는다. 원도 표기와 일제강점기 문루 없는 사진 설명을 참고한 추정 모형.
+
+1396년 창건 · 1907년 문루 없는 모습 추정
+
+[서울시 한양도성 — 숙정문](https://seoulcitywall.seoul.go.kr/wallcourse/1.do)
+
+### 1907년 사직단
+
+동서 두 방형 제단과 담장을 단순화했다. 원도의 社稷 부근 이중 경계 기호를 판독했다. 제단의 존속과 이후 제례 중단은 구분한다. 위치·치수는 추정이다.
+
+1750년 항목: sajik · 원도 社稷 글씨 옆 이중 제단 경계 중심.
+
+- [사직단 연혁·건축 설명](https://encykorea.aks.ac.kr/Article/E0028005)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 문묘·성균관
+
+원도의 成均館 표기와 장방형 구획 안으로 옮겼다. 앞쪽 제사 공간과 뒤쪽 교육 공간, 1869년 대수리 이후 형태를 단순화했다. 구획 내부 개별 전각 위치와 치수는 추정이다.
+
+- [문묘·성균관 연혁·건축 설명](https://www.heritage.go.kr/heri/cul/culGuidePostDetail.do?ccbaCpno=1331101430000&ccgbGbtype=UNI&ccgbGbtypeNo=1&pageNo=1_5_0_0)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 동관왕묘
+
+1601년 완공된 관우 사당. 앞뒤 전각과 연결 지붕, 벽돌 측벽을 단순화했다. 1908~1909년 다른 관왕묘 합사 이전 기준이다. 위치·치수는 추정이다.
+
+1750년 항목: dongmyo · 흥인지문 밖 동쪽 큰길 남쪽 구획에 추정. 원도 개별 사당 기호 미확정.
+
+- [동관왕묘 연혁·건축 설명](https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 육상궁
+
+숙빈 최씨의 사당. 1882년 화재 후 1883년 중건한 시기를 기준으로 한다. 1908년 합사와 1929년 칠궁 완성 배치를 소급하지 않았다. 위치·치수는 추정이다.
+
+1750년 항목: yuksanggung · 毓祥宮 글씨 북서쪽의 작은 전각 구획. 글씨 동쪽 큰 궁장 구획과 구별한 추정 판독.
+
+- [육상궁 연혁·건축 설명](https://royal.cha.go.kr/ROYAL/contents/R107010000.do)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 원각사지 십층석탑
+
+탑골공원 권역의 대리석 석탑. 1947년 상부 복원 이전으로, 서 있는 일곱 층과 옆에 놓인 상부 세 층을 표시한다. 현대 유리 보호각은 넣지 않았다. 위치·치수는 추정이다.
+
+1750년 항목: wongaksa_pagoda · 원도 パゴダ公園 표기와 공원 경계 안. 개별 탑 기호 중심은 추정.
+
+- [원각사지 십층석탑 연혁·건축 설명](https://encykorea.aks.ac.kr/Article/E0040581)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 금호문
+
+창덕궁 서쪽 궁장의 한 칸 솟을대문. 돈화문 북서쪽의 원도 궁장에 추정 배치했다. 현존 형식은 참고하지만 개별 부재의 연속 존속을 확정하지 않는다. 위치·치수는 추정이다.
+
+1750년 항목: geumhomun · 돈화문 북서쪽 궁장 꺾임 부근. 문 이름 판독이 아닌 궁장 권역 추정.
+
+- [금호문 연혁·건축 설명](https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 흥화문
+
+경희궁의 정문. 1907년에는 궁 동남쪽에서 동쪽을 향한 위치를 기준으로 한다. 박문사로 옮겨진 1932년 이후 위치나 현재 복원 위치와 구분한다. 위치·치수는 추정이다.
+
+1750년 항목: heunghwamun · 원도 경희궁 남동쪽 경계, 큰길 북쪽 구획 추정. 현 위치 소급 아님.
+
+- [흥화문 연혁·건축 설명](https://museum.seoul.go.kr/www/intro/annexIntro/annex_20/annex_20_04.jsp?sso=ok)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 영화당
+
+창덕궁 후원 부용지 동쪽에서 동향한 전각. 1692년 보수 기록과 순종대 행사 기록이 있다. 원도의 宙合樓(주합루) 구획 동쪽을 참고해 추정 배치했다. 위치·치수는 추정이다.
+
+1750년 항목: yeonghwadang · 주합루 부근 후원 권역 추정. 원도 영화당 단독 기호 미확정.
+
+- [영화당 연혁·건축 설명](https://dh.aks.ac.kr/sillokwiki/index.php/영화당(暎花堂))
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 남산 국사당
+
+1925년 인왕산 이전 전 남산의 신당. 남산 정상 권역에 추정 표시했다. 정확한 창건 연도와 1907년 외관은 확정하지 않았다. 위치·치수는 추정이다.
+
+1750년 항목: namsan_guksadang · 남산 정상 권역 추정. 원도 국사당 이름이나 건물 기호를 직접 판독한 좌표가 아님.
+
+- [남산 국사당 연혁·건축 설명](https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677)
+- [서울역사박물관 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 근위대대 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 경시청 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 군부 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 법부 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 통신관리국 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 내부 청사·의정부 터
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 법무원 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 학부 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 탁지부 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 법관양성소 권역
+
+육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://theme.archives.go.kr/next/place/observatory.do?flag=02)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 종로 북측 상가 1
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 북측 상가 2
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 북측 상가 3
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 북측 상가 4
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 북측 상가 5
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 북측 상가 6
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 남측 상가 1
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 남측 상가 2
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 남측 상가 3
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 남측 상가 4
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 남측 상가 5
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 종로 남측 상가 6
+
+종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+- [박물관 종로 사진](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+
+### 1907년 한성전기회사 옛 사옥
+
+박물관 사진에 보이는 2층 양식 사옥과 지붕 위 시계탑을 단순화했다. 보신각 건너편 북쪽 권역에 추정 배치했으며 치수와 상세 위치는 미확정이다. 후대 경성전기 사옥과 구분한다.
+
+1907년 추정 경관 · 개별 건물 존속연대 미확정
+
+- [건축·배치 참고 자료](https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 북묘
+
+1883년 세운 관우 사당. 원도 北廟 표기 옆 구획에 배치하고, 제공 사진의 높은 정전 기단·넓은 계단·정면 세 칸 창호와 측면 건물을 단순화했다. 전체 배치·방향·색상·치수는 추정이다. 1908년 제향 합사와 실제 건물 철거 연도는 구분한다.
+
+기사에 국립중앙박물관 제공으로 실린 정전 사진을 참조. 높은 석축·넓은 계단·보이는 정면 3칸·창호·측면 건물을 표현. 촬영연도 미확정, 담장·출입문·전체 평면·색상·치수는 추정. 사진을 텍스처로 복제하지 않음.
+
+- [오케이뉴스 — 북묘 정전 사진(국립중앙박물관 제공)](https://www.oknews.news/news/articleView.html?idxno=15929)
+- [국립중앙박물관 — 북묘비](https://www.museum.go.kr/MUSEUM/contents/M0502000000.do?relicId=4342&schM=view&searchId=search)
+- [국가유산 — 동관왕묘 합사 연혁](https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+### 1907년 회동서관
+
+광통교 동쪽의 서점 겸 출판사. 1907년 9월 광고에서 회동서관 상호가 확인된다는 자료를 바탕으로 배치했다. 설립연도는 자료의 1897년과 표석의 1880년대 설명이 달라 확정하지 않았다. 정확한 필지·규모·1907년 외관은 미확정이며, 앞의 책방 주인은 실존 경영자가 아닌 가상 이야기꾼이다.
+
+상점 형식의 기와지붕·목조 전면·책 진열을 단순화한 추정 모형. 1915년경 사진을 1907년의 확정 외관으로 소급하지 않는다.
+
+1907년 상호 확인 · 창업연대 이설 · 건물 존속연대 미확정
+
+- [DH Edu: 회동서관 터·광통교 동변 광고·표석](https://dh.aks.ac.kr/~jisun/edu/index.php/회동서관_터)
+- [1915년경 사진 소개 — 1907년 외관 확정 근거 아님](https://www.donga.com/news/Culture/article/all/20080702/8597188/1)
+- [1907년 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)

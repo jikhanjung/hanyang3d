@@ -1,0 +1,56 @@
+import * as THREE from 'three';
+import {createFirstPerson} from './first_person.js';
+import {createPedestrians} from './pedestrians.js';
+import {createCollision} from './collision.js';
+import {createShop} from './shop.js';
+import {createWalkProfile} from './walk_profile.js';
+import {createWalkTogether} from './walk_together.js';
+import {createNpcDialogue} from './npc_dialogue.js';
+import {createPerson1907,createStationaryPeople1907} from './people1907.js';
+import {createNavigation1907} from './navigation1907.js';
+const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
+
+export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture}){
+ const walking=json('walking-1907'),data=json('people-1907'),npcData=json('npcs');
+ let firstPerson,together;
+ const pedestrians=createPedestrians(walking,surface,{era:1907,footHeight:(x,z)=>firstPerson?.groundAt(x,z)??groundAt(x,z)+.025});scene.add(pedestrians.group);
+ // Match triangle ground, even at a route's lane offset; no dependence on map alpha.
+ pedestrians.updateGround((x,z)=>{const y=groundAt(x,z)+.025;return {max:y,terrain:{max:y},road:{max:y}}});
+ const collision=createCollision();
+ for(const b of buildings){
+  const f=b.userData.feature,[w,,d]=f.symbol_size_m,frame={x:b.position.x,z:b.position.z,yaw:b.rotation.y},shown=()=>b.visible;
+  const gate=b.userData.centres?b:b.getObjectByName('gate-model');
+  if(gate?.userData.centres||f.landmark_kind==='palace_gate'){
+   let open,depth;
+   if(gate?.userData.centres){const {centres,doorWidth}=gate.userData;open=centres.map(c=>[c-doorWidth/2,c+doorWidth/2]);depth=d/2}
+   else{const bays=f.palace_gate_bays??3,half=Math.min(3,bays)*w*.8/bays/2;open=[[-half,half]];depth=d*.3}
+   const edges=[-w/2,...open.flat(),w/2];for(let i=0;i<edges.length;i+=2){const a=edges[i],c=edges[i+1];if(c-a>.2)collision.addLocal(frame,(a+c)/2,0,(c-a)/2,depth,shown)}
+   if(f.gate_identity==='heunginjimun'){
+    const R=w*.6,a0=-Math.PI/2+.08,a1=Math.PI/2-.55,out=f.outer_side??1;
+    for(let i=0;i<16;i++){const a=a0+(a1-a0)*i/16,b=a0+(a1-a0)*(i+1)/16,m=(a+b)/2,lx=R*Math.sin(m),lz=out*(d/2+R*Math.cos(m));collision.add({x:frame.x+lx*Math.cos(frame.yaw)+lz*Math.sin(frame.yaw),z:frame.z-lx*Math.sin(frame.yaw)+lz*Math.cos(frame.yaw),hw:R*(b-a)/2+.125,hd:.9,yaw:frame.yaw+out*m,visible:shown})}
+   }
+  }else collision.add({...frame,hw:w/2,hd:d/2,visible:shown});
+ }
+ for(const s of infrastructure.wall.segments)collision.add({x:s.x,z:s.z,hw:infraData.wall.width_m/2,hd:s.length/2,yaw:s.yaw,visible:()=>infrastructure.wall.group.visible});
+ const stationary=createStationaryPeople1907(buildings,data,groundAt);scene.add(stationary.group);
+ const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
+ const profile=createWalkProfile({account:shop}),navigation=createNavigation1907(geometry,texture);
+ firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
+  positionWorld:{alignment:'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
+  terrainGround:(x,z)=>{const y=groundAt(x,z);return y===null?null:y+.025},
+  getWalkables:()=>infrastructure.bridges.children.map(o=>[o,()=>infrastructure.bridges.visible]),
+  onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
+ const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
+ together=createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
+ const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='shop')shop.open(npc.merchant)}});
+ const nodes=(source,trade)=>Object.fromEntries(Object.entries(source).map(([key,n])=>[key,{...n,text:n.text.replaceAll('{shop}',trade??'')} ]));
+ const npcFor=r=>({key:r.key,name:data[r.role].name,subtitle:data[r.role].subtitle,portrait:data[r.role].portrait??(r.role==='guard'?'guard1907':'merchant'),nodes:nodes(data[r.role].nodes,r.trade),position:()=>r.position,merchant:r.role==='merchant'?{trade:r.trade,sells:r.trade}:null,maxDistance:100,begin:()=>firstPerson.clearInput()});
+ dialogue.register({pick(event,hitTest){let best=null;if(stationary.group.visible)for(const r of stationary.records){if(!r.person.group.visible)continue;const distance=hitTest(event,r.position,1.95,100);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:npcFor(r)}}return best}});
+ dialogue.register({pick(event,hitTest){let best=null;if(pedestrians.group.visible)for(const w of pedestrians.walkers){const distance=hitTest(event,w.position,1.95,80);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:{key:w.id,name:data.pedestrian.name,portrait:'walker1907',nodes:data.pedestrian.nodes,position:()=>w.position,maxDistance:100,begin:()=>firstPerson.clearInput()}}}return best}});
+ let press=null;const canvas=renderer.domElement;
+ canvas.addEventListener('pointerdown',e=>{if(e.button===0)press={x:e.clientX,y:e.clientY,id:e.pointerId}});
+ canvas.addEventListener('pointerup',e=>{if(press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
+ el('people3d').addEventListener('change',()=>stationary.group.visible=el('people3d').checked);
+ function update(dt){firstPerson.update(dt);together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);dialogue.update()}
+ return {firstPerson,pedestrians,stationary,collision,shop,dialogue,together,update,npcFor};
+}

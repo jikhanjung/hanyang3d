@@ -1,0 +1,79 @@
+{
+  "model_id": "gwanghwamun-1907-concept-v1",
+  "feature_id": "gwanghwamun-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1867,
+  "valid_to": null,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1867,
+      "end_year": null,
+      "status": "approximate",
+      "start_precision": "1865–1867 in official summaries",
+      "note": "1867 used as palace rebuilding completion reference; exact gate completion year differs among official summaries"
+    },
+    "depiction": {
+      "start_year": 1867,
+      "end_year": null,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+      "https://theme.archives.go.kr/next/koreaOfRecord/Gwanghwamun.do"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "gwanghwamun-1907",
+    "scene_year": 1907,
+    "category": "성문",
+    "landmark_kind": "city_gate",
+    "display_model": "conceptual_gate_with_open_arch_and_roof",
+    "symbol_size_m": [
+      50,
+      23,
+      20
+    ],
+    "display_yaw_deg": 3.735,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        758,
+        1912
+      ],
+      "anchor": "structure_center",
+      "method": "manual_map_reading",
+      "note": "1907년 원도의 남북 대로 양쪽 경계 사이 중심에 맞추고, 동서 앞길의 북쪽에 문 몸체를 놓았다. 교차로 중심 약 [758,1924], 문 중심 [758,1912]의 추정 판독. 기호의 지붕·문자 외곽을 실제 평면 크기로 해석하지 않는다."
+    },
+    "position_status": "approximate_source_map_reading",
+    "size_status": "estimated_not_measured",
+    "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다. 문 폭 50m는 남북 대로의 지도상 약 24px 폭에 맞춘 표시용 추정이다.",
+    "gate_identity": "gwanghwamun",
+    "gate_tiers": 2
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+    "https://theme.archives.go.kr/next/koreaOfRecord/Gwanghwamun.do",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_source_map_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

@@ -1,0 +1,4716 @@
+{
+  "schema_version": 1,
+  "scene_year": 1907,
+  "features": [
+    {
+      "id": "geunjeongjeon-1907",
+      "name": "1907년 근정전",
+      "name_en": "Geunjeongjeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "throne_hall",
+      "symbol_size_m": [
+        110,
+        23,
+        135
+      ],
+      "display_yaw_deg": 3.735,
+      "throne_hall": {
+        "bays": [
+          5,
+          5
+        ],
+        "hall_m": [
+          30,
+          24
+        ],
+        "roof_tiers": 2,
+        "terrace_tiers": 2
+      },
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          777,
+          1795
+        ],
+        "anchor": "hall_center",
+        "method": "manual_map_reading",
+        "note": "정규화한 북쪽 위 지도(2667×3750)의 근정전 기호 중심. 건물 중심을 배치 기준으로 삼으며 조정 중심과 구분한다."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1867,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1867,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://www.culture.go.kr/portal/cltKnw/usePtt/viewOrigin.do?did=60910&menuNo=200059"
+        ]
+      },
+      "size_status": "estimated_not_measured",
+      "model_note": "5×5칸·중층 팔작지붕과 이중 월대를 단순화. 조정 110×135m, 전각 30×24m, 높이 23m는 실측 복원이 아닌 시각화용 추정값. 회랑·근정문·품계석은 개념 표현.",
+      "info": {
+        "summary": "1867년 중건된 경복궁 정전. 5×5칸, 중층 팔작지붕, 이중 월대와 조정을 단순화했다. 위치와 치수는 추정이며 정밀 복원이 아니다.",
+        "summary_en": "Gyeongbokgung’s throne hall, rebuilt in 1867. A simplified five-by-five-bay hall with two roof tiers, a double terrace and courtyard. Placement and dimensions are approximate.",
+        "period": "1867년 중건 · 1907년 모습의 개념 모형",
+        "period_en": "Rebuilt 1867 · conceptual model for 1907",
+        "in_1750": "1750년에는 이 중건 전각이 없었음. 1907년 전용 항목.",
+        "in_1750_en": "This rebuilt hall did not exist in 1750. A separate 1907 record.",
+        "sources": [
+          {
+            "title": "문화포털 — 경복궁 근정전",
+            "title_en": "Culture Portal — Geunjeongjeon",
+            "url": "https://www.culture.go.kr/portal/cltKnw/usePtt/viewOrigin.do?did=60910&menuNo=200059"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "junghwajeon-1907",
+      "name": "1907년 중화전",
+      "name_en": "Junghwajeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "throne_hall",
+      "symbol_size_m": [
+        85,
+        16,
+        95
+      ],
+      "display_yaw_deg": 3.735,
+      "throne_hall": {
+        "bays": [
+          5,
+          4
+        ],
+        "hall_m": [
+          28,
+          20
+        ],
+        "roof_tiers": 1,
+        "terrace_tiers": 2
+      },
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          635,
+          2438
+        ],
+        "anchor": "hall_center",
+        "method": "manual_map_reading",
+        "note": "정규화한 최신경성전도의 중화전 표기 옆 전각 기호를 육안 판독한 추정 중심. 원도 자체의 축척·묘사 오차 포함."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1906,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1906,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+        ]
+      },
+      "size_status": "estimated_not_measured",
+      "model_note": "5×4칸, 지붕 1단. 전각·조정 치수, 회랑과 문은 실측 복원이 아닌 단순화한 추정값.",
+      "info": {
+        "summary": "1906년 중건된 중화전. 1907년 지도에서 위치를 읽어 단순화했다. 1904년 화재 이후 다시 지은 단층 지붕을 표현한다. 조정·회랑·문의 치수와 형태는 추정이다.",
+        "summary_en": "Junghwajeon, rebuilt in 1906. Approximate map placement and courtyard dimensions; a simplified 1-tier roof. No later interior alterations are depicted.",
+        "period": "1906년 중건 · 1907년 모습의 개념 모형",
+        "period_en": "Rebuilt 1906 · conceptual model for 1907",
+        "in_1750": "1750년에는 이 중건 전각이 없었음. 1907년 전용 항목.",
+        "in_1750_en": "This rebuilt hall did not exist in 1750. A separate 1907 record.",
+        "sources": [
+          {
+            "title": "국가기록원 — 덕수궁",
+            "title_en": "National Archives — Deoksugung",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "injeongjeon-1907",
+      "name": "1907년 인정전",
+      "name_en": "Injeongjeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "throne_hall",
+      "symbol_size_m": [
+        90,
+        22,
+        100
+      ],
+      "display_yaw_deg": 3.735,
+      "throne_hall": {
+        "bays": [
+          5,
+          4
+        ],
+        "hall_m": [
+          30,
+          22
+        ],
+        "roof_tiers": 2,
+        "terrace_tiers": 2
+      },
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1370,
+          1785
+        ],
+        "anchor": "hall_center",
+        "method": "manual_map_reading",
+        "note": "정규화한 최신경성전도의 인정전 표기 옆 전각 기호를 육안 판독한 추정 중심. 원도 자체의 축척·묘사 오차 포함."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1804,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1804,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=161&callmode=admin&catimage=&eclang=ko&start=26&um=s"
+        ]
+      },
+      "size_status": "estimated_not_measured",
+      "model_note": "5×4칸, 지붕 2단. 전각·조정 치수, 회랑과 문은 실측 복원이 아닌 단순화한 추정값.",
+      "info": {
+        "summary": "1804년 중건된 인정전. 1907년 지도에서 위치를 읽어 단순화했다. 1908년 개수 이후의 실내 장식은 표현하지 않는다. 조정·회랑·문의 치수와 형태는 추정이다.",
+        "summary_en": "Injeongjeon, rebuilt in 1804. Approximate map placement and courtyard dimensions; a simplified 2-tier roof. No later interior alterations are depicted.",
+        "period": "1804년 중건 · 1907년 모습의 개념 모형",
+        "period_en": "Rebuilt 1804 · conceptual model for 1907",
+        "in_1750": "1750년에는 이 중건 전각이 없었음. 1907년 전용 항목.",
+        "in_1750_en": "This rebuilt hall did not exist in 1750. A separate 1907 record.",
+        "sources": [
+          {
+            "title": "국립고궁박물관 — 창덕궁 인정전",
+            "title_en": "National Palace Museum — Injeongjeon",
+            "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=161&callmode=admin&catimage=&eclang=ko&start=26&um=s"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gyeonghoeru-1907",
+      "name": "1907년 경회루",
+      "name_en": "Gyeonghoeru (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "gyeonghoeru",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        140,
+        18,
+        160
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          739,
+          1724
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1867,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1867,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://contents.history.go.kr/front/nh/view.do?levelId=nh_035_0040_0020_0050_0020"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "경복궁 연못 위의 연회 누각. 정면 7칸·측면 5칸과 아래층 돌기둥 48개를 표현했다. 연못 윤곽은 직사각형으로 단순화했다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "A seven-by-five-bay banquet pavilion on a pond, with 48 stone columns. The pond outline is simplified. Position and dimensions are approximate.",
+        "period": "1867년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1867 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "우리역사넷 — 궁궐 건축",
+            "url": "https://contents.history.go.kr/front/nh/view.do?levelId=nh_035_0040_0020_0050_0020",
+            "title_en": "우리역사넷 — 궁궐 건축"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "pavilion_offset_m": [
+        12,
+        35
+      ]
+    },
+    {
+      "id": "gwanghwamun-1907",
+      "name": "1907년 광화문",
+      "name_en": "Gwanghwamun (1907)",
+      "scene_year": 1907,
+      "category": "성문",
+      "landmark_kind": "city_gate",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "symbol_size_m": [
+        50,
+        23,
+        20
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          758,
+          1912
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 원도의 남북 대로 양쪽 경계 사이 중심에 맞추고, 동서 앞길의 북쪽에 문 몸체를 놓았다. 교차로 중심 약 [758,1924], 문 중심 [758,1912]의 추정 판독. 기호의 지붕·문자 외곽을 실제 평면 크기로 해석하지 않는다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1867,
+          "end_year": null,
+          "status": "approximate",
+          "start_precision": "1865–1867 in official summaries",
+          "note": "1867 used as palace rebuilding completion reference; exact gate completion year differs among official summaries"
+        },
+        "depiction": {
+          "start_year": 1867,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+          "https://theme.archives.go.kr/next/koreaOfRecord/Gwanghwamun.do"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다. 문 폭 50m는 남북 대로의 지도상 약 24px 폭에 맞춘 표시용 추정이다.",
+      "info": {
+        "summary": "경복궁 남문. 세 홍예 통로와 중층 문루를 표현했다. 1920년대 이전 위치를 원도에서 읽었다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "The south gate of Gyeongbokgung, with three arched passages and a two-tier pavilion. Position and dimensions are approximate.",
+        "period": "1867년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1867 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "궁능유적본부 경복궁 역사",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+            "title_en": "궁능유적본부 경복궁 역사"
+          },
+          {
+            "title": "국가기록원 — 광화문",
+            "title_en": "National Archives — Gwanghwamun",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/Gwanghwamun.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "gate_identity": "gwanghwamun",
+      "gate_tiers": 2
+    },
+    {
+      "id": "daehanmun-1907",
+      "name": "1907년 대한문",
+      "name_en": "Daehanmun (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "palace_gate",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        19,
+        10,
+        10
+      ],
+      "display_yaw_deg": 93.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          716,
+          2505
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1906,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1906,
+          "end_year": 1970,
+          "reference_year": 1907,
+          "status": "simplified_period_model",
+          "end_reason": "relocated; not destroyed"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/daily/viewMain.do?selectDay=20120102"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "1906년 대한문으로 이름을 바꾼 덕수궁 정문. 단층 문루를 원도 위치에 배치했으며 1970년 이전의 자리다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "A single-storey palace gate at its map-era site, before the 1970 relocation. Position and dimensions are approximate.",
+        "period": "1906년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1906 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "국가기록원 — 대한문 이설",
+            "url": "https://theme.archives.go.kr/next/daily/viewMain.do?selectDay=20120102",
+            "title_en": "국가기록원 — 대한문 이설"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "palace_gate_bays": 3,
+      "palace_gate_tiers": 1
+    },
+    {
+      "id": "sungnyemun-1907",
+      "name": "1907년 숭례문",
+      "name_en": "Sungnyemun (1907)",
+      "scene_year": 1907,
+      "category": "성문",
+      "landmark_kind": "city_gate",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "symbol_size_m": [
+        30,
+        22,
+        18
+      ],
+      "display_yaw_deg": -25,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          615,
+          2783
+        ],
+        "anchor": "structure_center",
+        "method": "manual_gate_symbol_reading",
+        "note": "원도 崇禮門 글씨 위의 붉은 문루 기호 중심. 기존 [635,2767]에서 [615,2783]으로 남서쪽 이동. 주변 붉은 길과 톱니 모양 성곽선을 구별해 다시 판독."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1398,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1398,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://seoulcitywall.seoul.go.kr/content/8.do"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다. 인접 성벽은 사용자가 요청한 원도 표현을 기준으로 문 양쪽에 연결하며 1907년 철거 문헌과 별도로 구분한다.",
+      "info": {
+        "summary": "석축 위 중층 우진각 문루와 홍예 통로. 원도의 붉은 문 기호와 톱니형 성곽선을 따라 위치를 보정하고 양쪽 성벽을 연결했다. 1907년 철거 기록과 구분되는 지도상의 표현이며 위치와 치수는 추정이다.",
+        "summary_en": "A stone gate with an arched passage and two hip roofs, positioned at the red gate symbol. Adjacent walls follow the crenellated line drawn on the map, distinct from documented demolition in 1907. Position and dimensions are approximate.",
+        "period": "1398년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1398 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "서울 한양도성 — 도성의 역사",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do",
+            "title_en": "서울 한양도성 — 도성의 역사"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "gate_identity": "sungnyemun",
+      "gate_tiers": 2
+    },
+    {
+      "id": "heunginjimun-1907",
+      "name": "1907년 흥인지문",
+      "name_en": "Heunginjimun (1907)",
+      "scene_year": 1907,
+      "category": "성문",
+      "landmark_kind": "city_gate",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "symbol_size_m": [
+        28,
+        21,
+        17
+      ],
+      "display_yaw_deg": 93.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          2130,
+          2300
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1869,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1869,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://contents.history.go.kr/front/nh/view.do?levelId=nh_035_0040_0020_0050_0020"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "1869년 중건된 동문. 중층 팔작지붕과 성 바깥쪽 옹성을 표현했다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "The east gate rebuilt in 1869, with two roof tiers and an outer barbican. Position and dimensions are approximate.",
+        "period": "1869년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1869 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "우리역사넷 — 궁궐 건축",
+            "url": "https://contents.history.go.kr/front/nh/view.do?levelId=nh_035_0040_0020_0050_0020",
+            "title_en": "우리역사넷 — 궁궐 건축"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "gate_identity": "heunginjimun",
+      "gate_tiers": 2,
+      "outer_side": 1
+    },
+    {
+      "id": "myeongjeongjeon-1907",
+      "name": "1907년 명정전",
+      "name_en": "Myeongjeongjeon (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "throne_hall",
+      "display_model": "throne_hall",
+      "symbol_size_m": [
+        70,
+        15,
+        90
+      ],
+      "display_yaw_deg": 93.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1554,
+          1830
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1616,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1616,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20240904134731840421&schBcid=normal1&schM=view"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "창경궁의 동향 정전. 단층 팔작지붕·5×3칸과 조정을 표현했다. 동물원·식물원이 들어오기 전 궁궐 장면이다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "Changgyeonggung’s east-facing throne hall, with a single roof and five-by-three bays, before the zoo and botanical garden. Position and dimensions are approximate.",
+        "period": "1616년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1616 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "궁능유적본부 — 명정전",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20240904134731840421&schBcid=normal1&schM=view",
+            "title_en": "궁능유적본부 — 명정전"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "throne_hall": {
+        "bays": [
+          5,
+          3
+        ],
+        "hall_m": [
+          24,
+          14
+        ],
+        "roof_tiers": 1,
+        "terrace_tiers": 2
+      }
+    },
+    {
+      "id": "jongmyo-jeongjeon-1907",
+      "name": "1907년 종묘 정전",
+      "name_en": "Jongmyo Jeongjeon (1907)",
+      "scene_year": 1907,
+      "category": "종교·의례",
+      "landmark_kind": "shrine",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        120,
+        11,
+        70
+      ],
+      "display_yaw_deg": -26.3,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1495,
+          2021
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1608,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1836,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://royal.cha.go.kr/ROYAL/contents/R105010000.do"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "1836년 증축 뒤의 신실 19칸을 표현했다. 1750년 장면의 15칸 정전과 구분한다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "Nineteen shrine chambers after the 1836 expansion, distinct from the fifteen chambers in the 1750 scene. Position and dimensions are approximate.",
+        "period": "1608년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1608 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "궁능유적본부 — 종묘 연혁",
+            "url": "https://royal.cha.go.kr/ROYAL/contents/R105010000.do",
+            "title_en": "궁능유적본부 — 종묘 연혁"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "shrine_chambers": 19
+    },
+    {
+      "id": "yeongnyeongjeon-1907",
+      "name": "1907년 영녕전",
+      "name_en": "Yeongnyeongjeon (1907)",
+      "scene_year": 1907,
+      "category": "종교·의례",
+      "landmark_kind": "shrine",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        80,
+        13,
+        48
+      ],
+      "display_yaw_deg": -26.3,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1447,
+          1963
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1608,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1836,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://royal.cha.go.kr/ROYAL/contents/R105010000.do"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "1836년 증축 뒤의 16칸. 가운데 네 칸의 지붕을 높이고 좌우 신실을 낮춘 별묘로 표현했다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "Sixteen chambers after the 1836 expansion, with a raised central four-bay section. Position and dimensions are approximate.",
+        "period": "1608년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1608 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "궁능유적본부 — 종묘 연혁",
+            "url": "https://royal.cha.go.kr/ROYAL/contents/R105010000.do",
+            "title_en": "궁능유적본부 — 종묘 연혁"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "shrine_chambers": 16,
+      "raised_center": true
+    },
+    {
+      "id": "hwangudan-1907",
+      "name": "1907년 환구단",
+      "name_en": "Hwangudan (1907)",
+      "scene_year": 1907,
+      "category": "종교·의례",
+      "landmark_kind": "altar",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        48,
+        5,
+        48
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          847,
+          2548
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1897,
+          "end_year": 1913,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1897,
+          "end_year": 1913,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr="
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "대한제국 황제 즉위와 하늘 제사를 위한 원형 제단. 세 겹 단과 계단을 단순화했다. 1913년 철거되었다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "The circular imperial altar, built in 1897 and demolished in 1913. Its terraces and stairs are simplified. Position and dimensions are approximate.",
+        "period": "1897년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1897 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "우리역사넷 — 환구단과 황궁우",
+            "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr=",
+            "title_en": "우리역사넷 — 환구단과 황궁우"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hwanggungu-1907",
+      "name": "1907년 황궁우",
+      "name_en": "Hwanggungu (1907)",
+      "scene_year": 1907,
+      "category": "종교·의례",
+      "landmark_kind": "hwanggungu",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        27,
+        20,
+        27
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          855,
+          2491
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_precinct_location",
+        "note": "환구단 북쪽 구역과 문헌상의 상대 위치를 조합한 추정. 원도 개별 전각 기호 확정 아님."
+      },
+      "position_status": "estimated_precinct_location",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1899,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1899,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr="
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "환구단 북쪽의 팔각 삼층 건물. 신위판을 모시던 공간으로 제단과 별도 객체다. 원도에서 개별 전각 식별이 어려워 북쪽 구역에 추정 배치했다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "An octagonal three-tier shrine north of the altar. Its individual footprint is unclear on the map; placement within the northern precinct is estimated. Position and dimensions are approximate.",
+        "period": "1899년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1899 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "우리역사넷 — 환구단과 황궁우",
+            "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr=",
+            "title_en": "우리역사넷 — 환구단과 황궁우"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "myeongdong-cathedral-1907",
+      "name": "1907년 명동성당",
+      "name_en": "Myeongdong Cathedral (1907)",
+      "scene_year": 1907,
+      "category": "종교·의례",
+      "landmark_kind": "cathedral",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        30,
+        45,
+        65
+      ],
+      "display_yaw_deg": -150,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1117,
+          2620
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1898,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1898,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "종현의 고딕 벽돌 성당. 십자형 본당·첨두 창·전면 종탑과 첨탑을 표현했다. 원도의 십자형 기호를 읽어 배치했다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "A Gothic brick cathedral represented with a cruciform nave, pointed windows, a bell tower and spire. Position and dimensions are approximate.",
+        "period": "1898년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1898 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "국가기록원 — 명동성당",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do",
+            "title_en": "국가기록원 — 명동성당"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jeongdong-church-1907",
+      "name": "1907년 정동교회",
+      "name_en": "Chungdong First Methodist Church (1907)",
+      "scene_year": 1907,
+      "category": "종교·의례",
+      "landmark_kind": "church",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        23,
+        19,
+        29
+      ],
+      "display_yaw_deg": -35,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          507,
+          2440
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_block_from_source_map",
+        "note": "기존 현대좌표 역변환점 [549,2453]이 원도 사선 도로 위였으므로 도로 남서측 건물 구획 [507,2440]으로 이동. 교회 단독 글씨·필지 경계 확정은 아니며 구획 내 추정 배치."
+      },
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1897,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1897,
+          "end_year": 1926,
+          "reference_year": 1907,
+          "status": "simplified_period_model",
+          "end_reason": "plan enlarged; building remained"
+        },
+        "sources": [
+          "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c354b2fc-4c84-496f-822e-e8d78bbd6488"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "1897년 봉헌된 붉은 벽돌 교회. 1926년 증축 전 십자형 평면과 낮은 종탑을 표현했다. 현대 위치와 원도 구역을 대조한 추정 위치다. 위치와 치수는 추정한 개념 모형이다. 원도 도로 남서쪽 건물 구획으로 정정했으며 개별 교회 필지의 위치는 추정이다.",
+        "summary_en": "A brick church dedicated in 1897, with a cruciform plan before the 1926 extension and a modest bell tower. Position and dimensions are approximate.",
+        "period": "1897년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1897 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "한국관광공사 — 서울 정동교회",
+            "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c354b2fc-4c84-496f-822e-e8d78bbd6488",
+            "title_en": "한국관광공사 — 서울 정동교회"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "donhwamun-1907",
+      "name": "1907년 돈화문",
+      "name_en": "Donhwamun (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "palace_gate",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        25,
+        15,
+        13
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1325,
+          1859
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "敦化門 세로 글씨 바로 아래, 붉은 담장 선의 문 기호 중심. 종전 [1324,1898]에서 원도 위쪽으로 39px 보정(지상 약 81m); 도로 교차점과 구별."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1609,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1609,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0016240"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "창덕궁 정문. 중층 문루와 정면 5칸을 표현했다. 원도의 敦化門 표기 남쪽 문 기호를 읽었다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "Changdeokgung’s main gate, with a five-bay front and two roof tiers. Position and dimensions are approximate.",
+        "period": "1609년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1609 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과 — 돈화문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0016240",
+            "title_en": "한국민족문화대백과 — 돈화문"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "palace_gate_bays": 5,
+      "palace_gate_tiers": 2
+    },
+    {
+      "id": "honghwamun-1907",
+      "name": "1907년 홍화문",
+      "name_en": "Honghwamun (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "palace_gate",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        19,
+        14,
+        11
+      ],
+      "display_yaw_deg": 93.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1612,
+          1840
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 북쪽 위 정규화 지도에서 기호·문자와 주변 경계를 판독한 추정 위치. 방위도 원도 기준 추정이다."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1616,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1616,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0064444"
+        ]
+      },
+      "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "창경궁 동문. 정면 3칸의 중층 문루를 동향으로 배치했다. 위치와 치수는 추정한 개념 모형이다.",
+        "summary_en": "Changgyeonggung’s east-facing main gate, with three bays and two roof tiers. Position and dimensions are approximate.",
+        "period": "1616년 이후 존속 · 1907년 기준",
+        "period_en": "Present from 1616 · shown for 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과 — 홍화문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0064444",
+            "title_en": "한국민족문화대백과 — 홍화문"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "palace_gate_bays": 3,
+      "palace_gate_tiers": 2
+    },
+    {
+      "id": "sungjeongjeon-1907",
+      "name": "1907년 숭정전",
+      "name_en": "Sungjeongjeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "throne_hall",
+      "symbol_size_m": [
+        75,
+        15,
+        95
+      ],
+      "display_yaw_deg": 93.735,
+      "throne_hall": {
+        "bays": [
+          5,
+          4
+        ],
+        "hall_m": [
+          25,
+          18
+        ],
+        "roof_tiers": 1,
+        "terrace_tiers": 2
+      },
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          374,
+          2131
+        ],
+        "anchor": "hall_center",
+        "method": "modern_reference_inverse_affine",
+        "note": "경희궁 현대 위치 참고값을 역변환해 원도의 慶熙宮 구역과 대조한 추정 위치. 원도는 전각을 생략하여 숭정전 기호 판독이 아니다."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1618,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1618,
+          "end_year": 1926,
+          "reference_year": 1907,
+          "status": "simplified_period_model",
+          "end_reason": "sold and relocated; not destroyed"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0003036"
+        ]
+      },
+      "size_status": "estimated_not_measured",
+      "model_note": "문헌상의 5×4칸 단층 정전·동향 설명을 참고. 원도에는 전각 기호가 없으므로 위치·회랑·크기는 추정.",
+      "info": {
+        "summary": "경희궁 정전. 5×4칸 단층 팔작지붕을 표현했다. 원도에 전각 기호가 없어 궁궐 구역 안 추정 위치이며 회랑은 개념 표현이다. 1926년 매각·이전된 전각과 현재 복원 건물을 구분한다.",
+        "summary_en": "Gyeonghuigung’s five-by-four-bay throne hall. Its map symbol is absent, so placement within the palace precinct and the courtyard are estimated. The original hall was sold and relocated in 1926.",
+        "period": "1618년 창건 · 1926년 이전 전 위치의 개념 모형",
+        "period_en": "Built 1618 · conceptual placement before relocation in 1926",
+        "in_1750": "1750년에는 이 중건 전각이 없었음. 1907년 전용 항목.",
+        "in_1750_en": "This rebuilt hall did not exist in 1750. A separate 1907 record.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과 — 경희궁",
+            "title_en": "Encyclopedia of Korean Culture — Gyeonghuigung",
+            "url": "https://encykorea.aks.ac.kr/Article/E0003036"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "landmark_kind": "throne_hall",
+      "position_status": "estimated_precinct_location"
+    },
+    {
+      "id": "russian-legation-1907",
+      "name": "1907년 러시아 공사관",
+      "name_en": "Russian Legation (1907)",
+      "scene_year": 1907,
+      "category": "외교시설",
+      "landmark_kind": "legation",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        42,
+        22,
+        28
+      ],
+      "display_yaw_deg": -25,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          447,
+          2326
+        ],
+        "anchor": "structure_center",
+        "method": "manual_precinct_reading",
+        "note": "원도 露國領事館 표기 아래 담장 구역의 건물 기호를 기준으로 한 추정 위치. 건물 중심과 탑의 정확한 위치는 미확정."
+      },
+      "position_status": "estimated_precinct_location",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1890,
+          "end_year": null,
+          "status": "approximate",
+          "start_precision": "circa",
+          "note": "착공·완공 연대 서술 차이 있음. 한국전쟁 파괴 연도 미확정, 남은 탑과 본관 구별 필요."
+        },
+        "depiction": {
+          "start_year": 1890,
+          "end_year": 1950,
+          "reference_year": 1907,
+          "status": "simplified_period_model",
+          "end_precision": "Korean War 1950–1953; conservative display cutoff"
+        },
+        "sources": [
+          "https://contents.history.go.kr/front/ki/printViewPopup.do?levelId=ki_060_07000",
+          "https://encykorea.aks.ac.kr/Article/E0005711"
+        ]
+      },
+      "model_note": "2층 벽돌조·측면 탑·연창이라는 문헌상 특징만 반영. 전체 평면·박공 배치·색은 추정이며 현존 탑만 복제한 모형 아님.",
+      "info": {
+        "summary": "아관파천 때 고종이 머문 공사관. 2층 벽돌 본관과 한쪽 탑을 단순화했다. 1890년경 건립 및 한국전쟁 중 대부분 파괴로 기록되며, 본관 평면·지붕·색상·탑 위치는 추정이다.",
+        "summary_en": "The legation where Gojong stayed during the royal refuge. A simplified two-storey masonry building with a side tower, built around 1890 and largely destroyed during the Korean War. Plan, roof, colours and tower placement are conjectural.",
+        "period": "1890년경 건립 · 한국전쟁 이전 외형의 개념 모형",
+        "period_en": "Built circa 1890 · conceptual pre-Korean-War exterior",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "우리역사넷 — 러시아 공사관",
+            "title_en": "National Institute of Korean History — Russian Legation",
+            "url": "https://contents.history.go.kr/front/ki/printViewPopup.do?levelId=ki_060_07000"
+          },
+          {
+            "title": "한국민족문화대백과 — 구 러시아공사관",
+            "title_en": "Encyclopedia of Korean Culture — Russian Legation",
+            "url": "https://encykorea.aks.ac.kr/Article/E0005711"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "donuimun-1907",
+      "name": "1907년 돈의문",
+      "name_en": "Donuimun (1907)",
+      "category": "성문",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "city_gate",
+      "gate_identity": "donuimun",
+      "gate_tiers": 1,
+      "symbol_size_m": [
+        22,
+        15,
+        14
+      ],
+      "display_yaw_deg": 110,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          394,
+          2301
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정. 위에서 본 반시계방향 45도 회전(65→110도). 톱니형 성곽선과 사선 도로를 구별해 성벽 연결 재판독."
+      },
+      "position_status": "approximate_map_reading",
+      "size_status": "estimated_not_measured",
+      "model_note": "1711년 중건 기록을 참고한 단층 문루. 1915년 철거 전 서대문이다. 치수·장식은 실측 복원이 아닌 개념 표현.",
+      "temporal": {
+        "existence": {
+          "start_year": 1711,
+          "end_year": 1915,
+          "status": "documented_rebuild"
+        },
+        "depiction": {
+          "start_year": 1711,
+          "end_year": 1915,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0016076",
+          "https://seoulcitywall.seoul.go.kr/content/8.do"
+        ]
+      },
+      "info": {
+        "summary": "1711년 중건 기록을 참고한 단층 문루. 1915년 철거 전 서대문이다. 위치와 크기는 추정이다.",
+        "summary_en": "Approximate 1907 placement of Donuimun, with a simplified single-storey pavilion. The depicted rebuilding dates to 1711; dimensions and details are estimates.",
+        "period": "1711년 중건 기준 · 1915년 철거·이전·문루 소실 이전",
+        "period_en": "Rebuilt 1711 · depiction for 1907",
+        "in_1750": "1907년 장면 전용 별도 모형.",
+        "in_1750_en": "Separate model for the 1907 scene.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://encykorea.aks.ac.kr/Article/E0016076"
+          },
+          {
+            "title": "서울시 한양도성 — 역사",
+            "title_en": "Seoul City Wall — history",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "souimun-1907",
+      "name": "1907년 소의문",
+      "name_en": "Souimun (1907)",
+      "category": "성문",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "city_gate",
+      "gate_identity": "souimun",
+      "gate_tiers": 1,
+      "symbol_size_m": [
+        17,
+        12,
+        10
+      ],
+      "display_yaw_deg": -65,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          475,
+          2480
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "소의문 [475,2480] 중심 유지. 원도의 서쪽에서 꺾여 남쪽으로 이어지는 성벽을 재판독하고 육축 방향을 -65도로 조정. 추정 방향."
+      },
+      "position_status": "approximate_map_reading",
+      "size_status": "estimated_not_measured",
+      "model_note": "1744년 문루 개축·개칭 후의 서소문. 1914년 철거 전 단층 문루를 단순화했다. 치수·장식은 실측 복원이 아닌 개념 표현.",
+      "temporal": {
+        "existence": {
+          "start_year": 1744,
+          "end_year": 1914,
+          "status": "documented_rebuild"
+        },
+        "depiction": {
+          "start_year": 1744,
+          "end_year": 1914,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0030248",
+          "https://seoulcitywall.seoul.go.kr/content/8.do"
+        ]
+      },
+      "info": {
+        "summary": "1744년 문루 개축·개칭 후의 서소문. 1914년 철거 전 단층 문루를 단순화했다. 위치와 크기는 추정이다.",
+        "summary_en": "Approximate 1907 placement of Souimun, with a simplified single-storey pavilion. The depicted rebuilding dates to 1744; dimensions and details are estimates.",
+        "period": "1744년 중건 기준 · 1914년 철거·이전·문루 소실 이전",
+        "period_en": "Rebuilt 1744 · depiction for 1907",
+        "in_1750": "1907년 장면 전용 별도 모형.",
+        "in_1750_en": "Separate model for the 1907 scene.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://encykorea.aks.ac.kr/Article/E0030248"
+          },
+          {
+            "title": "서울시 한양도성 — 역사",
+            "title_en": "Seoul City Wall — history",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gwanghuimun-1907",
+      "name": "1907년 광희문",
+      "name_en": "Gwanghuimun (1907)",
+      "category": "성문",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "city_gate",
+      "gate_identity": "gwanghuimun",
+      "gate_tiers": 1,
+      "symbol_size_m": [
+        17,
+        12,
+        10
+      ],
+      "display_yaw_deg": 93.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          2103,
+          2665
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정."
+      },
+      "position_status": "approximate_map_reading",
+      "size_status": "estimated_not_measured",
+      "model_note": "남동쪽 수구문. 1915년 문루 붕괴 전 모습이며 1975년 이전·복원된 현재 위치를 사용하지 않았다. 치수·장식은 실측 복원이 아닌 개념 표현.",
+      "temporal": {
+        "existence": {
+          "start_year": 1719,
+          "end_year": null,
+          "status": "documented_rebuild"
+        },
+        "depiction": {
+          "start_year": 1719,
+          "end_year": 1915,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1159&seq=20201229144907966&sso=ok",
+          "https://seoulcitywall.seoul.go.kr/content/8.do"
+        ]
+      },
+      "info": {
+        "summary": "남동쪽 수구문. 1915년 문루 붕괴 전 모습이며 1975년 이전·복원된 현재 위치를 사용하지 않았다. 위치와 크기는 추정이다.",
+        "summary_en": "Approximate 1907 placement of Gwanghuimun, with a simplified single-storey pavilion. The depicted rebuilding dates to 1719; dimensions and details are estimates.",
+        "period": "1719년 중건 기준 · 1915년 철거·이전·문루 소실 이전",
+        "period_en": "Rebuilt 1719 · depiction for 1907",
+        "in_1750": "1907년 장면 전용 별도 모형.",
+        "in_1750_en": "Separate model for the 1907 scene.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1159&seq=20201229144907966&sso=ok"
+          },
+          {
+            "title": "서울시 한양도성 — 역사",
+            "title_en": "Seoul City Wall — history",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hyehwamun-1907",
+      "name": "1907년 혜화문",
+      "name_en": "Hyehwamun (1907)",
+      "category": "성문",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "city_gate",
+      "gate_identity": "hyehwamun",
+      "gate_tiers": 1,
+      "symbol_size_m": [
+        18,
+        13,
+        11
+      ],
+      "display_yaw_deg": 65,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1984,
+          1395
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정."
+      },
+      "position_status": "approximate_map_reading",
+      "size_status": "estimated_not_measured",
+      "model_note": "1744년 중건 문루가 남아 있던 동소문. 1928년 문루 철거, 1938년 육축 철거와 현재 복원 위치를 구별한다. 치수·장식은 실측 복원이 아닌 개념 표현.",
+      "temporal": {
+        "existence": {
+          "start_year": 1744,
+          "end_year": null,
+          "status": "documented_rebuild"
+        },
+        "depiction": {
+          "start_year": 1744,
+          "end_year": 1928,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://culture.seoul.go.kr/culture/bbs/B0000001/view.do?menuNo=200050&nttId=4462&pageIndex=17",
+          "https://seoulcitywall.seoul.go.kr/content/8.do"
+        ]
+      },
+      "info": {
+        "summary": "1744년 중건 문루가 남아 있던 동소문. 1928년 문루 철거, 1938년 육축 철거와 현재 복원 위치를 구별한다. 위치와 크기는 추정이다.",
+        "summary_en": "Approximate 1907 placement of Hyehwamun, with a simplified single-storey pavilion. The depicted rebuilding dates to 1744; dimensions and details are estimates.",
+        "period": "1744년 중건 기준 · 1928년 철거·이전·문루 소실 이전",
+        "period_en": "Rebuilt 1744 · depiction for 1907",
+        "in_1750": "1907년 장면 전용 별도 모형.",
+        "in_1750_en": "Separate model for the 1907 scene.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://culture.seoul.go.kr/culture/bbs/B0000001/view.do?menuNo=200050&nttId=4462&pageIndex=17"
+          },
+          {
+            "title": "서울시 한양도성 — 역사",
+            "title_en": "Seoul City Wall — history",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "changuimun-1907",
+      "name": "1907년 창의문",
+      "name_en": "Changuimun (1907)",
+      "category": "성문",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "city_gate",
+      "gate_identity": "changuimun",
+      "gate_tiers": 1,
+      "symbol_size_m": [
+        17,
+        12,
+        10
+      ],
+      "display_yaw_deg": -112,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          434,
+          980
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정. 위에서 본 시계방향 70도 회전(-42→-112도)."
+      },
+      "position_status": "approximate_map_reading",
+      "size_status": "estimated_not_measured",
+      "model_note": "1741년 중건 문루를 참고한 창의문. 원도 彰義門 기호 위치에 배치했다. 치수·장식은 실측 복원이 아닌 개념 표현.",
+      "temporal": {
+        "existence": {
+          "start_year": 1741,
+          "end_year": null,
+          "status": "documented_rebuild"
+        },
+        "depiction": {
+          "start_year": 1741,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://seoulcitywall.seoul.go.kr/wallcourse/6.do",
+          "https://seoulcitywall.seoul.go.kr/content/8.do"
+        ]
+      },
+      "info": {
+        "summary": "1741년 중건 문루를 참고한 창의문. 원도 彰義門 기호 위치에 배치했다. 위치와 크기는 추정이다.",
+        "summary_en": "Approximate 1907 placement of Changuimun, with a simplified single-storey pavilion. The depicted rebuilding dates to 1741; dimensions and details are estimates.",
+        "period": "1741년 중건 기준 · 1907년 모습",
+        "period_en": "Rebuilt 1741 · depiction for 1907",
+        "in_1750": "1907년 장면 전용 별도 모형.",
+        "in_1750_en": "Separate model for the 1907 scene.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://seoulcitywall.seoul.go.kr/wallcourse/6.do"
+          },
+          {
+            "title": "서울시 한양도성 — 역사",
+            "title_en": "Seoul City Wall — history",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bosingak-1907",
+      "name": "1907년 보신각",
+      "name_en": "Bosingak (1907)",
+      "category": "누각",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "bell_pavilion",
+      "gate_identity": "bosingak",
+      "gate_tiers": 1,
+      "symbol_size_m": [
+        20,
+        10,
+        14
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1026,
+          2256
+        ],
+        "anchor": "structure_center",
+        "method": "manual_street_corner_reading",
+        "note": "원도의 붉은 동서 도로와 남북 도로가 만나는 사거리 중심 약 [1006,2237]을 기준으로 남동쪽 모서리 안쪽 [1026,2256]에 배치. 사용자 방향 정정에 따라 북동쪽 배치를 폐기. 20×14m 모형이 동쪽 도로 경계(x 약 1017), 남쪽 도로 경계(y 약 2246)와 겹치지 않게 이격한 추정 위치.",
+        "intersection_pixel": [
+          1006,
+          2237
+        ]
+      },
+      "position_status": "estimated_street_corner",
+      "size_status": "estimated_not_measured",
+      "model_note": "1869년 재건된 3×2칸 단층 팔작지붕 종루. 1895년 보신각 현판을 받았고 1915년 뒤로 이전하기 전의 추정 자리이다. 치수·장식은 실측 복원이 아닌 개념 표현.",
+      "temporal": {
+        "existence": {
+          "start_year": 1869,
+          "end_year": null,
+          "status": "documented_rebuild"
+        },
+        "depiction": {
+          "start_year": 1869,
+          "end_year": 1915,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0023446",
+          "https://seoulcitywall.seoul.go.kr/content/8.do"
+        ]
+      },
+      "info": {
+        "summary": "1869년 재건된 3×2칸 단층 팔작지붕 종루. 1895년 보신각 현판을 받았고 1915년 뒤로 이전하기 전의 추정 자리이다. 위치와 크기는 추정이다. 붉은 도로선으로 사거리를 판독해 남동쪽 모서리 안쪽에 추정 배치했다.",
+        "summary_en": "Approximate 1907 placement of Bosingak, with a simplified single-storey pavilion. The depicted rebuilding dates to 1869; dimensions and details are estimates. Placed inside the southeast corner of the intersection traced from the red road lines, clear of the road surface.",
+        "period": "1869년 중건 기준 · 1915년 철거·이전·문루 소실 이전",
+        "period_en": "Rebuilt 1869 · depiction for 1907",
+        "in_1750": "1907년 장면 전용 별도 모형.",
+        "in_1750_en": "Separate model for the 1907 scene.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://encykorea.aks.ac.kr/Article/E0023446"
+          },
+          {
+            "title": "서울시 한양도성 — 역사",
+            "title_en": "Seoul City Wall — history",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sajeongjeon-1907",
+      "name": "1907년 사정전",
+      "name_en": "Sajeongjeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "residence",
+      "symbol_size_m": [
+        34,
+        11,
+        24
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          780,
+          1758
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1867년 중건된 편전. 원도 思政殿 표기를 기준으로 배치한 단층 5×3칸 전각."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "approximate_map_reading",
+      "model_note": "1867년 중건된 편전. 원도 思政殿 표기를 기준으로 배치한 단층 5×3칸 전각. 건물과 부속시설 치수·장식은 실측 복원이 아니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1867,
+          "end_year": null,
+          "status": "documented_rebuild_or_relocation"
+        },
+        "depiction": {
+          "start_year": 1867,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_30&levelId=kc_r300205"
+        ]
+      },
+      "info": {
+        "summary": "1867년 중건된 편전. 원도 思政殿 표기를 기준으로 배치한 단층 5×3칸 전각.",
+        "summary_en": "A simplified period model of Sajeongjeon, based on the 1907 map and architectural history. Rebuilt, relocated or estimated built around 1867. Placement, dimensions and subsidiary structures are approximate.",
+        "period": "1867년 기준 · 1907년 모습",
+        "period_en": "Reference form from 1867 · depiction for 1907",
+        "in_1750": "1907년의 별도 전각 모형.",
+        "in_1750_en": "Separate depiction for 1907.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_30&levelId=kc_r300205"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "bays": [
+        5,
+        3
+      ]
+    },
+    {
+      "id": "gangnyeongjeon-1907",
+      "name": "1907년 강녕전",
+      "name_en": "Gangnyeongjeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "residence",
+      "symbol_size_m": [
+        40,
+        10,
+        28
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          783,
+          1736
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1876년 화재 뒤 1888년 재건된 왕의 침전. 1917년 창덕궁 화재 이후 1918년경 해체·이전된 목재와 현재 복원 건물을 구별한다. 원도 康寧殿 표기를 기준으로 단층 7×4칸을 개념 표현."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "approximate_map_reading",
+      "model_note": "1876년 화재 뒤 1888년 재건된 왕의 침전. 1917년 창덕궁 화재 이후 1918년경 해체·이전된 목재와 현재 복원 건물을 구별한다. 원도 康寧殿 표기를 기준으로 단층 7×4칸을 개념 표현. 건물과 부속시설 치수·장식은 실측 복원이 아니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1888,
+          "end_year": null,
+          "status": "documented_rebuild_or_relocation"
+        },
+        "depiction": {
+          "start_year": 1888,
+          "end_year": 1918,
+          "reference_year": 1907,
+          "status": "simplified_period_model",
+          "end_year_precision": "circa_1918_after_1917_Changdeokgung_fire"
+        },
+        "sources": [
+          "https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿)"
+        ]
+      },
+      "info": {
+        "summary": "1876년 화재 뒤 1888년 재건된 왕의 침전. 1917년 창덕궁 화재 이후 1918년경 해체·이전된 목재와 현재 복원 건물을 구별한다. 원도 康寧殿 표기를 기준으로 단층 7×4칸을 개념 표현.",
+        "summary_en": "A simplified period model of Gangnyeongjeon, based on the 1907 map and architectural history. Rebuilt, relocated or estimated built around 1888. Placement, dimensions and subsidiary structures are approximate.",
+        "period": "1888년 기준 · 1918년경 이전·화재 이전",
+        "period_en": "Reference form from 1888 · depiction for 1907",
+        "in_1750": "1907년의 별도 전각 모형.",
+        "in_1750_en": "Separate depiction for 1907.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿)"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "bays": [
+        7,
+        4
+      ]
+    },
+    {
+      "id": "gyotaejeon-1907",
+      "name": "1907년 교태전",
+      "name_en": "Gyotaejeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "residence",
+      "symbol_size_m": [
+        40,
+        10,
+        28
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          785,
+          1711
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "1876년 소실 뒤 1888년 재건된 왕비의 침전. 원도 交泰殿 구역의 추정 중심. 1917년 창덕궁 화재 후 1918년경 해체·이전 이전 모습이며 1995년 복원 건물이 아니다."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "approximate_map_reading",
+      "model_note": "1876년 소실 뒤 1888년 재건된 왕비의 침전. 원도 交泰殿 구역의 추정 중심. 1917년 창덕궁 화재 후 1918년경 해체·이전 이전 모습이며 1995년 복원 건물이 아니다. 건물과 부속시설 치수·장식은 실측 복원이 아니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1888,
+          "end_year": null,
+          "status": "documented_rebuild_or_relocation"
+        },
+        "depiction": {
+          "start_year": 1888,
+          "end_year": 1918,
+          "reference_year": 1907,
+          "status": "simplified_period_model",
+          "end_year_precision": "circa_1918_after_1917_Changdeokgung_fire"
+        },
+        "sources": [
+          "https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿)"
+        ]
+      },
+      "info": {
+        "summary": "1876년 소실 뒤 1888년 재건된 왕비의 침전. 원도 交泰殿 구역의 추정 중심. 1917년 창덕궁 화재 후 1918년경 해체·이전 이전 모습이며 1995년 복원 건물이 아니다.",
+        "summary_en": "A simplified period model of Gyotaejeon, based on the 1907 map and architectural history. Rebuilt, relocated or estimated built around 1888. Placement, dimensions and subsidiary structures are approximate.",
+        "period": "1888년 기준 · 1918년경 이전·화재 이전",
+        "period_en": "Reference form from 1888 · depiction for 1907",
+        "in_1750": "1907년의 별도 전각 모형.",
+        "in_1750_en": "Separate depiction for 1907.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/교태전(交泰殿)"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "bays": [
+        7,
+        4
+      ]
+    },
+    {
+      "id": "hyangwonjeong-1907",
+      "name": "1907년 향원정",
+      "name_en": "Hyangwonjeong (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "hex_pavilion",
+      "symbol_size_m": [
+        84,
+        13,
+        78
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          817,
+          1600
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "원도 향원지 섬에 표시한 육각 이층 정자와 북쪽 취향교. 건립은 종래 1873년설과 달리 목재 연륜 조사로 1885년경이 제시된다. 연못·섬·교량은 추정 크기."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "approximate_map_reading",
+      "model_note": "원도 향원지 섬에 표시한 육각 이층 정자와 북쪽 취향교. 건립은 종래 1873년설과 달리 목재 연륜 조사로 1885년경이 제시된다. 연못·섬·교량은 추정 크기. 건물과 부속시설 치수·장식은 실측 복원이 아니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1885,
+          "end_year": null,
+          "status": "approximate",
+          "start_year_precision": "circa_1885_dendrochronology_not_exact_completion_date"
+        },
+        "depiction": {
+          "start_year": 1885,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://digital.khs.go.kr/heri/heriDetail.do?ctptUid=13898859672787200591"
+        ]
+      },
+      "info": {
+        "summary": "원도 향원지 섬에 표시한 육각 이층 정자와 북쪽 취향교. 건립은 종래 1873년설과 달리 목재 연륜 조사로 1885년경이 제시된다. 연못·섬·교량은 추정 크기.",
+        "summary_en": "A simplified period model of Hyangwonjeong, based on the 1907 map and architectural history. Rebuilt, relocated or estimated built around 1885. Placement, dimensions and subsidiary structures are approximate.",
+        "period": "1885년 기준 · 1907년 모습",
+        "period_en": "Reference form from 1885 · depiction for 1907",
+        "in_1750": "1907년의 별도 전각 모형.",
+        "in_1750_en": "Separate depiction for 1907.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptUid=13898859672787200591"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jibokjae-1907",
+      "name": "1907년 집옥재",
+      "name_en": "Jibokjae (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "library",
+      "symbol_size_m": [
+        46,
+        12,
+        26
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          720,
+          1504
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_precinct_position",
+        "note": "1891년 경복궁으로 옮겨 지은 고종의 서재. 중국식 벽돌 측벽의 집옥재와 서쪽 팔우정·동쪽 협길당을 단순화했다. 원도 북부 전각군 안의 추정 위치이며 개별 건물 식별은 확정하지 않았다."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "estimated_precinct_position",
+      "model_note": "1891년 경복궁으로 옮겨 지은 고종의 서재. 중국식 벽돌 측벽의 집옥재와 서쪽 팔우정·동쪽 협길당을 단순화했다. 원도 북부 전각군 안의 추정 위치이며 개별 건물 식별은 확정하지 않았다. 건물과 부속시설 치수·장식은 실측 복원이 아니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1891,
+          "end_year": null,
+          "status": "documented_rebuild_or_relocation"
+        },
+        "depiction": {
+          "start_year": 1891,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://sillok.history.go.kr/id/kza_12807013_001"
+        ]
+      },
+      "info": {
+        "summary": "1891년 경복궁으로 옮겨 지은 고종의 서재. 중국식 벽돌 측벽의 집옥재와 서쪽 팔우정·동쪽 협길당을 단순화했다. 원도 북부 전각군 안의 추정 위치이며 개별 건물 식별은 확정하지 않았다.",
+        "summary_en": "A simplified period model of Jibokjae, based on the 1907 map and architectural history. Rebuilt, relocated or estimated built around 1891. Placement, dimensions and subsidiary structures are approximate.",
+        "period": "1891년 기준 · 1907년 모습",
+        "period_en": "Reference form from 1891 · depiction for 1907",
+        "in_1750": "1907년의 별도 전각 모형.",
+        "in_1750_en": "Separate depiction for 1907.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://sillok.history.go.kr/id/kza_12807013_001"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jungmyeongjeon-1907",
+      "name": "1907년 중명전",
+      "name_en": "Jungmyeongjeon (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "western_library",
+      "symbol_size_m": [
+        30,
+        13,
+        23
+      ],
+      "display_yaw_deg": -35,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          505,
+          2395
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_precinct_position",
+        "note": "원도 漱玉軒(수옥헌) 표시와 미국 영사관 서쪽 구역을 참고한 추정 위치. 1901년 재건 후 고종의 거처·집무 공간으로 사용된 이층 벽돌 건물. 1905년 을사늑약의 현장. 1925년 화재 이전 외형을 개념 표현."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "estimated_precinct_position",
+      "model_note": "원도 漱玉軒(수옥헌) 표시와 미국 영사관 서쪽 구역을 참고한 추정 위치. 1901년 재건 후 고종의 거처·집무 공간으로 사용된 이층 벽돌 건물. 1905년 을사늑약의 현장. 1925년 화재 이전 외형을 개념 표현. 건물과 부속시설 치수·장식은 실측 복원이 아니다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1901,
+          "end_year": null,
+          "status": "documented_rebuild_or_relocation"
+        },
+        "depiction": {
+          "start_year": 1901,
+          "end_year": 1925,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://dh.aks.ac.kr/sillokwiki/index.php/중명전(重明殿)"
+        ]
+      },
+      "info": {
+        "summary": "원도 漱玉軒(수옥헌) 표시와 미국 영사관 서쪽 구역을 참고한 추정 위치. 1901년 재건 후 고종의 거처·집무 공간으로 사용된 이층 벽돌 건물. 1905년 을사늑약의 현장. 1925년 화재 이전 외형을 개념 표현.",
+        "summary_en": "A simplified period model of Jungmyeongjeon, based on the 1907 map and architectural history. Rebuilt, relocated or estimated built around 1901. Placement, dimensions and subsidiary structures are approximate.",
+        "period": "1901년 기준 · 1925년경 이전·화재 이전",
+        "period_en": "Reference form from 1901 · depiction for 1907",
+        "in_1750": "1907년의 별도 전각 모형.",
+        "in_1750_en": "Separate depiction for 1907.",
+        "sources": [
+          {
+            "title": "건축·연대 참고",
+            "title_en": "Architecture and chronology",
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/중명전(重明殿)"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sukjeongmun-1907",
+      "name": "1907년 숙정문",
+      "name_en": "Sukjeongmun (1907)",
+      "category": "성문",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "city_gate",
+      "gate_identity": "sukjeongmun",
+      "gate_tiers": 0,
+      "symbol_size_m": [
+        14,
+        6.5,
+        8
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1388,
+          1120
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "원도 백악 동쪽 성곽의 숙정문 표기 부근. 문루 없이 석축 홍예만 표현하며 세부 위치·치수 추정."
+      },
+      "position_status": "approximate_map_reading",
+      "size_status": "estimated_not_measured",
+      "model_note": "북쪽 숙정문을 문루 없는 홍예 석축으로 표현했다. 1976년 새로 세운 현재 문루를 1907년 장면에 넣지 않는다. 원도 표기와 일제강점기 문루 없는 사진 설명을 참고한 추정 모형.",
+      "temporal": {
+        "existence": {
+          "start_year": 1396,
+          "end_year": null,
+          "status": "gate_site_history_not_date_of_surviving_stonework"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1976,
+          "reference_year": 1907,
+          "status": "inferred_roofless_form"
+        },
+        "sources": [
+          "https://seoulcitywall.seoul.go.kr/wallcourse/1.do",
+          "https://encykorea.aks.ac.kr/Article/E0031852"
+        ]
+      },
+      "info": {
+        "summary": "북쪽 숙정문을 문루 없는 홍예 석축으로 표현했다. 1976년 새로 세운 현재 문루를 1907년 장면에 넣지 않는다. 원도 표기와 일제강점기 문루 없는 사진 설명을 참고한 추정 모형.",
+        "summary_en": "A roofless stone arch at the northern gate. The modern pavilion built in 1976 is excluded. Position and dimensions are approximate.",
+        "period": "1396년 창건 · 1907년 문루 없는 모습 추정",
+        "period_en": "Founded 1396 · inferred roofless form for 1907",
+        "in_1750": "1907년 장면 전용 별도 모형.",
+        "in_1750_en": "Separate model for the 1907 scene.",
+        "sources": [
+          {
+            "title": "서울시 한양도성 — 숙정문",
+            "title_en": "Seoul City Wall — Sukjeongmun",
+            "url": "https://seoulcitywall.seoul.go.kr/wallcourse/1.do"
+          },
+          {
+            "title": "서울시 한양도성 — 역사",
+            "title_en": "Seoul City Wall — history",
+            "url": "https://seoulcitywall.seoul.go.kr/content/8.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sajik-1907",
+      "name": "1907년 사직단",
+      "name_en": "Sajikdan (1907)",
+      "scene_year": 1907,
+      "category": "제례",
+      "landmark_kind": "sajik",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        65,
+        6,
+        60
+      ],
+      "display_yaw_deg": 30,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          390,
+          1890
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_compound_reading",
+        "note": "원도 社稷 글씨 옆 이중 제단 경계 중심."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "sajik",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1395,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0028005"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "동서 두 방형 제단과 담장을 단순화했다. 원도의 社稷 부근 이중 경계 기호를 판독했다. 제단의 존속과 이후 제례 중단은 구분한다. 위치·치수는 추정이다.",
+        "summary_en": "Sajikdan. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. ",
+        "period": "1395 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 사직단에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "사직단 연혁·건축 설명",
+            "title_en": "Sajikdan history and architecture",
+            "url": "https://encykorea.aks.ac.kr/Article/E0028005"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sungkyun-1907",
+      "name": "1907년 문묘·성균관",
+      "name_en": "Munmyo and Seonggyungwan (1907)",
+      "scene_year": 1907,
+      "category": "교육",
+      "landmark_kind": "munmyo",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        80,
+        12,
+        100
+      ],
+      "display_yaw_deg": 3.735,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1608,
+          1446
+        ],
+        "anchor": "structure_center",
+        "method": "manual_labeled_compound_reading",
+        "note": "원도의 成均館 세로 표기 및 둘러싼 장방형 구획 내부 중심을 판독. 기존 권역 추정 [1530,1420]에서 동쪽으로 정정."
+      },
+      "position_status": "approximate_labeled_compound_reading",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "sungkyun",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1398,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1869,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://www.heritage.go.kr/heri/cul/culGuidePostDetail.do?ccbaCpno=1331101430000&ccgbGbtype=UNI&ccgbGbtypeNo=1&pageNo=1_5_0_0"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "원도의 成均館 표기와 장방형 구획 안으로 옮겼다. 앞쪽 제사 공간과 뒤쪽 교육 공간, 1869년 대수리 이후 형태를 단순화했다. 구획 내부 개별 전각 위치와 치수는 추정이다.",
+        "summary_en": "Moved to the labeled Seonggyungwan enclosure on the source map. Front ritual and rear educational courts; individual halls and dimensions are estimated.",
+        "period": "1398 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 문묘·성균관에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "문묘·성균관 연혁·건축 설명",
+            "title_en": "Munmyo and Seonggyungwan history and architecture",
+            "url": "https://www.heritage.go.kr/heri/cul/culGuidePostDetail.do?ccbaCpno=1331101430000&ccgbGbtype=UNI&ccgbGbtypeNo=1&pageNo=1_5_0_0"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dongmyo-1907",
+      "name": "1907년 동관왕묘",
+      "name_en": "Donggwanwangmyo (1907)",
+      "scene_year": 1907,
+      "category": "제례",
+      "landmark_kind": "dongmyo",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        45,
+        11,
+        60
+      ],
+      "display_yaw_deg": -15,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          2490,
+          2238
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_region_on_source_map",
+        "note": "흥인지문 밖 동쪽 큰길 남쪽 구획에 추정. 원도 개별 사당 기호 미확정."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "dongmyo",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1601,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "1601년 완공된 관우 사당. 앞뒤 전각과 연결 지붕, 벽돌 측벽을 단순화했다. 1908~1909년 다른 관왕묘 합사 이전 기준이다. 위치·치수는 추정이다.",
+        "summary_en": "Donggwanwangmyo. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. ",
+        "period": "1601 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 동관왕묘에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "동관왕묘 연혁·건축 설명",
+            "title_en": "Donggwanwangmyo history and architecture",
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yuksanggung-1907",
+      "name": "1907년 육상궁",
+      "name_en": "Yuksanggung (1907)",
+      "scene_year": 1907,
+      "category": "제례",
+      "landmark_kind": "small_shrine",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        30,
+        9,
+        36
+      ],
+      "display_yaw_deg": 0,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          625,
+          1323
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_compound_reading",
+        "note": "毓祥宮 글씨 북서쪽의 작은 전각 구획. 글씨 동쪽 큰 궁장 구획과 구별한 추정 판독."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "yuksanggung",
+        "relationship": "rebuilt_on_same_site",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1725,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1883,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://royal.cha.go.kr/ROYAL/contents/R107010000.do"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "숙빈 최씨의 사당. 1882년 화재 후 1883년 중건한 시기를 기준으로 한다. 1908년 합사와 1929년 칠궁 완성 배치를 소급하지 않았다. 위치·치수는 추정이다.",
+        "summary_en": "Yuksanggung. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. Rebuilt in 1883; later Chilgung expansion is excluded.",
+        "period": "1725 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 육상궁에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "육상궁 연혁·건축 설명",
+            "title_en": "Yuksanggung history and architecture",
+            "url": "https://royal.cha.go.kr/ROYAL/contents/R107010000.do"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wongaksa_pagoda-1907",
+      "name": "1907년 원각사지 십층석탑",
+      "name_en": "Wongaksa stone pagoda (1907)",
+      "scene_year": 1907,
+      "category": "탑",
+      "landmark_kind": "pagoda",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        16,
+        11,
+        18
+      ],
+      "display_yaw_deg": 0,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1221,
+          2183
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_compound_reading",
+        "note": "원도 パゴダ公園 표기와 공원 경계 안. 개별 탑 기호 중심은 추정."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "wongaksa_pagoda",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1467,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1947,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0040581"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "탑골공원 권역의 대리석 석탑. 1947년 상부 복원 이전으로, 서 있는 일곱 층과 옆에 놓인 상부 세 층을 표시한다. 현대 유리 보호각은 넣지 않았다. 위치·치수는 추정이다.",
+        "summary_en": "Wongaksa stone pagoda. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. Seven standing storeys and three detached upper storeys, before the 1947 restoration.",
+        "period": "1467 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 원각사지 십층석탑에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "원각사지 십층석탑 연혁·건축 설명",
+            "title_en": "Wongaksa stone pagoda history and architecture",
+            "url": "https://encykorea.aks.ac.kr/Article/E0040581"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "geumhomun-1907",
+      "name": "1907년 금호문",
+      "name_en": "Geumhomun (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "palace_gate",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        12,
+        7,
+        8
+      ],
+      "display_yaw_deg": -90,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1303,
+          1780
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_region_on_source_map",
+        "note": "돈화문 북서쪽 궁장 꺾임 부근. 문 이름 판독이 아닌 궁장 권역 추정."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "geumhomun",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1475,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "창덕궁 서쪽 궁장의 한 칸 솟을대문. 돈화문 북서쪽의 원도 궁장에 추정 배치했다. 현존 형식은 참고하지만 개별 부재의 연속 존속을 확정하지 않는다. 위치·치수는 추정이다.",
+        "summary_en": "Geumhomun. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. ",
+        "period": "1475 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 금호문 · 창덕궁 서쪽 문에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "금호문 연혁·건축 설명",
+            "title_en": "Geumhomun history and architecture",
+            "url": "https://www.cha.go.kr/newsBbz/selectNewsBbzView.do?newsItemId=155588792&sectionId=ocp&mn=NS_01_02"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "palace_gate_tiers": 1,
+      "palace_gate_bays": 1,
+      "palace_gate_roof": "gable"
+    },
+    {
+      "id": "heunghwamun-1907",
+      "name": "1907년 흥화문",
+      "name_en": "Heunghwamun (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "palace_gate",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        22,
+        10,
+        12
+      ],
+      "display_yaw_deg": 90,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          590,
+          2166
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_region_on_source_map",
+        "note": "원도 경희궁 남동쪽 경계, 큰길 북쪽 구획 추정. 현 위치 소급 아님."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "heunghwamun",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1616,
+          "end_year": null,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1915,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://museum.seoul.go.kr/www/intro/annexIntro/annex_20/annex_20_04.jsp?sso=ok"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "경희궁의 정문. 1907년에는 궁 동남쪽에서 동쪽을 향한 위치를 기준으로 한다. 박문사로 옮겨진 1932년 이후 위치나 현재 복원 위치와 구분한다. 위치·치수는 추정이다.",
+        "summary_en": "Heunghwamun. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. ",
+        "period": "1616 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 흥화문 · 경덕궁 정문에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "흥화문 연혁·건축 설명",
+            "title_en": "Heunghwamun history and architecture",
+            "url": "https://museum.seoul.go.kr/www/intro/annexIntro/annex_20/annex_20_04.jsp?sso=ok"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "palace_gate_tiers": 1,
+      "palace_gate_bays": 3,
+      "palace_gate_roof": "hip"
+    },
+    {
+      "id": "yeonghwadang-1907",
+      "name": "1907년 영화당",
+      "name_en": "Yeonghwadang (1907)",
+      "scene_year": 1907,
+      "category": "궁궐",
+      "landmark_kind": "garden_pavilion",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        26,
+        8,
+        18
+      ],
+      "display_yaw_deg": 90,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1416,
+          1650
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_region_on_source_map",
+        "note": "주합루 부근 후원 권역 추정. 원도 영화당 단독 기호 미확정."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "yeonghwadang",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "documented_history_unknown_exact_dates"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": null,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://dh.aks.ac.kr/sillokwiki/index.php/영화당(暎花堂)"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "창덕궁 후원 부용지 동쪽에서 동향한 전각. 1692년 보수 기록과 순종대 행사 기록이 있다. 원도의 宙合樓(주합루) 구획 동쪽을 참고해 추정 배치했다. 위치·치수는 추정이다.",
+        "summary_en": "Yeonghwadang. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. ",
+        "period": "창건 연도 미확정 · 1907년 기준",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 영화당에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "영화당 연혁·건축 설명",
+            "title_en": "Yeonghwadang history and architecture",
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/영화당(暎花堂)"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      },
+      "pavilion": {
+        "roof": "hip-gable",
+        "bays": 5,
+        "enclosed": true
+      }
+    },
+    {
+      "id": "namsan_guksadang-1907",
+      "name": "1907년 남산 국사당",
+      "name_en": "Guksadang on Namsan (1907)",
+      "scene_year": 1907,
+      "category": "제례",
+      "landmark_kind": "small_shrine",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        20,
+        8,
+        15
+      ],
+      "display_yaw_deg": 0,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1300,
+          3390
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_region_on_source_map",
+        "note": "남산 정상 권역 추정. 원도 국사당 이름이나 건물 기호를 직접 판독한 좌표가 아님."
+      },
+      "position_status": "estimated_not_surveyed",
+      "size_status": "estimated_not_measured",
+      "comparison_1750": {
+        "feature_id": "namsan_guksadang",
+        "relationship": "surviving_place_or_structure",
+        "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+        "reviewed_on": "2026-09-18"
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": 1925,
+          "status": "documented_history_unknown_exact_dates"
+        },
+        "depiction": {
+          "start_year": null,
+          "end_year": 1925,
+          "reference_year": 1907,
+          "status": "estimated_period_form"
+        },
+        "sources": [
+          "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677"
+        ]
+      },
+      "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+      "info": {
+        "summary": "1925년 인왕산 이전 전 남산의 신당. 남산 정상 권역에 추정 표시했다. 정확한 창건 연도와 1907년 외관은 확정하지 않았다. 위치·치수는 추정이다.",
+        "summary_en": "Guksadang on Namsan. A simplified period model linked to the 1750 scene; location, dimensions and subsidiary buildings are estimates. ",
+        "period": "창건 연도 미확정 · 1907년 기준 · 1925년 이전",
+        "period_en": "Shown for 1907; dates and appearance distinguished from later changes.",
+        "in_1750": "1750년 남산 국사당에 대응. 존속·중건·이전 이력을 구분해 1907년 별도 객체로 표시.",
+        "in_1750_en": "Linked to the corresponding 1750 place; separate period object.",
+        "sources": [
+          {
+            "title": "남산 국사당 연혁·건축 설명",
+            "title_en": "Guksadang on Namsan history and architecture",
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1481100280000&ctptUid=13898859685433301677"
+          },
+          {
+            "title": "서울역사박물관 최신경성전도",
+            "title_en": "Seoul Museum of History: 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-guard-1907",
+      "name": "1907년 근위대대 권역",
+      "name_en": "Guard precinct (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": 93.735,
+      "variant": 0,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          692,
+          1950
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": "1907-08-26",
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Guard precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-police-1907",
+      "name": "1907년 경시청 권역",
+      "name_en": "Police precinct (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": 93.735,
+      "variant": 1,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          695,
+          2007
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": "1907-07-27",
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Police precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-military-1907",
+      "name": "1907년 군부 권역",
+      "name_en": "Military ministry (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": 93.735,
+      "variant": 2,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          697,
+          2060
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Military ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-justice-1907",
+      "name": "1907년 법부 권역",
+      "name_en": "Justice ministry (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": 93.735,
+      "variant": 3,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          704,
+          2110
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Justice ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-communications-1907",
+      "name": "1907년 통신관리국 권역",
+      "name_en": "Communications office (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": 93.735,
+      "variant": 4,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          704,
+          2160
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Communications office. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-interior-1907",
+      "name": "1907년 내부 청사·의정부 터",
+      "name_en": "Interior ministry precinct (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": -86.265,
+      "variant": 0,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          808,
+          1950
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Interior ministry precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-legal-1907",
+      "name": "1907년 법무원 권역",
+      "name_en": "Legal office (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": -86.265,
+      "variant": 1,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          805,
+          2012
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Legal office. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-education-1907",
+      "name": "1907년 학부 권역",
+      "name_en": "Education ministry (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": -86.265,
+      "variant": 2,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          797,
+          2070
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Education ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-finance-1907",
+      "name": "1907년 탁지부 권역",
+      "name_en": "Finance ministry (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": -86.265,
+      "variant": 3,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          798,
+          2130
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Finance ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yukjo-lawschool-1907",
+      "name": "1907년 법관양성소 권역",
+      "name_en": "Law school precinct (1907)",
+      "scene_year": 1907,
+      "category": "관청",
+      "display_model": "landmark_1907",
+      "landmark_kind": "government_compound",
+      "symbol_size_m": [
+        85,
+        9,
+        72
+      ],
+      "display_yaw_deg": -86.265,
+      "variant": 4,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          789,
+          2180
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+        ],
+        "occupancy": {
+          "start_date": null,
+          "end_date": null,
+          "status": "institution_name_period_not_building_dates"
+        }
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
+        "summary_en": "Law school precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jongno-shops-north-1-1907",
+      "name": "1907년 종로 북측 상가 1",
+      "name_en": "Jongno north shops 1 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 0,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          890,
+          2205
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno north shops 1. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-north-2-1907",
+      "name": "1907년 종로 북측 상가 2",
+      "name_en": "Jongno north shops 2 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 1,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1092,
+          2224
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno north shops 2. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-north-3-1907",
+      "name": "1907년 종로 북측 상가 3",
+      "name_en": "Jongno north shops 3 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 2,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1280,
+          2228
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno north shops 3. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-north-4-1907",
+      "name": "1907년 종로 북측 상가 4",
+      "name_en": "Jongno north shops 4 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 3,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1460,
+          2229
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno north shops 4. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-north-5-1907",
+      "name": "1907년 종로 북측 상가 5",
+      "name_en": "Jongno north shops 5 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 4,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1665,
+          2235
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno north shops 5. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-north-6-1907",
+      "name": "1907년 종로 북측 상가 6",
+      "name_en": "Jongno north shops 6 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 5,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1855,
+          2245
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno north shops 6. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-south-1-1907",
+      "name": "1907년 종로 남측 상가 1",
+      "name_en": "Jongno south shops 1 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 183.735,
+      "variant": 0,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          887,
+          2246
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno south shops 1. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-south-2-1907",
+      "name": "1907년 종로 남측 상가 2",
+      "name_en": "Jongno south shops 2 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 183.735,
+      "variant": 1,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1139,
+          2269
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno south shops 2. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-south-3-1907",
+      "name": "1907년 종로 남측 상가 3",
+      "name_en": "Jongno south shops 3 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 183.735,
+      "variant": 2,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1305,
+          2274
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno south shops 3. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-south-4-1907",
+      "name": "1907년 종로 남측 상가 4",
+      "name_en": "Jongno south shops 4 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 183.735,
+      "variant": 3,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1478,
+          2275
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno south shops 4. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-south-5-1907",
+      "name": "1907년 종로 남측 상가 5",
+      "name_en": "Jongno south shops 5 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 183.735,
+      "variant": 4,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1665,
+          2282
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno south shops 5. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "jongno-shops-south-6-1907",
+      "name": "1907년 종로 남측 상가 6",
+      "name_en": "Jongno south shops 6 (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "shop_row",
+      "symbol_size_m": [
+        120,
+        9,
+        14
+      ],
+      "display_yaw_deg": 183.735,
+      "variant": 5,
+      "lod_distance_m": 1300,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1855,
+          2293
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "종로 사진과 근대 상점 연구를 참고한 거리 경관 추정. 작은 점포 칸, 기와 처마, 열린 판매면과 일부 2층 조적 전면을 조합했다. 특정 상점의 이름·필지·층수 비율을 확정한 복원이 아니다.",
+        "summary_en": "Jongno south shops 6. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://kcri.ewha.ac.kr/kcri/board/study-of-korean-culture.do?articleNo=703758&attachNo=467942&mode=download"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "박물관 종로 사진",
+            "title_en": "Museum photographs of Jongno",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      },
+      "shop_units": 12
+    },
+    {
+      "id": "hanseong-electric-office-1907",
+      "name": "1907년 한성전기회사 옛 사옥",
+      "name_en": "Former Hanseong Electric office (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "electric_office",
+      "symbol_size_m": [
+        34,
+        16,
+        22
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 0,
+      "lod_distance_m": 2100,
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          985,
+          2213
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_block_from_source_map",
+        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_streetscape"
+        },
+        "sources": [
+          "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+        ]
+      },
+      "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
+      "info": {
+        "summary": "박물관 사진에 보이는 2층 양식 사옥과 지붕 위 시계탑을 단순화했다. 보신각 건너편 북쪽 권역에 추정 배치했으며 치수와 상세 위치는 미확정이다. 후대 경성전기 사옥과 구분한다.",
+        "summary_en": "Former Hanseong Electric office. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
+        "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "건축·배치 참고 자료",
+            "title_en": "Architecture and placement reference",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bukmyo-1907",
+      "name": "1907년 북묘",
+      "name_en": "Bukmyo (1907)",
+      "scene_year": 1907,
+      "category": "제례",
+      "display_model": "landmark_1907",
+      "landmark_kind": "bukmyo",
+      "symbol_size_m": [
+        70,
+        11,
+        46
+      ],
+      "display_yaw_deg": 3.735,
+      "variant": 0,
+      "lod_distance_m": 2100,
+      "position_status": "approximate_labeled_compound_reading",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1738,
+          1202
+        ],
+        "anchor": "compound_center",
+        "method": "manual_labeled_compound_reading",
+        "note": "원도 北廟 글씨 바로 서쪽의 닫힌 장방형 구획 내부. 성균관 북쪽이며 개별 정전 중심·축 방향은 추정."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1883,
+          "end_year": null,
+          "status": "documented_foundation_demolition_unknown"
+        },
+        "depiction": {
+          "start_year": 1883,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "shrine_before_ritual_merger_not_demolition_date"
+        },
+        "sources": [
+          "https://www.oknews.news/news/articleView.html?idxno=15929",
+          "https://www.museum.go.kr/MUSEUM/contents/M0502000000.do?relicId=4342&schM=view&searchId=search",
+          "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188"
+        ]
+      },
+      "model_note": "기사에 국립중앙박물관 제공으로 실린 정전 사진을 참조. 높은 석축·넓은 계단·보이는 정면 3칸·창호·측면 건물을 표현. 촬영연도 미확정, 담장·출입문·전체 평면·색상·치수는 추정. 사진을 텍스처로 복제하지 않음.",
+      "info": {
+        "summary": "1883년 세운 관우 사당. 원도 北廟 표기 옆 구획에 배치하고, 제공 사진의 높은 정전 기단·넓은 계단·정면 세 칸 창호와 측면 건물을 단순화했다. 전체 배치·방향·색상·치수는 추정이다. 1908년 제향 합사와 실제 건물 철거 연도는 구분한다.",
+        "summary_en": "Guan Yu shrine founded in 1883, placed in the enclosure labeled Bukmyo. Raised hall, broad steps, three visible front bays and side ranges follow the supplied photograph. Full plan, orientation, colors and dimensions are estimates; the 1908 ritual merger is not a demolition date.",
+        "period": "1883년 창건 · 1908년 합사 이전 모습 · 철거 연도 미확정",
+        "period_en": "Founded 1883 · before the 1908 ritual merger; demolition date unknown.",
+        "in_1750": "1883년 창건이므로 1750년에는 없음.",
+        "in_1750_en": "Founded after 1750.",
+        "sources": [
+          {
+            "title": "오케이뉴스 — 북묘 정전 사진(국립중앙박물관 제공)",
+            "title_en": "User-supplied Bukmyo photograph",
+            "url": "https://www.oknews.news/news/articleView.html?idxno=15929"
+          },
+          {
+            "title": "국립중앙박물관 — 북묘비",
+            "title_en": "National Museum — Bukmyo stele",
+            "url": "https://www.museum.go.kr/MUSEUM/contents/M0502000000.do?relicId=4342&schM=view&searchId=search"
+          },
+          {
+            "title": "국가유산 — 동관왕묘 합사 연혁",
+            "title_en": "Dongmyo chronology",
+            "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "title_en": "1907 source map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hoedong-seogwan-1907",
+      "name": "1907년 회동서관",
+      "name_en": "Hoedong Seogwan bookshop (1907)",
+      "scene_year": 1907,
+      "category": "상업",
+      "display_model": "landmark_1907",
+      "landmark_kind": "bookshop",
+      "symbol_size_m": [
+        15,
+        7,
+        11
+      ],
+      "display_yaw_deg": -86.265,
+      "variant": 0,
+      "lod_distance_m": 1500,
+      "position_status": "estimated_near_gwangtonggyo_east_based_on_site_marker",
+      "size_status": "estimated_not_measured",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1001,
+          2337
+        ],
+        "anchor": "compound_center",
+        "method": "modern_site_marker_affine_then_map_block_adjustment",
+        "note": "DH Edu 표석 좌표 37.568293400535,126.98293458879의 역변환은 약 [988,2352]. 광통교 동변 설명과 원도 길·물길을 참고해 동쪽 필지 [1001,2337]에 추정 배치. 표석은 건물 중심이나 1907년 필지의 실측 근거가 아니다."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": null,
+          "end_year": null,
+          "status": "unknown_individual_building_dates"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "estimated_1907_bookshop_not_1915_photo_reconstruction"
+        },
+        "sources": [
+          "https://dh.aks.ac.kr/~jisun/edu/index.php/회동서관_터"
+        ]
+      },
+      "model_note": "상점 형식의 기와지붕·목조 전면·책 진열을 단순화한 추정 모형. 1915년경 사진을 1907년의 확정 외관으로 소급하지 않는다.",
+      "info": {
+        "summary": "광통교 동쪽의 서점 겸 출판사. 1907년 9월 광고에서 회동서관 상호가 확인된다는 자료를 바탕으로 배치했다. 설립연도는 자료의 1897년과 표석의 1880년대 설명이 달라 확정하지 않았다. 정확한 필지·규모·1907년 외관은 미확정이며, 앞의 책방 주인은 실존 경영자가 아닌 가상 이야기꾼이다.",
+        "summary_en": "Bookshop and publisher near the east side of Gwangtonggyo. The name appears in a September 1907 advertisement described by the reference. Founding dates differ (1880s/1897); exact footprint and 1907 appearance are uncertain. The storyteller is fictional, not its documented proprietor.",
+        "period": "1907년 상호 확인 · 창업연대 이설 · 건물 존속연대 미확정",
+        "period_en": "Name documented in 1907; founding date disputed; building dates unknown.",
+        "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
+        "in_1750_en": "Separate estimated 1907 streetscape.",
+        "sources": [
+          {
+            "title": "DH Edu: 회동서관 터·광통교 동변 광고·표석",
+            "url": "https://dh.aks.ac.kr/~jisun/edu/index.php/회동서관_터"
+          },
+          {
+            "title": "1915년경 사진 소개 — 1907년 외관 확정 근거 아님",
+            "url": "https://www.donga.com/news/Culture/article/all/20080702/8597188/1"
+          },
+          {
+            "title": "1907년 최신경성전도",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -11,9 +11,9 @@ RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force \
     && groupadd --gid 10001 hanyang \
     && useradd --uid 10001 --gid 10001 --no-create-home hanyang
 COPY multiplayer/*.js ./
-COPY webapp/static/tps.js webapp/static/walking_simulation.js webapp/static/player_name.js /app/webapp/static/
-COPY gis/control_points/doseong_modern_preview.json gis/control_points/seoul_terrain_manifest.json /app/gis/control_points/
-COPY gis/roads/doseong_walking_routes.json /app/gis/roads/
+COPY webapp/static/map1907_transform.js webapp/static/tps.js webapp/static/walking_simulation.js webapp/static/player_name.js /app/webapp/static/
+COPY gis/control_points/seoul1907.json gis/control_points/doseong_modern_preview.json gis/control_points/seoul_terrain_manifest.json /app/gis/control_points/
+COPY gis/roads/seoul1907_walking_routes.json gis/roads/doseong_walking_routes.json /app/gis/roads/
 USER 10001:10001
 EXPOSE 2567
 HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 CMD ["node", "healthcheck.js"]

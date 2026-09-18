@@ -1,0 +1,3653 @@
+{
+  "schema_version": 1,
+  "scene_year": 1907,
+  "reference_date": "1907-11",
+  "note": "대화는 자료를 참고한 창작입니다. 인물·배치·복식의 색과 수량은 추정이며, 거래는 1750년과 공유하는 놀이용 엽전·봇짐입니다.",
+  "note_en": "Dialogue is fictional, informed by sources. People, placements and clothing colors are approximate. Coins and inventory are shared game mechanics with 1750.",
+  "sources": [
+    "https://www.nfm.go.kr/user/planexhibition/home/20/selectPlanExhibitionLView.do?planExhibitionIdx=458",
+    "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210",
+    "https://theme.archives.go.kr/next/place/observatory.do?flag=02",
+    "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf",
+    "https://www.nfm.go.kr/user/data/home/101/DataRelicView.do?seq=PS0100200100107565400000"
+  ],
+  "costume": {
+    "period": [
+      1900,
+      1908
+    ],
+    "description": "밝은 저고리·바지·두루마기와 갓, 짧은 저고리·치마. 경비병은 서양식 제모·단추 상의·바지의 개념 모형. 비율·색·부대 표장은 확정 복원이 아니다.",
+    "military_reference_limit": "민속박물관 075654는 의식용 예복이며 일본 중좌라는 설명도 병기되어 있음. 일반 근무복 확정 근거가 아닌 옷깃·단추·모자의 구조 비교 자료로 사용. 부대별 제식·색·계급장 미확정."
+  },
+  "pedestrian": {
+    "name": "경성의 행인",
+    "name_en": "Seoul passer-by",
+    "nodes": {
+      "hello": {
+        "text": "종로로 가시는 길이오? 상점들이 길 양쪽에 늘어서 있소.",
+        "text_en": "Heading to Jongno? Shops line both sides of the street.",
+        "options": [
+          {
+            "label": "요즘 거리는 어떻소?",
+            "label_en": "What are the streets like?",
+            "next": "street"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "street": {
+        "text": "기와집 상점 사이로 벽돌 건물도 눈에 들어오지요. 종로에는 전차가 다니지만, 광화문 앞 남북길의 전차는 아직 훗날 일이오.",
+        "text_en": "Brick buildings stand among tiled shops. Trams run along Jongno, but service on the north–south road in front of Gwanghwamun belongs to a later time.",
+        "options": [
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "sources": [
+          {
+            "title": "서울역사박물관 상설전시",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          },
+          {
+            "title": "국가기록원 광화문 앞 관청",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          }
+        ]
+      }
+    }
+  },
+  "merchant": {
+    "name": "종로 상인",
+    "name_en": "Jongno merchant",
+    "nodes": {
+      "hello": {
+        "text": "어서 오시오. {shop} 물건을 보고 가시오.",
+        "text_en": "Welcome. Take a look at our {shop} goods.",
+        "options": [
+          {
+            "label": "물건을 보여 주시오.",
+            "label_en": "Show me your goods.",
+            "action": "shop"
+          },
+          {
+            "label": "이 거리 이야기를 들려주시오.",
+            "label_en": "Tell me about this street.",
+            "next": "street"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "street": {
+        "text": "작은 점포들이 처마를 맞대고 이어져 있소. 이 가게의 상호와 자리는 추정한 것이니, 실제 주인의 기록으로 여기지는 마시오.",
+        "text_en": "Small shops stand side by side beneath tiled eaves. This shop and its location are illustrative, not a documented proprietor.",
+        "options": [
+          {
+            "label": "물건을 보여 주시오.",
+            "label_en": "Show me your goods.",
+            "action": "shop"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "sources": [
+          {
+            "title": "서울역사박물관 종로 사진",
+            "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "guard": {
+    "name": "궁궐 경비병",
+    "name_en": "Palace guard",
+    "subtitle": "1907년 하반기 궁궐 경비 · 추정 배치",
+    "subtitle_en": "Palace guard, late 1907 · approximate placement",
+    "nodes": {
+      "hello": {
+        "text": "궁문 앞이오. 통로를 비워 주시오.",
+        "text_en": "This is a palace entrance. Keep the passage clear.",
+        "options": [
+          {
+            "label": "군대에는 무슨 일이 있었소?",
+            "label_en": "What happened to the army?",
+            "next": "army"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "army": {
+        "text": "올해 8월 군대가 강제로 해산되었소. 궁궐을 지키는 근위 병력은 남았지만, 예전 각 군영의 군사들이 그대로 도성을 지키는 모습으로 볼 수는 없소.",
+        "text_en": "The army was forcibly disbanded in August this year. Palace guards remained, but the old garrisons no longer guarded the city as before.",
+        "options": [
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "sources": [
+          {
+            "title": "우리역사넷 군대해산",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210"
+          },
+          {
+            "title": "국가기록원 근위대대 기록",
+            "url": "https://theme.archives.go.kr/next/place/observatory.do?flag=02"
+          }
+        ]
+      }
+    }
+  },
+  "guards": [
+    {
+      "building": "daehanmun-1907",
+      "count": 2,
+      "valid_from": "1907-08-26",
+      "valid_to": null,
+      "position_status": "illustrative_not_documented_post"
+    },
+    {
+      "building": "donhwamun-1907",
+      "count": 2,
+      "valid_from": "1907-08-26",
+      "valid_to": null,
+      "position_status": "illustrative_not_documented_post"
+    },
+    {
+      "building": "yukjo-guard-1907",
+      "count": 2,
+      "valid_from": "1907-08-26",
+      "valid_to": null,
+      "position_status": "illustrative_not_documented_post"
+    }
+  ],
+  "merchants": [
+    {
+      "building": "jongno-shops-north-1-1907",
+      "trade": "선전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-north-2-1907",
+      "trade": "면포전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-north-3-1907",
+      "trade": "면주전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-north-4-1907",
+      "trade": "내어물전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-north-5-1907",
+      "trade": "저포전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-north-6-1907",
+      "trade": "말 장수",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-south-1-1907",
+      "trade": "선전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-south-2-1907",
+      "trade": "면포전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-south-3-1907",
+      "trade": "면주전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-south-4-1907",
+      "trade": "내어물전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-south-5-1907",
+      "trade": "저포전",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    },
+    {
+      "building": "jongno-shops-south-6-1907",
+      "trade": "말 장수",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "illustrative_trade_not_historical_shop_identity"
+    }
+  ],
+  "storyteller": {
+    "name": "책방 주인",
+    "name_en": "The bookseller",
+    "subtitle": "회동서관 앞 이야기꾼 · 가상 인물",
+    "subtitle_en": "Storyteller outside Hoedong Seogwan · fictional",
+    "portrait": "bookseller1907",
+    "biography": "종로에서 오래 책을 다룬 50대 서포 주인이라는 창작 설정. 고제홍·고유상을 재현한 인물이 아니며 회동서관 앞에서 이야기를 전한다.",
+    "nodes": {
+      "hello": {
+        "text": "옛날 한양 이야기를 찾으시오, 요즘 서울 소식을 찾으시오? 책을 읽고 손님들 이야기를 듣다 보니 할 말이 쌓였소. 어느 이야기부터 풀어 볼까요?",
+        "text_en": "Old Hanyang tales, or news of Seoul today? Books and conversations with customers leave me plenty to tell. Where shall we begin?",
+        "options": [
+          {
+            "label": "전차와 새 문물",
+            "label_en": "Trams and new inventions",
+            "next": "modern"
+          },
+          {
+            "label": "궁궐과 나라의 소식",
+            "label_en": "Palace and national affairs",
+            "next": "palace"
+          },
+          {
+            "label": "종로 사람들의 생활",
+            "label_en": "Life in Jongno",
+            "next": "life"
+          },
+          {
+            "label": "이 책방은 어떤 곳이오?",
+            "label_en": "Tell me about this bookshop.",
+            "next": "bookshop"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "modern": {
+        "text": "전차와 새 문물 중 무엇이 궁금하시오?",
+        "text_en": "Which story would you like to hear?",
+        "options": [
+          {
+            "label": "전기회사 이름이 바뀌었소?",
+            "label_en": "A new name for the electric company?",
+            "next": "S1907-01"
+          },
+          {
+            "label": "전차가 처음 다니던 때는?",
+            "label_en": "When trams first arrived?",
+            "next": "S1907-02"
+          },
+          {
+            "label": "모두 전차를 반겼소?",
+            "label_en": "Did everyone welcome trams?",
+            "next": "S1907-03"
+          },
+          {
+            "label": "종로의 밤도 달라졌소?",
+            "label_en": "How have Jongno nights changed?",
+            "next": "S1907-05"
+          },
+          {
+            "label": "움직이는 사진이라니?",
+            "label_en": "Pictures that move?",
+            "next": "S1907-06"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "palace": {
+        "text": "궁궐과 나라의 소식 중 무엇이 궁금하시오?",
+        "text_en": "Which story would you like to hear?",
+        "options": [
+          {
+            "label": "북묘에는 무슨 이야기가 있소?",
+            "label_en": "What happened at Bukmyo?",
+            "next": "S1907-09"
+          },
+          {
+            "label": "중명전에서 무슨 일이 있었소?",
+            "label_en": "What happened at Jungmyeongjeon?",
+            "next": "S1907-10"
+          },
+          {
+            "label": "헤이그에 사람을 보냈다지요?",
+            "label_en": "Envoys were sent to The Hague?",
+            "next": "S1907-11"
+          },
+          {
+            "label": "신문에 실린 통곡이란?",
+            "label_en": "A lament in the newspaper?",
+            "next": "S1907-14"
+          },
+          {
+            "label": "올여름 군대에는 무슨 일이?",
+            "label_en": "What happened to the army this summer?",
+            "next": "S1907-16"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "life": {
+        "text": "종로 사람들의 생활 중 무엇이 궁금하시오?",
+        "text_en": "Which story would you like to hear?",
+        "options": [
+          {
+            "label": "종로 가게들은 예전에도 이랬소?",
+            "label_en": "Have the shops always looked like this?",
+            "next": "S1907-07"
+          },
+          {
+            "label": "국채를 갚자는 이야기는?",
+            "label_en": "Why collect money for the national debt?",
+            "next": "S1907-17"
+          },
+          {
+            "label": "돈 쓰기가 어려워졌다던데?",
+            "label_en": "Why is money harder to use?",
+            "next": "S1907-18"
+          },
+          {
+            "label": "종로에서 백정이 연설했다지요?",
+            "label_en": "A butcher spoke publicly in Jongno?",
+            "next": "S1907-19"
+          },
+          {
+            "label": "여자아이들도 학교에 가오?",
+            "label_en": "Can girls attend school?",
+            "next": "S1907-20"
+          },
+          {
+            "label": "수도 공사를 한다지요?",
+            "label_en": "Are waterworks being built?",
+            "next": "S1907-22"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "S1907-01": {
+        "text": "한성전기회사라 부르던 곳을 이제는 한미전기회사라 하지요. 1898년에 시작한 사업에 황실과 미국인 사업가들이 관여했소. 종로 사옥과 동대문 발전소·차고는 서로 다른 곳이오.",
+        "text_en": "The business began in 1898 with royal and American involvement. The former Hanseong Electric Company now goes by Hanmi Electric. Its Jongno office and Dongdaemun power station and depot are separate places.",
+        "year": "1898~1904",
+        "story_id": "S1907-01",
+        "event_date": {
+          "label": "1898~1904",
+          "start": "1898",
+          "end": "1904",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "서울역사박물관: 대한제국기 전차표",
+            "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1026&seq=00000000000022320&sso=ok"
+          }
+        ],
+        "options": [
+          {
+            "label": "전차만 만드는 회사가 아니었소?",
+            "label_en": "Was it only a tram company?",
+            "next": "S1907-01-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "황제의 전기회사, 미국인 사업가와 만나다",
+        "story_title_en": "A new name for the electric company?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-02": {
+        "text": "1899년 5월 개통식 사진을 보니 동대문 차고 주변에 구경꾼이 빽빽하더군. 성벽 위에까지 사람이 올라섰소. 말 없이 움직이는 수레가 얼마나 신기했겠소.",
+        "text_en": "A photograph of the May 1899 opening shows crowds around the Dongdaemun depot, even up on the city wall. Imagine seeing a carriage move without a horse.",
+        "year": "1899년 5월",
+        "story_id": "S1907-02",
+        "event_date": {
+          "label": "1899년 5월",
+          "start": "1899-05",
+          "end": "1899-05",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "성벽 위에까지 올라갔다고요?",
+            "label_en": "Even onto the city wall?",
+            "next": "S1907-02-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "성벽 위까지 올라간 전차 구경꾼",
+        "story_title_en": "When trams first arrived?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-03": {
+        "text": "꼭 그렇지는 않았소. 개통 초기 사람이 치이는 사고가 나고 전차에 반발하는 소동도 있었지요. 새 물건이 편리하다고 두려움까지 저절로 사라지는 것은 아니오.",
+        "text_en": "No. Early accidents injured or killed people and provoked resistance. The convenience of a new invention does not make fear disappear.",
+        "year": "1899년 개통 초기",
+        "story_id": "S1907-03",
+        "event_date": {
+          "label": "1899년 개통 초기",
+          "start": "1899",
+          "end": "1899",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "무슨 일이 있었기에 그랬소?",
+            "label_en": "What provoked the anger?",
+            "next": "S1907-03-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전차가 반갑지만은 않았던 사람들",
+        "story_title_en": "Did everyone welcome trams?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-05": {
+        "text": "1900년 봄 종로에 전등 세 개가 켜졌다는 이야기가 있소. 밤길을 밝히는 불빛이 달라진 셈이지요. 그렇다고 집집마다 전등이 들어온 것은 아니오.",
+        "text_en": "Accounts tell of three electric streetlights lit in Jongno in spring 1900. A new kind of light for the street, but that does not mean every household had electricity.",
+        "year": "1900년 4월",
+        "story_id": "S1907-05",
+        "event_date": {
+          "label": "1900년 4월",
+          "start": "1900-04",
+          "end": "1900-04",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 도시 정비 계획에 따른 서울의 변화",
+            "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0040_0040_0040&whereStr="
+          }
+        ],
+        "options": [
+          {
+            "label": "세 개로 거리가 밝아졌겠소?",
+            "label_en": "Could three lamps light the street?",
+            "next": "S1907-05-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "종로의 밤에 켜진 세 개의 전등",
+        "story_title_en": "How have Jongno nights changed?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-06": {
+        "text": "1903년 황성신문 광고에는 동대문 안 전기회사 기계창에서 활동사진을 보여 준다고 했소. 종로 사옥 이야기는 아니오. 종이 위 그림과는 또 다른 구경거리였겠지요.",
+        "text_en": "An advertisement in the Hwangseong newspaper in 1903 offered moving pictures at the electric company workshop inside Dongdaemun. That was not the Jongno office. Quite a different spectacle from pictures on paper.",
+        "year": "1903년 6월 23일 광고",
+        "story_id": "S1907-06",
+        "event_date": {
+          "label": "1903년 6월 23일 광고",
+          "start": "1903-06-23",
+          "end": "1903-06-23",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국영상자료원: 활동사진의 시대",
+            "url": "https://artsandculture.google.com/story/aQUxw03xXA4A8A?hl=ko"
+          }
+        ],
+        "options": [
+          {
+            "label": "신문에는 어떻게 알렸소?",
+            "label_en": "How did the newspaper advertise it?",
+            "next": "S1907-06-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전기회사에서 움직이는 사진을 보다",
+        "story_title_en": "Pictures that move?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-09": {
+        "text": "갑신년 변란 때 임금께서 북묘로 피하셨다는 이야기가 전해지오. 북묘비에도 왕실이 난을 피한 이야기가 새겨져 있지요. 나는 궁중의 이동을 직접 본 사람이 아니니, 누가 어느 때 함께 있었는지까지 단정하지는 않겠소.",
+        "text_en": "It is told that the king sought refuge at Bukmyo during the upheaval of 1884. Its stele also recounts royal refuge. I did not witness the court’s movements, so I cannot say precisely who was together at each moment.",
+        "year": "1884년 음력 10월 19일",
+        "story_id": "S1907-09",
+        "event_date": {
+          "label": "1884년 음력 10월 19일",
+          "start": "1884-10-19",
+          "end": "1884-10-19",
+          "precision": "day",
+          "calendar": "lunar"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가유산 지식이음: 북묘비 판독문·해석문",
+            "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?ksm_idx=8721&menuIdx=584"
+          },
+          {
+            "title": "고종실록: 1884년 음력 10월 19일 북묘로 이동",
+            "url": "https://sillok.history.go.kr/id/wza_12110019_001"
+          }
+        ],
+        "options": [
+          {
+            "label": "북묘는 어떤 곳이었소?",
+            "label_en": "What sort of place was Bukmyo?",
+            "next": "S1907-09-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "갑신정변의 끝, 북묘로 향한 고종",
+        "story_title_en": "What happened at Bukmyo?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-10": {
+        "text": "재작년, 1905년 11월 중명전에서 외교권을 빼앗는 조약이 강요되었소. 궁궐 곁 건물 하나의 일이 온 나라 사람들의 삶을 흔들고 있지요.",
+        "text_en": "In November 1905, a treaty stripping our country of diplomatic sovereignty was imposed at Jungmyeongjeon. Events in a building beside the palace have shaken lives across the country.",
+        "year": "1905년 11월 17일",
+        "story_id": "S1907-10",
+        "event_date": {
+          "label": "1905년 11월 17일",
+          "start": "1905-11-17",
+          "end": "1905-11-17",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          }
+        ],
+        "options": [
+          {
+            "label": "외교권을 빼앗긴다는 게 어떤 일이오?",
+            "label_en": "What does losing diplomatic sovereignty mean?",
+            "next": "S1907-10-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "책을 두던 건물에 남은 을사늑약",
+        "story_title_en": "What happened at Jungmyeongjeon?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-11": {
+        "text": "올해 고종 황제께서 헤이그 만국평화회의에 뜻을 전하려 특사를 보내셨다는 소식을 들었소. 나라의 사정을 세계에 알리려 했지만, 회의에 정식으로 참여하지 못했다 하니 답답한 일이오.",
+        "text_en": "I heard that Emperor Gojong sent envoys to the peace conference at The Hague this year. They sought to tell the world our situation but could not participate officially.",
+        "year": "1907년 특사 파견과 강제퇴위 이전",
+        "story_id": "S1907-11",
+        "event_date": {
+          "label": "1907년 특사 파견과 강제퇴위 이전",
+          "start": "1907",
+          "end": "1907",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          },
+          {
+            "title": "우리역사넷: 순종",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800"
+          }
+        ],
+        "options": [
+          {
+            "label": "왜 그렇게 먼 곳으로 갔소?",
+            "label_en": "Why send envoys so far away?",
+            "next": "S1907-11-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "헤이그로 보내려 했던 목소리",
+        "story_title_en": "Envoys were sent to The Hague?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-14": {
+        "text": "을사늑약 뒤 황성신문에 장지연의 「시일야방성대곡」이 실렸소. 1905년 11월 20일자요. 종이 한 장에 실린 글이지만, 나라 일을 제 일처럼 아파하는 마음을 읽을 수 있지요.",
+        "text_en": "After the imposed treaty, Jang Ji-yeon’s lament appeared in the Hwangseong newspaper on 20 November 1905. Words on a sheet of paper, expressing grief for the country as deeply as for oneself.",
+        "year": "1905년 11월 20일",
+        "story_id": "S1907-14",
+        "event_date": {
+          "label": "1905년 11월 20일",
+          "start": "1905-11-20",
+          "end": "1905-11-20",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 장지연의 시일야방성대곡",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_121_0040"
+          }
+        ],
+        "options": [
+          {
+            "label": "그 제목은 무슨 뜻이오?",
+            "label_en": "What does the title mean?",
+            "next": "S1907-14-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "한 장의 신문이 전한 통곡",
+        "story_title_en": "A lament in the newspaper?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-16": {
+        "text": "올해 8월 1일 군대를 해산시켰소. 훈련원의 해산식과 서소문 일대의 저항 소식이 전해졌지요. 어제까지 군인이던 사람들이 하루아침에 갈 곳을 잃었으니, 거리의 사정도 달라질 수밖에요.",
+        "text_en": "The army was disbanded on 1 August this year. News came of the ceremony at Hullyeonwon and resistance near Seosomun. Men who had been soldiers suddenly lost their livelihood.",
+        "year": "1907년 8월 1일",
+        "story_id": "S1907-16",
+        "event_date": {
+          "label": "1907년 8월 1일",
+          "start": "1907-08-01",
+          "end": "1907-08-01",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 군대해산",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210"
+          }
+        ],
+        "options": [
+          {
+            "label": "훈련원에서는 무엇을 했소?",
+            "label_en": "What happened at Hullyeonwon?",
+            "next": "S1907-16-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "훈련원의 해산식과 서소문의 총성",
+        "story_title_en": "What happened to the army this summer?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-07": {
+        "text": "1896년에 종로와 남대문로의 길가 가가를 헐어 길을 넓혔소. 길은 훤해졌겠지만 장사하던 사람에게는 삶의 자리가 바뀌는 일이었지요. 지금 모습만 보고 늘 이랬다고 생각하면 곤란하오.",
+        "text_en": "Roadside stalls on Jongno and Namdaemun-ro were removed in 1896 to widen the streets. For traders, that meant a change in where they made a living. These streets have not always looked as they do now.",
+        "year": "1896년 이후",
+        "story_id": "S1907-07",
+        "event_date": {
+          "label": "1896년 이후",
+          "start": "1896",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 개항, 대한제국기의 서울",
+            "url": "https://museum.seoul.go.kr/www/exh/per/exhPer2th.jsp?sso=ok"
+          }
+        ],
+        "options": [
+          {
+            "label": "가가라는 건 어떤 것이오?",
+            "label_en": "What were those roadside stalls?",
+            "next": "S1907-07-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "큰길을 넓히자 가게의 자리가 바뀌다",
+        "story_title_en": "Have the shops always looked like this?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-17": {
+        "text": "올해 대구에서 시작한 국채보상 소식이 서울에도 퍼졌소. 담배를 끊어 돈을 모으고 패물을 내놓는 사람도 있다지요. 대한매일신보 같은 신문들이 이 뜻을 널리 전하고 있소.",
+        "text_en": "The debt repayment movement begun in Daegu this year has spread to Seoul. People save tobacco money or donate jewelry. Newspapers such as the Daehan Maeil Sinbo carry the cause far and wide.",
+        "year": "1907년 2월 이후, 4월 8일 총합소",
+        "story_id": "S1907-17",
+        "event_date": {
+          "label": "1907년 2월 이후, 4월 8일 총합소",
+          "start": "1907-02",
+          "end": null,
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 국채보상운동",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401200"
+          }
+        ],
+        "options": [
+          {
+            "label": "왜 백성들이 나라 빚을 갚으려 했소?",
+            "label_en": "Why would ordinary people repay national debt?",
+            "next": "S1907-17-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "담뱃값과 비녀를 모아 나라의 빚을 갚다",
+        "story_title_en": "Why collect money for the national debt?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-18": {
+        "text": "1905년부터 화폐를 정리하면서 오래 쓰던 돈을 바꾸는 문제가 생겼소. 돈을 가진 사람도 제값을 받을지 걱정하니 장사에도 영향이 크지요. 물건 값만 묻는다고 살림 형편을 다 알 수는 없소.",
+        "text_en": "Currency reform since 1905 has complicated exchanging old money. Even people with cash worry about its accepted value, and trade suffers. Prices alone do not tell the whole story of a household’s finances.",
+        "year": "1905년 이후 화폐정리",
+        "story_id": "S1907-18",
+        "event_date": {
+          "label": "1905년 이후 화폐정리",
+          "start": "1905",
+          "end": "1909",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 메가타의 화폐정리",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_042_0050_0030_0020_0010"
+          }
+        ],
+        "options": [
+          {
+            "label": "같은 돈인데 왜 값이 달라졌소?",
+            "label_en": "How could the value of the same coin change?",
+            "next": "S1907-18-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "어제 받던 돈을 오늘은 받지 않는다",
+        "story_title_en": "Why is money harder to use?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-19": {
+        "text": "1898년 관민공동회에서 백정 박성춘이 연설했소. 신분으로 천대받던 사람이 나라 일을 두고 의견을 밝힌 것이지요. 종로는 물건만 오가는 길이 아니라 사람들의 목소리가 모이는 곳이기도 하오.",
+        "text_en": "At the public assembly of 1898, Park Seong-chun, a man of the marginalized butcher class, spoke on national affairs. Jongno carries more than goods: it gathers people’s voices.",
+        "year": "1898년 10월 29일",
+        "story_id": "S1907-19",
+        "event_date": {
+          "label": "1898년 10월 29일",
+          "start": "1898-10-29",
+          "end": "1898-10-29",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 관민공동회, 박성춘 연설과 헌의 6조",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_120_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "왜 박성춘의 연설을 기억하오?",
+            "label_en": "Why remember Park Seong-chun’s speech?",
+            "next": "S1907-19-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "백정이 종로에서 정치 의견을 말하다",
+        "story_title_en": "A butcher spoke publicly in Jongno?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-20": {
+        "text": "지난해 명신여학교와 진명여학교가 문을 열었소. 딸에게도 배움의 길을 열자는 변화지요. 책방에서 새 교과서를 바라보는 눈길도 전과는 달라지겠지요.",
+        "text_en": "Myeongsin and Jinmyeong girls’ schools opened last year. More paths to learning for daughters. Such changes can give schoolbooks a new meaning.",
+        "year": "1906년 여학교 설립, 1907년의 변화",
+        "story_id": "S1907-20",
+        "event_date": {
+          "label": "1906년 여학교 설립, 1907년의 변화",
+          "start": "1906",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국민족문화대백과: 명신여학교 태극기·현판·완문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0077591"
+          }
+        ],
+        "options": [
+          {
+            "label": "누가 그런 학교를 세웠소?",
+            "label_en": "Who supported these schools?",
+            "next": "S1907-20-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "딸이 학교에 간다는 것",
+        "story_title_en": "Can girls attend school?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "S1907-22": {
+        "text": "뚝도에 정수장 공사를 한다는 소식은 들었소. 하지만 지금, 1907년에 그 물이 벌써 집집마다 나온다고 할 수는 없지요. 아직은 우물과 물을 길어 나르는 수고가 일상의 일이오.",
+        "text_en": "I have heard of waterworks under construction at Ttukdo. But in this year of 1907, we cannot say that water is already running into homes. Wells and the labor of carrying water still belong to daily life.",
+        "year": "1906~1908년",
+        "story_id": "S1907-22",
+        "event_date": {
+          "label": "1906~1908년",
+          "start": "1906",
+          "end": "1908-09-01",
+          "precision": "mixed",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울기록원: 뚝도아리수정수센터",
+            "url": "https://archives.seoul.go.kr/contents/jeongsujang"
+          }
+        ],
+        "options": [
+          {
+            "label": "지금은 물을 어떻게 구하오?",
+            "label_en": "How do people get water now?",
+            "next": "S1907-22-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "물장수에게 들려온 정수장 공사 소식",
+        "story_title_en": "Are waterworks being built?",
+        "story_part": 1,
+        "story_parts": 4
+      },
+      "bookshop": {
+        "text": "이곳은 회동서관이라 하오. 고제홍서포, 대광교서포라는 이름을 거쳐 올해 신문 광고에 회동서관이라는 이름이 보이지요. 책과 세상 이야기가 만나는 곳으로 기억해 주시오.",
+        "text_en": "This is Hoedong Seogwan. Earlier names included Go Je-hong Seopo and Daegwanggyo Seopo; this year’s advertisements bear the name Hoedong Seogwan. Think of it as a place where books meet the world.",
+        "year": "1907",
+        "sources": [
+          {
+            "title": "회동서관 상호 변천·신문 광고 소개",
+            "url": "https://dh.aks.ac.kr/~jisun/edu/index.php/회동서관_터"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ]
+      },
+      "S1907-01-part-2": {
+        "text": "길 위에서 보이는 것은 전차 한 대지만, 그 뒤를 생각해 보시오. 전기를 만들어 보내고, 선로를 놓고, 고장 난 차를 손보는 일이 함께 있어야 바퀴가 굴러가지 않겠소? 그래서 종로의 사옥만 보고 전기회사를 다 보았다고 할 수는 없소. 동대문 쪽 차고와 발전소도 그 사업의 일부지요. 책 한 권 뒤에 종이와 인쇄와 운반이 있는 것과 비슷하오.",
+        "text_en": "A tram is only the part you see in the street. It needs electricity, tracks and repairs to keep moving. So the Jongno office cannot tell the whole story: the depot and power station at Dongdaemun are part of it too. A book likewise depends on paper, printing and transport before it reaches this counter.",
+        "year": "1898~1904",
+        "event_date": {
+          "label": "1898~1904",
+          "start": "1898",
+          "end": "1904",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "서울역사박물관: 대한제국기 전차표",
+            "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1026&seq=00000000000022320&sso=ok"
+          }
+        ],
+        "options": [
+          {
+            "label": "황실이 왜 그런 사업을 했소?",
+            "label_en": "Why would the royal household invest?",
+            "next": "S1907-01-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-01"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "황제의 전기회사, 미국인 사업가와 만나다",
+        "story_title_en": "A new name for the electric company?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-01"
+      },
+      "S1907-01-part-3": {
+        "text": "새 기술로 나라의 힘을 기르려는 뜻과 돈을 들여 사업을 벌이는 일이 맞물린 것이오. 황실의 자본만으로 기계와 운영을 모두 마련한 것은 아니니 미국인 사업가들과 관계를 맺었지요. 그러니 회사 이야기를 할 때는 신기한 기술만 물을 일이 아니오. 누가 돈을 대고 누가 사업을 움직이는지도 함께 물어야 하오. 간판의 이름이 바뀐 것도 그런 사정과 떼어 놓기 어렵소.",
+        "text_en": "The ambition to strengthen the country with new technology was tied to the practical business of investment. Royal capital was involved, alongside American businessmen. We should ask not only how the machinery works, but who supplies the money and directs the enterprise. A change of company name belongs to that business history too.",
+        "year": "1898~1904",
+        "event_date": {
+          "label": "1898~1904",
+          "start": "1898",
+          "end": "1904",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "서울역사박물관: 대한제국기 전차표",
+            "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1026&seq=00000000000022320&sso=ok"
+          },
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "그럼 어디를 살펴보면 좋겠소?",
+            "label_en": "Where should I look next?",
+            "next": "S1907-01-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-01-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "황제의 전기회사, 미국인 사업가와 만나다",
+        "story_title_en": "A new name for the electric company?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-01"
+      },
+      "S1907-01-part-4": {
+        "text": "종로 사옥 앞에서는 사업을 맡은 사람들을, 동대문 쪽에서는 차를 움직이고 손보는 일손을 떠올려 보시오. 같은 전차를 두고도 손님은 요금을, 상인은 가게 앞의 통행을, 일하는 사람은 자기 일을 생각할 터이오. 나는 장부 속 계약을 모두 아는 사람은 아니오. 다만 이 거리의 변화가 한 사람의 발명이나 한 건물의 이야기로 끝나지는 않는다는 말이지요.",
+        "text_en": "At the Jongno office, think of those managing the enterprise; near Dongdaemun, of those keeping its vehicles running. Passengers consider fares, shopkeepers the traffic outside, and workers their tasks. I do not know every contract in the company ledgers. But the changing street cannot be explained by a single inventor or building.",
+        "year": "1898~1904",
+        "event_date": {
+          "label": "1898~1904",
+          "start": "1898",
+          "end": "1904",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "서울역사박물관: 대한제국기 전차표",
+            "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1026&seq=00000000000022320&sso=ok"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-01-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "황제의 전기회사, 미국인 사업가와 만나다",
+        "story_title_en": "A new name for the electric company?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-01"
+      },
+      "S1907-02-part-2": {
+        "text": "개통식 사진에서 먼저 눈에 들어오는 것은 전차보다 사람이오. 차고 곁에 몰려서고 높은 곳에도 올라섰지요. 지금 당신이 동대문 앞에 선다면 잠깐 걸음을 멈추고 그 광경을 떠올려 보시오. 누구는 차를 가까이 보고 싶고 누구는 앞사람에게 가려 발돋움했을 법하지 않소? 그 몸짓 하나하나는 내 상상이지만, 새 물건을 보러 모인 군중은 사진에 남아 있소.",
+        "text_en": "In the opening photograph, the crowd catches my eye before the tram. People gather by the depot and occupy high places. Imagine standing near Dongdaemun, trying to see past the people in front. Those particular gestures are my imagining, but the crowd drawn to this new machine is there in the photograph.",
+        "year": "1899년 5월",
+        "event_date": {
+          "label": "1899년 5월",
+          "start": "1899-05",
+          "end": "1899-05",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "어디까지 다녔소?",
+            "label_en": "Where did the first line go?",
+            "next": "S1907-02-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-02"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "성벽 위까지 올라간 전차 구경꾼",
+        "story_title_en": "When trams first arrived?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-02"
+      },
+      "S1907-02-part-3": {
+        "text": "1899년 5월에 서대문과 청량리를 잇는 전차가 등장했소. 장터와 성문, 성 밖으로 나가는 길이 선로로 이어진 셈이지요. 원래 걷던 길이라고 해도 차에 타고 지나가면 거리의 감각이 달라질 터이오. 다만 지금의 노선을 처음부터 모두 갖추었던 것으로 생각하지는 마시오. 개통의 흥분과 그 뒤에 길을 늘리고 운행을 자리 잡게 하는 일은 서로 다른 이야기요.",
+        "text_en": "Trams linking Seodaemun and Cheongnyangni appeared in May 1899. Rails connected market streets, gates and the road beyond the walls. Riding would give a familiar journey a different sense of distance. But the network did not arrive fully formed: the excitement of an opening and the work of establishing service are different stories.",
+        "year": "1899년 5월",
+        "event_date": {
+          "label": "1899년 5월",
+          "start": "1899-05",
+          "end": "1899-05",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "그 사진에서 무엇을 보면 좋겠소?",
+            "label_en": "What should I notice in that photograph?",
+            "next": "S1907-02-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-02-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "성벽 위까지 올라간 전차 구경꾼",
+        "story_title_en": "When trams first arrived?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-02"
+      },
+      "S1907-02-part-4": {
+        "text": "오래된 성문과 새 전차를 함께 보시오. 성문이 서 있다고 시간이 멈춘 것은 아니고, 전차가 왔다고 지난 생활이 한꺼번에 사라진 것도 아니오. 그 사이에 모여 선 사람들이 바로 그 변화를 겪는 사람들이지요. 사진은 소리를 들려주지 않으니 환호인지 걱정인지 모두 알 수는 없소. 나는 그래서 얼굴 없는 군중을 다 같은 마음이었다고 말하지 않으려 하오.",
+        "text_en": "Look at the old gate and new tram together. The gate does not mean time stood still, nor does the tram mean older ways vanished overnight. Between them stand the people living through the change. A photograph cannot tell us every voice or worry. We should not give that whole crowd a single opinion.",
+        "year": "1899년 5월",
+        "event_date": {
+          "label": "1899년 5월",
+          "start": "1899-05",
+          "end": "1899-05",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-02-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "성벽 위까지 올라간 전차 구경꾼",
+        "story_title_en": "When trams first arrived?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-02"
+      },
+      "S1907-03-part-2": {
+        "text": "개통 초기 어린이가 전차에 치여 숨진 뒤 사람들이 격분해 차를 불태우는 일까지 있었소. 구경거리였던 기계가 누군가의 가족을 앗아간 것이지요. 그러니 그 반발을 그저 새 물건을 모르는 사람들의 소동이라 부르면 중요한 것을 놓치오. 사람들에게는 길을 안전하게 다닐 수 있느냐는 문제가 걸려 있었소. 나는 그 사고를 이 책방 앞에서 보았다는 식으로 말하지는 않겠소.",
+        "text_en": "An early accident killed a child, and anger escalated to the burning of a tram. A machine that had been a spectacle had taken a family member. Calling this merely ignorance of something new misses the question of safety in a shared street. I do not claim to have witnessed the accident outside this bookshop.",
+        "year": "1899년 개통 초기",
+        "event_date": {
+          "label": "1899년 개통 초기",
+          "start": "1899",
+          "end": "1899",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "길을 함께 쓰는 방식도 바뀌었겠군.",
+            "label_en": "Sharing the street must have changed.",
+            "next": "S1907-03-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-03"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전차가 반갑지만은 않았던 사람들",
+        "story_title_en": "Did everyone welcome trams?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-03"
+      },
+      "S1907-03-part-3": {
+        "text": "그렇소. 사람과 짐이 오가던 길에 정해진 선로를 따라 움직이는 큰 차가 들어온 것이오. 예를 들어 짐을 진 사람이 길을 건너려 한다고 생각해 보시오. 차가 얼마나 빨리 다가오는지, 어디에서 기다려야 하는지 익숙하지 않으면 겁이 날 터이오. 이것은 이해를 돕기 위해 내가 그려 보는 장면이오. 편리한 교통수단을 들이는 일과 서로 안전하게 쓰는 법을 익히는 일은 함께 가야 하지요.",
+        "text_en": "A large vehicle following fixed rails entered a street used by people and loads. Imagine a porter deciding when to cross, unsure how fast the tram approaches or where to wait. That is an illustrative scene, not an account of a particular accident. Introducing convenient transport also means learning how to share the street safely.",
+        "year": "1899년 개통 초기",
+        "event_date": {
+          "label": "1899년 개통 초기",
+          "start": "1899",
+          "end": "1899",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "그럼 전차를 없애는 게 답이었소?",
+            "label_en": "Was removing trams the answer?",
+            "next": "S1907-03-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-03-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전차가 반갑지만은 않았던 사람들",
+        "story_title_en": "Did everyone welcome trams?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-03"
+      },
+      "S1907-03-part-4": {
+        "text": "나는 그렇게 간단히 말하고 싶지는 않소. 멀리 가야 하는 손님에게는 반가운 차일 수 있고, 길에서 일하는 사람에게는 두려운 변화일 수도 있지요. 같은 물건을 보면서 서로 다른 것을 걱정한 것이오. 전차 이야기를 듣거든 신기했다는 말 곁에 무서웠다는 말도 놓아 두시오. 그래야 이 거리에 기계만 들어온 것이 아니라 사람들의 다툼과 배움도 함께 들어왔다는 것을 알게 되지요.",
+        "text_en": "I would not make it so simple. A traveler might welcome the ride while someone working in the street fears the change. They are worrying about different things. Keep the fear beside the wonder when you hear this story. The arrival of machinery brought arguments and learning into the street as well.",
+        "year": "1899년 개통 초기",
+        "event_date": {
+          "label": "1899년 개통 초기",
+          "start": "1899",
+          "end": "1899",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 전차의 도입과 변화",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-03-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전차가 반갑지만은 않았던 사람들",
+        "story_title_en": "Did everyone welcome trams?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-03"
+      },
+      "S1907-05-part-2": {
+        "text": "세 개라는 수를 잘 기억하시오. 1900년 4월 종로에 켜졌다는 등 이야기요. 온 도성이 한꺼번에 밝아졌다는 뜻은 아니오. 큰길의 불빛을 보고 골목으로 들어가는 사람을 상상해 보시오. 밝은 곳에서는 대단한 세상이라 느끼다가도 몇 걸음 옮겨서는 발밑을 다시 살폈을 법하지 않소? 전기가 들어왔다는 한마디 안에도 밝은 자리와 어두운 자리가 함께 있었던 셈이오.",
+        "text_en": "Remember the number: three lamps in Jongno in April 1900, not a city suddenly lit everywhere. Picture someone leaving that light for a side alley, impressed one moment and watching their footing the next. That scene is an imagining, but it helps us resist confusing a new light on a main road with universal access.",
+        "year": "1900년 4월",
+        "event_date": {
+          "label": "1900년 4월",
+          "start": "1900-04",
+          "end": "1900-04",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 도시 정비 계획에 따른 서울의 변화",
+            "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0040_0040_0040&whereStr="
+          }
+        ],
+        "options": [
+          {
+            "label": "장사하는 사람에게는 무엇이 달랐을까?",
+            "label_en": "What might it mean for a shopkeeper?",
+            "next": "S1907-05-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-05"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "종로의 밤에 켜진 세 개의 전등",
+        "story_title_en": "How have Jongno nights changed?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-05"
+      },
+      "S1907-05-part-3": {
+        "text": "책장 글씨를 보기 어렵게 되면 나 같은 사람은 먼저 불을 생각하오. 손님도 물건을 보아야 고르지 않겠소. 그래서 밤을 밝히는 기술은 장사꾼에게 제법 큰 꿈을 품게 할 물건이지요. 그렇지만 그 꿈과 실제 가게 사정은 구별해야 하오. 이 책방이 그해부터 전등을 달고 늦게까지 영업했다는 장부를 내가 보여 줄 수 있는 것은 아니니 말이오.",
+        "text_en": "When letters become hard to see, a bookseller thinks of light; customers need to see goods to choose them. Better lighting could give a trader ambitions for the evening. Yet an imagined possibility is not the same as a shop’s documented practice. I cannot show you a ledger proving this shop installed electricity or extended its hours that year.",
+        "year": "1900년 4월",
+        "event_date": {
+          "label": "1900년 4월",
+          "start": "1900-04",
+          "end": "1900-04",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 도시 정비 계획에 따른 서울의 변화",
+            "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0040_0040_0040&whereStr="
+          }
+        ],
+        "options": [
+          {
+            "label": "밤의 서울을 어떻게 떠올리면 되겠소?",
+            "label_en": "How should I imagine Seoul at night?",
+            "next": "S1907-05-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-05-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "종로의 밤에 켜진 세 개의 전등",
+        "story_title_en": "How have Jongno nights changed?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-05"
+      },
+      "S1907-05-part-4": {
+        "text": "전등 하나를 그려 넣었다고 집집마다 같은 빛을 칠하지는 마시오. 궁궐, 큰길, 작은 골목을 오가는 사람마다 마주치는 밤은 달랐을 터이오. 나는 새 불빛을 이야기할 때 그 곁의 어둠도 남겨 두고 싶소. 밝아지는 도시라는 말은 좋지만, 아직 그 빛을 자기 생활에 들이지 못한 사람들의 밤도 이 서울의 일부니까요.",
+        "text_en": "Do not give every house the same electric glow because you have placed a streetlamp on a road. People moving through palaces, avenues and alleys would meet different nights. When I tell of new light, I leave room for the darkness beside it. Those who have not brought electricity into their lives belong to this city too.",
+        "year": "1900년 4월",
+        "event_date": {
+          "label": "1900년 4월",
+          "start": "1900-04",
+          "end": "1900-04",
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 도시 정비 계획에 따른 서울의 변화",
+            "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0040_0040_0040&whereStr="
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-05-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "종로의 밤에 켜진 세 개의 전등",
+        "story_title_en": "How have Jongno nights changed?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-05"
+      },
+      "S1907-06-part-2": {
+        "text": "1903년 6월 23일자 황성신문 광고를 보면 저녁 여덟 시부터 열 시까지, 동대문 안 전기회사 기계창에서 보여 준다고 했소. 구경값은 십 전이라 했지요. 이것은 그 광고에 적힌 조건이오. 지금 모든 구경거리의 값이 같다는 뜻은 아니지요. 장소와 시간과 값을 적어 사람을 모았다는 점이 내 눈에는 흥미롭소. 신문 한 장이 저녁에 갈 곳까지 권한 것이니까.",
+        "text_en": "The Hwangseong newspaper advertisement of 23 June 1903 announced shows from eight to ten in the evening at the electric company workshop inside Dongdaemun, charging ten jeon. Those are the terms of that advertisement, not a universal price. A sheet of newsprint was telling its readers where they might spend an evening.",
+        "year": "1903년 6월 23일 광고",
+        "event_date": {
+          "label": "1903년 6월 23일 광고",
+          "start": "1903-06-23",
+          "end": "1903-06-23",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국영상자료원: 활동사진의 시대",
+            "url": "https://artsandculture.google.com/story/aQUxw03xXA4A8A?hl=ko"
+          }
+        ],
+        "options": [
+          {
+            "label": "책과는 아주 다른 구경이겠군.",
+            "label_en": "A very different experience from a book.",
+            "next": "S1907-06-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-06"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전기회사에서 움직이는 사진을 보다",
+        "story_title_en": "Pictures that move?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-06"
+      },
+      "S1907-06-part-3": {
+        "text": "책에서는 내가 글줄을 따라가야 장면이 움직이지요. 활동사진은 눈앞의 그림이 스스로 움직인다니 그 차이가 얼마나 컸겠소. 처음 보는 사람의 마음을 상상해 보면 책장수인 나도 호기심이 생기오. 다만 그날 관객이 무슨 말을 했는지, 누구나 놀라 뛰어나갔는지 같은 이야기를 멋대로 붙이지는 않겠소. 광고가 알려 주는 것은 상영의 약속이지 관객 모두의 표정은 아니니까.",
+        "text_en": "In a book, I follow the lines to make a scene unfold. Moving pictures offer a different sort of experience. Imagining a first encounter makes even this bookseller curious. But I will not invent a crowd’s exact words or say everyone fled in surprise. An advertisement announces a show; it does not record every spectator’s response.",
+        "year": "1903년 6월 23일 광고",
+        "event_date": {
+          "label": "1903년 6월 23일 광고",
+          "start": "1903-06-23",
+          "end": "1903-06-23",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국영상자료원: 활동사진의 시대",
+            "url": "https://artsandculture.google.com/story/aQUxw03xXA4A8A?hl=ko"
+          }
+        ],
+        "options": [
+          {
+            "label": "왜 하필 전기회사였소?",
+            "label_en": "Why is the electric company in this story?",
+            "next": "S1907-06-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-06-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전기회사에서 움직이는 사진을 보다",
+        "story_title_en": "Pictures that move?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-06"
+      },
+      "S1907-06-part-4": {
+        "text": "그 점이 재미있지요. 전차를 굴리는 회사의 기계창이 새로운 구경의 장소로도 등장한 것이오. 그래서 서울의 새 문물을 따로따로 외우면 서로 이어진 부분을 놓치기 쉽소. 종로에서는 회사 간판을 보고, 동대문에서는 차고와 기계창을 떠올리고, 신문에서는 그곳으로 사람을 부르는 광고를 읽는 것이지요. 기술과 장사와 구경이 한 도시 안에서 만나는 셈이오.",
+        "text_en": "That is the interesting connection: a workshop belonging to the tram enterprise appears as a place of entertainment. If we memorize each new invention separately, we miss such links. The Jongno office, the Dongdaemun depot and workshop, and an advertisement drawing readers there connect technology, business and leisure within the same city.",
+        "year": "1903년 6월 23일 광고",
+        "event_date": {
+          "label": "1903년 6월 23일 광고",
+          "start": "1903-06-23",
+          "end": "1903-06-23",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국영상자료원: 활동사진의 시대",
+            "url": "https://artsandculture.google.com/story/aQUxw03xXA4A8A?hl=ko"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-06-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "modern"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "전기회사에서 움직이는 사진을 보다",
+        "story_title_en": "Pictures that move?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-06"
+      },
+      "S1907-07-part-2": {
+        "text": "큰길 가에 장사를 위해 세운 가건물을 가가라 불렀소. 종로와 남대문로에 그런 점포들이 늘어서 있었는데, 1896년 정부가 철거해 길을 정비했지요. 지도를 펴 놓으면 도로 한 줄이 넓어진 것처럼 보일 수 있소. 하지만 장사하던 사람에게는 물건을 쌓고 손님을 만나던 자리가 없어지는 일이었을 터이오. 도로의 폭과 사람의 살림을 함께 생각해야 하는 까닭이오.",
+        "text_en": "They were temporary commercial structures along the main roads. In 1896 the government removed such stalls on Jongno and Namdaemun-ro as it reorganized the streets. On a map this may look like a wider line. For a trader it could mean losing the place where goods were kept and customers met. Width and livelihood belong in the same account.",
+        "year": "1896년 이후",
+        "event_date": {
+          "label": "1896년 이후",
+          "start": "1896",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 개항, 대한제국기의 서울",
+            "url": "https://museum.seoul.go.kr/www/exh/per/exhPer2th.jsp?sso=ok"
+          }
+        ],
+        "options": [
+          {
+            "label": "길이 넓어지면 모두 좋지 않았소?",
+            "label_en": "Wouldn’t everyone benefit from a wider road?",
+            "next": "S1907-07-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-07"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "큰길을 넓히자 가게의 자리가 바뀌다",
+        "story_title_en": "Have the shops always looked like this?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-07"
+      },
+      "S1907-07-part-3": {
+        "text": "길을 지나는 사람에게는 막힌 데가 줄어 반가울 수 있겠지요. 그러나 가게를 옮기는 사람은 단골이 새 자리를 찾을까, 물건을 다시 들이는 데 얼마나 들까부터 걱정할 것이오. 이것은 어느 점포 주인의 말을 옮긴 것이 아니라 장사하는 처지에서 헤아려 보는 일이오. 같은 공사를 두고도 길을 이용하는 사람과 길가에서 먹고사는 사람이 보는 것이 다를 수 있다는 말이지요.",
+        "text_en": "A passer-by might welcome an easier route. A relocating trader might worry whether regular customers would find the new premises or what moving stock would cost. I am reasoning from a trader’s circumstances, not quoting a documented shopkeeper. People passing through a street and those earning their living beside it can see the same work differently.",
+        "year": "1896년 이후",
+        "event_date": {
+          "label": "1896년 이후",
+          "start": "1896",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 개항, 대한제국기의 서울",
+            "url": "https://museum.seoul.go.kr/www/exh/per/exhPer2th.jsp?sso=ok"
+          }
+        ],
+        "options": [
+          {
+            "label": "옛 거리를 볼 때 무엇을 기억해야겠소?",
+            "label_en": "What should I remember when looking at the street?",
+            "next": "S1907-07-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-07-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "큰길을 넓히자 가게의 자리가 바뀌다",
+        "story_title_en": "Have the shops always looked like this?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-07"
+      },
+      "S1907-07-part-4": {
+        "text": "길 양쪽의 집을 장식처럼 보지 마시오. 문을 열면 물건을 내놓고 닫으면 거두는 손이 있었을 것이오. 사진 한 장에 낮은 처마가 이어져 있다고 모든 상점의 사정이 같았던 것도 아니고요. 지금 당신이 걷는 종로에는 새로 정비한 길과 그에 맞춰 자리를 찾아야 했던 장사가 함께 있소. 나는 책을 펼치듯 그 두 모습을 함께 펼쳐 보고 싶소.",
+        "text_en": "Do not look at the houses as decoration. Someone put out the goods and took them in. A photograph of adjoining eaves does not mean every shop had the same circumstances. On Jongno, a reorganized road and livelihoods adapting to it occupy the same space. I would like us to open both sides of that story together.",
+        "year": "1896년 이후",
+        "event_date": {
+          "label": "1896년 이후",
+          "start": "1896",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울역사박물관: 개항, 대한제국기의 서울",
+            "url": "https://museum.seoul.go.kr/www/exh/per/exhPer2th.jsp?sso=ok"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-07-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "큰길을 넓히자 가게의 자리가 바뀌다",
+        "story_title_en": "Have the shops always looked like this?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-07"
+      },
+      "S1907-09-part-2": {
+        "text": "관우를 모시는 사당이오. 1883년에 세웠고, 뒤에 세운 북묘비에는 왕실이 그곳을 어떻게 여겼는지가 적혀 있지요. 난을 피한 기억과 신령한 보호를 바라는 마음이 함께 담겨 있소. 비석에 신의 보살핌이 적혔다고 내가 그 일을 눈으로 확인했다는 뜻은 아니오. 위기를 겪은 왕실이 무엇을 믿고 무엇을 기억하려 했는지 읽어 볼 수 있다는 말이지요.",
+        "text_en": "It is a shrine to Guan Yu, founded in 1883. Its later stele records how the royal household understood the place, joining memories of refuge with belief in protection. A statement of divine aid is not something I can verify as an eyewitness. It tells us what the court believed and wished to remember after a crisis.",
+        "year": "1884년 음력 10월 19일",
+        "event_date": {
+          "label": "1884년 음력 10월 19일",
+          "start": "1884-10-19",
+          "end": "1884-10-19",
+          "precision": "day",
+          "calendar": "lunar"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가유산 지식이음: 북묘비 판독문·해석문",
+            "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?ksm_idx=8721&menuIdx=584"
+          },
+          {
+            "title": "고종실록: 1884년 음력 10월 19일 북묘로 이동",
+            "url": "https://sillok.history.go.kr/id/wza_12110019_001"
+          }
+        ],
+        "options": [
+          {
+            "label": "궁궐이 있는데 왜 피해야 했소?",
+            "label_en": "Why leave a palace for a shrine?",
+            "next": "S1907-09-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-09"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "갑신정변의 끝, 북묘로 향한 고종",
+        "story_title_en": "What happened at Bukmyo?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-09"
+      },
+      "S1907-09-part-3": {
+        "text": "갑신년의 변란으로 궁중 사정이 급박해졌기 때문이지요. 임금께서 북묘로 옮기셨다는 이야기는 전해지지만, 나는 궁문 안팎의 일을 모두 본 사람이 아니오. 왕실 사람들이 같은 길로 같은 시각에 움직였다고 한 장면으로 꾸미면 듣기에는 쉬워도 사실과 멀어질 수 있소. 궁궐이라는 큰 울타리조차 안전을 보장하지 못했던 순간이 있었다는 데 먼저 귀를 기울여 보시오.",
+        "text_en": "The upheaval of 1884 made the situation at court urgent. Accounts place the king at Bukmyo, but I did not observe all movements through the palace gates. Turning the whole royal household into a single procession at a single moment would make an easy story, but could mislead. Even a palace enclosure could cease to offer safety.",
+        "year": "1884년 음력 10월 19일",
+        "event_date": {
+          "label": "1884년 음력 10월 19일",
+          "start": "1884-10-19",
+          "end": "1884-10-19",
+          "precision": "day",
+          "calendar": "lunar"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가유산 지식이음: 북묘비 판독문·해석문",
+            "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?ksm_idx=8721&menuIdx=584"
+          },
+          {
+            "title": "고종실록: 1884년 음력 10월 19일 북묘로 이동",
+            "url": "https://sillok.history.go.kr/id/wza_12110019_001"
+          }
+        ],
+        "options": [
+          {
+            "label": "북묘에 가면 무엇을 떠올려야겠소?",
+            "label_en": "What should I think about at Bukmyo?",
+            "next": "S1907-09-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-09-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "갑신정변의 끝, 북묘로 향한 고종",
+        "story_title_en": "What happened at Bukmyo?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-09"
+      },
+      "S1907-09-part-4": {
+        "text": "제사를 지내는 평온한 사당과 난을 피해 찾아드는 장소를 함께 떠올려 보시오. 같은 마당도 그날의 사람에게는 전혀 다르게 느껴졌겠지요. 그 마음까지 기록이 다 전해 주지는 않으니 나는 함부로 대사를 지어 실록의 말인 양 들려주지는 않겠소. 다만 북묘라는 이름 뒤에 신앙과 왕실의 불안, 살아남은 기억이 겹쳐 있다는 점은 오래 생각해 볼 만하오.",
+        "text_en": "Think of a shrine for worship and a place approached in crisis. The same courtyard could mean very different things on different days. The record does not preserve every feeling, so I will not pass invented dialogue off as a chronicle. Belief, royal insecurity and the wish to remember all belong behind the name Bukmyo.",
+        "year": "1884년 음력 10월 19일",
+        "event_date": {
+          "label": "1884년 음력 10월 19일",
+          "start": "1884-10-19",
+          "end": "1884-10-19",
+          "precision": "day",
+          "calendar": "lunar"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가유산 지식이음: 북묘비 판독문·해석문",
+            "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?ksm_idx=8721&menuIdx=584"
+          },
+          {
+            "title": "고종실록: 1884년 음력 10월 19일 북묘로 이동",
+            "url": "https://sillok.history.go.kr/id/wza_12110019_001"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-09-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "갑신정변의 끝, 북묘로 향한 고종",
+        "story_title_en": "What happened at Bukmyo?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-09"
+      },
+      "S1907-10-part-2": {
+        "text": "나라가 다른 나라와 자기 이름으로 뜻을 주고받을 권한을 빼앗기는 것이오. 우리 일을 우리가 설명하고 약속을 맺을 길이 일본의 손에 묶이게 된 것이지요. 장사에 빗대자면 내 가게 일인데 남이 대신 말을 하고 조건을 정하겠다는 것과 비슷하오. 물론 한 나라의 처지는 가게보다 훨씬 크고 무겁소. 그래서 사람들은 조약 글자 몇 줄의 일로 여기지 않았던 것이오.",
+        "text_en": "It means losing the authority to conduct relations with other countries in one’s own name, with those relations placed under Japan. To borrow a shopkeeper’s comparison, someone else claims the right to speak and settle terms for your shop. A nation’s predicament is much greater, of course. This was not simply a few lines on paper.",
+        "year": "1905년 11월 17일",
+        "event_date": {
+          "label": "1905년 11월 17일",
+          "start": "1905-11-17",
+          "end": "1905-11-17",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          }
+        ],
+        "options": [
+          {
+            "label": "왜 중명전이라는 장소가 중요하오?",
+            "label_en": "Why does Jungmyeongjeon matter?",
+            "next": "S1907-10-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-10"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "책을 두던 건물에 남은 을사늑약",
+        "story_title_en": "What happened at Jungmyeongjeon?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-10"
+      },
+      "S1907-10-part-3": {
+        "text": "중명전은 궁궐 곁에 있는 건물이지만, 1905년 11월 17일을 떠올리면 벽돌과 창문만 보이지 않을 것이오. 그곳에서 강요된 일이 담장 밖 사람들의 장래를 바꾸었으니까요. 건물이 웅장해야 큰 사건이 생기는 것도 아니지요. 길을 걷다가 그 이름을 만나거든 잠깐 멈춰 보시오. 건물 안에서 이루어진 결정과 바깥 거리의 삶 사이가 얼마나 가까운지 생각하게 될 것이오.",
+        "text_en": "Jungmyeongjeon stands beside the palace, but remembering 17 November 1905 gives its walls another meaning. What was imposed there changed prospects beyond the enclosure. A building need not be monumental to be the setting for a momentous event. Its name connects decisions made indoors with lives in the surrounding streets.",
+        "year": "1905년 11월 17일",
+        "event_date": {
+          "label": "1905년 11월 17일",
+          "start": "1905-11-17",
+          "end": "1905-11-17",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          }
+        ],
+        "options": [
+          {
+            "label": "사람들은 어떻게 뜻을 밝혔소?",
+            "label_en": "How did people respond?",
+            "next": "S1907-10-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-10-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "책을 두던 건물에 남은 을사늑약",
+        "story_title_en": "What happened at Jungmyeongjeon?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-10"
+      },
+      "S1907-10-part-4": {
+        "text": "신문에 분노와 슬픔을 담은 글이 실렸소. 황성신문의 「시일야방성대곡」도 그 뒤에 나온 글이지요. 이것은 내가 그 자리에 들어가 대신들의 말을 들었다는 이야기가 아니오. 궁궐 밖에서 신문을 읽는 사람도 나라의 일을 자기 일로 받아들였다는 이야기요. 중명전을 보고 돌아오거든 그 논설 이야기도 들어 보시오. 건물에서 시작한 이야기가 종이와 독자에게로 이어질 것이오.",
+        "text_en": "Newspapers carried anger and grief. The Hwangseong newspaper’s famous lament followed the treaty. I am not claiming to have stood in the room and heard the ministers. I am speaking of people outside the palace treating national affairs as their own. After visiting Jungmyeongjeon, hear the newspaper story: it carries us from the building to its readers.",
+        "year": "1905년 11월 17일",
+        "event_date": {
+          "label": "1905년 11월 17일",
+          "start": "1905-11-17",
+          "end": "1905-11-17",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          },
+          {
+            "title": "우리역사넷: 장지연의 시일야방성대곡",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_121_0040"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-10-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "책을 두던 건물에 남은 을사늑약",
+        "story_title_en": "What happened at Jungmyeongjeon?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-10"
+      },
+      "S1907-11-part-2": {
+        "text": "우리 안에서만 부당하다고 외쳐서는 다른 나라에 뜻이 닿지 않을 수 있으니, 여러 나라가 모이는 자리에 호소하려 한 것이오. 을사늑약이 강요되었다는 사정을 알리고 싶었던 것이지요. 책방에서 세계 지명을 읽을 때는 종이 위 몇 글자일 뿐이지만, 그곳까지 가서 나라의 처지를 말한다는 것은 전혀 다른 일이오. 멀리 가는 수고만으로 문이 열리는 것도 아니었고요.",
+        "text_en": "The purpose was to carry the objection to a gathering of nations, beyond protest at home, and explain that the treaty had been imposed. A distant place name is only a few characters on a page here. Traveling there to speak for a country is another matter. Even reaching the destination does not guarantee admission.",
+        "year": "1907년 특사 파견과 강제퇴위 이전",
+        "event_date": {
+          "label": "1907년 특사 파견과 강제퇴위 이전",
+          "start": "1907",
+          "end": "1907",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          },
+          {
+            "title": "우리역사넷: 순종",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800"
+          }
+        ],
+        "options": [
+          {
+            "label": "그런데 왜 말을 할 수 없었소?",
+            "label_en": "Why could they not address the conference?",
+            "next": "S1907-11-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-11"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "헤이그로 보내려 했던 목소리",
+        "story_title_en": "Envoys were sent to The Hague?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-11"
+      },
+      "S1907-11-part-3": {
+        "text": "특사들은 회의에 정식으로 참여하지 못했다고 하오. 여기서 안타까운 대목은 말을 준비했느냐보다 누가 그 말을 공식으로 들을 자리를 허락하느냐가 앞섰다는 것이오. 나는 회의장 안의 논의를 직접 들은 사람이 아니니, 거기 있던 모두의 속마음을 안다고 하지는 않겠소. 다만 나라의 억울함을 설명할 통로마저 좁아졌다는 소식이 서울에서는 무겁게 들릴 수밖에 없었지요.",
+        "text_en": "The envoys were unable to take part officially. Having a case to make was different from being admitted to present it. I did not hear the discussions inside the conference and cannot tell you everyone’s intentions. But the news that even this avenue for explaining the country’s situation was closed was a heavy matter in Seoul.",
+        "year": "1907년 특사 파견과 강제퇴위 이전",
+        "event_date": {
+          "label": "1907년 특사 파견과 강제퇴위 이전",
+          "start": "1907",
+          "end": "1907",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          },
+          {
+            "title": "우리역사넷: 순종",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800"
+          }
+        ],
+        "options": [
+          {
+            "label": "그 일이 서울과도 이어졌소?",
+            "label_en": "How did it connect back to Seoul?",
+            "next": "S1907-11-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-11-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "헤이그로 보내려 했던 목소리",
+        "story_title_en": "Envoys were sent to The Hague?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-11"
+      },
+      "S1907-11-part-4": {
+        "text": "올여름 고종 황제의 강제퇴위가 뒤따랐고, 8월에는 군대 해산까지 벌어졌소. 먼 나라의 회의 소식이 궁궐과 병영의 일을 떠나 있는 것이 아니었던 셈이지요. 그렇다고 그 많은 일이 한 가지 까닭으로만 일어났다고 줄여 말할 수는 없소. 헤이그 이야기 뒤에는 궁문 앞의 불안과 일자리를 잃은 군인의 이야기도 이어지오. 올해 소식이 유난히 숨 가쁜 까닭이오.",
+        "text_en": "Gojong’s forced abdication followed this summer, and the army was disbanded in August. News of a distant conference connected to the palace and barracks here. That does not reduce all these events to one cause. The story leads on to uncertainty at the palace gates and soldiers losing their places. This year has brought little time to catch one’s breath.",
+        "year": "1907년 특사 파견과 강제퇴위 이전",
+        "event_date": {
+          "label": "1907년 특사 파견과 강제퇴위 이전",
+          "start": "1907",
+          "end": "1907",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "국가기록원: 덕수궁",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+          },
+          {
+            "title": "우리역사넷: 순종",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800"
+          },
+          {
+            "title": "우리역사넷: 순종",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800"
+          },
+          {
+            "title": "우리역사넷: 군대해산",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-11-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "헤이그로 보내려 했던 목소리",
+        "story_title_en": "Envoys were sent to The Hague?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-11"
+      },
+      "S1907-14-part-2": {
+        "text": "이날 밤 목 놓아 크게 운다는 뜻으로 읽을 수 있소. 1905년 11월 20일 황성신문에 실린 장지연의 논설이오. 신문이 사건의 날짜와 내용만 전한 것이 아니라, 그 일을 어떻게 받아들여야 하는지 독자에게 묻고 꾸짖은 것이지요. 글자를 판에 새겨 찍어 내면 똑같은 문장이 여러 사람에게 가오. 누군가의 분노가 집과 가게의 문턱을 넘어갈 수 있었던 셈이오.",
+        "text_en": "Its title means a loud lament on that night. Jang Ji-yeon’s editorial appeared in the Hwangseong newspaper on 20 November 1905. It did more than report an event: it addressed its readers about what the event meant. Printing carries the same words to different places, allowing an expression of anger to cross many thresholds.",
+        "year": "1905년 11월 20일",
+        "event_date": {
+          "label": "1905년 11월 20일",
+          "start": "1905-11-20",
+          "end": "1905-11-20",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 장지연의 시일야방성대곡",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_121_0040"
+          }
+        ],
+        "options": [
+          {
+            "label": "책방에서는 그런 글을 어떻게 읽겠소?",
+            "label_en": "How might it be read in a bookshop?",
+            "next": "S1907-14-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-14"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "한 장의 신문이 전한 통곡",
+        "story_title_en": "A lament in the newspaper?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-14"
+      },
+      "S1907-14-part-3": {
+        "text": "내가 한 장을 펴 놓고 손님과 읽는 장면을 떠올려 보시오. 한 사람은 글 뜻을 묻고, 다른 사람은 그 소식이 사실이냐고 되묻겠지요. 이는 당시 이 가게에서 실제로 있었던 일을 기록한 말은 아니오. 신문이라는 물건이 대화를 만들어 내는 모습을 상상해 보는 것이오. 읽는 사람이 모두 같은 생각을 하지는 않아도, 함께 이야기할 사건을 갖게 된다는 점이 중요하오.",
+        "text_en": "Imagine a sheet opened on a counter: one reader asks what a passage means, another asks about the news behind it. This is an illustrative scene, not a record of what happened in this particular shop. A newspaper can give people a shared subject of conversation without making every reader think alike.",
+        "year": "1905년 11월 20일",
+        "event_date": {
+          "label": "1905년 11월 20일",
+          "start": "1905-11-20",
+          "end": "1905-11-20",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 장지연의 시일야방성대곡",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_121_0040"
+          }
+        ],
+        "options": [
+          {
+            "label": "그 글만 읽으면 당시를 다 알 수 있소?",
+            "label_en": "Does that article tell the whole story?",
+            "next": "S1907-14-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-14-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "한 장의 신문이 전한 통곡",
+        "story_title_en": "A lament in the newspaper?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-14"
+      },
+      "S1907-14-part-4": {
+        "text": "아니오. 논설에는 글쓴이의 판단과 호소가 강하게 담겨 있소. 조약의 내용과 당시의 움직임을 살피려면 다른 기록도 함께 보아야 하지요. 그래도 그 글이 있어야 알 수 있는 것이 있소. 그 사건을 접한 사람이 어떤 말로 슬픔과 분노를 표현했는가 하는 것이오. 나는 신문을 사건의 목록으로만 읽지 않소. 그 일을 견디며 말하려 했던 사람의 목소리도 읽으려 하오.",
+        "text_en": "No. An editorial contains the writer’s judgment and appeal. Other records are needed for the treaty and the events around it. Yet the article preserves something a list of facts cannot: the language in which someone expressed grief and anger. I read newspapers for those attempts to speak, as well as for what happened.",
+        "year": "1905년 11월 20일",
+        "event_date": {
+          "label": "1905년 11월 20일",
+          "start": "1905-11-20",
+          "end": "1905-11-20",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 장지연의 시일야방성대곡",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_121_0040"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-14-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "한 장의 신문이 전한 통곡",
+        "story_title_en": "A lament in the newspaper?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-14"
+      },
+      "S1907-16-part-2": {
+        "text": "8월 1일, 무기를 거둔 병사들을 훈련원으로 모아 해산 절차를 밟았소. 훈련원이라는 이름만 들으면 군사를 기르는 곳을 떠올리기 쉬운데, 그날은 도리어 군인의 자리를 빼앗는 장소가 된 것이지요. 일하는 곳으로 나오라 해서 나갔더니 더는 그 일을 하지 못한다는 말을 듣는 처지를 생각해 보시오. 하물며 무기를 내려놓는 군인의 마음이 얼마나 복잡했겠소.",
+        "text_en": "On 1 August, disarmed soldiers were gathered at Hullyeonwon for the dissolution proceedings. A name associated with training troops became linked to taking away their place as soldiers. Imagine reporting where you are told, only to learn that your work is ending. For men ordered to surrender their weapons, the stakes went beyond a lost occupation.",
+        "year": "1907년 8월 1일",
+        "event_date": {
+          "label": "1907년 8월 1일",
+          "start": "1907-08-01",
+          "end": "1907-08-01",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 군대해산",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210"
+          }
+        ],
+        "options": [
+          {
+            "label": "서소문의 싸움은 같은 일이오?",
+            "label_en": "Was the fighting at Seosomun the same scene?",
+            "next": "S1907-16-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-16"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "훈련원의 해산식과 서소문의 총성",
+        "story_title_en": "What happened to the army this summer?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-16"
+      },
+      "S1907-16-part-3": {
+        "text": "같은 날 이어진 일이지만 장소와 행동은 구별해야 하오. 박승환의 죽음 뒤 시위대 병사들이 서소문 일대에서 일본군에 맞서 싸웠소. 훈련원의 해산식 한가운데서 모든 싸움이 벌어졌다고 그리면 서울의 동쪽과 서쪽을 한데 섞는 셈이오. 지도를 펴고 두 곳을 따로 짚어 보시오. 같은 명령을 맞은 사람들이 서로 다른 자리에서 어떤 처지에 놓였는지 생각하기 쉬워질 것이오.",
+        "text_en": "They belong to the same day, but not one scene. Following Park Seung-hwan’s death, soldiers fought Japanese troops near Seosomun. Placing all the fighting inside the Hullyeonwon ceremony would collapse different parts of Seoul together. Mark the two places separately and consider the circumstances of those confronting the same order in each.",
+        "year": "1907년 8월 1일",
+        "event_date": {
+          "label": "1907년 8월 1일",
+          "start": "1907-08-01",
+          "end": "1907-08-01",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 군대해산",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210"
+          }
+        ],
+        "options": [
+          {
+            "label": "그 뒤 병사들은 어디로 갔소?",
+            "label_en": "What became of the soldiers?",
+            "next": "S1907-16-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-16-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "훈련원의 해산식과 서소문의 총성",
+        "story_title_en": "What happened to the army this summer?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-16"
+      },
+      "S1907-16-part-4": {
+        "text": "해산 군인 가운데 의병에 합류한 이들도 있었소. 그러나 모두 같은 길을 택했다고는 할 수 없지요. 군복을 벗고 가족의 먹을 것을 걱정한 사람, 저항에 나선 사람의 사정이 다 같지는 않았을 것이오. 지금 궁문에 경비병이 서 있다고 해서 예전 군대가 그대로 남은 것으로 보지 마시오. 올해 서울의 군복 한 벌에는 남은 임무와 사라진 자리의 차이도 얽혀 있소.",
+        "text_en": "Some disbanded soldiers joined righteous-army resistance. They did not all follow one path; family needs and choices would differ. Nor does a guard still standing at a palace gate mean the old army survives unchanged. A uniform in Seoul this year can speak of remaining duties as well as positions that have disappeared.",
+        "year": "1907년 8월 1일",
+        "event_date": {
+          "label": "1907년 8월 1일",
+          "start": "1907-08-01",
+          "end": "1907-08-01",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 군대해산",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-16-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "palace"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "훈련원의 해산식과 서소문의 총성",
+        "story_title_en": "What happened to the army this summer?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-16"
+      },
+      "S1907-17-part-2": {
+        "text": "빚이 늘어나면 나라의 사정이 더욱 남의 손에 매일 것이라는 걱정이 컸기 때문이오. 올해 2월 대구에서 시작한 뜻이 서울에도 전해졌지요. 큰돈을 가진 이만 할 수 있는 일로 두지 않고, 담배를 줄여 모은 돈이라도 보태자는 것이었소. 평소에는 자기 주머니에서 나가는 작은 돈인데, 그것을 나라의 장래와 연결해 생각했다는 점이 내게는 크게 다가오.",
+        "text_en": "People feared that growing debt would bind the country more tightly to outside power. The movement begun in Daegu in February reached Seoul. Participation was not imagined only for the wealthy: even money saved by giving up tobacco could contribute. What strikes me is the connection between an everyday expense and the country’s future.",
+        "year": "1907년 2월 이후, 4월 8일 총합소",
+        "event_date": {
+          "label": "1907년 2월 이후, 4월 8일 총합소",
+          "start": "1907-02",
+          "end": null,
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 국채보상운동",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401200"
+          }
+        ],
+        "options": [
+          {
+            "label": "서울에서는 어떻게 모았소?",
+            "label_en": "How was the effort organized in Seoul?",
+            "next": "S1907-17-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-17"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "담뱃값과 비녀를 모아 나라의 빚을 갚다",
+        "story_title_en": "Why collect money for the national debt?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-17"
+      },
+      "S1907-17-part-3": {
+        "text": "대한매일신보 같은 신문이 뜻을 알리고 모금에 힘을 보탰소. 4월에는 그 신문사에 국채보상지원금총합소가 설치되었지요. 멀리 떨어진 사람들의 마음이 글과 명단, 모금 조직을 통해 이어진 셈이오. 장신구를 내놓는 여성들도 있었소. 하지만 이 회동서관이 얼마를 냈는지까지 확인한 것은 아니니, 그럴듯한 기부 액수를 붙여 가게의 공적을 만들지는 않겠소.",
+        "text_en": "Newspapers including the Daehan Maeil Sinbo spread the appeal and supported collections. A central collection office was established at that newspaper in April. Women also contributed jewelry. Print and organization connected people far apart. But I have no verified sum for this bookshop and will not invent a donation to give it a role in the story.",
+        "year": "1907년 2월 이후, 4월 8일 총합소",
+        "event_date": {
+          "label": "1907년 2월 이후, 4월 8일 총합소",
+          "start": "1907-02",
+          "end": null,
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 국채보상운동",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401200"
+          }
+        ],
+        "options": [
+          {
+            "label": "그 돈으로 빚을 다 갚을 수 있겠소?",
+            "label_en": "Will the collections repay it all?",
+            "next": "S1907-17-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-17-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "담뱃값과 비녀를 모아 나라의 빚을 갚다",
+        "story_title_en": "Why collect money for the national debt?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-17"
+      },
+      "S1907-17-part-4": {
+        "text": "앞일을 내가 어찌 장담하겠소. 지금은 뜻을 모으는 중이지요. 다만 작은 돈을 내는 사람에게도 그 돈은 작지 않을 수 있소. 오늘 살 것을 미루거나 오래 지닌 물건을 내놓아야 할 수도 있으니까요. 모금 이야기를 들을 때는 액수만 세지 말고 무엇을 아껴 냈는지도 생각해 보시오. 나라의 일이 사람들 밥상과 주머니 가까이 내려와 있다는 것을 느끼게 될 것이오.",
+        "text_en": "How could I promise the outcome? The effort is still underway. A small contribution may not be small to its giver: it may mean postponing a purchase or parting with a possession. Consider what was saved or given up, not only the total. National affairs have reached close to people’s meals and pockets.",
+        "year": "1907년 2월 이후, 4월 8일 총합소",
+        "event_date": {
+          "label": "1907년 2월 이후, 4월 8일 총합소",
+          "start": "1907-02",
+          "end": null,
+          "precision": "month",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 국채보상운동",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401200"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-17-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "담뱃값과 비녀를 모아 나라의 빚을 갚다",
+        "story_title_en": "Why collect money for the national debt?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-17"
+      },
+      "S1907-18-part-2": {
+        "text": "화폐정리 때 백동화를 한결같이 받아 준 것이 아니오. 등급에 따라 바꿔 주는 값이 다르거나 받지 않는 경우도 있었지요. 손에 쥔 쇳조각은 그대로인데, 그것으로 살 수 있는 것이 달라지는 셈이오. 그래서 돈이 얼마 있느냐만 물어서는 사정을 알기 어려웠소. 어떤 돈을 가졌고 그것을 어디서 어떤 값으로 받아 주느냐까지 따져야 했으니까요.",
+        "text_en": "Baekdonghwa coins were not all exchanged on equal terms. Their classification could affect the exchange value or whether they were accepted. The metal in a person’s hand remained, but its purchasing power could change. Counting coins was not enough: which coins, and who would accept them at what value, mattered too.",
+        "year": "1905년 이후 화폐정리",
+        "event_date": {
+          "label": "1905년 이후 화폐정리",
+          "start": "1905",
+          "end": "1909",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 메가타의 화폐정리",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_042_0050_0030_0020_0010"
+          }
+        ],
+        "options": [
+          {
+            "label": "책을 파는 일에도 영향이 있었겠군.",
+            "label_en": "That must matter when selling books.",
+            "next": "S1907-18-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-18"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "어제 받던 돈을 오늘은 받지 않는다",
+        "story_title_en": "Why is money harder to use?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-18"
+      },
+      "S1907-18-part-3": {
+        "text": "가령 손님이 책값을 내고 내가 그 돈으로 종이를 사야 한다고 생각해 보시오. 내가 받았다고 종이 파는 사람도 같은 값으로 받아 준다는 보장이 없으면 마음 놓고 거래하기 어렵겠지요. 이것은 원리를 설명하려고 든 가상의 예요. 실제로는 현금이 모자라는 문제까지 겹쳐 상인들이 어려움을 겪었소. 장부에 적힌 값과 손에서 손으로 건네는 돈 사이에 틈이 생긴 것이오.",
+        "text_en": "Imagine a customer paying for a book, then the bookseller using that money to buy paper. If the paper merchant will not accept it at the same value, the first sale becomes uncertain. That is an invented example to explain the problem. Cash shortages also troubled traders. A price in a ledger and money accepted in payment were not identical things.",
+        "year": "1905년 이후 화폐정리",
+        "event_date": {
+          "label": "1905년 이후 화폐정리",
+          "start": "1905",
+          "end": "1909",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 메가타의 화폐정리",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_042_0050_0030_0020_0010"
+          }
+        ],
+        "options": [
+          {
+            "label": "새 돈으로 바꾸면 간단하지 않았소?",
+            "label_en": "Why not simply exchange everything?",
+            "next": "S1907-18-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-18-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "어제 받던 돈을 오늘은 받지 않는다",
+        "story_title_en": "Why is money harder to use?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-18"
+      },
+      "S1907-18-part-4": {
+        "text": "말로는 쉽지만, 교환받을 조건과 당장 장사에 쓸 돈이 문제이지요. 손에 있는 돈의 값이 깎이는데 살림은 오늘도 이어 가야 하니까요. 나는 이것을 옛돈과 새돈 모양을 비교하는 이야기로만 끝내고 싶지 않소. 손님을 믿고 물건을 건네도 될까 망설이는 마음, 내일 들여올 물건값을 마련할 수 있을까 하는 걱정도 함께 있었을 테니까. 돈의 변화는 사람 사이의 거래를 바꾸는 일이오.",
+        "text_en": "That is easy to say. Exchange terms and the need for money today still matter; daily life cannot wait while a currency system changes. I would not end the story by comparing old and new coin designs. Think also of hesitation over accepting a payment or paying for tomorrow’s stock. Changing money changes the terms on which people deal with one another.",
+        "year": "1905년 이후 화폐정리",
+        "event_date": {
+          "label": "1905년 이후 화폐정리",
+          "start": "1905",
+          "end": "1909",
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 메가타의 화폐정리",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_042_0050_0030_0020_0010"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-18-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "어제 받던 돈을 오늘은 받지 않는다",
+        "story_title_en": "Why is money harder to use?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-18"
+      },
+      "S1907-19-part-2": {
+        "text": "1898년 10월 29일 관민공동회에서 한 연설이오. 백정이라 멸시받던 사람이 관리와 백성 앞에서 나라 일을 말했지요. 무엇을 말했는가 못지않게 누가 말할 수 있었는가를 생각하게 하는 장면이오. 시장에서는 늘 사람 목소리가 들리지만 물건을 흥정하는 목소리와 나라의 앞날에 의견을 내는 목소리는 다르지 않겠소. 종로에서 그 두 종류의 말이 만난 것이지요.",
+        "text_en": "He spoke at the public assembly on 29 October 1898. A man of the despised butcher class addressed officials and the public on national affairs. The scene asks who could speak, as well as what was said. A market is full of voices, but bargaining over goods is different from having a voice about a country’s future.",
+        "year": "1898년 10월 29일",
+        "event_date": {
+          "label": "1898년 10월 29일",
+          "start": "1898-10-29",
+          "end": "1898-10-29",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 관민공동회, 박성춘 연설과 헌의 6조",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_120_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "어떤 뜻으로 말했소?",
+            "label_en": "What was the point of his speech?",
+            "next": "S1907-19-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-19"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "백정이 종로에서 정치 의견을 말하다",
+        "story_title_en": "A butcher spoke publicly in Jongno?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-19"
+      },
+      "S1907-19-part-3": {
+        "text": "관리와 백성이 함께 힘을 모아야 한다는 뜻을 밝혔고, 사람들이 박수를 보냈다고 전하오. 그 자리에서는 개혁 요구도 모였지요. 내가 바로 곁에서 들은 말인 양 한 글자씩 흉내 내기보다는 그 뜻을 전하고 싶소. 신분을 따져 입을 막던 사람들 앞에 함께 나라를 걱정할 사람이 서 있다는 것, 그 사실 자체가 듣는 이에게 질문을 던졌을 것이라고 생각하오.",
+        "text_en": "He called for officials and people to work together, and the account describes applause. Reform demands were also gathered at the meeting. Rather than recite words as though I heard them beside him, I want to convey their meaning. A person excluded by status stood there as someone concerned for the country; that alone could challenge his listeners.",
+        "year": "1898년 10월 29일",
+        "event_date": {
+          "label": "1898년 10월 29일",
+          "start": "1898-10-29",
+          "end": "1898-10-29",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 관민공동회, 박성춘 연설과 헌의 6조",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_120_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "그 뒤 차별이 없어졌소?",
+            "label_en": "Did discrimination disappear afterwards?",
+            "next": "S1907-19-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-19-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "백정이 종로에서 정치 의견을 말하다",
+        "story_title_en": "A butcher spoke publicly in Jongno?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-19"
+      },
+      "S1907-19-part-4": {
+        "text": "연설 한 번으로 사람들의 대접이 모두 달라졌다고 할 수는 없소. 한 자리에서 박수를 받는 것과 매일의 생활에서 동등하게 대우받는 것은 다른 문제이지요. 그래서 나는 그날을 모든 일이 끝난 날로 기억하기보다, 다른 모습이 가능하다는 것을 드러낸 날로 생각하오. 종로를 걸을 때 가게와 전차만 보지 마시오. 이 길에서 누가 말하고 누가 그 말을 들었는지도 함께 떠올려 보시오.",
+        "text_en": "One speech cannot tell us that everyone’s treatment changed. Applause in a meeting is different from equality in everyday life. I think of the day as showing another possibility, not completing the work. Walking through Jongno, look beyond shops and trams: remember who spoke here, and who listened.",
+        "year": "1898년 10월 29일",
+        "event_date": {
+          "label": "1898년 10월 29일",
+          "start": "1898-10-29",
+          "end": "1898-10-29",
+          "precision": "day",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "우리역사넷: 관민공동회, 박성춘 연설과 헌의 6조",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_120_0020"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-19-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "백정이 종로에서 정치 의견을 말하다",
+        "story_title_en": "A butcher spoke publicly in Jongno?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-19"
+      },
+      "S1907-20-part-2": {
+        "text": "명신여학교와 진명여학교의 설립에는 순헌황귀비의 후원이 이어졌소. 학교는 배우겠다는 뜻만으로 문을 열 수 없지요. 집과 살림을 마련하고 꾸려 갈 뒷받침도 필요하오. 책을 파는 내 눈에는 아이가 책을 펼치는 장면이 먼저 보이지만, 그 장면 앞에는 학교를 세우고 지탱하려는 수고가 있는 셈이오. 배움의 기회가 늘어난다는 말을 그렇게 구체적으로 생각해 보게 되오.",
+        "text_en": "Imperial Consort Sunheon supported the establishment of Myeongsin and Jinmyeong. A school needs premises and sustained support, not only a desire to learn. As a bookseller, I picture a child opening a book, but work to establish and maintain the school comes before that moment. Opportunity rests on such practical arrangements.",
+        "year": "1906년 여학교 설립, 1907년의 변화",
+        "event_date": {
+          "label": "1906년 여학교 설립, 1907년의 변화",
+          "start": "1906",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국민족문화대백과: 명신여학교 태극기·현판·완문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0077591"
+          }
+        ],
+        "options": [
+          {
+            "label": "집에서는 어떤 이야기를 했을까?",
+            "label_en": "What might families have discussed?",
+            "next": "S1907-20-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-20"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "딸이 학교에 간다는 것",
+        "story_title_en": "Can girls attend school?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-20"
+      },
+      "S1907-20-part-3": {
+        "text": "딸이 학교에 가고 싶다고 말하는 집을 상상해 보시오. 무엇을 배우느냐고 궁금해하는 어른도, 집안일과 살림을 먼저 걱정하는 어른도 있을 법하지요. 이는 어느 학생 가족의 기록을 옮긴 것이 아니라 그 변화를 헤아리기 위한 가상의 장면이오. 학교 문이 생겼다는 사실과 한 아이가 매일 그 문을 드나들 수 있다는 사정은 서로 같지 않다는 말을 하고 싶은 것이오.",
+        "text_en": "Imagine a daughter asking to attend school. Adults might ask what she would learn, or worry about household duties and expenses. This is an illustrative family, not a documented student’s story. The existence of a school and an individual child’s ability to attend every day are different questions.",
+        "year": "1906년 여학교 설립, 1907년의 변화",
+        "event_date": {
+          "label": "1906년 여학교 설립, 1907년의 변화",
+          "start": "1906",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국민족문화대백과: 명신여학교 태극기·현판·완문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0077591"
+          }
+        ],
+        "options": [
+          {
+            "label": "책방 주인에게도 특별한 변화요?",
+            "label_en": "Does it mean something special to a bookseller?",
+            "next": "S1907-20-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-20-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "딸이 학교에 간다는 것",
+        "story_title_en": "Can girls attend school?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-20"
+      },
+      "S1907-20-part-4": {
+        "text": "그렇지요. 책을 펼칠 사람이 늘어난다는 것은 내게 손님이 늘 수 있다는 뜻이면서, 글을 읽고 세상일을 판단할 사람이 늘 수 있다는 뜻이기도 하오. 하지만 모든 여자아이가 벌써 같은 기회를 얻었다고 말하지는 않겠소. 나는 새 학교의 이름을 들으면 기쁜 마음과 함께 아직 문밖에 있는 아이들도 생각하오. 어떤 아이에게 그 책 한 권이 닿을 수 있느냐가 남은 질문이지요.",
+        "text_en": "It means possible new readers and customers, and more people able to read and judge matters for themselves. Yet I would not say every girl now has the same opportunity. News of a new school makes me think of those still outside its doors too. Whether a particular child can reach that book remains the question.",
+        "year": "1906년 여학교 설립, 1907년의 변화",
+        "event_date": {
+          "label": "1906년 여학교 설립, 1907년의 변화",
+          "start": "1906",
+          "end": null,
+          "precision": "year",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "한국민족문화대백과: 명신여학교 태극기·현판·완문",
+            "url": "https://encykorea.aks.ac.kr/Article/E0077591"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-20-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "딸이 학교에 간다는 것",
+        "story_title_en": "Can girls attend school?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-20"
+      },
+      "S1907-22-part-2": {
+        "text": "물을 쓸 때마다 어디서 길어 오고 누가 옮길지를 생각해야 하지요. 우물에서 물을 구하는 일과 물을 나르는 수고는 집안 살림 가까이에 있소. 당신이 무거운 물통을 한 번 옮긴다고 상상해 보시오. 밥을 짓고 씻는 일이 그저 손만 뻗으면 되는 일은 아니라는 것을 느낄 것이오. 그래서 새 수도 소식은 멀리 있는 기계 이야기이면서 매일의 노동 이야기이기도 하오.",
+        "text_en": "Water raises the practical questions of where to obtain it and who must carry it. Wells and the labor of bringing water are close to household life. Imagine lifting a heavy container once. Cooking and washing require more than reaching out a hand. News of waterworks concerns daily labor as well as distant machinery.",
+        "year": "1906~1908년",
+        "event_date": {
+          "label": "1906~1908년",
+          "start": "1906",
+          "end": "1908-09-01",
+          "precision": "mixed",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울기록원: 뚝도아리수정수센터",
+            "url": "https://archives.seoul.go.kr/contents/jeongsujang"
+          }
+        ],
+        "options": [
+          {
+            "label": "뚝도에서는 무엇을 만들고 있소?",
+            "label_en": "What is being built at Ttukdo?",
+            "next": "S1907-22-part-3"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-22"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "물장수에게 들려온 정수장 공사 소식",
+        "story_title_en": "Are waterworks being built?",
+        "story_part": 2,
+        "story_parts": 4,
+        "parent_story_id": "S1907-22"
+      },
+      "S1907-22-part-3": {
+        "text": "지난해부터 정수장 공사를 한다는 소식이오. 물을 마련해 도시로 보내려면 시설과 물길을 함께 갖추어야 하니 공사한다는 말만으로 집안 살림이 곧 바뀌는 것은 아니겠지요. 나는 아직 오지 않은 날의 일을 다 아는 사람처럼 말하지 않겠소. 지금 우리가 서 있는 1907년에는 완성된 수도 생활보다 그 공사를 기다리고 궁금해하는 사람들을 떠올리는 편이 맞소.",
+        "text_en": "Construction of the waterworks began last year. Preparing water and conveying it to a city requires connected facilities, so the announcement of works does not instantly change household routines. I cannot speak as though I know a future already completed. Here in 1907, people awaiting and wondering about the project belong in our picture.",
+        "year": "1906~1908년",
+        "event_date": {
+          "label": "1906~1908년",
+          "start": "1906",
+          "end": "1908-09-01",
+          "precision": "mixed",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울기록원: 뚝도아리수정수센터",
+            "url": "https://archives.seoul.go.kr/contents/jeongsujang"
+          }
+        ],
+        "options": [
+          {
+            "label": "물장수에게는 반가운 소식이었을까?",
+            "label_en": "Would a water carrier welcome the news?",
+            "next": "S1907-22-part-4"
+          },
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-22-part-2"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "물장수에게 들려온 정수장 공사 소식",
+        "story_title_en": "Are waterworks being built?",
+        "story_part": 3,
+        "story_parts": 4,
+        "parent_story_id": "S1907-22"
+      },
+      "S1907-22-part-4": {
+        "text": "그 사람의 말을 남긴 기록 없이 내가 기뻤다거나 두려웠다고 단정할 수는 없소. 다만 물을 받는 집과 물을 나르는 사람은 같은 소식을 서로 다르게 들을 수도 있겠지요. 한쪽은 수고를 덜기를 바라고 다른 쪽은 앞으로 자기 일이 어떻게 될지 물을 수 있으니까요. 전차도 그랬듯 새 시설이 생길 때는 편리함을 얻는 사람과 일의 모양이 달라지는 사람을 함께 생각해 보시오.",
+        "text_en": "Without a record of a particular carrier’s words, I cannot prescribe joy or fear. A household receiving water and someone earning a living carrying it might hear the same news differently: less labor for one, questions about work for the other. As with trams, think about both convenience and changing livelihoods when a new system arrives.",
+        "year": "1906~1908년",
+        "event_date": {
+          "label": "1906~1908년",
+          "start": "1906",
+          "end": "1908-09-01",
+          "precision": "mixed",
+          "calendar": "gregorian"
+        },
+        "knowledge_mode": "fictional_retelling_not_eyewitness",
+        "sources": [
+          {
+            "title": "서울기록원: 뚝도아리수정수센터",
+            "url": "https://archives.seoul.go.kr/contents/jeongsujang"
+          }
+        ],
+        "options": [
+          {
+            "label": "앞 이야기로 돌아가시오.",
+            "label_en": "Back to the previous part.",
+            "next": "S1907-22-part-3"
+          },
+          {
+            "label": "이 주제의 다른 이야기",
+            "label_en": "More on this topic",
+            "next": "life"
+          },
+          {
+            "label": "다른 이야기를 들려주시오.",
+            "label_en": "Another story, please.",
+            "next": "hello"
+          },
+          {
+            "label": "다음에 뵙겠소.",
+            "label_en": "Goodbye.",
+            "action": "close"
+          }
+        ],
+        "story_title": "물장수에게 들려온 정수장 공사 소식",
+        "story_title_en": "Are waterworks being built?",
+        "story_part": 4,
+        "story_parts": 4,
+        "parent_story_id": "S1907-22"
+      }
+    },
+    "editorial_note": "16편을 4장면씩 확장. 사건은 출처에 근거하고 생활 비유·가정 장면은 창작임을 대사에서 구별. 1907년 이후 결과를 예고하지 않는다."
+  },
+  "storytellers": [
+    {
+      "building": "hoedong-seogwan-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_narrator_at_estimated_bookshop"
+    }
+  ]
+}

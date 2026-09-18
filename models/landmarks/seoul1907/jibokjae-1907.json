@@ -1,0 +1,73 @@
+{
+  "model_id": "jibokjae-1907-concept-v1",
+  "feature_id": "jibokjae-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1891,
+  "valid_to": null,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1891,
+      "end_year": null,
+      "status": "documented_rebuild_or_relocation"
+    },
+    "depiction": {
+      "start_year": 1891,
+      "end_year": null,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://sillok.history.go.kr/id/kza_12807013_001"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "jibokjae-1907",
+    "category": "궁궐",
+    "scene_year": 1907,
+    "display_model": "landmark_1907",
+    "landmark_kind": "library",
+    "symbol_size_m": [
+      46,
+      12,
+      26
+    ],
+    "display_yaw_deg": 3.735,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        720,
+        1504
+      ],
+      "anchor": "structure_center",
+      "method": "estimated_precinct_position",
+      "note": "1891년 경복궁으로 옮겨 지은 고종의 서재. 중국식 벽돌 측벽의 집옥재와 서쪽 팔우정·동쪽 협길당을 단순화했다. 원도 북부 전각군 안의 추정 위치이며 개별 건물 식별은 확정하지 않았다."
+    },
+    "size_status": "estimated_not_measured",
+    "position_status": "estimated_precinct_position",
+    "model_note": "1891년 경복궁으로 옮겨 지은 고종의 서재. 중국식 벽돌 측벽의 집옥재와 서쪽 팔우정·동쪽 협길당을 단순화했다. 원도 북부 전각군 안의 추정 위치이며 개별 건물 식별은 확정하지 않았다. 건물과 부속시설 치수·장식은 실측 복원이 아니다."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://sillok.history.go.kr/id/kza_12807013_001",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_precinct_position",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

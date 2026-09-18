@@ -1,3 +1,4 @@
+import {createMap1907Transform} from '../webapp/static/map1907_transform.js';
 import { readFileSync } from 'node:fs';
 import '../webapp/static/tps.js';
 import { buildWalkingRoutes, walkingRouteKey } from '../webapp/static/walking_simulation.js';
@@ -10,8 +11,14 @@ if (data.source_sha256 !== experiment.input_sha256) throw Error('NPC routes and 
 const cache = new Map();
 
 export function npcWorld(alignment = 'mountains') {
-  if (!['mountains', 'base'].includes(alignment)) throw Error('Unknown map alignment');
+  if (!['mountains', 'base', 'seoul1907'].includes(alignment)) throw Error('Unknown map alignment');
   if (cache.has(alignment)) return cache.get(alignment);
+  if(alignment==='seoul1907'){
+    const config=read('../gis/control_points/seoul1907.json'),data1907=read('../gis/roads/seoul1907_walking_routes.json');
+    if(data1907.source_sha256!==config.image_sha256)throw Error('1907 routes and map source do not match');
+    const transform=createMap1907Transform(config,manifest.bounds_3857),routes=buildWalkingRoutes(data1907,transform.sourceXZ);
+    const world={routes,routeKey:walkingRouteKey(routes)};cache.set(alignment,world);return world;
+  }
   const R = 6378137, project = (lon, lat) => [R * lon * Math.PI / 180, R * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360))];
   const anchors = [...experiment.landmarks, ...experiment.suggested_anchors];
   const warp = globalThis.DoseongWarp.fitTerrainTPS(anchors.map(p => p.pixel), anchors.map(p => project(p.lon, p.lat)), alignment === 'base' ? null : experiment.terrain_alignment);

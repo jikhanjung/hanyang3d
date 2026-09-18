@@ -58,6 +58,20 @@ def terrain3d(request, canvas_only=False):
     })
 
 
+@require_safe
+@ensure_csrf_cookie
+def seoul1907(request):
+    from .economy import catalog
+    config = json.loads((settings.BASE_DIR / 'gis/control_points/seoul1907.json').read_text())
+    if settings.CONTENT_SOURCE == 'database':
+        from .content import load_buildings
+        buildings = load_buildings(scene_year=1907)
+    else:
+        buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1907_landmarks.json').read_text())
+    infrastructure = json.loads((settings.BASE_DIR / 'gis/walls/seoul1907_infrastructure.json').read_text())
+    return render(request, 'seoul1907.html', {'npcs': localize(catalog(), request.lang), 'people1907': localize(json.loads((settings.BASE_DIR / 'gis/characters/seoul1907.json').read_text()), request.lang), 'trams1907': json.loads((settings.BASE_DIR / 'gis/transport/seoul1907_trams.json').read_text()), 'walking1907': json.loads((settings.BASE_DIR / 'gis/roads/seoul1907_walking_routes.json').read_text()), 'multiplayer_url': settings.MULTIPLAYER_URL, 'walk_world_version': settings.WALK_WORLD_VERSION, 'infrastructure': infrastructure, 'map': config, 'buildings': localize(buildings, request.lang), 'app_version': settings.APP_VERSION})
+
+
 def serve_resource(request, resource, immutable=False):
     if resource not in public_resource_paths():
         raise Http404

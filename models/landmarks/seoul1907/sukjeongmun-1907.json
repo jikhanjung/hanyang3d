@@ -1,0 +1,77 @@
+{
+  "model_id": "sukjeongmun-1907-concept-v1",
+  "feature_id": "sukjeongmun-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": null,
+  "valid_to": 1976,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1396,
+      "end_year": null,
+      "status": "gate_site_history_not_date_of_surviving_stonework"
+    },
+    "depiction": {
+      "start_year": null,
+      "end_year": 1976,
+      "reference_year": 1907,
+      "status": "inferred_roofless_form"
+    },
+    "sources": [
+      "https://seoulcitywall.seoul.go.kr/wallcourse/1.do",
+      "https://encykorea.aks.ac.kr/Article/E0031852"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "sukjeongmun-1907",
+    "category": "성문",
+    "scene_year": 1907,
+    "display_model": "landmark_1907",
+    "landmark_kind": "city_gate",
+    "gate_identity": "sukjeongmun",
+    "gate_tiers": 0,
+    "symbol_size_m": [
+      14,
+      6.5,
+      8
+    ],
+    "display_yaw_deg": 3.735,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1388,
+        1120
+      ],
+      "anchor": "structure_center",
+      "method": "manual_map_reading",
+      "note": "원도 백악 동쪽 성곽의 숙정문 표기 부근. 문루 없이 석축 홍예만 표현하며 세부 위치·치수 추정."
+    },
+    "position_status": "approximate_map_reading",
+    "size_status": "estimated_not_measured",
+    "model_note": "북쪽 숙정문을 문루 없는 홍예 석축으로 표현했다. 1976년 새로 세운 현재 문루를 1907년 장면에 넣지 않는다. 원도 표기와 일제강점기 문루 없는 사진 설명을 참고한 추정 모형."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://seoulcitywall.seoul.go.kr/wallcourse/1.do",
+    "https://seoulcitywall.seoul.go.kr/content/8.do",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_map_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

@@ -78,6 +78,11 @@ try {
   assert.equal(bPoses.find(p => p.id === a.sessionId).x, 1);
   a.send('pose', { x: 8, z: 9, yaw: 2 });
   await wait(() => bPoses.some(p => p.id === a.sessionId && p.x === 8), 'movement must arrive');
+  const period = await client.joinOrCreate('hanyang_walk', withTicket({...options,alignment:'seoul1907',routeKey:npcWorld('seoul1907').routeKey,name:'경성 검사'}));rooms.push(period);
+  let periodNpcs;period.onMessage('npcs',s=>periodNpcs=s);period.onMessage('walkers',()=>{});
+  assert.notEqual(period.roomId,a.roomId);
+  await wait(()=>periodNpcs?.npcs.length===128,'1907 NPC snapshot');
+  assert.ok(periodNpcs.npcs.every(p=>p[0].includes('1907')));
   // A different map version no longer opens its own room; only the map alignment separates spaces.
   const sameSpace = await client.joinOrCreate('hanyang_walk', withTicket({ ...options, mapVersion: 'v9.9.9', name: '다른판' })); rooms.push(sameSpace);
   assert.equal(sameSpace.roomId, a.roomId);

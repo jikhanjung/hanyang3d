@@ -1,0 +1,83 @@
+{
+  "model_id": "injeongjeon-1907-concept-v1",
+  "feature_id": "injeongjeon-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1804,
+  "valid_to": null,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1804,
+      "end_year": null,
+      "status": "documented"
+    },
+    "depiction": {
+      "start_year": 1804,
+      "end_year": null,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=161&callmode=admin&catimage=&eclang=ko&start=26&um=s"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "injeongjeon-1907",
+    "category": "궁궐",
+    "scene_year": 1907,
+    "display_model": "throne_hall",
+    "symbol_size_m": [
+      90,
+      22,
+      100
+    ],
+    "display_yaw_deg": 3.735,
+    "throne_hall": {
+      "bays": [
+        5,
+        4
+      ],
+      "hall_m": [
+        30,
+        22
+      ],
+      "roof_tiers": 2,
+      "terrace_tiers": 2
+    },
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1370,
+        1785
+      ],
+      "anchor": "hall_center",
+      "method": "manual_map_reading",
+      "note": "정규화한 최신경성전도의 인정전 표기 옆 전각 기호를 육안 판독한 추정 중심. 원도 자체의 축척·묘사 오차 포함."
+    },
+    "size_status": "estimated_not_measured",
+    "model_note": "5×4칸, 지붕 2단. 전각·조정 치수, 회랑과 문은 실측 복원이 아닌 단순화한 추정값."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=161&callmode=admin&catimage=&eclang=ko&start=26&um=s",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "approximate_map_reading",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

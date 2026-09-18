@@ -1,0 +1,73 @@
+{
+  "model_id": "jungmyeongjeon-1907-concept-v1",
+  "feature_id": "jungmyeongjeon-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": 1901,
+  "valid_to": 1925,
+  "temporal_status": {
+    "existence": {
+      "start_year": 1901,
+      "end_year": null,
+      "status": "documented_rebuild_or_relocation"
+    },
+    "depiction": {
+      "start_year": 1901,
+      "end_year": 1925,
+      "reference_year": 1907,
+      "status": "simplified_period_model"
+    },
+    "sources": [
+      "https://dh.aks.ac.kr/sillokwiki/index.php/중명전(重明殿)"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "jungmyeongjeon-1907",
+    "category": "궁궐",
+    "scene_year": 1907,
+    "display_model": "landmark_1907",
+    "landmark_kind": "western_library",
+    "symbol_size_m": [
+      30,
+      13,
+      23
+    ],
+    "display_yaw_deg": -35,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        505,
+        2395
+      ],
+      "anchor": "structure_center",
+      "method": "estimated_precinct_position",
+      "note": "원도 漱玉軒(수옥헌) 표시와 미국 영사관 서쪽 구역을 참고한 추정 위치. 1901년 재건 후 고종의 거처·집무 공간으로 사용된 이층 벽돌 건물. 1905년 을사늑약의 현장. 1925년 화재 이전 외형을 개념 표현."
+    },
+    "size_status": "estimated_not_measured",
+    "position_status": "estimated_precinct_position",
+    "model_note": "원도 漱玉軒(수옥헌) 표시와 미국 영사관 서쪽 구역을 참고한 추정 위치. 1901년 재건 후 고종의 거처·집무 공간으로 사용된 이층 벽돌 건물. 1905년 을사늑약의 현장. 1925년 화재 이전 외형을 개념 표현. 건물과 부속시설 치수·장식은 실측 복원이 아니다."
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://dh.aks.ac.kr/sillokwiki/index.php/중명전(重明殿)",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_precinct_position",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}

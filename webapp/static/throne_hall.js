@@ -101,6 +101,6 @@ export function createThroneHall(feature,w,h,d){
   roof('upper-roof',0,hz,hallW*.8+7,hallD*.75+6,ub+uH+.5,h*.2,.8);
  }
  mergeByMaterial(model);
- model.userData={conceptual:true,roofTiers,terraceTiers,bays:[cols,rows],hallM:[hallW,hallD],parts,footprint:[w,d],period:feature.temporal};
+ model.userData={conceptual:true,roofTiers,terraceTiers,bays:[cols,rows],hallM:[hallW,hallD],parts,footprint:[w,d],hallCenterZ:hz,period:feature.temporal};
  return model;
 }

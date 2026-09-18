@@ -51,7 +51,13 @@ def validate_map_config(value):
             raise ValidationError('원도 위치에는 두 개의 pixel 좌표가 필요합니다.')
         from django.conf import settings
         import json
-        expected = json.loads((settings.BASE_DIR / 'gis/control_points/doseong_modern_preview.json').read_text())['input_sha256']
+        year = value.get('scene_year', 1750)
+        if year not in (1750, 1907):
+            raise ValidationError('지원하지 않는 지도 연도입니다.')
+        filename, hash_key, asset = ('seoul1907.json', 'image_sha256', 'asset-0024') if year == 1907 else ('doseong_modern_preview.json', 'input_sha256', 'asset-0001')
+        if year == 1907 and position.get('source_asset') != asset:
+            raise ValidationError('연도에 맞는 원도 자료를 선택해야 합니다.')
+        expected = json.loads((settings.BASE_DIR / 'gis/control_points' / filename).read_text())[hash_key]
         if position.get('source_sha256') != expected:
             raise ValidationError('원도 위치의 해시가 현재 지도와 다릅니다.')
 

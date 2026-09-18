@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {buildWalkingRoutes,createWalkingSimulation,sampleWalkingRoute,walkingRouteKey} from './walking_simulation.js';
 
-export function createPedestrians(data,sourceSurface){
+export function createPedestrians(data,sourceSurface,{era=1750,footHeight=null}={}){
  const group=new THREE.Group();group.name='walking-people';
  const routes=buildWalkingRoutes(data,sourceSurface),simulation=createWalkingSimulation(routes);
  // Alternating costume variants are illustrative, not a historical population estimate.
@@ -23,6 +23,11 @@ export function createPedestrians(data,sourceSurface){
  collars.forEach((m,i)=>m.name='pedestrian-collar-'+i);ties.forEach((m,i)=>m.name='pedestrian-goreum-'+i);
  const jackets=['#ded8c5','#c8c4b8','#b7c0bc','#d7c6aa','#b8b0a2'],skirts=['#707d87','#927269','#7f8873','#a28c6b','#777185'];
  walkers.forEach((w,i)=>{const variant=Math.floor(w.seed/2)%jackets.length,color=new THREE.Color(jackets[variant]);body.setColorAt(i,color);arms.forEach(m=>m.setColorAt(i,color));legs.forEach(m=>m.setColorAt(i,new THREE.Color('#c8c2b1')));skirt.setColorAt(i,new THREE.Color(skirts[variant]));ties.forEach(m=>m.setColorAt(i,new THREE.Color(w.costume==='female'?'#70564b':'#9b8c76')))});
+ const late=era===1907;
+ const coat=late?make(new THREE.CylinderGeometry(.25,.32,.82,8),0xe7e3d6):null;
+ const brim=late?make(new THREE.CylinderGeometry(.35,.35,.025,12),0x282b2c):null;
+ const crown=late?make(new THREE.CylinderGeometry(.13,.16,.23,10),0x282b2c):null;
+ if(late){coat.name='1907-durumagi';brim.name='1907-gat-brim';crown.name='1907-gat-crown';walkers.forEach((w,i)=>{const c=new THREE.Color(['#e9e6db','#d9d7cb','#c5c8be'][i%3]);body.setColorAt(i,c);arms.forEach(m=>m.setColorAt(i,c));legs.forEach(m=>m.setColorAt(i,c));skirt.setColorAt(i,new THREE.Color(['#deddd3','#c0c2b7','#a5afb1'][i%3]))})}
  const dummy=new THREE.Object3D(),rotation=new THREE.Quaternion(),limbRotation=new THREE.Quaternion(),axis=new THREE.Vector3(1,0,0);let mapVisible=true,roadVisible=true,exaggeration=1;
  const visibleHeight=p=>Math.max(mapVisible?p.height:p.terrainHeight,roadVisible?p.roadHeight:-Infinity);
  const timeline=()=>network?network.elapsed+Math.min(.2,Math.max(0,(performance.now()-receivedAt)/1000)):simulation.elapsed;
@@ -31,20 +36,25 @@ export function createPedestrians(data,sourceSurface){
   const first=!network;network=snapshot;receivedAt=performance.now();
   simulation.seek(snapshot.elapsed);
   for(const pose of snapshot.npcs){const w=byId.get(pose[0]);if(!w)continue;w.target=pose;w.dodge=pose[5];if(Number.isFinite(pose[6]))w.phase=pose[6];if(Number.isFinite(pose[7]))w.speed=pose[7];if(first){w.position.x=pose[1];w.position.z=pose[2];w.yaw=pose[3];w.distance=pose[4]}}
+  if(first)vehicleOffsets.clear();
  }
  function disconnect(){if(network)simulation.seek(timeline());network=null;walkers.forEach(w=>{delete w.target})}
+ let vehicleAvoider=null;const vehicleOffsets=new Map();
  function update(dt=0){
+  for(const w of walkers){const o=vehicleOffsets.get(w.id);if(o){w.position.x-=o.x;w.position.z-=o.z}}
   if(network){
    const alpha=1-Math.exp(-15*Math.min(dt,.1));
    for(const w of walkers){const p=w.target;if(!p)continue;const a=Math.hypot(w.position.x-p[1],w.position.z-p[2])>10?1:alpha;w.position.x+=(p[1]-w.position.x)*a;w.position.z+=(p[2]-w.position.z)*a;w.yaw+=Math.atan2(Math.sin(p[3]-w.yaw),Math.cos(p[3]-w.yaw))*a;w.distance=p[4]}
   }else simulation.step(group.visible&&document.getElementById('walking3d').checked&&!document.hidden?dt:0,avoid?[avoid]:[]);
   const elapsed=timeline();
   walkers.forEach((w,i)=>{
-   const p=sampleWalkingRoute(w.route,w.distance);w.position.y=Math.max(visibleHeight(p.a),visibleHeight(p.b))*exaggeration+.04;
+   if(vehicleAvoider){const old=vehicleOffsets.get(w.id)??{x:0,z:0},o=vehicleAvoider(w.position,old,dt);vehicleOffsets.set(w.id,o);w.position.x+=o.x;w.position.z+=o.z}else vehicleOffsets.delete(w.id);
+   const p=sampleWalkingRoute(w.route,w.distance);w.position.y=(footHeight?footHeight(w.position.x,w.position.z):Math.max(visibleHeight(p.a),visibleHeight(p.b))*exaggeration)+.04;
    rotation.setFromAxisAngle(new THREE.Vector3(0,1,0),w.yaw);
    const swing=Math.sin(elapsed*w.speed*8+w.phase*8)*.45;
    function place(mesh,lx,ly,lz,angle=0,sx=1,sy=1,sz=1,roll=0){dummy.position.set(lx,ly,lz).applyQuaternion(rotation).add(w.position);limbRotation.setFromAxisAngle(axis,angle);dummy.quaternion.copy(rotation).multiply(limbRotation);if(roll)dummy.rotateZ(roll);dummy.scale.set(sx,sy,sz);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix)}
    const female=w.costume==='female';
+   if(late){const dressed=!female&&w.seed%3!==0?1:0;place(coat,0,.77,0,0,dressed,dressed,dressed);place(brim,0,1.72,0,0,dressed,dressed,dressed);place(crown,0,1.845,0,0,dressed,dressed,dressed)}
    place(body,0,female?1.24:1.075,0,0,1,female?.5:1,1);place(head,0,1.56,0);
    place(skirt,0,.68,0,0,female?1:0,female?1:0,female?1:0);
    place(knot,0,1.725,-.025,0,female?0:.8,female?0:1.1,female?0:.8);
@@ -68,7 +78,7 @@ export function createPedestrians(data,sourceSurface){
  const setRoadVisible=value=>{roadVisible=value;update()};
  const setHeight=value=>{exaggeration=value;update()},setMapVisible=value=>{mapVisible=value;update()};
  document.getElementById('people3d').onchange=e=>{group.visible=e.target.checked};
- return {group,routes,walkers,update,updateGround,setHeight,setMapVisible,setRoadVisible,setAvoidPoint,near,applySnapshot,disconnect,routeKey:walkingRouteKey(routes),get networkSnapshot(){return network},get elapsed(){return timeline()}};
+ return {setVehicleAvoider:fn=>{vehicleAvoider=fn},group,routes,walkers,update,updateGround,setHeight,setMapVisible,setRoadVisible,setAvoidPoint,near,applySnapshot,disconnect,routeKey:walkingRouteKey(routes),get networkSnapshot(){return network},get elapsed(){return timeline()}};
 }
 
 // Single non-instanced walker for the player's own character in walk mode.

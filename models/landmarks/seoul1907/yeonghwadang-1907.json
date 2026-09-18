@@ -1,0 +1,84 @@
+{
+  "model_id": "yeonghwadang-1907-concept-v1",
+  "feature_id": "yeonghwadang-1907",
+  "level": "L1",
+  "source_ids": [
+    "src-0029"
+  ],
+  "asset_ids": [
+    "asset-0024"
+  ],
+  "valid_from": null,
+  "valid_to": null,
+  "temporal_status": {
+    "existence": {
+      "start_year": null,
+      "end_year": null,
+      "status": "documented_history_unknown_exact_dates"
+    },
+    "depiction": {
+      "start_year": null,
+      "end_year": null,
+      "reference_year": 1907,
+      "status": "estimated_period_form"
+    },
+    "sources": [
+      "https://dh.aks.ac.kr/sillokwiki/index.php/영화당(暎花堂)"
+    ]
+  },
+  "units": "metres",
+  "axis_convention": "Three.js Y up; local +Z is front; display_yaw_deg rotates about Y",
+  "origin": "source_position.pixel anchors structure; anchorOffset/hallCenterZ corrects compound origin",
+  "crs": "EPSG:3857 affine to DEM-centered ground metres",
+  "tool_version": "landmarks1907.js / throne_hall.js / gate.js / palace.js concept v1",
+  "parameters": {
+    "id": "yeonghwadang-1907",
+    "scene_year": 1907,
+    "category": "궁궐",
+    "landmark_kind": "garden_pavilion",
+    "display_model": "landmark_1907",
+    "symbol_size_m": [
+      26,
+      8,
+      18
+    ],
+    "display_yaw_deg": 90,
+    "source_position": {
+      "source_asset": "asset-0024",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "pixel": [
+        1416,
+        1650
+      ],
+      "anchor": "structure_center",
+      "method": "estimated_region_on_source_map",
+      "note": "주합루 부근 후원 권역 추정. 원도 영화당 단독 기호 미확정."
+    },
+    "position_status": "estimated_not_surveyed",
+    "size_status": "estimated_not_measured",
+    "comparison_1750": {
+      "feature_id": "yeonghwadang",
+      "relationship": "surviving_place_or_structure",
+      "note": "시설·장소의 연속성과 건축 부재의 동일성을 구분한다.",
+      "reviewed_on": "2026-09-18"
+    },
+    "model_note": "자료의 건축 유형을 참고한 자체 제작 개념 모형. 위치·치수·부속 전각 배치는 추정이며 실측 복원이 아니다.",
+    "pavilion": {
+      "roof": "hip-gable",
+      "bays": 5,
+      "enclosed": true
+    }
+  },
+  "output_path": "runtime Three.js /1907/; no baked geometry",
+  "license_status": "Project-authored geometry; source-map attribution in src-0029; no external meshes or image textures copied",
+  "evidence_urls": [
+    "https://dh.aks.ac.kr/sillokwiki/index.php/영화당(暎花堂)",
+    "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+  ],
+  "uncertainty": {
+    "position": "estimated_not_surveyed",
+    "plan": "documented architectural type; dimensions and subsidiary structures estimated",
+    "height": "visualization estimate",
+    "appearance": "simplified, not a measured reconstruction"
+  }
+}
