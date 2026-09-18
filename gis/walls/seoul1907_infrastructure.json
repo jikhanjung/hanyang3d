@@ -4064,8 +4064,8 @@
         "name": "광통교",
         "name_en": "Gwangtonggyo",
         "pixel": [
-          935,
-          2300
+          990,
+          2307
         ],
         "width_m": 12,
         "rails": true,
@@ -4083,7 +4083,7 @@
           },
           "note": "광통교 1910 도로에 묻힘, 수표교 1959 이전은 묘사 종료이며 시설 자체 소멸로 보지 않음. 나머지 건립·철거년 미확정."
         },
-        "note": "원도의 다리 기호와 지명에 맞춘 추정 위치. 석재 상판·교각·난간의 세부 형태와 폭은 개념값."
+        "note": "1907년 원도에서 종로 보신각 사거리 남쪽의 남대문로가 청계천을 건너는 교량 구간 [990,2307]으로 재판독했다. 종전 [935,2300]은 서쪽의 다른 횡단 틈을 잘못 선택한 위치다. 현대 복원 광통교는 원위치보다 상류로 155m 옮겨졌으므로 현대 복원 좌표를 사용하지 않는다. 석재 상판·교각·난간과 폭은 개념 표현. 광교(廣橋)는 이 옛 다리의 다른 이름이며, 현대 광교와 이전 복원된 광통교 두 다리를 1907년에 따로 놓지 않는다."
       },
       {
         "id": "jangtong-1907",
@@ -4219,7 +4219,9 @@
     "sources": [
       "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001",
       "https://culture.seoul.go.kr/culture/bbs/B0000000/view.do?menuNo=200050&nttId=2156",
-      "https://dh.aks.ac.kr/~heritage/wiki/index.php/수표교"
+      "https://dh.aks.ac.kr/~heritage/wiki/index.php/수표교",
+      "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1159&seq=20210701141532688&sso=ok",
+      "https://encykorea.aks.ac.kr/Article/E0005063"
     ],
     "temporal": {
       "reference_year": 1907

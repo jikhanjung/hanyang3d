@@ -16,6 +16,10 @@
 
 ## 작업 기록
 
+- [186 — 1907년 광통교 원위치 교정](20260918_186_gwangtong_original_location.md)
+
+- [185 — 1907년 후속 건물·이야기 후보](20260918_185_next_buildings_and_stories.md)
+
 - [184 — AKS 모델·PDF 확보와 NAS 복사](20260918_184_aks_reference_archive_nas.md)
 - [183 — 1907년 전차 차고·단성사·손탁호텔](20260918_183_1907_depot_theatre_hotel.md)
 
