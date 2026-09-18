@@ -5013,6 +5013,213 @@
           }
         ]
       }
+    },
+    {
+      "id": "dongdaemun-depot-1907",
+      "name": "1907년 동대문 전차 차고·발전소",
+      "name_en": "Dongdaemun Tram Depot and Powerhouse (1907)",
+      "category": "교통·산업",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "tram_depot",
+      "symbol_size_m": [
+        92,
+        23,
+        42
+      ],
+      "display_yaw_deg": 180,
+      "lod_distance_m": 1700,
+      "position_status": "estimated",
+      "size_status": "estimated_not_measured",
+      "model_note": "직접 제작한 추정 개념 모형. 과거 사진의 저해상도 형태와 문헌을 참고했으며 사진·외부 GLB를 복제한 자산이 아님.",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          2080,
+          2327
+        ],
+        "anchor": "compound_center",
+        "method": "estimated_within_map_precinct",
+        "note": "원도 흥인지문 서남쪽 전기회사 표기가 있는 구획과 큰 대지를 참고. 개별 차고·발전소의 중심·규모·선로는 추정."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1899,
+          "end_year": null,
+          "status": "documented_institution_or_building_start"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_period_model"
+        },
+        "sources": [
+          "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+        ],
+        "note": "1899년 시설 개설 · 1907년 배치·증개축 추정; 시설 개설과 개별 구조물 존속을 구분하며 추정 모형은 1907년 장면용."
+      },
+      "info": {
+        "summary": "1899년 전차 개통 당시 동대문 서남쪽에 마련한 차고와 발전 시설을 함께 표현했습니다. 종로의 한성전기회사 사옥과는 다른 시설입니다. 개통식 사진에서 보이는 긴 낮은 지붕과 기둥, 인근 굴뚝을 참고해 차고·발전소를 단순화했습니다. 전기를 만들고 차량을 보관하는 공간을 통해 당시 전차가 도시에서 어떻게 움직였는지 살펴볼 수 있습니다. 1907년까지의 증개축과 정확한 배치는 미확정입니다. 마당의 두 선로는 기능을 설명하는 추정 표현이며 현재 운행선에 연결한 실제 분기선은 아닙니다.",
+        "summary_en": "A conceptual depot and power facility southwest of Heunginjimun, distinct from the company office on Jongno. The long low shed and chimney refer to the 1899 opening photograph. The 1907 layout and alterations are unconfirmed. Two yard tracks illustrate the depot function; they are not a surveyed junction or connected to the animated route.",
+        "period": "1899년 시설 개설 · 1907년 배치·증개축 추정",
+        "period_en": "Facility opened 1899 · estimated 1907 layout",
+        "in_1750": "1750년에는 이 시설이 없었음.",
+        "in_1750_en": "This facility did not exist in 1750.",
+        "sources": [
+          {
+            "title": "서울역사박물관 — 동대문 차고 개통식 사진",
+            "title_en": "Seoul Museum of History — 1899 tram opening",
+            "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dansungsa-1907",
+      "name": "1907년 단성사",
+      "name_en": "Dansungsa Theatre (1907)",
+      "category": "문화·숙박",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "early_theatre",
+      "symbol_size_m": [
+        24,
+        11,
+        30
+      ],
+      "display_yaw_deg": 0,
+      "lod_distance_m": 1700,
+      "position_status": "estimated",
+      "size_status": "estimated_not_measured",
+      "model_note": "직접 제작한 추정 개념 모형. 과거 사진의 저해상도 형태와 문헌을 참고했으며 사진·외부 GLB를 복제한 자산이 아님.",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1378,
+          2218
+        ],
+        "anchor": "building_center",
+        "method": "estimated_within_map_precinct",
+        "note": "종로3가 북쪽, 돈화문 방향 길 동쪽 권역에 추정 배치. 단성사 개별 필지·전각을 원도에서 확정 판독한 좌표는 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1907,
+          "end_year": null,
+          "status": "documented_institution_or_building_start"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_period_model"
+        },
+        "sources": [
+          "https://theme.archives.go.kr/next/koreaOfRecord/Dansungsa.do"
+        ],
+        "note": "1907년 6월 개장 · 초기 공연장 모습 추정; 시설 개설과 개별 구조물 존속을 구분하며 추정 모형은 1907년 장면용."
+      },
+      "info": {
+        "summary": "1907년 6월 문을 연 초기 단성사는 창과 무용 등을 공연하던 목조 2층 극장이었습니다. 자선공연으로 야학과 고아원 등 어려운 이들을 돕기도 했습니다. 지금의 영화관과 달리 여러 공연을 함께 볼 수 있는 장소였으며, 1918년 이후 상설 영화관으로 바뀐 모습과 구분했습니다. 모형은 목조 틀·두 층의 창호·큰 지붕으로 공연장 성격을 표현한 추정형입니다. 1907년 외관 사진과 정확한 필지는 아직 확정하지 못했으며, 간판 서체·창문 수·치수도 복원값이 아닙니다.",
+        "summary_en": "Opened in June 1907 as a two-storey timber performance hall for singing, dancing and charitable shows. This concept predates its conversion to a permanent cinema in 1918. The facade, sign, window arrangement, dimensions and exact plot are estimates, not a reconstruction from a confirmed 1907 photograph.",
+        "period": "1907년 6월 개장 · 초기 공연장 모습 추정",
+        "period_en": "Opened June 1907 · estimated early performance hall",
+        "in_1750": "1750년에는 이 시설이 없었음.",
+        "in_1750_en": "This facility did not exist in 1750.",
+        "sources": [
+          {
+            "title": "국가기록원 — 단성사",
+            "title_en": "National Archives of Korea — Dansungsa",
+            "url": "https://theme.archives.go.kr/next/koreaOfRecord/Dansungsa.do"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sontag-hotel-1907",
+      "name": "1907년 손탁호텔",
+      "name_en": "Sontag Hotel (1907)",
+      "category": "문화·숙박",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "sontag_hotel",
+      "symbol_size_m": [
+        38,
+        14,
+        27
+      ],
+      "display_yaw_deg": 135,
+      "lod_distance_m": 1700,
+      "position_status": "estimated",
+      "size_status": "estimated_not_measured",
+      "model_note": "직접 제작한 추정 개념 모형. 과거 사진의 저해상도 형태와 문헌을 참고했으며 사진·외부 GLB를 복제한 자산이 아님.",
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          428,
+          2376
+        ],
+        "anchor": "building_center",
+        "method": "estimated_within_map_precinct",
+        "note": "정동 러시아 공관 남서쪽·정동길 서측, 현 이화여고 손탁호텔 터 관계를 참고한 구역 내 추정 배치. 개별 호텔 기호 확정 판독 아님."
+      },
+      "temporal": {
+        "existence": {
+          "start_year": 1902,
+          "end_year": 1922,
+          "status": "documented_institution_or_building_start"
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "single_year_estimated_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0030583",
+          "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_046_0040_0020_0030_0020_0020"
+        ],
+        "note": "1902년 신축 · 1917년 이화학당 매입 · 1922년 철거; 시설 개설과 개별 구조물 존속을 구분하며 추정 모형은 1907년 장면용."
+      },
+      "info": {
+        "summary": "1902년에 신축한 정동의 2층 서양식 호텔입니다. 외국 귀빈을 접대하는 영빈관 성격을 지녔고, 객실과 식당 등은 정동의 외교·사교 생활과 연결됩니다. 회색 벽돌 건물이라는 기록과 옛 사진의 아치형 창·중앙 발코니·현관 계단을 참고했습니다. 사진의 촬영연도가 확정되지 않아 1907년 외관의 정확한 복원으로 보지는 않습니다. 후대 이화학당 기숙사와 프라이홀은 구분했습니다. 건물 치수·색채·필지 내 위치는 추정입니다.",
+        "summary_en": "A two-storey Western-style hotel rebuilt in Jeongdong in 1902, serving foreign guests and diplomatic social life. Grey masonry, arched windows and a central balcony refer to historical descriptions and an undated photograph. This is not a verified reconstruction of the exact 1907 facade or plot. Later dormitory use and Frey Hall are distinct phases.",
+        "period": "1902년 신축 · 1917년 이화학당 매입 · 1922년 철거",
+        "period_en": "Rebuilt 1902 · purchased by Ewha 1917 · demolished 1922",
+        "in_1750": "1750년에는 이 시설이 없었음.",
+        "in_1750_en": "This facility did not exist in 1750.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과 — 손탁호텔·옛 사진",
+            "title_en": "AKS — Sontag Hotel and historical photograph",
+            "url": "https://encykorea.aks.ac.kr/Article/E0030583"
+          },
+          {
+            "title": "우리역사넷 — 근대 건축",
+            "title_en": "National Institute of Korean History — Modern architecture",
+            "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_046_0040_0020_0030_0020_0020"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
     }
   ]
 }

@@ -16,6 +16,9 @@
 
 ## 작업 기록
 
+- [184 — AKS 모델·PDF 확보와 NAS 복사](20260918_184_aks_reference_archive_nas.md)
+- [183 — 1907년 전차 차고·단성사·손탁호텔](20260918_183_1907_depot_theatre_hotel.md)
+
 - [182 — v0.5.17 배포](20260918_182_deploy_v0517.md)
 
 - [181 — 1907년 기념비전·팔각정·돈덕전·정관헌 추가](20260918_181_1907_pavilions_and_guest_hall.md)

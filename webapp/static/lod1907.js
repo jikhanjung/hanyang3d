@@ -10,7 +10,15 @@ export function prepareLandmarkLod(model){
  const box=(x,y,z,a,b,c,mat='wall')=>add(new THREE.BoxGeometry(a,b,c),x,y,z,mat);
  const roof=(x,y,z,a,b,rise=3)=>add(hipGableRoof(a,b,rise,.3,.55),x,y,z,'roof');
  const kind=f.landmark_kind;
- if(kind==='octagonal_bandstand'){
+ if(kind==='tram_depot'){
+  box(0,.08,0,w,.16,d,'stone');
+  for(let i=0;i<=5;i++)for(const side of [-1,1])box(-w*.15+(i/5-.5)*w*.64,2.7,-d*.12+side*d*.22,.5,5,.5);
+  roof(-w*.15,5.3,-d*.12,w*.64+2,d*.48+2,2.3);box(w*.34,3.2,-d*.1,w*.25,6.4,d*.56,'brick');roof(w*.34,6.4,-d*.1,w*.28,d*.61,2.4);add(new THREE.CylinderGeometry(.8,1.35,20.5,8),w*.43,11.4,-d*.38,'brick');
+ }else if(kind==='early_theatre'){
+  box(0,3.8,0,w*.86,7.6,d*.84);roof(0,7.5,0,w*.98,d*.96,3.2);
+ }else if(kind==='sontag_hotel'){
+  box(0,5,-d*.05,w*.9,10,d*.73,'stone');roof(0,10,0,w,d*.88,2.8);box(0,5,d*.4,w*.24,.3,d*.17,'stone');
+ }else if(kind==='octagonal_bandstand'){
   add(new THREE.CylinderGeometry(w*.39+.6,w*.39+.9,.9,8),0,.45,0,'stone');
   for(let i=0;i<8;i++){const a=i*Math.PI/4;box(Math.sin(a)*w*.32,3,Math.cos(a)*w*.32,.45,4.5,.45)}
   add(new THREE.CylinderGeometry(.45,w*.465,2.3,8),0,6.4,0,'roof');

@@ -23,6 +23,7 @@ gis/georeferenced/**
 **/.env.*
 !deploy/host/.env.django.example
 # Keep excluded trees explicit: re-including a parent can also include descendants.
+data/models/
 data/maps/
 data/cadastral/
 data/terrain/

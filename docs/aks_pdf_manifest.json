@@ -1,0 +1,1399 @@
+{
+  "schema_version": 1,
+  "request_pause_seconds": 3,
+  "scope": "PDF links directly present in the two requested pages; research archive only",
+  "sources": [
+    {
+      "url": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+      "local_path": "data/texts/aks-hanyang/source-1.html",
+      "sha256": "bf9d45d15e6a8a9eea5d4d601a860d91e07fd87a53988502f90674aef6d05c8c"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+      "local_path": "data/texts/aks-hanyang/source-2.html",
+      "sha256": "1a89c40ed332300a16f76b53278556237d522337ed147bfed692642b2e7e4e54"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2022RFP.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2022RFP.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2022년 한양도성 타임머신 제안요청서"
+        }
+      ],
+      "status": "verified",
+      "bytes": 749946,
+      "sha256": "46e83e6e1d53d532b1521c1de862fc1efcc8dc31b6b2d6f5774762a617348de2",
+      "pages": 34,
+      "downloaded_at": "2026-09-18T10:52:49.323619+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2021PSL2-2-1.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2021PSL2-2-1.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2-2-1"
+        }
+      ],
+      "status": "verified",
+      "bytes": 39606158,
+      "sha256": "8dbcccebf8595df2bb49a62b4edcd05349f731eddaf4d0f35db4808f884c3f8b",
+      "pages": 17,
+      "downloaded_at": "2026-09-18T10:52:53.222822+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2021PSL2-2-3.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2021PSL2-2-3.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2-2-3"
+        }
+      ],
+      "status": "verified",
+      "bytes": 148912,
+      "sha256": "78d07844c15263e7529f3e6b1f017d9c332df9390ba43239c8d220a8511af86e",
+      "pages": 2,
+      "downloaded_at": "2026-09-18T10:52:56.295596+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2021PSL2-2-4.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2021PSL2-2-4.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2-2-4"
+        }
+      ],
+      "status": "verified",
+      "bytes": 411985,
+      "sha256": "b31e22956124925118f2bc4ac1a46e07144816487fd94fde34b7046970e7f733",
+      "pages": 4,
+      "downloaded_at": "2026-09-18T10:52:59.358522+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2021PSL2-2-5.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2021PSL2-2-5.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2-2-5"
+        }
+      ],
+      "status": "verified",
+      "bytes": 221303,
+      "sha256": "0eaa591ea02f3e270f3db5e80b77ff8e95c5e493f11fee3b1448ff1a72db42ed",
+      "pages": 6,
+      "downloaded_at": "2026-09-18T10:53:02.422722+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2021PSL2-2-6A.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2021PSL2-2-6A.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2-2-6A"
+        }
+      ],
+      "status": "verified",
+      "bytes": 5661591,
+      "sha256": "fcec5f658aaa242b139d06881cce354e0dc7264b7044ba1cffa686aaf3526d8d",
+      "pages": 12,
+      "downloaded_at": "2026-09-18T10:53:05.609042+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2021PSL2-2-6B.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2021PSL2-2-6B.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2-2-6B"
+        }
+      ],
+      "status": "verified",
+      "bytes": 7838457,
+      "sha256": "39fc20f060e7d6d887d60d9e193bfb852c71a7f327759706650a55b65aa369bb",
+      "pages": 18,
+      "downloaded_at": "2026-09-18T10:53:08.863844+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/~tutor/Documents/PDF/2022HT/2021PSL2-2-6C.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/~tutor/Documents/PDF/2022HT/2021PSL2-2-6C.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/Edu/wiki/index.php/한양도성_타임머신_2022",
+          "label": "2-2-6C"
+        }
+      ],
+      "status": "verified",
+      "bytes": 6426386,
+      "sha256": "7e7ea2e17018f3d61aa301196c9bc55ef8fe6feea1bdd48c65db70fd57ea4a70",
+      "pages": 16,
+      "downloaded_at": "2026-09-18T10:53:12.133954+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2007)_고궁의_보물.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2007)_고궁의_보물.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『고궁의 보물』, 국립고궁박물관, 2007."
+        }
+      ],
+      "status": "verified",
+      "bytes": 66781238,
+      "sha256": "73f00550ad2a57f64b6102021f18f7f5779e96817a06128318e5a509d8399534",
+      "pages": 121,
+      "downloaded_at": "2026-09-18T10:53:16.639230+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립문화재연구소(2013)_국립문화재연구소_소장_조선왕실_건축도면.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립문화재연구소(2013)_국립문화재연구소_소장_조선왕실_건축도면.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『국립문화재연구소 소장 조선왕실 건축도면』, 국립문화재연구소, 2013."
+        }
+      ],
+      "status": "verified",
+      "bytes": 272512783,
+      "sha256": "75dab2258b87a724fd28c96be7e3c2a4ee2695ea3903ca48908dd8c887f9589d",
+      "pages": 297,
+      "downloaded_at": "2026-09-18T10:53:25.374939+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2015)_궁궐현판_고증조사.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2015)_궁궐현판_고증조사.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『궁궐현판 고증조사』, 문화재청, 2015."
+        }
+      ],
+      "status": "verified",
+      "bytes": 138182613,
+      "sha256": "ab3a6778a95fba1800d9fb27a8d41086b035978fb4d51e8e408ab720492ed110",
+      "pages": 356,
+      "downloaded_at": "2026-09-18T10:53:31.467180+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1997)_양노연의례,_어연의례_궁중문화재현행사_고증연구총서2.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1997)_양노연의례,_어연의례_궁중문화재현행사_고증연구총서2.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『궁중문화재현행사 고증연구총서2 - 양노연의례, 어연의례』, 문화재관리국, 1997."
+        }
+      ],
+      "status": "verified",
+      "bytes": 267664520,
+      "sha256": "d75557bb0a580f5231b2b161af824612c8493f9ea84ca9ea5d8ae9f8fe28dfa5",
+      "pages": 488,
+      "downloaded_at": "2026-09-18T10:53:40.120295+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1999)_동궐도.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1999)_동궐도.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『동궐도』, 문화재관리국, 1999."
+        }
+      ],
+      "status": "verified",
+      "bytes": 241657923,
+      "sha256": "6ff3ea2c448ad3e9a09995811f26e2c6c8216c49f8d9851eb022f4e2d882e15f",
+      "pages": 184,
+      "downloaded_at": "2026-09-18T10:53:48.383833+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2019)_문예군주를_꿈군_왕세자,_효명.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2019)_문예군주를_꿈군_왕세자,_효명.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『문예군주를 꿈군 왕세자, 효명』, 국립고궁박물관, 2019."
+        }
+      ],
+      "status": "verified",
+      "bytes": 120743452,
+      "sha256": "ddb534a0f265a7ffa5e8110d9c75e5e13a4a924e82efb7aebe890311c5fb145e",
+      "pages": 233,
+      "downloaded_at": "2026-09-18T10:53:53.953234+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2017)_조선_왕실_가족의_보금자리_이야기.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2017)_조선_왕실_가족의_보금자리_이야기.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『조선 왕실 가족의 보금자리 이야기』, 국립고궁박물관, 2017."
+        }
+      ],
+      "status": "verified",
+      "bytes": 54178395,
+      "sha256": "0a5d60bcca600c1ada67e6a68ccf64f76b6209b09c4c4f07249726ccbaf6c894",
+      "pages": 368,
+      "downloaded_at": "2026-09-18T10:53:58.242697+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2013)_조선_왕실_왕비와_후궁의_생활.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2013)_조선_왕실_왕비와_후궁의_생활.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『조선 왕실 왕비와 후궁의 생활』, 국립고궁박물관, 2013."
+        }
+      ],
+      "status": "verified",
+      "bytes": 262965791,
+      "sha256": "f14c218c6b0b39ee06f42f08620e3b9724ae977dc7f0095ff77eccd58b4426f7",
+      "pages": 540,
+      "downloaded_at": "2026-09-18T10:54:07.216228+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2020)_조선왕실의_현판Ⅰ.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2020)_조선왕실의_현판Ⅰ.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『조선왕실의 현판 Ⅰ』, 국립고궁박물관, 2020."
+        }
+      ],
+      "status": "verified",
+      "bytes": 52073133,
+      "sha256": "96c64f0a22a467f4b6dff754615e686cbf1e07aa36deb5a51d90d5cb50450622",
+      "pages": 460,
+      "downloaded_at": "2026-09-18T10:54:11.481862+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2021)_조선왕실의_현판Ⅱ.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2021)_조선왕실의_현판Ⅱ.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『조선왕실의 현판 Ⅱ』, 국립고궁박물관, 2021."
+        }
+      ],
+      "status": "verified",
+      "bytes": 204656396,
+      "sha256": "d94b72c145b8fb00dac71d6c097d54f943016fd2352dc9fe150ad430d7f47dd6",
+      "pages": 508,
+      "downloaded_at": "2026-09-18T10:54:18.917942+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2013)_창경궁_내_석조문화재_정밀실측조사_설계용역_보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2013)_창경궁_내_석조문화재_정밀실측조사_설계용역_보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 내 석조문화재 정밀실측조사 설계용역 보고서』, 문화재청, 2013."
+        }
+      ],
+      "status": "verified",
+      "bytes": 100454985,
+      "sha256": "687e0bb23c0281d8935270f85c42a152fc453d29991103c82692e707606b400d",
+      "pages": 247,
+      "downloaded_at": "2026-09-18T10:54:24.100988+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2007)_창경궁_대온실_기록화_조사_보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2007)_창경궁_대온실_기록화_조사_보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 대온실 기록화 조사 보고서』, 문화재청, 2007."
+        }
+      ],
+      "status": "verified",
+      "bytes": 51895535,
+      "sha256": "36cb93d33cbacd52bd0432d6e7f28258b28129c3c4ae30333b785f44842d19c0",
+      "pages": 151,
+      "downloaded_at": "2026-09-18T10:54:28.246326+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2018)_창경궁_대온실_보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2018)_창경궁_대온실_보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 대온실 보수공사 수리보고서』, 문화재청, 2018."
+        }
+      ],
+      "status": "verified",
+      "bytes": 370785597,
+      "sha256": "928b864aaf7af6058ed63dd23b6c16a0bef9cc35218e93b053e4f5349fac4eee",
+      "pages": 560,
+      "downloaded_at": "2026-09-18T10:54:39.741403+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_창경궁_명정문_및_행각_정밀실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_창경궁_명정문_및_행각_정밀실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 명정문 및 행각 정밀실측조사보고서』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 272985882,
+      "sha256": "2ed131d1525356de7ec159fadb5a71d239b1db4f424ec2b859455764329426a8",
+      "pages": 770,
+      "downloaded_at": "2026-09-18T10:54:48.821719+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2020)_창경궁_명정문_보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2020)_창경궁_명정문_보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 명정문 보수공사 수리보고서』, 문화재청, 2020."
+        }
+      ],
+      "status": "verified",
+      "bytes": 49826563,
+      "sha256": "0c967e528e38cfd0383c8c1d8b08ae394f43b02cd407e110aeebe1d02246e5e6",
+      "pages": 431,
+      "downloaded_at": "2026-09-18T10:54:52.952569+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2017)_창경궁_명정전_월대_보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2017)_창경궁_명정전_월대_보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 명정전 월대 보수공사 수리보고서』, 문화재청, 2017."
+        }
+      ],
+      "status": "verified",
+      "bytes": 73370145,
+      "sha256": "aa95e91bdc6d91cbd936dba87eaac191bd61f0ba598cfbb08a4126c7ae42efa5",
+      "pages": 172,
+      "downloaded_at": "2026-09-18T10:54:57.664136+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1985)_창경궁_발굴조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1985)_창경궁_발굴조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 발굴조사보고서』, 문화재관리국, 1985."
+        }
+      ],
+      "status": "verified",
+      "bytes": 157571873,
+      "sha256": "e03b4ad40542c84c50afd522f5926ad7de44bbaeb16216624f9c8cd7163c72a7",
+      "pages": 311,
+      "downloaded_at": "2026-09-18T10:55:04.312625+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_창경궁_복원정비_기본계획.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_창경궁_복원정비_기본계획.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 복원정비 기본계획』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 239538086,
+      "sha256": "4c0fffe28df6661d2f42ab7ce67983dc739bb7cafed5c2694ca4dd6b5374a610",
+      "pages": 631,
+      "downloaded_at": "2026-09-18T10:55:12.731943+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_창경궁_복원정비_기본계획-고증_및_관련문헌_자료집.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_창경궁_복원정비_기본계획-고증_및_관련문헌_자료집.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 복원정비 기본계획-고증 및 관련문헌 자료집』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 85188369,
+      "sha256": "d9648b3caf1d501bcebf731b8a123d7b18e2c3865de8f997d677bdabebcf8d6b",
+      "pages": 247,
+      "downloaded_at": "2026-09-18T10:55:19.023065+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2021)_창경궁_숭문당_내부_도배공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2021)_창경궁_숭문당_내부_도배공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 숭문당 내부 도배공사 수리보고서』, 문화재청, 2021."
+        }
+      ],
+      "status": "verified",
+      "bytes": 15023076,
+      "sha256": "735991517733218863d45a1b1df7d93bf43a606af9da6c3b5df315caa1b75fd0",
+      "pages": 107,
+      "downloaded_at": "2026-09-18T10:55:22.507196+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2016)_창경궁_숭문당_보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2016)_창경궁_숭문당_보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 숭문당 보수공사 수리보고서』, 문화재청, 2016."
+        }
+      ],
+      "status": "verified",
+      "bytes": 43594039,
+      "sha256": "d8b06782baa095c8f727b03ebdf11d3d2be562449bec556cbb8875b349d8c49e",
+      "pages": 201,
+      "downloaded_at": "2026-09-18T10:55:26.697267+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2015)_창경궁_양화당_해체보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2015)_창경궁_양화당_해체보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 양화당 해체보수공사 수리보고서』, 문화재청, 2015."
+        }
+      ],
+      "status": "verified",
+      "bytes": 114399651,
+      "sha256": "24426ea0a6cc965bbf2c3a758e869ddf064b76476a77c17ca9cf317595c07fbc",
+      "pages": 228,
+      "downloaded_at": "2026-09-18T10:55:33.579121+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2000)_창경궁_영춘헌_및_집복헌_수리공사_보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2000)_창경궁_영춘헌_및_집복헌_수리공사_보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 영춘헌 및 집복헌 수리공사 보고서』, 문화재청, 2000."
+        }
+      ],
+      "status": "verified",
+      "bytes": 82814956,
+      "sha256": "f014894f80b7bb05eef98423d9ea2b9e233b1fbb38bb512e69e3b5490481bca5",
+      "pages": 194,
+      "downloaded_at": "2026-09-18T10:55:38.442110+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2005)_창경궁_옥천교_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2005)_창경궁_옥천교_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 옥천교 수리보고서』, 문화재청, 2005."
+        }
+      ],
+      "status": "verified",
+      "bytes": 19900023,
+      "sha256": "8fe0d5d32c584c05588a224286b627ff744bc8e41b4e6a234ea23bc92245ffaa",
+      "pages": 269,
+      "downloaded_at": "2026-09-18T10:55:41.929820+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2004)_창경궁_옥천교_정밀실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2004)_창경궁_옥천교_정밀실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 옥천교 정밀실측조사보고서』, 문화재청, 2004."
+        }
+      ],
+      "status": "verified",
+      "bytes": 25672092,
+      "sha256": "dcef807affc45d07d4b091166322903ae9f43f294b5ee56ba3ea97bac104764e",
+      "pages": 187,
+      "downloaded_at": "2026-09-18T10:55:45.537080+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1989)_창경궁_중건보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1989)_창경궁_중건보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 중건보고서』, 문화재관리국, 1989."
+        }
+      ],
+      "status": "verified",
+      "bytes": 88220661,
+      "sha256": "1322ed9dbe764bfe76126e164edd15dff1def8bb071ca53b358733e4abfc80a4",
+      "pages": 432,
+      "downloaded_at": "2026-09-18T10:55:50.519874+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1987)_창경궁_중건보고서-도판.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1987)_창경궁_중건보고서-도판.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 중건보고서-도판』, 문화재관리국, 1987."
+        }
+      ],
+      "status": "verified",
+      "bytes": 61740352,
+      "sha256": "13009e1d384ef527f008aae4e6c5a9b75141ce67b153d5b0090acc0507186e4a",
+      "pages": 362,
+      "downloaded_at": "2026-09-18T10:55:54.969741+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2001)_창경궁_통명전_실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2001)_창경궁_통명전_실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 통명전 실측조사보고서』, 문화재청, 2001."
+        }
+      ],
+      "status": "verified",
+      "bytes": 155372565,
+      "sha256": "9a3f17ee2aef3630ddb74d142e53feb6c59d74395e37ea07bec3c6f89fe45bd8",
+      "pages": 422,
+      "downloaded_at": "2026-09-18T10:56:01.445102+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2007)_창경궁_통명전_연지_실측조사_및_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2007)_창경궁_통명전_연지_실측조사_및_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 통명전 연지 실측조사 및 수리보고서』, 문화재청, 2007."
+        }
+      ],
+      "status": "verified",
+      "bytes": 168692689,
+      "sha256": "fc1a99dc83956e183847a0e889175b6c04b67623b9ddb498bad067334f1eeaac",
+      "pages": 304,
+      "downloaded_at": "2026-09-18T10:56:08.685676+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2019)_창경궁_팔각칠층석탑_보존처리공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2019)_창경궁_팔각칠층석탑_보존처리공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 팔각칠층석탑 보존처리공사 수리보고서』, 문화재청, 2019."
+        }
+      ],
+      "status": "verified",
+      "bytes": 78556942,
+      "sha256": "5060104d40724585383774d8f06df1f88c96ed06fb4c3a891bc9dbdc060a47a9",
+      "pages": 233,
+      "downloaded_at": "2026-09-18T10:56:13.405320+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2019)_창경궁_함인정_보수공사.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2019)_창경궁_함인정_보수공사.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 함인정 보수공사』, 문화재청, 2019."
+        }
+      ],
+      "status": "verified",
+      "bytes": 15910905,
+      "sha256": "4523254740c8abe5613578640aa52a9436e3e565c55a91f918f63c36470bf455",
+      "pages": 200,
+      "downloaded_at": "2026-09-18T10:56:16.807631+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_창경궁_홍화문_정밀실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_창경궁_홍화문_정밀실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 홍화문 정밀실측조사보고서』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 198886044,
+      "sha256": "7447078ee8e77aaff39cbdf8453dce34f116820af703643137f7961623a22bb4",
+      "pages": 522,
+      "downloaded_at": "2026-09-18T10:56:24.335752+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_창경궁_환경전_보수공사.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_창경궁_환경전_보수공사.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁 환경전 보수공사』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 74895552,
+      "sha256": "5cee25a64cdf35b249cf583b452682e1efa5910393192e612128573dbc6ce4f7",
+      "pages": 227,
+      "downloaded_at": "2026-09-18T10:56:29.019140+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2019)_창경궁영건도감의궤.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2019)_창경궁영건도감의궤.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁영건도감의궤』, 국립고궁박물관, 2019."
+        }
+      ],
+      "status": "verified",
+      "bytes": 83616766,
+      "sha256": "49240a6c6f530fab16cbc5f6dc50fb8d8ef89a417ef81fab53fe1c63846499f5",
+      "pages": 340,
+      "downloaded_at": "2026-09-18T10:56:33.924959+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2007)_창경궁의_건축과_인물.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2007)_창경궁의_건축과_인물.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창경궁의 건축과 인물』, 문화재청, 2007."
+        }
+      ],
+      "status": "verified",
+      "bytes": 92187559,
+      "sha256": "4b2e4575f2671662eeba3f2da25906cb39c734d4282ea69087752acb49eca34b",
+      "pages": 249,
+      "downloaded_at": "2026-09-18T10:56:38.974689+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2004)_창덕궁_경훈각_실측수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2004)_창덕궁_경훈각_실측수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 경훈각 실측수리보고서』, 문화재청, 2004."
+        }
+      ],
+      "status": "verified",
+      "bytes": 63089302,
+      "sha256": "a14a0f03a959755e5d0a1bf11c93c0da6bec7f092ab653ee585c0cb211d5171d",
+      "pages": 509,
+      "downloaded_at": "2026-09-18T10:56:43.398821+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2005)_창덕궁_규장각_구선원전_권역_복원공사_보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2005)_창덕궁_규장각_구선원전_권역_복원공사_보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 규장각 구선원전 권역 복원공사 보고서』, 문화재청, 2005."
+        }
+      ],
+      "status": "verified",
+      "bytes": 429015973,
+      "sha256": "b2908d67de7fd3470b2332d5991254b82bcb9b51c742d0c0bcf90816c97e9fd9",
+      "pages": 555,
+      "downloaded_at": "2026-09-18T10:56:55.626989+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립문화재연구소(2002)_창덕궁_금천교_발굴조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립문화재연구소(2002)_창덕궁_금천교_발굴조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 금천교 발굴조사보고서』, 국립문화재연구소, 2002."
+        }
+      ],
+      "status": "verified",
+      "bytes": 295326655,
+      "sha256": "0ed3a5e19d616b98407bade18b080fe54487e0d69fecdb7d31ca55f1d4e282ac",
+      "pages": 232,
+      "downloaded_at": "2026-09-18T10:57:05.064695+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2009)_창덕궁_대조전_침대_복원보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2009)_창덕궁_대조전_침대_복원보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 대조전 침대 복원보고서』, 문화재청, 2009."
+        }
+      ],
+      "status": "verified",
+      "bytes": 38582443,
+      "sha256": "2f945d67b10c4b17e5ab81f8f7b536b3577e9e3750cb2c099cd28a3e665cc1a3",
+      "pages": 86,
+      "downloaded_at": "2026-09-18T10:57:08.991747+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2001)_창덕궁_반도지_시굴조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2001)_창덕궁_반도지_시굴조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 반도지 시굴조사보고서』, 문화재청, 2001."
+        }
+      ],
+      "status": "verified",
+      "bytes": 269456297,
+      "sha256": "ca2de7212d3815d6115b0d615c2991a49823f37de2fac0a3422eb8e00526d7e6",
+      "pages": 64,
+      "downloaded_at": "2026-09-18T10:57:17.822245+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1989)_창덕궁_부용정_부용지_실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1989)_창덕궁_부용정_부용지_실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 부용정 부용지 실측조사보고서』, 문화재관리국, 1989."
+        }
+      ],
+      "status": "verified",
+      "bytes": 37825478,
+      "sha256": "bbcb6bc3fc650053688304e0da7b0ce1f3495f1d85c19ae36a7215fbf413c61c",
+      "pages": 126,
+      "downloaded_at": "2026-09-18T10:57:21.985529+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2012)_창덕궁_부용정_해체실측_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2012)_창덕궁_부용정_해체실측_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 부용정 해체실측 수리보고서』, 문화재청, 2012."
+        }
+      ],
+      "status": "verified",
+      "bytes": 186596557,
+      "sha256": "6de1c8807d6269785362df1f005733d4e9cc5c255ed18c090fb5fd28cda8fb6b",
+      "pages": 327,
+      "downloaded_at": "2026-09-18T10:57:29.686626+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2005)_창덕궁_승화루_및_일곽_실측수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2005)_창덕궁_승화루_및_일곽_실측수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 승화루 및 일곽 실측수리보고서』, 문화재청, 2005."
+        }
+      ],
+      "status": "verified",
+      "bytes": 152654901,
+      "sha256": "4cfc623ccc91e06885195eabced9c964c524a035873270f8371eb8743d07c20e",
+      "pages": 398,
+      "downloaded_at": "2026-09-18T10:57:36.292413+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2016)_창덕궁_애련정_해체보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2016)_창덕궁_애련정_해체보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 애련정 해체보수공사 수리보고서』, 문화재청, 2016."
+        }
+      ],
+      "status": "verified",
+      "bytes": 18595658,
+      "sha256": "9fc77b43444f7cfc65bda7520f1764342ceb11cfe5b229d5b3756bba0fd42ac3",
+      "pages": 232,
+      "downloaded_at": "2026-09-18T10:57:39.766586+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립문화재연구소(2011)_창덕궁_우물지.빈청지_발굴조사_보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립문화재연구소(2011)_창덕궁_우물지.빈청지_발굴조사_보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 우물지.빈청지 발굴조사 보고서』, 국립문화재연구소, 2011."
+        }
+      ],
+      "status": "verified",
+      "bytes": 166938151,
+      "sha256": "1cf1db8d5f134641aba25f02e6b441ce7ee6623fefe8a32c0a8d08760b4b1833",
+      "pages": 196,
+      "downloaded_at": "2026-09-18T10:57:46.318414+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2018)_창덕궁_의두합_권역_보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2018)_창덕궁_의두합_권역_보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 의두합 권역 보수공사 수리보고서』, 문화재청, 2018."
+        }
+      ],
+      "status": "verified",
+      "bytes": 42594553,
+      "sha256": "897bd70a407eac41f7f201e8e54c65dcc5c8d9114fc25034801d5d0794ad16a6",
+      "pages": 300,
+      "downloaded_at": "2026-09-18T10:57:50.289127+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2004)_창덕궁_의로전_실측수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2004)_창덕궁_의로전_실측수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 의로전 실측수리보고서』, 문화재청, 2004."
+        }
+      ],
+      "status": "verified",
+      "bytes": 69016241,
+      "sha256": "8dc2e8c440ec29ef6a251e0b06615a8b366932164090bffbf299f3113f76ddb4",
+      "pages": 560,
+      "downloaded_at": "2026-09-18T10:57:54.811026+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_창덕궁_인정문_정밀실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_창덕궁_인정문_정밀실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 인정문 정밀실측조사보고서』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 85419882,
+      "sha256": "01b77d6da2a4ba5b1b08b453d0de16b1f335d29e607a2c2a93e10fa05d4970bb",
+      "pages": 654,
+      "downloaded_at": "2026-09-18T10:57:59.768908+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1998)_창덕궁_인정전_실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1998)_창덕궁_인정전_실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 인정전 실측조사보고서』, 문화재관리국, 1998."
+        }
+      ],
+      "status": "verified",
+      "bytes": 282222420,
+      "sha256": "6076e4d02ce57c0794c7ca2a2d122361d7734bce92f866cdc195382d740399c9",
+      "pages": 416,
+      "downloaded_at": "2026-09-18T10:58:09.209852+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(1999)_창덕궁_인정전_행각_중건공사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(1999)_창덕궁_인정전_행각_중건공사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 인정전 행각 중건공사보고서』, 문화재청, 1999."
+        }
+      ],
+      "status": "verified",
+      "bytes": 474315520,
+      "sha256": "510f2208376f70e1d7436233eb9a20b6c0abc2471dc84b58f1834d4aa91d762c",
+      "pages": 559,
+      "downloaded_at": "2026-09-18T10:58:22.705744+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2003)_창덕궁_정자(상량정,_태극정,_능허정)_실측수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2003)_창덕궁_정자(상량정,_태극정,_능허정)_실측수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 정자(상량정, 태극정, 능허정) 실측수리보고서』, 문화재청, 2003."
+        }
+      ],
+      "status": "verified",
+      "bytes": 29134327,
+      "sha256": "30fb152e28995a29110e9bc476a906bad765b584420465f5b7b6c169989ca323",
+      "pages": 237,
+      "downloaded_at": "2026-09-18T10:58:26.449691+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_창덕궁_존덕정_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_창덕궁_존덕정_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 존덕정 수리보고서』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 125939232,
+      "sha256": "3636275299f064c858329cc1b3cdac137a318725b2cf9aa1d30501fec23c7499",
+      "pages": 230,
+      "downloaded_at": "2026-09-18T10:58:32.212645+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2016)_창덕궁_주합루_정밀실측보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2016)_창덕궁_주합루_정밀실측보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 주합루 정밀실측보고서』, 문화재청, 2016."
+        }
+      ],
+      "status": "verified",
+      "bytes": 85610696,
+      "sha256": "9b2c17b50450ed11583792e0cf49579e9545b576fae8385c13883dcbf02795df",
+      "pages": 584,
+      "downloaded_at": "2026-09-18T10:58:37.109507+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2014)_창덕궁_취운정_해체_보수공사_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2014)_창덕궁_취운정_해체_보수공사_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 취운정 해체 보수공사 수리보고서』, 문화재청, 2014."
+        }
+      ],
+      "status": "verified",
+      "bytes": 132324777,
+      "sha256": "98a30427736f7db95a818d3c3b18c1105d5932f03c9a5ecea20bc939c6fd85ff",
+      "pages": 184,
+      "downloaded_at": "2026-09-18T10:58:43.113178+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2005)_창덕궁_함원전_보수공사.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2005)_창덕궁_함원전_보수공사.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 함원전 보수공사』, 문화재청, 2005."
+        }
+      ],
+      "status": "verified",
+      "bytes": 90721453,
+      "sha256": "c347d12c1479cdd18c012ca36a517f8969faf3d94a51edc76ff0e0d8d2a1f4a3",
+      "pages": 171,
+      "downloaded_at": "2026-09-18T10:58:48.258655+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2002)_창덕궁_희정당_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2002)_창덕궁_희정당_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 희정당 수리보고서』, 문화재청, 2002."
+        }
+      ],
+      "status": "verified",
+      "bytes": 84479577,
+      "sha256": "3181dce501c27ac2acab9de4c3dbfa2967f99ab9baf14833cf6e92881944f929",
+      "pages": 491,
+      "downloaded_at": "2026-09-18T10:58:53.209391+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2003)_창덕궁_희정당_신관_실측수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2003)_창덕궁_희정당_신관_실측수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 희정당 신관 실측수리보고서』, 문화재청, 2003."
+        }
+      ],
+      "status": "verified",
+      "bytes": 84481874,
+      "sha256": "5a4107e7d9da97d40a695079816cd6702dc69f9fd9f24184165bb959c73d7536",
+      "pages": 514,
+      "downloaded_at": "2026-09-18T10:58:58.160272+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/서울역사박물관(2019)_북촌-서울생활문화자료조사_경복궁과_창덕궁_사이의_터전.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/서울역사박물관(2019)_북촌-서울생활문화자료조사_경복궁과_창덕궁_사이의_터전.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『북촌-서울생활문화자료조사_경복궁과 창덕궁 사이의 터전』, 서울역사박물관, 2019."
+        }
+      ],
+      "status": "verified",
+      "bytes": 242650463,
+      "sha256": "73a2a25129a5ce8a756e3cd445205f8227238b1a0820d4f690ffe8748aef4c32",
+      "pages": 194,
+      "downloaded_at": "2026-09-18T10:59:06.654595+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2006)_일본_궁내청_소장_창덕궁_사진첩.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2006)_일본_궁내청_소장_창덕궁_사진첩.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『일본 궁내청 소장 창덕궁 사진첩』, 문화재청, 2006."
+        }
+      ],
+      "status": "verified",
+      "bytes": 79671200,
+      "sha256": "dfba1cd9670fcee8ca591d2983dca6fa65cf65b8dc8a96f978b23c74ce295f26",
+      "pages": 86,
+      "downloaded_at": "2026-09-18T10:59:11.543880+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2011)_조선왕실의_건축,_창덕궁_학술연구.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2011)_조선왕실의_건축,_창덕궁_학술연구.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『조선왕실의 건축, 창덕궁 학술연구』, 국립고궁박물관, 2011."
+        }
+      ],
+      "status": "verified",
+      "bytes": 143878702,
+      "sha256": "160aec6860b4f71869f68cef20b8963af8f0d910aa93a0b11398c0365bb6389e",
+      "pages": 168,
+      "downloaded_at": "2026-09-18T10:59:17.840253+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2015)_창덕궁_대조전_벽화.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2015)_창덕궁_대조전_벽화.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 대조전 벽화』, 국립고궁박물관, 2015."
+        }
+      ],
+      "status": "verified",
+      "bytes": 91644487,
+      "sha256": "b3f67446960d2b7386edca859f9ac0d22c16459c22f841450a958995ef7010ca",
+      "pages": 130,
+      "downloaded_at": "2026-09-18T10:59:22.851843+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립문화재연구소(2021)_창덕궁_인정전_일월오봉도_보존처리.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립문화재연구소(2021)_창덕궁_인정전_일월오봉도_보존처리.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁 인정전 일월오봉도 보존처리』, 국립문화재연구소, 2021."
+        }
+      ],
+      "status": "verified",
+      "bytes": 45154217,
+      "sha256": "9b7bf5ce41a625ac82e7675e50647d5b5483e987eb06dbc3ef9789e3c3695824",
+      "pages": 206,
+      "downloaded_at": "2026-09-18T10:59:26.908103+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2011)_창덕궁,_아름다운_덕을_펼치다.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2011)_창덕궁,_아름다운_덕을_펼치다.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『창덕궁, 아름다운 덕을 펼치다』, 국립고궁박물관, 2011."
+        }
+      ],
+      "status": "verified",
+      "bytes": 28144117,
+      "sha256": "3de7c21e930b70a1616be9d0d98057c7f3767d529971c8bfc6000e7a5bdbe37a",
+      "pages": 35,
+      "downloaded_at": "2026-09-18T10:59:30.571334+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립문화재연구소(2010)_최후의_진전_-_창덕궁_신선원전.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립문화재연구소(2010)_최후의_진전_-_창덕궁_신선원전.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『최후의 진전 - 창덕궁 신선원전』, 국립문화재연구소, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 100336639,
+      "sha256": "0887682c828dd09cfe31f1c486dbdbb9f167d2fd1206280d4d376c818d0eafd6",
+      "pages": 207,
+      "downloaded_at": "2026-09-18T10:59:35.855782+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2013)_종묘_영녕전_정밀실측조사_설계용역_보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2013)_종묘_영녕전_정밀실측조사_설계용역_보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘 영녕전 정밀실측조사 설계용역 보고서』, 문화재청, 2013."
+        }
+      ],
+      "status": "verified",
+      "bytes": 44682241,
+      "sha256": "c34c170606dfa8265ef427359510ca1ac9cd1d2c12f46e8b8d76a3b8fa33bfaf",
+      "pages": 386,
+      "downloaded_at": "2026-09-18T10:59:39.884572+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2019)_종묘_외곽담장_기초현황_자료조사.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2019)_종묘_외곽담장_기초현황_자료조사.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘 외곽담장 기초현황 자료조사』, 문화재청, 2019."
+        }
+      ],
+      "status": "verified",
+      "bytes": 40874381,
+      "sha256": "ad78f193024353a130d076930102bf6ad600bdc1b1855ecbcdfaccf4103c65f1",
+      "pages": 145,
+      "downloaded_at": "2026-09-18T10:59:43.818285+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재관리국(1989)_종묘_정전_실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재관리국(1989)_종묘_정전_실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘 정전 실측조사보고서』, 문화재관리국, 1989."
+        }
+      ],
+      "status": "verified",
+      "bytes": 72336486,
+      "sha256": "8f6fdc112f37a1ef6bbd2eaced156b5c43f46de9bfa72244c4a39f8149d049ed",
+      "pages": 213,
+      "downloaded_at": "2026-09-18T10:59:48.403263+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2017)_종묘_제상_및_준상_수리보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2017)_종묘_제상_및_준상_수리보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘 제상 및 준상 수리보고서』, 문화재청, 2017."
+        }
+      ],
+      "status": "verified",
+      "bytes": 24726139,
+      "sha256": "dc22441b9fe85d9ff9a9f74a039df016ace81580bc5d741d008e7ed148c5fe54",
+      "pages": 349,
+      "downloaded_at": "2026-09-18T10:59:52.036878+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2004)_종묘_향대청_보수공사_수리공사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2004)_종묘_향대청_보수공사_수리공사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘 향대청 보수공사 수리공사보고서』, 문화재청, 2004."
+        }
+      ],
+      "status": "verified",
+      "bytes": 74033792,
+      "sha256": "726424a211bc3e806a3c6fb14aed7ee5dcc7a1830be2bcd4346ecaa360c92ca9",
+      "pages": 119,
+      "downloaded_at": "2026-09-18T10:59:56.643200+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/서울역사박물관(2012)_종묘광장_발굴조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/서울역사박물관(2012)_종묘광장_발굴조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘광장 발굴조사보고서』, 서울역사박물관, 2012."
+        }
+      ],
+      "status": "verified",
+      "bytes": 77979946,
+      "sha256": "6be2680d09c8d49f4e72cc48929534d107c251c7b8dd292e4e4ad965de3faae9",
+      "pages": 260,
+      "downloaded_at": "2026-09-18T11:00:01.373980+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2016)_국조보감.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2016)_국조보감.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『국조보감』, 국립고궁박물관, 2016."
+        }
+      ],
+      "status": "verified",
+      "bytes": 23966362,
+      "sha256": "e0f26816cf03168826cce889d6456b1d7cf851cec0e9d73d158352a187086e76",
+      "pages": 236,
+      "downloaded_at": "2026-09-18T11:00:05.060646+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2012)_조선_왕실의_상징_종묘와_사직.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2012)_조선_왕실의_상징_종묘와_사직.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『조선 왕실의 상징 종묘와 사직』, 국립고궁박물관, 2012."
+        }
+      ],
+      "status": "verified",
+      "bytes": 280099068,
+      "sha256": "54492e6e1dcc76c31c641e3b8fe0fa9b980085069118e310bce33f20f13c5883",
+      "pages": 552,
+      "downloaded_at": "2026-09-18T11:00:14.511688+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2002)_조선왕조_종묘와_제례.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2002)_조선왕조_종묘와_제례.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『조선왕조 종묘와 제례』, 문화재청, 2002."
+        }
+      ],
+      "status": "verified",
+      "bytes": 12927007,
+      "sha256": "7be53c25e18f6b984f9bac36a52c93582c16802579041004b3f0d1d16467c625",
+      "pages": 265,
+      "downloaded_at": "2026-09-18T11:00:17.889258+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립고궁박물관(2014)_종묘_특별전.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립고궁박물관(2014)_종묘_특별전.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘 특별전』, 국립고궁박물관, 2014."
+        }
+      ],
+      "status": "verified",
+      "bytes": 129799510,
+      "sha256": "a01cbc20d01880d6ab53e1ab5e657da8ae6a10025d91d1423d2f4def4dd329bf",
+      "pages": 314,
+      "downloaded_at": "2026-09-18T11:00:23.865538+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_종묘대제_제수진설.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_종묘대제_제수진설.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘대제 제수진설』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 17038390,
+      "sha256": "48afc5d621172c9c765f6a62b86570260a9adbae90b20530b0965602633a5362",
+      "pages": 41,
+      "downloaded_at": "2026-09-18T11:00:27.281273+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/궁중유물전시관(2004)_종묘대제문물.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/궁중유물전시관(2004)_종묘대제문물.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘대제문물』, 궁중유물전시관, 2004."
+        }
+      ],
+      "status": "verified",
+      "bytes": 454080319,
+      "sha256": "df3cf62b3939ac9140df55c7996d8475e9f7eb38852a43f9ac354b8b4df0ff25",
+      "pages": 185,
+      "downloaded_at": "2026-09-18T11:00:40.062530+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2001)_종묘제례_종묘제례악.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2001)_종묘제례_종묘제례악.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘제례 종묘제례악』, 문화재청, 2001."
+        }
+      ],
+      "status": "verified",
+      "bytes": 25862212,
+      "sha256": "e597a3065d5176d67b161c769c549a2dfa91483c874fce6204f8ad4ebee69606",
+      "pages": 69,
+      "downloaded_at": "2026-09-18T11:00:43.667185+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2010)_종묘친제규제도설번역집.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2010)_종묘친제규제도설번역집.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『종묘친제규제도설번역집』, 문화재청, 2010."
+        }
+      ],
+      "status": "verified",
+      "bytes": 72312077,
+      "sha256": "ebee2e74bc6313ae7dddd6e9f071fce85979809afa083729aaf65afab5465564",
+      "pages": 180,
+      "downloaded_at": "2026-09-18T11:00:48.413793+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2008)_천년의_이야기_종묘.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2008)_천년의_이야기_종묘.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『천년의 이야기 종묘』, 문화재청, 2008."
+        }
+      ],
+      "status": "verified",
+      "bytes": 319701620,
+      "sha256": "5931c5063ce81645f36198a266411987287a9f40df7b17256ac32056e4212f69",
+      "pages": 271,
+      "downloaded_at": "2026-09-18T11:00:59.027861+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/서울특별시(2006)_서울_흥인지문_정밀실측조사보고서.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/서울특별시(2006)_서울_흥인지문_정밀실측조사보고서.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『서울 흥인지문 정밀실측조사보고서』, 서울특별시, 2006."
+        }
+      ],
+      "status": "verified",
+      "bytes": 53516955,
+      "sha256": "a93759a0ce8ad555ac2ac3b8c656900cba16e94e14c219421021e05a2ff06d5c",
+      "pages": 615,
+      "downloaded_at": "2026-09-18T11:01:03.382103+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2006)_서울문묘_실측조사보고서(상).pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2006)_서울문묘_실측조사보고서(상).pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『서울 문묘 실측조사보고서(상)』, 문화재청, 2006."
+        }
+      ],
+      "status": "verified",
+      "bytes": 344508082,
+      "sha256": "0b4696be571d7915823a586c055a2c321296fc288a518313b2f8367e344e0d9e",
+      "pages": 585,
+      "downloaded_at": "2026-09-18T11:01:14.432670+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2006)_서울문묘_실측조사보고서(중).pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2006)_서울문묘_실측조사보고서(중).pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『서울 문묘 실측조사보고서(중)』, 문화재청, 2006."
+        }
+      ],
+      "status": "verified",
+      "bytes": 238967075,
+      "sha256": "04a58806318869c93f5e44bae84abe08668001c5737d849831c6dad638cb8c41",
+      "pages": 473,
+      "downloaded_at": "2026-09-18T11:01:22.663778+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/문화재청(2006)_서울문묘_실측조사보고서(하).pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/문화재청(2006)_서울문묘_실측조사보고서(하).pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『서울 문묘 실측조사보고서(하)』, 문화재청, 2006."
+        }
+      ],
+      "status": "verified",
+      "bytes": 192375035,
+      "sha256": "c806e54c91850e92f10f1b5c679fbcf49a43a39ca800d0a4399ac321355e45fa",
+      "pages": 517,
+      "downloaded_at": "2026-09-18T11:01:30.080034+00:00"
+    },
+    {
+      "url": "https://dh.aks.ac.kr/hanyang2/2022ref/국립문화재연구소(2004)_동묘의건축.pdf",
+      "local_path": "data/texts/aks-hanyang/pdf/hanyang2/2022ref/국립문화재연구소(2004)_동묘의건축.pdf",
+      "references": [
+        {
+          "page": "https://dh.aks.ac.kr/hanyang2/wiki/index.php/2022_참고문헌",
+          "label": "『동묘의 건축』, 국립문화재연구소, 2004."
+        }
+      ],
+      "status": "verified",
+      "bytes": 197665478,
+      "sha256": "88ced77d7fe3bb02007bd51defffc92e9e4c425ef100df126d153db1205cb1e8",
+      "pages": 352,
+      "downloaded_at": "2026-09-18T11:01:37.337746+00:00"
+    }
+  ]
+}

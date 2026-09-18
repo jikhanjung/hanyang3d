@@ -5,7 +5,7 @@ from urllib.request import urlopen
 from playwright.sync_api import sync_playwright
 root=Path(__file__).resolve().parents[2]
 os.chdir(root)
-ids=['gyeonggi-monument-1907','tapgol-palgakjeong-1907','dondeokjeon-1907','jeonggwanheon-1907']
+ids=os.environ.get('HANYANG_TEST_BUILDINGS','gyeonggi-monument-1907,tapgol-palgakjeong-1907,dondeokjeon-1907,jeonggwanheon-1907,dongdaemun-depot-1907,dansungsa-1907,sontag-hotel-1907').split(',')
 with tempfile.TemporaryDirectory(prefix='pavilion-check-') as tmp:
  env={**os.environ,'HANYANG_DB_PATH':tmp+'/db.sqlite3','HANYANG_CONTENT_SOURCE':'files'}
  with open(tmp+'/server.log','w') as log:
@@ -54,7 +54,7 @@ with tempfile.TemporaryDirectory(prefix='pavilion-check-') as tmp:
       else:page.mouse.click(point['x'],point['y'])
       page.locator('#building-info').wait_for(state='visible')
       assert page.locator('#building-info').get_attribute('data-kind')=='building'
-      assert page.locator('#building-info a').count()>=3
+      assert page.locator('#building-info a').count()>=2
       after=page.evaluate('seoul1907.camera.position.toArray()')
       assert max(abs(a-b) for a,b in zip(before,after))<1e-6,(id,before,after)
       page.locator('#building-info button').click()

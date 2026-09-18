@@ -17,6 +17,7 @@ Thumbs.db
 *.blend2
 
 # Raw assets and generated artifacts: metadata stays in Git
+/data/models/**
 /data/maps/**
 /data/cadastral/**
 /data/archaeology/**

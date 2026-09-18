@@ -30,7 +30,54 @@ export function createLandmark1907(f,w,h,d){
   for(let i=0;i<4;i++)box('hall-door',x+(i/4-.375)*hw,eave*.43,z+hd/2+.06,hw/5,eave*.65,.15,'door');
   roof(x,eave,z,hw+2,hd+2,2.5);
  };
- if(kind==='commemorative_pavilion'){
+ if(kind==='tram_depot'){
+  // Long, open-sided shed and adjacent generating house, suggested by the 1899 photograph.
+  const shedW=w*.64,shedD=d*.48,sx=-w*.15,sz=-d*.12;
+  box('depot-yard',0,.08,0,w,.16,d,'bank');
+  for(let i=0;i<=9;i++)for(const side of [-1,1])post(sx+(i/9-.5)*shedW,sz+side*shedD*.46,.16,5,'door');
+  gable(sx,5.3,sz,shedW+2,shedD+2,2.3);
+  box('shed-rear-wall',sx,2.5,sz-shedD*.47,shedW,4.7,.35,'cream');
+  const px=w*.34,pz=-d*.1;
+  box('powerhouse',px,3.2,pz,w*.25,6.4,d*.56,'brick');gable(px,6.4,pz,w*.28,d*.61,2.4);
+  for(let i=0;i<3;i++)box('powerhouse-window',px+(i-1)*w*.06,3.4,pz+d*.285,2,2.8,.12,'glass');
+  box('chimney-foot',w*.43,1.1,-d*.38,3.6,2.2,3.6,'brick');
+  cylinder('powerhouse-chimney',w*.43,11.4,-d*.38,.8,1.35,20.5,'brick',12);
+  cylinder('chimney-rim',w*.43,21.7,-d*.38,1.05,1.05,.55,'brick',12);
+  for(const track of [-1,1])for(const side of [-1,1])box('yard-rail',sx+track*8+side*.5335,.2,d*.06,.07,.08,d*.83,'roof');
+  for(const track of [-1,1])for(let i=0;i<20;i++)box('yard-sleeper',sx+track*8,.17,-d*.34+i*d*.04,1.85,.08,.18,'door');
+  group.userData.plan='long-open-shed-powerhouse-chimney';group.userData.yardTracks=2;
+ }else if(kind==='early_theatre'){
+  box('theatre-base',0,.2,0,w,.4,d,'stone');box('timber-theatre',0,3.8,0,w*.86,7.2,d*.84,'cream');
+  for(let i=0;i<=6;i++)box('timber-frame',(i/6-.5)*w*.86,3.8,d*.425,.22,7.2,.24,'door');
+  for(const y of [.7,3.8,7.3])box('cross-beam',0,y,d*.43,w*.9,.25,.24,'door');
+  for(let i=0;i<6;i++){
+   const x=(i-2.5)*w*.143;
+   box('upper-shutter',x,5.7,d*.43,w*.105,1.8,.2,'door');
+   box('ground-door',x,1.8,d*.43,w*.105,2.4,.2,'door');
+  }
+  gable(0,7.5,0,w*.98,d*.96,3.2);box('entry-awning',0,3.1,d*.48,w*.38,.18,d*.15,'roof');
+  const canvas=document.createElement('canvas');canvas.width=512;canvas.height=128;const ctx=canvas.getContext('2d');ctx.fillStyle='#d7c5a0';ctx.fillRect(0,0,512,128);ctx.fillStyle='#342b20';ctx.font='bold 80px serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('團成社',256,68);
+  const sign=box('theatre-name',0,7,d*.445,w*.4,.9,.14,'door');sign.material=new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(canvas),roughness:1});
+  group.userData.plan='estimated-two-storey-timber-performance-hall';
+ }else if(kind==='sontag_hotel'){
+  box('hotel-platform',0,.4,0,w,.8,d,'stone');
+  box('grey-brick-hotel',0,5,-d*.05,w*.9,9.2,d*.73,'stone');
+  for(const y of [.8,5,9.7])box('facade-course',0,y,-d*.05,w*.94,.24,d*.76,'cream');
+  for(let floor=0;floor<2;floor++)for(let i=0;i<7;i++){
+   const x=(i-3)*w*.123,y=2.7+floor*4.5,z=d*.323,r=w*.046;
+   box('window',x,y,z,r*1.7,2.1,.16,'glass');
+   add('arched-window-head',new THREE.CircleGeometry(r*.85,12,0,Math.PI),x,y+1.05,z+.09,'glass');
+   for(const side of [-1,1])box('window-jamb',x+side*r,y,z+.13,.15,2.2,.2,'cream');
+   const arch=new THREE.Shape();arch.absarc(0,0,r+.1,0,Math.PI,false);arch.lineTo(-r+.06,0);arch.absarc(0,0,r-.06,Math.PI,0,true);arch.closePath();
+   add('arched-window-trim',new THREE.ExtrudeGeometry(arch,{depth:.16,bevelEnabled:false}),x,y+1.05,z+.1,'cream');
+  }
+  roof(0,10,0,w,d*.88,2.3,1);gable(0,10,0,w*.3,d*.9,2.8);
+  box('entrance-door',0,2.2,d*.335,3,3,.2,'door');box('entry-balcony',0,5.05,d*.4,w*.24,.25,d*.17,'stone');
+  for(const side of [-1,1]){post(side*w*.11,d*.45,.8,4.2,'cream');box('chimney',side*w*.28,11.4,-d*.13,.85,3.5,.85,'brick')}
+  box('balcony-rail',0,6,d*.475,w*.24,.16,.12,'door');for(let i=0;i<9;i++)box('balcony-baluster',(i/8-.5)*w*.24,5.55,d*.475,.1,.9,.1,'door');
+  for(let i=0;i<4;i++)box('hotel-step',0,.12+i*.1,d*.49-i*.4,4,.24+i*.2,.5,'stone');
+  group.userData.plan='grey-brick-hotel-arched-windows-central-balcony';
+ }else if(kind==='commemorative_pavilion'){
   box('terrace',0,.45,0,w*.86,.9,d*.72,'stone');
   // Open three-by-two-bay pavilion; the monument remains visible between posts.
   for(let i=0;i<=3;i++)for(let j=0;j<=2;j++)if(i===0||i===3||j===0||j===2)post((i/3-.5)*w*.65,(j/2-.5)*d*.5,.9,4.7);

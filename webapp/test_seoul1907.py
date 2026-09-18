@@ -92,7 +92,7 @@ class Seoul1907BuildingTests(TestCase):
         from .content import load_buildings, content_problems
         from .models import Building
         self.assertEqual(len(load_buildings()['features']), 114)
-        self.assertEqual(len(load_buildings(scene_year=1907)['features']), 70)
+        self.assertEqual(len(load_buildings(scene_year=1907)['features']), 73)
         self.assertEqual(content_problems(), [])
         b = Building.objects.get(key='geunjeongjeon-1907')
         b.full_clean()
@@ -119,7 +119,7 @@ class Seoul1907BuildingTests(TestCase):
         self.assertFalse(Resource.objects.filter(key='model-landmark-1907').exists())
         call_command('sync_content', apply=True, stdout=StringIO())
         self.assertTrue(Resource.objects.filter(key='model-landmark-1907').exists())
-        self.assertEqual(Building.objects.filter(map_config__scene_year=1907).count(), 70)
+        self.assertEqual(Building.objects.filter(map_config__scene_year=1907).count(), 73)
 
     def test_temporal_bounds_and_source_provenance(self):
         from .content import load_buildings
