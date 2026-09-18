@@ -35,8 +35,11 @@ with tempfile.TemporaryDirectory(prefix='tram-check-') as tmp:
     point=page.evaluate("""()=>{const s=seoul1907,p=s.trams.car.position.clone();p.y+=3.12;p.project(s.camera);return {x:(p.x+1)*innerWidth/2,y:(1-p.y)*innerHeight/2}}""")
     if mobile:page.touchscreen.tap(point['x'],point['y'])
     else:page.mouse.click(point['x'],point['y'])
-    assert page.locator('#building-info').is_visible()
+    page.locator('#building-info').wait_for(state='visible')
     assert page.locator('#building-info a').count()==6
+    hover_before=page.evaluate('seoul1907.camera.position.toArray()')
+    page.mouse.move(point['x']+70,point['y']-30,steps=4)
+    assert hover_before==page.evaluate('seoul1907.camera.position.toArray()'), 'Tram selection left dragging active'
     assert '13km/h' in page.locator('#building-info').inner_text()
     page.locator('#building-info button').click()
     page.screenshot(path=f'/tmp/tram-occupants-{mobile}.png')
@@ -48,10 +51,14 @@ with tempfile.TemporaryDirectory(prefix='tram-check-') as tmp:
     page.evaluate('for(let i=0;i<100;i++)seoul1907.controls.update()')
     view_before=page.evaluate('JSON.stringify([seoul1907.camera.position.toArray(),seoul1907.camera.quaternion.toArray(),seoul1907.firstPerson.active])')
     if mobile:page.touchscreen.tap(buildingPoint['x'],buildingPoint['y'])
-    else:page.mouse.click(buildingPoint['x'],buildingPoint['y'])
-    assert page.locator('#building-info').is_visible()
+    else:
+     page.mouse.move(buildingPoint['x'],buildingPoint['y']);page.mouse.down()
+     assert page.locator('#building-info').is_hidden()
+     page.mouse.up()
+    page.locator('#building-info').wait_for(state='visible')
     assert page.locator('#building-info').get_attribute('data-kind')=='building'
     assert '근정전' in page.locator('#building-info').inner_text()
+    page.mouse.move(buildingPoint['x']+75,buildingPoint['y']-35,steps=4)
     assert view_before==page.evaluate('JSON.stringify([seoul1907.camera.position.toArray(),seoul1907.camera.quaternion.toArray(),seoul1907.firstPerson.active])'), (view_before,page.evaluate('JSON.stringify([seoul1907.camera.position.toArray(),seoul1907.camera.quaternion.toArray(),seoul1907.firstPerson.active])'))
     page.evaluate("seoul1907.labels.find(l=>l.owner.userData.feature.id==='geunjeongjeon-1907').label.click()")
     assert view_before==page.evaluate('JSON.stringify([seoul1907.camera.position.toArray(),seoul1907.camera.quaternion.toArray(),seoul1907.firstPerson.active])'), (view_before,page.evaluate('JSON.stringify([seoul1907.camera.position.toArray(),seoul1907.camera.quaternion.toArray(),seoul1907.firstPerson.active])'))

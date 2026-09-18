@@ -49,7 +49,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  dialogue.register({pick(event,hitTest){let best=null;if(pedestrians.group.visible)for(const w of pedestrians.walkers){const distance=hitTest(event,w.position,1.95,80);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:{key:w.id,name:data.pedestrian.name,portrait:'walker1907',nodes:data.pedestrian.nodes,position:()=>w.position,maxDistance:100,begin:()=>firstPerson.clearInput()}}}return best}});
  let press=null;const canvas=renderer.domElement;
  canvas.addEventListener('pointerdown',e=>{if(e.button===0)press={x:e.clientX,y:e.clientY,id:e.pointerId}});
- canvas.addEventListener('pointerup',e=>{if(press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
+ canvas.addEventListener('pointerup',e=>{if(!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
  el('people3d').addEventListener('change',()=>stationary.group.visible=el('people3d').checked);
  function update(dt){firstPerson.update(dt);together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);dialogue.update()}
  return {firstPerson,pedestrians,stationary,collision,shop,dialogue,together,update,npcFor};

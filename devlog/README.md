@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [178: 건물·전차 선택 후 드래그 종료 수정](20260918_178_fix_selection_stuck_drag.md)
 - [177: v0.5.15 건물 클릭 시점 유지 배포](20260918_177_deploy_v0515.md)
 - [176: 누적 1907년 작업 기록과 Git 정리](20260918_176_consolidate_1907_work.md)
 - [175: 건물 설명 선택 시 시점 유지와 추가 후보](20260918_175_building_info_without_camera_move.md)

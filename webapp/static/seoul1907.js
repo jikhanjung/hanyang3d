@@ -135,8 +135,11 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   const hit=raycaster.intersectObjects(scene.children,true).find(hit=>{let o=hit.object;while(o){if(!o.visible)return false;o=o.parent}return true});
   let object=hit?.object;
   while(object){
-   if(object===trams.car){e.stopImmediatePropagation();showTramInfo();return}
-   if(buildings.includes(object)){e.stopImmediatePropagation();showBuilding(object);return}
+   // OrbitControls installs its pointerup listener on pointerdown, after ours.
+   // Do not stop propagation: it must release capture and finish the gesture.
+   // Mark selection for the NPC picker, then open UI after all release handlers.
+   if(object===trams.car){e.preventDefault();setTimeout(showTramInfo,0);return}
+   if(buildings.includes(object)){const selected=object;e.preventDefault();setTimeout(()=>showBuilding(selected),0);return}
    object=object.parent;
   }
  });
