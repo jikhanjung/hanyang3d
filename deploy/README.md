@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.14`**, **`honestjung/hanyang3d-multiplayer:v0.5.9`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.15`**, **`honestjung/hanyang3d-multiplayer:v0.5.9`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -20,6 +20,8 @@
 검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
 
 ## 운영 주소
+
+2026-09-18 웹 **v0.5.15** 배포: 건물·이름표 클릭 시 현재 시점과 1인칭 상태 유지, 이동 목록에서만 시점 이동. 테스트 63개와 운영 PC·모바일 검증 통과. 멀티플레이 v0.5.9 유지. [기록](../devlog/20260918_177_deploy_v0515.md).
 
 2026-09-18 웹 **v0.5.14** 배포: 전차 운전수·승객 4명, 속도 20% 증가, 차량 클릭 출처 안내, 1907년 건물 직접 클릭과 이름표 가림. 테스트 63개·DB 보존 및 운영 PC·모바일 검증 통과. 멀티플레이 v0.5.9 유지. [기록](../devlog/20260918_173_deploy_v0514.md).
 
@@ -59,8 +61,8 @@
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.5.14`
-  - digest: `sha256:71b6bd8534c6ab217f6c1b86567ae518488911aed5e72756b3715d1dbf87dc15`
+- 웹: `honestjung/hanyang3d:v0.5.15`
+  - digest: `sha256:44454ac794ee2f5585ff57fafe82979c94aa709b96e6432e129e41412d068332`
 - 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.5.9`
   - digest: `sha256:107e3b4a7ebefa2f0681e42884b95ac58ccc48f75dcb46c4e5682c504709bdba`
 
