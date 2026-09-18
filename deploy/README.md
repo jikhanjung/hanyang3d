@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.16`**, **`honestjung/hanyang3d-multiplayer:v0.5.9`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.17`**, **`honestjung/hanyang3d-multiplayer:v0.5.9`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -20,6 +20,8 @@
 검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
 
 ## 운영 주소
+
+2026-09-18 웹 **v0.5.17** 배포: 칭경기념비전·팔각정·돈덕전·정관헌 추가, 1907년 건물 70개. 테스트 63개 및 운영 PC·모바일 검사 통과. DB 건물 184개, 멀티플레이 v0.5.9 유지. [기록](../devlog/20260918_182_deploy_v0517.md).
 
 2026-09-18 웹 **v0.5.16** 배포: 건물·전차 클릭 후 드래그가 남는 문제 수정. pointerup 종료 처리 후 설명창 표시. 이미지 테스트 63개·DB 보존 및 운영 PC·모바일 회귀 검사 통과. 멀티플레이 v0.5.9 유지. [기록](../devlog/20260918_179_deploy_v0516.md).
 

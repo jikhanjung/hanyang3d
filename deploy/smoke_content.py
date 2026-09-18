@@ -3,9 +3,16 @@ import json
 import subprocess
 import sys
 import time
+from pathlib import Path
 from urllib.request import urlopen
 from uuid import uuid4
 
+root = Path(__file__).resolve().parents[1]
+expected = {
+    'buildings': sum(len(json.loads((root / f'gis/buildings/{year}_landmarks.json').read_text())['features']) for year in (1750, 1907)),
+    'stories': len(json.loads((root / 'gis/stories/doseong_stories.json').read_text())['stories']),
+}
+assert expected['buildings'] > 0 and expected['stories'] > 0
 image = sys.argv[1]
 volume = 'hanyang-content-check-' + uuid4().hex
 cid = None
@@ -28,7 +35,7 @@ try:
             try:
                 with urlopen(url + '/healthz', timeout=2) as response: report = json.load(response)
                 assert report['status'] == 'ok' and report['content_source'] == 'database', report
-                assert report['content'] == {'buildings': 180, 'stories': 49}, report
+                assert report['content'] == expected, report
                 return url
             except OSError:
                 if time.monotonic() > deadline: raise
@@ -44,7 +51,7 @@ try:
     subprocess.run(['docker', 'exec', cid, 'python', 'manage.py', 'import_content'], check=True)
     subprocess.run(['docker', 'exec', cid, 'python', 'manage.py', 'backup_content', '/tmp/backup.sqlite3'], check=True)
     with urlopen(url + '/', timeout=10) as response: assert b'persisted-content-check' in response.read()
-    print('PASS: DB image initialization, backoffice/static, 180 buildings/49 stories, persisted edit after restart, non-overwriting import and verified backup')
+    print(f'PASS: DB image initialization, backoffice/static, {expected}, persisted edit after restart, non-overwriting import and verified backup')
 finally:
     if cid: subprocess.run(['docker', 'rm', '-f', cid], stdout=subprocess.DEVNULL)
     subprocess.run(['docker', 'volume', 'rm', volume], check=True, stdout=subprocess.DEVNULL)
