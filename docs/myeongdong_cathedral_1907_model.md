@@ -22,4 +22,4 @@
 
 `scripts/terrain/check_1907_cathedral_browser.py`는 임시 DB·임시 계정으로 PC 키보드와 모바일 터치 조이스틱의 입장·퇴장, 눈높이, 카메라 벽 충돌, 근·중·원거리 LOD, 유한 좌표와 메시 규모를 확인한다. 추가로 기존 일곱 건물 계단 검사도 유지한다.
 
-2026-09-18 웹 v0.5.20으로 운영 반영했다. 내부 보행 시 이름표 가림 판정과 카메라 벽 충돌의 광선 검사 비용을 줄인 후속 작업은 [기록 194](../devlog/20260919_194_cathedral_interior_performance.md)에 있으며 `scripts/terrain/measure_1907_cathedral_perf.py`로 프레임 비용을 측정한다. 이 개선은 아직 운영 반영 전이다.
+2026-09-18 웹 v0.5.20으로 운영 반영했다. 내부 보행 시 이름표 가림 판정과 카메라 벽 충돌의 광선 검사 비용을 줄인 후속 작업은 [기록 194](../devlog/20260919_194_cathedral_interior_performance.md)에 있으며 `scripts/terrain/measure_1907_cathedral_perf.py`로 프레임 비용을 측정한다. 2026-09-19 웹 v0.5.21로 운영 반영했다.
