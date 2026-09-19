@@ -15,13 +15,13 @@ class LanguageTests(TestCase):
     def test_default_is_korean_regardless_of_accept_language(self):
         page = self.client.get('/', HTTP_ACCEPT_LANGUAGE='en-US,en;q=0.9')
         self.assertContains(page, '<html lang="ko">')
-        self.assertContains(page, '>1인칭<')
+        self.assertContains(page, '>1인칭 시점<')
 
     def test_switch_sets_cookie_and_renders_english(self):
         page = self.client.get('/?lang=en')
         self.assertEqual(page.cookies[COOKIE].value, 'en')
         self.assertContains(page, '<html lang="en">')
-        self.assertContains(page, '>' + t('1인칭', 'en') + '<')
+        self.assertContains(page, '>' + t('1인칭 시점', 'en') + '<')
         self.assertNotEqual(t('1인칭', 'en'), '1인칭')
         # The choice is remembered without the query string, on every page.
         for path in ('/', '/guide/', '/credits/'):

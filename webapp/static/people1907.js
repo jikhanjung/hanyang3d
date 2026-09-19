@@ -39,10 +39,10 @@ export function createStationaryPeople1907(buildings,data,groundAt){
  function place(record,role,side,index){
   const owner=buildings.find(b=>b.userData.feature.id===record.building);if(!owner)return;
   const [w,,d]=owner.userData.feature.symbol_size_m;
-  const local=new THREE.Vector3(role==='guard'?side*(owner.userData.feature.landmark_kind==='government_compound'?6:w*.27):0,0,d/2+2.2);
+  const local=new THREE.Vector3(record.appearance==='caretaker'?3:role==='guard'?side*(owner.userData.feature.landmark_kind==='government_compound'?6:w*.27):0,0,d/2+2.2);
   local.applyAxisAngle(new THREE.Vector3(0,1,0),owner.rotation.y).add(new THREE.Vector3(owner.position.x,0,owner.position.z));
   local.y=groundAt(local.x,local.z)+.04;
-  const person=createPerson1907({guard:role==='guard',merchant:role==='merchant',storyteller:role==='storyteller'});person.group.position.copy(local);person.group.rotation.y=owner.rotation.y;
+  const person=createPerson1907({guard:role==='guard',merchant:role==='merchant',storyteller:role==='storyteller'&&record.appearance!=='caretaker'});person.group.position.copy(local);person.group.rotation.y=owner.rotation.y;
   person.group.name=`${role}-${record.building}-${index}`;person.group.userData.temporal=record;group.add(person.group);
   records.push({...record,role,owner,person,position:person.group.position,key:person.group.name});
  }

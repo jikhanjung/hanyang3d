@@ -15,5 +15,5 @@ export function createNavigation1907(geometry,texture){
   }ready=true;
  }
  function update(yaw,at){ctx.clearRect(0,0,size,size);ctx.fillStyle='#d6c7a8';ctx.fillRect(0,0,size,size);ctx.drawImage(baked,(at.x-span/2-minX)*scale,(at.z-span/2-minZ)*scale,span*scale,span*scale,0,0,size,size);ctx.save();ctx.translate(size/2,size/2);ctx.rotate(-yaw);ctx.fillStyle='#006fa8';ctx.strokeStyle='white';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-10);ctx.lineTo(7,8);ctx.lineTo(0,5);ctx.lineTo(-7,8);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();ctx.fillStyle='#24372e';ctx.font='bold 14px system-ui';ctx.fillText('N ↑',10,21);map.dataset.worldX=at.x;map.dataset.worldZ=at.z}
- return {show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
+ return {largeMapSource:{geometry,image:baked,minX,minZ,maxX,maxZ,scale,prepare:bake},show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
 }

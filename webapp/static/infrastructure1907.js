@@ -48,15 +48,15 @@ export function createInfrastructure1907(data,surface,buildings){
   }return {min:Math.min(...heights),max:Math.max(...heights)};
  });wall.updateHeights(1);
  const water=new THREE.Group();water.name='cheonggyecheon-1907';const bridges=new THREE.Group();bridges.name='bridges-1907';
- const river=data.river,edges=[],nodes=[];
+ const river=data.river,edges=[],nodes=[],riverSurface=surface.original??surface;
  for(let i=0;i<river.centerline.length-1;i++){
   const a=river.centerline[i],b=river.centerline[i+1],len=Math.hypot(b[0]-a[0],b[1]-a[1]),steps=Math.ceil(len/3);
   for(let j=0;j<steps;j++){
    const t=j/steps,width=THREE.MathUtils.lerp(river.half_widths_px[i],river.half_widths_px[i+1],t),x=THREE.MathUtils.lerp(a[0],b[0],t),y=THREE.MathUtils.lerp(a[1],b[1],t),nx=-(b[1]-a[1])/len*width,ny=(b[0]-a[0])/len*width;
-   edges.push([surface(x-nx,y-ny),surface(x+nx,y+ny)]);nodes.push({pixel:[x,y],width});
+   edges.push([riverSurface(x-nx,y-ny),riverSurface(x+nx,y+ny)]);nodes.push({pixel:[x,y],width});
   }
  }
- const last=river.centerline.at(-1),prev=river.centerline.at(-2),len=Math.hypot(last[0]-prev[0],last[1]-prev[1]),width=river.half_widths_px.at(-1),nx=-(last[1]-prev[1])/len*width,ny=(last[0]-prev[0])/len*width;edges.push([surface(last[0]-nx,last[1]-ny),surface(last[0]+nx,last[1]+ny)]);
+ const last=river.centerline.at(-1),prev=river.centerline.at(-2),len=Math.hypot(last[0]-prev[0],last[1]-prev[1]),width=river.half_widths_px.at(-1),nx=-(last[1]-prev[1])/len*width,ny=(last[0]-prev[0])/len*width;edges.push([riverSurface(last[0]-nx,last[1]-ny),riverSurface(last[0]+nx,last[1]+ny)]);
  const ribbon=(pairs,color,lift)=>{
   const positions=[],indices=[];pairs.forEach(pair=>pair.forEach(p=>positions.push(p.x,p.y+lift,p.z)));
   for(let i=0;i<pairs.length-1;i++){const k=i*2;indices.push(k,k+2,k+1,k+1,k+2,k+3)}

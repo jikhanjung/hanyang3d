@@ -3648,6 +3648,916 @@
       "valid_from": 1907,
       "valid_to": 1908,
       "position_status": "fictional_narrator_at_estimated_bookshop"
+    },
+    {
+      "building": "geunjeongjeon-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "근정전 관리인",
+        "name_en": "Gyeongbokgung caretaker",
+        "subtitle": "근정전 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "근정전에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "이곳은 경복궁의 정전인 근정전이오. 지금 보이는 전각은 1867년 경복궁을 다시 세울 때 중건한 것이지요. 왕실의 큰 의례를 치르던 조정과 전각을 함께 살펴보시오.",
+            "text_en": "This is Geunjeongjeon, the main ceremonial hall of Gyeongbokgung, rebuilt in 1867. Look at the courtyard as well as the hall.",
+            "sources": [
+              {
+                "title": "문화포털 — 경복궁 근정전",
+                "title_en": "Culture Portal — Geunjeongjeon",
+                "url": "https://www.culture.go.kr/portal/cltKnw/usePtt/viewOrigin.do?did=60910&menuNo=200059"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "junghwajeon-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "중화전 관리인",
+        "name_en": "Junghwajeon caretaker",
+        "subtitle": "중화전 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "중화전에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "경운궁의 중화전이오. 1904년 화재 뒤에 다시 지어 1906년에 중건했소. 예전 중층 지붕과 달리 지금은 단층 전각이지요. 같은 궁궐이라도 어느 해의 모습인가를 가려 보아야 하오.",
+            "text_en": "Junghwajeon was rebuilt in 1906 after the 1904 fire. The present hall has a single roof level, unlike its earlier form.",
+            "sources": [
+              {
+                "title": "국가기록원 — 덕수궁",
+                "title_en": "National Archives — Deoksugung",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "injeongjeon-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "인정전 관리인",
+        "name_en": "Injeongjeon caretaker",
+        "subtitle": "인정전 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "인정전에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "창덕궁의 정전인 인정전이오. 화재로 잃었던 전각을 1804년에 다시 세웠지요. 조정 한가운데의 길과 좌우에 늘어선 품계석은 의례 때 사람들이 설 자리를 가르는 데 쓰였소.",
+            "text_en": "Injeongjeon is Changdeokgung’s main hall, rebuilt in 1804 after a fire. Its courtyard and rank stones organize ceremonial space.",
+            "sources": [
+              {
+                "title": "국립고궁박물관 — 창덕궁 인정전",
+                "title_en": "National Palace Museum — Injeongjeon",
+                "url": "https://www.gogung.go.kr/ebook/access/ecatalogt.jsp?Dir=161&callmode=admin&catimage=&eclang=ko&start=26&um=s"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "myeongjeongjeon-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "명정전 관리인",
+        "name_en": "Myeongjeongjeon caretaker",
+        "subtitle": "명정전 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "명정전에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "창경궁의 큰 의례를 치르는 명정전이오. 궁궐의 전각이라 하여 모두 같은 방향과 규모인 것은 아니지요. 마당과 문, 전각이 이어지는 순서를 따라 둘러보시오.",
+            "text_en": "Myeongjeongjeon is Changgyeonggung’s ceremonial hall. Follow the relationship between its gate, courtyard and hall.",
+            "sources": [
+              {
+                "title": "궁능유적본부 — 명정전",
+                "url": "https://royal.khs.go.kr/ROYAL/contents/R402000000.do?id=20240904134731840421&schBcid=normal1&schM=view",
+                "title_en": "궁능유적본부 — 명정전"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "jongmyo-jeongjeon-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "종묘 관리인",
+        "name_en": "Jongmyo caretaker",
+        "subtitle": "종묘 정전 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "종묘 정전에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "종묘는 왕실 선왕과 왕후의 신위를 모시는 곳이오. 정전은 여러 차례 늘려 지었고 1836년 증축 뒤에는 신실이 열아홉 칸이 되었지요. 길게 이어진 전각에는 그만큼 여러 세대의 기억이 쌓여 있소.",
+            "text_en": "Jongmyo houses royal ancestral tablets. Jeongjeon was extended repeatedly and had nineteen shrine chambers after the 1836 expansion.",
+            "sources": [
+              {
+                "title": "궁능유적본부 — 종묘 연혁",
+                "url": "https://royal.cha.go.kr/ROYAL/contents/R105010000.do",
+                "title_en": "궁능유적본부 — 종묘 연혁"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "hwangudan-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "환구단 관리인",
+        "name_en": "Hwangudan caretaker",
+        "subtitle": "환구단 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "환구단에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "환구단은 황제가 하늘에 제사를 올리는 곳이오. 1897년 대한제국의 출발과 연결되는 장소지요. 궁궐의 정전과는 쓰임이 다르니 제단과 제향 공간을 구별해 보시오.",
+            "text_en": "Hwangudan is the imperial altar associated with the founding of the Korean Empire in 1897, distinct from a palace audience hall.",
+            "sources": [
+              {
+                "title": "우리역사넷 — 환구단과 황궁우",
+                "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0020_0020_0020&whereStr=",
+                "title_en": "우리역사넷 — 환구단과 황궁우"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "myeongdong-cathedral-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "성당 안내인",
+        "name_en": "Cathedral attendant",
+        "subtitle": "명동성당 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "명동성당에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "이 언덕의 종현성당은 1898년에 축성되었소. 붉은 벽돌과 뾰족한 아치, 높은 종탑이 멀리서도 눈에 띄지요. 정문으로 들어가면 기둥이 나누는 세 갈래 공간과 제단 쪽으로 이어지는 긴 내부를 볼 수 있소.",
+            "text_en": "The cathedral was consecrated in 1898. Its brickwork, pointed arches and tower mark the hill; inside, columns divide the nave and aisles.",
+            "sources": [
+              {
+                "title": "국가기록원 — 명동성당",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do",
+                "title_en": "국가기록원 — 명동성당"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              },
+              {
+                "title": "한국민족문화대백과사전 — 서울 명동성당",
+                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
+                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "jeongdong-church-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "정동교회 안내인",
+        "name_en": "Chungdong Church attendant",
+        "subtitle": "정동교회 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "정동교회에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "정동의 이 예배당은 1897년에 완성되었소. 공사관과 학교들이 들어선 동네에 벽돌 예배당도 자리를 잡은 셈이지요. 정동을 걸을 때에는 한 건물만 보지 말고 주변 시설과 이어서 살펴보시오.",
+            "text_en": "This brick church was completed in 1897, in a Jeongdong neighborhood also shaped by schools and foreign legations.",
+            "sources": [
+              {
+                "title": "한국관광공사 — 서울 정동교회",
+                "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c354b2fc-4c84-496f-822e-e8d78bbd6488",
+                "title_en": "한국관광공사 — 서울 정동교회"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "sungkyun-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "성균관 관리인",
+        "name_en": "Seonggyungwan caretaker",
+        "subtitle": "문묘·성균관 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "문묘·성균관에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "여기는 문묘와 성균관이오. 선현에게 제사를 올리는 곳과 유생들이 배우는 곳이 함께 있지요. 앞쪽의 제향 공간과 뒤쪽의 교육 공간을 나누어 보면, 이곳이 단순한 관청과 어떻게 다른지 알 수 있소.",
+            "text_en": "The Confucian shrine and Seonggyungwan combine ritual and education. Distinguish the shrine precinct from the teaching spaces behind it.",
+            "sources": [
+              {
+                "title": "문묘·성균관 연혁·건축 설명",
+                "title_en": "Munmyo and Seonggyungwan history and architecture",
+                "url": "https://www.heritage.go.kr/heri/cul/culGuidePostDetail.do?ccbaCpno=1331101430000&ccgbGbtype=UNI&ccgbGbtypeNo=1&pageNo=1_5_0_0"
+              },
+              {
+                "title": "서울역사박물관 최신경성전도",
+                "title_en": "Seoul Museum of History: 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "bukmyo-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "북묘 관리인",
+        "name_en": "Bukmyo caretaker",
+        "subtitle": "북묘 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "북묘에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "북묘는 1883년에 세운 관우 사당이오. 1884년 갑신정변 때 고종께서 이 부근 북묘와 청군 영방으로 몸을 피한 일과도 이어지는 곳이지요. 비석에는 왕실이 이곳에 품었던 기대와 신앙이 남아 있소.",
+            "text_en": "Bukmyo, a Guan Yu shrine founded in 1883, is connected with Gojong’s flight to the shrine and Qing camp during the 1884 coup. Its inscription records royal hopes and beliefs.",
+            "sources": [
+              {
+                "title": "오케이뉴스 — 북묘 정전 사진(국립중앙박물관 제공)",
+                "title_en": "User-supplied Bukmyo photograph",
+                "url": "https://www.oknews.news/news/articleView.html?idxno=15929"
+              },
+              {
+                "title": "국립중앙박물관 — 북묘비",
+                "title_en": "National Museum — Bukmyo stele",
+                "url": "https://www.museum.go.kr/MUSEUM/contents/M0502000000.do?relicId=4342&schM=view&searchId=search"
+              },
+              {
+                "title": "국가유산 — 동관왕묘 합사 연혁",
+                "title_en": "Dongmyo chronology",
+                "url": "https://digital.khs.go.kr/heri/heriDetail.do?ctptNo=1121101420000&ctptUid=13898859667940200188"
+              },
+              {
+                "title": "1907년 최신경성전도",
+                "title_en": "1907 source map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "hanseong-electric-office-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "전기회사 안내인",
+        "name_en": "Electric company attendant",
+        "subtitle": "한성전기회사 옛 사옥 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "한성전기회사 옛 사옥에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "한성전기회사라는 이름으로 기억하는 이가 많지만, 지금은 한미전기회사라 부르오. 전차와 전등은 기계만 들여왔다고 굴러가는 것이 아니지요. 사무를 보는 사옥, 전기를 만드는 곳, 차량을 돌보는 차고가 각각 필요하오.",
+            "text_en": "Many remember the name Hanseong Electric Company, but in 1907 it is the Korea–American Electric Company. Offices, power generation and tram maintenance serve different purposes.",
+            "sources": [
+              {
+                "title": "건축·배치 참고 자료",
+                "title_en": "Architecture and placement reference",
+                "url": "https://museum.seoul.go.kr/www/down/pdf/exh/per/renewal_2zone.pdf"
+              },
+              {
+                "title": "1907년 최신경성전도",
+                "title_en": "1907 source map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "dongdaemun-depot-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_not_documented_individual",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "전차 차고 관리인",
+        "name_en": "Tram depot caretaker",
+        "subtitle": "동대문 전차 차고·발전소 · 가상 안내 인물",
+        "subtitle_en": "Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "동대문 전차 차고·발전소에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text_en": "Welcome. Would you like to hear about this place?",
+            "options": [
+              {
+                "label": "이곳 이야기를 들려주시오.",
+                "label_en": "Tell me about this place.",
+                "next": "history"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "history": {
+            "text": "동대문 부근은 전차의 차고와 발전 시설이 모인 곳이오. 종로에서 손님을 태우는 차량도 전기를 공급받고 손질을 해야 계속 달릴 수 있지요. 거리의 전차와 그 뒤에서 움직이는 일터를 함께 보시오.",
+            "text_en": "The Dongdaemun area houses tram storage and power facilities. Street service also depends on electricity and vehicle maintenance.",
+            "sources": [
+              {
+                "title": "서울역사박물관 — 동대문 차고 개통식 사진",
+                "title_en": "Seoul Museum of History — 1899 tram opening",
+                "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090"
+              },
+              {
+                "title": "서울역사박물관 — 최신경성전도",
+                "title_en": "Seoul Museum of History — 1907 map",
+                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+              }
+            ],
+            "options": [
+              {
+                "label": "다시 처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "dansungsa-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_doorkeeper_at_estimated_entrance",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "단성사 문지기",
+        "name_en": "Dansungsa doorkeeper",
+        "subtitle": "1907년 공연장 · 가상 안내 인물",
+        "subtitle_en": "1907 performance hall · Fictional attendant",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "단성사를 찾아오셨소? 문을 막지 않는 곳에 잠깐 서시오. 막 문을 연 이 극장이 어떤 곳인지 차근차근 들려드리리다.",
+            "text_en": "Welcome to Dansungsa. Let us stand clear of the entrance while I tell you about this new theatre.",
+            "options": [
+              {
+                "label": "극장 이야기를 들어 봅시다.",
+                "label_en": "Tell me about the theatre.",
+                "next": "part1"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part1": {
+            "text": "이 극장은 올해인 1907년 6월 문을 열었소. 이름은 연예단성사요. 종로에서 길을 따라 들어오는 손님들을 맞는 일이 내 몫이지요. 문간을 지키는 이 사람의 사연은 꾸민 것이지만, 새로 문을 연 극장이 이 동네에 있었다는 사실은 기록으로 전해진다오.",
+            "text_en": "The theatre opened in June 1907 as Yeonye Dansungsa. I am a fictional doorkeeper, but the opening of the theatre here is documented.",
+            "story_title": "갓 문을 연 단성사",
+            "story_title_en": "The newly opened Dansungsa",
+            "story_part": 1,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국가기록원 — 단성사",
+                "title_en": "National Archives of Korea — Dansungsa",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/Dansungsa.do"
+              },
+              {
+                "title": "한국민족문화대백과 — 단성사",
+                "title_en": "Encyclopedia of Korean Culture — Dansungsa",
+                "url": "https://encykorea.aks.ac.kr/Article/E0013595"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주시오.",
+                "label_en": "Continue.",
+                "next": "part2"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part2": {
+            "text": "우리가 맞는 것은 무대에서 창과 춤 같은 연희를 보러 온 손님들이오. 단성사 하면 먼 훗날의 영화관을 떠올릴 수도 있겠지만, 지금 이 이야기가 놓인 때에는 갓 문을 연 공연장의 모습을 보아야 하오. 뒷날의 건물과 공연을 올해의 일인 듯 섞으면 이야기가 어긋나지요.",
+            "text_en": "The early theatre presents live singing, dancing and other performances. Its later identity as a cinema should not be projected back onto this opening year.",
+            "story_title": "갓 문을 연 단성사",
+            "story_title_en": "The newly opened Dansungsa",
+            "story_part": 2,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국가기록원 — 단성사",
+                "title_en": "National Archives of Korea — Dansungsa",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/Dansungsa.do"
+              },
+              {
+                "title": "한국민족문화대백과 — 단성사",
+                "title_en": "Encyclopedia of Korean Culture — Dansungsa",
+                "url": "https://encykorea.aks.ac.kr/Article/E0013595"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주시오.",
+                "label_en": "Continue.",
+                "next": "part3"
+              },
+              {
+                "label": "앞 이야기로 돌아가시오.",
+                "label_en": "Previous part.",
+                "next": "part1"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part3": {
+            "text": "처음 단성사는 목조 두 층 건물로 전해지오. 모인 이들이 같은 무대에 눈과 귀를 기울이는 곳이지요. 여기서 들려주는 문간의 말투나 손님을 맞는 모습은 상상한 장면이오. 좌석 수나 오늘의 표값, 어느 공연이 몇 시에 시작하는지는 확인한 것처럼 말할 수 없소.",
+            "text_en": "The early building is described as a two-storey timber theatre. My welcome is an imagined scene; exact seating, ticket prices and today’s program are not established here.",
+            "story_title": "갓 문을 연 단성사",
+            "story_title_en": "The newly opened Dansungsa",
+            "story_part": 3,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국가기록원 — 단성사",
+                "title_en": "National Archives of Korea — Dansungsa",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/Dansungsa.do"
+              },
+              {
+                "title": "한국민족문화대백과 — 단성사",
+                "title_en": "Encyclopedia of Korean Culture — Dansungsa",
+                "url": "https://encykorea.aks.ac.kr/Article/E0013595"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주시오.",
+                "label_en": "Continue.",
+                "next": "part4"
+              },
+              {
+                "label": "앞 이야기로 돌아가시오.",
+                "label_en": "Previous part.",
+                "next": "part2"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part4": {
+            "text": "극장을 찾는 즐거움이 어려운 이웃을 돕는 일과 이어지기도 했소. 초기 단성사의 연혁에는 자선공연 수익을 야학이나 고아원 등에 보냈다는 이야기가 있지요. 다만 그 여러 일을 모두 오늘 하루나 개관일의 일로 묶지는 않으려 하오. 이곳의 시작을 이해하는 데 참고할 이야기로 들어 두시오.",
+            "text_en": "Accounts of the early theatre describe charity performances supporting institutions such as night schools and orphanages. These activities should not all be assigned to the opening day or a specific day in 1907.",
+            "story_title": "갓 문을 연 단성사",
+            "story_title_en": "The newly opened Dansungsa",
+            "story_part": 4,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국가기록원 — 단성사",
+                "title_en": "National Archives of Korea — Dansungsa",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/Dansungsa.do"
+              },
+              {
+                "title": "한국민족문화대백과 — 단성사",
+                "title_en": "Encyclopedia of Korean Culture — Dansungsa",
+                "url": "https://encykorea.aks.ac.kr/Article/E0013595"
+              }
+            ],
+            "options": [
+              {
+                "label": "처음 이야기로 돌아가시오.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "앞 이야기로 돌아가시오.",
+                "label_en": "Previous part.",
+                "next": "part3"
+              },
+              {
+                "label": "다음에 뵙겠소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
     }
   ],
   "horse_dealer": {

@@ -1,3 +1,4 @@
+import {createChannel1907} from './channel1907.js';
 import {createSettlement1907} from './settlement1907.js';
 import {createTrams1907} from './trams1907.js';
 import {createWalk1907} from './walk1907.js';
@@ -43,15 +44,21 @@ async function main(){
   positions.push(p.x,p.y,p.z);uv.push(pixel[0]/iw,1-pixel[1]/ih);
   if(i<n-1&&j<n-1){const a=j*n+i;indices.push(a,a+n+1,a+1,a,a+n,a+n+1)}
  }
- const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geometry.setIndex(indices);geometry.computeVertexNormals();
+ let geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geometry.setIndex(indices);geometry.computeVertexNormals();
  const terrain=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0xc4aa7f,roughness:1}));scene.add(terrain);
  // Show and allow orbiting the terrain while later assets are still loading.
  const resize=()=>{needsRender=true;renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()};window.addEventListener('resize',resize);resize();
  const center=world(...project((left+right)/2,(top+bottom)/2),100);controls.target.copy(center);camera.position.copy(center).add(new THREE.Vector3(0,6100,6100).multiplyScalar(Math.max(1,.9/camera.aspect)));controls.update();
  const raycaster=new THREE.Raycaster();
  const pick=ray=>{raycaster.ray.copy(ray);return raycaster.intersectObject(terrain)[0]?.point??null};
-const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-zz/scale))/(ymax-ymin)*(n-1);if(u<0||v<0||u>n-1||v>n-1)return null;const i=Math.min(n-2,Math.floor(u)),j=Math.min(n-2,Math.floor(v)),a=u-i,b=v-j,k=j*n+i;return a>=b?(1-a)*z[k]+(a-b)*z[k+1]+b*z[k+n+1]:(1-b)*z[k]+(b-a)*z[k+n]+a*z[k+n+1]};
+const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-zz/scale))/(ymax-ymin)*(n-1);if(u<0||v<0||u>n-1||v>n-1)return null;const i=Math.min(n-2,Math.floor(u)),j=Math.min(n-2,Math.floor(v)),a=u-i,b=v-j,k=j*n+i;return a>=b?(1-a)*z[k]+(a-b)*z[k+1]+b*z[k+n+1]:(1-b)*z[k]+(b-a)*z[k+n]+a*z[k+n+1]};
 
+ const infraData=JSON.parse(el('infrastructure-1907').textContent);
+ if(infraData.source_sha256!==cfg.image_sha256)throw Error('Infrastructure map hash mismatch');
+ const originalSurface=(x,y)=>{const p=world(...project(x,y),0);p.y=baseGroundAt(p.x,p.z);return p};
+ const navigationGeometry=geometry,channel=createChannel1907(infraData.river,geometry,originalSurface,baseGroundAt);
+ geometry=channel.geometry;terrain.geometry=geometry;
+ const groundAt=channel.groundAt;
  let walking=null;
  setupOrbitNavigation(camera,controls,renderer.domElement,pick,()=>!!walking?.firstPerson.active,groundAt);
  paintLoading=()=>renderer.render(scene,camera);
@@ -85,7 +92,7 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   }
   const storyteller=walking?.stationary.records.find(r=>r.role==='storyteller'&&r.building===f.id);
   if(storyteller){
-   const talk=document.createElement('button');talk.id='bookshop-talk';talk.textContent=t('책방 주인과 이야기하기');talk.style.cssText='float:none;display:block;min-height:44px;margin:8px 0';
+   const talk=document.createElement('button');talk.id='bookshop-talk';talk.textContent=t(storyteller.appearance==='caretaker'?'관리인과 이야기하기':'책방 주인과 이야기하기');talk.style.cssText='float:none;display:block;min-height:44px;margin:8px 0';
    talk.onclick=()=>{
     walking.firstPerson.exit();el('people3d').checked=true;walking.stationary.group.visible=true;
     const p=storyteller.position,front=new THREE.Vector3(0,2.5,6).applyAxisAngle(new THREE.Vector3(0,1,0),model.rotation.y);
@@ -113,9 +120,7 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   const option=document.createElement('option');option.value=f.id;option.textContent=f.name;el('landmark').append(option);
  }
  await stage(3,t('주요 건물·문 표시 완료 · 성벽과 길·물길을 준비합니다'));
- const infraData=JSON.parse(el('infrastructure-1907').textContent);
- if(infraData.source_sha256!==cfg.image_sha256)throw Error('Infrastructure map hash mismatch');
- const surface=(x,y)=>{const p=world(...project(x,y),0);p.y=groundAt(p.x,p.z);if(p.y===null)throw Error('Infrastructure outside terrain');return p};surface.ground=(x,z)=>groundAt(x,z);surface.grid={xmin:(xmin-cx)*scale,zmin:-(ymax-cy)*scale,stepX:(xmax-xmin)*scale/(n-1),stepZ:(ymax-ymin)*scale/(n-1),size:n};
+ const surface=(x,y)=>{const p=world(...project(x,y),0);p.y=groundAt(p.x,p.z);if(p.y===null)throw Error('Infrastructure outside terrain');return p};surface.original=originalSurface;surface.ground=(x,z)=>groundAt(x,z);surface.grid={xmin:(xmin-cx)*scale,zmin:-(ymax-cy)*scale,stepX:(xmax-xmin)*scale/(n-1),stepZ:(ymax-ymin)*scale/(n-1),size:n};
  const infrastructure=createInfrastructure1907(infraData,surface,buildings);scene.add(infrastructure.wall.group,infrastructure.water,infrastructure.bridges,infrastructure.roads);
  const tramData=JSON.parse(el('trams-1907').textContent);
  if(tramData.source_sha256!==cfg.image_sha256)throw Error('Tram map hash mismatch');
@@ -188,7 +193,7 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   if(original){if(!leaflet){leaflet=L.map('original',{crs:L.CRS.Simple,minZoom:-4,maxZoom:3,attributionControl:false});L.imageOverlay(asset(cfg.image_url),[[0,0],[ih,iw]]).addTo(leaflet)}leaflet.invalidateSize();reset()}
  };
  await stage(4,t('성벽·길·물길 표시 완료 · 걷는 사람과 상인을 준비합니다'));
- walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture,settlement});
+ walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry:navigationGeometry,texture,settlement});
  walking.pedestrians.setVehicleAvoider((p,old,dt)=>trams.avoid(p,old,dt,(x,z,r)=>walking.collision.hit(x,z,r)));
  await stage(5,t('사람 표시 완료 · 마무리합니다'));
  updateLayers();
@@ -229,6 +234,6 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   }
   renderer.render(scene,camera)}});
  await stage(6,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
- el('status').hidden=true;window.seoul1907={ready:true,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
+ el('status').hidden=true;window.seoul1907={ready:true,channel,baseGroundAt,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
 }
 main().catch(error=>{console.error(error);el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;window.seoul1907={ready:false,error:String(error)}});

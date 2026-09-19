@@ -897,7 +897,7 @@ async function main(){
    ctx.fillStyle='#fffdf2dd';ctx.fillRect(9,210,68,23);ctx.fillStyle='#24372e';ctx.fillRect(15,216,200/span*size,2);ctx.font='11px system-ui';ctx.fillText('200 m',15,230);
    map.dataset.worldX=x;map.dataset.worldZ=z;map.dataset.heading=heading;
   }
-  return {show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
+  return {largeMapSource:{image:baked,minX,minZ,maxX,maxZ,scale,prepare:bake},show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
  })();
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  // The shop owns the account state (login, coins); the walking profile takes its name from it.

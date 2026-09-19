@@ -1,0 +1,4053 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-09-19",
+  "scope": "LOC 서울 1904 목록 94건 + Cornell 8건 + 고궁박물관 1건. 소장품 기록 수이며 독립 촬영 장면 수가 아님.",
+  "status": "research_archive_not_runtime_assets",
+  "metadata_source": "https://data.labs.loc.gov/stereographs/metadata.csv",
+  "items": [
+    {
+      "id": "LOC-2020638022",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638022/",
+      "title_original": "Korean soldiers (under arms)--looking N.E. to the gate of the old Royal Palace--Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "궁궐·제례",
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreansoldiersunderarmslookingnetothegateoftheoldroyalpalaceseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32325_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32325r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32325v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638023",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638023/",
+      "title_original": "House building in Korea--wall of stone and mud against a framework of grass ropes and sticks, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "housebuildinginkoreawallofstoneandmudagainstaframeworkofgrassropesandsticksseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32326_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32326r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32326v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638024",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638024/",
+      "title_original": "House building in Korea--wall of stone and mud against a framework of grass ropes and sticks, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "housebuildinginkoreawallofstoneandmudagainstaframeworkofgrassropesandsticksseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32327_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32327r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32327v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638025",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638025/",
+      "title_original": "House building in Korea--wall of stone and mud against a framework of grass ropes and sticks, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "housebuildinginkoreawallofstoneandmudagainstaframeworkofgrassropesandsticksseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32328_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32328r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32328v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638026",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638026/",
+      "title_original": "Jumbled roofs of Seoul, capital of the \"Hermit Kingdom\"--N.W. from a tower near center of city--Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "jumbledroofsofseoulcapitalofthehermitkingdomnwfromatowernearcenterofcitykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32329_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32329r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32329v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638027",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638027/",
+      "title_original": "Charming town of Mapo on the Han River--looking west from residence of Customs Commissioner of Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "charmingtownofmapoonthehanriverlookingwestfromresidenceofcustomscommissionerofkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32330_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32330r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32330v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638028",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638028/",
+      "title_original": "Jumbled roofs of Seoul, capital of the \"Hermit Kingdom\"--N.W. from a tower near center of city--Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "jumbledroofsofseoulcapitalofthehermitkingdomnwfromatowernearcenterofcitykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32331_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32331r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32331v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638100",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638100/",
+      "title_original": "Little Korean boys, of the middle class, in the northern suburbs of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "littlekoreanboysofthemiddleclassinthenorthernsuburbsofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32262_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32262r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32262v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638019",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638019/",
+      "title_original": "A game of \"Go-ban,\" or oriental chess--Yun-Woong-Niel, Korean minister of war (left), in his home, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "agameofgobanororientalchessyunwoongnielkoreanministerofwarleftinhishomeseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32322_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32322r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32322v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638020",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638020/",
+      "title_original": "Outside the South gate, on one of the main highways of the Hermit capital, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "outsidethesouthgateononeofthemainhighwaysofthehermitcapitalseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32323_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32323r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32323v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2020638021",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2020638021/",
+      "title_original": "Looking past pillars of ancient arch, through new Independence Arch--N. to Perkin Pass, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "lookingpastpillarsofancientarchthroughnewindependencearchntoperkinpassseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32324_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32324r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32324v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665565",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665565/",
+      "title_original": "Farmers coming to market at Seoul through the Pekin Pass, the highway to Manchuria and China, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "farmerscomingtomarketatseoulthroughthepekinpassthehighwaytomanchuriaandchinakorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32354_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32354r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32354v.jpg"
+      ],
+      "status": "downloaded_verified",
+      "local_path": "data/photos/seoul1907/images/loc-2003665565.jpg",
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19",
+      "bytes": 124619,
+      "sha256": "b4fee9004525866c3f7ec05321d0a7ba6b3515a79099b71d950111529193441d",
+      "dimensions": [
+        640,
+        338
+      ],
+      "download_url": "https://data.labs.loc.gov/stereographs/data/2003665565_1s32354r.jpg"
+    },
+    {
+      "id": "LOC-2003665564",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665564/",
+      "title_original": "Farmers coming to market at Seoul through the Pekin Pass, the highway to Manchuria and China, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "farmerscomingtomarketatseoulthroughthepekinpassthehighwaytomanchuriaandchinakorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32365_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32365r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32365v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665581",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665581/",
+      "title_original": "The old city wall built over the mountains north of Seoul - from inside looking out - Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "theoldcitywallbuiltoverthemountainsnorthofseoulfrominsidelookingoutkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32344_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32344r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32344v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666489",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666489/",
+      "title_original": "Monks at a village monastery of Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "monksatavillagemonasteryofkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32349_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32349r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32349v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666460",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666460/",
+      "title_original": "Much envied winners of the arrow-shooting contest - the national game of the highest aristocracy, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "muchenviedwinnersofthearrowshootingcontestthenationalgameofthehighestaristocracykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32368_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32368r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32368v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2002708705",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2002708705/",
+      "title_original": "Typical houses outside the city - from City Wall S.E. over street leading to South Gate - Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "typicalhousesoutsidethecityfromcitywallseoverstreetleadingtosouthgateseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32261_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32261r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32261v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2002708704",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2002708704/",
+      "title_original": "A game of \"Go-ban,\" or oriental chess - Yun-Woong-Niel, Korean Minister of War (left), in his home, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "agameofgobanororientalchessyunwoongnielkoreanministerofwarleftinhishomeseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32249_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32249r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32249v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2002708700",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2002708700/",
+      "title_original": "Crude industries of Korea, where man-power is cheaper than mills - sawing lumber in a lumber yard of Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "crudeindustriesofkoreawheremanpowerischeaperthanmillssawinglumberinalumberyardofseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32232_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32232r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32232v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2002708701",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2002708701/",
+      "title_original": "Looking past pillars of ancient arch, through new Independence Arch - N. to Pekin Pass, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "lookingpastpillarsofancientarchthroughnewindependencearchntopekinpassseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32319_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32319r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32319v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2002708703",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2002708703/",
+      "title_original": "A primitive grist-mill of the Korean peasants--beating turnip seed into meal--suburbs of Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "aprimitivegristmillofthekoreanpeasantsbeatingturnipseedintomealsuburbsofseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32305_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32305r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32305v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665577",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665577/",
+      "title_original": "South Gate, N.E. over the city, showing French and American Churches, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "southgateneoverthecityshowingfrenchandamericanchurchesseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32254_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32254r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32254v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665576",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665576/",
+      "title_original": "South Gate, N.E. over the city, showing French and American Churches, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "southgateneoverthecityshowingfrenchandamericanchurchesseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32266_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32266r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32266v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665578",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665578/",
+      "title_original": "South Gate, N.E. over the city, showing French and American Churches, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "southgateneoverthecityshowingfrenchandamericanchurchesseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32238_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32238r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32238v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665592",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665592/",
+      "title_original": "Jumbled roofs of Seoul, capital of the \"Hermit Kingdom\" - N.W. from a tower near center of city--Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "jumbledroofsofseoulcapitalofthehermitkingdomnwfromatowernearcenterofcitykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32304_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32304r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32304v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665593",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665593/",
+      "title_original": "Typical houses outside the city--from city wall S.E. over street leading to South Gate, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "건축"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "typicalhousesoutsidethecityfromcitywallseoverstreetleadingtosouthgateseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32223_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32223r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32223v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665594",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665594/",
+      "title_original": "Typical Korean gentlemen before the temple of the God of War, seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "typicalkoreangentlemenbeforethetempleofthegodofwarseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32263_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32263r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32263v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665560",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665560/",
+      "title_original": "Charming town of Mapo on the Han River--looking west from residence of Customs Commissioner of Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "charmingtownofmapoonthehanriverlookingwestfromresidenceofcustomscommissionerofkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32308_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32308r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32308v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665570",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665570/",
+      "title_original": "Looking out through the West Gate, by which visitors enter Seoul - showing American electric tramway, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "전차",
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-02",
+        "S1907-03"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "lookingoutthroughthewestgatebywhichvisitorsenterseoulshowingamericanelectrictramwaykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32267_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32267r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32267v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665571",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665571/",
+      "title_original": "Looking out through the West Gate, by which visitors enter Seoul - showing American electric tramway, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "전차",
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-02",
+        "S1907-03"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "lookingoutthroughthewestgatebywhichvisitorsenterseoulshowingamericanelectrictramwaykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32290_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32290r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32290v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665573",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665573/",
+      "title_original": "Looking out through the West Gate, by which visitors enter Seoul - showing American electric tramway, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "전차",
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-02",
+        "S1907-03"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "lookingoutthroughthewestgatebywhichvisitorsenterseoulshowingamericanelectrictramwaykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32294_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32294r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32294v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665572",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665572/",
+      "title_original": "Looking out through the West Gate, by which visitors enter Seoul - showing American electric tramway, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "전차",
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-02",
+        "S1907-03"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "lookingoutthroughthewestgatebywhichvisitorsenterseoulshowingamericanelectrictramwaykorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32250_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32250r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32250v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665574",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665574/",
+      "title_original": "Among the queer Koreans - a pack train in the suburbs outside Seoul - looking W. to East Gate, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "amongthequeerkoreansapacktraininthesuburbsoutsideseoullookingwtoeastgatekorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32224_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32224r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32224v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665575",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665575/",
+      "title_original": "Among the queer Koreans - a pack train in the suburbs outside Seoul - looking W. to East Gate, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "amongthequeerkoreansapacktraininthesuburbsoutsideseoullookingwtoeastgatekorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32245_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32245r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32245v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665561",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665561/",
+      "title_original": "Charming town of Mapo on the Han River - looking west from residence of Customs Commissioner of Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "charmingtownofmapoonthehanriverlookingwestfromresidenceofcustomscommissionerofkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32256_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32256r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32256v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665566",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665566/",
+      "title_original": "Old Royal Palace, formerly living rooms of the Kings and Queens, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "oldroyalpalaceformerlylivingroomsofthekingsandqueensseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32291_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32291r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32291v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665567",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665567/",
+      "title_original": "The beautiful Temple of Heaven, where the Emperor worships at the solstices, (looking N.), Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "thebeautifultempleofheavenwheretheemperorworshipsatthesolsticeslookingnseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32313_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32313r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32313v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665579",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665579/",
+      "title_original": "One wheeled cart of a Korean General of the old regime, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "onewheeledcartofakoreangeneraloftheoldregimeseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32302_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32302r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32302v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665580",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665580/",
+      "title_original": "A young Korean and his wife in street dress, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "ayoungkoreanandhiswifeinstreetdressseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32295_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32295r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32295v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665591",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665591/",
+      "title_original": "Market of dried fish, meal and native goods, in the suburbs of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "marketofdriedfishmealandnativegoodsinthesuburbsofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32247_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32247r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32247v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665595",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665595/",
+      "title_original": "Typical attitude of aged Korean peasants - in a village store, in northern suburbs of Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "typicalattitudeofagedkoreanpeasantsinavillagestoreinnorthernsuburbsofseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32311_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32311r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32311v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665596",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665596/",
+      "title_original": "Shops and traders of the \"Hermit\" city - looking west along the wide main street of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "shopsandtradersofthehermitcitylookingwestalongthewidemainstreetofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32278_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32278r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32278v.jpg"
+      ],
+      "status": "downloaded_verified",
+      "local_path": "data/photos/seoul1907/images/loc-2003665596.jpg",
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19",
+      "bytes": 144647,
+      "sha256": "80a38612719489e5171d9bfe0965dc467dcbfb92034b1726537b1a1dd02b512d",
+      "dimensions": [
+        640,
+        337
+      ],
+      "download_url": "https://data.labs.loc.gov/stereographs/data/2003665596_1s32278r.jpg"
+    },
+    {
+      "id": "LOC-2003665597",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665597/",
+      "title_original": "Shops and traders of the \"Hermit\" city - looking west along the wide main street of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "shopsandtradersofthehermitcitylookingwestalongthewidemainstreetofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32246_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32246r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32246v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665599",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665599/",
+      "title_original": "Village gossip in a suburb of Seoul - looking N.W., on road leading to Pekin Pass, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "villagegossipinasuburbofseoullookingnwonroadleadingtopekinpasskorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32271_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32271r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32271v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665598",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665598/",
+      "title_original": "Christlike work in benighted Korea - Miss Peary's home for destitute and blind, English Mission, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "christlikeworkinbenightedkoreamisspearyshomefordestituteandblindenglishmissionseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32242_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32242r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32242v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665563",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665563/",
+      "title_original": "Hardening foundation for new Post Office, outside city wall - E. over wall to French Legation, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "hardeningfoundationfornewpostofficeoutsidecitywalleoverwalltofrenchlegationseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32289_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32289r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32289v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665569",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665569/",
+      "title_original": "Outside the South Gate, on one of the main highways of the Hermit Capitol, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "outsidethesouthgateononeofthemainhighwaysofthehermitcapitolseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32293_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32293r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32293v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665585",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665585/",
+      "title_original": "A game of \"Go-ban,\" or oriental chess - Yun-Woong-Niel, Korean Minister of War (left) in his home, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "agameofgobanororientalchessyunwoongnielkoreanministerofwarleftinhishomeseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32288_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32288r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32288v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665583",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665583/",
+      "title_original": "A popular laundry near Seoul, along the road leading to the Northwest Gate, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "물·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "apopularlaundrynearseoulalongtheroadleadingtothenorthwestgatekorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32312_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32312r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32312v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665582",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665582/",
+      "title_original": "Junks on the Han River, commerce carriers of Korea - east up stream, at Yung San, a logging town, near Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "junksonthehanrivercommercecarriersofkoreaeastupstreamatyungsanaloggingtownnearseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32220_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32220r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32220v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665584",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665584/",
+      "title_original": "A bull-driver bringing wood into Seoul, outside the South Gate, looking toward city wall, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "abulldriverbringingwoodintoseouloutsidethesouthgatelookingtowardcitywallkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32259_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32259r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32259v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665587",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665587/",
+      "title_original": "Officials of the Imperial Department of Communications, outside their office, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "officialsoftheimperialdepartmentofcommunicationsoutsidetheirofficeseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32237_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32237r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32237v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665586",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665586/",
+      "title_original": "The Emperor's Grand Master of Horse passing through the main street of Seoul (looking west), Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "theemperorsgrandmasterofhorsepassingthroughthemainstreetofseoullookingwestkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32241_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32241r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32241v.jpg"
+      ],
+      "status": "downloaded_verified",
+      "local_path": "data/photos/seoul1907/images/loc-2003665586.jpg",
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19",
+      "bytes": 356016,
+      "sha256": "109eddd391b0eb74a88bf096dc50df78e667f701f24cbbf3296646e133832297",
+      "dimensions": [
+        1024,
+        535
+      ],
+      "download_url": "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32241v.jpg"
+    },
+    {
+      "id": "LOC-2003665589",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665589/",
+      "title_original": "Washing and bathing in the filthy stream, carrying off the city's sewage, looking N.W., Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "물·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "washingandbathinginthefilthystreamcarryingoffthecityssewagelookingnwseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32307_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32307r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32307v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665588",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665588/",
+      "title_original": "A primitive grist mill of the Korean peasants--beating turnip seed into meal--suburbs of Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "aprimitivegristmillofthekoreanpeasantsbeatingturnipseedintomealsuburbsofseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32306_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32306r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32306v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003665590",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003665590/",
+      "title_original": "Washing and bathing in the filthy stream, carrying off the city's sewage, looking N.W., Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "물·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "washingandbathinginthefilthystreamcarryingoffthecityssewagelookingnwseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32320_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32320r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32320v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666471",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666471/",
+      "title_original": "The \"Hermit Kingdom\" awakening - boys school (boys with hats on are married), Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "thehermitkingdomawakeningboysschoolboyswithhatsonaremarriedseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32252_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32252r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32252v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666470",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666470/",
+      "title_original": "Korean soldiers (under arms) [training with fixed bayonets] - looking N.E. to the gate of the old Royal Palace, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "궁궐·제례",
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreansoldiersunderarmstrainingwithfixedbayonetslookingnetothegateoftheoldroyalpalaceseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32270_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32270r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32270v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666469",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666469/",
+      "title_original": "Korean soldiers (under arms) [training with fixed bayonets] - looking N.E. to the gate of the old Royal Palace, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "궁궐·제례",
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreansoldiersunderarmstrainingwithfixedbayonetslookingnetothegateoftheoldroyalpalaceseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32298_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32298r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32298v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666473",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666473/",
+      "title_original": "Horseshoeing on the \"safety\" plan - a blacksmith shop outside the East Gate, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업",
+        "성문·성곽",
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "horseshoeingonthesafetyplanablacksmithshopoutsidetheeastgateseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32253_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32253r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32253v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666472",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666472/",
+      "title_original": "The \"Hermit Kingdom\" awakening - boys school (boys with hats on are married), Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "thehermitkingdomawakeningboysschoolboyswithhatsonaremarriedseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32292_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32292r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32292v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666475",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666475/",
+      "title_original": "Horseshoeing on the \"safety\" plan - a blacksmith shop outside the East Gate, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업",
+        "성문·성곽",
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "horseshoeingonthesafetyplanablacksmithshopoutsidetheeastgateseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32314_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32314r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32314v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666474",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666474/",
+      "title_original": "Horseshoeing on the \"safety\" plan - a blacksmith shop outside the East Gate, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "상업",
+        "성문·성곽",
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "horseshoeingonthesafetyplanablacksmithshopoutsidetheeastgateseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32255_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32255r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32255v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666451",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666451/",
+      "title_original": "Village gossip in a suburb of Seoul - looking N.W., on road leading to Pekin Pass, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "villagegossipinasuburbofseoullookingnwonroadleadingtopekinpasskorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32260_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32260r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32260v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666450",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666450/",
+      "title_original": "Village gossip in a suburb of Seoul - looking N.W., on road leading to Pekin Pass, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "villagegossipinasuburbofseoullookingnwonroadleadingtopekinpasskorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32257_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32257r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32257v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666458",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666458/",
+      "title_original": "A Korean lady and her husband at their home, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "akoreanladyandherhusbandattheirhomeseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32303_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32303r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32303v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666459",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666459/",
+      "title_original": "Nam-Kung-Uk, editor of an important Korean paper, before a typical monument to the dead",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "namkungukeditorofanimportantkoreanpaperbeforeatypicalmonumenttothedead",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32287_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32287r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32287v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666457",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666457/",
+      "title_original": "Entrance to home of Korean Minister of War--typical wealthy Korean home--his grandchildren on steps--Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "entrancetohomeofkoreanministerofwartypicalwealthykoreanhomehisgrandchildrenonstepsseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32280_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32280r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32280v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666463",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666463/",
+      "title_original": "Granite lion before the gateway to the old Royal Palace - looking north - Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "granitelionbeforethegatewaytotheoldroyalpalacelookingnorthseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32258_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32258r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32258v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666466",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666466/",
+      "title_original": "Korean lady and maid, in the streets of Seoul--(curtain is seldom raised)--Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreanladyandmaidinthestreetsofseoulcurtainisseldomraisedkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32310_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32310r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32310v.jpg"
+      ],
+      "status": "downloaded_verified",
+      "local_path": "data/photos/seoul1907/images/loc-2003666466.jpg",
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19",
+      "bytes": 126251,
+      "sha256": "e59cf0bcd1f7a0e3dd21e56f51bd5fd55b6d49cc92838ec3c808f0a3a8b4895b",
+      "dimensions": [
+        640,
+        337
+      ],
+      "download_url": "https://data.labs.loc.gov/stereographs/data/2003666466_1s32310r.jpg"
+    },
+    {
+      "id": "LOC-2003666465",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666465/",
+      "title_original": "Korean lady and maid, in the streets of Seoul--(curtain is seldom raised)--Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreanladyandmaidinthestreetsofseoulcurtainisseldomraisedkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32227_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32227r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32227v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666464",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666464/",
+      "title_original": "Granite lion before the gateway to the old Royal Palace-looking north-Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "granitelionbeforethegatewaytotheoldroyalpalacelookingnorthseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32222_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32222r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32222v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666468",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666468/",
+      "title_original": "Korean lady and maid, in the streets of Seoul--(curtain is seldom raised)--Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreanladyandmaidinthestreetsofseoulcurtainisseldomraisedkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32231_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32231r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32231v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666467",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666467/",
+      "title_original": "Korean lady and maid, in the streets of Seoul--(curtain is seldom raised)--Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreanladyandmaidinthestreetsofseoulcurtainisseldomraisedkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32315_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32315r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32315v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666487",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666487/",
+      "title_original": "Little Korean boys, of the middle class, in the northern suburbs of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "littlekoreanboysofthemiddleclassinthenorthernsuburbsofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32217_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32217r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32217v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666494",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666494/",
+      "title_original": "Street [railway] scene in the Korean capital, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "keystone view company",
+      "themes": [
+        "전차"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-02",
+        "S1907-03"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "streetrailwaysceneinthekoreancapitalseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32218_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32218r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32218v.jpg"
+      ],
+      "status": "downloaded_verified",
+      "local_path": "data/photos/seoul1907/images/loc-2003666494.jpg",
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19",
+      "bytes": 123624,
+      "sha256": "86735fc9cb8e7b003891996a18a725ea89b6c1ccf2e6b47ec4cb16f7359520fd",
+      "dimensions": [
+        640,
+        330
+      ],
+      "download_url": "https://data.labs.loc.gov/stereographs/data/2003666494_1s32218r.jpg"
+    },
+    {
+      "id": "LOC-2003666496",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666496/",
+      "title_original": "Imperial Palace - The King's apartments, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "keystone view company",
+      "themes": [
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "imperialpalacethekingsapartmentsseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32321_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32321r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32321v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666497",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666497/",
+      "title_original": "Entrance to the Queen's apartmetns, Imperal Palace, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "keystone view company",
+      "themes": [
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "entrancetothequeensapartmetnsimperalpalaceseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32236_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32236r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32236v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666495",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666495/",
+      "title_original": "A Korean bull cart, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "keystone view company",
+      "themes": [
+        "운송"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "akoreanbullcartseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32219_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32219r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32219v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666454",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666454/",
+      "title_original": "A bridegroom going to his wedding - at the South Gate - Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "abridegroomgoingtohisweddingatthesouthgateseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32248_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32248r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32248v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666455",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666455/",
+      "title_original": "Sorcerers putting the crown of \"good luck\" on the head of the painted bride, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "복식"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "sorcerersputtingthecrownofgoodluckontheheadofthepaintedbrideseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32240_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32240r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32240v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666456",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666456/",
+      "title_original": "Korean Minister of War, his son and grandchildren - at their home, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "koreanministerofwarhissonandgrandchildrenattheirhomeseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32318_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32318r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32318v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666461",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666461/",
+      "title_original": "Beautifully carved marble pagoda, on the site of an old Buddhist monastery in the center of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "beautifullycarvedmarblepagodaonthesiteofanoldbuddhistmonasteryinthecenterofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32230_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32230r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32230v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666462",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666462/",
+      "title_original": "Granite lion before the gateway to the old Royal Palace - looking north - Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "granitelionbeforethegatewaytotheoldroyalpalacelookingnorthseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32273_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32273r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32273v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666477",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666477/",
+      "title_original": "A man-powered shovel - working on foundation for new Post Office - N.W. towards western suburbs of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "amanpoweredshovelworkingonfoundationfornewpostofficenwtowardswesternsuburbsofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32309_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32309r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32309v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666476",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666476/",
+      "title_original": "A man-powered shovel--working on foundation for new Post Office - N.W. towards western suburbs of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "amanpoweredshovelworkingonfoundationfornewpostofficenwtowardswesternsuburbsofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32225_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32225r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32225v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666478",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666478/",
+      "title_original": "Seoul, the capital of Korea, south from road to the Northwest Gate to Mt. Nam San",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "seoulthecapitalofkoreasouthfromroadtothenorthwestgatetomtnamsan",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32229_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32229r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32229v.jpg"
+      ],
+      "status": "downloaded_verified",
+      "local_path": "data/photos/seoul1907/images/loc-2003666478.jpg",
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19",
+      "bytes": 126871,
+      "sha256": "e1c2cd34e8a8278de2757b03dacc40142c2c7e3abd89bbf6e463bd97d51faacb",
+      "dimensions": [
+        640,
+        335
+      ],
+      "download_url": "https://data.labs.loc.gov/stereographs/data/2003666478_1s32229r.jpg"
+    },
+    {
+      "id": "LOC-2003666480",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666480/",
+      "title_original": "Looking past pillars of ancient arch, through new Independence Arch - N. to Pekin Pass, Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "lookingpastpillarsofancientarchthroughnewindependencearchntopekinpassseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32269_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32269r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32269v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666479",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666479/",
+      "title_original": "The gospel \"light\" shining into the \"Hermit Kingdom\" - the American Mission, Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "thegospellightshiningintothehermitkingdomtheamericanmissionseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32239_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32239r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32239v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666482",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666482/",
+      "title_original": "Crude industries of Korea, where man-power is cheaper than mills - sawing lumber in a lumber yard of Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "crudeindustriesofkoreawheremanpowerischeaperthanmillssawinglumberinalumberyardofseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32297_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32297r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32297v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666481",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666481/",
+      "title_original": "A Korean General carried in an official chair through the streets of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "akoreangeneralcarriedinanofficialchairthroughthestreetsofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32226_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32226r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32226v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666483",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666483/",
+      "title_original": "Crude industries of Korea, where man-power is cheaper than mills - sawing lumber in a lumber yard of Seoul",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "crudeindustriesofkoreawheremanpowerischeaperthanmillssawinglumberinalumberyardofseoul",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32316_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32316r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32300/1s32316v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666486",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666486/",
+      "title_original": "Little Korean boys, of the middle class, in the northern suburbs of Seoul, Korea",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "littlekoreanboysofthemiddleclassinthenorthernsuburbsofseoulkorea",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32272_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32272r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32272v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "LOC-2003666484",
+      "repository": "Library of Congress",
+      "catalog_url": "https://www.loc.gov/item/2003666484/",
+      "title_original": "Seoul, the capital of Korea - looking S.E. from North Wall, over the old Palace to Mt. Nam San",
+      "title_ko": null,
+      "date": {
+        "label": "1904 (목록 연도)",
+        "kind": "catalog_publication_or_copyright_year",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "creator_or_contributor": "underwood & underwood",
+      "themes": [
+        "성문·성곽",
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "catalog_unrestricted": "True",
+        "note": "공식 데이터셋 unrestricted는 전 세계 이용 허락과 동일하지 않음. 개별 소장품 권리 문구 재확인 후 공개.",
+        "source": "https://data.labs.loc.gov/stereographs/"
+      },
+      "credit": "Library of Congress, Prints and Photographs Division",
+      "duplicate_group": "seoulthecapitalofkorealookingsefromnorthwallovertheoldpalacetomtnamsan",
+      "duplicate_note": "제목 정규화 묶음은 중복 후보일 뿐, 같은 장면 여부는 이미지 대조 필요",
+      "image_urls": [
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32268_150px.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32268r.jpg",
+        "https://tile.loc.gov/storage-services/service/pnp/stereo/1s30000/1s32000/1s32200/1s32268v.jpg"
+      ],
+      "status": "catalogued",
+      "local_path": null,
+      "caution": "발행 연도와 촬영일을 구분. 원제의 인물 식별·장소·차별적 표현은 당시 출판자의 설명이며 검증된 현대 해설이 아님.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319537",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319537",
+      "title_original": "[Water-carrier]",
+      "title_ko": "물장수",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "물·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-22"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "목록 설명에 따른 식별. 정확한 시점·건축 변경 이력 대조 필요.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319598",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319598",
+      "title_original": "Temple gate: Seoul",
+      "title_ko": "광화문",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "목록 설명에 따른 식별. 정확한 시점·건축 변경 이력 대조 필요.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319531",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319531",
+      "title_original": "[View over wall onto smoldering ruins]",
+      "title_ko": "궁궐 화재 뒤 잔해 추정",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "궁궐·제례"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-27"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "경운궁 화재 관련 추정. 장소·날짜 확정 전 사건 사진으로 단정 금지.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319554",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319554",
+      "title_original": "Kuzoki and staff at Seoul",
+      "title_ko": "서울의 일본군 지휘부",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "군사"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-26"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "설명과 주제 필드의 궁궐 식별이 충돌. 장소 확정 보류.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319533",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319533",
+      "title_original": "[Japanese army at main gate of Toksu Palace, Taeanmun]",
+      "title_ko": "대한문 앞 일본군",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "군사"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-26"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "행렬 인물을 고종으로 확정하지 않는다.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319563",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319563",
+      "title_original": "[Tonhwa Mun]",
+      "title_ko": "돈화문",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "성문·성곽"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "목록 설명에 따른 식별. 정확한 시점·건축 변경 이력 대조 필요.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319588",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319588",
+      "title_original": "[Namdaemun, Seoul]",
+      "title_ko": "숭례문과 선로",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "전차"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [
+        "S1907-02"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "목록 설명에 따른 식별. 정확한 시점·건축 변경 이력 대조 필요.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "CORNELL-319528",
+      "repository": "Cornell University Library — Willard D. Straight in Korea",
+      "catalog_url": "https://digital.library.cornell.edu/catalog/ss%3A319528",
+      "title_original": "[Seoul city view]",
+      "title_ko": "숭례문 부근 도심",
+      "date": {
+        "label": "ca. 1904",
+        "kind": "catalog_approximate_date",
+        "capture_date": null,
+        "certainty": "approximate"
+      },
+      "creator_or_contributor": "촬영자 미확정; 컬렉션명을 촬영자명으로 단정하지 않음",
+      "themes": [
+        "거리·생활"
+      ],
+      "landmark_ids": [],
+      "coordinates": null,
+      "event_ids": [],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "item_review_required",
+        "note": "컬렉션의 미국 내 public domain 안내와 개별 항목 조건 재검토 필요"
+      },
+      "credit": "Courtesy of the Division of Rare and Manuscript Collections, Cornell University Library.",
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "목록 설명에 따른 식별. 정확한 시점·건축 변경 이력 대조 필요.",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "GOGUNG-0564",
+      "repository": "국립고궁박물관",
+      "catalog_url": "https://online.gogung.go.kr/gogung/pgm/psgudMng/view.do?menuNo=800065&psgudSn=367457",
+      "title_original": "덕수궁 대한문 사진엽서",
+      "title_ko": "덕수궁 대한문 사진엽서",
+      "date": {
+        "label": "1906",
+        "kind": "object_date",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "themes": [
+        "궁궐·제례",
+        "엽서"
+      ],
+      "event_ids": [
+        "S1907-12"
+      ],
+      "event_relation": "context_only_not_event_documentation",
+      "rights": {
+        "status": "KOGL_type_1",
+        "note": "출처표시. 다운로드·공개 전 해당 이미지 이용 조건 재확인"
+      },
+      "status": "catalogued_not_downloaded",
+      "local_path": null,
+      "caution": "엽서 발행·소인과 촬영일은 다를 수 있음. 부분 채색을 실제 색 복원 근거로 쓰지 않음.",
+      "accessed": "2026-09-19"
+    }
+  ],
+  "discovery_collections": [
+    {
+      "title": "헤르만 산더 1906~1907 자료군",
+      "note": "직접 촬영 사진과 수집 엽서·문서를 분리해 후속 항목화",
+      "url": "https://digital.khs.go.kr/buis/buisDetail.do?bizUid=13898748261698900005&ctptNo=1111100010000&ctptUid=13898859665657200002"
+    },
+    {
+      "title": "서울역사박물관 1899 전차 개통 사진",
+      "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090",
+      "note": "공공누리 2유형 자료. 앱 이용 조건 별도 검토"
+    }
+  ]
+}

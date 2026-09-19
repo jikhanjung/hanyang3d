@@ -1,0 +1,1200 @@
+{
+  "schema_version": 1,
+  "title": "1907년 전후 한성 사건·생활사 자료집",
+  "researched_at": "2026-09-19",
+  "scope": "1897–1910 중심, 1880년대 배경 포함",
+  "reference_month": "1907-11",
+  "status": "research_only_not_runtime_seed",
+  "date_policy": "음력은 명시하며 근거 없는 양력 변환을 하지 않는다. 연·월 정밀도를 임의의 일자로 채우지 않는다. 미래 설명과 당시 인물의 지식은 분리한다.",
+  "sources": [
+    {
+      "id": "R01",
+      "title": "서울역사박물관: 동대문 차고에서 열린 전차 개통식",
+      "url": "https://museum.seoul.go.kr/scwm/board/NR_boardView.do?bbsCd=1155&seq=20171116182635090",
+      "kind": "museum_object",
+      "accessed": "2026-09-18",
+      "note": "1899년 사진 및 해설. 이미지 공공누리 2유형; 이번에는 이미지를 재배포하지 않음."
+    },
+    {
+      "id": "R02",
+      "title": "서울역사박물관: 대한제국기 전차표",
+      "url": "https://museum.seoul.go.kr/www/board/NR_boardView.do?bbsCd=1026&seq=00000000000022320&sso=ok",
+      "kind": "museum_object",
+      "accessed": "2026-09-18",
+      "note": "개통일 5월 20일 표기. R03의 5월 17일과 차이 있어 본문은 1899년 5월로 한정."
+    },
+    {
+      "id": "R03",
+      "title": "우리역사넷: 전차의 도입과 변화",
+      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_004_0030_0010_0020",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "개통식·사고·승차 거부 해설. 후대 노선과 통계는 1907년 장면에 소급하지 않음."
+    },
+    {
+      "id": "R04",
+      "title": "서울역사박물관: 경성에 부는 개화의 바람",
+      "url": "https://museum.seoul.go.kr/chd/board/NR_boardView.do?bbsCd=1026&seq=20170223173235969",
+      "kind": "museum_object",
+      "accessed": "2026-09-18",
+      "note": "1904~1909년 전차표·지갑·담배 광고. 5전 표를 전 노선 단일요금으로 해석하지 않음."
+    },
+    {
+      "id": "R05",
+      "title": "우리역사넷: 도시 정비 계획에 따른 서울의 변화",
+      "url": "https://contents.history.go.kr/front/ht/print.do?levelId=ht_003_0040_0040_0040&whereStr=",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "1900년 4월 종로 가로등 3개. 인용된 외국인 여행기는 관찰자의 평가임."
+    },
+    {
+      "id": "R06",
+      "title": "한국영상자료원: 활동사진의 시대",
+      "url": "https://artsandculture.google.com/story/aQUxw03xXA4A8A?hl=ko",
+      "kind": "institutional_exhibition_with_primary_ad",
+      "accessed": "2026-09-18",
+      "note": "1903-06-23 황성신문 광고 소개. 최초 상영 시점·광무대 성립 연도는 별도 논점."
+    },
+    {
+      "id": "R07",
+      "title": "서울역사박물관: 개항, 대한제국기의 서울",
+      "url": "https://museum.seoul.go.kr/www/exh/per/exhPer2th.jsp?sso=ok",
+      "kind": "museum_exhibition",
+      "accessed": "2026-09-18",
+      "note": "1896년 가가 철거·종로 경관 변화. 개별 점포의 운명은 알 수 없음."
+    },
+    {
+      "id": "R08",
+      "title": "국가유산 지식이음: 북묘비 판독문·해석문",
+      "url": "https://portal.nrich.go.kr/kor/ksmUsrView.do?ksm_idx=8721&menuIdx=584",
+      "kind": "primary_inscription_with_translation",
+      "accessed": "2026-09-18",
+      "note": "본문은 1883년 사당·1887년 비석을 구분. 상단 연대/경복궁 소재 정보와 원래 사당 위치를 혼동하지 않음. 왕실의 신앙·자기서술로 읽음."
+    },
+    {
+      "id": "R09",
+      "title": "고종실록: 1884년 음력 10월 19일 북묘로 이동",
+      "url": "https://sillok.history.go.kr/id/wza_12110019_001",
+      "kind": "primary_chronicle",
+      "accessed": "2026-09-18",
+      "note": "고종·순종실록은 일제강점기에 편찬되어 편찬 맥락을 고려. 북묘비와 이동 주체·동선을 대조."
+    },
+    {
+      "id": "R10",
+      "title": "국가기록원: 덕수궁",
+      "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do",
+      "kind": "institutional_history",
+      "accessed": "2026-09-18",
+      "note": "중명전·을사늑약·헤이그 특사 연관. 중명전 건립/중건 연도의 다른 설명까지 단일 연도로 합치지 않음."
+    },
+    {
+      "id": "R11",
+      "title": "우리역사넷: 순종",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n401800",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "7월 대리청정·강제퇴위와 8월 27일 즉위식 구별."
+    },
+    {
+      "id": "R12",
+      "title": "순종실록: 1907년 양력 11월 13일 창덕궁 이어",
+      "url": "https://sillok.history.go.kr/id/kzb_10011013_001",
+      "kind": "primary_chronicle",
+      "accessed": "2026-09-18",
+      "note": "순종·황후·황태자 이동. 원도 수정 재판 월만으로 발행일이나 장면 날짜를 확정하지 않음."
+    },
+    {
+      "id": "R13",
+      "title": "우리역사넷: 장지연의 시일야방성대곡",
+      "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_121_0040",
+      "kind": "primary_newspaper_with_commentary",
+      "accessed": "2026-09-18",
+      "note": "황성신문 1905-11-20 논설. 신문 원문과 해설 구별."
+    },
+    {
+      "id": "R14",
+      "title": "우리역사넷: 민영환의 유서",
+      "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_121_0050",
+      "kind": "primary_newspaper_with_commentary",
+      "accessed": "2026-09-18",
+      "note": "대한매일신보 1905-12-01 타루문 및 해설. 피·자결 방식의 극적 재현은 원고에 사용하지 않음."
+    },
+    {
+      "id": "R15",
+      "title": "우리역사넷: 군대해산",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401210",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "1907-08-01 훈련원 해산식과 서소문 전투를 구별."
+    },
+    {
+      "id": "R16",
+      "title": "우리역사넷: 국채보상운동",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401200",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "대구 발기와 서울 신문사의 모금을 구별. 초기 발기·취지서 날짜는 단계가 여러 개여서 월 단위 사용."
+    },
+    {
+      "id": "R17",
+      "title": "우리역사넷: 메가타의 화폐정리",
+      "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_042_0050_0030_0020_0010",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "1905~1909 백동화 교환. 게임의 엽전·냥 가격과 실제 통화 제도를 구별."
+    },
+    {
+      "id": "R18",
+      "title": "우리역사넷: 관민공동회, 박성춘 연설과 헌의 6조",
+      "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_120_0020",
+      "kind": "primary_history_with_commentary",
+      "accessed": "2026-09-18",
+      "note": "대한계년사 사료 및 해설. 1898-10-29 연설; 오늘의 보통선거와 동일시하지 않음."
+    },
+    {
+      "id": "R19",
+      "title": "한국민족문화대백과: 명신여학교 태극기·현판·완문",
+      "url": "https://encykorea.aks.ac.kr/Article/E0077591",
+      "kind": "artifact_history",
+      "accessed": "2026-09-18",
+      "note": "명신 1906-05-22 개교와 진명 설립 후원. 여성교육의 확대와 접근 격차를 함께 설명."
+    },
+    {
+      "id": "R20",
+      "title": "서울대병원 의학역사문화원: 대한의원 개원(1907)",
+      "url": "https://dept.snuh.org/dept/HHCC/bbs/photoView.do?cid=10591&menuId=003015",
+      "kind": "institutional_history",
+      "accessed": "2026-09-18",
+      "note": "관제 1907-03-10, 시행 03-15, 본관 완공 1908-05, 개원식 1908-10 설명."
+    },
+    {
+      "id": "R21",
+      "title": "서울대학교병원 역사·연표",
+      "url": "https://www.snuh.org/content/M005002002.do",
+      "kind": "institutional_timeline",
+      "accessed": "2026-09-18",
+      "note": "대한의원 준공을 1907-11로 기재하여 R20 본관 완공과 차이. 공사 대상·준공 기준 확인 전 단일 확정일 사용 보류."
+    },
+    {
+      "id": "R22",
+      "title": "서울기록원: 뚝도아리수정수센터",
+      "url": "https://archives.seoul.go.kr/contents/jeongsujang",
+      "kind": "archival_exhibition",
+      "accessed": "2026-09-18",
+      "note": "1906 착공·1908-08-31 준공·다음날 급수. 본문 수량 단위 오기는 인용하지 않음."
+    },
+    {
+      "id": "R23",
+      "title": "우리역사넷: 아관파천",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_40&levelId=kc_i402400",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "1896-02-11 이동, 1897-02-20 환궁. 가마 동선은 사료에 확인되는 범위에서만 사용."
+    },
+    {
+      "id": "R24",
+      "title": "우리역사넷: 대한자강회",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_o401000",
+      "kind": "historical_synthesis",
+      "accessed": "2026-09-18",
+      "note": "1906 설립·1907-08-21 강제 해산. 1907년 말 NPC가 현재 활동 중인 단체로 말하지 않도록 주의."
+    },
+    {
+      "id": "X25",
+      "title": "우리역사넷: 대한제국의 성립",
+      "url": "https://contents.history.go.kr/mobile/ht/view.do?levelId=ht_003_0020_0020_0020",
+      "kind": "official_historical_synthesis",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "X26",
+      "title": "우리역사넷: 국권 피탈",
+      "url": "https://contents.history.go.kr/front/kc/printViewPopup.do?levelId=kc_i403100",
+      "kind": "official_historical_synthesis",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "X27",
+      "title": "우리역사넷: 대한제국 황실의 궁궐",
+      "url": "https://contents.history.go.kr/mobile/eh/view.do?code=&levelId=eh_r0331_0010",
+      "kind": "official_historical_synthesis",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "X28",
+      "title": "우리역사넷: 국권 피탈",
+      "url": "https://contents.history.go.kr/front/kc/printViewPopup.do?levelId=kc_i403100",
+      "kind": "official_historical_synthesis",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "X29",
+      "title": "국가기록원: 기록으로 만나는 대한민국, 단성사",
+      "url": "https://theme.archives.go.kr/next/koreaOfRecord/Dansungsa.do",
+      "kind": "official_historical_synthesis",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "X30",
+      "title": "우리역사넷: 서울 진공 작전",
+      "url": "https://contents.history.go.kr/front/tg/print.do?levelId=tg_004_0470&treeId=0200",
+      "kind": "official_historical_synthesis",
+      "accessed": "2026-09-19"
+    },
+    {
+      "id": "X31",
+      "title": "국사편찬위원회 신편 한국사: 조선총독부 설치",
+      "url": "https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_047_0020_0010_0010",
+      "kind": "official_historical_synthesis",
+      "accessed": "2026-09-19"
+    }
+  ],
+  "events": [
+    {
+      "id": "S1907-01",
+      "title": "황제의 전기회사, 미국인 사업가와 만나다",
+      "event_date": {
+        "label": "1898~1904",
+        "start": "1898",
+        "end": "1904",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "산업",
+      "place": {
+        "label": "종로 전기회사 사옥",
+        "landmark_ids": [
+          "hanseong-electric-office-1907"
+        ],
+        "relation": "associated_institution",
+        "coordinates": null
+      },
+      "text": "1898년 출발한 한성전기회사는 황실 자본과 미국인 사업가 콜브란·보스트위크의 참여 속에서 전차 사업을 추진했다. 1904년 이후에는 한미전기회사라는 이름이 쓰인다. 1907년의 회사 앞에서는 전기 기술만이 아니라 자본과 사업권의 이동도 이야기할 수 있다.",
+      "source_ids": [
+        "R01",
+        "R02"
+      ],
+      "caution": "종로 사옥·동대문 발전소·차고는 다른 장소다. 사옥에서 개통식이 열렸다고 쓰지 않는다. 자본 관계는 시기에 따라 달라진다.",
+      "interaction_idea": "사옥 안내판에서 회사 이름이 바뀐 까닭 보기",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-02",
+      "title": "성벽 위까지 올라간 전차 구경꾼",
+      "event_date": {
+        "label": "1899년 5월",
+        "start": "1899-05",
+        "end": "1899-05",
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "교통",
+      "place": {
+        "label": "흥인지문 서남쪽 차고 권역",
+        "landmark_ids": [
+          "heunginjimun-1907"
+        ],
+        "relation": "nearby_event",
+        "coordinates": null
+      },
+      "text": "전차 개통식 사진에는 흥인지문과 성곽 위에 모인 구경꾼들이 보인다. 1899년 5월, 서대문과 청량리를 잇는 전차는 낯선 도시 풍경이었다. 성문은 이제 사람이 드나드는 관문인 동시에 새로운 교통수단을 구경하는 장소가 되었다.",
+      "source_ids": [
+        "R01",
+        "R03"
+      ],
+      "caution": "개통식 5월 17일과 운행 개시 5월 20일 표기가 자료마다 다르다. 일자 확정 전 월 단위로 표시. 문 위 인원은 사진 이상으로 수치화하지 않는다.",
+      "interaction_idea": "문 앞에서 옛 개통식 이야기를 듣는 사진 해설",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-03",
+      "title": "전차가 반갑지만은 않았던 사람들",
+      "event_date": {
+        "label": "1899년 개통 초기",
+        "start": "1899",
+        "end": "1899",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "교통·갈등",
+      "place": {
+        "label": "종로 전차 통행 권역",
+        "landmark_ids": [],
+        "relation": "corridor_context",
+        "coordinates": null
+      },
+      "text": "전차는 호기심만 불러온 것이 아니었다. 개통 초기 어린이 사망 사고 뒤 전차를 불태우는 일이 벌어졌고, 운행에 대한 불신과 생계 갈등도 나타났다. 신기한 기계를 받아들이는 과정에는 안전과 일자리를 둘러싼 충돌이 함께 있었다.",
+      "source_ids": [
+        "R03"
+      ],
+      "caution": "사고를 특정 종로 상점 앞에 확정 배치하지 않는다. 가뭄·전깃줄에 대한 당시 믿음은 과학적 원인 설명과 구별한다.",
+      "interaction_idea": "행인과 운송 일을 하는 사람의 서로 다른 반응 듣기",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-04",
+      "title": "세 가지 글자가 적힌 작은 승차권",
+      "event_date": {
+        "label": "1904~1909년 유물, 1907년 생활사",
+        "start": "1904",
+        "end": "1909",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "ongoing"
+      },
+      "theme": "생활·소비",
+      "place": {
+        "label": "전차 정류 권역·종로 사옥",
+        "landmark_ids": [
+          "hanseong-electric-office-1907"
+        ],
+        "relation": "associated_institution",
+        "coordinates": null
+      },
+      "text": "남아 있는 한미전기회사 5전 승차권에는 한글·한자·영문이 함께 적혀 있다. 전차표와 담배 광고를 넣어 두었던 지갑도 전한다. 작은 종이 한 장으로 교통수단뿐 아니라 표를 사고 보관하는 습관, 광고가 생활에 들어오는 모습을 읽을 수 있다.",
+      "source_ids": [
+        "R04"
+      ],
+      "caution": "5전 표 한 장으로 모든 구간·등급의 요금을 고정하지 않는다. 유물 제작 범위의 끝인 1909년 사건을 NPC에게 알려주지 않는다.",
+      "interaction_idea": "승차권 모양·언어를 살펴보는 물건 카드",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-05",
+      "title": "종로의 밤에 켜진 세 개의 전등",
+      "event_date": {
+        "label": "1900년 4월",
+        "start": "1900-04",
+        "end": "1900-04",
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "생활·전기",
+      "place": {
+        "label": "종로 일대",
+        "landmark_ids": [],
+        "relation": "corridor_context",
+        "coordinates": null
+      },
+      "text": "1900년 4월 종로에 가로등 세 개가 켜졌다는 기록이 있다. 골목 전체가 한꺼번에 밝아진 것은 아니었다. 새 불빛이 놓인 큰길과 여전히 어두운 주변을 대비하면, 전기가 들어오는 도시의 변화를 작고 구체적인 이야기로 전할 수 있다.",
+      "source_ids": [
+        "R05"
+      ],
+      "caution": "세 등의 정확한 좌표와 1907년 가로등 총수는 미확인. 온 도성에 전기가 보급됐다고 표현하지 않는다.",
+      "interaction_idea": "밤길 설명 카드, 실제 야간 조명 구현은 별도",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-06",
+      "title": "전기회사에서 움직이는 사진을 보다",
+      "event_date": {
+        "label": "1903년 6월 23일 광고",
+        "start": "1903-06-23",
+        "end": "1903-06-23",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "오락",
+      "place": {
+        "label": "동대문 안 전기회사 기계창 권역",
+        "landmark_ids": [
+          "heunginjimun-1907"
+        ],
+        "relation": "nearby_event",
+        "coordinates": null
+      },
+      "text": "1903년 신문에는 동대문 안 전기회사 기계창의 활동사진 상영 광고가 실렸다. 저녁에 돈을 내고 여러 나라의 도시와 풍경을 보는 구경거리였다. 전차를 운영하던 회사와 새로운 영상 오락을 한 이야기로 엮을 수 있다.",
+      "source_ids": [
+        "R06"
+      ],
+      "caution": "1903년 광고를 1907년 당일 상영표로 쓰지 않는다. 한국 최초 상영일로 단정하지 않으며 종로 사옥을 상영 장소로 바꾸지 않는다.",
+      "interaction_idea": "광고를 읽고 상영 장소를 찾아가는 이야기",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-07",
+      "title": "큰길을 넓히자 가게의 자리가 바뀌다",
+      "event_date": {
+        "label": "1896년 이후",
+        "start": "1896",
+        "end": null,
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "ongoing"
+      },
+      "theme": "상업·도시정비",
+      "place": {
+        "label": "종로·남대문로",
+        "landmark_ids": [],
+        "relation": "corridor_context",
+        "coordinates": null
+      },
+      "text": "1896년 정부는 종로와 남대문로의 상업용 가건물을 철거하며 도로를 정비했다. 뒤이어 전차선과 전주, 새 건물이 더해졌다. 1907년 종로의 넓어진 길은 저절로 생긴 풍경이 아니라 상업 공간을 다시 나눈 결과이기도 했다.",
+      "source_ids": [
+        "R07"
+      ],
+      "caution": "모형 상가에 실존 피해자 이름이나 강제이주 사연을 임의 부여하지 않는다. 조치는 확인되지만 개별 가게의 경험은 별도 자료가 필요하다.",
+      "interaction_idea": "상인이 설명하는 옛 가게 자리와 넓어진 길",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-08",
+      "title": "북묘비에 새겨진 왕실의 기대",
+      "event_date": {
+        "label": "1883년 사당·1887년 비석",
+        "start": "1883",
+        "end": "1887",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "왕실·신앙",
+      "place": {
+        "label": "북묘",
+        "landmark_ids": [
+          "bukmyo-1907"
+        ],
+        "relation": "site_event",
+        "coordinates": null
+      },
+      "text": "북묘는 1883년에 세워졌고, 뒤에 세운 비에는 고종이 지은 글과 민영환의 글씨가 남았다. 비문은 관우에게 왕실의 안녕을 기대한 마음을 보여 준다. 건립 이야기와 신의 도움을 받았다는 믿음을 구분해서 읽어야 한다.",
+      "source_ids": [
+        "R08"
+      ],
+      "caution": "비석 1887년과 사당 1883년을 구별. 현몽·영험은 당시의 신앙 서술이지 검증된 초자연적 사실이 아니다.",
+      "interaction_idea": "비문을 읽으며 누가 무엇을 기억하려 했는지 살펴보기",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-09",
+      "title": "갑신정변의 끝, 북묘로 향한 고종",
+      "event_date": {
+        "label": "1884년 음력 10월 19일",
+        "start": "1884-10-19",
+        "end": "1884-10-19",
+        "precision": "day",
+        "calendar": "lunar"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "정변·기억",
+      "place": {
+        "label": "북묘·창덕궁 후원",
+        "landmark_ids": [
+          "bukmyo-1907"
+        ],
+        "relation": "site_event",
+        "coordinates": null
+      },
+      "text": "갑신정변이 무너질 때 고종은 궁궐을 벗어나 북묘로 향했다. 실록은 그 뒤 청군의 영방으로 옮긴 사실도 기록한다. 북묘비는 이 위기를 왕실이 관우의 도움으로 벗어났다는 기억으로 남겼다. 1907년의 북묘는 23년 전 정변을 떠올리게 하는 장소다.",
+      "source_ids": [
+        "R08",
+        "R09"
+      ],
+      "caution": "실록은 각전·각궁의 노원 이동도 적는다. 고종·왕비가 같은 시각 같은 방에 피신한 장면은 확인되지 않았다. 1882년 임오군란과 혼동 금지.",
+      "interaction_idea": "사당 앞에서 비문과 실록의 서로 다른 서술 비교",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-10",
+      "title": "책을 두던 건물에 남은 을사늑약",
+      "event_date": {
+        "label": "1905년 11월 17일",
+        "start": "1905-11-17",
+        "end": "1905-11-17",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "외교·국권침탈",
+      "place": {
+        "label": "중명전",
+        "landmark_ids": [
+          "jungmyeongjeon-1907"
+        ],
+        "relation": "site_event",
+        "coordinates": null
+      },
+      "text": "중명전은 황실 도서관에서 고종의 집무 공간으로 역할이 달라진 건물이다. 1905년 이곳에서 일본의 강압으로 을사늑약이 이루어져 대한제국의 외교권이 빼앗겼다. 1907년 정동을 걷는 사람에게 불과 두 해 전의 일이었다.",
+      "source_ids": [
+        "R10"
+      ],
+      "caution": "고종이 자발적으로 동의한 조약이라고 표현하지 않는다. 현대 복원 실내를 협상 당시 좌석 배치로 확정하지 않는다.",
+      "interaction_idea": "건물의 용도 변화와 1905년 사건을 연결한 카드",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-11",
+      "title": "헤이그로 보내려 했던 목소리",
+      "event_date": {
+        "label": "1907년 특사 파견과 강제퇴위 이전",
+        "start": "1907",
+        "end": "1907",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "외교",
+      "place": {
+        "label": "중명전·정동",
+        "landmark_ids": [
+          "jungmyeongjeon-1907"
+        ],
+        "relation": "associated_institution",
+        "coordinates": null
+      },
+      "text": "고종은 헤이그 만국평화회의에 특사를 보내 을사늑약의 부당함을 알리려 했다. 회의 참석은 막혔지만 이 시도는 국권 회복을 위한 외교 활동이었다. 일본은 이를 빌미로 고종을 강제 퇴위시켰다. 중명전에서는 늑약 이후 계속된 외교적 저항을 이야기할 수 있다.",
+      "source_ids": [
+        "R10",
+        "R11"
+      ],
+      "caution": "세 특사가 한날한시에 중명전에서 함께 출발했다는 장면은 만들지 않는다. 파견·해외 활동·서울에 전해진 소식의 날짜를 구별한다.",
+      "interaction_idea": "편지·소식의 이동을 따라가는 해설",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-12",
+      "title": "황제가 바뀐 여름, 궁문 밖의 반대",
+      "event_date": {
+        "label": "1907년 7~8월",
+        "start": "1907-07",
+        "end": "1907-08",
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "정치·시민",
+      "place": {
+        "label": "대한문·경운궁 권역",
+        "landmark_ids": [
+          "daehanmun-1907"
+        ],
+        "relation": "palace_area_context",
+        "coordinates": null
+      },
+      "text": "1907년 7월 일본의 압박 속에 고종이 물러나고 순종에게 권력이 넘어갔다. 8월 27일에는 순종의 즉위식이 열렸다. 양위에 반대한 집회와 연설도 이어졌다. 궁문 밖에서는 황제가 바뀌는 일을 단순한 경사로 받아들일 수 없었다.",
+      "source_ids": [
+        "R11",
+        "R24"
+      ],
+      "caution": "대리청정 명령·퇴위·즉위식을 같은 하루로 합치지 않는다. 즉위식 장소는 돈덕전이며 대한문 앞에서 거행한 것으로 만들지 않는다.",
+      "interaction_idea": "궁문 주변에 전해지는 소식, 집회는 특정 날짜 장면으로",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-13",
+      "title": "11월, 순종의 거처가 창덕궁으로",
+      "event_date": {
+        "label": "1907년 11월 13일 양력",
+        "start": "1907-11-13",
+        "end": "1907-11-13",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "conditional_after_1907-11-13"
+      },
+      "theme": "왕실·공간",
+      "place": {
+        "label": "창덕궁·돈화문",
+        "landmark_ids": [
+          "donhwamun-1907",
+          "injeongjeon-1907"
+        ],
+        "relation": "palace_area_context",
+        "coordinates": null
+      },
+      "text": "순종실록은 1907년 11월 13일 순종이 황후·황태자와 함께 창덕궁으로 거처를 옮겼다고 적는다. 같은 해 안에서도 궁궐의 주인이 머무는 자리가 달라진 것이다. 날짜를 바꾸어 보는 지도라면 이 이동 전후의 설명도 달라져야 한다.",
+      "source_ids": [
+        "R12"
+      ],
+      "caution": "11월 판 지도라는 이유로 11월 13일 이후라고 단정할 수 없다. 이동이 인정전에서 생활했다는 뜻도 아니다.",
+      "interaction_idea": "날짜 설정에 따라 달라지는 궁궐 거처 안내",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-14",
+      "title": "한 장의 신문이 전한 통곡",
+      "event_date": {
+        "label": "1905년 11월 20일",
+        "start": "1905-11-20",
+        "end": "1905-11-20",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "언론",
+      "place": {
+        "label": "황성신문사·종로 독자 권역",
+        "landmark_ids": [],
+        "relation": "location_pending",
+        "coordinates": null
+      },
+      "text": "을사늑약 직후 황성신문에 장지연의 「시일야방성대곡」이 실렸다. 신문은 조약의 강압성과 국권 침탈을 비판하는 글을 독자에게 전달했다. 이야기는 사건이 궁 안에 머물지 않고 인쇄된 글을 통해 거리로 퍼지는 과정에 초점을 맞춘다.",
+      "source_ids": [
+        "R13"
+      ],
+      "caution": "대한매일신보 기사로 잘못 붙이지 않는다. 당시 사옥 필지는 추가 확인하며 모든 시민이 직접 읽었다고 일반화하지 않는다.",
+      "interaction_idea": "신문 내용을 읽어 주는 창작 대화에는 창작 표시",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-15",
+      "title": "민영환이 동포에게 남긴 글",
+      "event_date": {
+        "label": "1905년 11월 30일·12월 1일 보도",
+        "start": "1905-11-30",
+        "end": "1905-12-01",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "저항·추모",
+      "place": {
+        "label": "민영환 관련 장소, 북묘비의 글씨와 연계",
+        "landmark_ids": [
+          "bukmyo-1907"
+        ],
+        "relation": "biographical_association_not_event_site",
+        "coordinates": null
+      },
+      "text": "민영환은 을사늑약 파기를 요구하다가 1905년 세상을 떠나며 동포에게 유서를 남겼다. 그 글은 대한매일신보에도 실렸다. 북묘비의 글씨를 쓴 인물과 국권 침탈에 항의한 인물을 연결하면, 비석의 이름이 먼 과거에만 머물지 않는다.",
+      "source_ids": [
+        "R08",
+        "R14"
+      ],
+      "caution": "북묘가 사망 장소라는 뜻이 아니다. 자결을 따라야 할 행동으로 찬양하거나 방식·유혈을 재현하지 않는다.",
+      "interaction_idea": "북묘비 인물 소개에서 1905년의 기록으로 연결",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-16",
+      "title": "훈련원의 해산식과 서소문의 총성",
+      "event_date": {
+        "label": "1907년 8월 1일",
+        "start": "1907-08-01",
+        "end": "1907-08-01",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "군사·저항",
+      "place": {
+        "label": "훈련원·서소문·숭례문 권역",
+        "landmark_ids": [
+          "souimun-1907",
+          "sungnyemun-1907"
+        ],
+        "relation": "multi_site_event",
+        "coordinates": null
+      },
+      "text": "대한제국 군대가 해산되던 날, 훈련원에는 무기를 반납한 병사들이 모였다. 박승환의 죽음 뒤 시위대 병사들은 서소문 일대에서 일본군과 싸웠다. 같은 날 서울의 서로 다른 장소에서 해산식과 무장 저항이 벌어졌고, 일부 해산 군인은 뒤에 의병에 합류했다.",
+      "source_ids": [
+        "R15"
+      ],
+      "caution": "숭례문 문루가 전투 전체의 단일 현장인 것처럼 표시하지 않는다. 1907년 말 모든 성문에 해산 전 부대를 그대로 배치하지 않는다.",
+      "interaction_idea": "병영·훈련원·전투 권역을 구분한 사건 지도",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-17",
+      "title": "담뱃값과 비녀를 모아 나라의 빚을 갚다",
+      "event_date": {
+        "label": "1907년 2월 이후, 4월 8일 총합소",
+        "start": "1907-02",
+        "end": null,
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "ongoing"
+      },
+      "theme": "시민·경제",
+      "place": {
+        "label": "대한매일신보사·모금 네트워크",
+        "landmark_ids": [],
+        "relation": "location_pending",
+        "coordinates": null
+      },
+      "text": "대구에서 시작된 국채보상운동은 서울의 신문과 모금 조직으로 이어졌다. 대한매일신보사에는 4월 국채보상지원금총합소가 설치되었다. 사람들은 담배를 줄이고 장신구 등을 내놓으며 나라의 빚을 갚자는 운동에 참여했다. 거대한 국제정치가 작은 생활비와 연결되는 이야기다.",
+      "source_ids": [
+        "R16"
+      ],
+      "caution": "구체적 가게의 기부 실적은 명부 확인 전 창작하지 않는다. 1908년 탄압·최종 모금 결과를 1907년 NPC가 미리 말하지 않도록 한다.",
+      "interaction_idea": "신문의 기부 명단을 살펴보는 해설; 가상 모금은 별도 게임 규칙",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-18",
+      "title": "어제 받던 돈을 오늘은 받지 않는다",
+      "event_date": {
+        "label": "1905년 이후 화폐정리",
+        "start": "1905",
+        "end": "1909",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "ongoing"
+      },
+      "theme": "상업·화폐",
+      "place": {
+        "label": "종로 상가·탁지부 권역",
+        "landmark_ids": [
+          "yukjo-finance-1907"
+        ],
+        "relation": "policy_context_not_exchange_counter",
+        "coordinates": null
+      },
+      "text": "화폐정리 과정에서는 백동화를 등급에 따라 다르게 교환하거나 받지 않기도 했다. 돈의 가치와 통용에 대한 불안, 현금 부족은 상인들의 거래를 어렵게 했다. 종로 상점의 이야기를 만들 때 새 상품뿐 아니라 돈을 받는 기준이 바뀌는 혼란도 다룰 수 있다.",
+      "source_ids": [
+        "R17"
+      ],
+      "caution": "탁지부를 실제 교환 창구로 지정하지 않는다. 현행 게임의 엽전·냥과 실물 화폐의 환산을 임의로 만들지 않는다.",
+      "interaction_idea": "상인의 환전·외상 걱정에 대한 창작 대화",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-19",
+      "title": "백정이 종로에서 정치 의견을 말하다",
+      "event_date": {
+        "label": "1898년 10월 29일",
+        "start": "1898-10-29",
+        "end": "1898-10-29",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "시민·신분",
+      "place": {
+        "label": "종로 관민공동회 권역",
+        "landmark_ids": [
+          "bosingak-1907"
+        ],
+        "relation": "corridor_context",
+        "coordinates": null
+      },
+      "text": "1898년 관민공동회에서 백정 박성춘이 관리와 백성이 함께 힘을 모으자는 연설을 했다. 청중은 박수를 보냈고, 모인 이들은 개혁 요구를 정리했다. 1907년 종로에서는 아홉 해 전 이 길이 토론과 정치 참여의 공간이었던 일을 회상할 수 있다.",
+      "source_ids": [
+        "R18"
+      ],
+      "caution": "연설 단상의 정확한 위치는 미확정. 당시의 정치 참여를 완성된 신분 평등이나 현대 민주주의와 동일시하지 않는다.",
+      "interaction_idea": "종로의 옛 집회를 기억하는 인물의 회상",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-20",
+      "title": "딸이 학교에 간다는 것",
+      "event_date": {
+        "label": "1906년 여학교 설립, 1907년의 변화",
+        "start": "1906",
+        "end": null,
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "ongoing"
+      },
+      "theme": "교육·여성",
+      "place": {
+        "label": "명신·진명여학교, 학부 권역",
+        "landmark_ids": [
+          "yukjo-education-1907"
+        ],
+        "relation": "policy_context_not_school_site",
+        "coordinates": null
+      },
+      "text": "1906년 명신여학교가 문을 열었고, 순헌황귀비는 진명여학교 설립도 후원했다. 태극기와 현판, 토지 지원 문서는 학교를 세우는 데 필요했던 후원을 보여 준다. 여학생과 가족의 이야기는 교육의 새로운 기회와 아직 남아 있던 접근의 차이를 함께 전할 수 있다.",
+      "source_ids": [
+        "R19"
+      ],
+      "caution": "학부 건물을 여학교로 표시하지 않는다. 현재 학교 소재지·후대 교복·모든 계층의 취학 가능성을 1907년에 소급하지 않는다.",
+      "interaction_idea": "학교에 다니는 딸과 가족의 대화 소재",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-21",
+      "title": "새 병원은 한 번에 완성되지 않았다",
+      "event_date": {
+        "label": "1907년 설립·1908년 본관/개원식",
+        "start": "1907-03-10",
+        "end": "1908-10",
+        "precision": "mixed",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "ongoing_with_future_explainer"
+      },
+      "theme": "의료·제도",
+      "place": {
+        "label": "대한의원·함춘원 권역",
+        "landmark_ids": [],
+        "relation": "location_pending",
+        "coordinates": null
+      },
+      "text": "1907년 대한의원은 의학교와 병원들을 통합하며 출발했다. 진료와 의학교육을 함께 맡는 기관이었지만, 기관 설립과 새 본관의 완공·개원식은 같은 날이 아니었다. 1907년 장면에서는 만들어지는 병원과 새 의료제도에 대한 기대를 중심으로 다룬다.",
+      "source_ids": [
+        "R20",
+        "R21"
+      ],
+      "caution": "병원 연표의 1907년 11월 준공과 의학역사문화원의 1908년 5월 본관 완공 설명이 다르다. 본관 완성 모습은 추가 고증 전 보류.",
+      "interaction_idea": "공사 중인 기관 소개; 질병 진단·치료 조언으로 쓰지 않음",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-22",
+      "title": "물장수에게 들려온 정수장 공사 소식",
+      "event_date": {
+        "label": "1906~1908년",
+        "start": "1906",
+        "end": "1908-09-01",
+        "precision": "mixed",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "ongoing_with_future_explainer"
+      },
+      "theme": "생활·상수도",
+      "place": {
+        "label": "도성 물 공급·뚝도 정수장(지도 밖)",
+        "landmark_ids": [],
+        "relation": "citywide_context",
+        "coordinates": null
+      },
+      "text": "뚝도정수장은 1906년 착공해 1908년 서울에 수돗물을 보내기 시작했다. 1907년의 서울을 다룬다면 아직 완성된 수도 생활보다 물을 구하고 운반하는 일, 새 시설 공사 소식에 초점을 맞추는 편이 맞다. 전기 사업가들이 수도 사업에도 연결된 점이 흥미롭다.",
+      "source_ids": [
+        "R22"
+      ],
+      "caution": "1908년 급수 개시는 후대 해설에만 넣는다. 1907년 인물이 집마다 수돗물이 나온다고 말하지 않게 한다. 물장수 모양은 1912년 사진을 1907년 실증으로 쓰지 않는다.",
+      "interaction_idea": "물 운반 인물과 공사 소문, 현재 사실·미래 해설 분리",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-23",
+      "title": "궁궐 대신 공사관에서 보낸 한 해",
+      "event_date": {
+        "label": "1896년 2월 11일~1897년 2월 20일",
+        "start": "1896-02-11",
+        "end": "1897-02-20",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "외교·피신",
+      "place": {
+        "label": "러시아 공사관·정동",
+        "landmark_ids": [
+          "russian-legation-1907"
+        ],
+        "relation": "site_event",
+        "coordinates": null
+      },
+      "text": "고종과 왕세자는 1896년 러시아 공사관으로 거처를 옮겼다. 고종은 이듬해 경운궁으로 돌아갈 때까지 그곳에 머물렀다. 1907년 정동에 남아 있는 공사관은 궁궐 밖 외교 공간이 국왕의 거처가 되었던 경험을 떠올리게 한다.",
+      "source_ids": [
+        "R23"
+      ],
+      "caution": "1895년에 사망한 명성황후가 1896년 피신에 동행했다고 쓰지 않는다. 현재 남은 탑만으로 당시 전체 건물을 확정 복원하지 않는다.",
+      "interaction_idea": "북묘 피신과 아관파천의 인물·연도를 비교하는 카드",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-24",
+      "title": "교육과 산업을 말하던 모임이 해산되다",
+      "event_date": {
+        "label": "1906년 설립~1907년 8월 21일",
+        "start": "1906",
+        "end": "1907-08-21",
+        "precision": "mixed",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "시민·결사",
+      "place": {
+        "label": "대한자강회·종로 연설 권역",
+        "landmark_ids": [],
+        "relation": "location_pending",
+        "coordinates": null
+      },
+      "text": "대한자강회는 교육과 산업을 통해 나라의 힘을 기르자며 월보를 펴내고 연설을 열었다. 고종의 강제퇴위에 반대하는 활동에도 나섰지만 1907년 8월 강제 해산되었다. 그해 말의 거리에서는 공개적으로 모여 의견을 말하기가 더 어려워진 사정을 이야기할 수 있다.",
+      "source_ids": [
+        "R24"
+      ],
+      "caution": "1907년 11월 NPC가 대한자강회가 계속 활동 중이라고 말하지 않도록 한다. 사무소 필지·특정 연설 장소는 추가 확인.",
+      "interaction_idea": "옛 월보를 가진 독자의 회상",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-25",
+      "title": "대한제국 선포와 환구단의 황제 즉위",
+      "event_date": {
+        "label": "1897-10-12",
+        "start": "1897-10-12",
+        "end": "1897-10-12",
+        "precision": "day",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "의례·정치",
+      "place": {
+        "label": "환구단·경운궁",
+        "landmark_ids": [
+          "hwangudan-1907"
+        ],
+        "relation": "associated_area",
+        "coordinates": null
+      },
+      "text": "고종은 환구단에서 하늘에 고하는 의례를 거행하고 황제로 즉위했다. 한성의 궁궐과 국가 제례 공간은 새 국호·황제 체제의 중심 무대가 되었다. 지도에서는 제단·황궁우·경운궁을 구별하고, 서로 다른 시설의 건립 연도를 한 날짜로 합치지 않아야 한다.",
+      "source_ids": [
+        "X25"
+      ],
+      "caution": "현재 남은 황궁우만으로 1897년 제단 전체 모습을 대체하지 않는다.",
+      "interaction_idea": "장소 해설·연표 후보. NPC 원고 적용 전 시점 검토.",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-26",
+      "title": "러일전쟁과 한성의 군사적 압박",
+      "event_date": {
+        "label": "1904",
+        "start": "1904",
+        "end": "1904",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "전쟁·외교",
+      "place": {
+        "label": "한성 도심·궁궐 주변",
+        "landmark_ids": [],
+        "relation": "associated_area",
+        "coordinates": null
+      },
+      "text": "러일전쟁 발발과 함께 일본군이 서울을 점령하고 대한제국에 한일의정서 체결을 강요했다. 궁문 앞 군인·행렬 사진을 거리 풍경으로만 읽지 않고, 군사적 압력 아래 수도의 일상이 바뀌는 과정으로 해석할 수 있다.",
+      "source_ids": [
+        "X26"
+      ],
+      "caution": "1904년 군대 사진을 1907년 군대 해산 현장 사진으로 사용하지 않는다.",
+      "interaction_idea": "장소 해설·연표 후보. NPC 원고 적용 전 시점 검토.",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-27",
+      "title": "경운궁 대화재와 궁궐 재건",
+      "event_date": {
+        "label": "1904",
+        "start": "1904",
+        "end": "1904",
+        "precision": "year",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "재난·건축",
+      "place": {
+        "label": "경운궁",
+        "landmark_ids": [
+          "junghwajeon-1907"
+        ],
+        "relation": "associated_area",
+        "coordinates": null
+      },
+      "text": "경운궁의 화재로 많은 전각이 소실되었다. 따라서 1907년 궁궐을 만들 때에는 화재 이전 사진과 재건 이후 모습을 구별해야 한다. 불탄 궁을 담은 것으로 추정되는 사진은 현장·촬영일이 확정될 때까지 화재의 직접 증거로 단정하지 않는다.",
+      "source_ids": [
+        "X27"
+      ],
+      "caution": "방화설과 화재 발생 사실을 분리한다. 본 항목에서는 확인한 자료의 연도 정밀도만 사용한다.",
+      "interaction_idea": "장소 해설·연표 후보. NPC 원고 적용 전 시점 검토.",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-28",
+      "title": "통감부 설치와 수도 통치의 변화",
+      "event_date": {
+        "label": "1906-02",
+        "start": "1906-02",
+        "end": "1906-02",
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "통치·외교",
+      "place": {
+        "label": "남산 통감부·한성 관청",
+        "landmark_ids": [],
+        "relation": "associated_area",
+        "coordinates": null
+      },
+      "text": "을사늑약 뒤 통감부가 설치되며 일본의 내정 간섭이 강화되었다. 궁궐과 외국 공사관만이 아니라 남산의 통감부가 수도 권력 공간을 읽는 핵심이 된다. 1907년의 관청 이야기는 대한제국의 제도와 통감부의 지배가 중첩된 상황을 드러낼 필요가 있다.",
+      "source_ids": [
+        "X28"
+      ],
+      "caution": "통감부와 1910년 이후 조선총독부를 혼용하지 않는다.",
+      "interaction_idea": "장소 해설·연표 후보. NPC 원고 적용 전 시점 검토.",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-29",
+      "title": "단성사 개관과 자선 공연",
+      "event_date": {
+        "label": "1907-06",
+        "start": "1907-06",
+        "end": "1907-06",
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "past"
+      },
+      "theme": "공연·도시생활",
+      "place": {
+        "label": "돈화문길 단성사",
+        "landmark_ids": [
+          "dansungsa-1907"
+        ],
+        "relation": "associated_area",
+        "coordinates": null
+      },
+      "text": "단성사는 목조 2층 공연장으로 출발했다. 초기에는 가무 등 공연을 올리고 야학·고아 구제 등 자선 목적 공연도 열었다. 극장 앞 문지기를 통해 어떤 구경을 하는 곳인지, 공연 수입이 구제 활동과 어떻게 연결되는지 들려줄 수 있다. 1907년 장면에서는 훗날의 영화 흥행사를 이미 일어난 일처럼 말하지 않는다.",
+      "source_ids": [
+        "X29"
+      ],
+      "caution": "1918년 상설 영화관 전환 및 1919년 영화 상영은 별도 미래 사건이다.",
+      "interaction_idea": "장소 해설·연표 후보. NPC 원고 적용 전 시점 검토.",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-30",
+      "title": "13도 의병연합군의 서울 진공 작전",
+      "event_date": {
+        "label": "1908-01",
+        "start": "1908-01",
+        "end": "1908-01",
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "future"
+      },
+      "theme": "의병·전쟁",
+      "place": {
+        "label": "양주·동대문 바깥 접근로",
+        "landmark_ids": [],
+        "relation": "associated_area",
+        "coordinates": null
+      },
+      "text": "각지 의병이 서울 진격을 위해 연합했고 선발대가 동대문 밖으로 접근했으나 일본군의 공격과 지휘 체계의 문제 속에서 작전은 실패했다. 수도 탈환을 목표로 했다는 사실과 실제 도성 안을 점령했다는 주장은 다르다. 장면을 만든다면 도성 안 전투로 옮기지 않고 외곽 접근과 시내의 긴장감을 구분한다.",
+      "source_ids": [
+        "X30"
+      ],
+      "caution": "1907년 11월 NPC가 결과를 알고 말할 수 없는 미래 사건. 동대문 밖 30리를 임의의 정확한 좌표로 바꾸지 않는다.",
+      "interaction_idea": "장소 해설·연표 후보. NPC 원고 적용 전 시점 검토.",
+      "status": "researched_draft_not_published"
+    },
+    {
+      "id": "S1907-31",
+      "title": "강제 병합 조약 조인과 공포",
+      "event_date": {
+        "label": "1910-08",
+        "start": "1910-08",
+        "end": "1910-08",
+        "precision": "month",
+        "calendar": "gregorian"
+      },
+      "scene_context": {
+        "reference_month": "1907-11",
+        "relation": "future"
+      },
+      "theme": "국권 상실",
+      "place": {
+        "label": "한성 통감 관저·궁궐",
+        "landmark_ids": [],
+        "relation": "associated_area",
+        "coordinates": null
+      },
+      "text": "1910년 8월 22일 병합 조약이 조인되고 29일 공포되었다. 조인·공포 날짜와 장소를 구별해 기록한다. 대한제국의 통치권 상실은 도시의 관청·궁궐·신문과 주민들의 생활에도 이어지는 전환점이다. 1907년 지도에서는 후대 해설로 제공할 수 있으나 당시 인물의 회상으로 넣지 않는다.",
+      "source_ids": [
+        "X31"
+      ],
+      "caution": "1907년 시점에서는 미래. 조인일 22일과 공포일 29일을 혼동하지 않는다.",
+      "interaction_idea": "장소 해설·연표 후보. NPC 원고 적용 전 시점 검토.",
+      "status": "researched_draft_not_published"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {createLargeMap} from './large_map.js';
 import {createWalker} from './pedestrians.js';
 import {createHorse} from './horse_dealer.js';
 import {createWalkJoystick} from './walk_joystick.js';
@@ -28,6 +29,8 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
   const held=code=>keys.has(code);
   function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false;unfocusedMotion=null}
+  const mapDirection=new THREE.Vector3();
+  const largeMap=createLargeMap({source:navigation.largeMapSource,container:el('scene'),getPose:()=>{camera.getWorldDirection(mapDirection);return {at:active?eye:controls.target,yaw:Math.atan2(-mapDirection.x,-mapDirection.z),walking:active}},onOpen:clearInput,returnFocus:()=>canvas.focus({preventScroll:true})});
   function rememberPosition(){if(active){walkProfile.savePosition(positionWorld,{x:eye.x,z:eye.z,yaw});lastRemembered=performance.now()}}
   // Walkable raised surfaces: bridge decks and their ramps, and the Gyeongbokgung hall sites (foundation, terraces,
   // stairs). The displayed meshes are cast against straight down, so height exaggeration is followed. While walking
@@ -116,7 +119,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
   }
   function update(dt){
-   if(!active)return;
+   largeMap.update();if(!active)return;
    if(lookYaw&&!drag?.look){lookYaw*=Math.exp(-8*Math.min(dt,.1));if(Math.abs(lookYaw)<1e-3)lookYaw=0;look()}
    const forward=unfocusedMotion?.forward??(Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y);
    const side=unfocusedMotion?.side??(Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x);
