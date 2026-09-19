@@ -25,6 +25,10 @@ NAS 루트는 `/nas/JikhanJung/hanyang3d_backup/research/aks-hanyang/`이다. �
 - `어여미.glb`: ValueError: Truncated GLB header
 - `쪽머리.glb`: HTTPError: HTTP Error 404: Not Found
 
+## 물품·음식 예약
+
+2026-09-20·21일 각각 오전 9시(한국시간) 순차 다운로드와 NAS 보관을 예약했다. [일정과 실행 상태 확인](aks_download_schedule.md)을 참고한다.
+
 ## 실행·재개
 
 ```sh

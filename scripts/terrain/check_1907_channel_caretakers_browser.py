@@ -19,6 +19,12 @@ with tempfile.TemporaryDirectory() as tmp:
     page=b.new_page(viewport={'width':1280,'height':900});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto('http://127.0.0.1:18098/1907/');page.wait_for_function('window.seoul1907?.ready || window.seoul1907?.error',timeout=180000);assert page.evaluate('seoul1907.ready'),page.evaluate('seoul1907.error')
     page.evaluate('seoul1907.renderer.setAnimationLoop(null)')
+    terrain=page.evaluate("()=>{const g=seoul1907.terrain.geometry;g.computeBoundingSphere();return {positions:g.attributes.position.array.every(Number.isFinite),normals:g.attributes.normal.array.every(Number.isFinite),radius:g.boundingSphere.radius}}")
+    assert terrain['positions'] and terrain['normals'] and terrain['radius']>0,terrain
+    outside=page.evaluate('''async()=>{const T=await import('/webapp/static/vendor/three/three.module.js'),s=seoul1907,ray=new T.Raycaster(),samples=[],p=s.terrain.geometry.attributes.position;s.scene.updateMatrixWorld(true);for(let i=0;i<p.count;i+=97){const x=p.getX(i),z=p.getZ(i);if(s.channel.path.some(q=>Math.hypot(q.x-x,q.z-z)<q.width+100))continue;ray.set(new T.Vector3(x+.01,2000,z+.01),new T.Vector3(0,-1,0));const hit=ray.intersectObject(s.terrain)[0];if(hit)samples.push(Math.abs(hit.point.y-s.baseGroundAt(x+.01,z+.01)))}return samples}''')
+    assert len(outside)>100 and max(outside)<.01,(len(outside),max(outside,default=-1))
+    page.screenshot(path='/tmp/terrain-1907-fixed.png')
+    print('PASS whole terrain finite; outside-channel DEM samples',len(outside),flush=True)
     page.locator('#scene > canvas').focus();page.keyboard.press('m');assert page.locator('#large-map').is_visible()
     box=page.locator('#large-map').bounding_box();assert box['width']>1000 and box['height']>700
     page.screenshot(path='/tmp/large-map-1907.png')

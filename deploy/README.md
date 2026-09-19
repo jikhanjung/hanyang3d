@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.25`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.26`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -20,6 +20,8 @@
 검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
 
 ## 운영 주소
+
+2026-09-19 웹 **v0.5.25** 배포: M 키 큰 지도·현재 위치, 청계천 하도 보행, 주요 건물 관리인·단성사 문지기, 채팅·설정 메뉴·봇짐 표시 정리. 인물 데이터는 검증 백업 후 별도 적용했다. 멀티플레이 v0.5.24 유지. [기록](../devlog/20260919_207_deploy_v0525.md).
 
 2026-09-19 웹·멀티플레이 **v0.5.24** 배포: 장면 데이터 DB 전환, 육조거리·단성사 교정, 걷기 HUD·액션바·봇짐·채팅·미니맵·포커스 이동 유지. v0.5.23의 내부 Host 연결 실패를 수정한 버전. [기록](../devlog/20260919_202_deploy_v0524.md).
 
@@ -77,8 +79,8 @@
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.5.24`
-  - digest: `sha256:1c06946b66204d662bb46f8b1843fe99329627f6faf8d72b237b02ebf0784aa2`
+- 웹: `honestjung/hanyang3d:v0.5.25`
+  - digest: `sha256:dd28a5a51251998a1fab2cc736d0cc2f66b15cb051530b548d943e18f8905f90`
 - 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.5.24`
   - digest: `sha256:0c9df6ffc3aa8fcc1b6bc8e7facf501518f6c56bd89344ec2ae0ce7f6c764c64`
 

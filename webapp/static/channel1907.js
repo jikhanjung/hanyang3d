@@ -20,7 +20,8 @@ export function createChannel1907(river,baseGeometry,sourceSurface,baseGround){
  const refined=C.weld(C.refine(raw,path));
  for(let i=0;i<refined.positions.length;i+=3){
   const x=refined.positions[i],z=refined.positions[i+2],m=match(x,z);
-  if(m.distance>=m.width)continue;
+  // A grid miss has only distance=Infinity, with no width/level to interpolate.
+  if(!Number.isFinite(m.distance)||m.distance>=m.width)continue;
   const fade=Math.min(1,(m.width-m.distance)/Math.min(4,m.width*.45)),blend=fade*fade*(3-2*fade);
   refined.positions[i+1]+=Math.min(0,m.level-2-refined.positions[i+1])*blend;
  }

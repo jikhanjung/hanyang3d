@@ -16,6 +16,9 @@
 
 ## 작업 기록
 
+- [208 — 물품·음식 다운로드 예약](20260919_208_aks_dated_download_jobs.md)
+- [207 — 웹 v0.5.25 운영 배포](20260919_207_deploy_v0525.md)
+
 - [206 — AKS 복식 원본 수집과 NAS 보관](20260919_206_aks_costume_archive.md)
 
 - [205 — 1907년 전후 사건·사진 연구 자료](20260919_205_seoul1907_event_photo_archive.md)

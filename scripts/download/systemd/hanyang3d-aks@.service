@@ -1,0 +1,12 @@
+[Unit]
+Description=Hanyang3D dated AKS archive job (%i)
+ConditionHost=m710q
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/jikhanjung/projects/hanyang3d
+ExecStart=/usr/bin/python3 /home/jikhanjung/projects/hanyang3d/scripts/download/run_scheduled_aks.py %i
+TimeoutStartSec=infinity
+Restart=on-failure
+RestartSec=15min
+Nice=10

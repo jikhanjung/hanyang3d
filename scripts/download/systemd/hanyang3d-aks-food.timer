@@ -1,0 +1,12 @@
+[Unit]
+Description=Download AKS food on 2026-09-21 at 09:00 KST
+
+[Timer]
+OnCalendar=2026-09-21 09:00:00 Asia/Seoul
+OnBootSec=2min
+Persistent=true
+AccuracySec=1min
+Unit=hanyang3d-aks@food.service
+
+[Install]
+WantedBy=timers.target
