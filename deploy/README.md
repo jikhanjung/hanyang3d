@@ -21,6 +21,8 @@
 
 ## 운영 주소
 
+2026-09-19 웹·멀티플레이 **v0.5.24** 배포: 장면 데이터 DB 전환, 육조거리·단성사 교정, 걷기 HUD·액션바·봇짐·채팅·미니맵·포커스 이동 유지. v0.5.23의 내부 Host 연결 실패를 수정한 버전. [기록](../devlog/20260919_202_deploy_v0524.md).
+
 2026-09-19 웹·멀티플레이 **v0.5.22** 배포: 실내 규칙, 돈화문길·단성사 교정, 도로 20개와 추정 민가 1,600동. 이미지 테스트·운영 PC/모바일 확인, 설정·DB 보존. [기록](../devlog/20260919_198_deploy_v0522.md).
 
 2026-09-19 웹 **v0.5.21** 배포: 명동성당 내부 보행 성능 개선(이름표 가림 판정을 LOD 실루엣으로, 카메라 벽 충돌을 부품별로). 이미지 테스트 64개와 운영 PC·모바일 내부 보기 확인. 콘텐츠 변경 0, 멀티플레이 v0.5.9 유지. [기록](../devlog/20260919_195_deploy_v0521.md).
@@ -75,10 +77,10 @@
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.5.16`
-  - digest: `sha256:ef1c32ac0672e5ecd036a69f22f5161296d05a3f6f5af9727003f75f8e197539`
-- 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.5.9`
-  - digest: `sha256:107e3b4a7ebefa2f0681e42884b95ac58ccc48f75dcb46c4e5682c504709bdba`
+- 웹: `honestjung/hanyang3d:v0.5.24`
+  - digest: `sha256:1c06946b66204d662bb46f8b1843fe99329627f6faf8d72b237b02ebf0784aa2`
+- 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.5.24`
+  - digest: `sha256:0c9df6ffc3aa8fcc1b6bc8e7facf501518f6c56bd89344ec2ae0ce7f6c764c64`
 
 호스트 Nginx의 전용 `hanyang3d` 사이트가 컨테이너의 8013 포트로 연결된다. HTTP는 HTTPS로 이동한다. Let's Encrypt 인증서와 webroot 자동 갱신을 설정했으며 갱신 후 `nginx -t && systemctl reload nginx`를 실행한다. 실제 설정은 [hanyang3d.nginx.conf](host/hanyang3d.nginx.conf)에 있다.
 
