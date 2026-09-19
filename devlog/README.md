@@ -16,6 +16,8 @@
 
 ## 작업 기록
 
+- [206 — AKS 복식 원본 수집과 NAS 보관](20260919_206_aks_costume_archive.md)
+
 - [205 — 1907년 전후 사건·사진 연구 자료](20260919_205_seoul1907_event_photo_archive.md)
 - [204 — 전체 지도·하도 보행·건물 관리인](20260919_204_large_map_channel_caretakers.md)
 

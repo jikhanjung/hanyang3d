@@ -39,7 +39,7 @@ def main():
         pending = 0
         files = {}
         snapshots = {}
-        for name, key in [('aks_architecture_manifest.json', 'models'), ('aks_pdf_manifest.json', 'documents')]:
+        for name, key in [('aks_architecture_manifest.json', 'models'), ('aks_pdf_manifest.json', 'documents'), ('aks_objects_manifest.json', 'models')]:
             source = ROOT / 'docs' / name
             if not source.exists():
                 continue
@@ -47,6 +47,8 @@ def main():
             snapshots[name] = data
             for entry in data[key]:
                 pending += entry['status'] == 'pending'
+                if name == 'aks_objects_manifest.json' and data.get('costume_download') and '복식' in entry.get('categories', []):
+                    pending += entry['status'] == 'catalogued_not_downloaded'
                 if entry['status'] == 'verified':
                     files[entry['local_path']] = entry['sha256']
         for base in [ROOT / 'data/models/aks-hanyang', ROOT / 'data/texts/aks-hanyang']:

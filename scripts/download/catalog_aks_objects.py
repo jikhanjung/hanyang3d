@@ -1,5 +1,5 @@
 """Inventory costume/object/food model links; never download model binaries."""
-import hashlib,json,time
+import fcntl,hashlib,json,time
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import unquote,urljoin,urlsplit,parse_qs
@@ -8,6 +8,11 @@ from fetch_aks_architecture import ROOT,Rows,encoded
 
 HOME='https://dh.aks.ac.kr/hanyang2/wiki/index.php/대문'
 OUT=ROOT/'data/models/aks-hanyang/catalog-pages';OUT.mkdir(parents=True,exist_ok=True)
+MANIFEST=ROOT/'docs/aks_objects_manifest.json'
+# Share the downloader lock: a recrawl must not erase hashes/status mid-download.
+lock_path=ROOT/'data/models/aks-hanyang/costumes/.download.lock';lock_path.parent.mkdir(parents=True,exist_ok=True)
+catalog_lock=lock_path.open('w');fcntl.flock(catalog_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+previous=json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
 class Links(HTMLParser):
  def __init__(self):super().__init__();self.hrefs=[]
  def handle_starttag(self,tag,attrs):
@@ -53,6 +58,15 @@ while queue:
   for href in links.hrefs:
    sub=unquote(urlsplit(href).path).rsplit('/',1)[-1]
    if sub.startswith('2020_3D') and any(w in sub for w in ['복식','물품','의장물','악기','조형','제기']):queue.append(urljoin(url,href))
-data={'schema_version':1,'source_home':HOME,'scope':'Home-linked costume/object/food tables plus 2020 specialist tables; HTML inventory only','pages':pages,'models':list(models.values())}
-(ROOT/'docs/aks_objects_manifest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+for old in previous.get('models',[]):
+ if old['url'] in models:
+  current=models[old['url']]
+  for key,value in old.items():
+   if key not in ('url','format','filename','categories','production_years','references','catalog_present'):current[key]=value
+  current['catalog_present']=True
+ else:
+  models[old['url']]={**old,'catalog_present':False}
+data={'schema_version':1,'source_home':HOME,'scope':'Home-linked costume/object/food tables; URL-matched archive status retained','pages':pages,'models':list(models.values())}
+if 'costume_download' in previous:data['costume_download']=previous['costume_download']
+tmp=MANIFEST.with_suffix('.json.tmp');tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');tmp.replace(MANIFEST)
 print('TOTAL',len(models),'unique GLBs; no binaries requested',flush=True)
