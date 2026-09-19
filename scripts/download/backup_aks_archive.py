@@ -47,8 +47,10 @@ def main():
             snapshots[name] = data
             for entry in data[key]:
                 pending += entry['status'] == 'pending'
-                if name == 'aks_objects_manifest.json' and data.get('costume_download') and '복식' in entry.get('categories', []):
-                    pending += entry['status'] == 'catalogued_not_downloaded'
+                if name == 'aks_objects_manifest.json':
+                    active = any(data.get(state) and category in entry.get('categories', [])
+                                 for category, state in [('복식', 'costume_download'), ('물품', 'object_download'), ('음식', 'food_download')])
+                    pending += active and entry['status'] == 'catalogued_not_downloaded'
                 if entry['status'] == 'verified':
                     files[entry['local_path']] = entry['sha256']
         for base in [ROOT / 'data/models/aks-hanyang', ROOT / 'data/texts/aks-hanyang']:

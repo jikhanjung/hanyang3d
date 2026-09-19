@@ -1,4 +1,4 @@
-"""Download only the already catalogued costume GLBs, sequentially and resumably."""
+"""Download a catalogued AKS category sequentially and resumably (costumes by default)."""
 import argparse
 import csv
 import fcntl
@@ -40,32 +40,39 @@ def refresh_catalog(data):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--category', choices=('costumes', 'objects', 'food'), default='costumes')
     parser.add_argument('--download', action='store_true')
     parser.add_argument('--pause', type=float, default=3)
     args = parser.parse_args()
     pause = max(3, args.pause)
+    category, state_key = {'costumes': ('복식', 'costume_download'), 'objects': ('물품', 'object_download'), 'food': ('음식', 'food_download')}[args.category]
+    archive = ROOT / 'data/models/aks-hanyang' / args.category
+    archive.mkdir(parents=True, exist_ok=True)
     ARCHIVE.mkdir(parents=True, exist_ok=True)
     with (ARCHIVE / '.download.lock').open('w') as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        fcntl.flock(lock, fcntl.LOCK_EX)
         data = json.loads(MANIFEST.read_text())
-        models = [m for m in data['models'] if '복식' in m['categories']]
-        print(f'Costume models: {len(models)}; minimum pause: {pause}s', flush=True)
+        models = [m for m in data['models'] if category in m['categories']]
+        print(f'{category} models: {len(models)}; minimum pause: {pause}s', flush=True)
         if not args.download:
             return
-        data['costume_download'] = {'started_at': datetime.now(timezone.utc).isoformat(), 'pause_seconds': pause}
+        data['scope'] = 'Home-linked costume/object/food inventory; per-model status records validated archive downloads'
+        data[state_key] = {'started_at': datetime.now(timezone.utc).isoformat(), 'pause_seconds': pause}
 
         def save():
             tmp = MANIFEST.with_suffix('.json.tmp')
             tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
             tmp.replace(MANIFEST)
 
+        # Persist the job start even if the machine stops during its first request.
+        save()
         last_end = 0
         for index, model in enumerate(models, 1):
             url = model['url']
             if urlsplit(url).hostname != 'dh.aks.ac.kr' or urlsplit(url).scheme != 'https':
                 raise ValueError('Unexpected archive host or scheme')
             # URL hash preserves distinct models with identical basenames.
-            path = ARCHIVE / (hashlib.sha256(url.encode()).hexdigest()[:16] + '_' + Path(model['filename']).name)
+            path = archive / (hashlib.sha256(url.encode()).hexdigest()[:16] + '_' + Path(model['filename']).name)
             model['local_path'] = str(path.relative_to(ROOT))
             if path.exists():
                 result = validate(path)
@@ -73,7 +80,7 @@ def main():
                     model.update(result, status='verified')
                     print(f'{index}/{len(models)} cached {path.name}', flush=True)
                     continue
-            if shutil.disk_usage(ARCHIVE).free < 10 * 1024**3:
+            if shutil.disk_usage(archive).free < 10 * 1024**3:
                 save()
                 raise RuntimeError('Less than 10 GiB disk reserve')
             part = path.with_suffix('.glb.part')
@@ -83,7 +90,7 @@ def main():
                     request = Request(encoded(url), headers={'User-Agent': 'Hanyang3D-reference-archive/1.0 (sequential; 3s minimum delay)'})
                     with urlopen(request, timeout=120) as response, part.open('wb') as out:
                         while chunk := response.read(1024 * 1024):
-                            if shutil.disk_usage(ARCHIVE).free < 10 * 1024**3:
+                            if shutil.disk_usage(archive).free < 10 * 1024**3:
                                 raise RuntimeError('Less than 10 GiB disk reserve')
                             out.write(chunk)
                     result = validate(part)
@@ -104,7 +111,7 @@ def main():
                     last_end = time.monotonic()
             save()
         good = [m for m in models if m['status'] == 'verified']
-        data['costume_download'].update(completed_at=datetime.now(timezone.utc).isoformat(), verified=len(good), failed=len(models)-len(good))
+        data[state_key].update(completed_at=datetime.now(timezone.utc).isoformat(), verified=len(good), failed=len(models)-len(good))
         save()
         refresh_catalog(data)
         print(f'FINISHED verified={len(good)} failed={len(models)-len(good)} bytes={sum(m["bytes"] for m in good)}', flush=True)

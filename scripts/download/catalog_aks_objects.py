@@ -67,6 +67,7 @@ for old in previous.get('models',[]):
  else:
   models[old['url']]={**old,'catalog_present':False}
 data={'schema_version':1,'source_home':HOME,'scope':'Home-linked costume/object/food tables; URL-matched archive status retained','pages':pages,'models':list(models.values())}
-if 'costume_download' in previous:data['costume_download']=previous['costume_download']
+for key in ('costume_download','object_download','food_download'):
+ if key in previous:data[key]=previous[key]
 tmp=MANIFEST.with_suffix('.json.tmp');tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');tmp.replace(MANIFEST)
 print('TOTAL',len(models),'unique GLBs; no binaries requested',flush=True)
