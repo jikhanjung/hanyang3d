@@ -28,14 +28,16 @@ const post=(url,body)=>fetch(url,{method:'POST',credentials:'same-origin',cache:
 
 export function createShop({container,data,onLogout,onUse}){
  const state={money:null,items:{},ready:false,loggedIn:false,name:''};
- let shop=null,quantity=1,busy=false,loginResolve=null,readyResolve,hudShown=false;
+ let shop=null,quantity=1,busy=false,loginResolve=null,readyResolve,hudShown=false,packPage=0;
  const whenReady=new Promise(resolve=>{readyResolve=resolve});
  // Coin display: when logged out it is a login button; when logged in it shows the name, coins and a logout button.
  const hud=document.createElement('div');hud.id='money-hud';hud.setAttribute('aria-live','polite');
  const hudText=document.createElement('button');hudText.type='button';hudText.className='hud-main';hudText.textContent=t('엽전 …');
  const hudLogout=document.createElement('button');hudLogout.type='button';hudLogout.className='hud-logout';hudLogout.textContent=t('나가기');hudLogout.hidden=true;
  const hudPack=document.createElement('button');hudPack.type='button';hudPack.className='hud-pack';hudPack.textContent=t('봇짐');hudPack.title=t('봇짐 열기 (I)');
- hud.append(hudText,hudPack,hudLogout);container.append(hud);
+ const playerHud=document.createElement('div');playerHud.id='player-hud';playerHud.hidden=true;
+ const playerName=document.createElement('span');playerName.className='hud-player-name';playerHud.append(playerName,hudLogout);
+ hud.append(hudText,hudPack);container.append(hud,playerHud);
  hudPack.onclick=()=>togglePack();
  hudLogout.onclick=async()=>{await post('/api/account/logout',{}).catch(()=>{});apply({logged_in:false});close();onLogout?.()};
  // Account dialog in the same adventure style as NPC conversations: name + password, log in or sign up.
@@ -94,15 +96,17 @@ export function createShop({container,data,onLogout,onUse}){
  function useItem(id){
   const item=data.items[id];if(!item||!(state.items[id]>0))return;
   if(!item.use){packMessage(t('{name}은(는) 쓸 데가 없소.',{name:item.name}));return}
-  packMessage(onUse?.(id)??'');renderPack();
+  const result=onUse?.(id)??'';packMessage(result);actionMessage.textContent=result;renderPack();renderActions();
  }
  function renderPack(){
   if(packWin.hidden)return;
   packWin.querySelector('.pack-money').textContent=state.loggedIn?t('엽전 ')+formatMoney(state.money):'';
   const ids=Object.keys(state.items).filter(id=>data.items[id]),grid=packWin.querySelector('.pack-items');
-  grid.replaceChildren(...ids.map(id=>{
+  packPage=Math.min(packPage,Math.max(0,Math.ceil(ids.length/16)-1));
+  const visibleIds=ids.slice(packPage*16,packPage*16+16);
+  grid.replaceChildren(...visibleIds.map(id=>{
    const item=data.items[id],cell=document.createElement('button');cell.type='button';cell.className='shop-slot';cell.dataset.item=id;
-   cell.append(drawIcon(item.icon));
+   cell.append(drawIcon(item.icon));makeDraggable(cell,id);
    const name=document.createElement('span');name.className='slot-name';name.textContent=item.name;cell.append(name);
    const n=document.createElement('span');n.className='slot-count';n.textContent=state.items[id];cell.append(n);
    const usable=item.use?t(' · 쓰기 가능'):'';
@@ -113,8 +117,10 @@ export function createShop({container,data,onLogout,onUse}){
    if(item.use){const use=document.createElement('button');use.type='button';use.className='pack-use';use.dataset.item=id;use.textContent=t('쓰기');use.setAttribute('aria-label',t('{name} 쓰기',{name:item.name}));use.onclick=()=>useItem(id);entry.append(use)}
    return entry;
   }));
-  if(!ids.length){const empty=document.createElement('p');empty.className='shop-empty';empty.textContent=t('봇짐이 비었소.');grid.append(empty)}
+  for(let i=visibleIds.length;i<16;i++){const empty=document.createElement('div');empty.className='pack-empty-slot';empty.setAttribute('aria-label',t('빈 칸'));grid.append(empty)}
+  packPages.hidden=ids.length<=16;packPages.querySelector('span').textContent=`${packPage+1} / ${Math.max(1,Math.ceil(ids.length/16))}`;packPrev.disabled=packPage===0;packNext.disabled=(packPage+1)*16>=ids.length;
  }
+ const packPages=document.createElement('div');packPages.className='pack-pages';const packPrev=document.createElement('button'),packNext=document.createElement('button');packPrev.textContent='‹';packNext.textContent='›';packPrev.setAttribute('aria-label',t('이전 페이지'));packNext.setAttribute('aria-label',t('다음 페이지'));packPages.append(packPrev,document.createElement('span'),packNext);packWin.append(packPages);packPrev.onclick=()=>{packPage--;renderPack()};packNext.onclick=()=>{packPage++;renderPack()};
  function openPack(){if(!state.loggedIn)return;packWin.hidden=false;packMessage('');renderPack()}
  function closePack(){packWin.hidden=true}
  function togglePack(){packWin.hidden?openPack():closePack()}
@@ -123,11 +129,12 @@ export function createShop({container,data,onLogout,onUse}){
   if(answer&&answer.logged_in===false){state.loggedIn=false;state.name='';state.money=null;state.items={};state.ready=true}
   else if(Number.isInteger(answer?.money)){state.loggedIn=true;state.name=answer.name;state.money=answer.money;state.items=answer.items??{};state.ready=true}
   // The name, coins and logout belong to walking: the display shows only in first person while logged in.
-  hud.hidden=!state.loggedIn||!hudShown;
-  hudText.textContent=state.loggedIn?`${state.name} · ${t('엽전')} ${formatMoney(state.money)}`:'';
+  hud.hidden=playerHud.hidden=!state.loggedIn||!hudShown;
+  playerName.textContent=state.loggedIn?state.name:'';
+  hudText.textContent=state.loggedIn?`${t('엽전')} ${formatMoney(state.money)}`:'';
   hudLogout.hidden=!state.loggedIn;
   if(!state.loggedIn)closePack();
-  render();renderPack();
+  loadActions();render();renderPack();renderActions();
  }
  async function refresh(){
   try{const response=await fetch('/api/player/',{credentials:'same-origin',cache:'no-store'});apply(response.ok?await response.json():{logged_in:false})}
@@ -145,6 +152,33 @@ export function createShop({container,data,onLogout,onUse}){
   }catch{message(t('서버에 닿지 않아 거래하지 못했소.'))}
   finally{busy=false}
  }
+ // Ten desktop action slots store item references, never copies of the server inventory.
+ const actionBar=document.createElement('div');actionBar.id='action-bar';actionBar.hidden=true;actionBar.setAttribute('role','toolbar');actionBar.setAttribute('aria-label',t('액션바'));
+ const actionMessage=document.createElement('p');actionMessage.id='action-message';actionMessage.setAttribute('role','status');actionBar.append(actionMessage);
+ let bindings=Array(10).fill(null),bindingOwner=null;
+ const storageKey=()=>`hanyang3d-actions:${state.name.trim().toLowerCase()}`;
+ function loadActions(){
+  const owner=state.loggedIn?storageKey():null;if(owner===bindingOwner)return;bindingOwner=owner;bindings=Array(10).fill(null);packPage=0;
+  if(owner)try{const saved=JSON.parse(localStorage.getItem(owner));if(Array.isArray(saved)&&saved.length===10)bindings=saved.map(id=>typeof id==='string'&&data.items[id]?.use?id:null)}catch{}
+ }
+ const saveActions=()=>{if(bindingOwner)try{localStorage.setItem(bindingOwner,JSON.stringify(bindings))}catch{}};
+ function makeDraggable(node,id){if(!data.items[id]?.use)return;node.draggable=true;node.ondragstart=e=>{e.stopPropagation();e.dataTransfer.setData('application/x-hanyang-item',id);e.dataTransfer.effectAllowed='copy'};node.onpointerdown=e=>e.stopPropagation()}
+ const actionSlots=Array.from({length:10},(_,i)=>{
+  const button=document.createElement('button');button.type='button';button.className='action-slot';button.dataset.slot=i;button.onclick=()=>activate(i);
+  button.ondragover=e=>{e.preventDefault();e.dataTransfer.dropEffect='copy'};
+  button.ondrop=e=>{e.preventDefault();e.stopPropagation();const id=e.dataTransfer.getData('application/x-hanyang-item');if(!data.items[id]?.use||!(state.items[id]>0))return;bindings[i]=id;saveActions();renderActions()};
+  button.oncontextmenu=e=>{e.preventDefault();bindings[i]=null;saveActions();renderActions()};actionBar.append(button);return button;
+ });container.append(actionBar);
+ function renderActions(){
+  actionBar.hidden=!state.loggedIn||!hudShown;
+  actionSlots.forEach((button,i)=>{const id=bindings[i],item=data.items[id],available=item&&state.items[id]>0;button.draggable=false;button.ondragstart=null;button.replaceChildren();if(item)button.append(drawIcon(item.icon));const key=document.createElement('kbd');key.textContent=(i+1)%10;button.append(key);button.classList.toggle('unavailable',!!item&&!available);button.setAttribute('aria-disabled',String(!available));button.title=`${(i+1)%10}: ${item?.name??t('빈 칸')}`;button.setAttribute('aria-label',button.title);if(item)makeDraggable(button,id)});
+ }
+ function activate(i){if(!hudShown||!state.loggedIn)return;const id=bindings[i];if(!id||!(state.items[id]>0))return;useItem(id);actionSlots[i].animate([{filter:'brightness(1.8)'},{filter:'brightness(1)'}],{duration:180})}
+ document.addEventListener('keydown',event=>{
+  if(!hudShown||!state.loggedIn||event.repeat||event.isComposing||event.ctrlKey||event.altKey||event.metaKey||event.shiftKey||matchMedia('(max-width:600px), (pointer:coarse)').matches)return;
+  if(event.target.closest?.('input,textarea,select,[contenteditable="true"],#account-overlay,#walk-chat')||!account.hidden||shop)return;
+  const digit=/^Digit([0-9])$/.exec(event.code);if(!digit)return;event.preventDefault();event.stopPropagation();activate((Number(digit[1])+9)%10);
+ });
  const sellPrice=id=>Math.floor(data.items[id].price*data.wallet.sell_rate);
  function slot(id,count,price,label,act){
   const item=data.items[id],cell=document.createElement('button');cell.type='button';cell.className='shop-slot';
@@ -153,7 +187,7 @@ export function createShop({container,data,onLogout,onUse}){
   const p=document.createElement('span');p.className='slot-price';p.textContent=formatMoney(price);cell.append(p);
   if(count!==null){const n=document.createElement('span');n.className='slot-count';n.textContent=count;cell.append(n)}
   cell.dataset.item=id;cell.setAttribute('aria-label',`${item.name} ${formatMoney(price)} ${label}`);
-  cell.onclick=act;
+  cell.onclick=act;if(count!==null)makeDraggable(cell,id);
   cell.onmouseenter=()=>{tip.hidden=false;tip.textContent=t('{name} (한 {unit}) — {desc}',{name:item.name,unit:item.unit,desc:item.desc})+` · ${label} ${formatMoney(price)}`};
   cell.onmouseleave=()=>{tip.hidden=true};
   return cell;
@@ -179,6 +213,6 @@ export function createShop({container,data,onLogout,onUse}){
  // Escape closes the topmost window only; it must not also leave first person (captured before that handler).
  document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const done=()=>{event.preventDefault();event.stopImmediatePropagation()};if(!account.hidden){done();closeAccount()}else if(shop){done();close()}else if(!packWin.hidden){done();closePack()}},true);
  refresh();
- function showHud(shown){hudShown=shown;hud.hidden=!state.loggedIn||!hudShown;if(!shown)closePack()}
+ function showHud(shown){hudShown=shown;hud.hidden=playerHud.hidden=!state.loggedIn||!hudShown;renderActions();if(!shown)closePack()}
  return {open,close,refresh,requireLogin,whenReady,showHud,openPack,closePack,togglePack,get packOpen(){return !packWin.hidden},packWindow:packWin,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
 }

@@ -16,30 +16,36 @@ export function createWalkChat({ scene, firstPerson, send }) {
   scene.append(toggle, panel);
   const input = panel.querySelector('input'), log = panel.querySelector('[role=log]'), error = panel.querySelector('#walk-chat-error');
   let connected = false, unread = 0;
+  const desktop=()=>matchMedia('(min-width:601px) and (pointer:fine)').matches;
+  const form=panel.querySelector('form'),closeButton=panel.querySelector('#walk-chat-close');
+  const chatTitle=panel.querySelector('strong');
   const seen = new Set();
   function show(open) {
-    panel.hidden = !open; toggle.setAttribute('aria-expanded', String(open));
+    panel.hidden=desktop()?!connected:!open;form.hidden=!open;closeButton.hidden=!open;chatTitle.hidden=desktop();panel.classList.toggle('editing',open);toggle.setAttribute('aria-expanded',String(open));
     if (open) { unread = 0; toggle.textContent = t('채팅'); firstPerson.clearInput(); input.focus(); log.scrollTop = log.scrollHeight; }
     else if (connected) scene.querySelector('canvas')?.focus({ preventScroll: true });
   }
+  const desktopQuery=matchMedia('(min-width:601px) and (pointer:fine)');
+  desktopQuery.addEventListener('change',()=>{toggle.hidden=!connected||desktop();show(false)});
   toggle.onclick = () => show(panel.hidden);
   panel.querySelector('#walk-chat-close').onclick = () => show(false);
   input.addEventListener('focus', () => firstPerson.clearInput());
   // Capture before the walking Escape handler; composing Enter must not submit.
   document.addEventListener('keydown', event => {
-    if (!connected) return;
+    if (!connected || event.repeat) return;
+    const enter=event.code==='Enter'||event.code==='NumpadEnter';
     if (panel.contains(event.target)) {
       event.stopPropagation();
-      if (event.code === 'Escape') { event.preventDefault(); show(false); }
-      if (event.code === 'Enter' && event.isComposing) event.preventDefault();
-    } else if (event.code === 'Enter' && firstPerson.active && !event.target.matches?.('input,textarea,select,button')) {
+      if (event.code === 'Escape') { event.preventDefault();input.value='';show(false); }
+      if (enter && (event.isComposing||event.keyCode===229)) event.preventDefault();
+    } else if (enter && !event.isComposing && firstPerson.active && !event.target.closest?.('input,textarea,select,[contenteditable="true"],#account-overlay,#shop-window,#pack-window')) {
       event.preventDefault(); event.stopPropagation(); show(true);
     }
   }, true);
   panel.querySelector('form').onsubmit = event => {
     event.preventDefault(); const text = input.value.trim();
-    if (!text) return;
-    error.textContent = ''; send(text); input.value = ''; input.focus();
+    if (!text) {show(false);return;}
+    error.textContent = ''; send(text); input.value = ''; show(false);
   };
   function receive(message, history = false) {
     if (seen.has(message.id)) return;
@@ -55,7 +61,7 @@ export function createWalkChat({ scene, firstPerson, send }) {
   return {
     receive,
     error(message) { error.textContent = t(message); if (connected) show(true); },
-    connect() { connected = true; toggle.hidden = false; },
+    connect() {connected=true;toggle.hidden=desktop();show(false)},
     disconnect() { connected = false; panel.hidden = toggle.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = t('채팅'); unread = 0; log.replaceChildren(); seen.clear(); input.value = ''; error.textContent = ''; },
   };
 }

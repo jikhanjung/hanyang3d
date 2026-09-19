@@ -9,12 +9,24 @@ const manifest = read('../gis/control_points/seoul_terrain_manifest.json');
 const data = read('../gis/roads/doseong_walking_routes.json');
 if (data.source_sha256 !== experiment.input_sha256) throw Error('NPC routes and map source do not match');
 const cache = new Map();
+let live1907=null;
+export async function loadSceneRoutes(url){
+  if(!url)return;
+  const response=await fetch(url,{headers:{Host:'localhost'},signal:AbortSignal.timeout(15000)});
+  if(!response.ok)throw Error('Scene route fetch failed: '+response.status);
+  const value=await response.json(),config=read('../gis/control_points/seoul1907.json');
+  if(value.source_sha256!==config.image_sha256||!Array.isArray(value.routes)||!value.routes.length)throw Error('Invalid live 1907 routes');
+  const transform=createMap1907Transform(config,manifest.bounds_3857),routes=buildWalkingRoutes(value,transform.sourceXZ);
+  if(!routes.length||routes.some(r=>!Number.isInteger(r.count)||r.count<0||r.points.some(p=>!Number.isFinite(p.x)||!Number.isFinite(p.z))))throw Error('Invalid live route geometry');
+  live1907=value;cache.delete('seoul1907');
+}
+
 
 export function npcWorld(alignment = 'mountains') {
   if (!['mountains', 'base', 'seoul1907'].includes(alignment)) throw Error('Unknown map alignment');
   if (cache.has(alignment)) return cache.get(alignment);
   if(alignment==='seoul1907'){
-    const config=read('../gis/control_points/seoul1907.json'),data1907=read('../gis/roads/seoul1907_walking_routes.json');
+    const config=read('../gis/control_points/seoul1907.json'),data1907=live1907??read('../gis/roads/seoul1907_walking_routes.json');
     if(data1907.source_sha256!==config.image_sha256)throw Error('1907 routes and map source do not match');
     const transform=createMap1907Transform(config,manifest.bounds_3857),routes=buildWalkingRoutes(data1907,transform.sourceXZ);
     const world={routes,routeKey:walkingRouteKey(routes)};cache.set(alignment,world);return world;

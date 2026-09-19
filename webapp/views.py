@@ -68,8 +68,12 @@ def seoul1907(request):
         buildings = load_buildings(scene_year=1907)
     else:
         buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1907_landmarks.json').read_text())
-    infrastructure = json.loads((settings.BASE_DIR / 'gis/walls/seoul1907_infrastructure.json').read_text())
-    return render(request, 'seoul1907.html', {'npcs': localize(catalog(), request.lang), 'people1907': localize(json.loads((settings.BASE_DIR / 'gis/characters/seoul1907.json').read_text()), request.lang), 'trams1907': json.loads((settings.BASE_DIR / 'gis/transport/seoul1907_trams.json').read_text()), 'walking1907': json.loads((settings.BASE_DIR / 'gis/roads/seoul1907_walking_routes.json').read_text()), 'multiplayer_url': settings.MULTIPLAYER_URL, 'walk_world_version': settings.WALK_WORLD_VERSION, 'infrastructure': infrastructure, 'map': config, 'buildings': localize(buildings, request.lang), 'app_version': settings.APP_VERSION})
+    from .scene_data import load
+    infrastructure = load('infrastructure1907')
+    response = render(request, 'seoul1907.html', {'npcs': localize(catalog(), request.lang), 'people1907': localize(load('people1907'), request.lang), 'trams1907': load('trams1907'), 'walking1907': load('walking1907'), 'multiplayer_url': settings.MULTIPLAYER_URL, 'walk_world_version': settings.WALK_WORLD_VERSION, 'infrastructure': infrastructure, 'settlement1907': load('settlement1907'), 'map': config, 'buildings': localize(buildings, request.lang), 'app_version': settings.APP_VERSION})
+
+    response['Cache-Control']='no-cache, must-revalidate'
+    return response
 
 
 def serve_resource(request, resource, immutable=False):
@@ -228,3 +232,14 @@ def walk_ticket(request):
         return _no_store(JsonResponse({'error': '먼저 이름을 대고 들어오시오. (로그인)'}, status=401))
     secret = settings.WALK_TICKET_SECRET
     return _no_store(JsonResponse({'name': player.name, 'ticket': make_ticket(player.name, secret) if secret else None}))
+
+
+@require_safe
+def scene_dataset(request, key):
+    from .scene_data import DATASETS, load, digest
+    from django.http import JsonResponse
+    if key not in DATASETS: raise Http404
+    data=load(key);etag='"'+digest(data)+'"'
+    response=HttpResponseNotModified() if request.headers.get('If-None-Match')==etag else JsonResponse(data)
+    response['ETag']=etag;response['Cache-Control']='no-cache, must-revalidate'
+    return response

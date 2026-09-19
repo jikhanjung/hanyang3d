@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('backoffice/', admin.site.urls),
     path('static/<path:path>', serve_static, {'insecure': True}),
+    path('api/scene-data/<slug:key>/', views.scene_dataset, name='scene-dataset'),
     path('1907/', views.seoul1907, name='seoul1907'),
     path('credits/', views.credits, name='credits'),
     path('guide/', views.guide, name='guide'),

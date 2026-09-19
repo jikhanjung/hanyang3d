@@ -16,6 +16,10 @@
 
 ## 작업 기록
 
+- [201 — 걷기 HUD·액션바·봇짐·채팅과 포커스 이동](20260919_201_walking_hud_actions_chat.md)
+- [200 — 이미지 교체 없는 장면 데이터 갱신](20260919_200_scene_data_updates.md)
+- [199 — 육조거리 민가 제외와 단성사 재배치](20260919_199_yukjo_dansungsa_correction.md)
+
 - [198 — 웹·멀티플레이 v0.5.22 배포](20260919_198_deploy_v0522.md)
 - [197 — 1907년 도로 확장과 추정 민가](20260919_197_roads_settlement_1907.md)
 - [196 — 실내 규칙과 돈화문길 재판독](20260919_196_indoor_rules_donhwamun_road.md)

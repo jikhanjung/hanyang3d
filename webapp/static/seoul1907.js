@@ -119,7 +119,7 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
  const infrastructure=createInfrastructure1907(infraData,surface,buildings);scene.add(infrastructure.wall.group,infrastructure.water,infrastructure.bridges,infrastructure.roads);
  const tramData=JSON.parse(el('trams-1907').textContent);
  if(tramData.source_sha256!==cfg.image_sha256)throw Error('Tram map hash mismatch');
- const settlementData=await(await fetch(asset('/gis/buildings/seoul1907_settlement.json'))).json();
+ const settlementData=JSON.parse(el('settlement-1907').textContent);
  if(settlementData.source_sha256!==cfg.image_sha256)throw Error('Settlement map mismatch');
  const settlement=createSettlement1907(settlementData,infraData,surface,buildings,(x,z)=>inverse(cx+x/scale,cy-z/scale));scene.add(settlement.group);
  const trams=createTrams1907(tramData,surface);scene.add(trams.group);

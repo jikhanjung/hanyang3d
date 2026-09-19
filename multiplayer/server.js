@@ -1,7 +1,7 @@
 import { Server, matchMaker } from '@colyseus/core';
 import { WebSocketTransport } from '@colyseus/ws-transport';
 import { WalkRoom } from './room.js';
-import { npcWorld } from './npc_world.js';
+import { npcWorld, loadSceneRoutes } from './npc_world.js';
 
 const allowedOrigins = new Set((process.env.WALK_ORIGINS ||
   'http://127.0.0.1:18014,http://localhost:18014').split(',').map(s => s.trim()));
@@ -14,11 +14,12 @@ const transport = new WebSocketTransport({
   maxPayload: 2048,
   beforeUpgrade: request => allowed(request.headers.get('origin')) ? undefined : new Response(null, { status: 403 }),
 });
+await loadSceneRoutes(process.env.WALK_SCENE_DATA_URL);
 const world = npcWorld();
 const server = new Server({ transport, greet: false, express: app => {
   app.get('/healthz', (request, response) => response.json({
     status: 'ok', version: process.env.HANYANG_VERSION || 'development',
-    protocolVersion: 2, npcCount: world.routes.reduce((count, route) => count + route.count, 0),
+    protocolVersion: 2, routeKey1907: npcWorld('seoul1907').routeKey, npcCount: world.routes.reduce((count, route) => count + route.count, 0),
   }));
 } });
 // mapVersion is validated in WalkRoom.onAuth but not used as a filter, so clients cannot open rooms at will.

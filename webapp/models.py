@@ -282,3 +282,17 @@ class LoginAttempt(models.Model):
     name_key = models.CharField(max_length=64, db_index=True)
     ip_hash = models.CharField(max_length=64, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+
+class SceneDataset(EditedModel):
+    key = models.SlugField('데이터 ID', max_length=80, unique=True)
+    data = models.JSONField('장면 데이터', help_text='저장 후 지도 새로고침으로 반영됩니다. walking1907 변경은 멀티플레이 재시작이 필요합니다. 운영 묶음 갱신에는 update_data.sh를 권장합니다.')
+    class Meta:
+        verbose_name = '장면 데이터'
+        verbose_name_plural = '장면 데이터'
+    def __str__(self):
+        from .scene_data import DATASETS
+        return DATASETS.get(self.key, (self.key,))[0]
+    def clean(self):
+        from .scene_data import validate
+        validate(self.key, self.data)

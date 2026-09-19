@@ -148,3 +148,12 @@ class TradeAdmin(admin.ModelAdmin):
     def has_add_permission(self, request): return False
     def has_change_permission(self, request, obj=None): return False
     def has_delete_permission(self, request, obj=None): return False
+
+
+from .models import SceneDataset
+
+@admin.register(SceneDataset)
+class SceneDatasetAdmin(StableKeyAdmin):
+    list_display = ['key', 'updated_at']
+    def has_add_permission(self, request): return False
+    def has_delete_permission(self, request, obj=None): return False

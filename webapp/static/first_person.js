@@ -19,6 +19,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
 
   const eye=new THREE.Vector3(),boom=new THREE.Vector3(),cameraRay=new THREE.Raycaster(),cameraDirection=new THREE.Vector3();
+  let unfocusedMotion=null;
   const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick'),jumpButton=el('walk-jump');canvas.tabIndex=0;
   // One jump at a time: Space on a keyboard, the on-screen button on phones.
   function jump(){if(!active||air!==0||vy!==0)return false;vy=JUMP_SPEED;return true}
@@ -26,7 +27,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   for(const type of ['pointerup','pointercancel','pointerleave'])jumpButton.addEventListener(type,()=>jumpButton.classList.remove('pressed'));
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
   const held=code=>keys.has(code);
-  function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false}
+  function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false;unfocusedMotion=null}
   function rememberPosition(){if(active){walkProfile.savePosition(positionWorld,{x:eye.x,z:eye.z,yaw});lastRemembered=performance.now()}}
   // Walkable raised surfaces: bridge decks and their ramps, and the Gyeongbokgung hall sites (foundation, terraces,
   // stairs). The displayed meshes are cast against straight down, so height exaggeration is followed. While walking
@@ -117,14 +118,14 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   function update(dt){
    if(!active)return;
    if(lookYaw&&!drag?.look){lookYaw*=Math.exp(-8*Math.min(dt,.1));if(Math.abs(lookYaw)<1e-3)lookYaw=0;look()}
-   const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
-   const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
+   const forward=unfocusedMotion?.forward??(Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y);
+   const side=unfocusedMotion?.side??(Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x);
    // Selling the reins (or logging out) takes the horse away.
    if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye)))setMounted(false);
    // Walking (not jumping) stays on the ground when stepping down, so a downhill stride never counts as airborne.
    const grounded=air===0&&vy===0;
    if(!grounded){const step=Math.min(dt,.1);vy-=GRAVITY*step;air=Math.max(0,air+vy*step);if(air===0)vy=0}
-   const speed=(mounted?RIDE:keys.has('ShiftLeft')||keys.has('ShiftRight')?FAST:WALK)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
+   const speed=(mounted?RIDE:(unfocusedMotion?.fast??(keys.has('ShiftLeft')||keys.has('ShiftRight')))?FAST:WALK)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
    let moved=false;
    if(dx||dz){
@@ -173,15 +174,24 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   document.addEventListener('keydown',event=>{
    if(!active)return;if(event.code==='Escape'){event.preventDefault();exit();return}
    if(event.target.matches?.('input,select,textarea,button'))return;
+   if(movement.has(event.code))unfocusedMotion=null;
    if(event.altKey&&event.code==='KeyW'){event.preventDefault();autoRun=!autoRun;return}
    if(event.code==='KeyI'&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();shop?.togglePack();return}
    if(event.code==='Space'){event.preventDefault();if(!event.repeat)jump();return}
    if(autoRun&&['KeyW','KeyS','ArrowUp','ArrowDown'].includes(event.code))autoRun=false;
    if(movement.has(event.code)){event.preventDefault();keys.add(event.code)}
   });
-  document.addEventListener('keyup',event=>keys.delete(event.code));
+  document.addEventListener('keyup',event=>{keys.delete(event.code);if(movement.has(event.code)&&document.hasFocus())unfocusedMotion=null});
   // Moving focus to a touch control must not cancel a held direction.
-  canvas.addEventListener('blur',()=>{keys.clear();drag=null});window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{if(document.hidden){rememberPosition();clearInput()}});
+  canvas.addEventListener('blur',()=>{drag=null});
+  window.addEventListener('blur',()=>{
+   if(!active)return;drag=null;if(unfocusedMotion)return;
+   const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
+   const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
+   const fast=held('ShiftLeft')||held('ShiftRight');clearInput();
+   if(forward||side)unfocusedMotion={forward,side,fast};
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){rememberPosition();drag=null}});
   window.addEventListener('pagehide',rememberPosition);
   canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY,look:event.button===2};canvas.setPointerCapture(event.pointerId)});
   // Left drag turns the walker; right drag only looks around (the walking direction stays).

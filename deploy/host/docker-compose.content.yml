@@ -12,3 +12,10 @@ services:
         target: /content
         bind:
           create_host_path: false
+
+  multiplayer:
+    environment:
+      WALK_SCENE_DATA_URL: http://hanyang3d:8000/api/scene-data/walking1907/
+    depends_on:
+      hanyang3d:
+        condition: service_healthy

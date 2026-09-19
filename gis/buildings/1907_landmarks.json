@@ -5099,7 +5099,7 @@
         11,
         30
       ],
-      "display_yaw_deg": 90,
+      "display_yaw_deg": 270,
       "lod_distance_m": 1700,
       "position_status": "estimated",
       "size_status": "estimated_not_measured",
@@ -5108,12 +5108,12 @@
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          1370,
-          2220
+          1392,
+          2222
         ],
         "anchor": "building_center",
         "method": "estimated_within_map_precinct",
-        "note": "돈화문–종로길의 원도 경계를 재판독하고 길 서쪽에 추정 배치. 종전 [1378,2218]에서 서쪽 8px·남쪽 2px(약 17m) 이동하여 종로 직전 꺾임과 여유 확보, 입구는 동쪽 길을 향함. 개별 단성사 필지를 확정 판독한 좌표는 아니며 사용자 지시와 길의 여유 폭을 반영한 추정."
+        "note": "돈화문–종로길 동쪽에 추정 배치, 입구는 서쪽 도로 방향. 사용자 정정에 따라 이전 [1370,2220]에서 이동. 요청한 동쪽 약 20m 이동만으로는 폭 30m 모형이 도로와 겹치므로 도로 폭·건물 폭과 여유를 고려해 실제 약 46m 동쪽으로 이동했다. 개별 단성사 필지의 확정 판독은 아님."
       },
       "temporal": {
         "existence": {
