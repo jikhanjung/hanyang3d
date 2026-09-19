@@ -4765,6 +4765,526 @@
             "status": "map_snapshot_not_construction_dates"
           }
         }
+      },
+      {
+        "id": "insadong-street-1907",
+        "name": "안국–인사동길",
+        "width_m": 9,
+        "centerline": [
+          [
+            1000,
+            1960
+          ],
+          [
+            992,
+            2020
+          ],
+          [
+            990,
+            2080
+          ],
+          [
+            1000,
+            2150
+          ],
+          [
+            1006,
+            2237
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "supyo-north-street-1907",
+        "name": "종로 북쪽 수표교 방향길",
+        "width_m": 8,
+        "centerline": [
+          [
+            1150,
+            2090
+          ],
+          [
+            1190,
+            2138
+          ],
+          [
+            1200,
+            2190
+          ],
+          [
+            1220,
+            2249.6
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "cheonggye-south-street-1907",
+        "name": "청계천 남쪽 동서길",
+        "width_m": 10,
+        "centerline": [
+          [
+            795,
+            2405
+          ],
+          [
+            900,
+            2410
+          ],
+          [
+            1000,
+            2418
+          ],
+          [
+            1100,
+            2398
+          ],
+          [
+            1200,
+            2388
+          ],
+          [
+            1330,
+            2395
+          ],
+          [
+            1450,
+            2400
+          ],
+          [
+            1580,
+            2398
+          ],
+          [
+            1690,
+            2388
+          ],
+          [
+            1830,
+            2372
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "sogong-street-1907",
+        "name": "소공동길",
+        "width_m": 8,
+        "centerline": [
+          [
+            774,
+            2365
+          ],
+          [
+            780,
+            2420
+          ],
+          [
+            810,
+            2480
+          ],
+          [
+            830,
+            2540
+          ],
+          [
+            870,
+            2600
+          ],
+          [
+            870,
+            2705
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "myeongdong-west-street-1907",
+        "name": "명동 서쪽길",
+        "width_m": 8,
+        "centerline": [
+          [
+            1090,
+            2400
+          ],
+          [
+            1090,
+            2470
+          ],
+          [
+            1080,
+            2530
+          ],
+          [
+            1085,
+            2600
+          ],
+          [
+            1090,
+            2690
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "chungmuro-street-1907",
+        "name": "남산 북쪽 동서길",
+        "width_m": 10,
+        "centerline": [
+          [
+            615,
+            2783
+          ],
+          [
+            675,
+            2750
+          ],
+          [
+            760,
+            2730
+          ],
+          [
+            860,
+            2710
+          ],
+          [
+            960,
+            2694
+          ],
+          [
+            1070,
+            2690
+          ],
+          [
+            1190,
+            2683
+          ],
+          [
+            1310,
+            2675
+          ],
+          [
+            1450,
+            2670
+          ],
+          [
+            1580,
+            2670
+          ],
+          [
+            1730,
+            2665
+          ],
+          [
+            1850,
+            2645
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "namdaemun-east-street-1907",
+        "name": "숭례문 동쪽 남북길",
+        "width_m": 8,
+        "centerline": [
+          [
+            714,
+            2740
+          ],
+          [
+            708,
+            2820
+          ],
+          [
+            690,
+            2870
+          ],
+          [
+            700,
+            2910
+          ],
+          [
+            730,
+            2950
+          ],
+          [
+            770,
+            2990
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "namdaemun-outside-street-1907",
+        "name": "숭례문 밖 서남쪽길",
+        "width_m": 11,
+        "centerline": [
+          [
+            615,
+            2783
+          ],
+          [
+            575,
+            2820
+          ],
+          [
+            532,
+            2860
+          ],
+          [
+            490,
+            2900
+          ],
+          [
+            450,
+            2945
+          ],
+          [
+            420,
+            2990
+          ],
+          [
+            400,
+            3040
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "namdaemun-outside-west-1907",
+        "name": "숭례문 밖 서쪽길",
+        "width_m": 9,
+        "centerline": [
+          [
+            615,
+            2783
+          ],
+          [
+            555,
+            2802
+          ],
+          [
+            485,
+            2832
+          ],
+          [
+            435,
+            2838
+          ],
+          [
+            395,
+            2828
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "namdaemun-outside-lane-1907",
+        "name": "남대문 밖 남쪽 골목",
+        "width_m": 6,
+        "centerline": [
+          [
+            532,
+            2860
+          ],
+          [
+            580,
+            2870
+          ],
+          [
+            631,
+            2868
+          ],
+          [
+            635,
+            2920
+          ],
+          [
+            641,
+            2970
+          ],
+          [
+            657,
+            3000
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "seosomun-street-1907",
+        "name": "소의문–소공동길",
+        "width_m": 9,
+        "centerline": [
+          [
+            474,
+            2478
+          ],
+          [
+            560,
+            2483
+          ],
+          [
+            640,
+            2500
+          ],
+          [
+            710,
+            2506
+          ],
+          [
+            780,
+            2520
+          ],
+          [
+            830,
+            2540
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
+      },
+      {
+        "id": "pil-dong-street-1907",
+        "name": "필동 방향길",
+        "width_m": 7,
+        "centerline": [
+          [
+            1280,
+            2392
+          ],
+          [
+            1280,
+            2460
+          ],
+          [
+            1290,
+            2530
+          ],
+          [
+            1305,
+            2600
+          ],
+          [
+            1310,
+            2675
+          ],
+          [
+            1250,
+            2770
+          ],
+          [
+            1215,
+            2820
+          ]
+        ],
+        "position_status": "estimated_source_map_corridor",
+        "note": "src-0029 표시본의 검은 도로 경계·연결을 육안 판독한 추정 중심선. 현대 도로명·폭의 소급 복원이 아니며 작은 굴곡은 단순화.",
+        "temporal": {
+          "depiction": {
+            "reference_year": 1907,
+            "start_year": null,
+            "end_year": null,
+            "status": "map_snapshot_not_construction_dates"
+          }
+        }
       }
     ]
   }

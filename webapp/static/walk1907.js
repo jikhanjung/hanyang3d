@@ -11,7 +11,7 @@ import {createNavigation1907} from './navigation1907.js';
 import {createHorseDealer} from './horse_dealer.js';
 const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
 
-export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture}){
+export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture,settlement}){
  // Tiny local volumes avoid triangle tests and follow each building's rotation/height.
  const indoorBuildings=buildings.filter(b=>b.userData.interior?.volumes),local=new THREE.Vector3();
  function interiorAt(point){
@@ -45,6 +45,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
   }else collision.add({...frame,hw:w/2,hd:d/2,visible:shown});
  }
  for(const s of infrastructure.wall.segments)collision.add({x:s.x,z:s.z,hw:infraData.wall.width_m/2,hd:s.length/2,yaw:s.yaw,visible:()=>infrastructure.wall.group.visible});
+ for(const r of settlement?.records??[])collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
  const stationary=createStationaryPeople1907(buildings,data,groundAt);scene.add(stationary.group);
  const horseData=data.horse_dealer,horsePerson=createPerson1907({merchant:true});
  const horseDealer=createHorseDealer({position:surface(...horseData.placement.pixel),yaw:horseData.placement.yaw_deg*Math.PI/180,personModel:horsePerson.group});

@@ -16,6 +16,8 @@ def public_resource_paths():
     allowed = {a['local_path'] for a in assets()}
     allowed.update({
         'webapp/static/seoul1907.js',
+        'webapp/static/settlement1907.js',
+        'gis/buildings/seoul1907_settlement.json',
         'webapp/static/trams1907.js',
         'gis/transport/seoul1907_trams.json',
         'webapp/static/first_person.js',

@@ -1,3 +1,4 @@
+import {createSettlement1907} from './settlement1907.js';
 import {createTrams1907} from './trams1907.js';
 import {createWalk1907} from './walk1907.js';
 import {createMap1907Transform} from './map1907_transform.js';
@@ -118,6 +119,9 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
  const infrastructure=createInfrastructure1907(infraData,surface,buildings);scene.add(infrastructure.wall.group,infrastructure.water,infrastructure.bridges,infrastructure.roads);
  const tramData=JSON.parse(el('trams-1907').textContent);
  if(tramData.source_sha256!==cfg.image_sha256)throw Error('Tram map hash mismatch');
+ const settlementData=await(await fetch(asset('/gis/buildings/seoul1907_settlement.json'))).json();
+ if(settlementData.source_sha256!==cfg.image_sha256)throw Error('Settlement map mismatch');
+ const settlement=createSettlement1907(settlementData,infraData,surface,buildings,(x,z)=>inverse(cx+x/scale,cy-z/scale));scene.add(settlement.group);
  const trams=createTrams1907(tramData,surface);scene.add(trams.group);
  el('trams3d').onchange=()=>{trams.group.visible=el('trams3d').checked;needsRender=true};
  const showTramInfo=()=>{
@@ -177,12 +181,13 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   for(const model of buildings)model.visible=visible;
   el('labels').hidden=original||!el('names3d').checked;
   infrastructure.wall.group.visible=el('walls3d').checked;
+  settlement.group.visible=el('settlement3d').checked;
   infrastructure.roads.visible=el('roads3d').checked;
   infrastructure.water.visible=infrastructure.bridges.visible=el('water3d').checked;
   el('landmark').disabled=original||!visible;
   if(!visible)el('building-info').hidden=true;
  };
- el('buildings3d').onchange=updateLayers;el('names3d').onchange=updateLayers;el('walls3d').onchange=updateLayers;el('water3d').onchange=updateLayers;el('roads3d').onchange=updateLayers;
+ el('settlement3d').onchange=updateLayers;el('buildings3d').onchange=updateLayers;el('names3d').onchange=updateLayers;el('walls3d').onchange=updateLayers;el('water3d').onchange=updateLayers;el('roads3d').onchange=updateLayers;
  el('landmark').onchange=()=>{const model=buildings.find(m=>m.userData.feature.id===el('landmark').value);if(model)showBuilding(model,{focus:true})};
 
  const compass=createCompass3D(el('compass'));
@@ -197,7 +202,7 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   if(original){if(!leaflet){leaflet=L.map('original',{crs:L.CRS.Simple,minZoom:-4,maxZoom:3,attributionControl:false});L.imageOverlay(asset(cfg.image_url),[[0,0],[ih,iw]]).addTo(leaflet)}leaflet.invalidateSize();reset()}
  };
  await stage(4,t('성벽·길·물길 표시 완료 · 걷는 사람과 상인을 준비합니다'));
- walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture});
+ walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture,settlement});
  walking.pedestrians.setVehicleAvoider((p,old,dt)=>trams.avoid(p,old,dt,(x,z,r)=>walking.collision.hit(x,z,r)));
  await stage(5,t('사람 표시 완료 · 마무리합니다'));
  updateLayers();
@@ -221,6 +226,7 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
  };
  let lastFrame=performance.now();
  renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){walking.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);
+  settlement.setLod(camera.position);
   for(const model of buildings)updateLandmarkLod(model,camera);
   const indoors=walking.interiorAt(walking.firstPerson.active?walking.firstPerson.eye:camera.position);
   const occupied=[];
@@ -237,6 +243,6 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   }
   renderer.render(scene,camera)}});
  await stage(6,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
- el('status').hidden=true;window.seoul1907={ready:true,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
+ el('status').hidden=true;window.seoul1907={ready:true,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
 }
 main().catch(error=>{console.error(error);el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;window.seoul1907={ready:false,error:String(error)}});

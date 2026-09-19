@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [197 — 1907년 도로 확장과 추정 민가](20260919_197_roads_settlement_1907.md)
 - [196 — 실내 규칙과 돈화문길 재판독](20260919_196_indoor_rules_donhwamun_road.md)
 - [195 — v0.5.21 배포](20260919_195_deploy_v0521.md)
 - [194 — 명동성당 내부 보행 성능](20260919_194_cathedral_interior_performance.md)

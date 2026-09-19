@@ -6,11 +6,20 @@ export function createInfrastructure1907(data,surface,buildings){
  const roads=new THREE.Group();roads.name='major-roads-1907';
  const roadMaterial=new THREE.MeshStandardMaterial({color:0xd4c3a1,roughness:1,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3});
  for(const f of data.roads?.features??[]){
-  const positions=[],indices=[];
+  const positions=[],indices=[],points=f.centerline.map(p=>surface(...p));
+  // Shared mitred edges keep bends joined instead of leaving triangular gaps between segments.
+  const edges=points.map((p,i)=>{
+   const a=points[Math.max(0,i-1)],b=points[Math.min(points.length-1,i+1)];
+   let ux=p.x-a.x,uz=p.z-a.z,vx=b.x-p.x,vz=b.z-p.z;
+   let ul=Math.hypot(ux,uz),vl=Math.hypot(vx,vz);if(!ul){ux=vx;uz=vz;ul=vl}if(!vl){vx=ux;vz=uz;vl=ul}
+   ux/=ul||1;uz/=ul||1;vx/=vl||1;vz/=vl||1;
+   let nx=-uz-vz,nz=ux+vx,len=Math.hypot(nx,nz);if(len<.001){nx=-vz;nz=vx;len=1}nx/=len;nz/=len;
+   const offset=Math.min(f.width_m,f.width_m/2/Math.max(.5,nx*-vz+nz*vx));
+   return [[p.x-nx*offset,p.z-nz*offset],[p.x+nx*offset,p.z+nz*offset]];
+  });
   for(let i=1;i<f.centerline.length;i++){
-   const a=surface(...f.centerline[i-1]),b=surface(...f.centerline[i]),dx=b.x-a.x,dz=b.z-a.z,len=Math.hypot(dx,dz);if(len<.001)continue;
-   const nx=-dz/len*f.width_m/2,nz=dx/len*f.width_m/2;
-   const quad=[[a.x-nx,a.z-nz],[b.x-nx,b.z-nz],[b.x+nx,b.z+nz],[a.x+nx,a.z+nz]];
+   const a=points[i-1],b=points[i],dx=b.x-a.x,dz=b.z-a.z,len=Math.hypot(dx,dz);if(len<.001)continue;
+   const quad=[edges[i-1][0],edges[i][0],edges[i][1],edges[i-1][1]];
    // Clip to each DEM triangle so no road triangle cuts through a terrain ridge.
    const grid=surface.grid,minX=Math.min(...quad.map(p=>p[0])),maxX=Math.max(...quad.map(p=>p[0])),minZ=Math.min(...quad.map(p=>p[1])),maxZ=Math.max(...quad.map(p=>p[1]));
    const ix0=Math.max(0,Math.floor((minX-grid.xmin)/grid.stepX)),ix1=Math.min(grid.size-2,Math.floor((maxX-grid.xmin)/grid.stepX)),iz0=Math.max(0,Math.floor((minZ-grid.zmin)/grid.stepZ)),iz1=Math.min(grid.size-2,Math.floor((maxZ-grid.zmin)/grid.stepZ));

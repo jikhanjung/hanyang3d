@@ -2,9 +2,9 @@ import * as THREE from 'three';
 import {hipGableRoof} from './throne_hall.js';
 
 // Deliberately small, repeated concept models; positions are speculative.
-export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPath,blockers=[]){
+export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPath,blockers=[],options={}){
  const group=new THREE.Group();group.name='speculative-roadside-buildings';
- const records=[],cells=new Map(),cellSize=14;
+ const records=options.records??[],cells=new Map(),cellSize=14;
  for(const row of data.features){
   const [px,py,angle,w,d,h,shop,rank,roadPx,roadPy]=row,p=sourceSurface(px,py),q=sourceSurface(px+Math.cos(angle)*3,py+Math.sin(angle)*3);
   let yaw=Math.atan2(-(q.z-p.z),q.x-p.x);
@@ -90,7 +90,7 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
   r.hip=r.roofType==='tile'&&!r.shop&&r.w*r.d>=30&&r.style<.2;
   r.strawColor=new THREE.Color(r.style<.72?'#b6a070':'#c3ad7d');
  });
- let density=.7,exaggeration=1,visibleCount=0,shopCount=0,mapVisible=true,lod=null,nearCount=0;const LOD_M=1400;
+ let density=options.density??.7,exaggeration=1,visibleCount=0,shopCount=0,mapVisible=true,lod=null,nearCount=0;const LOD_M=options.lodDistance??1400;
  const dummy=new THREE.Object3D();
  // Each instanced mesh packs only the houses it draws at the front and sets its count, so hidden or far houses cost the
  // GPU nothing: near houses fill the detailed meshes, far houses the simple ones.
@@ -125,11 +125,11 @@ export function createSettlement(data,sourceSurface,heightAt,landmarks,channelPa
    }
   }
   for(const m of group.children){m.count=slots.get(m);m.instanceMatrix.needsUpdate=true;if(m.instanceColor)m.instanceColor.needsUpdate=true;m.computeBoundingSphere()}
-  document.getElementById('settlement-status').textContent=`추정 배치 ${visibleCount.toLocaleString()}동 · 주택 ${(visibleCount-shopCount).toLocaleString()} · 상가 ${shopCount.toLocaleString()} — 도성 안 길 주변 일부, 개별 건물 위치 미확인`;
+  const status=document.getElementById('settlement-status');if(status)status.textContent=`추정 배치 ${visibleCount.toLocaleString()}동 · 주택 ${(visibleCount-shopCount).toLocaleString()} · 상가 ${shopCount.toLocaleString()} — 도성 안 길 주변 일부, 개별 건물 위치 미확인`;
  }
  function updateGround(supportAt){for(const r of records)r.support=supportAt(r.x,r.z,r.w+1,r.d+1,r.yaw)}
- document.getElementById('settlement3d').onchange=e=>{group.visible=e.target.checked};
- document.getElementById('settlement-density').onchange=e=>{density=Number(e.target.value);updateHeights(exaggeration)};
+ const toggle=document.getElementById('settlement3d');if(toggle)toggle.onchange=e=>{group.visible=e.target.checked};
+ const densityControl=document.getElementById('settlement-density');if(densityControl)densityControl.onchange=e=>{density=Number(e.target.value);updateHeights(exaggeration)};
  const setMapVisible=value=>{mapVisible=value;updateHeights(exaggeration)};
  // Recompute the detail split only after the camera has moved far enough to matter.
  function setLod(position){
