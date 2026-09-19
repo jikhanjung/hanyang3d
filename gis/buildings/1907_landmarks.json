@@ -5099,7 +5099,7 @@
         11,
         30
       ],
-      "display_yaw_deg": 0,
+      "display_yaw_deg": 90,
       "lod_distance_m": 1700,
       "position_status": "estimated",
       "size_status": "estimated_not_measured",
@@ -5108,12 +5108,12 @@
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          1378,
-          2218
+          1370,
+          2220
         ],
         "anchor": "building_center",
         "method": "estimated_within_map_precinct",
-        "note": "종로3가 북쪽, 돈화문 방향 길 동쪽 권역에 추정 배치. 단성사 개별 필지·전각을 원도에서 확정 판독한 좌표는 아님."
+        "note": "돈화문–종로길의 원도 경계를 재판독하고 길 서쪽에 추정 배치. 종전 [1378,2218]에서 서쪽 8px·남쪽 2px(약 17m) 이동하여 종로 직전 꺾임과 여유 확보, 입구는 동쪽 길을 향함. 개별 단성사 필지를 확정 판독한 좌표는 아니며 사용자 지시와 길의 여유 폭을 반영한 추정."
       },
       "temporal": {
         "existence": {

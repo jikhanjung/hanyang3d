@@ -176,6 +176,8 @@ export function createCathedral1907(feature,w,h,d){
  batch(model,'cathedral-shell');model.add(...walkSurfaces,clip);batch(close,'cathedral-fine');model.add(close);const cameraShell=[clip];
  Object.assign(model.userData,{conceptual:true,kind:'cathedral',period:feature.temporal,parts,blockingRects:blocks,walkSurfaces,closeDetail:close,closeDistance:260,cameraShell,
   // A short, slightly lowered orbit target keeps the preview at eye level within the map's pitch limit.
-  interior:{entry:[0,front+td/2+2],view:[0,2.0,front-4],target:[0,1.65,front-7],bounds:[-nw/2,back,nw/2,front+td/2],estimated:true},accessFront:Math.max(d/2,front+td/2+1),accessHeight:base});
+  interior:{entry:[0,front+td/2+2],view:[0,2.0,front-4],target:[0,1.65,front-7],bounds:[-nw/2,back,nw/2,front+td/2],estimated:true,
+   // Floor-relative indoor volumes; separate nave, aisles, transept and enclosed entrance porch.
+   volumes:[[-cw/2,0,back,cw/2,spring,front],[-nw/2,0,back,-cw/2,9,front],[cw/2,0,back,nw/2,9,front],[-w/2,0,crossZ-crossD/2,w/2,10,crossZ+crossD/2],[-tw/2,0,front,tw/2,6,tz+td/2]]},accessFront:Math.max(d/2,front+td/2+1),accessHeight:base});
  return model;
 }

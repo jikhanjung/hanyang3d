@@ -12,6 +12,16 @@ import {createHorseDealer} from './horse_dealer.js';
 const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
 
 export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture}){
+ // Tiny local volumes avoid triangle tests and follow each building's rotation/height.
+ const indoorBuildings=buildings.filter(b=>b.userData.interior?.volumes),local=new THREE.Vector3();
+ function interiorAt(point){
+  for(const b of indoorBuildings){
+   if(!b.visible)continue;
+   b.updateWorldMatrix(true,false);b.worldToLocal(local.copy(point));local.y+=b.userData.feature.symbol_size_m[1]/2;
+   if(b.userData.interior.volumes.some(([x0,y0,z0,x1,y1,z1])=>local.x>x0&&local.x<x1&&local.y>=y0&&local.y<y1&&local.z>z0&&local.z<z1))return b;
+  }
+  return null;
+ }
  const walking=json('walking-1907'),data=json('people-1907'),npcData=json('npcs');
  let firstPerson,together;
  const pedestrians=createPedestrians(walking,surface,{era:1907,footHeight:(x,z)=>firstPerson?.groundAt(x,z)??groundAt(x,z)+.025});scene.add(pedestrians.group);
@@ -49,6 +59,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
   positionWorld:{alignment:'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
   terrainGround:(x,z)=>{const y=groundAt(x,z);return y===null?null:y+.025},
   getWalkables:()=>[...infrastructure.bridges.children.map(o=>[o,()=>infrastructure.bridges.visible]),...buildings.flatMap(b=>(b.userData.walkSurfaces??[]).map(o=>[o,()=>b.visible]))],
+  getInterior:interiorAt,
   getCameraObstacles:()=>buildings.filter(b=>b.visible&&camera.position.distanceToSquared(b.position)<160*160).flatMap(b=>b.userData.cameraShell??[]),
   onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
  const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
@@ -65,5 +76,5 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  canvas.addEventListener('pointerup',e=>{if(!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
  el('people3d').addEventListener('change',()=>{stationary.group.visible=el('people3d').checked;horseDealer.visible=el('people3d').checked});
  function update(dt){firstPerson.update(dt);together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);if(horseDealer.visible)horseDealer.userData.update(performance.now(),groundAt);dialogue.update()}
- return {firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor};
+ return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor};
 }

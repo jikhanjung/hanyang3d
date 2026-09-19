@@ -8,7 +8,7 @@ const el=id=>document.getElementById(id);
 
 // Shared controls for both eras; terrain, collision and map HUD belong to the scene.
 export function createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile,navigation,positionWorld,
- terrainGround,getWalkables,getSurfaceVersion=()=>1,getCollision=()=>null,getCameraObstacles=()=>[],onBeforeEnter=()=>{},onExit=()=>{},walkerFactory=createWalker}){
+ terrainGround,getWalkables,getSurfaceVersion=()=>1,getCollision=()=>null,getCameraObstacles=()=>[],getInterior=()=>null,onBeforeEnter=()=>{},onExit=()=>{},walkerFactory=createWalker}){
 
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
   // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S. Space jumps.
@@ -120,7 +120,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
    const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
    // Selling the reins (or logging out) takes the horse away.
-   if(mounted&&!(shop?.state.items[RIDE_ITEM]>0))setMounted(false);
+   if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye)))setMounted(false);
    // Walking (not jumping) stays on the ground when stepping down, so a downhill stride never counts as airborne.
    const grounded=air===0&&vy===0;
    if(!grounded){const step=Math.min(dt,.1);vy-=GRAVITY*step;air=Math.max(0,air+vy*step);if(air===0)vy=0}
@@ -149,6 +149,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    // an edge above, or a jump, leaves the feet in the air here.
    const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){air=air===0&&vy===0?0:Math.max(0,lastGround+air-ground);if(air===0&&vy<0)vy=0;lastGround=ground}
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
+   if(mounted&&getInterior(eye))setMounted(false);
    walker?.update(walked,moved&&!mounted,mounted);
    if(mounted)horse.update(performance.now(),moved);
    look();
@@ -158,6 +159,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   // Mount or dismount; returns the message shown in the pack window.
   function setMounted(on){
    if(on&&!active)return t('1인칭에서만 말을 탈 수 있소.');
+   if(on&&getInterior(eye))return t('실내에서는 말을 탈 수 없소.');
    if(on&&!(shop?.state.items[RIDE_ITEM]>0))return t('말고삐가 없소.');
    mounted=on;
    if(on&&!horse){horse=createHorse();horse.group.name='player-horse';scene.add(horse.group)}
@@ -191,7 +193,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   },{passive:false});
   const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
-  function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;look();return true}
+  function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;if(mounted&&getInterior(eye))setMounted(false);else look();return true}
   return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
 
 }

@@ -222,9 +222,10 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
  let lastFrame=performance.now();
  renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){walking.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);
   for(const model of buildings)updateLandmarkLod(model,camera);
+  const indoors=walking.interiorAt(walking.firstPerson.active?walking.firstPerson.eye:camera.position);
   const occupied=[];
   for(const {label,point,owner,layer} of [...labels].sort((a,b)=>Number(majorNames.has(b.owner.userData.feature.id))-Number(majorNames.has(a.owner.userData.feature.id))||camera.position.distanceTo(a.point)-camera.position.distanceTo(b.point))){
-   if(!el('names3d').checked||!owner.visible||(layer==='bridge'&&!infrastructure.bridges.visible)){label.hidden=true;continue}
+   if(indoors||!el('names3d').checked||!owner.visible||(layer==='bridge'&&!infrastructure.bridges.visible)){label.hidden=true;continue}
    const major=majorNames.has(owner.userData.feature.id);if(!major&&camera.position.distanceTo(point)>(layer==='bridge'?3500:6500)){label.hidden=true;continue}
    const p=point.clone().project(camera),x=(p.x+1)*innerWidth/2;let y=(1-p.y)*innerHeight/2;
    label.hidden=p.z< -1||p.z>1||Math.abs(p.x)>1||Math.abs(p.y)>1;if(label.hidden)continue;
