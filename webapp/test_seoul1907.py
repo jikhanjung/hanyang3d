@@ -11,7 +11,7 @@ class Seoul1907Tests(TestCase):
     def test_horse_dealer_period_dialogue_and_trade(self):
         response = self.client.get('/1907/')
         dealer = response.context['people1907']['horse_dealer']
-        self.assertContains(response, 'id="horse-focus"')
+        self.assertContains(response, 'id="people3d"')
         self.assertEqual(dealer['placement']['temporal']['start_year'], 1907)
         self.assertIn('fictional', dealer['placement']['position_status'])
         nodes = dealer['nodes']

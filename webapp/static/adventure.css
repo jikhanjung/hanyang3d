@@ -25,7 +25,7 @@
 @media(max-width:600px),(pointer:coarse){#action-bar{display:none}#pack-window{top:158px;width:min(312px,calc(100% - 24px));max-height:calc(100% - 180px)}}
 
 @media(min-width:601px) and (pointer:fine){
- #walk-chat{right:auto!important;left:50%;bottom:82px!important;transform:translateX(-50%);width:min(520px,calc(100% - 32px))!important;padding:6px 10px!important;background:rgba(18,17,14,.35)!important;color:#fff5dc!important;text-shadow:1px 1px 2px #000;pointer-events:none;z-index:1003!important}
+ #walk-chat{right:auto!important;left:12px;bottom:82px!important;transform:none;width:min(520px,calc(100% - 32px))!important;padding:6px 10px!important;background:rgba(18,17,14,.35)!important;color:#fff5dc!important;text-shadow:1px 1px 2px #000;pointer-events:none;z-index:1003!important}
  #walk-chat[hidden]{display:none}#walk-chat-messages{height:128px!important;max-height:20vh!important;margin:0!important;pointer-events:auto;scrollbar-width:thin}
  #walk-chat-form{margin-top:6px;pointer-events:auto}#walk-chat-form[hidden]{display:none!important}#walk-chat-input{background:#16130edb;color:#fff5dc;border:1px solid #b8924f;border-radius:4px;padding:4px 6px}#walk-chat-close{pointer-events:auto}#walk-chat-error:empty{display:none}
  #scene #first-person-map{width:clamp(240px,24vw,320px);right:12px;bottom:12px}
@@ -35,3 +35,6 @@
 
 #pack-window header strong,#pack-window header button{flex:none;white-space:nowrap}#pack-window header small{display:none}#pack-window header{justify-content:space-between}
 #walk-chat-form[hidden]{display:none!important}
+
+/* Keep era selection and the walking action together in both settings menus. */
+.era-walk-controls{grid-column:1/-1;display:flex;align-items:center;gap:6px;min-width:0}.era-walk-controls label{display:flex;align-items:center;gap:4px;min-width:0}.era-walk-controls select{min-width:0}.era-walk-controls button{white-space:nowrap;flex:none}

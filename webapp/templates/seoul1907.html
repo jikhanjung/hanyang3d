@@ -6,11 +6,11 @@
 *{box-sizing:border-box}body{margin:0;overflow:hidden;font:15px/1.6 system-ui;color:#24372e;background:#dce5e4}a{color:#12634e}button,select{font:inherit;color:#24372e;padding:7px;border:1px solid #9aaa9b;border-radius:4px;background:white;cursor:pointer}input{vertical-align:middle}#scene,#original{position:absolute;inset:0}#original[hidden],#status[hidden]{display:none}#scene canvas{display:block;touch-action:none}
 .toolbar{position:absolute;z-index:1000;top:12px;left:12px;right:136px;width:fit-content;max-width:calc(100% - 148px);display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:8px 12px;border-radius:6px;background:rgba(255,253,242,.7);box-shadow:0 1px 7px #273c3020;font-size:13px}.map-title{white-space:nowrap;font-size:16px}.map-title small{font-size:11px;font-weight:400;color:#526559;margin-left:4px}
 #menu{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:34px;padding:6px}#options{display:none;flex-basis:100%;width:100%;padding-top:6px;margin-top:2px;border-top:1px solid #9aaa9b55}#options.open{display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px 16px}#options label{display:flex;align-items:center;gap:6px;white-space:nowrap}#options .map-opacity{width:100%}#opacity{width:110px}.layer-group{border:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}.layer-group legend{padding:0;font-size:11px;color:#526559}.lang-switch{font-size:12px;color:#526559;white-space:nowrap}.lang-switch a{text-decoration:none;padding:2px 4px}.lang-switch a[aria-current]{font-weight:700;color:#24372e;text-decoration:underline}#source-link{font-size:12px}
-#compass{position:absolute;z-index:900;right:8px;top:8px;width:120px;height:120px;pointer-events:none}#notice{position:absolute;z-index:1000;bottom:12px;left:12px;max-width:calc(100% - 130px);background:#fffdf2b8;border-radius:6px;padding:6px 10px;font-size:12px;pointer-events:none}#credit{position:absolute;right:10px;bottom:4px;z-index:1000;padding:2px 8px;border-radius:4px;font-size:12px;background:rgba(255,253,242,.7)}.credits-symbol{display:none}#status{position:absolute;z-index:1100;top:40%;left:15%;max-width:70%;background:#fffdf2e8;padding:15px;border-radius:8px}.leaflet-control-container{position:relative;top:125px}
+#compass{position:absolute;z-index:900;right:8px;top:8px;width:120px;height:120px;pointer-events:none}.credits-symbol{display:none}#status{position:absolute;z-index:1100;top:40%;left:15%;max-width:70%;background:#fffdf2e8;padding:15px;border-radius:8px}.leaflet-control-container{position:relative;top:125px}
 #scene-loading{top:120px;z-index:1100}@media(max-width:600px){#scene-loading{top:160px}}
 #labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}.building-label{position:absolute;transform:translate(-50%,-100%);pointer-events:auto;font:500 16px/24px system-ui;color:#25362f;padding:0 3px;border:0;border-radius:0;background:transparent;text-shadow:-1px -1px 1px #fffdf3,1px -1px 1px #fffdf3,-1px 1px 1px #fffdf3,1px 1px 1px #fffdf3;white-space:nowrap}.building-label:focus-visible{outline:2px solid #12634e;outline-offset:2px}
 #building-info{position:absolute;z-index:1001;left:12px;bottom:60px;width:min(340px,calc(100% - 24px));max-height:60%;overflow:auto;padding:10px 14px;border-radius:8px;background:#fffdf2f2;box-shadow:0 2px 12px #273c3040;font-size:13px;line-height:1.55}#building-info p{margin:4px 0}#building-info p:first-of-type{font-weight:bold;font-size:16px}#building-info button{float:right;padding:3px 8px}
-@media(max-width:600px){.toolbar{max-width:calc(100% - 124px);right:112px;gap:4px 10px;padding:4px 8px}.map-title{font-size:14px}.map-title small{font-size:11px}#menu{border:none;background:transparent;min-width:36px;min-height:36px;padding:8px}#options.open{flex-direction:column;align-items:flex-start;gap:6px 10px;padding-bottom:4px;max-height:70dvh;overflow:auto}#options label,#options button,#options a{font-size:12px}#landmark{max-width:165px}#opacity{width:100px}#compass{width:104px;height:104px;top:4px;right:4px}.credits-text{display:none}.credits-symbol{display:inline}#notice{font-size:11px;max-width:calc(100% - 60px)}}
+@media(max-width:600px){.toolbar{max-width:calc(100% - 124px);right:112px;gap:4px 10px;padding:4px 8px}.map-title{font-size:14px}.map-title small{font-size:11px}#menu{border:none;background:transparent;min-width:36px;min-height:36px;padding:8px}#options.open{flex-direction:column;align-items:flex-start;gap:6px 10px;padding-bottom:4px;max-height:70dvh;overflow:auto}#options label,#options button,#options a{font-size:12px}#landmark{max-width:165px}#opacity{width:100px}#compass{width:104px;height:104px;top:4px;right:4px}.credits-text{display:none}.credits-symbol{display:inline}}
 #walk-joystick{display:none;position:absolute;z-index:25;left:max(8px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));width:120px;height:120px;margin:0;opacity:.6;border:2px solid #647e7080;border-radius:50%;background:radial-gradient(circle,#fffdf220 25%,#35564622);touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}.joystick-knob{position:absolute;left:38px;top:38px;width:40px;height:40px;border-radius:50%;background:#f8fcf2df;border:2px solid #547561;box-shadow:0 2px 6px #173a3433;pointer-events:none}#walk-joystick.pressed .joystick-knob{background:#12634e;border-color:#fffdf2}
 #walk-joystick[hidden]{display:none}
 @media(pointer:coarse),(max-width:600px){#walk-joystick:not([hidden]){display:block}}
@@ -19,14 +19,14 @@
 #walk-jump.pressed{background:#12634e;color:#fffdf2;border-color:#fffdf2}
 #walk-jump[hidden]{display:none}
 @media(pointer:coarse),(max-width:600px){#walk-jump:not([hidden]){display:block}#first-person-map{bottom:calc(max(12px,env(safe-area-inset-bottom)) + 100px)}
-/* The chat toggle (positioned inline by walk_chat.js) and the credits link move left of the jump button so nothing overlaps it. */
+/* Keep the chat toggle (positioned inline by walk_chat.js) clear of the jump button. */
 #walk-chat-toggle{right:calc(max(12px,env(safe-area-inset-right)) + 96px)!important;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 40px)!important}
-#credits-link{right:calc(max(12px,env(safe-area-inset-right)) + 96px)}}
+}
 
 #first-person-map{position:absolute;right:10px;bottom:35px;width:190px;opacity:.7;z-index:24;border:2px solid #fffdf2;border-radius:6px;overflow:hidden;pointer-events:none}#walking-minimap{width:100%;height:auto}#first-person-map[hidden]{display:none}
 #walk-together-status{position:absolute;top:65px;left:12px;z-index:25;background:#fffdf2b8;padding:4px 8px;border-radius:5px;font-size:12px;pointer-events:none}
 #npc-overlay,#account-overlay{z-index:1100}#shop-window{z-index:1102}#pack-window{z-index:1101}#money-hud{z-index:1002;top:65px;left:12px;transform:none}#npc-bubble{z-index:1003}
-@media(max-width:600px){#first-person-map{width:120px;bottom:112px}#money-hud{top:auto;bottom:145px}#notice{display:none}}
+@media(max-width:600px){#first-person-map{width:120px;bottom:112px}#money-hud{top:auto;bottom:145px}}
 
 /* Match the compact 1750 settings: two columns on desktop, one on phones. */
 .toolbar:has(#options.open){width:340px}
@@ -42,22 +42,24 @@
 .map-actions{display:flex;flex-wrap:wrap;gap:6px 10px}
 #source-link{border-top:1px solid #9aaa9b55;padding-top:6px}
 @media(max-width:600px){.toolbar:has(#options.open){width:250px}#options.open{grid-template-columns:minmax(0,1fr);max-height:calc(100dvh - 90px)}#options button{padding:4px 7px;font-size:12px}}
+#options>#notice,#options>#credit{grid-column:1/-1;font-size:12px}#notice{border-top:1px solid #9aaa9b55;padding-top:6px;color:#526559}
 </style></head>
 <body><main id="scene"><div id="first-person-map" hidden><canvas id="walking-minimap" width="240" height="240"></canvas></div><div id="walk-joystick" hidden aria-label="{% t '이동' %}"><span class="joystick-knob"></span></div><button id="walk-jump" type="button" hidden aria-label="{% t '점프' %}">{% t '점프' %}</button></main><div id="original" hidden></div>
 <div id="labels"></div><aside id="building-info" hidden aria-live="polite"></aside>
 <div class="toolbar"><button id="menu" aria-label="{% t '설정' %}" aria-controls="options" aria-expanded="false"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button><strong class="map-title">{% t '한양3D' %}<small>{{ app_version }} · {% t '1907년경' %}</small></strong><div id="options">
-<label>{% t '시대' %}<select id="era"><option value="/">{% t '1750년경' %}</option><option value="/1907/" selected>{% t '1907년경' %}</option></select></label>
-<button id="walk-together" aria-pressed="false">{% t '1인칭' %}</button>
+<div class="era-walk-controls"><label>{% t '시대' %}<select id="era"><option value="/">{% t '1750년경' %}</option><option value="/1907/" selected>{% t '1907년경' %}</option></select></label>
+<button id="walk-together" aria-pressed="false">{% t '1인칭 시점' %}</button></div>
 <label class="map-opacity">{% t '옛지도' %}<input id="opacity" aria-label="{% t '옛 지도 불투명도' %}" type="range" min="0" max="100" value="50"><output id="opacity-value">50%</output></label>
 <fieldset class="layer-group"><legend>{% t '건물' %}</legend><label><input id="buildings3d" type="checkbox" checked>{% t '주요 건물·시설' %}</label><label><input id="settlement3d" type="checkbox" checked>{% t '추정 민가·점포' %}</label></fieldset>
 <fieldset class="layer-group"><legend>{% t '길·물길·성벽' %}</legend><label><input id="roads3d" type="checkbox" checked>{% t '큰길' %}</label><label><input id="walls3d" type="checkbox" checked>{% t '성벽' %}</label><label><input id="water3d" type="checkbox" checked>{% t '청계천·다리' %}</label></fieldset>
 <fieldset class="layer-group"><legend>{% t '사람·이름' %}</legend><label><input id="people3d" type="checkbox" checked>{% t '행인·상인·경비병' %}</label><label><input id="walking3d" type="checkbox" checked>{% t '보행 재생' %}</label><label><input id="names3d" type="checkbox" checked>{% t '건물·다리 이름' %}</label></fieldset>
 <fieldset class="layer-group"><legend>{% t '전차' %}</legend><label><input id="trams3d" type="checkbox" checked>{% t '종로 전차·선로' %}</label></fieldset>
 <label class="landmark-select">{% t '건물' %}<select id="landmark"><option value="">{% t '건물로 이동' %}</option></select></label>
-<div class="map-actions"><button id="horse-focus">{% t '말 장수 보기' %}</button><button id="tram-focus">{% t '전차 보기' %}</button></div>
 <div class="map-actions"><button id="view" aria-pressed="false">{% t '원본 지도' %}</button><button id="reset">{% t '전체 보기' %}</button></div>
+<div id="notice">{% t '최신경성전도 · 지형 위 추정 배치 · 현대 FABDEM 고도' %}</div>
+<a id="credit" href="/credits/">{% t '출처·저작권' %}</a>
 <a id="source-link" href="{{ map.source_url }}" target="_blank" rel="noopener">{% t '서울역사박물관 소장' %}</a><span class="lang-switch" role="group" aria-label="{% t '언어' %}"><a href="?lang=ko" hreflang="ko"{% if lang == 'ko' %} aria-current="true"{% endif %}>KO</a> | <a href="?lang=en" hreflang="en"{% if lang == 'en' %} aria-current="true"{% endif %}>EN</a></span></div></div>
-<div id="compass"></div><div id="notice">{% t '최신경성전도 · 지형 위 추정 배치 · 현대 FABDEM 고도' %}</div><a id="credit" href="/credits/" aria-label="{% t '출처·저작권' %}"><span class="credits-text">{% t '출처·저작권' %}</span><span class="credits-symbol" aria-hidden="true">©</span></a><div id="status" role="status" hidden></div>{% include "scene_loading.html" with loading_steps=6 %}
+<div id="compass"></div><div id="status" role="status" hidden></div>{% include "scene_loading.html" with loading_steps=6 %}
 {{ trams1907|json_script:'trams-1907' }}{{ npcs|json_script:'npcs' }}{{ people1907|json_script:'people-1907' }}{{ walking1907|json_script:'walking-1907' }}{{ multiplayer_url|json_script:'multiplayer-url' }}{{ walk_world_version|json_script:'map-version' }}{{ settlement1907|json_script:"settlement-1907" }}
 {{ infrastructure|json_script:'infrastructure-1907' }}{{ map|json_script:'map-config' }}{{ buildings|json_script:'buildings-1907' }}{{ i18n_dict|json_script:'i18n' }}
 <script src="/v/{{ app_version }}/webapp/static/vendor/colyseus/colyseus.js"></script>

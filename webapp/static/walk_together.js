@@ -46,7 +46,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
     chat.disconnect();
     if (previousPlayback !== null) { playback.checked = previousPlayback; playback.disabled = false; playback.title = ''; previousPlayback = null; }
     [...peers.keys()].forEach(remove);
-    button.textContent = t('1인칭');
+    button.textContent = t('1인칭 시점');
     button.setAttribute('aria-pressed', 'false');
     status.textContent = message;
     status.hidden = !message;

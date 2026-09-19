@@ -6,7 +6,7 @@ export function createWalkChat({ scene, firstPerson, send }) {
   Object.assign(toggle.style, { position: 'absolute', right: '12px', bottom: '70px', zIndex: 28 });
   const panel = document.createElement('section'); panel.id = 'walk-chat'; panel.hidden = true;
   panel.setAttribute('aria-label', t('같은 공간 채팅'));
-  Object.assign(panel.style, { position: 'absolute', right: '12px', bottom: '110px', zIndex: 28,
+  Object.assign(panel.style, { position: 'absolute', left: '12px', bottom: '110px', zIndex: 28,
     width: 'min(320px, calc(100% - 24px))', maxHeight: '60%', overflow: 'auto', boxSizing: 'border-box',
     background: '#fffdf2f2', color: '#24372e', borderRadius: '8px', padding: '12px', fontSize: '13px' });
   panel.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><strong>${t('같은 공간 채팅')}</strong><button id="walk-chat-close" type="button" aria-label="${t('채팅 닫기')}">${t('닫기')}</button></div>

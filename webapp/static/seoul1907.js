@@ -132,20 +132,6 @@ const groundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-(cy-
   for(const source of [{title:t('1907년 최신경성전도 — 서울역사박물관'),url:cfg.source_url},...tramData.sources]){const a=document.createElement('a');a.textContent=document.documentElement.lang==='en'?(source.title_en??source.title):source.title;a.href=source.url;a.target='_blank';a.rel='noopener';panel.append(a,document.createElement('br'))}
   const a=document.createElement('a');a.href='/credits/';a.textContent=t('출처·저작권');panel.append(a);
  };
- el('tram-focus').onclick=()=>{
-  if(original)el('view').click();walking?.firstPerson.exit();el('trams3d').checked=true;trams.group.visible=true;
-  const p=trams.car.position;controls.target.copy(p).add(new THREE.Vector3(0,2,0));camera.position.copy(p).add(new THREE.Vector3(15,9,18));controls.update();needsRender=true;
-  if(innerWidth<=600){el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')}
-  showTramInfo();
- };
- el('horse-focus').onclick=()=>{
-  if(original)el('view').click();walking.firstPerson.exit();walking.dialogue.end();el('building-info').hidden=true;
-  el('people3d').checked=true;el('people3d').dispatchEvent(new Event('change'));
-  const horse=walking.horseDealer,p=horse.position;
-  controls.target.copy(p).add(new THREE.Vector3(2,1,0).applyAxisAngle(new THREE.Vector3(0,1,0),horse.rotation.y));
-  camera.position.copy(p).add(new THREE.Vector3(8,6,12).applyAxisAngle(new THREE.Vector3(0,1,0),horse.rotation.y));controls.update();needsRender=true;
-  el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false');
- };
  let scenePress=null;
  const canvas=renderer.domElement;
  canvas.addEventListener('pointerdown',e=>{if(e.button===0)scenePress={x:e.clientX,y:e.clientY,id:e.pointerId,moved:false}});
