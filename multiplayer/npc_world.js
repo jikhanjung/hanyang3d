@@ -1,5 +1,7 @@
 import {createMap1907Transform} from '../webapp/static/map1907_transform.js';
 import { readFileSync } from 'node:fs';
+import {get as httpGet} from 'node:http';
+import {get as httpsGet} from 'node:https';
 import '../webapp/static/tps.js';
 import { buildWalkingRoutes, walkingRouteKey } from '../webapp/static/walking_simulation.js';
 
@@ -12,9 +14,21 @@ const cache = new Map();
 let live1907=null;
 export async function loadSceneRoutes(url){
   if(!url)return;
-  const response=await fetch(url,{headers:{Host:'localhost'},signal:AbortSignal.timeout(15000)});
-  if(!response.ok)throw Error('Scene route fetch failed: '+response.status);
-  const value=await response.json(),config=read('../gis/control_points/seoul1907.json');
+  // Node fetch does not preserve a custom Host header. Django allows localhost for
+  // internal health/data requests; send it explicitly without changing operator settings.
+  const target=new URL(url);
+  if(!['http:','https:'].includes(target.protocol))throw Error('Invalid scene route URL');
+  const value=await new Promise((resolve,reject)=>{
+    const request=(target.protocol==='https:'?httpsGet:httpGet)(target,{headers:{Host:'localhost'},signal:AbortSignal.timeout(15000)},response=>{
+      if(response.statusCode!==200){response.resume();reject(Error('Scene route fetch failed: '+response.statusCode));return}
+      let size=0;const chunks=[];
+      response.on('data',chunk=>{size+=chunk.length;if(size>2000000)request.destroy(Error('Scene route response too large'));else chunks.push(chunk)});
+      response.on('error',reject);
+      response.on('end',()=>{try{resolve(JSON.parse(Buffer.concat(chunks).toString('utf8')))}catch(error){reject(error)}});
+    });
+    request.on('error',reject);
+  });
+  const config=read('../gis/control_points/seoul1907.json');
   if(value.source_sha256!==config.image_sha256||!Array.isArray(value.routes)||!value.routes.length)throw Error('Invalid live 1907 routes');
   const transform=createMap1907Transform(config,manifest.bounds_3857),routes=buildWalkingRoutes(value,transform.sourceXZ);
   if(!routes.length||routes.some(r=>!Number.isInteger(r.count)||r.count<0||r.points.some(p=>!Number.isFinite(p.x)||!Number.isFinite(p.z))))throw Error('Invalid live route geometry');

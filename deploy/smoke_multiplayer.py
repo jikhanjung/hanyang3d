@@ -8,6 +8,7 @@ image = sys.argv[1]
 version = image.rsplit(':', 1)[1]
 base = ['docker', 'run', '--rm', '--read-only', '--tmpfs', '/tmp:rw,noexec,nosuid,size=32m']
 subprocess.run(base + [image, 'node', 'room.test.js'], check=True)
+subprocess.run(base + [image, 'node', 'scene_data.test.js'], check=True)
 cid = subprocess.check_output(base[:2] + ['-d'] + base[2:] + [image], text=True).strip()
 try:
     deadline = time.monotonic() + 30
