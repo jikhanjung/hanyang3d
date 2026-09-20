@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.36`**, **`honestjung/hanyang3d-multiplayer:v0.5.31`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.37`**, **`honestjung/hanyang3d-multiplayer:v0.5.31`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -20,6 +20,8 @@
 검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
 
 ## 운영 주소
+
+2026-09-20 웹 **v0.5.37**: 아관파천 개인 회상·가마 따라가기·계정별 진행 저장, 1750/1907 공통 액션바 계정 저장·기존 브라우저 배치 이전. 이미지 테스트87개·PC/모바일 운영 확인. 멀티플레이 v0.5.31 유지. [기록](../devlog/20260920_244_deploy_v0537.md).
 
 2026-09-20 웹 **v0.5.36**: 영추문·숭례문 현판·서소문 밖 네거리·취객 무작위 대사. 멀티플레이 v0.5.31 유지. [기록](../devlog/20260920_242_deploy_v0536.md).
 
