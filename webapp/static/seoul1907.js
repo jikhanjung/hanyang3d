@@ -1,3 +1,5 @@
+import {createHerbs} from './herbs.js';
+import {createNature1907} from './nature1907.js';
 import {createChannel1907} from './channel1907.js';
 import {createSettlement1907} from './settlement1907.js';
 import {createTrams1907} from './trams1907.js';
@@ -127,6 +129,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  const settlementData=JSON.parse(el('settlement-1907').textContent);
  if(settlementData.source_sha256!==cfg.image_sha256)throw Error('Settlement map mismatch');
  const settlement=createSettlement1907(settlementData,infraData,surface,buildings,(x,z)=>inverse(cx+x/scale,cy-z/scale));scene.add(settlement.group);
+ const nature=await createNature1907({terrain,historical,world,groundAt,buildings,settlement,channel,infrastructure});scene.add(nature.trees.group);for(const id of ['trees3d','granite3d'])el(id).addEventListener('change',()=>{needsRender=true});
  const trams=createTrams1907(tramData,surface);scene.add(trams.group);
  el('trams3d').onchange=()=>{trams.group.visible=el('trams3d').checked;needsRender=true};
  const showTramInfo=()=>{
@@ -216,8 +219,9 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   }
   return false;
  };
+ const herbs=createHerbs({era:1907,scene,camera,canvas:renderer.domElement,firstPerson:walking.firstPerson,shop:walking.shop,dialogue:walking.dialogue,data:JSON.parse(el('npcs').textContent),source:nature.source,groundAt,collision:()=>walking.collision,market:buildings.find(b=>b.userData.feature.id==='bosingak-1907'),visible:()=>el('people3d').checked});
  let lastFrame=performance.now();
- renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){walking.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);
+ renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){herbs.update();walking.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);
   settlement.setLod(camera.position);
   for(const model of buildings)updateLandmarkLod(model,camera);
   const indoors=walking.interiorAt(walking.firstPerson.active?walking.firstPerson.eye:camera.position);
@@ -235,6 +239,6 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   }
   renderer.render(scene,camera)}});
  await stage(6,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
- el('status').hidden=true;window.seoul1907={ready:true,channel,baseGroundAt,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
+ el('status').hidden=true;window.seoul1907={ready:true,nature,herbs,channel,baseGroundAt,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
 }
 main().catch(error=>{console.error(error);el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;window.seoul1907={ready:false,error:String(error)}});

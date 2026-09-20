@@ -15,6 +15,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S. Space jumps.
   // Riding (the reins used from the pack): three times the fast walk, the rider and eye raised by the horse's back.
   // Space jumps: `air` is the height of the feet above the ground under them, `vy` the vertical speed.
+  let fishing=null;
   let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0,mounted=false,horse=null,air=0,vy=0;
   const JUMP_SPEED=4.5,RIDE_JUMP_SPEED=6.3,GRAVITY=9.8;
   const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
@@ -115,7 +116,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   function exit(){
    rememberPosition();
    onExit();
-   if(!active)return;active=false;clearInput();hud.hidden=true;jumpButton.hidden=true;shop?.showHud(false);navigation.hide();if(walker)walker.group.visible=false;mounted=false;if(horse)horse.group.visible=false;
+   if(!active)return;fishing?.cancel();active=false;clearInput();hud.hidden=true;jumpButton.hidden=true;shop?.showHud(false);navigation.hide();if(walker)walker.group.visible=false;mounted=false;if(horse)horse.group.visible=false;
    camera.near=saved.near;camera.fov=saved.fov;camera.updateProjectionMatrix();camera.position.copy(saved.position);camera.quaternion.copy(saved.quaternion);controls.target.copy(saved.target);controls.enabled=true;controls.update();
   }
   function update(dt){
@@ -155,6 +156,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
    if(mounted&&getInterior(eye))setMounted(false);
    walker?.update(walked,moved&&!mounted,mounted);
+   fishing?.update();
    if(mounted)horse.update(performance.now(),moved,air>0||vy!==0);
    look();
    if(performance.now()-lastRemembered>=1000)rememberPosition();
@@ -213,6 +215,6 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const release=event=>{if(drag?.id===event.pointerId){drag=null;mouseForward=false;mouseChord=false}};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;if(mounted&&getInterior(eye))setMounted(false);else look();return true}
-  return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
+  return {get fishing(){return fishing},set fishing(value){fishing=value},get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
 
 }

@@ -243,3 +243,34 @@ def scene_dataset(request, key):
     response=HttpResponseNotModified() if request.headers.get('If-None-Match')==etag else JsonResponse(data)
     response['ETag']=etag;response['Cache-Control']='no-cache, must-revalidate'
     return response
+
+
+@require_POST
+def fishing_action(request):
+    from .economy import TradeError, player_from_cookie, state
+    from .fishing import fish
+    player=player_from_cookie(request)
+    if not player or not player.name_key:return _no_store(JsonResponse({'error':'로그인이 필요하오.','logged_in':False},status=401))
+    body=_json_body(request)
+    if body is None:return _no_store(JsonResponse({'error':'잘못된 요청이오.'},status=400))
+    try:
+        result=fish(player,body.get('action'),body.get('token'),body.get('era'))
+        player.refresh_from_db()
+        return _no_store(JsonResponse({**result,**state(player)}))
+    except TradeError as error:
+        return _no_store(JsonResponse({'error':error.message},status=error.status))
+
+
+@require_POST
+def herb_action(request):
+    from .economy import TradeError,player_from_cookie,state
+    from .gathering import gather
+    player=player_from_cookie(request)
+    if not player or not player.name_key:return _no_store(JsonResponse({'error':'로그인이 필요하오.'},status=401))
+    body=_json_body(request)
+    if body is None:return _no_store(JsonResponse({'error':'잘못된 요청이오.'},status=400))
+    try:
+        result=gather(player,body.get('action'),body.get('node'))
+        player.refresh_from_db()
+        return _no_store(JsonResponse({**result,**state(player)}))
+    except TradeError as error:return _no_store(JsonResponse({'error':error.message},status=error.status))

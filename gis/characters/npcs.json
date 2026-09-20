@@ -697,6 +697,16 @@
     "horse_reins"
    ],
    "about_en": "I am a dealer selling horses at the foot of Supyo Bridge."
+  },
+  "청계천 낚시꾼": {
+   "about": "낚싯대를 팔고 강태공의 고사를 들려주는 창작 인물이오.",
+   "items": [
+    "fishing_rod"
+   ]
+  },
+  "약재상": {
+   "about": "산에서 모은 약초를 사들이는 창작 약전이오.",
+   "items": []
   }
  },
  "items": {
@@ -844,6 +854,47 @@
    "name_en": "Horse reins",
    "unit_en": "piece",
    "desc_en": "The reins of a horse bought from the horse dealer. In first-person view, open your pack and right-click to mount the horse; right-click again to dismount."
+  },
+  "fishing_rod": {
+   "name": "낚싯대",
+   "name_en": "Fishing rod",
+   "unit": "개",
+   "unit_en": "rod",
+   "price": 15,
+   "desc": "청계천 낚시꾼 옆 물가에서 사용하시오. 다시 사용하거나 움직이면 줄을 거둡니다. 액션바에도 놓을 수 있습니다.",
+   "desc_en": "Use beside the stream fisherman. Use again or move to cancel. Can be assigned to the action bar.",
+   "icon": {
+    "shape": "rod",
+    "color": "#bba36c"
+   },
+   "use": "fish",
+   "max_owned": 1
+  },
+  "river_fish": {
+   "name": "민물고기",
+   "name_en": "River fish",
+   "unit": "마리",
+   "unit_en": "fish",
+   "price": 10,
+   "desc": "낚시로 잡은 작은 민물고기. 상점의 내 봇짐에서 팔 수 있습니다. 어종과 가격은 놀이용 표현입니다.",
+   "desc_en": "A small catch. Sell it from your pack at a merchant. Species and prices are illustrative.",
+   "icon": {
+    "shape": "fish",
+    "color": "#a4b6aa"
+   }
+  },
+  "mountain_herb": {
+   "name": "산약초",
+   "name_en": "Mountain herbs",
+   "unit": "묶음",
+   "unit_en": "bundle",
+   "price": 8,
+   "desc": "산에서 모은 게임용 약초 묶음. 약재상에게 팔 수 있습니다. 실제 식물의 식별·약효를 나타내지 않습니다.",
+   "desc_en": "Illustrative gathered herbs for trading, not a botanical or medicinal identification.",
+   "icon": {
+    "shape": "herb",
+    "color": "#83ae50"
+   }
   }
  },
  "wallet": {
@@ -1097,5 +1148,678 @@
   "name_en": "Horse dealer",
   "subtitle_en": "Foot of Supyo Bridge (Majeongyo) · A man who has brought out horses to sell"
  },
- "note_en": "The characters' manner of speech and lines are invented on the basis of records. Lines that state facts carry a source. Shop prices are play values not confirmed in the records."
+ "note_en": "The characters' manner of speech and lines are invented on the basis of records. Lines that state facts carry a source. Shop prices are play values not confirmed in the records.",
+ "fishing": {
+  "name": "청계천 낚시꾼",
+  "subtitle": "강태공 고사 · 낚싯대 장수",
+  "note": "창작 인물·추정 배치. 어획 확률·시간·가격은 게임 설정입니다.",
+  "bridge_ids": {
+   "1750": "gwangtong",
+   "1907": "gwangtong-1907"
+  },
+  "nodes": {
+   "hello": {
+    "text": "청계천 물살을 보고 있소? 낚싯줄을 드리웠다고 매번 고기가 올라오는 것은 아니라오. 기다리는 동안 강태공 이야기를 들려드릴 수도 있고, 낚싯대 한 자루를 내드릴 수도 있지요. 나는 이 물가에 놓인 창작 낚시꾼이니, 실제 장사하던 사람의 이름이나 자리를 복원한 것은 아니오.",
+    "options": [
+     {
+      "label": "강태공은 누구요?",
+      "next": "taigong"
+     },
+     {
+      "label": "낚시는 어떻게 하오?",
+      "next": "how"
+     },
+     {
+      "label": "잡은 물고기는 어디에 파오?",
+      "next": "market"
+     },
+     {
+      "label": "낚싯대를 사고 싶소.",
+      "action": "shop"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ],
+    "sources": [
+     {
+      "title": "우리역사넷 — 무성왕 강태공",
+      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+     },
+     {
+      "title": "한국민족문화대백과 — 어물전",
+      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+     }
+    ]
+   },
+   "taigong": {
+    "text": "강태공은 옛 중국 주나라의 문왕과 무왕을 도운 강상이오. 위수 가에서 문왕을 만나 뜻을 펼쳤다는 고사가 전해지지요. 후세에는 물가에서 때를 기다리는 낚시꾼을 강태공이라 부르곤 하오. 고기만 기다리는 것이 아니라 자신을 알아줄 때를 기다렸다는 이야기로도 읽을 수 있겠지요. 그렇다고 청계천에 그 사람이 왔다는 뜻은 아니오. 먼 옛날의 고사를 이 물가에서 나누는 것이오.",
+    "options": [
+     {
+      "label": "낚시는 어떻게 하오?",
+      "next": "how"
+     },
+     {
+      "label": "잡은 물고기는 어디에 파오?",
+      "next": "market"
+     },
+     {
+      "label": "낚싯대를 사고 싶소.",
+      "action": "shop"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ],
+    "sources": [
+     {
+      "title": "우리역사넷 — 무성왕 강태공",
+      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+     },
+     {
+      "title": "한국민족문화대백과 — 어물전",
+      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+     }
+    ]
+   },
+   "how": {
+    "text": "낚싯대를 봇짐에서 쓰거나 액션바에 놓고 키를 누르시오. 내 곁 물가에서 물 쪽으로 향하면 줄을 드리울 수 있소. 한 번에 18~30초쯤 기다리고, 고기가 잡힐 확률은 열다섯 번에 한 번이 아니라 백 번 중 열다섯 번 정도라오. 매번 새로 운을 보는 것이니 빈손이 이어질 수도 있지요. 움직이거나 뛰거나 말에 오르면 줄을 거두오. 이 시간과 확률은 놀이를 위한 설정이오.",
+    "options": [
+     {
+      "label": "강태공은 누구요?",
+      "next": "taigong"
+     },
+     {
+      "label": "잡은 물고기는 어디에 파오?",
+      "next": "market"
+     },
+     {
+      "label": "낚싯대를 사고 싶소.",
+      "action": "shop"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ],
+    "sources": [
+     {
+      "title": "우리역사넷 — 무성왕 강태공",
+      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+     },
+     {
+      "title": "한국민족문화대백과 — 어물전",
+      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+     }
+    ]
+   },
+   "market": {
+    "text": "종로의 내어물전 상인에게 가져가 보시오. 지금 시전에는 말린 명태와 조기를 파는 가게가 있소. 옛 기록에서는 어물전 외에 생선전과 젓갈을 다루는 가게가 따로 구분되기도 했지요. 여기서는 편의를 위해 잡은 민물고기를 기존 상점의 내 봇짐에서 팔 수 있게 했소. 청계천의 특정 어종이나 당시 실제 거래값을 그대로 옮긴 것은 아니라오.",
+    "options": [
+     {
+      "label": "강태공은 누구요?",
+      "next": "taigong"
+     },
+     {
+      "label": "낚시는 어떻게 하오?",
+      "next": "how"
+     },
+     {
+      "label": "낚싯대를 사고 싶소.",
+      "action": "shop"
+     },
+     {
+      "label": "잘 있으시오.",
+      "action": "close"
+     }
+    ],
+    "sources": [
+     {
+      "title": "우리역사넷 — 무성왕 강태공",
+      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+     },
+     {
+      "title": "한국민족문화대백과 — 어물전",
+      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+     }
+    ]
+   }
+  }
+ },
+ "herbs": {
+  "nodes": [
+   {
+    "id": "1326",
+    "pixel": [
+     663,
+     714
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1343",
+    "pixel": [
+     789,
+     737
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1360",
+    "pixel": [
+     741,
+     752
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1377",
+    "pixel": [
+     591,
+     777
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1394",
+    "pixel": [
+     571,
+     786
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1411",
+    "pixel": [
+     596,
+     796
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1428",
+    "pixel": [
+     565,
+     804
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1445",
+    "pixel": [
+     693,
+     812
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1462",
+    "pixel": [
+     733,
+     823
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1479",
+    "pixel": [
+     766,
+     830
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1496",
+    "pixel": [
+     725,
+     856
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1513",
+    "pixel": [
+     626,
+     874
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1530",
+    "pixel": [
+     736,
+     885
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1547",
+    "pixel": [
+     740,
+     900
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1564",
+    "pixel": [
+     722,
+     922
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1581",
+    "pixel": [
+     766,
+     940
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1598",
+    "pixel": [
+     661,
+     971
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1615",
+    "pixel": [
+     657,
+     1005
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1632",
+    "pixel": [
+     747,
+     1025
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1649",
+    "pixel": [
+     674,
+     1042
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1666",
+    "pixel": [
+     741,
+     1070
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1683",
+    "pixel": [
+     706,
+     1092
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1700",
+    "pixel": [
+     725,
+     1120
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1717",
+    "pixel": [
+     623,
+     1141
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1734",
+    "pixel": [
+     582,
+     1163
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1751",
+    "pixel": [
+     570,
+     1185
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1768",
+    "pixel": [
+     837,
+     1194
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1785",
+    "pixel": [
+     786,
+     1233
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1802",
+    "pixel": [
+     789,
+     1344
+    ],
+    "region": "inwang"
+   },
+   {
+    "id": "1819",
+    "pixel": [
+     1411,
+     454
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1836",
+    "pixel": [
+     1112,
+     476
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1853",
+    "pixel": [
+     1377,
+     499
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1870",
+    "pixel": [
+     1161,
+     531
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1887",
+    "pixel": [
+     1178,
+     551
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1904",
+    "pixel": [
+     1097,
+     571
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1921",
+    "pixel": [
+     1111,
+     583
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1938",
+    "pixel": [
+     1135,
+     597
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1955",
+    "pixel": [
+     1118,
+     612
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1972",
+    "pixel": [
+     1100,
+     615
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "1989",
+    "pixel": [
+     1185,
+     627
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2006",
+    "pixel": [
+     939,
+     653
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2023",
+    "pixel": [
+     1499,
+     663
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2040",
+    "pixel": [
+     969,
+     683
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2057",
+    "pixel": [
+     1218,
+     697
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2074",
+    "pixel": [
+     1415,
+     708
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2091",
+    "pixel": [
+     1092,
+     726
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2108",
+    "pixel": [
+     1474,
+     777
+    ],
+    "region": "baegak"
+   },
+   {
+    "id": "2380",
+    "pixel": [
+     2033,
+     2105
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2397",
+    "pixel": [
+     2058,
+     2145
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2414",
+    "pixel": [
+     2063,
+     2160
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2431",
+    "pixel": [
+     1878,
+     2182
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2448",
+    "pixel": [
+     1865,
+     2190
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2465",
+    "pixel": [
+     1303,
+     2212
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2482",
+    "pixel": [
+     1801,
+     2211
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2499",
+    "pixel": [
+     1736,
+     2222
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2516",
+    "pixel": [
+     1747,
+     2238
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2533",
+    "pixel": [
+     1640,
+     2248
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2550",
+    "pixel": [
+     1601,
+     2260
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2567",
+    "pixel": [
+     1673,
+     2264
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2584",
+    "pixel": [
+     1464,
+     2290
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2601",
+    "pixel": [
+     1531,
+     2301
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2618",
+    "pixel": [
+     1601,
+     2316
+    ],
+    "region": "namsan"
+   },
+   {
+    "id": "2635",
+    "pixel": [
+     1549,
+     2347
+    ],
+    "region": "namsan"
+   }
+  ],
+  "note": "1750년 수목 분포를 참고한 두 시대 공통 게임용 약초 위치. 식생·약효의 고증 자료가 아닙니다.",
+  "merchant": {
+   "name": "종로 약재상",
+   "subtitle": "산약초를 사들이는 창작 약전",
+   "nodes": {
+    "hello": {
+     "text": "산에서 약초를 모아 왔소? 봇짐을 펴 보시오. 조선 후기에는 약전과 민간 약국이 약재를 사고팔았지요. 나는 종로의 상업 공간을 참고하여 놓은 창작 상인이오. 이 자리의 실제 상호나 약초 품종을 복원한 것은 아니오. 약초는 내 가게의 내 봇짐 칸에서 팔 수 있소.",
+     "sources": [
+      {
+       "title": "국사편찬위원회 — 조선 후기 약전·약국",
+       "url": "https://db.history.go.kr/id/kn_107_0040_0020_0020"
+      }
+     ],
+     "options": [
+      {
+       "label": "약초를 팔겠소.",
+       "action": "shop"
+      },
+      {
+       "label": "잘 있으시오.",
+       "action": "close"
+      }
+     ]
+    }
+   }
+  }
+ }
 }

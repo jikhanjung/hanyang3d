@@ -1,3 +1,5 @@
+import {createHerbs} from './herbs.js';
+import {createFishing} from './fishing.js';
 import {drawMinimapLandmarks} from './large_map.js';
 import {createFirstPerson} from './first_person.js';
 import * as THREE from 'three';
@@ -913,7 +915,7 @@ async function main(){
  // The shop owns the account state (login, coins); the walking profile takes its name from it.
  const npcData=JSON.parse(el('npcs').textContent);
  shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),
-  onUse:id=>npcData.items[id]?.use==='mount'?(firstPerson?.active?firstPerson.setMounted(!firstPerson.mounted):t('1인칭에서만 말을 탈 수 있소.')):null});
+  onUse:id=>npcData.items[id]?.use==='fish'?firstPerson?.fishing?.use():npcData.items[id]?.use==='mount'?(firstPerson?.active?firstPerson.setMounted(!firstPerson.mounted):t('1인칭에서만 말을 탈 수 있소.')):null});
  const walkProfile=createWalkProfile({account:shop});
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile,navigation,
   positionWorld:{alignment:alignTerrain?'mountains':'base',routeKey:pedestrians.routeKey},
@@ -985,7 +987,9 @@ async function main(){
    return best;
   }});
  }
- frameUpdate=dt=>{firstPerson?.update(dt);together?.update(dt);npcDialogue?.update();pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));if(horseDealer){horseDealer.visible=bridges.visible;if(horseDealer.visible)horseDealer.userData.update(time,groundAt(horseDealer))}updateBuildingNames()};
+ firstPerson.fishing=createFishing({scene,camera,firstPerson,shop,dialogue:npcDialogue,bridge:bridges.children.find(b=>b.userData.feature.id===npcData.fishing.bridge_ids['1750']),groundAt:(x,z)=>firstPerson.groundAt(x,z),collision:()=>collision,data:npcData,era:1750,visible:()=>el('people3d').checked});
+ const herbs=createHerbs({era:1750,scene,camera,canvas:renderer.domElement,firstPerson,shop,dialogue:npcDialogue,data:npcData,source:sourceSurface,groundAt:(x,z)=>firstPerson.groundAt(x,z),collision:()=>collision,market:buildings.children.find(b=>b.userData.feature.id==='jongru'),visible:()=>el('people3d').checked});
+ frameUpdate=dt=>{herbs.update();firstPerson?.update(dt);if(!firstPerson?.active)firstPerson?.fishing?.update();together?.update(dt);npcDialogue?.update();pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));if(horseDealer){horseDealer.visible=bridges.visible;if(horseDealer.visible)horseDealer.userData.update(time,groundAt(horseDealer))}updateBuildingNames()};
  toolbarControls.forEach(c=>c.disabled=false);el('channel-depth').disabled=!channelState.enabled;
  await stage(8,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent=t('3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽');
@@ -1032,6 +1036,6 @@ async function main(){
   for(const seg of wall.segments)collision.add({x:seg.x,z:seg.z,hw:data.width_m/2,hd:seg.length/2,yaw:seg.yaw,visible:()=>wall.group.visible});
  for(const r of sijeon.records)collision.add({x:r.x,z:r.z,hw:r.length/2,hd:(sijeonData.placement.depth_m+.9)/2,yaw:r.yaw,visible:()=>sijeon.group.visible&&r.displayed});
  for(const r of settlement.records)collision.add({x:r.x,z:r.z,hw:r.w/2,hd:r.d/2,yaw:r.yaw,visible:()=>settlement.group.visible&&r.displayed});
- window.terrain3d={ready:true,cityCentre,drills,guardModels,horseDealer,get npcDialogue(){return npcDialogue},get shop(){return shop},landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
+ window.terrain3d={ready:true,herbs,cityCentre,drills,guardModels,horseDealer,get npcDialogue(){return npcDialogue},get shop(){return shop},landmarkLods,anchorCount:points.length,anchorError:Math.max(...points.map(p=>{const a=warp(...p.pixel),b=project(p.lon,p.lat);return Math.hypot(a[0]-b[0],a[1]-b[1])})),elevationRange:[dem.elevations.reduce((a,b)=>Math.min(a,b),Infinity),dem.elevations.reduce((a,b)=>Math.max(a,b),-Infinity)],renderer,scene,camera,controls,historical,terrain,mapGround,labels,buildings,foundations,waterLayer,bridges,river,channelState,surfaceBaselines,cityWall,palaceWall,alignTerrain,warp,roadLayer,roadRecord,settlement,sijeon,buildingNames,nameTags,mountainNames,districtNames,updateBuildingNames,pedestrians,trees,granite,firstPerson,collision,orbitNavigation,updateCompass,compass,groundColors};
 }
 main().catch(error=>{el('error').textContent=t('일부 요소를 불러오지 못했습니다: ')+(error.message||t('지도 또는 화면 자료 요청에 실패했습니다.'));el('status').textContent=t('현재까지 준비된 화면을 유지합니다.');el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;console.error(error)});

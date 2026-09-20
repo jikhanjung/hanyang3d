@@ -52,6 +52,7 @@
 <label class="map-opacity">{% t '옛지도' %}<input id="opacity" aria-label="{% t '옛 지도 불투명도' %}" type="range" min="0" max="100" value="50"><output id="opacity-value">50%</output></label>
 <fieldset class="layer-group"><legend>{% t '건물' %}</legend><label><input id="buildings3d" type="checkbox" checked>{% t '주요 건물·시설' %}</label><label><input id="settlement3d" type="checkbox" checked>{% t '추정 민가·점포' %}</label></fieldset>
 <fieldset class="layer-group"><legend>{% t '길·물길·성벽' %}</legend><label><input id="roads3d" type="checkbox" checked>{% t '큰길' %}</label><label><input id="walls3d" type="checkbox" checked>{% t '성벽' %}</label><label><input id="water3d" type="checkbox" checked>{% t '청계천·다리' %}</label></fieldset>
+<fieldset class="layer-group"><legend>{% t '자연' %}</legend><label><input id="trees3d" type="checkbox" checked>{% t '나무·숲' %}</label><label><input id="granite3d" type="checkbox" checked>{% t '화강암 질감' %}</label></fieldset>
 <fieldset class="layer-group"><legend>{% t '사람·이름' %}</legend><label><input id="people3d" type="checkbox" checked>{% t '행인·상인·경비병' %}</label><label><input id="walking3d" type="checkbox" checked>{% t '보행 재생' %}</label><label><input id="names3d" type="checkbox" checked>{% t '건물·다리 이름' %}</label></fieldset>
 <fieldset class="layer-group"><legend>{% t '전차' %}</legend><label><input id="trams3d" type="checkbox" checked>{% t '종로 전차·선로' %}</label></fieldset>
 <label class="landmark-select">{% t '건물' %}<select id="landmark"><option value="">{% t '건물로 이동' %}</option></select></label>
@@ -64,4 +65,4 @@
 {{ infrastructure|json_script:'infrastructure-1907' }}{{ map|json_script:'map-config' }}{{ buildings|json_script:'buildings-1907' }}{{ i18n_dict|json_script:'i18n' }}
 <script src="/v/{{ app_version }}/webapp/static/vendor/colyseus/colyseus.js"></script>
 <script type="importmap">{"imports":{"three":"/v/{{ app_version }}/webapp/static/vendor/three/three.module.js"}}</script>
-<script src="/v/{{ app_version }}/webapp/static/vendor/leaflet/leaflet.js"></script><script type="module" src="/v/{{ app_version }}/webapp/static/seoul1907.js"></script></body></html>
+<script src="/v/{{ app_version }}/webapp/static/vendor/leaflet/leaflet.js"></script><script src="/v/{{ app_version }}/webapp/static/tps.js"></script><script src="/v/{{ app_version }}/webapp/static/channel_terrain.js"></script><script type="module" src="/v/{{ app_version }}/webapp/static/seoul1907.js"></script></body></html>

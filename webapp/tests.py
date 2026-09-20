@@ -160,7 +160,7 @@ class ReviewTests(TestCase):
     def test_npc_data_is_consistent_and_sourced(self):
         data = json.loads((settings.BASE_DIR / 'gis/characters/npcs.json').read_text())
         zones = json.loads((settings.BASE_DIR / 'gis/buildings/doseong_sijeon.json').read_text())['signs']['zones']
-        for tree in (data['keeper']['nodes'], data['officer']['nodes'], data['merchant']['nodes'], data['horse_dealer']['nodes']):
+        for tree in (data['keeper']['nodes'], data['officer']['nodes'], data['merchant']['nodes'], data['horse_dealer']['nodes'], data['fishing']['nodes'], data['herbs']['merchant']['nodes']):
             self.assertIn('hello', tree)
             for node_id, node in tree.items():
                 for option in node.get('options', []):
@@ -176,7 +176,7 @@ class ReviewTests(TestCase):
             shop = data['shops'][zone['hangul']]
             self.assertTrue(shop['items'] and all(item in data['items'] for item in shop['items']), zone['hangul'])
         for item in data['items'].values():
-            self.assertTrue(isinstance(item['price'], int) and item['price'] > 0 and item['icon']['shape'] in ('bolt', 'roll', 'fish', 'reins'))
+            self.assertTrue(isinstance(item['price'], int) and item['price'] > 0 and item['icon']['shape'] in ('bolt', 'roll', 'fish', 'reins', 'rod', 'herb'))
         self.assertContains(self.client.get('/'), 'id="npcs"')
 
     def test_read_only(self):

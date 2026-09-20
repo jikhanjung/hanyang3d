@@ -4,7 +4,9 @@ import {t,lang,setLang} from './i18n.js';
 function drawIcon(icon,size=48){
  const c=document.createElement('canvas');c.width=c.height=size;const g=c.getContext('2d');
  g.fillStyle='#3a2c1f';g.fillRect(0,0,size,size);g.fillStyle='#5a4631';g.fillRect(2,2,size-4,size-4);
- if(icon.shape==='reins'){
+ if(icon.shape==='herb'){g.strokeStyle='#977954';g.lineWidth=3;g.beginPath();g.moveTo(size*.5,size*.85);g.lineTo(size*.5,size*.25);g.stroke();g.fillStyle=icon.color;for(const side of [-1,1])for(let i=0;i<3;i++){g.beginPath();g.ellipse(size*(.5+side*.13),size*(.3+i*.14),size*.16,size*.065,side*.6,0,Math.PI*2);g.fill()}
+ }else if(icon.shape==='rod'){g.strokeStyle=icon.color;g.lineWidth=3;g.beginPath();g.moveTo(size*.2,size*.85);g.lineTo(size*.7,size*.15);g.stroke();g.lineWidth=1;g.strokeStyle='#eeeecc';g.lineTo(size*.82,size*.8);g.stroke();g.fillStyle='#d94f39';g.fillRect(size*.78,size*.76,4,7);
+ }else if(icon.shape==='reins'){
   g.strokeStyle=icon.color;g.lineWidth=size*.07;g.beginPath();g.ellipse(size*.46,size*.46,size*.26,size*.2,-.5,0,Math.PI*2);g.stroke();
   g.beginPath();g.moveTo(size*.62,size*.6);g.quadraticCurveTo(size*.8,size*.72,size*.72,size*.9);g.stroke();
   g.strokeStyle='#c9c2b0';g.lineWidth=size*.05;g.beginPath();g.arc(size*.24,size*.3,size*.08,0,Math.PI*2);g.stroke();
