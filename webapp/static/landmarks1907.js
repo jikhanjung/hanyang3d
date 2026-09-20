@@ -201,6 +201,11 @@ export function createLandmark1907(f,w,h,d){
   roof(0,4.4,front,gateW+1.5,d*.15+1.6,1.6,.01);
   smallHall(0,-d*.24,w*.46,d*.23,5.5);
   if(f.variant%2===0)smallHall(-w*.2,-d*.42,w*.24,d*.1,3.6);
+  // Collision follows solid ranges, halls and posts; the gate and courtyard remain open.
+  group.userData.blockingRects=group.children.filter(m=>['outer-range','side-enclosure','hall-base','column'].includes(m.name)).map(m=>{
+   const p=m.geometry.parameters;return {x:m.position.x,z:m.position.z,hw:(p.width??.6)/2,hd:(p.depth??.6)/2};
+  });
+  group.userData.walkSurfaces=group.children.filter(m=>m.name==='earth-court');
   group.userData.plan='street-range-gate-court-hall';group.userData.openGateWidth=gateW;
  }else if(kind==='electric_office'){
   box('office',0,4.5,0,w*.92,9,d*.88,'brick');
@@ -268,7 +273,9 @@ export function createLandmark1907(f,w,h,d){
  }else if(kind==='gyeonghoeru'){
   box('pond-bank',0,.15,0,w,.3,d,'bank');box('pond',0,.32,0,w-5,.08,d-5,'water');
   const [px,pz]=f.pavilion_offset_m??[w*.24,d*.19];group.userData.anchorOffset=[px,pz];
-  box('island',px,.6,pz,55,1.2,41,'stone');box('bridge',w*.39,1,pz,30,.7,5,'stone');
+  box('island',px,.6,pz,55,1.2,41,'stone');
+  const start=px+27.5,end=w/2-2.4;box('bridge',(start+end)/2,1,pz,end-start+.1,.7,5,'stone');
+  for(let i=0;i<3;i++){const top=.3+(i+1)*.35;box('pond-entry-step',w/2-(i+.5)*.8,top/2,pz,.82,top,5,'stone')}
   for(let i=0;i<=7;i++)for(let j=0;j<=5;j++){
    const x=px-21+i*6,z=pz-15+j*6;
    if(i===0||i===7||j===0||j===5)box('square-stone-column',x,3.3,z,.8,5.4,.8,'stone');
@@ -280,6 +287,12 @@ export function createLandmark1907(f,w,h,d){
   for(let i=0;i<=14;i++)for(const side of [-1,1])box('baluster',px-21+i*3,6.65,pz+side*16,.15,1,.15,'wood');
   box('painted-beam',px,11.5,pz,46,.5,34,'trim');roof(px,12,pz,52,40,5);
   group.userData.stoneColumns=48;
+  const blocks=[],rect=(x0,x1,z0,z1)=>{if(x1>x0&&z1>z0)blocks.push({x:(x0+x1)/2,z:(z0+z1)/2,hw:(x1-x0)/2,hd:(z1-z0)/2})};
+  rect(-w/2+2.5,px-27.5,-d/2+2.5,d/2-2.5);
+  rect(px-27.5,w/2-2.5,-d/2+2.5,pz-20.5);rect(px-27.5,w/2-2.5,pz+20.5,d/2-2.5);
+  rect(px+27.5,w/2-2.5,pz-20.5,pz-2.5);rect(px+27.5,w/2-2.5,pz+2.5,pz+20.5);
+  for(const m of group.children.filter(m=>m.name.includes('stone-column')))blocks.push({x:m.position.x,z:m.position.z,hw:.5,hd:.5});
+  Object.assign(group.userData,{blockingRects:blocks,walkSurfaces:group.children.filter(m=>['pond-bank','island','bridge','pond-entry-step'].includes(m.name)),accessYaw:Math.PI/2,accessOffset:[0,pz],accessFront:w/2,accessHeight:.3});
  }else if(kind==='shrine'){
   const count=f.shrine_chambers,bay=(w-12)/count,hz=-d*.28;group.userData.anchorOffset=[0,hz];
   box('terrace',0,.5,0,w,1,d,'stone');

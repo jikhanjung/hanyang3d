@@ -5287,5 +5287,112 @@
         }
       }
     ]
-  }
+  },
+  "palace_walls": [
+    {
+      "id": "gyeongbokgung-wall-1907",
+      "name": "경복궁 담장",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "coordinate_space": "image pixels, upper-left origin",
+      "centerline": [
+        [
+          655,
+          1900
+        ],
+        [
+          664,
+          1690
+        ],
+        [
+          667,
+          1500
+        ],
+        [
+          675,
+          1370
+        ],
+        [
+          920,
+          1370
+        ],
+        [
+          925,
+          1510
+        ],
+        [
+          936,
+          1560
+        ],
+        [
+          925,
+          1620
+        ],
+        [
+          900,
+          1720
+        ],
+        [
+          891,
+          1820
+        ],
+        [
+          883,
+          1905
+        ],
+        [
+          860,
+          1913
+        ],
+        [
+          758,
+          1912
+        ],
+        [
+          655,
+          1900
+        ]
+      ],
+      "openings": [
+        {
+          "id": "gwanghwamun-1907",
+          "model_id": "gwanghwamun-1907",
+          "wall_connection": {
+            "straight_radius_m": 35,
+            "transition_radius_m": 85
+          }
+        },
+        {
+          "id": "yeongchu-opening-1907",
+          "pixel": [
+            660,
+            1783
+          ],
+          "width_m": 10
+        },
+        {
+          "id": "geonchun-opening-1907",
+          "pixel": [
+            900,
+            1779
+          ],
+          "width_m": 10
+        },
+        {
+          "id": "sinmu-opening-1907",
+          "pixel": [
+            785,
+            1370
+          ],
+          "width_m": 10
+        }
+      ],
+      "width_m": 1.2,
+      "height_m": 3.2,
+      "parapet_height_m": 0.55,
+      "cap_style": "tile",
+      "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+      "note": "1907년 최신경성전도의 경복궁 서·남·동쪽 경계와 광화문을 판독한 개념 담장. 북쪽 경계와 신무문 개구부는 원도에서 불명확하여 궁역을 감싸도록 추정 연결했다. 영추문·건춘문은 표기 근처에 통로만 두며 문루 복원은 별도 작업. 높이·재료·연대는 현 장면용 추정이다."
+    }
+  ]
 }

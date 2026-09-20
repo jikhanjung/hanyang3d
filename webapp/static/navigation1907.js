@@ -1,5 +1,6 @@
+import {drawMinimapLandmarks} from './large_map.js';
 // North-up mini-map baked from the same calibrated texture triangles as the scene.
-export function createNavigation1907(geometry,texture){
+export function createNavigation1907(geometry,texture,flatMap){
  const panel=document.getElementById('first-person-map'),map=document.getElementById('walking-minimap'),ctx=map.getContext('2d');
  const size=240,span=1200,baked=document.createElement('canvas');baked.width=baked.height=2048;
  const p=geometry.attributes.position,uv=geometry.attributes.uv,n=Math.round(Math.sqrt(p.count)),ids=[];
@@ -14,6 +15,6 @@ export function createNavigation1907(geometry,texture){
    b.save();b.beginPath();b.moveTo(...u);b.lineTo(...v);b.lineTo(...w);b.closePath();b.clip();b.setTransform(aa,bb,cc,dd,u[0]-aa*a[0]-cc*a[1],u[1]-bb*a[0]-dd*a[1]);b.drawImage(image,0,0);b.restore();
   }ready=true;
  }
- function update(yaw,at){ctx.clearRect(0,0,size,size);ctx.fillStyle='#d6c7a8';ctx.fillRect(0,0,size,size);ctx.drawImage(baked,(at.x-span/2-minX)*scale,(at.z-span/2-minZ)*scale,span*scale,span*scale,0,0,size,size);ctx.save();ctx.translate(size/2,size/2);ctx.rotate(-yaw);ctx.fillStyle='#006fa8';ctx.strokeStyle='white';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-10);ctx.lineTo(7,8);ctx.lineTo(0,5);ctx.lineTo(-7,8);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();ctx.fillStyle='#24372e';ctx.font='bold 14px system-ui';ctx.fillText('N ↑',10,21);map.dataset.worldX=at.x;map.dataset.worldZ=at.z}
- return {largeMapSource:{geometry,image:baked,minX,minZ,maxX,maxZ,scale,prepare:bake},show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
+ function update(yaw,at){ctx.clearRect(0,0,size,size);ctx.fillStyle='#d6c7a8';ctx.fillRect(0,0,size,size);ctx.drawImage(baked,(at.x-span/2-minX)*scale,(at.z-span/2-minZ)*scale,span*scale,span*scale,0,0,size,size);drawMinimapLandmarks(ctx,map,flatMap.landmarks,at,span,size);ctx.save();ctx.translate(size/2,size/2);ctx.rotate(-yaw);ctx.fillStyle='#006fa8';ctx.strokeStyle='white';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-10);ctx.lineTo(7,8);ctx.lineTo(0,5);ctx.lineTo(-7,8);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();ctx.fillStyle='#24372e';ctx.font='bold 14px system-ui';ctx.fillText('N ↑',10,21);map.dataset.worldX=at.x;map.dataset.worldZ=at.z}
+ return {largeMapSource:{flatMap,geometry,image:baked,minX,minZ,maxX,maxZ,scale,prepare:bake},show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
 }

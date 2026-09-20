@@ -1,3 +1,4 @@
+import {drawMinimapLandmarks} from './large_map.js';
 import {createFirstPerson} from './first_person.js';
 import * as THREE from 'three';
 import {createGranite} from './granite.js';
@@ -891,6 +892,7 @@ async function main(){
    ctx.clearRect(0,0,size,size);ctx.fillStyle='#e9e2cb';ctx.fillRect(0,0,size,size);
    const x=at.x,z=at.z;
    ctx.drawImage(baked,(x-span/2-minX)*scale,(z-span/2-minZ)*scale,span*scale,span*scale,0,0,size,size);
+   drawMinimapLandmarks(ctx,map,flatMap.landmarks,at,span,size);
    ctx.save();ctx.translate(size/2,size/2);ctx.rotate(-yaw);
    ctx.fillStyle='#1686b84d';ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,47,-Math.PI/2-.6,-Math.PI/2+.6);ctx.closePath();ctx.fill();
    ctx.fillStyle='#006fa8';ctx.strokeStyle='white';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-10);ctx.lineTo(7,8);ctx.lineTo(0,5);ctx.lineTo(-7,8);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
@@ -904,7 +906,7 @@ async function main(){
     if(weights&&weights.every(w=>w>=-1e-7))return [weights.reduce((v,w,k)=>v+w*uv[k][0],0)*iw,(1-weights.reduce((v,w,k)=>v+w*uv[k][1],0))*ih];
    }return null;
   };
-  const flatMap={image:texture.image,crop:[128,116,2998,2600],toPixel,roads:walkingData.routes.map(r=>({name:r.name,points:r.pixel_points})),landmarks:buildings.children.filter(b=>buildingLevel(b.userData.feature)<=1).map(b=>({name:b.userData.feature.name.split(' · ')[0],pixel:toPixel(b.position)})).filter(b=>b.pixel)};
+  const flatMap={image:texture.image,crop:[128,116,2998,2600],toPixel,roads:walkingData.routes.map(r=>({name:r.name,points:r.pixel_points})),landmarks:buildings.children.filter(b=>buildingLevel(b.userData.feature)<=1).map(b=>({name:b.userData.feature.name.split(' · ')[0],world:b.position,pixel:toPixel(b.position)})).filter(b=>b.pixel)};
   return {largeMapSource:{flatMap,image:baked,minX,minZ,maxX,maxZ,scale,prepare:bake},show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
  })();
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
@@ -917,7 +919,7 @@ async function main(){
   positionWorld:{alignment:alignTerrain?'mountains':'base',routeKey:pedestrians.routeKey},
   getCollision:()=>collision,getSurfaceVersion:()=>exaggeration,onBeforeEnter:()=>{clearHover();press=null},onExit:()=>together?.stop(),
   terrainGround:(x,z)=>{try{const s=cityWall.supportAt(x,z,.3,.3,0,roadLayer.visible);return Math.max(s.max,roadLayer.visible&&s.road?s.road.max*exaggeration:-Infinity)}catch{return null}},
-  getWalkables:()=>{const halls=buildings.children.filter(b=>b.userData.feature.display_model==='hall_site'),ids=new Set(halls.map(b=>b.userData.feature.id));return [...bridges.children.map(o=>[o,()=>bridges.visible]),...halls.map(o=>[o,()=>buildings.visible&&o.visible]),...foundations.children.filter(f=>ids.has(f.userData.featureId)).map(o=>[o,()=>foundations.visible])]}
+  getWalkables:()=>{const halls=buildings.children.filter(b=>b.userData.feature.display_model==='hall_site'),ids=new Set(halls.map(b=>b.userData.feature.id));return [...buildings.children.flatMap(b=>(b.getObjectByName('yukjo-compound')?.userData.walkSurfaces??[]).map(o=>[o,()=>buildings.visible&&b.visible])),...bridges.children.map(o=>[o,()=>bridges.visible]),...halls.map(o=>[o,()=>buildings.visible&&o.visible]),...foundations.children.filter(f=>ids.has(f.userData.featureId)).map(o=>[o,()=>foundations.visible])]}
  });
  el('walk-together').addEventListener('click',()=>{el('map-options').classList.remove('open');el('map-options-toggle').setAttribute('aria-expanded','false')});
  document.querySelector('.toolbar').addEventListener('click',event=>{if(firstPerson.active&&event.target.closest('button')&&!['map-options-toggle','walk-together'].includes(event.target.id))firstPerson.exit()},true);
@@ -1013,7 +1015,10 @@ async function main(){
    }
    continue;
   }
-  if(f.display_model==='house_site'||f.display_model==='training_ground'){
+  if(f.display_model==='yukjo_compound'){
+   const model=b.getObjectByName('yukjo-compound'),c=Math.cos(frame.yaw),sn=Math.sin(frame.yaw);
+   for(const r of model.userData.blockingRects)collision.add({x:frame.x+r.x*c+r.z*sn,z:frame.z-r.x*sn+r.z*c,hw:r.hw,hd:r.hd,yaw:frame.yaw+(r.yaw??0),visible:shown});
+  }else if(f.display_model==='house_site'||f.display_model==='training_ground'){
    // Walled compounds block only their walls, leaving the south gate open.
    const t=1.2,gate=Math.min(9,w*.2),run=(w-gate)/2;
    collision.addLocal(frame,0,-d/2+t/2,w/2,t/2,shown);

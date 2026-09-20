@@ -48,6 +48,19 @@ def validate(key, value):
     try:
         if key=='infrastructure1907':
             points(value['wall']['centerline']);points(value['river']['centerline'])
+            enclosures=value.get('palace_walls',[])
+            if not isinstance(enclosures,list) or len(enclosures)>20: fail('궁궐 담장 목록은 20개 이하여야 합니다.')
+            for wall in enclosures:
+                points(wall['centerline'],4)
+                if wall['centerline'][0]!=wall['centerline'][-1]: fail('궁궐 담장 경계는 닫혀 있어야 합니다.')
+                if wall['source_sha256']!=expected: fail('궁궐 담장 원도 해시가 다릅니다.')
+                for k in ('width_m','height_m','parapet_height_m'):
+                    if not num(wall[k],.01,100): fail('궁궐 담장 치수가 범위를 벗어났습니다.')
+                if not isinstance(wall['openings'],list) or len(wall['openings'])>30: fail('궁궐 출입구 수가 잘못되었습니다.')
+                for opening in wall['openings']:
+                    if not isinstance(opening.get('model_id'),str):
+                        points([opening['pixel']],1)
+                        if not num(opening['width_m'],1,100): fail('궁궐 출입구 폭이 잘못되었습니다.')
             for k in ('width_m','height_m','parapet_height_m'):
                 if not num(value['wall'][k],.01,100): fail('성벽 치수가 범위를 벗어났습니다.')
             widths=value['river']['half_widths_px']

@@ -4868,6 +4868,224 @@
         }
       },
       "yaw_offset_deg": 180
+    },
+    {
+      "id": "myeongdong-worshipper-1907-1",
+      "building": "myeongdong-cathedral-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "appearance": "worshipper",
+      "pose": "seated_prayer",
+      "seat_id": "pew-2",
+      "indoors": true,
+      "position_status": "fictional_worshipper_on_conceptual_pew",
+      "yaw_offset_deg": 180
+    },
+    {
+      "id": "myeongdong-worshipper-1907-2",
+      "building": "myeongdong-cathedral-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "appearance": "worshipper",
+      "pose": "seated_prayer",
+      "seat_id": "pew-5",
+      "indoors": true,
+      "position_status": "fictional_worshipper_on_conceptual_pew",
+      "yaw_offset_deg": 180
+    },
+    {
+      "id": "myeongdong-worshipper-1907-3",
+      "building": "myeongdong-cathedral-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "appearance": "worshipper",
+      "pose": "seated_prayer",
+      "seat_id": "pew-8",
+      "indoors": true,
+      "position_status": "fictional_worshipper_on_conceptual_pew",
+      "yaw_offset_deg": 180
+    },
+    {
+      "id": "gyeongbok-caretaker-1907",
+      "building": "gwanghwamun-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "appearance": "caretaker",
+      "local_position_m": [
+        18,
+        14
+      ],
+      "position_status": "fictional_caretaker_at_palace_gate",
+      "sources": [
+        "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do",
+        "https://contents.history.go.kr/front/ta/view.do?levelId=ta_m62_0060_0040"
+      ],
+      "dialogue": {
+        "name": "경복궁 관리인",
+        "subtitle": "을사늑약에서 1907년까지 · 창작 안내 인물",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "광화문 앞을 지키는 관리인이오. 궁 담장은 여전히 길게 둘러서 있지만, 나라의 형편은 예전 같지 않소. 을사년에 외교권을 빼앗긴 일부터 올해 황제께서 물러나신 일까지, 두 해 사이에 참 많은 일이 있었지요. 어느 대목부터 듣겠소?",
+            "options": [
+              {
+                "label": "어느 궁에서 있었던 일이오?",
+                "next": "place"
+              },
+              {
+                "label": "외교권을 빼앗겼다는 뜻은?",
+                "next": "rights"
+              },
+              {
+                "label": "올해 헤이그 특사는 어떻게 되었소?",
+                "next": "hague"
+              },
+              {
+                "label": "이야기의 근거를 알려주시오.",
+                "next": "sources"
+              },
+              {
+                "label": "다음에 또 듣겠소.",
+                "action": "close"
+              }
+            ],
+            "sources": [
+              {
+                "title": "국가기록원 — 덕수궁·중명전",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+              },
+              {
+                "title": "우리역사넷 — 을사조약과 헤이그 특사",
+                "url": "https://contents.history.go.kr/front/ta/view.do?levelId=ta_m62_0060_0040"
+              }
+            ]
+          },
+          "place": {
+            "text": "을사늑약을 이 경복궁에서 맺었다고 생각하기 쉽지만, 그 장소는 정동의 경운궁 중명전이오. 1905년 11월, 일본은 대한제국에 조약을 강요했소. 궁궐의 이름과 사건의 장소를 구분해서 기억해 주시오. 이곳 관리인이 그 일을 이야기한다고 해서 내가 협상 자리에 있었던 것은 아니오.",
+            "options": [
+              {
+                "label": "외교권을 빼앗겼다는 뜻은?",
+                "next": "rights"
+              },
+              {
+                "label": "올해 헤이그 특사는 어떻게 되었소?",
+                "next": "hague"
+              },
+              {
+                "label": "이야기의 근거를 알려주시오.",
+                "next": "sources"
+              },
+              {
+                "label": "다음에 또 듣겠소.",
+                "action": "close"
+              }
+            ],
+            "sources": [
+              {
+                "title": "국가기록원 — 덕수궁·중명전",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+              },
+              {
+                "title": "우리역사넷 — 을사조약과 헤이그 특사",
+                "url": "https://contents.history.go.kr/front/ta/view.do?levelId=ta_m62_0060_0040"
+              }
+            ]
+          },
+          "rights": {
+            "text": "을사늑약으로 대한제국은 다른 나라와 스스로 외교할 권리를 빼앗겼소. 외국과 교섭하며 나라의 뜻을 전할 길을 일본이 장악한 것이지요. 외교권이라는 말이 멀게 들릴지 몰라도, 나라가 남의 간섭을 거부하고 자기 사정을 세상에 알릴 수 있느냐 하는 문제요. 그 때문에 강압으로 이루어진 이 조약을 늑약이라 부르는 것이오.",
+            "options": [
+              {
+                "label": "어느 궁에서 있었던 일이오?",
+                "next": "place"
+              },
+              {
+                "label": "올해 헤이그 특사는 어떻게 되었소?",
+                "next": "hague"
+              },
+              {
+                "label": "이야기의 근거를 알려주시오.",
+                "next": "sources"
+              },
+              {
+                "label": "다음에 또 듣겠소.",
+                "action": "close"
+              }
+            ],
+            "sources": [
+              {
+                "title": "국가기록원 — 덕수궁·중명전",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+              },
+              {
+                "title": "우리역사넷 — 을사조약과 헤이그 특사",
+                "url": "https://contents.history.go.kr/front/ta/view.do?levelId=ta_m62_0060_0040"
+              }
+            ]
+          },
+          "hague": {
+            "text": "고종 황제께서는 그대로 받아들이지 않으셨소. 올해인 1907년, 이상설·이준·이위종을 네덜란드 헤이그의 만국평화회의에 특사로 보내 을사늑약의 부당함을 알리려 하셨지요. 나라의 외교권을 빼앗은 조약이 정당하지 않다는 뜻을 국제사회에 전하려 한 것이오. 하지만 일본은 특사 파견을 구실로 황제께 퇴위를 강요했소. 궁문은 그대로인데 나라의 주인이 자기 뜻을 펼 길은 갈수록 좁아졌지요.",
+            "options": [
+              {
+                "label": "어느 궁에서 있었던 일이오?",
+                "next": "place"
+              },
+              {
+                "label": "외교권을 빼앗겼다는 뜻은?",
+                "next": "rights"
+              },
+              {
+                "label": "이야기의 근거를 알려주시오.",
+                "next": "sources"
+              },
+              {
+                "label": "다음에 또 듣겠소.",
+                "action": "close"
+              }
+            ],
+            "sources": [
+              {
+                "title": "국가기록원 — 덕수궁·중명전",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+              },
+              {
+                "title": "우리역사넷 — 을사조약과 헤이그 특사",
+                "url": "https://contents.history.go.kr/front/ta/view.do?levelId=ta_m62_0060_0040"
+              }
+            ]
+          },
+          "sources": {
+            "text": "이 이야기는 국가기록원의 덕수궁·중명전 설명과 국사편찬위원회 우리역사넷의 을사조약·헤이그 특사 관련 내용을 바탕으로 구성했소. 나는 실존 인물의 증언을 재현한 사람이 아니라, 당시 사건을 안내하기 위한 창작 관리인이오. 중명전과 정동 쪽 건물도 찾아보면 이 이야기를 장소와 함께 살필 수 있을 것이오.",
+            "options": [
+              {
+                "label": "어느 궁에서 있었던 일이오?",
+                "next": "place"
+              },
+              {
+                "label": "외교권을 빼앗겼다는 뜻은?",
+                "next": "rights"
+              },
+              {
+                "label": "올해 헤이그 특사는 어떻게 되었소?",
+                "next": "hague"
+              },
+              {
+                "label": "다음에 또 듣겠소.",
+                "action": "close"
+              }
+            ],
+            "sources": [
+              {
+                "title": "국가기록원 — 덕수궁·중명전",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/DeoksuPal.do"
+              },
+              {
+                "title": "우리역사넷 — 을사조약과 헤이그 특사",
+                "url": "https://contents.history.go.kr/front/ta/view.do?levelId=ta_m62_0060_0040"
+              }
+            ]
+          }
+        }
+      }
     }
   ],
   "horse_dealer": {

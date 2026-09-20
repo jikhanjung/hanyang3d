@@ -121,7 +121,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  }
  await stage(3,t('주요 건물·문 표시 완료 · 성벽과 길·물길을 준비합니다'));
  const surface=(x,y)=>{const p=world(...project(x,y),0);p.y=groundAt(p.x,p.z);if(p.y===null)throw Error('Infrastructure outside terrain');return p};surface.original=originalSurface;surface.ground=(x,z)=>groundAt(x,z);surface.grid={xmin:(xmin-cx)*scale,zmin:-(ymax-cy)*scale,stepX:(xmax-xmin)*scale/(n-1),stepZ:(ymax-ymin)*scale/(n-1),size:n};
- const infrastructure=createInfrastructure1907(infraData,surface,buildings);scene.add(infrastructure.wall.group,infrastructure.water,infrastructure.bridges,infrastructure.roads);
+ const infrastructure=createInfrastructure1907(infraData,surface,buildings);scene.add(infrastructure.wall.group,...infrastructure.palaceWalls.map(w=>w.group),infrastructure.water,infrastructure.bridges,infrastructure.roads);
  const tramData=JSON.parse(el('trams-1907').textContent);
  if(tramData.source_sha256!==cfg.image_sha256)throw Error('Tram map hash mismatch');
  const settlementData=JSON.parse(el('settlement-1907').textContent);
@@ -172,6 +172,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   for(const model of buildings)model.visible=visible;
   el('labels').hidden=original||!el('names3d').checked;
   infrastructure.wall.group.visible=el('walls3d').checked;
+  for(const w of infrastructure.palaceWalls)w.group.visible=el('walls3d').checked;
   settlement.group.visible=el('settlement3d').checked;
   infrastructure.roads.visible=el('roads3d').checked;
   infrastructure.water.visible=infrastructure.bridges.visible=el('water3d').checked;
@@ -193,7 +194,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   if(original){if(!leaflet){leaflet=L.map('original',{crs:L.CRS.Simple,minZoom:-4,maxZoom:3,attributionControl:false});L.imageOverlay(asset(cfg.image_url),[[0,0],[ih,iw]]).addTo(leaflet)}leaflet.invalidateSize();reset()}
  };
  await stage(4,t('성벽·길·물길 표시 완료 · 걷는 사람과 상인을 준비합니다'));
- walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry:navigationGeometry,texture,settlement,flatMap:{image:texture.image,crop:cfg.crop,toPixel:p=>inverse(cx+p.x/scale,cy-p.z/scale),roads:infraData.roads.features.filter(r=>r.width_m>=10).map(r=>({name:r.name,points:r.centerline})),landmarks:buildings.filter(b=>majorNames.has(b.userData.feature.id)||['daehanmun-1907','bosingak-1907','hwangudan-1907','sungkyun-1907','russian-legation-1907','sontag-hotel-1907'].includes(b.userData.feature.id)).map(b=>({name:b.userData.feature.name.replace(/^1907년\s*/,''),pixel:inverse(cx+b.position.x/scale,cy-b.position.z/scale)}))}});
+ walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry:navigationGeometry,texture,settlement,flatMap:{image:texture.image,crop:cfg.crop,toPixel:p=>inverse(cx+p.x/scale,cy-p.z/scale),roads:infraData.roads.features.filter(r=>r.width_m>=10).map(r=>({name:r.name,points:r.centerline})),landmarks:buildings.filter(b=>majorNames.has(b.userData.feature.id)||['daehanmun-1907','bosingak-1907','hwangudan-1907','sungkyun-1907','russian-legation-1907','sontag-hotel-1907'].includes(b.userData.feature.id)).map(b=>({name:b.userData.feature.name.replace(/^1907년\s*/,''),world:b.position,pixel:inverse(cx+b.position.x/scale,cy-b.position.z/scale)}))}});
  walking.pedestrians.setVehicleAvoider((p,old,dt)=>trams.avoid(p,old,dt,(x,z,r)=>walking.collision.hit(x,z,r)));
  await stage(5,t('사람 표시 완료 · 마무리합니다'));
  updateLayers();

@@ -43,6 +43,13 @@ class SceneDataTests(TestCase):
         self.assertEqual(self.client.get(url,HTTP_IF_NONE_MATCH=a['ETag']).status_code,304)
         value=load('settlement1907');value['max_houses']=700;self.apply(self.bundle('settlement1907',value),True)
         b=self.client.get(url,HTTP_IF_NONE_MATCH=a['ETag']);self.assertEqual(b.status_code,200);self.assertEqual(b.json()['max_houses'],700);self.assertNotEqual(a['ETag'],b['ETag'])
+    def test_palace_wall_invalid_geometry_cannot_replace_live_data(self):
+        original=load('infrastructure1907');value=copy.deepcopy(original)
+        value['palace_walls'][0]['centerline'][-1]=[100,100]
+        with self.assertRaises(CommandError):self.apply(self.bundle('infrastructure1907',value),True)
+        self.assertEqual(load('infrastructure1907'),original)
+        value=copy.deepcopy(original);value['palace_walls'][0]['openings'][1]['width_m']=-1
+        with self.assertRaises(CommandError):self.apply(self.bundle('infrastructure1907',value),True)
     def test_route_change_requests_multiplayer_restart(self):
         value=load('walking1907');value['routes'][0]['pixel_points'][1][0]+=1
         self.assertTrue(self.apply(self.bundle('walking1907',value),True)['multiplayer_restart_required'])

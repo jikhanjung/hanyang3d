@@ -57,3 +57,22 @@ export function createLargeMap({source,container,getPose,onOpen,returnFocus}){
  for(const type of ['pointerdown','pointerup','wheel'])panel.addEventListener(type,e=>e.stopPropagation());
  return {update,hide,get visible(){return !panel.hidden}};
 }
+
+// Shared north-up minimap overlay. World positions keep dots aligned with the baked map.
+export function drawMinimapLandmarks(ctx,map,landmarks,at,span,size){
+ const ratio=size/(map.clientWidth||size),font=Math.max(9,Math.min(22,11*ratio)),radius=Math.max(3,3*ratio);
+ const markers=landmarks.map(l=>({name:l.name,x:size/2+(l.world.x-at.x)*size/span,y:size/2+(l.world.z-at.z)*size/span})).filter(p=>p.x>=radius&&p.x<=size-radius&&p.y>=radius&&p.y<=size-radius).sort((a,b)=>Math.hypot(a.x-size/2,a.y-size/2)-Math.hypot(b.x-size/2,b.y-size/2));
+ const occupied=[{x:size/2-15,y:size/2-16,w:30,h:32},{x:0,y:0,w:65,h:30},{x:0,y:size-32,w:80,h:32}];
+ const overlaps=(a,b)=>a.x<b.x+b.w+2&&a.x+a.w>b.x-2&&a.y<b.y+b.h+2&&a.y+a.h>b.y-2;
+ const dots=markers.map(p=>({x:p.x-radius,y:p.y-radius,w:radius*2,h:radius*2}));
+ ctx.save();ctx.font=`bold ${font}px system-ui`;ctx.textBaseline='top';ctx.lineJoin='round';
+ for(const p of markers){
+  ctx.fillStyle='#174d41';ctx.strokeStyle='#fff4df';ctx.lineWidth=1.5*ratio;ctx.beginPath();ctx.arc(p.x,p.y,radius,0,Math.PI*2);ctx.fill();ctx.stroke();
+  const w=ctx.measureText(p.name).width,h=font+2,gap=radius+4;
+  for(const [x,y] of [[p.x+gap,p.y-h/2],[p.x-w-gap,p.y-h/2],[p.x-w/2,p.y-h-gap],[p.x-w/2,p.y+gap]]){
+   const box={x,y,w,h};if(x<3||y<3||x+w>size-3||y+h>size-3||occupied.some(b=>overlaps(box,b))||dots.some(b=>overlaps(box,b)))continue;
+   ctx.strokeStyle='#fff4df';ctx.lineWidth=3*ratio;ctx.strokeText(p.name,x,y);ctx.fillStyle='#183c32';ctx.fillText(p.name,x,y);occupied.push(box);p.label=box;break;
+  }
+ }
+ ctx.restore();map.dataset.landmarks=JSON.stringify(markers);
+}

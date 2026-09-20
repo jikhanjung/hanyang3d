@@ -20,7 +20,7 @@ export function createCathedral1907(feature,w,h,d){
    float detail=1.-smoothstep(.15,.8,max(fw.x,fw.y));
    diffuseColor.rgb*=mix(1.,mix(1.05,.68,mortar),detail);`);
  };
- const blocks=[],walkSurfaces=[],parts=[];
+ const blocks=[],walkSurfaces=[],parts=[],seats=[];
  const add=(target,name,geometry,x,y,z,material,ry=0)=>{const m=new THREE.Mesh(geometry,mats[material]);m.name=name;m.position.set(x,y-h/2,z);m.rotation.y=ry;target.add(m);parts.push(name);return m};
  const box=(target,name,x,y,z,sx,sy,sz,material,solid=false)=>{
   const m=add(target,name,new THREE.BoxGeometry(sx,sy,sz),x,y,z,material);
@@ -157,6 +157,7 @@ export function createCathedral1907(feature,w,h,d){
   const x=side*2.8;fine('pew-seat',x,.5,z,2.6,.16,.68,'wood');fine('pew-back',x,.95,z+.28,2.6,.95,.13,'wood');
   for(const dx of [-1,1])fine('pew-leg',x+dx,.24,z,.12,.48,.5,'wood');
   blocks.push({x,z,hw:1.3,hd:.43});
+  seats.push({id:`pew-${seats.length}`,x,z,y:.58});
  }
  const altarZ=back+3.5;
  fine('altar-table',0,1.15,altarZ,3.4,.3,1.1,'stone');fine('altar-base',0,.55,altarZ,2.7,1.1,.8,'stone');blocks.push({x:0,z:altarZ,hw:1.7,hd:.6});
@@ -174,7 +175,7 @@ export function createCathedral1907(feature,w,h,d){
  const clip=new THREE.Group();clip.name='cathedral-camera-clip';clip.visible=false;
  model.traverse(m=>{if(!m.isMesh||walkSurfaces.includes(m))return;const c=new THREE.Mesh(m.geometry,m.material);c.position.copy(m.position);c.rotation.copy(m.rotation);clip.add(c)});
  batch(model,'cathedral-shell');model.add(...walkSurfaces,clip);batch(close,'cathedral-fine');model.add(close);const cameraShell=[clip];
- Object.assign(model.userData,{conceptual:true,kind:'cathedral',period:feature.temporal,parts,blockingRects:blocks,walkSurfaces,closeDetail:close,closeDistance:260,cameraShell,
+ Object.assign(model.userData,{conceptual:true,kind:'cathedral',period:feature.temporal,parts,blockingRects:blocks,walkSurfaces,seats,closeDetail:close,closeDistance:260,cameraShell,
   // A short, slightly lowered orbit target keeps the preview at eye level within the map's pitch limit.
   interior:{entry:[0,front+td/2+2],view:[0,2.0,front-4],target:[0,1.65,front-7],bounds:[-nw/2,back,nw/2,front+td/2],estimated:true,
    // Floor-relative indoor volumes; separate nave, aisles, transept and enclosed entrance porch.

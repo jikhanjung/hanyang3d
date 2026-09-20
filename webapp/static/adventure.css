@@ -25,13 +25,17 @@
 @media(max-width:600px),(pointer:coarse){#action-bar{display:none}#pack-window{top:158px;width:min(312px,calc(100% - 24px));max-height:calc(100% - 180px)}}
 
 @media(min-width:601px) and (pointer:fine){
- #walk-chat{right:auto!important;left:12px;bottom:82px!important;transform:none;width:min(520px,calc(100% - 32px))!important;padding:6px 10px!important;background:rgba(18,17,14,.35)!important;color:#fff5dc!important;text-shadow:1px 1px 2px #000;pointer-events:none;z-index:1003!important}
+ #walk-chat{right:auto!important;left:12px;bottom:12px!important;transform:none;width:min(520px,calc(50% - 270px))!important;padding:6px 10px!important;background:rgba(18,17,14,.35)!important;color:#fff5dc!important;text-shadow:1px 1px 2px #000;pointer-events:none;z-index:1003!important}
  #walk-chat[hidden]{display:none}#walk-chat-messages{height:128px!important;max-height:20vh!important;margin:0!important;pointer-events:auto;scrollbar-width:thin}
  #walk-chat-form{margin-top:6px;pointer-events:auto}#walk-chat-form[hidden]{display:none!important}#walk-chat-input{background:#16130edb;color:#fff5dc;border:1px solid #b8924f;border-radius:4px;padding:4px 6px}#walk-chat-close{pointer-events:auto}#walk-chat-error:empty{display:none}
  #scene #first-person-map{width:clamp(240px,24vw,320px);right:12px;bottom:12px}
  .action-slot{width:44px;height:44px}.action-slot canvas{width:36px;height:36px}
 }
-@media(min-width:601px) and (max-width:1000px) and (pointer:fine){#scene #first-person-map{top:185px;bottom:auto;width:240px}}
+@media(min-width:601px) and (max-width:1100px) and (pointer:fine){
+ #action-bar{gap:2px}.action-slot{width:24px;height:32px}.action-slot canvas{width:20px;height:20px}.action-slot kbd{font-size:10px}
+ #walk-chat{width:calc(50% - 161px)!important}#scene #first-person-map{width:min(240px,calc(50% - 161px));bottom:12px}
+}
+@media(min-width:601px) and (pointer:fine){#walk-chat-input{min-width:0;width:100%}#walk-chat-form{display:flex;flex-wrap:wrap;gap:4px}}
 
 #pack-window header strong,#pack-window header button{flex:none;white-space:nowrap}#pack-window header small{display:none}#pack-window header{justify-content:space-between}
 #walk-chat-form[hidden]{display:none!important}
@@ -46,3 +50,9 @@
 
 #scene #building-popup{bottom:var(--building-info-bottom,60px);max-height:max(60px,calc(100% - var(--building-info-bottom,60px) - 160px))}
 #scene #walk-chat-toggle{z-index:1004!important}
+
+/* Fieldsets need explicit label layout: browser fieldset content does not reliably inherit flex. */
+#map-options .layer-group{grid-column:1/-1;width:100%;min-width:0}
+#map-options .layer-group label{display:flex;align-items:flex-start;gap:5px;width:100%;white-space:normal}
+#map-options .layer-group input[type=checkbox]{flex:none;margin-top:5px}
+#map-options.open{max-height:calc(100dvh - 90px);overflow-y:auto;overscroll-behavior:contain}

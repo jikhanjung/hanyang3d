@@ -47,6 +47,11 @@ export function createInfrastructure1907(data,surface,buildings){
    const dx=a*w,dz=b*d;heights.push(surface.ground(x+dx*Math.cos(yaw)+dz*Math.sin(yaw),z-dx*Math.sin(yaw)+dz*Math.cos(yaw)));
   }return {min:Math.min(...heights),max:Math.max(...heights)};
  });wall.updateHeights(1);
+ const palaceWalls=(data.palace_walls??[]).map(record=>{
+  const enclosure=createCityWall(record,surface,{children:buildings});enclosure.group.name=record.id;
+  enclosure.updateGroundFrom((x,z,w,d,yaw)=>{const heights=[];for(const a of [-.5,0,.5])for(const b of [-.5,0,.5])heights.push(surface.ground(x+a*w*Math.cos(yaw)+b*d*Math.sin(yaw),z-a*w*Math.sin(yaw)+b*d*Math.cos(yaw)));return {min:Math.min(...heights),max:Math.max(...heights)}});
+  enclosure.updateHeights(1);return {...enclosure,data:record};
+ });
  const water=new THREE.Group();water.name='cheonggyecheon-1907';const bridges=new THREE.Group();bridges.name='bridges-1907';
  const river=data.river,edges=[],nodes=[],riverSurface=surface.original??surface;
  for(let i=0;i<river.centerline.length-1;i++){
@@ -83,5 +88,5 @@ export function createInfrastructure1907(data,surface,buildings){
   }
   const label=mid.clone();label.y+=deckY+2;group.userData={feature:f,labelPosition:label};bridges.add(group);
  }
- return {wall,water,bridges,roads};
+ return {wall,palaceWalls,water,bridges,roads};
 }

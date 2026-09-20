@@ -28,7 +28,7 @@ function batch(model){
 // rear quarters and a storehouse. Every hall and wall segment is its own part with a footing so it follows the ground.
 // Bay counts follow feature.court_type (large: seven-bay main hall); the layout is a concept, not a survey.
 export function createYukjo(feature,w,h,d){
- const model=new THREE.Group();model.name='yukjo-compound';const parts=[];
+ const model=new THREE.Group();model.name='yukjo-compound';const parts=[],blockingRects=[],walkSurfaces=[];
  const palette={wall:0xe2d7bf,timber:0x6f4630,roof:0x485150,stone:0xb3a993,paleStone:0xc9c1b0,door:0x513c2d,trim:0x7a5a3c,court:0xc6b48f,path:0xa59c8c,store:0xd8ccb2,ridge:0x8e9294};
  const mats=Object.fromEntries(Object.entries(palette).map(([key,color])=>[key,new THREE.MeshStandardMaterial({color,roughness:1,side:key==='roof'?THREE.DoubleSide:THREE.FrontSide})]));
  function block(parent,name,x,y,z,sx,sy,sz,material){const mesh=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),mats[material]);mesh.name=name;mesh.position.set(x,y,z);parent.add(mesh);return mesh}
@@ -57,15 +57,17 @@ export function createYukjo(feature,w,h,d){
  // A timber hall: posts on a low floor, plaster walls, lattice windows on the front, beam, roof.
  function hall(x,z,width,depth,height,{yaw=0,gate=false,terrace=0,hip=false,store=false,bays}={}){
   const root=part(x,z,width+2+terrace*2,depth+2+terrace*2,yaw),bayCount=bays??Math.max(3,Math.round(width/3.6)),bay=width/bayCount;
+  if(gate){for(const side of [-1,1])blockingRects.push({x:x+side*width/3,z,hw:width/6,hd:depth/2,yaw})}
+  else blockingRects.push({x,z,hw:width/2,hd:depth/2,yaw});
   let base=0;
   if(terrace){base=.9;block(root,'terrace',0,base/2,0,width+terrace*2,base,depth+terrace*2,'stone');
    for(let s=0;s<3;s++)block(root,'stair',0,base*(s+1)/6,depth/2+terrace+(2-s)*.6+.3,Math.min(6,width*.3),base*(s+1)/3,.6,'paleStone')}
-  block(root,'hall-floor',0,base+.12,0,width+.6,.24,depth+.6,'paleStone');
+  const floor=block(root,'hall-floor',0,base+.12,0,width+.6,.24,depth+.6,'paleStone');if(gate)walkSurfaces.push(floor);
   if(gate){
    // Three-bay gate: the centre bay is a taller passage with double doors, the side bays are closed rooms.
    const cb=width/3;
    for(const side of [-1,1])block(root,'gate-room',side*cb,base+height*.45,0,cb-.4,height*.9,depth-.6,'wall');
-   for(const side of [-1,1])block(root,'gate-leaf',side*cb*.25,base+height*.5,-.2,cb*.46,height*.85,.2,'door');
+   for(const side of [-1,1])block(root,'gate-leaf',side*(cb/2-.1),base+height*.5,-cb*.23,.2,height*.85,cb*.46,'door');
   }else if(store){
    block(root,'store-wall',0,base+height*.5,0,width-.3,height,depth-.4,'store');
    for(let i=0;i<bayCount;i+=2)block(root,'store-vent',-width/2+bay*(i+.5),base+height*.7,depth/2-.1,bay*.4,height*.2,.1,'door');
@@ -82,8 +84,8 @@ export function createYukjo(feature,w,h,d){
   if(hip)hipRoof(root,width+4.5,depth+4,base+height+.15,Math.min(4.2,1.6+depth*.18));else gableRoof(root,width+2.4,depth+3,base+height+.15,Math.min(3.2,1.2+depth*.17));
   return root;
  }
- function wall(x,z,width,depth){const root=part(x,z,width,depth);block(root,'plaster-wall',0,1.15,0,width,2.3,depth,'wall');block(root,'wall-cap',0,2.45,0,width+.3,.3,depth+.5,'roof')}
- function ground(name,x,z,width,depth,material,height=.12){const root=part(x,z,width,depth);block(root,name,0,height/2,0,width,height,depth,material)}
+ function wall(x,z,width,depth){blockingRects.push({x,z,hw:width/2,hd:depth/2,yaw:0});const root=part(x,z,width,depth);block(root,'plaster-wall',0,1.15,0,width,2.3,depth,'wall');block(root,'wall-cap',0,2.45,0,width+.3,.3,depth+.5,'roof')}
+ function ground(name,x,z,width,depth,material,height=.12){const root=part(x,z,width,depth);walkSurfaces.push(block(root,name,0,height/2,0,width,height,depth,material))}
  const large=feature.court_type==='large',deep=d>=50,front=d/2-5;
  // Front row: corridor halls (행랑) either side of the outer gate; enclosure walls along the sides and back.
  const gateWidth=Math.min(12,w*.24);
@@ -112,10 +114,10 @@ export function createYukjo(feature,w,h,d){
  if(d>=40&&w>=30){
   hall(-w*.16,-d*.34,Math.min(w*.36,20),7,3.6,{hip:large});
   if(w>=40)hall(w*.25,-d*.35,Math.min(w*.3,16),6,3.4,{store:true});
-  const well=part(w*.05,-d*.3,2.2,2.2);const ring=new THREE.Mesh(new THREE.CylinderGeometry(1,1.1,.8,10),mats.stone);ring.name='well';ring.position.y=.4;well.add(ring);
+  blockingRects.push({x:w*.05,z:-d*.3,hw:1.1,hd:1.1,yaw:0});const well=part(w*.05,-d*.3,2.2,2.2);const ring=new THREE.Mesh(new THREE.CylinderGeometry(1,1.1,.8,10),mats.stone);ring.name='well';ring.position.y=.4;well.add(ring);
  }
  if(large&&d>60)hall(w*.3,-d*.15,Math.min(w*.22,14),6,3.4,{yaw:Math.PI/2});
- model.userData={parts,conceptual:true,reference:feature.reference};batch(model);return model;
+ model.userData={parts,blockingRects,walkSurfaces,conceptual:true,reference:feature.reference};batch(model);return model;
 }
 
 // Each hall and short wall segment has its own ground contact and footing.
