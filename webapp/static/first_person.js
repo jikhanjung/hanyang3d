@@ -12,6 +12,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
  terrainGround,getWalkables,getSurfaceVersion=()=>1,getCollision=()=>null,getCameraObstacles=()=>[],getInterior=()=>null,onBeforeEnter=()=>{},onExit=()=>{},walkerFactory=createWalker}){
 
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
+  // A/D turn the body, Q/E move diagonally forward; left/right arrows and the mobile stick retain lateral movement.
   // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S. Space jumps.
   // Riding: trot normally, gallop while Shift is held; the rider and eye rise with the saddle.
   // Space jumps: `air` is the height of the feet above the ground under them, `vy` the vertical speed.
@@ -122,8 +123,10 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   function update(dt){
    largeMap.update();if(!active)return;
    if(lookYaw&&!drag?.look){lookYaw*=Math.exp(-8*Math.min(dt,.1));if(Math.abs(lookYaw)<1e-3)lookYaw=0;look()}
-   const forward=unfocusedMotion?.forward??(Math.min(1,Number(held('KeyW')||held('ArrowUp')||mouseForward)+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y);
-   const side=unfocusedMotion?.side??(Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x);
+   const forward=unfocusedMotion?.forward??(Math.min(1,Number(held('KeyW')||held('ArrowUp')||held('KeyQ')||held('KeyE')||mouseForward)+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y);
+   const side=unfocusedMotion?.side??(Number(held('ArrowRight')||held('KeyE'))-Number(held('ArrowLeft')||held('KeyQ'))+joystick.value.x);
+   const turn=unfocusedMotion?.turn??(Number(held('KeyA'))-Number(held('KeyD')));
+   yaw+=turn*Math.PI*.65*Math.min(dt,.1);
    // Selling the reins (or logging out) takes the horse away.
    if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye)))setMounted(false);
    // Walking (not jumping) stays on the ground when stepping down, so a downhill stride never counts as airborne.
@@ -177,7 +180,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    look();
    return on?t('말에 올랐소. 빨리 달릴 수 있소.'):t('말에서 내렸소.');
   }
-  const movement=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
+  const movement=new Set(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
   document.addEventListener('keydown',event=>{
    if(!active)return;if(event.code==='Escape'){event.preventDefault();exit();return}
    if(event.target.matches?.('input,select,textarea,button')&&!event.target.closest?.('#large-map'))return;
@@ -193,10 +196,11 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   canvas.addEventListener('blur',()=>{drag=null});
   window.addEventListener('blur',()=>{
    if(!active)return;drag=null;if(unfocusedMotion)return;
-   const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp')||mouseForward)+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
-   const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
+   const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp')||held('KeyQ')||held('KeyE')||mouseForward)+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
+   const side=Number(held('ArrowRight')||held('KeyE'))-Number(held('ArrowLeft')||held('KeyQ'))+joystick.value.x;
+   const turn=Number(held('KeyA'))-Number(held('KeyD'));
    const fast=held('ShiftLeft')||held('ShiftRight');clearInput();
-   if(forward||side)unfocusedMotion={forward,side,fast};
+   if(forward||side||turn)unfocusedMotion={forward,side,turn,fast};
   });
   document.addEventListener('visibilitychange',()=>{if(document.hidden){rememberPosition();drag=null}});
   window.addEventListener('pagehide',rememberPosition);

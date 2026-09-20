@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [248 — 공통 A/D 회전·Q/E 대각선 이동](20260921_248_keyboard_turn_and_diagonal.md)
+
 - [247 — v0.5.38 아관파천 개선 배포](20260921_247_deploy_v0538.md)
 
 - [246 — 아관파천 새벽 하늘·조명](20260921_246_agwanpacheon_predawn_lighting.md)

@@ -52,7 +52,7 @@ export function createLargeMap({source,container,getPose,onOpen,returnFocus}){
  document.addEventListener('keydown',event=>{
   if(event.isComposing||event.ctrlKey||event.metaKey||event.altKey||event.target.closest?.('input,textarea,select,[contenteditable="true"],#account-overlay,#npc-overlay'))return;
   if(event.code==='KeyM'||(!panel.hidden&&event.code==='Escape')){event.preventDefault();event.stopImmediatePropagation();if(event.repeat)return;panel.hidden?show():hide();return}
-  if(!panel.hidden&&['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','Space'].includes(event.code))return;
+  if(!panel.hidden&&['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','Space'].includes(event.code))return;
   if(!panel.hidden){if(event.code==='Tab'){event.preventDefault();close.focus()}event.stopImmediatePropagation()}
  },true);
  for(const type of ['pointerdown','pointerup','wheel'])panel.addEventListener(type,e=>e.stopPropagation());
