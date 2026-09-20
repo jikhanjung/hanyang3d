@@ -1,7 +1,7 @@
 contract_version = 1
 instance = "hanyang3d"
 image = "honestjung/hanyang3d"
-version = "v0.5.38"
+version = "v0.5.39"
 platform = "linux/amd64"
 settings = "webapp.settings"
 has_database = true
@@ -11,8 +11,8 @@ multiplayer_image = "honestjung/hanyang3d-multiplayer"
 multiplayer_version = "v0.5.31"
 
 [verbs]
-build = "bash deploy/build.sh v0.5.38 --web-only"
-deploy = "bash /srv/hanyang3d/deploy.sh v0.5.38 v0.5.31"
+build = "bash deploy/build.sh v0.5.39 --web-only"
+deploy = "bash /srv/hanyang3d/deploy.sh v0.5.39 v0.5.31"
 rollback = "bash /srv/hanyang3d/deploy.sh <previous-version>"
 
 [targets.prod]
