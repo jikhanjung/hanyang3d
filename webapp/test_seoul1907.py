@@ -29,7 +29,7 @@ class Seoul1907Tests(TestCase):
             return next(r for r in data['storytellers'] if r.get('id')=='jongno-alley-tipsy-1907')
         ko, en = sitter('ko'), sitter('en')
         self.assertEqual(ko['mode'], 'bubble')
-        self.assertEqual(len(ko['dialogue']['lines']), 5)
+        self.assertEqual(len(ko['dialogue']['lines']), 12)
         self.assertNotEqual(ko['dialogue']['lines'][1]['text'], en['dialogue']['lines'][1]['text'])
 
     def test_horse_dealer_period_dialogue_and_trade(self):

@@ -75,8 +75,10 @@ export function createNpcDialogue({camera,canvas,container,note,onAction}){
   overlay.hidden=false;show('hello');
  }
  function showBubble(npc){
+  const text=npc.getBubbleText?npc.getBubbleText():npc.nodes.hello.text;
+  if(text==null||text===''){hideBubble();return}
   if(bubbleNpc&&bubbleNpc!==npc)bubbleNpc.finish?.();
-  bubbleNpc=npc;npc.begin?.();bubble.textContent=npc.nodes.hello.text;bubble.hidden=false;bubbleUntil=performance.now()+4000;placeBubble();
+  bubbleNpc=npc;npc.begin?.();bubble.textContent=text;bubble.hidden=false;bubbleUntil=performance.now()+4000;placeBubble();
  }
  function hideBubble(){if(!bubbleNpc)return;const npc=bubbleNpc;bubbleNpc=null;bubble.hidden=true;npc.finish?.()}
  function placeBubble(){

@@ -5433,8 +5433,37 @@
           {
             "text": "집은 저쪽이오. 아니, 이쪽인가… 잠깐만 앉았다 갑시다.",
             "text_en": "Home is that way. Or this way… Let us sit a moment."
+          },
+          {
+            "text": "쉿… 병이 잠들었소. 깨우면 또 비워야 하오.",
+            "text_en": "Shh… The bottle is asleep. Wake it and I will have to empty it again."
+          },
+          {
+            "text": "내 갓 못 보셨소? 아까 머리에 있었는데… 머리는 있나?",
+            "text_en": "Have you seen my hat? It was on my head… Have I still got a head?"
+          },
+          {
+            "text": "오늘은 한 잔도 안 했소. 잔은 두고 병으로… 에헴.",
+            "text_en": "Not a single cup today. Left the cup and took the bottle… Ahem."
+          },
+          {
+            "text": "바람이 왜 자꾸 나한테 기대는지 모르겠네.",
+            "text_en": "Why does the wind keep leaning on me?"
+          },
+          {
+            "text": "장에 간다더니… 내가 장이었나, 장이 나였나.",
+            "text_en": "Off to the market… Was I the market, or was the market me?"
+          },
+          {
+            "text": "저 기와들이 줄을 참 잘 섰구먼. 나도 끼워주시오.",
+            "text_en": "Those roof tiles line up so nicely. Make room for me."
+          },
+          {
+            "text": "내일은 일찍 일어나겠소. 오늘이 내일이면 곤란한데…",
+            "text_en": "I will rise early tomorrow. Trouble is, what if today is tomorrow?"
           }
-        ]
+        ],
+        "silence_chance": 0.2
       }
     }
   ],

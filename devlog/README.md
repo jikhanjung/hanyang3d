@@ -16,6 +16,8 @@
 
 ## 작업 기록
 
+- [239 — 취객 무작위 대사·무응답](20260920_239_random_tipsy_replies.md)
+
 - [238 — 서소문 밖 네거리 이름](20260920_238_seosomun_crossroads_label.md)
 
 - [237 — 남대문정거장 자료 조사](20260920_237_namdaemun_station_research.md)
