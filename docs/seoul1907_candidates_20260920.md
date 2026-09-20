@@ -44,3 +44,6 @@
 
 - [중구청 — 옛 러시아 공사관](https://www.junggu.seoul.kr/tour/content.do?cmsid=15027&contentId=3444)
 - [영등포구 의료관광 안내서 — 현 대사관 주소](https://www.ydp.go.kr/smartmedical-kor/downloadContentsFile.do?fileNm=main_guidebook_kor.pdf)
+
+
+남대문정거장은 [별도 조사](namdaemun_station_1907_research.md)로 확장했다. 원도 표기 확인·사진2점 확보, 층수/면적/역사 변천의 자료 차이 기록. 건물 구현은 아직 하지 않았다.

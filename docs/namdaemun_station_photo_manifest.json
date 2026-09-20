@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "id": "NAMDAEMUN-STATION-01",
+      "title": "남대문정거장 전면 사진엽서",
+      "local_path": "data/photos/namdaemun-station/early-station-seoul284-undated.jpg",
+      "source_page": "https://www.seoul284.org/cms/content/view/253",
+      "asset_url": "https://www.seoul284.org/jnrepo/upload/contentCrawler/202109/77d8f66e38224d24a4f354a82d257200_1631253712244.jpg",
+      "downloaded_at": "2026-09-20",
+      "sha256": "215f65a0ec93c99230ca77c7cbfb75d8ae29eab26e50892177b1e6dd8a5e7d64",
+      "bytes": 337452,
+      "dimensions_px": [
+        880,
+        430
+      ],
+      "capture_date": null,
+      "caution": "1907년 촬영으로 확정하지 않음. 1915년 개축 전후 여부는 추가 대조 필요.",
+      "rights": "원촬영자·촬영일·재사용 허락 미확인. 연구용 로컬 보관만; 웹/Docker에 포함하지 않음."
+    },
+    {
+      "id": "NAMDAEMUN-STATION-02",
+      "title": "남대문정거장 승강장 쪽 사진엽서",
+      "local_path": "data/photos/namdaemun-station/platform-postcard-undated.png",
+      "source_page": "https://www.wonnews.co.kr/news/articleView.html?idxno=309281",
+      "asset_url": "https://cdn.wonnews.co.kr/news/photo/202404/309281_65786_4555.png",
+      "downloaded_at": "2026-09-20",
+      "sha256": "cdc6f8da34e006b1a538e869017643147dd2c5a862d4d52990fb4884ac141307",
+      "bytes": 394355,
+      "dimensions_px": [
+        600,
+        380
+      ],
+      "capture_date": null,
+      "caution": "1907년 촬영으로 확정하지 않음. 1915년 개축 전후 여부는 추가 대조 필요.",
+      "rights": "원촬영자·촬영일·재사용 허락 미확인. 연구용 로컬 보관만; 웹/Docker에 포함하지 않음."
+    }
+  ],
+  "map_crop": {
+    "local_path": "data/photos/namdaemun-station/source-map-context.png",
+    "original": "data/maps/src-0029/asset-0024.jpg",
+    "crop_after_exif": [
+      200,
+      2650,
+      800,
+      3350
+    ],
+    "resized_px": [
+      900,
+      1050
+    ],
+    "purpose": "표기·주변 도로 판독, 건물 중심 좌표 확정 아님"
+  },
+  "unavailable": [
+    {
+      "url": "https://contents.history.go.kr/data/img/km/km_020/km_020_209_01.jpg",
+      "status": "HTTP400",
+      "local_file": null
+    }
+  ]
+}

@@ -4100,6 +4100,48 @@
       "status": "downloaded_research_only",
       "rights": "촬영자·저작권자·재사용 허락 미확인. 로컬 연구 자료로만 보관; 웹 서비스·Docker 이미지에 포함하지 않음.",
       "detail_manifest": "docs/ewha_reference_manifest.json"
+    },
+    {
+      "id": "NAMDAEMUN-STATION-01",
+      "repository": "문화역서울284",
+      "catalog_url": "https://www.seoul284.org/cms/content/view/253",
+      "title_original": "남대문정거장 전면 사진엽서",
+      "title_ko": "남대문정거장 전면 사진엽서",
+      "date": {
+        "label": "촬영일 미상",
+        "capture_date": null,
+        "certainty": "unconfirmed"
+      },
+      "themes": [
+        "교통",
+        "건축"
+      ],
+      "local_path": "data/photos/namdaemun-station/early-station-seoul284-undated.jpg",
+      "sha256": "215f65a0ec93c99230ca77c7cbfb75d8ae29eab26e50892177b1e6dd8a5e7d64",
+      "status": "downloaded_research_only",
+      "rights": "원촬영자·촬영일·재사용 허락 미확인. 연구용 로컬 보관만; 웹/Docker에 포함하지 않음.",
+      "detail_manifest": "docs/namdaemun_station_photo_manifest.json"
+    },
+    {
+      "id": "NAMDAEMUN-STATION-02",
+      "repository": "원불교신문 / 국제일본문화연구센터 소장으로 소개",
+      "catalog_url": "https://www.wonnews.co.kr/news/articleView.html?idxno=309281",
+      "title_original": "남대문정거장 승강장 쪽 사진엽서",
+      "title_ko": "남대문정거장 승강장 쪽 사진엽서",
+      "date": {
+        "label": "촬영일 미상",
+        "capture_date": null,
+        "certainty": "unconfirmed"
+      },
+      "themes": [
+        "교통",
+        "건축"
+      ],
+      "local_path": "data/photos/namdaemun-station/platform-postcard-undated.png",
+      "sha256": "cdc6f8da34e006b1a538e869017643147dd2c5a862d4d52990fb4884ac141307",
+      "status": "downloaded_research_only",
+      "rights": "원촬영자·촬영일·재사용 허락 미확인. 연구용 로컬 보관만; 웹/Docker에 포함하지 않음.",
+      "detail_manifest": "docs/namdaemun_station_photo_manifest.json"
     }
   ],
   "discovery_collections": [
