@@ -12,7 +12,7 @@ try:
   page.set_content('<script type="importmap">{"imports":{"three":"/webapp/static/vendor/three/three.module.js"}}</script><body style="margin:0"></body>')
   result=page.evaluate('''async()=>{const T=await import('three'),{createHorse}=await import('/webapp/static/horse_dealer.js');
    const h=createHorse(),legs=['hind-left','hind-right','front-left','front-right'].map(n=>h.group.getObjectByName('horse-'+n)),rows=[];
-   for(let i=0;i<560;i+=5){h.update(i,true,false,true);h.group.updateMatrixWorld(true);rows.push({time:i,feet:legs.map(l=>l.getObjectByName('horse-knee').localToWorld(new T.Vector3(0,-.425,0)).y),fore:legs.slice(2).map(l=>({bend:l.getObjectByName('horse-knee').rotation.x,reach:l.getObjectByName('horse-knee').localToWorld(new T.Vector3(0,-.425,0)).z-l.getWorldPosition(new T.Vector3()).z}))});}
+   for(let i=0;i<560;i+=5){h.update(i,true,false,true);h.group.updateMatrixWorld(true);rows.push({time:i,bodyY:h.group.getObjectByName('horse-body').position.y,riderY:h.riderVerticalOffset,feet:legs.map(l=>l.getObjectByName('horse-knee').localToWorld(new T.Vector3(0,-.425,0)).y),fore:legs.slice(2).map(l=>({bend:l.getObjectByName('horse-knee').rotation.x,reach:l.getObjectByName('horse-knee').localToWorld(new T.Vector3(0,-.425,0)).z-l.getWorldPosition(new T.Vector3()).z}))});}
    const low=Math.min(...rows.flatMap(r=>r.feet)),air=rows.filter(r=>r.feet.every(y=>y>.025)).length,contacts=legs.map((_,j)=>rows.filter(r=>r.feet[j]<.005).map(r=>r.time));
    h.update(0,true,true);const jump=legs.map(l=>[l.rotation.x,l.children[1].rotation.x]);h.update(432,true,true);const jumpStable=JSON.stringify(jump)===JSON.stringify(legs.map(l=>[l.rotation.x,l.children[1].rotation.x]));
    const scene=new T.Scene();scene.background=new T.Color('#dedbd3');scene.add(new T.HemisphereLight(0xffffff,0x74685a,3));const sun=new T.DirectionalLight(0xffffff,3);sun.position.set(6,8,5);scene.add(sun);
@@ -20,8 +20,9 @@ try:
    for(let i=0;i<8;i++){const horse=createHorse();horse.update(i*70,true,false,true);horse.group.position.set((i%4-1.5)*3.5,0,(Math.floor(i/4)-.5)*3.6);horse.group.rotation.y=Math.PI/2;scene.add(horse.group);}
    const camera=new T.PerspectiveCamera(35,1400/760,.1,100);camera.position.set(0,8,14);camera.lookAt(0,.4,0);const renderer=new T.WebGLRenderer({antialias:true});renderer.setSize(1400,760);document.body.append(renderer.domElement);renderer.render(scene,camera);
    const extensions=[0,1].map(j=>rows.filter(r=>r.fore[j].bend<.30&&r.fore[j].reach>.43).length);
-   return {extensions,low,air,contacts:contacts.map(a=>[a[0],a.at(-1),a.length]),jumpStable};}''')
-  print(result,flush=True);assert result['low']>-.005,result;assert result['air']>10,result;assert result['jumpStable'];assert min(result['extensions'])>=8,result;assert all(c[2]>10 for c in result['contacts'])
+   const bodyRange=Math.max(...rows.map(r=>r.bodyY))-Math.min(...rows.map(r=>r.bodyY)),riderRange=Math.max(...rows.map(r=>r.riderY))-Math.min(...rows.map(r=>r.riderY));
+   return {bodyRange,riderRange,extensions,low,air,contacts:contacts.map(a=>[a[0],a.at(-1),a.length]),jumpStable};}''')
+  print(result,flush=True);assert .015<result['bodyRange']<.03 and result['riderRange']<.03,result;assert result['low']>-.005,result;assert result['air']>10,result;assert result['jumpStable'];assert min(result['extensions'])>=8,result;assert all(c[2]>10 for c in result['contacts'])
   page.screenshot(path='/tmp/horse-gallop-phases.png')
   motion=browser.new_page();motion.goto('http://127.0.0.1:18105/')
   motion.set_content('<script type="importmap">{"imports":{"three":"/webapp/static/vendor/three/three.module.js"}}</script><div id="scene"></div><div id="walk-joystick"><div class="joystick-knob"></div></div><button id="walk-jump"></button>')

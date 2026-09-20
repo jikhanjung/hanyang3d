@@ -64,8 +64,9 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
    body.position.y=0;body.rotation.x=0;head.rotation.x=-.12;tail.rotation.x=1;tail.rotation.z=0;
   }else if(moving){
    const period=galloping?560:720,cycle=((time%period)+period)%period/period,t=cycle*Math.PI*2;
-   body.position.y=galloping?-.09+(cycle>.70?Math.sin((cycle-.70)/.30*Math.PI)*.16:Math.sin(cycle/.70*Math.PI)*.02):-.035+Math.abs(Math.sin(t))*.012;
-   body.rotation.x=galloping?Math.sin(t-.6)*.055:0;
+   // Keep the torso supported high with a small continuous bob; the legs carry the gallop.
+   body.position.y=galloping?-.025+Math.sin(t-.9)*.012:-.035+Math.abs(Math.sin(t))*.012;
+   body.rotation.x=galloping?Math.sin(t-.6)*.022:0;
    for(const leg of legs)strideLeg(leg,cycle,galloping);
    head.rotation.x=-.04+Math.sin(t+.5)*(galloping?.10:.035);tail.rotation.x=.85+Math.sin(t)*.08;tail.rotation.z=Math.sin(t)*.12;
   }else{
