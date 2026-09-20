@@ -16,6 +16,7 @@
 
 ## 작업 기록
 
+- [228 — v0.5.31 배포](20260920_228_deploy_v0531.md)
 - [227 — 배재학당 본당·자료 사진](20260920_227_paichai_main_hall.md)
 - [226 — 정동교회 관리인과 역사](20260920_226_jeongdong_attendant.md)
 - [225 — 약초 채집 범위와 성문 현판](20260920_225_herb_targets_gate_plaques.md)

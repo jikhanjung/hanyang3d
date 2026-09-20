@@ -1,18 +1,18 @@
 contract_version = 1
 instance = "hanyang3d"
 image = "honestjung/hanyang3d"
-version = "v0.5.30"
+version = "v0.5.31"
 platform = "linux/amd64"
 settings = "webapp.settings"
 has_database = true
 health_url = "/healthz"
 services = ["hanyang3d", "multiplayer"]
 multiplayer_image = "honestjung/hanyang3d-multiplayer"
-multiplayer_version = "v0.5.24"
+multiplayer_version = "v0.5.31"
 
 [verbs]
-build = "bash deploy/build.sh v0.5.30 --web-only"
-deploy = "bash /srv/hanyang3d/deploy.sh v0.5.30 v0.5.24"
+build = "bash deploy/build.sh v0.5.31"
+deploy = "bash /srv/hanyang3d/deploy.sh v0.5.31 v0.5.31"
 rollback = "bash /srv/hanyang3d/deploy.sh <previous-version>"
 
 [targets.prod]
