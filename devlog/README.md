@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [240 — 영추문 문루·숭례문 현판](20260920_240_yeongchumun_and_gate_plaque.md)
+
 - [239 — 취객 무작위 대사·무응답](20260920_239_random_tipsy_replies.md)
 
 - [238 — 서소문 밖 네거리 이름](20260920_238_seosomun_crossroads_label.md)

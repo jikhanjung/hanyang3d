@@ -40,10 +40,10 @@ export function createCityGate(feature,w,h,d){
  // Gate pavilion: a timber hall on the base with red columns, plaster and lattice, and a hip-and-gable roof
  // (a plain hip for the great south gate).
  if(tiers>0){
-  const pw=w*.72,pd=d*.62,step=(h-base)/tiers,gable=feature.id==='sungnyemun'?1:.55;
+  const pw=w*.72,pd=d*.62,step=(h-base)/tiers,gable=feature.gate_roof_hip??(feature.id==='sungnyemun'?1:.55);
   for(let tier=0;tier<tiers;tier++){
    const shrink=1-tier*.12,tw=pw*shrink,td=pd*shrink,bottom=base+.3+tier*step,postH=step*.55,eave=bottom+postH;
-   const cols=doors===3?7:5,rows=2;
+   const cols=feature.gate_bays??(doors===3?7:5),rows=2;
    box('pavilion-floor',0,bottom+.15,0,tw+1,.3,td+1,'floor');
    for(let i=0;i<=cols;i++)for(let j=0;j<=rows;j++){
     if(i>0&&i<cols&&j>0&&j<rows)continue;
@@ -75,10 +75,10 @@ export function createCityGate(feature,w,h,d){
  for(const [material,values] of buckets){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(values,3));g.computeVertexNormals();const mesh=new THREE.Mesh(g,material);mesh.name='gate-surfaces';model.add(mesh)}
  model.userData={doors,centres,doorWidth,archTestY:-h/2+spring*.6,tiers,parts,conceptual:true};
  // Plaques are physical surfaces, not camera-facing labels. Keep passages untouched.
- const inscription={gwanghwamun:'光化門',sungnyemun:'崇禮門',heunginjimun:'興仁之門',donuimun:'敦義門',sukjeongmun:'肅靖門'}[feature.id];
+ const inscription={gwanghwamun:'光化門',sungnyemun:'崇禮門',heunginjimun:'興仁之門',donuimun:'敦義門',sukjeongmun:'肅靖門',yeongchumun:'迎秋門'}[feature.id];
  if(inscription){
   const vertical=feature.id==='sungnyemun',step=tiers?(h-base)/tiers:0;
-  const ph=tiers?(vertical?step*.63:step*.30):Math.max(.35,base*.10),pw=vertical?ph*.42:ph*(inscription.length+.6);
+  const ph=tiers?(vertical?step*.52:step*.30):Math.max(.35,base*.10),pw=vertical?ph*.42:ph*(inscription.length+.6);
   const canvas=document.createElement('canvas');canvas.width=vertical?256:1024;canvas.height=vertical?768:256;
   const ctx=canvas.getContext('2d');ctx.fillStyle='#181b19';ctx.fillRect(0,0,canvas.width,canvas.height);
   ctx.strokeStyle='#a78951';ctx.lineWidth=12;ctx.strokeRect(9,9,canvas.width-18,canvas.height-18);
@@ -92,7 +92,8 @@ export function createCityGate(feature,w,h,d){
   const board=new THREE.Mesh(new THREE.BoxGeometry(pw,ph,.16),new THREE.MeshStandardMaterial({color:0x62472d,roughness:1}));plaque.add(board);
   const letters=new THREE.Mesh(new THREE.PlaneGeometry(pw*.97,ph*.97),new THREE.MeshBasicMaterial({map:texture}));letters.position.z=.085;plaque.add(letters);
   const side=feature.outer_side??1,td=d*.62*(1-Math.max(0,tiers-1)*.12);
-  plaque.position.set(0,tiers?base+.6+(tiers-1)*step+step*.30-h/2:base*.925-h/2,side*((tiers?td:d)/2+.20));
+  // The tall Sungnyemun board must sit below the eave and in front of the beam bands.
+  plaque.position.set(0,tiers?base+.6+(tiers-1)*step+step*(vertical?.22:.30)-h/2:base*.925-h/2,side*((tiers?td:d)/2+(vertical?.9:.20)));
   plaque.rotation.y=side<0?Math.PI:0;model.add(plaque);parts.push('gate-plaque');
  }
  return model;

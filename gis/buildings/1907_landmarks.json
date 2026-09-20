@@ -5382,6 +5382,77 @@
           }
         ]
       }
+    },
+    {
+      "id": "yeongchumun-1907",
+      "name": "1907년 영추문",
+      "name_en": "Yeongchumun (1907)",
+      "scene_year": 1907,
+      "category": "성문",
+      "landmark_kind": "city_gate",
+      "display_model": "conceptual_gate_with_open_arch_and_roof",
+      "gate_identity": "yeongchumun",
+      "gate_tiers": 1,
+      "gate_bays": 3,
+      "gate_roof_hip": 1,
+      "symbol_size_m": [
+        18,
+        12,
+        10
+      ],
+      "display_yaw_deg": -88.7,
+      "outer_side": 1,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          660,
+          1783
+        ],
+        "anchor": "structure_center",
+        "method": "manual_map_reading",
+        "note": "경회지 남쪽 끝 서쪽의 기존 영추문 개구부 중심. 현대 복원 문 좌표를 사용하지 않은 추정 배치."
+      },
+      "position_status": "approximate_source_map_reading",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1867,
+          "end_year": null,
+          "status": "approximate",
+          "note": "경복궁 중건 기준 연도. 일제강점기 철거되었으나 정확한 철거 연도는 이 자료에서 확정하지 않음; null은 현존 의미 아님."
+        },
+        "depiction": {
+          "start_year": 1907,
+          "end_year": 1908,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0076898"
+        ]
+      },
+      "model_note": "단홍예, 정면 3칸·측면 2칸 단층 문루와 우진각지붕을 단순화. 치수·단청·현판 글씨·방위는 실측 복원 아님. 현대 콘크리트 복원 모델은 사용하지 않음.",
+      "info": {
+        "summary": "경복궁의 서문으로 동쪽 건춘문과는 다른 문이다. 석축의 홍예 통로 위에 정면 3칸·측면 2칸의 단층 문루와 우진각지붕을 표현했다. 1896년 아관파천 때 고종과 왕세자가 궁녀의 가마를 타고 빠져나온 문으로 기록된다. 원도와 기존 담장 개구부에 맞춘 추정 위치이며 크기와 장식은 단순화했다. 현대 영추문은 1975년 원래 자리에서 약간 옮겨 복원한 것이다.",
+        "summary_en": "The west gate of Gyeongbokgung, distinct from the eastern Geonchunmun. A single arch supports a one-storey, three-by-two-bay pavilion with a hipped roof. Gojong and the crown prince are described as leaving through this gate in palace women’s sedan chairs in 1896. Placement and dimensions are approximate; the modern gate was rebuilt at a slightly different location in 1975.",
+        "period": "고종대 경복궁 중건 이후 · 1907년 모습의 개념 모형",
+        "period_en": "Rebuilt under Gojong · conceptual 1907 depiction",
+        "in_1750": "임진왜란 때 소실된 뒤 중건 이전이므로 이 문루는 1750년 장면에 표시하지 않는다.",
+        "in_1750_en": "This rebuilt pavilion is not shown in the 1750 scene.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과 — 경복궁 영추문",
+            "title_en": "Encyclopedia of Korean Culture — Yeongchumun",
+            "url": "https://encykorea.aks.ac.kr/Article/E0076898"
+          },
+          {
+            "title": "한국민족문화대백과 — 아관파천",
+            "title_en": "Encyclopedia of Korean Culture — Agwanpacheon",
+            "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+          }
+        ]
+      }
     }
   ]
 }
