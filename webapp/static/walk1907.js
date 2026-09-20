@@ -10,6 +10,7 @@ import {createNpcDialogue} from './npc_dialogue.js';
 import {createPerson1907,createStationaryPeople1907} from './people1907.js';
 import {createNavigation1907} from './navigation1907.js';
 import {createHorseDealer} from './horse_dealer.js';
+const eventVisit=!!JSON.parse(document.getElementById('historical-event')?.textContent??'null');
 const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
 
 export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture,settlement,flatMap}){
@@ -56,18 +57,18 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  // Keep the hitching rail and horses off the walking corridor.
  const horseFrame={x:horseDealer.position.x,z:horseDealer.position.z,yaw:horseDealer.rotation.y};
  collision.addLocal(horseFrame,3.5,.6,2.4,1.5,()=>horseDealer.visible);
- const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
+ const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>eventVisit?null:npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
  const profile=createWalkProfile({account:shop}),navigation=createNavigation1907(geometry,texture,flatMap);
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
-  positionWorld:{alignment:'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
+  positionWorld:{alignment:eventVisit?'agwanpacheon1896':'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
   terrainGround:(x,z)=>{const y=groundAt(x,z);return y===null?null:y+.025},
   getWalkables:()=>[...infrastructure.bridges.children.map(o=>[o,()=>infrastructure.bridges.visible]),...buildings.flatMap(b=>(b.userData.walkSurfaces??[]).map(o=>[o,()=>b.visible]))],
   getInterior:interiorAt,
   getCameraObstacles:()=>buildings.filter(b=>b.visible&&camera.position.distanceToSquared(b.position)<160*160).flatMap(b=>b.userData.cameraShell??[]),
   onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
  const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
- together=createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
- const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='shop')shop.open(npc.merchant)}});
+ together=eventVisit?{stop(){},update(){},connected:false}:createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
+ const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='agwanpacheon')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant)}});
  const nodes=(source,trade)=>Object.fromEntries(Object.entries(source).map(([key,n])=>[key,{...n,text:n.text.replaceAll('{shop}',trade??'')} ]));
  const npcFor=r=>{
   const info=r.dialogue??data[r.role],dialogueNodes=nodes(info.nodes,r.trade);
@@ -77,6 +78,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
    return info.lines[Math.floor(Math.random()*info.lines.length)].text;
   }:undefined;
   let merchant=r.role==='merchant'?{trade:r.trade,sells:r.trade}:null;
+  if(!eventVisit&&r.owner.userData.feature.id==='russian-legation-1907')dialogueNodes.hello={...dialogueNodes.hello,options:[{label:document.documentElement.lang==='en'?'Follow the chairs in 1896':'1896년 가마 행렬을 따라가 보겠습니다.',action:'agwanpacheon'},...dialogueNodes.hello.options]};
   const corner=r.owner.userData.privateCorner;
   if(r.wander&&corner&&firstPerson.active&&interiorAt(firstPerson.eye)===r.owner&&firstPerson.eye.distanceTo(r.position)<3){
    const p=r.owner.worldToLocal(r.position.clone());
@@ -92,10 +94,16 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  dialogue.register({pick(event,hitTest){let best=null;if(stationary.group.visible)for(const r of stationary.records){if(r.pose==='seated_prayer'||!r.person.group.visible||(r.indoors&&interiorAt(camera.position)!==r.owner))continue;const distance=hitTest(event,r.position,1.95,100);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:npcFor(r)}}return best}});
  dialogue.register({pick(event,hitTest){let best=null;if(pedestrians.group.visible)for(const w of pedestrians.walkers){const distance=hitTest(event,w.position,1.95,80);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:{key:w.id,mode:'bubble',name:data.pedestrian.name,portrait:'walker1907',nodes:data.pedestrian.nodes,position:()=>w.position,maxDistance:100}}}return best}});
  firstPerson.fishing=createFishing({scene,camera,firstPerson,shop,dialogue,waterSurface:infrastructure.water.children[0],bridge:infrastructure.bridges.children.find(b=>b.userData.feature.id===npcData.fishing.bridge_ids['1907']),groundAt,collision:()=>collision,data:npcData,era:1907,visible:()=>el('people3d').checked});
+ async function startHistoricalVisit(){
+  if(!shop.state.loggedIn&&!await shop.requireLogin())return;
+  if(!firstPerson.active)firstPerson.enter();if(!firstPerson.active)return;
+  try{sessionStorage.setItem('agwan-return',JSON.stringify({name:shop.state.name,mounted:firstPerson.mounted}))}catch{}
+  location.href='/events/agwanpacheon/'+(document.documentElement.lang==='en'?'?lang=en':'');
+ }
  let press=null;const canvas=renderer.domElement;
  canvas.addEventListener('pointerdown',e=>{if(e.button===0)press={x:e.clientX,y:e.clientY,id:e.pointerId}});
- canvas.addEventListener('pointerup',e=>{if(!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
+ canvas.addEventListener('pointerup',e=>{if(!eventVisit&&!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
  el('people3d').addEventListener('change',()=>{stationary.group.visible=el('people3d').checked;horseDealer.visible=el('people3d').checked});
  function update(dt){firstPerson.update(dt);if(!firstPerson.active)firstPerson.fishing?.update();together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);if(horseDealer.visible)horseDealer.userData.update(performance.now(),groundAt);dialogue.update()}
- return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor};
+ return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor,startHistoricalVisit};
 }

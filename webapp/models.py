@@ -244,6 +244,8 @@ class Player(models.Model):
     money = models.PositiveIntegerField('엽전(문)', default=0)
     created_at = models.DateTimeField('처음 방문', auto_now_add=True)
     last_seen = models.DateTimeField('마지막 활동', auto_now=True)
+    action_bar = models.JSONField(null=True, blank=True, default=None)
+    action_bar_revision = models.PositiveIntegerField(default=0)
     class Meta:
         verbose_name = '플레이어'
         verbose_name_plural = '플레이어'
@@ -315,3 +317,15 @@ class HerbHarvest(models.Model):
     next_at = models.DateTimeField()
     class Meta:
         constraints = [models.UniqueConstraint(fields=['player','node'], name='herb_harvest_once')]
+
+
+class EventProgress(models.Model):
+    player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name='historical_events')
+    event_id = models.SlugField(max_length=100)
+    definition_version = models.PositiveIntegerField(default=1)
+    status = models.CharField(max_length=12, default='new', choices=[('new','미시작'),('active','진행 중'),('completed','완료')])
+    checkpoint = models.PositiveSmallIntegerField(default=0)
+    completed_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['player','event_id'],name='one_historical_event_per_player')]

@@ -17,6 +17,9 @@
 
 ## 작업 기록
 
+- [243 — 아관파천 첫 회상·계정 액션바](20260920_243_agwanpacheon_first_visit.md)
+- [242 — v0.5.36 배포](20260920_242_deploy_v0536.md)
+
 - [241 — 기술 현황·Steam 전환 보고서](20260920_241_technical_report_steam.md)
 
 - [240 — 영추문 문루·숭례문 현판](20260920_240_yeongchumun_and_gate_plaque.md)

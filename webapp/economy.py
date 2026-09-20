@@ -77,7 +77,7 @@ def attach_cookie(response, value):
 def state(player):
     if not player or not player.name_key:
         return {'logged_in': False}
-    return {'logged_in': True, 'name': player.name, 'money': player.money, 'items': {i.item: i.quantity for i in player.items.all()}}
+    return {'logged_in': True, 'name': player.name, 'money': player.money, 'action_bar': player.action_bar, 'action_bar_revision': player.action_bar_revision, 'items': {i.item: i.quantity for i in player.items.all()}}
 
 
 def sell_price(item):

@@ -1,0 +1,27 @@
+{
+  "id": "agwanpacheon-1896",
+  "version": 1,
+  "date": "1896-02-11",
+  "title": "두 대의 가마",
+  "title_en": "Two Sedan Chairs",
+  "note": "아관파천 기록을 바탕으로 구성한 개인 회상 체험. 가마의 수·세부 동선·가마꾼·대사는 창작이며 1907년 지도를 소급 참고한 추정 경로입니다. 현대 지형을 사용합니다.",
+  "note_en": "A personal historical reconstruction. The two-chair staging, bearers, dialogue and detailed route are interpretive, using the 1907 map and modern terrain as references.",
+  "speed_mps": 1.65,
+  "spacing_m": 9,
+  "route": [
+    {"pixel": [666,1783], "name": "영추문 안", "name_en": "Inside Yeongchumun"},
+    {"pixel": [650,1783], "name": "영추문 밖", "name_en": "Outside Yeongchumun"},
+    {"pixel": [626,1892], "name": "궁궐 서쪽 길", "name_en": "West palace road"},
+    {"pixel": [607,1995], "name": "내수사 방면", "name_en": "Towards Naesusa"},
+    {"pixel": [556,2095], "name": "새문고개 방면", "name_en": "Towards Saemungogae"},
+    {"pixel": [486,2200], "name": "정동으로", "name_en": "Towards Jeongdong"},
+    {"pixel": [411,2315], "name": "정동 입구", "name_en": "Entering Jeongdong"},
+    {"pixel": [420,2340], "name": "러시아공사관 앞", "name_en": "Outside the Russian legation"}
+  ],
+  "retained_buildings": ["yeongchumun-1907", "gwanghwamun-1907", "geunjeongjeon-1907", "gyeonghoeru-1907", "russian-legation-1907", "donuimun-1907", "sungnyemun-1907"],
+  "sources": [
+    {"title": "한국민족문화대백과 — 아관파천", "url": "https://encykorea.aks.ac.kr/Article/E0034214"},
+    {"title": "한국민족문화대백과 — 영추문", "url": "https://encykorea.aks.ac.kr/Article/E0076898"},
+    {"title": "고종실록 1896년 2월 11일", "url": "https://sillok.history.go.kr/id/kza_13302011_005"}
+  ]
+}

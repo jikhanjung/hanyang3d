@@ -1,3 +1,4 @@
+import {createAgwanpacheon} from './agwanpacheon.js';
 import {createScreenshotMode} from './screenshot_mode.js';
 import {createHerbs} from './herbs.js';
 import {createNature1907} from './nature1907.js';
@@ -16,6 +17,7 @@ import {prepareLandmarkLod,updateLandmarkLod} from './lod1907.js';
 import {createLandmark1907} from './landmarks1907.js';
 import {addBuildingAccess1907} from './building_access1907.js';
 const el=id=>document.getElementById(id),base=new URL('../../',import.meta.url),asset=p=>new URL(p.replace(/^\//,''),base).href;
+const eventData=JSON.parse(el('historical-event')?.textContent??'null');
 const cfg=JSON.parse(el('map-config').textContent);
 el('menu').onclick=()=>{const open=el('options').classList.toggle('open');el('menu').setAttribute('aria-expanded',String(open))};
 el('era').onchange=()=>{location.href=el('era').value};
@@ -139,7 +141,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  canvas.addEventListener('pointercancel',()=>scenePress=null);
  canvas.addEventListener('pointerup',e=>{
   const press=scenePress;scenePress=null;
-  if(e.defaultPrevented||!press||press.id!==e.pointerId||press.moved||original)return;
+  if(eventData||e.defaultPrevented||!press||press.id!==e.pointerId||press.moved||original)return;
   const bounds=canvas.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-bounds.left)/bounds.width*2-1,1-(e.clientY-bounds.top)/bounds.height*2),camera);
   scene.updateMatrixWorld(true);
   const hit=raycaster.intersectObjects(scene.children,true).find(hit=>{let o=hit.object;while(o){if(!o.visible)return false;o=o.parent}return true});
@@ -198,7 +200,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   if(original){if(!leaflet){leaflet=L.map('original',{crs:L.CRS.Simple,minZoom:-4,maxZoom:3,attributionControl:false});L.imageOverlay(asset(cfg.image_url),[[0,0],[ih,iw]]).addTo(leaflet)}leaflet.invalidateSize();reset()}
  };
  await stage(4,t('성벽·길·물길 표시 완료 · 걷는 사람과 상인을 준비합니다'));
- walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry:navigationGeometry,texture,settlement,flatMap:{image:texture.image,crop:cfg.crop,toPixel:p=>inverse(cx+p.x/scale,cy-p.z/scale),roads:infraData.roads.features.filter(r=>r.width_m>=10).map(r=>({name:r.name,points:r.centerline})),landmarks:buildings.filter(b=>majorNames.has(b.userData.feature.id)||['daehanmun-1907','bosingak-1907','hwangudan-1907','sungkyun-1907','russian-legation-1907','sontag-hotel-1907'].includes(b.userData.feature.id)).map(b=>({name:b.userData.feature.name.replace(/^1907년\s*/,''),world:b.position,pixel:inverse(cx+b.position.x/scale,cy-b.position.z/scale)}))}});
+ walking=createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry:navigationGeometry,texture,settlement,flatMap:{image:texture.image,crop:cfg.crop,toPixel:p=>inverse(cx+p.x/scale,cy-p.z/scale),roads:infraData.roads.features.filter(r=>r.width_m>=10).map(r=>({name:r.name,points:r.centerline})),landmarks:buildings.filter(b=>!eventData||eventData.retained_buildings.includes(b.userData.feature.id)).filter(b=>majorNames.has(b.userData.feature.id)||['daehanmun-1907','bosingak-1907','hwangudan-1907','sungkyun-1907','russian-legation-1907','sontag-hotel-1907'].includes(b.userData.feature.id)).map(b=>({name:b.userData.feature.name.replace(/^1907년\s*/,''),world:b.position,pixel:inverse(cx+b.position.x/scale,cy-b.position.z/scale)}))}});
  walking.pedestrians.setVehicleAvoider((p,old,dt)=>trams.avoid(p,old,dt,(x,z,r)=>walking.collision.hit(x,z,r)));
  await stage(5,t('사람 표시 완료 · 마무리합니다'));
  updateLayers();
@@ -221,8 +223,10 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   return false;
  };
  const herbs=createHerbs({era:1907,scene,camera,canvas:renderer.domElement,firstPerson:walking.firstPerson,shop:walking.shop,dialogue:walking.dialogue,data:JSON.parse(el('npcs').textContent),source:nature.source,groundAt,collision:()=>walking.collision,market:buildings.find(b=>b.userData.feature.id==='bosingak-1907'),visible:()=>el('people3d').checked});
+ const historicalEvent=eventData?createAgwanpacheon({data:eventData,scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface}):null;
+ if(!eventData&&new URLSearchParams(location.search).has('returnFromAgwan'))walking.shop.whenReady.then(()=>{try{const saved=JSON.parse(sessionStorage.getItem('agwan-return'));if(saved?.name===walking.shop.state.name){walking.firstPerson.enter();walking.firstPerson.setMounted(saved.mounted);sessionStorage.removeItem('agwan-return')}}catch{}});
  let lastFrame=performance.now();
- renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){herbs.update();walking.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);
+ renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){herbs.update();walking.update(dt);historicalEvent?.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);
   settlement.setLod(camera.position);
   for(const model of buildings)updateLandmarkLod(model,camera);
   const indoors=walking.interiorAt(walking.firstPerson.active?walking.firstPerson.eye:camera.position);
@@ -240,6 +244,6 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   }
   renderer.render(scene,camera)}});
  await stage(6,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
- el('status').hidden=true;window.seoul1907={ready:true,nature,herbs,channel,baseGroundAt,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
+ el('status').hidden=true;window.seoul1907={ready:true,historicalEvent,nature,herbs,channel,baseGroundAt,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
 }
 main().catch(error=>{console.error(error);el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;window.seoul1907={ready:false,error:String(error)}});

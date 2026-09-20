@@ -137,7 +137,7 @@ export function createShop({container,data,onLogout,onUse}){
   hudText.textContent=state.loggedIn?`${t('엽전')} ${formatMoney(state.money)}`:'';
   hudLogout.hidden=!state.loggedIn;
   if(!state.loggedIn)closePack();
-  loadActions();render();renderPack();renderActions();
+  loadActions(answer);render();renderPack();renderActions();
  }
  async function refresh(){
   try{const response=await fetch('/api/player/',{credentials:'same-origin',cache:'no-store'});apply(response.ok?await response.json():{logged_in:false})}
@@ -158,13 +158,37 @@ export function createShop({container,data,onLogout,onUse}){
  // Ten desktop action slots store item references, never copies of the server inventory.
  const actionBar=document.createElement('div');actionBar.id='action-bar';actionBar.hidden=true;actionBar.setAttribute('role','toolbar');actionBar.setAttribute('aria-label',t('액션바'));
  const actionMessage=document.createElement('p');actionMessage.id='action-message';actionMessage.setAttribute('role','status');actionBar.append(actionMessage);
- let bindings=Array(10).fill(null),bindingOwner=null;
+ let bindings=Array(10).fill(null),bindingOwner=null,actionRevision=0,actionQueue=Promise.resolve(),actionPending=0;
  const storageKey=()=>`hanyang3d-actions:${state.name.trim().toLowerCase()}`;
- function loadActions(){
-  const owner=state.loggedIn?storageKey():null;if(owner===bindingOwner)return;bindingOwner=owner;bindings=Array(10).fill(null);packPage=0;
-  if(owner)try{const saved=JSON.parse(localStorage.getItem(owner));if(Array.isArray(saved)&&saved.length===10)bindings=saved.map(id=>typeof id==='string'&&data.items[id]?.use?id:null)}catch{}
+ const validBindings=value=>Array.isArray(value)&&value.length===10?value.map(id=>typeof id==='string'&&data.items[id]?.use?id:null):null;
+ function loadActions(answer){
+  const owner=state.loggedIn?storageKey():null,changed=owner!==bindingOwner;
+  if(changed){bindingOwner=owner;bindings=Array(10).fill(null);actionRevision=0;packPage=0}
+  if(!owner)return;
+  if(actionPending&&!changed)return;
+  if(Number.isInteger(answer?.action_bar_revision)&&answer.action_bar_revision>=actionRevision){
+   actionRevision=answer.action_bar_revision;
+   const server=validBindings(answer.action_bar);
+   if(server){bindings=server;return}
+   // A deliberate empty server layout is an array; only null allows one-time legacy import.
+   if(answer.action_bar===null){try{const legacy=validBindings(JSON.parse(localStorage.getItem(owner)));if(legacy?.some(Boolean)){bindings=legacy;saveActions(true)}}catch{}}
+  }
  }
- const saveActions=()=>{if(bindingOwner)try{localStorage.setItem(bindingOwner,JSON.stringify(bindings))}catch{}};
+ function saveActions(importLegacy=false){
+  const owner=bindingOwner,snapshot=[...bindings];if(!owner)return;
+  try{localStorage.setItem(owner,JSON.stringify(snapshot))}catch{}
+  actionPending++;
+  actionQueue=actionQueue.catch(()=>{}).then(async()=>{
+   if(owner!==bindingOwner)return;
+   try{
+    const response=await post('/api/player/action-bar/',{slots:snapshot,revision:actionRevision,import_legacy:importLegacy}),answer=await response.json();
+    if(owner!==bindingOwner)return;
+    if(response.ok||response.status===409){actionRevision=answer.action_bar_revision;bindings=validBindings(answer.action_bar)??Array(10).fill(null);renderActions()}
+    if(!response.ok)throw Error(answer.error||t('저장하지 못했습니다.'));
+    actionMessage.textContent='';
+   }catch(error){if(owner===bindingOwner)actionMessage.textContent=error.message||t('액션바를 서버에 저장하지 못했습니다. 다시 배치해 주세요.')}
+  }).finally(()=>{actionPending--});
+ }
  function makeDraggable(node,id){if(!data.items[id]?.use)return;node.draggable=true;node.ondragstart=e=>{e.stopPropagation();e.dataTransfer.setData('application/x-hanyang-item',id);e.dataTransfer.effectAllowed='copy'};node.onpointerdown=e=>e.stopPropagation()}
  const actionSlots=Array.from({length:10},(_,i)=>{
   const button=document.createElement('button');button.type='button';button.className='action-slot';button.dataset.slot=i;button.onclick=()=>activate(i);

@@ -58,6 +58,7 @@ def validate(key, value):
                     if not num(wall[k],.01,100): fail('궁궐 담장 치수가 범위를 벗어났습니다.')
                 if not isinstance(wall['openings'],list) or len(wall['openings'])>30: fail('궁궐 출입구 수가 잘못되었습니다.')
                 for opening in wall['openings']:
+                    if 'width_m' in opening and not num(opening['width_m'],1,100): fail('궁궐 출입구 폭이 잘못되었습니다.')
                     if not isinstance(opening.get('model_id'),str):
                         points([opening['pixel']],1)
                         if not num(opening['width_m'],1,100): fail('궁궐 출입구 폭이 잘못되었습니다.')

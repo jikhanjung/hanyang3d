@@ -60,8 +60,9 @@ def terrain3d(request, canvas_only=False):
 
 @require_safe
 @ensure_csrf_cookie
-def seoul1907(request):
+def seoul1907(request, flashback=False):
     from .economy import catalog
+    from .events import definition
     config = json.loads((settings.BASE_DIR / 'gis/control_points/seoul1907.json').read_text())
     if settings.CONTENT_SOURCE == 'database':
         from .content import load_buildings
@@ -70,7 +71,7 @@ def seoul1907(request):
         buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1907_landmarks.json').read_text())
     from .scene_data import load
     infrastructure = load('infrastructure1907')
-    response = render(request, 'seoul1907.html', {'npcs': localize(catalog(), request.lang), 'people1907': localize(load('people1907'), request.lang), 'trams1907': load('trams1907'), 'walking1907': load('walking1907'), 'multiplayer_url': settings.MULTIPLAYER_URL, 'walk_world_version': settings.WALK_WORLD_VERSION, 'infrastructure': infrastructure, 'settlement1907': load('settlement1907'), 'map': config, 'buildings': localize(buildings, request.lang), 'app_version': settings.APP_VERSION})
+    response = render(request, 'seoul1907.html', {'historical_event': definition() if flashback else None, 'npcs': localize(catalog(), request.lang), 'people1907': localize(load('people1907'), request.lang), 'trams1907': load('trams1907'), 'walking1907': load('walking1907'), 'multiplayer_url': settings.MULTIPLAYER_URL, 'walk_world_version': settings.WALK_WORLD_VERSION, 'infrastructure': infrastructure, 'settlement1907': load('settlement1907'), 'map': config, 'buildings': localize(buildings, request.lang), 'app_version': settings.APP_VERSION})
 
     response['Cache-Control']='no-cache, must-revalidate'
     return response
@@ -274,3 +275,36 @@ def herb_action(request):
         player.refresh_from_db()
         return _no_store(JsonResponse({**result,**state(player)}))
     except TradeError as error:return _no_store(JsonResponse({'error':error.message},status=error.status))
+
+
+@require_POST
+def historical_event(request):
+    from .economy import TradeError, player_from_cookie
+    from .events import progress
+    player=player_from_cookie(request)
+    if not player or not player.name_key:return _no_store(JsonResponse({'error':'로그인이 필요합니다.'},status=401))
+    body=_json_body(request)
+    if body is None:return _no_store(JsonResponse({'error':'잘못된 요청입니다.'},status=400))
+    try:return _no_store(JsonResponse(progress(player,body.get('action'),body.get('checkpoint'),body.get('version'))))
+    except TradeError as error:return _no_store(JsonResponse({'error':error.message},status=error.status))
+
+
+@require_POST
+def action_bar(request):
+    from .economy import player_from_cookie, catalog
+    from .models import Player
+    from django.db.models import F
+    player=player_from_cookie(request)
+    if not player or not player.name_key:return _no_store(JsonResponse({'error':'로그인이 필요합니다.'},status=401))
+    body=_json_body(request)
+    if body is None:return _no_store(JsonResponse({'error':'잘못된 요청입니다.'},status=400))
+    slots=body.get('slots');revision=body.get('revision');items=catalog()['items']
+    if not isinstance(slots,list) or len(slots)!=10 or any(x is not None and (not isinstance(x,str) or not items.get(x,{}).get('use')) for x in slots) or type(revision) is not int or revision<0:
+        return _no_store(JsonResponse({'error':'사용 가능한 물건으로 액션바 10칸을 지정해 주세요.'},status=400))
+    query=Player.objects.filter(pk=player.pk,action_bar_revision=revision)
+    if body.get('import_legacy') is True:query=query.filter(action_bar__isnull=True)
+    changed=query.update(action_bar=slots,action_bar_revision=F('action_bar_revision')+1)
+    player.refresh_from_db()
+    result={'action_bar':player.action_bar,'action_bar_revision':player.action_bar_revision}
+    if not changed:result['error']='다른 화면에서 배치가 변경되었습니다. 저장된 배치를 불러왔습니다.'
+    return _no_store(JsonResponse(result,status=200 if changed else 409))

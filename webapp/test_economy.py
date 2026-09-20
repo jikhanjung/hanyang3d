@@ -28,7 +28,7 @@ class EconomyTests(TestCase):
         self.assertEqual(self.start.json(), {'logged_in': False})
         self.assertEqual(Player.objects.count(), 1)  # only the registered account from setUp
         state = self.client.get('/api/player/').json()
-        self.assertEqual(state, {'logged_in': True, 'name': '나그네', 'money': data['wallet']['start'], 'items': {}})
+        self.assertEqual(state, {'logged_in': True, 'name': '나그네', 'money': data['wallet']['start'], 'items': {}, 'action_bar': None, 'action_bar_revision': 0})
         self.assertTrue(self.client.cookies[COOKIE]['httponly'])
         self.assertTrue(Player.objects.get().password.startswith(('pbkdf2_', 'argon2', 'bcrypt', 'scrypt')))
         # A forged cookie is not accepted.

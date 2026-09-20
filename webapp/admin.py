@@ -157,3 +157,16 @@ class SceneDatasetAdmin(StableKeyAdmin):
     list_display = ['key', 'updated_at']
     def has_add_permission(self, request): return False
     def has_delete_permission(self, request, obj=None): return False
+
+
+from .models import EventProgress
+
+@admin.register(EventProgress)
+class EventProgressAdmin(admin.ModelAdmin):
+    list_display = ('player', 'event_id', 'status', 'checkpoint', 'completed_at', 'updated_at')
+    list_filter = ('event_id', 'status')
+    search_fields = ('player__name',)
+    readonly_fields = ('player','event_id','definition_version','status','checkpoint','completed_at','updated_at')
+    def has_add_permission(self, request): return False
+    def has_change_permission(self, request, obj=None): return False
+    def has_delete_permission(self, request, obj=None): return False
