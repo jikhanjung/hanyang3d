@@ -40,6 +40,21 @@ with tempfile.TemporaryDirectory() as tmp:
     page.keyboard.up('w')
     result=page.evaluate('''()=>{const s=seoul1907,b=s.buildings.find(b=>b.userData.feature.landmark_kind==='altar');const p=s.firstPerson.eye;b.worldToLocal(p);return {z:p.z,height:s.firstPerson.ground-b.userData.groundFloor}}''')
     print('altar ascent',setup,result,flush=True);assert abs(result['z'])<2 and abs(result['height']-3.3)<.01,result
+    # Real mouse chording: either order starts walking, releasing either button stops.
+    for first,second in [('left','right'),('right','left')]:
+     page.mouse.move(640,450);page.mouse.down(button=first)
+     before=page.evaluate('seoul1907.firstPerson.eye.toArray()')
+     page.evaluate('()=>{for(let i=0;i<10;i++)seoul1907.firstPerson.update(1/60)}')
+     assert page.evaluate('seoul1907.firstPerson.eye.toArray()')==before
+     page.mouse.down(button=second)
+     page.evaluate('()=>{for(let i=0;i<10;i++)seoul1907.firstPerson.update(1/60)}')
+     after=page.evaluate('seoul1907.firstPerson.eye.toArray()');assert sum((x-y)**2 for x,y in zip(before,after))>.2
+     page.mouse.up(button=first)
+     page.evaluate('()=>{for(let i=0;i<10;i++)seoul1907.firstPerson.update(1/60)}')
+     assert page.evaluate('seoul1907.firstPerson.eye.toArray()')==after
+     page.mouse.up(button=second)
+     assert not page.locator('#building-info').is_visible() and not page.locator('#npc-overlay').is_visible()
+    print('PASS two mouse buttons in both orders and release without click',flush=True)
     # A stationary jump on the flat top measures height independently of terrain changes.
     peaks=[]
     for mounted in [False,True]:
@@ -66,7 +81,7 @@ with tempfile.TemporaryDirectory() as tmp:
      page.keyboard.press('Escape')
     page.set_viewport_size({'width':1280,'height':900})
     page.wait_for_timeout(150)
-    page.evaluate('''async()=>{const {updateLandmarkLod}=await import('/webapp/static/lod1907.js');const s=seoul1907,r=s.walking.stationary.records.find(r=>r.appearance==='priest');s.firstPerson.exit();document.getElementById('building-info').hidden=true;document.getElementById('walk-chat').hidden=true;s.camera.position.copy(r.position).add({x:2,y:1.65,z:3});s.camera.lookAt(r.position.clone().add({x:0,y:1,z:0}));for(const b of s.buildings)updateLandmarkLod(b,s.camera);s.walking.stationary.update(s.camera);document.getElementById('labels').hidden=true;s.renderer.setAnimationLoop(()=>s.renderer.render(s.scene,s.camera))}''')
+    page.evaluate('''async()=>{const {updateLandmarkLod}=await import('/webapp/static/lod1907.js');const s=seoul1907,r=s.walking.stationary.records.find(r=>r.appearance==='priest');s.firstPerson.exit();s.camera.near=.08;s.camera.fov=70;s.camera.updateProjectionMatrix();document.getElementById('building-info').hidden=true;document.getElementById('walk-chat').hidden=true;s.camera.position.copy(r.position).set(5.5,1.77-r.owner.userData.feature.symbol_size_m[1]/2,25.5);r.owner.localToWorld(s.camera.position);s.camera.lookAt(r.position.clone().add({x:0,y:1,z:0}));for(const b of s.buildings)updateLandmarkLod(b,s.camera);s.walking.stationary.update(s.camera);document.getElementById('labels').hidden=true;s.renderer.setAnimationLoop(()=>s.renderer.render(s.scene,s.camera))}''')
     page.wait_for_timeout(150)
     page.screenshot(path='/tmp/cathedral-priest.png')
     page.goto('http://127.0.0.1:18099/');page.wait_for_function('window.terrain3d?.ready',timeout=180000)
@@ -75,5 +90,26 @@ with tempfile.TemporaryDirectory() as tmp:
     page.wait_for_timeout(150)
     boxes=[page.locator(sel).bounding_box() for sel in ['#building-popup','#walk-chat']]
     assert boxes[0]['y']+boxes[0]['height']+8<=boxes[1]['y'],boxes
-    assert not errors,errors;print('PASS access, attendants, jump, chat both eras',flush=True);browser.close()
+    page.evaluate(LOGIN_JS,['공통이동검사','shared-movement-test'])
+    page.evaluate('terrain3d.renderer.setAnimationLoop(null);terrain3d.shop.state.items.horse_reins=1;terrain3d.firstPerson.enter()')
+    page.wait_for_function('terrain3d.firstPerson.active')
+    page.evaluate('''()=>{const s=terrain3d,f=s.firstPerson,p=f.eye;document.getElementById('building-popup').hidden=true;document.getElementById('walk-chat').hidden=true;for(let i=0;i<100;i++){const x=p.x+(i%10)*3,z=p.z+Math.floor(i/10)*3;if(!s.collision.hit(x,z,2)&&!s.pedestrians.near(x,z,2)&&f.placeAt(x,z,0))break;}f.clearInput();}''')
+    # Real mouse chording: either order starts walking, releasing either button stops.
+    for first,second in [('left','right'),('right','left')]:
+     page.mouse.move(640,450);page.mouse.down(button=first)
+     before=page.evaluate('terrain3d.firstPerson.eye.toArray()')
+     page.evaluate('()=>{for(let i=0;i<10;i++)terrain3d.firstPerson.update(1/60)}')
+     assert page.evaluate('terrain3d.firstPerson.eye.toArray()')==before
+     page.mouse.down(button=second)
+     page.evaluate('()=>{for(let i=0;i<10;i++)terrain3d.firstPerson.update(1/60)}')
+     after=page.evaluate('terrain3d.firstPerson.eye.toArray()');assert sum((x-y)**2 for x,y in zip(before,after))>.2
+     page.mouse.up(button=first)
+     page.evaluate('()=>{for(let i=0;i<10;i++)terrain3d.firstPerson.update(1/60)}')
+     assert page.evaluate('terrain3d.firstPerson.eye.toArray()')==after
+     page.mouse.up(button=second)
+     assert not page.locator('#building-popup').is_visible() and not page.locator('#npc-overlay').is_visible()
+    print('PASS two mouse buttons in both orders and release without click',flush=True)
+    peaks1750=page.evaluate('''()=>{const f=terrain3d.firstPerson,result=[];for(const on of [false,true]){f.setMounted(on);f.jump();let peak=0;for(let i=0;i<110;i++){f.update(1/60);peak=Math.max(peak,f.air)}result.push(peak)}return result}''')
+    assert peaks1750[1]>peaks1750[0]*1.8,peaks1750
+    assert not errors,errors;print('PASS access, attendants, jump and mouse controls both eras, chat both eras',flush=True);browser.close()
   finally:server.terminate();server.wait(timeout=10)

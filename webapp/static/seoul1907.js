@@ -144,7 +144,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  canvas.addEventListener('pointercancel',()=>scenePress=null);
  canvas.addEventListener('pointerup',e=>{
   const press=scenePress;scenePress=null;
-  if(!press||press.id!==e.pointerId||press.moved||original)return;
+  if(e.defaultPrevented||!press||press.id!==e.pointerId||press.moved||original)return;
   const bounds=canvas.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-bounds.left)/bounds.width*2-1,1-(e.clientY-bounds.top)/bounds.height*2),camera);
   scene.updateMatrixWorld(true);
   const hit=raycaster.intersectObjects(scene.children,true).find(hit=>{let o=hit.object;while(o){if(!o.visible)return false;o=o.parent}return true});

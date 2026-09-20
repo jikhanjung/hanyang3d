@@ -648,7 +648,8 @@ async function main(){
  });
  // Clicks select in both orbit and first-person views; a drag (6 px or more) only turns the view.
  renderer.domElement.addEventListener('pointerdown',event=>{if(event.button!==0){press=null;return}press={x:event.clientX,y:event.clientY,id:event.pointerId};tooltip.hidden=true});
- renderer.domElement.addEventListener('pointerup',event=>{
+  renderer.domElement.addEventListener('pointerup',event=>{
+  if(event.defaultPrevented){press=null;return}
   if(press&&press.id===event.pointerId&&Math.hypot(event.clientX-press.x,event.clientY-press.y)<6){
    // People on the map (keeper, gate guards, shopkeepers, passers-by) are picked before buildings.
    if(npcDialogue?.pick(event)){hovered=null;tooltip.hidden=true}

@@ -20,7 +20,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
 
   const eye=new THREE.Vector3(),boom=new THREE.Vector3(),cameraRay=new THREE.Raycaster(),cameraDirection=new THREE.Vector3();
-  let unfocusedMotion=null;
+  let unfocusedMotion=null,mouseForward=false,mouseChord=false;
   const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick'),jumpButton=el('walk-jump');canvas.tabIndex=0;
   // One jump at a time: Space on a keyboard, the on-screen button on phones.
   function jump(){if(!active||air!==0||vy!==0)return false;vy=mounted?RIDE_JUMP_SPEED:JUMP_SPEED;return true}
@@ -28,7 +28,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   for(const type of ['pointerup','pointercancel','pointerleave'])jumpButton.addEventListener(type,()=>jumpButton.classList.remove('pressed'));
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
   const held=code=>keys.has(code);
-  function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false;unfocusedMotion=null}
+  function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false;unfocusedMotion=null;mouseForward=false;mouseChord=false}
   const mapDirection=new THREE.Vector3();
   const largeMap=createLargeMap({source:navigation.largeMapSource,container:el('scene'),getPose:()=>{camera.getWorldDirection(mapDirection);return {at:active?eye:controls.target,yaw:Math.atan2(-mapDirection.x,-mapDirection.z),walking:active}},onOpen:clearInput,returnFocus:()=>canvas.focus({preventScroll:true})});
   function rememberPosition(){if(active){walkProfile.savePosition(positionWorld,{x:eye.x,z:eye.z,yaw});lastRemembered=performance.now()}}
@@ -121,7 +121,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   function update(dt){
    largeMap.update();if(!active)return;
    if(lookYaw&&!drag?.look){lookYaw*=Math.exp(-8*Math.min(dt,.1));if(Math.abs(lookYaw)<1e-3)lookYaw=0;look()}
-   const forward=unfocusedMotion?.forward??(Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y);
+   const forward=unfocusedMotion?.forward??(Math.min(1,Number(held('KeyW')||held('ArrowUp')||mouseForward)+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y);
    const side=unfocusedMotion?.side??(Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x);
    // Selling the reins (or logging out) takes the horse away.
    if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye)))setMounted(false);
@@ -189,7 +189,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   canvas.addEventListener('blur',()=>{drag=null});
   window.addEventListener('blur',()=>{
    if(!active)return;drag=null;if(unfocusedMotion)return;
-   const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp'))+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
+   const forward=Math.min(1,Number(held('KeyW')||held('ArrowUp')||mouseForward)+Number(autoRun))-Number(held('KeyS')||held('ArrowDown'))-joystick.value.y;
    const side=Number(held('KeyD')||held('ArrowRight'))-Number(held('KeyA')||held('ArrowLeft'))+joystick.value.x;
    const fast=held('ShiftLeft')||held('ShiftRight');clearInput();
    if(forward||side)unfocusedMotion={forward,side,fast};
@@ -197,6 +197,12 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   document.addEventListener('visibilitychange',()=>{if(document.hidden){rememberPosition();drag=null}});
   window.addEventListener('pagehide',rememberPosition);
   canvas.addEventListener('pointerdown',event=>{if(!active||drag)return;canvas.focus({preventScroll:true});drag={id:event.pointerId,x:event.clientX,y:event.clientY,look:event.button===2};canvas.setPointerCapture(event.pointerId)});
+  // Pointerdown fires only for the first mouse button; mousedown also sees the second.
+  canvas.addEventListener('mousedown',event=>{if(!active||!drag)return;mouseForward=(event.buttons&3)===3;if(mouseForward){mouseChord=true;unfocusedMotion=null;event.preventDefault()}});
+  document.addEventListener('mouseup',event=>{if(active){mouseForward=(event.buttons&3)===3&&!!drag;if(document.hasFocus())unfocusedMotion=null}},true);
+  canvas.addEventListener('pointermove',event=>{if(active&&drag&&event.pointerType==='mouse'){mouseForward=(event.buttons&3)===3;if(mouseForward)mouseChord=true}});
+  // A two-button movement gesture must not also select the building/NPC underneath.
+  canvas.addEventListener('pointerup',event=>{if(mouseChord)event.preventDefault()},true);
   // Left drag turns the walker; right drag only looks around (the walking direction stays).
   canvas.addEventListener('pointermove',event=>{if(!active||!drag||drag.id!==event.pointerId)return;const dx=(event.clientX-drag.x)*.003;if(drag.look)lookYaw=Math.max(-Math.PI*.9,Math.min(Math.PI*.9,lookYaw-dx));else yaw-=dx;pitch=Math.max(-Math.PI*.47,Math.min(Math.PI*.47,pitch-(event.clientY-drag.y)*.003));drag.x=event.clientX;drag.y=event.clientY;look()});
   canvas.addEventListener('contextmenu',event=>{if(active)event.preventDefault()});
@@ -204,7 +210,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    if(!active)return;event.preventDefault();
    view=Math.max(0,Math.min(12,view+Math.sign(event.deltaY)*.6));look();
   },{passive:false});
-  const release=event=>{if(drag?.id===event.pointerId)drag=null};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
+  const release=event=>{if(drag?.id===event.pointerId){drag=null;mouseForward=false;mouseChord=false}};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;if(mounted&&getInterior(eye))setMounted(false);else look();return true}
   return {get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
