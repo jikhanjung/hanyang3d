@@ -5529,5 +5529,18 @@
       "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
       "note": "1907년 최신경성전도의 경복궁 서·남·동쪽 경계와 광화문을 판독한 개념 담장. 북쪽 경계와 신무문 개구부는 원도에서 불명확하여 궁역을 감싸도록 추정 연결했다. 영추문·건춘문은 표기 근처에 통로만 두며 문루 복원은 별도 작업. 높이·재료·연대는 현 장면용 추정이다."
     }
+  ],
+  "place_labels": [
+    {
+      "id": "seosomun-outside-crossroads-1907",
+      "name": "서소문 밖 네거리",
+      "name_en": "Crossroads outside Seosomun",
+      "pixel": [
+        389,
+        2645
+      ],
+      "position_status": "approximate_source_map_crossroads",
+      "note": "소의문 밖 동서길과 개울·철길 사이 남북길이 만나는 네거리의 추정 중심. 형장의 정확한 지점이나 경계를 나타내지 않음."
+    }
   ]
 }

@@ -161,6 +161,15 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   label.onclick=()=>showBuilding(bridge);
   el('labels').append(label);labels.push({label,point:bridge.userData.labelPosition,owner:bridge,layer:'bridge'});
  }
+ // Place names have no building, marker, or click action.
+ for(const f of infraData.place_labels??[]){
+  const point=world(...project(...f.pixel),0);point.y=groundAt(point.x,point.z)+4;
+  const owner=new THREE.Group();owner.userData.feature=f;
+  const label=document.createElement('span');label.className='building-label';
+  label.textContent=document.documentElement.lang==='en'?(f.name_en??f.name):f.name;
+  label.style.pointerEvents='none';label.style.cursor='default';
+  el('labels').append(label);labels.push({label,point,owner,layer:'place'});
+ }
  const updateLayers=()=>{
   needsRender=true;
   const visible=el('buildings3d').checked;
