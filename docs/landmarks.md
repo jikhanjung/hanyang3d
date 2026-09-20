@@ -1613,3 +1613,17 @@
 - [한국민족문화대백과 — 손탁호텔·옛 사진](https://encykorea.aks.ac.kr/Article/E0030583)
 - [우리역사넷 — 근대 건축](https://contents.history.go.kr/mobile/nh/view.do?levelId=nh_046_0040_0020_0030_0020_0020)
 - [서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+
+### 1907년 배재학당
+
+아펜젤러가 1885년 설립한 배재학당의 1887년 본당. 단층 벽돌 교사에 아치창과 중앙 현관, 기와지붕을 표현했다. 현재 박물관으로 남아 있는 1916년 동관과 구분한다. 1929년 본당 철거 전 모습을 참고했으며 위치·방향·크기와 세부 장식은 추정이다.
+
+1887년 건립~1929년 철거 · 1907년 모습
+
+정동교회 남쪽 구획의 추정 위치이며 개별 필지·본당 외곽의 확정 판독이 아닙니다.
+
+- [한국민족문화대백과 — 배재학당역사박물관](https://encykorea.aks.ac.kr/Article/E0069863)
+- [아펜젤러 행전 — 본당·동관·기숙사의 내력과 옛 사진](https://missionews.co.kr/news/583627)
+- [국사편찬위원회 — 배재 학당 설립](https://contents.history.go.kr/front/hm/view.do?levelId=hm_140_0030)
+- [서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)

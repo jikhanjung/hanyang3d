@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-09-19",
-  "scope": "LOC 서울 1904 목록 94건 + Cornell 8건 + 고궁박물관 1건. 소장품 기록 수이며 독립 촬영 장면 수가 아님.",
+  "checked_at": "2026-09-20",
+  "scope": "LOC 서울 1904 목록 94건 + Cornell 8건 + 고궁박물관 1건. 소장품 기록 수이며 독립 촬영 장면 수가 아님. 배재학당 본당 옛 사진 1건 추가(촬영일 미상).",
   "status": "research_archive_not_runtime_assets",
   "metadata_source": "https://data.labs.loc.gov/stereographs/metadata.csv",
   "items": [
@@ -4036,6 +4036,28 @@
       "local_path": null,
       "caution": "엽서 발행·소인과 촬영일은 다를 수 있음. 부분 채색을 실제 색 복원 근거로 쓰지 않음.",
       "accessed": "2026-09-19"
+    },
+    {
+      "id": "PAICHAI-MAIN-HALL-01",
+      "repository": "선교신문 / 아펜젤러 행전",
+      "catalog_url": "https://missionews.co.kr/news/583627",
+      "title_original": "1887년 건립된 배재학당 본당",
+      "title_ko": "배재학당 1887년 본당 — 촬영 연도 미상",
+      "date": {
+        "label": "촬영일 미상",
+        "kind": "undated_photo_of_1887_building",
+        "capture_date": null,
+        "certainty": "capture_date_unconfirmed"
+      },
+      "themes": [
+        "교육",
+        "건축"
+      ],
+      "local_path": "data/photos/paichai/main-hall-1887-undated.jpg",
+      "sha256": "a74937f10846ad21dd70acf6bec14d185fd57853294e01fceda90d1629f81f5c",
+      "status": "downloaded_research_only",
+      "rights": "사진 원저작자·촬영일·재사용 허락 미확인. 기사에는 저작권 고지 있음. 연구용 로컬 보관, 웹 배포 대상 아님.",
+      "detail_manifest": "docs/paichai_photo_manifest.json"
     }
   ],
   "discovery_collections": [

@@ -34,7 +34,40 @@ export function createLandmark1907(f,w,h,d){
   for(let i=0;i<4;i++)box('hall-door',x+(i/4-.375)*hw,eave*.43,z+hd/2+.06,hw/5,eave*.65,.15,'door');
   roof(x,eave,z,hw+2,hd+2,2.5);
  };
- if(kind==='tram_depot'){
+ if(kind==='paichai_school'){
+  // 1887 main hall: a single storey, tiled hip roof and projecting central arcade.
+  const eave=6.2,front=d*.38;
+  box('school-base',0,.25,0,w,.5,d,'stone');
+  box('school-brick-hall',0,3.35,0,w*.95,5.7,d*.76,'brick');
+  for(const y of [.7,5.9,6.2])box('school-stone-course',0,y,0,w*.98,.22,d*.80,'cream');
+  roof(0,eave,0,w*1.04,d*.9,2.7,1);
+  const window=(x,z,side=0)=>{
+   const a=add('school-window',new THREE.PlaneGeometry(1.3,2.75),x,2.8,z,'glass',side);
+   const shape=new THREE.Shape();shape.absarc(0,0,.65,0,Math.PI,false);shape.closePath();
+   add('school-window-arch',new THREE.ShapeGeometry(shape),x,4.175,z,'glass',side);
+   if(!side){for(const dx of [-.78,.78])box('school-window-jamb',x+dx,2.8,z+.03,.18,2.85,.16,'cream');
+    add('school-arch-trim',new THREE.TorusGeometry(.73,.09,5,18,Math.PI),x,4.175,z+.05,'cream');
+    box('school-window-mullion',x,2.8,z+.04,.075,2.75,.1,'cream');box('school-window-transom',x,3.15,z+.04,1.3,.08,.1,'cream');
+    box('school-window-sill',x,1.36,z+.04,1.8,.2,.3,'cream');}
+  };
+  for(const side of [-1,1])for(let i=0;i<3;i++)window(side*(w*.18+i*w*.105),front+.03);
+  for(let i=0;i<7;i++)window((i-3)*w*.12,-front-.03,Math.PI);
+  // Open central three-arch porch. The actual entrance door is recessed behind it.
+  box('school-porch-floor',0,.35,front+.9,w*.25,.7,2.2,'stone');
+  for(const x of [-w*.115,-w*.038,w*.038,w*.115])box('school-porch-pier',x,2.8,front+1.8,.35,4.9,.4,'cream');
+  for(const x of [-w*.077,0,w*.077])add('school-porch-arch',new THREE.TorusGeometry(w*.038,.14,6,18,Math.PI),x,4.65,front+1.8,'cream');
+  box('school-porch-cornice',0,6.1,front+1,w*.27,.4,2.8,'cream');
+  const pediment=new THREE.Shape();pediment.moveTo(-w*.14,0);pediment.lineTo(0,1.7);pediment.lineTo(w*.14,0);pediment.closePath();
+  add('school-pediment',new THREE.ExtrudeGeometry(pediment,{depth:.3,bevelEnabled:false}),0,6.3,front+2,'cream');
+  add('school-pediment-roundel',new THREE.CircleGeometry(.38,16),0,6.95,front+2.32,'glass');
+  box('school-door',0,2.2,front+.04,1.8,3.2,.12,'door');
+  for(const x of [-w*.29,w*.29]){box('school-chimney',x,8.35,-d*.16,.8,2.8,.9,'brick');box('school-chimney-cap',x,9.8,-d*.16,1,.25,1.1,'cream')}
+  const canvas=document.createElement('canvas');canvas.width=768;canvas.height=160;const ctx=canvas.getContext('2d');ctx.fillStyle='#292923';ctx.fillRect(0,0,768,160);ctx.fillStyle='#e4ca84';ctx.font='bold 115px serif';ctx.textAlign='center';ctx.fillText('堂學材培',384,122);
+  const sign=box('school-name',0,5.85,front+2.23,4.1,.85,.14,'door');sign.material=new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(canvas)});
+  group.userData.blockingRects=[{x:0,z:0,hw:w*.475,hd:d*.38}];
+  group.userData.accessFront=front+2;group.userData.accessHeight=.7;
+  group.userData.plan='1887-single-storey-main-hall';
+ }else if(kind==='tram_depot'){
   // Long, open-sided shed and adjacent generating house, suggested by the 1899 photograph.
   const shedW=w*.64,shedD=d*.48,sx=-w*.15,sz=-d*.12;
   box('depot-yard',0,.08,0,w,.16,d,'bank');

@@ -5225,6 +5225,84 @@
           }
         ]
       }
+    },
+    {
+      "id": "paichai-main-hall-1907",
+      "name": "1907년 배재학당",
+      "name_en": "Paichai School (1907)",
+      "scene_year": 1907,
+      "category": "교육",
+      "landmark_kind": "paichai_school",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        32,
+        10,
+        14
+      ],
+      "display_yaw_deg": 12,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          509,
+          2520
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_block_from_source_map",
+        "note": "정동교회 남쪽, 동서 큰길 남측과 남북 작은길 서측 구획 내 추정. 원도에서 배재학당 글씨나 본당 외곽을 확정 판독한 것은 아님."
+      },
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1887,
+          "end_year": 1929,
+          "status": "documented"
+        },
+        "depiction": {
+          "start_year": 1887,
+          "end_year": 1929,
+          "reference_year": 1907,
+          "status": "simplified_period_model",
+          "end_reason": "main hall demolished in 1929; school institution continued"
+        },
+        "sources": [
+          "https://encykorea.aks.ac.kr/Article/E0069863",
+          "https://missionews.co.kr/news/583627",
+          "https://contents.history.go.kr/front/hm/view.do?levelId=hm_140_0030"
+        ]
+      },
+      "model_note": "1887년 본당 옛 사진을 참고한 단층 벽돌 교사. 아치창·중앙 현관·기와지붕을 단순화. 치수·배치·방향은 추정. 1916년 동관은 포함하지 않음.",
+      "info": {
+        "summary": "아펜젤러가 1885년 설립한 배재학당의 1887년 본당. 단층 벽돌 교사에 아치창과 중앙 현관, 기와지붕을 표현했다. 현재 박물관으로 남아 있는 1916년 동관과 구분한다. 1929년 본당 철거 전 모습을 참고했으며 위치·방향·크기와 세부 장식은 추정이다.",
+        "summary_en": "The 1887 main hall of Paichai School, founded in 1885. A single-storey brick schoolhouse with arched windows, central porch and tiled roof. Distinct from the surviving 1916 east wing. Position, orientation, dimensions and details are approximate.",
+        "period": "1887년 건립~1929년 철거 · 1907년 모습",
+        "period_en": "Built 1887; demolished 1929 · shown in 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과 — 배재학당역사박물관",
+            "title_en": "Encyclopedia of Korean Culture — Paichai museum",
+            "url": "https://encykorea.aks.ac.kr/Article/E0069863"
+          },
+          {
+            "title": "아펜젤러 행전 — 본당·동관·기숙사의 내력과 옛 사진",
+            "title_en": "Appenzeller history — school buildings and historic photograph",
+            "url": "https://missionews.co.kr/news/583627"
+          },
+          {
+            "title": "국사편찬위원회 — 배재 학당 설립",
+            "title_en": "National Institute of Korean History — Paichai School",
+            "url": "https://contents.history.go.kr/front/hm/view.do?levelId=hm_140_0030"
+          },
+          {
+            "title": "서울역사박물관 — 최신경성전도",
+            "title_en": "Seoul Museum of History — 1907 map",
+            "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
     }
   ]
 }

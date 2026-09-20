@@ -61,6 +61,8 @@ export function prepareLandmarkLod(model){
  }else if(kind==='altar'||kind==='hwanggungu'){
   add(new THREE.CylinderGeometry(w*.45,w*.5,1,kind==='altar'?24:8),0,.5,0,'stone');
   if(kind==='hwanggungu')for(let i=0;i<3;i++){add(new THREE.CylinderGeometry(7-i,7-i,3.5,8),0,3+i*5,0,'wall');add(new THREE.CylinderGeometry(2,10-i,3,8),0,6+i*5,0,'roof')}
+ }else if(kind==='paichai_school'){
+  box(0,3.2,0,w*.95,6.4,d*.76,'brick');roof(0,6.4,0,w*1.04,d*.9,2.7);box(0,3.3,d*.42,w*.25,6.6,2,'wall');
  }else if(kind==='cathedral'||kind==='church'){
   const e=kind==='cathedral'?17:8;box(0,e/2,0,w*.46,e,d*.85,'brick');roof(0,e,0,w*.5,d*.9,5);box(0,e*.4,-d*.12,w,e*.8,d*.22,'brick');roof(0,e*.8,-d*.12,w,d*.26,3);box(0,h*.32,d*.36,w*.27,h*.64,w*.27,'brick');add(new THREE.ConeGeometry(w*.2,h*.26,4),0,h*.77,d*.36,'roof');
  }else if(kind==='gyeonghoeru'){
