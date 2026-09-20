@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.26`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.27`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -79,8 +79,8 @@
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.5.25`
-  - digest: `sha256:dd28a5a51251998a1fab2cc736d0cc2f66b15cb051530b548d943e18f8905f90`
+- 웹: `honestjung/hanyang3d:v0.5.26`
+  - digest: `sha256:e46ee2fbe4bd724952b4aff8ac2df049965555a6fc8fdef02bc507c776997067`
 - 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.5.24`
   - digest: `sha256:0c9df6ffc3aa8fcc1b6bc8e7facf501518f6c56bd89344ec2ae0ce7f6c764c64`
 

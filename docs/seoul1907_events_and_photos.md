@@ -10,6 +10,8 @@
 - [사진 CSV](seoul1907_photo_catalog.csv) / [사진 manifest](seoul1907_photo_manifest.json): 103개 소장품 기록, 6개 이미지 검증 보관.
 - [기존 이야기 24편의 상세 조사](seoul1907_stories_research.md): 이전 원고와 출처를 보존한다.
 
+- [손탁호텔 추가 사진 2장·이야기 소재](sontag_hotel_photos_and_stories.md): 기존 103건 카탈로그와 별도 보관.
+
 ## 장소별 활용
 
 | 장소 | 주요 내용 |

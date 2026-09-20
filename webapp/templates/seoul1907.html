@@ -45,7 +45,7 @@
 #options>#notice,#options>#credit{grid-column:1/-1;font-size:12px}#notice{border-top:1px solid #9aaa9b55;padding-top:6px;color:#526559}
 </style></head>
 <body><main id="scene"><div id="first-person-map" hidden><canvas id="walking-minimap" width="240" height="240"></canvas></div><div id="walk-joystick" hidden aria-label="{% t '이동' %}"><span class="joystick-knob"></span></div><button id="walk-jump" type="button" hidden aria-label="{% t '점프' %}">{% t '점프' %}</button></main><div id="original" hidden></div>
-<div id="labels"></div><aside id="building-info" hidden aria-live="polite"></aside>
+<div id="labels"></div><aside id="building-info" hidden aria-live="polite" style="bottom:var(--building-info-bottom,60px);max-height:max(60px,calc(100% - var(--building-info-bottom,60px) - 160px))"></aside>
 <div class="toolbar"><button id="menu" aria-label="{% t '설정' %}" aria-controls="options" aria-expanded="false"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button><strong class="map-title">{% t '한양3D' %}<small>{{ app_version }} · {% t '1907년경' %}</small></strong><div id="options">
 <div class="era-walk-controls"><label>{% t '시대' %}<select id="era"><option value="/">{% t '1750년경' %}</option><option value="/1907/" selected>{% t '1907년경' %}</option></select></label>
 <button id="walk-together" aria-pressed="false">{% t '1인칭 시점' %}</button></div>

@@ -38,7 +38,7 @@ with tempfile.TemporaryDirectory() as tmp:
     bridges=page.evaluate('''()=>{const s=seoul1907;return s.infrastructure.bridges.children.map(b=>({deck:s.firstPerson.groundAt(b.position.x,b.position.z),bed:s.groundAt(b.position.x,b.position.z),under:s.firstPerson.groundAt(b.position.x,b.position.z,s.groundAt(b.position.x,b.position.z))}))}''')
     assert all(r['deck']>r['bed']+1 and abs(r['under']-r['bed']-.025)<.03 for r in bridges),bridges
     print('PASS channel samples',len(result),'bridges',len(bridges),flush=True)
-    attendants=page.evaluate("seoul1907.walking.stationary.records.filter(r=>r.appearance==='caretaker').map(r=>({id:r.building,position:r.position.toArray()}))");assert len(attendants)==13,attendants
+    attendants=page.evaluate("seoul1907.walking.stationary.records.filter(r=>r.appearance==='caretaker').map(r=>({id:r.building,position:r.position.toArray()}))");assert len(attendants)==14,attendants
     blocked=page.evaluate("seoul1907.walking.stationary.records.filter(r=>r.appearance==='caretaker'&&seoul1907.walking.collision.hit(r.position.x,r.position.z,.35)).map(r=>r.building)");assert not blocked,blocked
     page.evaluate("()=>{const s=seoul1907,r=s.walking.stationary.records.find(r=>r.building==='dansungsa-1907');window.keeper=r;s.walking.dialogue.start(s.walking.npcFor(r));s.walking.dialogue.finishTyping()}")
     assert page.locator('.npc-plate strong').inner_text()=='단성사 문지기'

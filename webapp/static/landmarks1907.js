@@ -297,7 +297,15 @@ export function createLandmark1907(f,w,h,d){
    const r=w/2-tier*5,top=(tier+1)*1.1;cylinder('circular-terrace',0,top-.55,0,r,r,1.1,'stone',64);
    for(let i=0;i<48;i++){const a=i*Math.PI/24;if(Math.abs(Math.sin(a))<.14||Math.abs(Math.cos(a))<.14)continue;post(Math.sin(a)*(r-.5),Math.cos(a)*(r-.5),top,.85,'cream')}
   }
-  for(let dir=0;dir<4;dir++){const steps=new THREE.Group();for(let i=0;i<8;i++){const b=box('altar-step',0,.2+i*.18,w/2+2-i*1.7,5,.4+i*.36,1.8,'stone');group.remove(b);steps.add(b)}steps.rotation.y=dir*Math.PI/2;group.add(steps)}
+  // Each flight reaches its terrace top with risers below the walking step limit.
+  for(let dir=0;dir<4;dir++)for(let tier=0;tier<3;tier++)for(let i=0;i<4;i++){
+   const a=dir*Math.PI/2,r=w/2-tier*5+2.4-i*.8,top=tier*1.1+(i+1)*.275;
+   box('altar-step',Math.sin(a)*r,top/2,Math.cos(a)*r,dir%2?.82:5,top,dir%2?5:.82,'stone');
+  }
+  group.userData.blockingRects=[];
+  group.userData.accessFront=w/2+2.81;
+  group.userData.walkSurfaces=group.children.filter(m=>['circular-terrace','altar-step'].includes(m.name));
+  for(const m of group.userData.walkSurfaces){m.userData.walkable=true;m.userData.solidSupport=true;group.remove(m)}
  }else if(kind==='hwanggungu'){
   cylinder('octagonal-platform',0,.7,0,12,12,1.4,'stone',8);
   for(let tier=0;tier<3;tier++){
@@ -345,5 +353,6 @@ export function createLandmark1907(f,w,h,d){
  group.traverse(m=>{if(!m.isMesh)return;const g=m.geometry.index?m.geometry.toNonIndexed():m.geometry,p=g.attributes.position;if(!buckets.has(m.material))buckets.set(m.material,[]);const data=buckets.get(m.material);for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m.matrixWorld);data.push(v.x,v.y,v.z)}if(g!==m.geometry)g.dispose();m.geometry.dispose()});
  group.clear();for(const [mat,data] of buckets){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(data,3));g.computeVertexNormals();group.add(new THREE.Mesh(g,mat))}
  group.add(...textured);
+ group.add(...(group.userData.walkSurfaces??[]));
  Object.assign(group.userData,{conceptual:true,kind,parts,period:f.temporal});return group;
 }

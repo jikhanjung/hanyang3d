@@ -16,14 +16,14 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   // Riding (the reins used from the pack): three times the fast walk, the rider and eye raised by the horse's back.
   // Space jumps: `air` is the height of the feet above the ground under them, `vy` the vertical speed.
   let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0,mounted=false,horse=null,air=0,vy=0;
-  const JUMP_SPEED=4.5,GRAVITY=9.8;
+  const JUMP_SPEED=4.5,RIDE_JUMP_SPEED=6.3,GRAVITY=9.8;
   const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
 
   const eye=new THREE.Vector3(),boom=new THREE.Vector3(),cameraRay=new THREE.Raycaster(),cameraDirection=new THREE.Vector3();
   let unfocusedMotion=null;
   const keys=new Set(),canvas=renderer.domElement,hud=el('walk-joystick'),jumpButton=el('walk-jump');canvas.tabIndex=0;
   // One jump at a time: Space on a keyboard, the on-screen button on phones.
-  function jump(){if(!active||air!==0||vy!==0)return false;vy=JUMP_SPEED;return true}
+  function jump(){if(!active||air!==0||vy!==0)return false;vy=mounted?RIDE_JUMP_SPEED:JUMP_SPEED;return true}
   jumpButton.addEventListener('pointerdown',event=>{event.preventDefault();jumpButton.classList.add('pressed');jump()});
   for(const type of ['pointerup','pointercancel','pointerleave'])jumpButton.addEventListener(type,()=>jumpButton.classList.remove('pressed'));
   const joystick=createWalkJoystick(el('walk-joystick'),()=>active);
@@ -155,7 +155,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
    if(mounted&&getInterior(eye))setMounted(false);
    walker?.update(walked,moved&&!mounted,mounted);
-   if(mounted)horse.update(performance.now(),moved);
+   if(mounted)horse.update(performance.now(),moved,air>0||vy!==0);
    look();
    if(performance.now()-lastRemembered>=1000)rememberPosition();
   }

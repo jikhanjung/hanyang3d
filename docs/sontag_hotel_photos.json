@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sontag-aks-1",
+    "title": "서울 손탁호텔 전경",
+    "source_page": "https://encykorea.aks.ac.kr/Article/E0030583",
+    "image_url": "https://devin.aks.ac.kr/image/f0232aa5-fd76-4f26-8cfc-2f1405661f6d?preset=orig",
+    "file": "data/photos/seoul1907/images/sontag-hotel-aks-1.jpg",
+    "sha256": "81c3962051a68e6280901a6f25f2fcaade1abb4cdc41d5bc3e0917a8e035337c",
+    "date": "촬영 연대 미상; 1907년 특정 자료로 단정하지 않음",
+    "rights": "개별 미디어 이용조건 미확인; 연구용 로컬 보관, 서비스 재배포 제외"
+  },
+  {
+    "id": "sontag-aks-2",
+    "title": "서울 손탁호텔 전경",
+    "source_page": "https://encykorea.aks.ac.kr/Article/E0030583",
+    "image_url": "https://devin.aks.ac.kr/image/b02bf8a9-d4a8-46db-b797-65e9f40ad6cb?preset=orig",
+    "file": "data/photos/seoul1907/images/sontag-hotel-aks-2.jpg",
+    "sha256": "dcaeaecec1c393a8a44f5aacc3c5b9e39fb6f584b2c4034ee683171cee1f6ed5",
+    "date": "촬영 연대 미상; 1907년 특정 자료로 단정하지 않음",
+    "rights": "개별 미디어 이용조건 미확인; 연구용 로컬 보관, 서비스 재배포 제외"
+  }
+]

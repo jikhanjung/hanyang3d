@@ -43,3 +43,6 @@
 
 #large-map{position:absolute;inset:4%;z-index:1200;display:flex;flex-direction:column;background:#e9e0cceF;color:#24372e;border:2px solid #95743d;border-radius:8px;padding:10px;box-shadow:0 8px 40px #0008;pointer-events:auto}
 #large-map[hidden]{display:none}#large-map header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 0 8px;background:none;border:0}#large-map button{padding:6px 12px;cursor:pointer}#large-map canvas{flex:1;min-height:0;width:100%;height:100%;object-fit:contain}#large-map p{margin:6px 0 0;text-align:center;font-size:13px}
+
+#scene #building-popup{bottom:var(--building-info-bottom,60px);max-height:max(60px,calc(100% - var(--building-info-bottom,60px) - 160px))}
+#scene #walk-chat-toggle{z-index:1004!important}

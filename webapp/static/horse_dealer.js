@@ -9,7 +9,9 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
  const add=(parent,geometry,mat,x,y,z)=>{const mesh=new THREE.Mesh(geometry,mat);mesh.position.set(x,y,z);parent.add(mesh);return mesh};
  const body=new THREE.Group();group.add(body);
  const legs=[[-.17,.6,0],[.17,.6,Math.PI],[-.17,-.6,Math.PI],[.17,-.6,0]].map(([x,z,phase])=>{
-  const hip=new THREE.Group();hip.position.set(x,.85,z);group.add(hip);add(hip,new THREE.CylinderGeometry(.06,.05,.85,6),coat,0,-.425,0);return {hip,phase};
+  const hip=new THREE.Group(),knee=new THREE.Group();hip.position.set(x,.85,z);group.add(hip);
+  add(hip,new THREE.CylinderGeometry(.06,.05,.425,6),coat,0,-.2125,0);
+  knee.position.y=-.425;hip.add(knee);add(knee,new THREE.CylinderGeometry(.05,.045,.425,6),coat,0,-.2125,0);return {hip,knee,phase};
  });
  add(body,new THREE.BoxGeometry(.46,.55,1.5),coat,0,1.1,0);
  add(body,new THREE.BoxGeometry(.22,.7,.3),coat,0,1.45,.78).rotation.x=.6;
@@ -18,12 +20,16 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
  add(head,new THREE.BoxGeometry(.2,.22,.5),coat,0,0,.14);
  const tail=new THREE.Group();tail.position.set(0,1.25,-.75);body.add(tail);
  add(tail,new THREE.CylinderGeometry(.04,.08,.6,6),mane,0,-.3,0);
- function update(time,moving){
-  if(moving){
-   const t=time/95;for(const {hip,phase} of legs)hip.rotation.x=Math.sin(t+phase)*.55;
+ function update(time,moving,airborne=false){
+  if(airborne){
+   // Hold a gathered jump pose; the running cycle resumes only after landing.
+   for(const {hip,knee} of legs){hip.rotation.x=hip.position.z>0?-1.1:.65;knee.rotation.x=hip.position.z>0?1.5:-1.1}
+   body.position.y=0;head.rotation.x=-.12;tail.rotation.x=-.6;tail.rotation.z=0;
+  }else if(moving){
+   const t=time/95;for(const {hip,knee,phase} of legs){hip.rotation.x=Math.sin(t+phase)*.55;knee.rotation.x=0}
    body.position.y=Math.abs(Math.sin(t))*.08;head.rotation.x=Math.sin(t)*.08;tail.rotation.x=-.5;tail.rotation.z=0;
   }else{
-   for(const {hip} of legs)hip.rotation.x*=.8;body.position.y*=.8;
+   for(const {hip,knee} of legs){hip.rotation.x*=.8;knee.rotation.x=0}body.position.y*=.8;
    head.rotation.x=.35+Math.sin(time/1400)*.15;tail.rotation.x*=.9;tail.rotation.z=Math.sin(time/600)*.25;
   }
  }

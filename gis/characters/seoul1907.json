@@ -4558,6 +4558,315 @@
           }
         }
       }
+    },
+    {
+      "building": "russian-legation-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_at_estimated_position",
+      "appearance": "caretaker",
+      "dialogue": {
+        "name": "러시아 공사관 문지기",
+        "name_en": "Russian legation doorkeeper",
+        "subtitle": "1907년 · 자료를 바탕으로 구성한 가상 인물",
+        "subtitle_en": "1907 · Fictional attendant informed by sources",
+        "portrait": "merchant",
+        "nodes": {
+          "hello": {
+            "text": "어서 오십시오. 아관파천과 정동에 관해 궁금하시면 잠시 이야기를 나누시지요.",
+            "text_en": "Welcome. Would you like to hear about the royal refuge in jeongdong?",
+            "options": [
+              {
+                "label": "이야기를 들려주십시오.",
+                "label_en": "Tell me the story.",
+                "next": "part1"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part1": {
+            "text": "이곳이 아관파천의 그 아관이오. 러시아를 아라사라고 부르니 그 공사관을 아관이라 한 것이지요. 궁궐이 아닌 외국 공사관에서 임금이 지낸다는 것이 얼마나 큰일이었겠소. 1895년 을미사변 뒤 왕실의 안전에 대한 불안이 그 배경에 있었소.",
+            "text_en": "This is the legation meant by Agwan: the Russian legation. The court’s fears after the 1895 assassination formed the background to the king’s refuge here.",
+            "story_title": "아관파천과 정동",
+            "story_title_en": "The royal refuge in Jeongdong",
+            "story_part": 1,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국사편찬위원회 — 아관파천",
+                "title_en": "국사편찬위원회 — 아관파천",
+                "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_40&levelId=kc_i402400"
+              },
+              {
+                "title": "한국민족문화대백과 — 아관파천",
+                "title_en": "한국민족문화대백과 — 아관파천",
+                "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part2"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part2": {
+            "text": "1896년 2월 11일 새벽, 고종과 왕세자는 궁녀의 가마를 타고 경복궁 영추문을 나와 이곳으로 거처를 옮겼소. 궁궐 문을 벗어나 정동에 이르는 짧은 길이었지만, 그날 이후 조정의 권력 관계도 크게 달라졌지요. 단순한 나들이로 기억할 일이 아니오.",
+            "text_en": "Before dawn on 11 February 1896, Gojong and the crown prince left through Yeongchumun in palace women’s sedan chairs. Their arrival here brought a major political realignment.",
+            "story_title": "아관파천과 정동",
+            "story_title_en": "The royal refuge in Jeongdong",
+            "story_part": 2,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국사편찬위원회 — 아관파천",
+                "title_en": "국사편찬위원회 — 아관파천",
+                "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_40&levelId=kc_i402400"
+              },
+              {
+                "title": "한국민족문화대백과 — 아관파천",
+                "title_en": "한국민족문화대백과 — 아관파천",
+                "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part3"
+              },
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part1"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part3": {
+            "text": "안전한 거처를 찾았다고 모든 문제가 끝난 것은 아니었소. 러시아 역시 자기 나라의 이익을 좇았고, 여러 나라가 이권을 얻으려 했지요. 임금이 외국 공사관에 오래 머무는 것을 걱정하며 환궁을 요구하는 목소리도 커졌소. 피신과 외교적 의존이 함께 얽힌 일이었지요.",
+            "text_en": "Protection also brought dependence. Russia pursued its interests, foreign concessions became contentious, and pressure grew for the king to return to a palace.",
+            "story_title": "아관파천과 정동",
+            "story_title_en": "The royal refuge in Jeongdong",
+            "story_part": 3,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국사편찬위원회 — 아관파천",
+                "title_en": "국사편찬위원회 — 아관파천",
+                "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_40&levelId=kc_i402400"
+              },
+              {
+                "title": "한국민족문화대백과 — 아관파천",
+                "title_en": "한국민족문화대백과 — 아관파천",
+                "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part4"
+              },
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part2"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part4": {
+            "text": "고종은 1897년 2월 20일 경운궁으로 돌아갔소. 그러니 지금 이곳에서 임금을 찾으셔도 만나실 수 없지요. 정동을 걸으실 때 공사관과 궁궐을 따로 떨어진 건물로만 보지 마시오. 그 사이를 오간 사람과 결정이 나라의 앞날에 영향을 주었으니까요.",
+            "text_en": "Gojong returned to Gyeongungung on 20 February 1897. He is no longer residing here in 1907. The legation and palace belong to a connected history of refuge and diplomacy.",
+            "story_title": "아관파천과 정동",
+            "story_title_en": "The royal refuge in Jeongdong",
+            "story_part": 4,
+            "story_parts": 4,
+            "sources": [
+              {
+                "title": "국사편찬위원회 — 아관파천",
+                "title_en": "국사편찬위원회 — 아관파천",
+                "url": "https://contents.history.go.kr/mobile/kc/view.do?code=kc_age_40&levelId=kc_i402400"
+              },
+              {
+                "title": "한국민족문화대백과 — 아관파천",
+                "title_en": "한국민족문화대백과 — 아관파천",
+                "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+              }
+            ],
+            "options": [
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part3"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "building": "myeongdong-cathedral-1907",
+      "valid_from": 1907,
+      "valid_to": 1908,
+      "position_status": "fictional_attendant_at_estimated_position",
+      "appearance": "priest",
+      "id": "myeongdong-priest-1907",
+      "indoors": true,
+      "local_position_m": [
+        6.8,
+        22
+      ],
+      "dialogue": {
+        "name": "명동성당 신부",
+        "name_en": "Cathedral priest",
+        "subtitle": "1907년 · 자료를 바탕으로 구성한 가상 인물",
+        "subtitle_en": "1907 · Fictional attendant informed by sources",
+        "portrait": "priest1907",
+        "nodes": {
+          "hello": {
+            "text": "어서 오십시오. 종현의 성당에 관해 궁금하시면 잠시 이야기를 나누시지요.",
+            "text_en": "Welcome. Would you like to hear about the cathedral on jonghyeon?",
+            "options": [
+              {
+                "label": "이야기를 들려주십시오.",
+                "label_en": "Tell me the story.",
+                "next": "part1"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part1": {
+            "text": "어서 오십시오. 잠깐 쉬어 가셔도 좋습니다. 이 성당은 1898년에 완공되어, 지금은 문을 연 지 아홉 해가 되었지요. 높은 천장을 향해 시선을 올려 보세요. 바깥 거리의 분주함에서 한 걸음 물러나 조용히 생각할 자리를 찾는 분들도 이 문을 들어옵니다.",
+            "text_en": "Welcome; you may rest here a while. The cathedral was completed in 1898, nine years before our present scene. Look up at the high ceiling and take a quiet moment away from the street.",
+            "story_title": "종현의 성당",
+            "story_title_en": "The cathedral on Jonghyeon",
+            "story_part": 1,
+            "story_parts": 3,
+            "sources": [
+              {
+                "title": "국가기록원 — 명동성당",
+                "title_en": "국가기록원 — 명동성당",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
+              },
+              {
+                "title": "한국민족문화대백과 — 명동성당",
+                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
+                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part2"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part2": {
+            "text": "뾰족한 아치와 높은 공간이 낯설게 느껴지십니까? 이곳은 고딕 양식을 따른 벽돌 성당입니다. 그래서 사람들이 뾰죽집이라고 부르기도 했지요. 가운데 통로에서는 제단 쪽으로 시선이 이어집니다. 의자 사이를 급히 지나기보다, 다른 이들의 기도를 방해하지 않도록 천천히 둘러보십시오.",
+            "text_en": "Pointed arches and tall spaces distinguish this brick Gothic church, nicknamed the pointed house. The central aisle directs attention toward the altar. Please explore quietly around those at prayer.",
+            "story_title": "종현의 성당",
+            "story_title_en": "The cathedral on Jonghyeon",
+            "story_part": 2,
+            "story_parts": 3,
+            "sources": [
+              {
+                "title": "국가기록원 — 명동성당",
+                "title_en": "국가기록원 — 명동성당",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
+              },
+              {
+                "title": "한국민족문화대백과 — 명동성당",
+                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
+                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part3"
+              },
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part1"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part3": {
+            "text": "성당 아래에는 순교자들의 유해를 모신 자리가 있습니다. 1900년과 1901년에 이곳으로 옮겨 모셨지요. 이 건물이 우리에게 소중한 것은 높고 큰 모습 때문만은 아닙니다. 신앙을 지켜 온 사람들을 기억하는 장소이기도 합니다. 오늘 보신 모습을 마음에 담아 가시면 좋겠습니다.",
+            "text_en": "Martyrs’ remains were brought to the cathedral crypt in 1900 and 1901. The church is a place of remembrance as well as worship, beyond the scale of its architecture.",
+            "story_title": "종현의 성당",
+            "story_title_en": "The cathedral on Jonghyeon",
+            "story_part": 3,
+            "story_parts": 3,
+            "sources": [
+              {
+                "title": "국가기록원 — 명동성당",
+                "title_en": "국가기록원 — 명동성당",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
+              },
+              {
+                "title": "한국민족문화대백과 — 명동성당",
+                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
+                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
+              }
+            ],
+            "options": [
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part2"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          }
+        }
+      }
     }
   ],
   "horse_dealer": {

@@ -164,6 +164,10 @@ export function createPalaceGate(feature,w,h,d){
  // Wall stubs stay inside the landmark footprint so they rest on the gate platform.
  for(const side of [-1,1]){box('flanking-wall',side*w*.45,base+h*.1,0,w*.1,h*.2,d*.45,'stone');box('wall-roof',side*w*.45,base+h*.2+.15,0,w*.12,.3,d*.5,'roof')}
  for(let i=0;i<3;i++)box('gate-stair',0,base*(i+1)/6,d/2+.9-i*.3,gw*.6,base*(i+1)/3,.7,'stone');
+ const walkSurfaces=model.children.filter(m=>['gate-platform','gate-stair'].includes(m.name));
+ const blockingRects=model.children.filter(m=>['gate-door','gate-wall','flanking-wall','column-foot'].includes(m.name)).map(m=>({x:m.position.x,z:m.position.z,hw:m.geometry.parameters.width/2,hd:m.geometry.parameters.depth/2}));
+ for(const m of walkSurfaces){m.userData.walkable=true;m.userData.solidSupport=true;model.remove(m)}
  mergeByMaterial(model);
- model.userData={conceptual:true,roofTiers:tiers,bays,roof:feature.palace_gate_roof??'hip-gable',parts,footprint:[w,d],period:feature.temporal};return model;
+ model.add(...walkSurfaces);
+ model.userData={conceptual:true,roofTiers:tiers,bays,roof:feature.palace_gate_roof??'hip-gable',parts,footprint:[w,d],period:feature.temporal,walkSurfaces,blockingRects,accessHeight:base};return model;
 }

@@ -29,7 +29,7 @@ export function createNpcDialogue({camera,canvas,container,note,onAction}){
  overlay.addEventListener('pointerdown',event=>{if(event.target===overlay)end()});
  text.onclick=()=>finishTyping();
 
- const PORTRAIT={bookseller1907:{robe:'#aaa58d',hat:'gat'},guard1907:{robe:'#293342',hat:'cap'},walker1907:{robe:'#e5e1d4',hat:'gat'},keeper:{robe:'#cfd2c8',hat:'gat'},officer:{robe:'#3a5b8c',hat:'jeonrip',plume:true},soldier:{robe:'#2e3440',hat:'jeonrip'},merchant:{robe:'#bfa678',hat:'manggeon'},horseDealer:{robe:'#8a6f4e',hat:'paraengi'},walker:{robe:'#d8cdb2',hat:'topknot'}};
+ const PORTRAIT={priest1907:{robe:'#272627',hat:'short-hair'},bookseller1907:{robe:'#aaa58d',hat:'gat'},guard1907:{robe:'#293342',hat:'cap'},walker1907:{robe:'#e5e1d4',hat:'gat'},keeper:{robe:'#cfd2c8',hat:'gat'},officer:{robe:'#3a5b8c',hat:'jeonrip',plume:true},soldier:{robe:'#2e3440',hat:'jeonrip'},merchant:{robe:'#bfa678',hat:'manggeon'},horseDealer:{robe:'#8a6f4e',hat:'paraengi'},walker:{robe:'#d8cdb2',hat:'topknot'}};
  function drawPortrait(kind){
   const p=PORTRAIT[kind]??PORTRAIT.walker,g=portrait.getContext('2d'),W=portrait.width,H=portrait.height;
   const sky=g.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#e9dcb8');sky.addColorStop(1,'#b99e6a');g.fillStyle=sky;g.fillRect(0,0,W,H);
@@ -38,7 +38,8 @@ export function createNpcDialogue({camera,canvas,container,note,onAction}){
   g.fillStyle='#c9a37f';g.beginPath();g.ellipse(W/2,H*.5,24,29,0,0,Math.PI*2);g.fill();
   g.fillStyle='#2a2320';g.fillRect(W/2-12,H*.47,6,3);g.fillRect(W/2+6,H*.47,6,3);g.fillRect(W/2-6,H*.6,12,2);
   g.fillStyle='#1f1d1c';
-  if(p.hat==='cap'){g.fillRect(W/2-25,H*.18,50,21);g.fillRect(W/2-28,H*.32,56,5)}
+  if(p.hat==='short-hair'){g.beginPath();g.ellipse(W/2,H*.33,25,12,0,Math.PI,0);g.fill();g.fillStyle='#eee9df';g.fillRect(W/2-7,H*.74,14,5)}
+  else if(p.hat==='cap'){g.fillRect(W/2-25,H*.18,50,21);g.fillRect(W/2-28,H*.32,56,5)}
   else if(p.hat==='gat'){g.fillRect(W/2-44,H*.3,88,5);g.fillRect(W/2-17,H*.1,34,H*.21)}
   else if(p.hat==='jeonrip'){g.beginPath();g.ellipse(W/2,H*.31,46,8,0,0,Math.PI*2);g.fill();g.beginPath();g.ellipse(W/2,H*.27,24,16,0,Math.PI,0);g.fill();if(p.plume){g.fillStyle='#2f7c7a';g.beginPath();g.moveTo(W/2-4,H*.14);g.lineTo(W/2+6,H*.02);g.lineTo(W/2+8,H*.16);g.fill()}}
   else if(p.hat==='paraengi'){g.fillStyle='#b99a62';g.beginPath();g.moveTo(W/2-46,H*.33);g.lineTo(W/2,H*.12);g.lineTo(W/2+46,H*.33);g.closePath();g.fill()}

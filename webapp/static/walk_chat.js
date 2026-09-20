@@ -14,6 +14,14 @@ export function createWalkChat({ scene, firstPerson, send }) {
     <form id="walk-chat-form" style="display:flex;gap:6px"><input id="walk-chat-input" aria-label="${t('채팅 메시지')}" placeholder="${t('메시지 (최대 200자)')}" maxlength="200" autocomplete="off" style="min-width:0;max-width:none;flex:1;font-size:16px"><button type="submit">${t('보내기')}</button></form>
     <p id="walk-chat-error" role="status" style="margin:4px 0 0;color:#9e2820"></p>`;
   scene.append(toggle, panel);
+  // Reserve exactly the visible chat footprint, including the expanded input row.
+  function layoutInfo(){
+    if(!panel.isConnected)return;
+    const rect=panel.getBoundingClientRect(),host=scene.getBoundingClientRect();
+    document.documentElement.style.setProperty('--building-info-bottom',`${panel.hidden?60:Math.max(60,host.bottom-rect.top+12)}px`);
+  }
+  new ResizeObserver(layoutInfo).observe(panel);
+  window.addEventListener('resize',layoutInfo);
   const input = panel.querySelector('input'), log = panel.querySelector('[role=log]'), error = panel.querySelector('#walk-chat-error');
   let connected = false, unread = 0;
   const desktop=()=>matchMedia('(min-width:601px) and (pointer:fine)').matches;
@@ -22,6 +30,7 @@ export function createWalkChat({ scene, firstPerson, send }) {
   const seen = new Set();
   function show(open) {
     panel.hidden=desktop()?!connected:!open;form.hidden=!open;closeButton.hidden=!open;chatTitle.hidden=desktop();panel.classList.toggle('editing',open);toggle.setAttribute('aria-expanded',String(open));
+    layoutInfo();
     if (open) { unread = 0; toggle.textContent = t('채팅'); firstPerson.clearInput(); input.focus(); log.scrollTop = log.scrollHeight; }
     else if (connected) scene.querySelector('canvas')?.focus({ preventScroll: true });
   }
