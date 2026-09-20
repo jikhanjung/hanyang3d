@@ -16,6 +16,14 @@
 
 ## 작업 기록
 
+- [226 — 정동교회 관리인과 역사](20260920_226_jeongdong_attendant.md)
+- [225 — 약초 채집 범위와 성문 현판](20260920_225_herb_targets_gate_plaques.md)
+- [224 — 회동서관 실내·구석의 소설 거래](20260920_224_hoedong_bookshop_interior.md)
+- [223 — 공통 UI 숨김·PNG 스크린샷](20260920_223_screenshot_mode.md)
+
+- [222 — 공통 속보·갤롭과 성당 대화·패널](20260920_222_horse_gaits_and_cathedral_dialogue.md)
+- [221 — 1907년 방·계·동 지명 자료 조사](20260920_221_1907_administrative_names.md)
+
 - [220 — v0.5.30 운영 배포](20260920_220_deploy_v0530.md)
 
 - [219 — 관리인 발밑 높이·말 꼬리 방향](20260920_219_caretaker_floor_and_horse_tail.md)

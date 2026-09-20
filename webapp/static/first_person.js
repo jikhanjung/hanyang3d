@@ -13,12 +13,12 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
 
   // yaw is the walking (body) direction; lookYaw is a right-drag look offset that eases back after release.
   // autoRun (Alt+W) keeps walking forward until Alt+W again, W or S. Space jumps.
-  // Riding (the reins used from the pack): three times the fast walk, the rider and eye raised by the horse's back.
+  // Riding: trot normally, gallop while Shift is held; the rider and eye rise with the saddle.
   // Space jumps: `air` is the height of the feet above the ground under them, `vy` the vertical speed.
   let fishing=null;
-  let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0,mounted=false,horse=null,air=0,vy=0;
+  let active=false,saved=null,yaw=0,pitch=0,lookYaw=0,autoRun=false,drag=null,lastGround=null,walked=0,view=4.5,walker=null,lastRemembered=0,mounted=false,horse=null,air=0,vy=0,galloping=false;
   const JUMP_SPEED=4.5,RIDE_JUMP_SPEED=6.3,GRAVITY=9.8;
-  const WALK=3,FAST=8,RIDE=FAST*3,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
+  const WALK=3,FAST=8,TROT=12,GALLOP=24,SADDLE=.35,eyeHeight=()=>1.65+(mounted?SADDLE:0);
 
   const eye=new THREE.Vector3(),boom=new THREE.Vector3(),cameraRay=new THREE.Raycaster(),cameraDirection=new THREE.Vector3();
   let unfocusedMotion=null,mouseForward=false,mouseChord=false;
@@ -129,7 +129,9 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    // Walking (not jumping) stays on the ground when stepping down, so a downhill stride never counts as airborne.
    const grounded=air===0&&vy===0;
    if(!grounded){const step=Math.min(dt,.1);vy-=GRAVITY*step;air=Math.max(0,air+vy*step);if(air===0)vy=0}
-   const speed=(mounted?RIDE:(unfocusedMotion?.fast??(keys.has('ShiftLeft')||keys.has('ShiftRight')))?FAST:WALK)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
+   const fast=unfocusedMotion?.fast??(keys.has('ShiftLeft')||keys.has('ShiftRight'));
+   galloping=mounted&&fast;
+   const speed=(mounted?(galloping?GALLOP:TROT):fast?FAST:WALK)*Math.min(dt,.1),norm=Math.max(1,Math.hypot(forward,side));
    const dx=(-Math.sin(yaw)*forward+Math.cos(yaw)*side)/norm*speed,dz=(-Math.cos(yaw)*forward-Math.sin(yaw)*side)/norm*speed;
    let moved=false;
    if(dx||dz){
@@ -157,7 +159,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    if(mounted&&getInterior(eye))setMounted(false);
    walker?.update(walked,moved&&!mounted,mounted);
    fishing?.update();
-   if(mounted)horse.update(performance.now(),moved,air>0||vy!==0);
+   if(mounted)horse.update(performance.now(),moved,air>0||vy!==0,galloping);
    look();
    if(performance.now()-lastRemembered>=1000)rememberPosition();
   }
@@ -167,7 +169,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    if(on&&!active)return t('1인칭에서만 말을 탈 수 있소.');
    if(on&&getInterior(eye))return t('실내에서는 말을 탈 수 없소.');
    if(on&&!(shop?.state.items[RIDE_ITEM]>0))return t('말고삐가 없소.');
-   mounted=on;
+   mounted=on;if(!on)galloping=false;
    if(on&&!horse){horse=createHorse();horse.group.name='player-horse';scene.add(horse.group)}
    if(horse)horse.group.visible=on;
    walker?.update(walked,false,on);
@@ -215,6 +217,6 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const release=event=>{if(drag?.id===event.pointerId){drag=null;mouseForward=false;mouseChord=false}};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;if(mounted&&getInterior(eye))setMounted(false);else look();return true}
-  return {get fishing(){return fishing},set fishing(value){fishing=value},get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
+  return {get fishing(){return fishing},set fishing(value){fishing=value},get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get galloping(){return mounted&&galloping},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
 
 }

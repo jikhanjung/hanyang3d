@@ -75,6 +75,8 @@ def public_resource_paths():
         'webapp/static/npc_dialogue.js',
         'webapp/static/i18n.js',
         'webapp/static/horse_dealer.js',
+        'webapp/static/screenshot_mode.js',
+        'webapp/static/bookshop1907.js',
         'webapp/static/shop.js',
         'gis/placenames/doseong_placenames.json',
         'webapp/static/collision.js',

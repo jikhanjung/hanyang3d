@@ -13,7 +13,7 @@ export function readPose(value) {
   // Riding and jumping are shown to others only: anything but a literal true is on foot, and `air` (feet above the
   // ground while jumping) must be a number from 0 to 5 m, otherwise 0.
   const air = Number.isFinite(value.air) && value.air >= 0 && value.air <= 5 ? Math.round(value.air * 100) / 100 : 0;
-  return { x, z, yaw: Math.atan2(Math.sin(yaw), Math.cos(yaw)), mounted: value.mounted === true, air };
+  return { x, z, yaw: Math.atan2(Math.sin(yaw), Math.cos(yaw)), mounted: value.mounted === true, galloping: value.mounted === true && value.galloping === true, air };
 }
 
 // Control and format characters are rejected (bidi overrides could disguise text), except the zero-width joiner

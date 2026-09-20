@@ -124,7 +124,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       const send = () => {
         if (!firstPerson.active) { stop(); return; }
         const eye = firstPerson.eye;
-        joined.send('pose', { x: eye.x, z: eye.z, yaw: firstPerson.yaw, mounted: firstPerson.mounted, air: firstPerson.air });
+        joined.send('pose', { x: eye.x, z: eye.z, yaw: firstPerson.yaw, mounted: firstPerson.mounted, galloping: firstPerson.galloping, air: firstPerson.air });
       };
       send(); sendTimer = setInterval(send, 100);
     } catch (error) {
@@ -156,7 +156,7 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       const angle = target.yaw + Math.PI - walker.group.rotation.y;
       walker.group.rotation.y += Math.atan2(Math.sin(angle), Math.cos(angle)) * alpha;
       peer.distance += moved; walker.update(peer.distance, moved > .002 && !target.mounted, !!target.mounted);
-      if (target.mounted) peer.horse.update(performance.now(), moved > .002);
+      if (target.mounted) peer.horse.update(performance.now(), moved > .002, peer.air > .025 || target.air > 0, target.galloping === true);
     }
   }
 

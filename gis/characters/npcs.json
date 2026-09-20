@@ -707,6 +707,14 @@
   "약재상": {
    "about": "산에서 모은 약초를 사들이는 창작 약전이오.",
    "items": []
+  },
+  "회동서관 별책": {
+   "about": "책장 뒤에서 권하는 옛 소설. 개별 판본과 재고는 추정입니다.",
+   "items": [
+    "book_chunhyang",
+    "book_guunmong",
+    "book_sukhyang"
+   ]
   }
  },
  "items": {
@@ -999,6 +1007,45 @@
     "shape": "fish",
     "color": "#cd9e57"
    }
+  },
+  "book_chunhyang": {
+   "name": "춘향전",
+   "name_en": "The Tale of Chunhyang",
+   "unit": "책",
+   "unit_en": "volume",
+   "price": 18,
+   "icon": {
+    "shape": "book",
+    "color": "#87554b"
+   },
+   "desc": "신분의 벽을 넘어선 사랑과 춘향의 절개를 다룬 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
+   "desc_en": "A tale of love across social divisions and Chunhyang’s constancy. Shop, edition and price are illustrative."
+  },
+  "book_guunmong": {
+   "name": "구운몽",
+   "name_en": "The Cloud Dream of the Nine",
+   "unit": "책",
+   "unit_en": "volume",
+   "price": 26,
+   "icon": {
+    "shape": "book",
+    "color": "#476177"
+   },
+   "desc": "꿈속 인연과 부귀영화, 깨어난 뒤의 깨달음을 다룬 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
+   "desc_en": "Dreamed encounters, worldly success and awakening. Shop, edition and price are illustrative."
+  },
+  "book_sukhyang": {
+   "name": "숙향전",
+   "name_en": "The Tale of Sukhyang",
+   "unit": "책",
+   "unit_en": "volume",
+   "price": 22,
+   "icon": {
+    "shape": "book",
+    "color": "#58735a"
+   },
+   "desc": "시련과 이별을 겪는 숙향의 인연 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
+   "desc_en": "Sukhyang’s trials, separation and reunion. Shop, edition and price are illustrative."
   }
  },
  "wallet": {

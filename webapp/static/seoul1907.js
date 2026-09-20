@@ -1,3 +1,4 @@
+import {createScreenshotMode} from './screenshot_mode.js';
 import {createHerbs} from './herbs.js';
 import {createNature1907} from './nature1907.js';
 import {createChannel1907} from './channel1907.js';
@@ -39,6 +40,7 @@ async function main(){
  scene.add(new THREE.HemisphereLight(0xffffff,0x6a7864,1.6));const light=new THREE.DirectionalLight(0xfff5db,1.5);light.position.set(-4000,9000,3500);scene.add(light);
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));el('scene').append(renderer.domElement);
  const camera=new THREE.PerspectiveCamera(43,1,1,60000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.maxDistance=21000;controls.maxPolarAngle=Math.PI*.47;
+ createScreenshotMode({renderer,scene,camera,menu:el('options'),era:1907});
  let needsRender=true;controls.addEventListener('change',()=>{needsRender=true});
  const positions=[],uv=[],indices=[];
  for(let j=0;j<n;j++)for(let i=0;i<n;i++){
@@ -82,19 +84,9 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   const panel=el('building-info');panel.replaceChildren();panel.hidden=false;panel.dataset.kind='building';
   const close=document.createElement('button');close.textContent='×';close.setAttribute('aria-label',t('닫기'));close.onclick=()=>panel.hidden=true;panel.append(close);
   for(const text of [f.name,f.info.period,f.info.summary]){const p=document.createElement('p');p.textContent=text;panel.append(p)}
-  if(model.userData.interior){
-   const enter=document.createElement('button');enter.id='cathedral-interior-view';enter.textContent=t('성당 내부 보기');enter.style.cssText='float:none;display:block;min-height:44px;margin:8px 0';
-   enter.onclick=()=>{
-    const interior=model.userData.interior,h=f.symbol_size_m[1],point=coords=>model.localToWorld(new THREE.Vector3(coords[0],coords[1]-h/2,coords[2]));
-    const p=point(interior.view),q=point(interior.target);
-    if(walking?.firstPerson.active){walking.firstPerson.clearInput();walking.firstPerson.placeAt(p.x,p.z,model.rotation.y)}
-    else{camera.position.copy(p);controls.target.copy(q);controls.update()}
-    updateLandmarkLod(model,camera);panel.hidden=true;needsRender=true;
-   };panel.append(enter);
-  }
   const storyteller=walking?.stationary.records.find(r=>r.role==='storyteller'&&r.building===f.id);
-  if(storyteller){
-   const talk=document.createElement('button');talk.id='bookshop-talk';talk.textContent=t(storyteller.appearance==='caretaker'?'관리인과 이야기하기':'책방 주인과 이야기하기');talk.style.cssText='float:none;display:block;min-height:44px;margin:8px 0';
+  if(storyteller && storyteller.appearance!=='caretaker'){
+   const talk=document.createElement('button');talk.id='bookshop-talk';talk.textContent=t('책방 주인과 이야기하기');talk.style.cssText='float:none;display:block;min-height:44px;margin:8px 0';
    talk.onclick=()=>{
     walking.firstPerson.exit();el('people3d').checked=true;walking.stationary.group.visible=true;
     const p=storyteller.position,front=new THREE.Vector3(0,2.5,6).applyAxisAngle(new THREE.Vector3(0,1,0),model.rotation.y);

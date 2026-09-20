@@ -3,12 +3,14 @@ import {hipGableRoof,createThroneHall} from './throne_hall.js';
 import {createCityGate} from './gate.js';
 import {createPalaceGate,createGardenPavilion} from './palace.js';
 import {createPagoda} from './pagoda.js';
+import {createBookshop1907} from './bookshop1907.js';
 import {createCathedral1907} from './cathedral1907.js';
 
 // Project-authored, deliberately simplified period models. Dimensions are seed estimates.
 // All models share the existing renderer convention: ground is local y = -h/2.
 export function createLandmark1907(f,w,h,d){
  const kind=f.landmark_kind;
+ if(kind==='bookshop')return createBookshop1907(f,w,h,d);
  if(f.id==='myeongdong-cathedral-1907')return createCathedral1907(f,w,h,d);
  if(f.display_model==='throne_hall')return createThroneHall(f,w,h,d);
  if(kind==='city_gate')return createCityGate({...f,id:f.gate_identity},w,h,d);
@@ -153,25 +155,6 @@ export function createLandmark1907(f,w,h,d){
   for(const side of [-1,1])box('front-wall',side*(w*.25+1.7),1.1,d*.46,w*.5-3.4,2.2,.65,'brick');
   for(const side of [-1,1])post(side*2.9,d*.46,0,3.5,'door');roof(0,3.5,d*.46,8,4.5,1.3,.01);
   group.userData.plan='raised-three-bay-hall-side-ranges';group.userData.frontBays=3;
- }else if(kind==='bookshop'){
-  box('bookshop-base',0,.15,0,w,.3,d,'stone');
-  box('bookshop-wall',0,2.1,0,w*.95,3.9,d*.9,'cream');
-  box('open-front',0,1.9,d*.455,w*.84,3.2,.15,'door');
-  for(const x of [-w*.44,0,w*.44])post(x,d*.46,.3,3.7,'door');
-  roof(0,4.1,0,w+1,d+1.5,1.8,.05);
-  for(const x of [-w*.26,w*.26]){
-   box('book-counter',x,.8,d*.46,w*.35,1,.85,'wood');
-   for(let j=0;j<5;j++)for(let k=0;k<3;k++){
-    const bx=x+(j-2)*w*.055,by=1.36+k*.16;
-    box('bound-book-pages',bx,by,d*.47,w*.045,.12,.5,'cream');
-    box('bound-book-cover',bx,by+.065,d*.47,w*.049,.025,.54,j%2?'trim':'door');
-   }
-  }
-  const canvas=document.createElement('canvas');canvas.width=512;canvas.height=128;
-  const ctx=canvas.getContext('2d');ctx.fillStyle='#ded0ac';ctx.fillRect(0,0,512,128);ctx.fillStyle='#302920';ctx.font='bold 80px serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('匯東書館',256,68);
-  const sign=box('bookshop-sign',0,3.5,d*.48,w*.55,.85,.14,'door');
-  sign.material=new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(canvas),roughness:1});
-  group.userData.plan='estimated-tiled-bookshop-with-bound-books';
  }else if(kind==='shop_row'){
   // A streetscape estimate, not named individual historic businesses.
   const count=f.shop_units??10,bay=w/count;group.userData.shopUnits=count;

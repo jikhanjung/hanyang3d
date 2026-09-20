@@ -7,9 +7,11 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
  const material=color=>new THREE.MeshStandardMaterial({color,roughness:1});
  const coat=material(coatColor),mane=material(maneColor);
  const add=(parent,geometry,mat,x,y,z)=>{const mesh=new THREE.Mesh(geometry,mat);mesh.position.set(x,y,z);parent.add(mesh);return mesh};
- const body=new THREE.Group();group.add(body);
- const legs=[[-.17,.6,0],[.17,.6,Math.PI],[-.17,-.6,Math.PI],[.17,-.6,0]].map(([x,z,phase])=>{
-  const hip=new THREE.Group(),knee=new THREE.Group();hip.position.set(x,.85,z);group.add(hip);
+ const body=new THREE.Group();body.name='horse-body';group.add(body);
+ // Four separate beats: hind pair, then fore pair, then a gathered suspension.
+ // The small left/right delay gives a lead leg instead of a diagonal trot.
+ const legs=[[-.17,.6,.36],[.17,.6,.46],[-.17,-.6,0],[.17,-.6,.09]].map(([x,z,phase])=>{
+  const hip=new THREE.Group(),knee=new THREE.Group();hip.name=`horse-${z>0?'front':'hind'}-${x<0?'left':'right'}`;knee.name='horse-knee';hip.position.set(x,.85,z);body.add(hip);
   add(hip,new THREE.CylinderGeometry(.06,.05,.425,6),coat,0,-.2125,0);
   knee.position.y=-.425;hip.add(knee);add(knee,new THREE.CylinderGeometry(.05,.045,.425,6),coat,0,-.2125,0);return {hip,knee,phase};
  });
@@ -21,16 +23,39 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
  // Forward is +Z; a hanging tail needs positive X rotation to trail toward -Z.
  const tail=new THREE.Group();tail.name='horse-tail';tail.position.set(0,1.25,-.79);body.add(tail);
  add(tail,new THREE.CylinderGeometry(.04,.08,.6,6),mane,0,-.3,0);
- function update(time,moving,airborne=false){
+ const hoof=new THREE.Vector3(),pitchAxis=new THREE.Vector3(1,0,0);
+ function strideLeg(leg,cycle,galloping){
+  const {hip,knee}=leg;
+  const phase=galloping?leg.phase:((hip.position.x<0)===(hip.position.z>0)?0:.5);
+  const p=(cycle-phase+1)%1,stance=galloping?.24:.42;
+  let reach,lift;
+  if(p<stance){reach=.24-.48*p/stance;lift=0}
+  else{
+   const swing=(p-stance)/(1-stance);
+   reach=-.24+.48*(swing*swing*(3-2*swing));
+   lift=Math.sin(Math.PI*swing)*(galloping?(hip.position.z>0?.42:.34):.18);
+  }
+  // Solve two leg segments to a hoof path. During stance the hoof stays on the
+  // ground while the body rises/pitches; during recovery the knee/hock folds.
+  hoof.set(hip.position.x,lift-body.position.y,hip.position.z+reach).applyAxisAngle(pitchAxis,-body.rotation.x).sub(hip.position);
+  const length=.425,distance=Math.hypot(hoof.y,hoof.z);
+  const bend=Math.acos(THREE.MathUtils.clamp((distance*distance-2*length*length)/(2*length*length),-1,1))*(hip.position.z>0?1:-1);
+  knee.rotation.x=bend;
+  hip.rotation.x=Math.atan2(-hoof.z,-hoof.y)-Math.atan2(Math.sin(bend),1+Math.cos(bend));
+ }
+ function update(time,moving,airborne=false,galloping=false){
   if(airborne){
    // Hold a gathered jump pose; the running cycle resumes only after landing.
    for(const {hip,knee} of legs){hip.rotation.x=hip.position.z>0?-1.1:.65;knee.rotation.x=hip.position.z>0?1.5:-1.1}
-   body.position.y=0;head.rotation.x=-.12;tail.rotation.x=1;tail.rotation.z=0;
+   body.position.y=0;body.rotation.x=0;head.rotation.x=-.12;tail.rotation.x=1;tail.rotation.z=0;
   }else if(moving){
-   const t=time/95;for(const {hip,knee,phase} of legs){hip.rotation.x=Math.sin(t+phase)*.55;knee.rotation.x=0}
-   body.position.y=Math.abs(Math.sin(t))*.08;head.rotation.x=Math.sin(t)*.08;tail.rotation.x=.85+Math.sin(time/160)*.08;tail.rotation.z=Math.sin(time/130)*.12;
+   const period=galloping?560:720,cycle=((time%period)+period)%period/period,t=cycle*Math.PI*2;
+   body.position.y=galloping?-.09+(cycle>.70?Math.sin((cycle-.70)/.30*Math.PI)*.16:Math.sin(cycle/.70*Math.PI)*.02):-.09+Math.abs(Math.sin(t))*.025;
+   body.rotation.x=galloping?Math.sin(t-.6)*.055:0;
+   for(const leg of legs)strideLeg(leg,cycle,galloping);
+   head.rotation.x=-.04+Math.sin(t+.5)*(galloping?.10:.035);tail.rotation.x=.85+Math.sin(t)*.08;tail.rotation.z=Math.sin(t)*.12;
   }else{
-   for(const {hip,knee} of legs){hip.rotation.x*=.8;knee.rotation.x=0}body.position.y*=.8;
+   for(const {hip,knee} of legs){hip.rotation.x*=.8;knee.rotation.x*=.8}body.position.y*=.8;body.rotation.x*=.8;
    head.rotation.x=.35+Math.sin(time/1400)*.15;tail.rotation.x*=.9;tail.rotation.z=Math.sin(time/600)*.25;
   }
  }

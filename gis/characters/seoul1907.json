@@ -3647,7 +3647,13 @@
       "building": "hoedong-seogwan-1907",
       "valid_from": 1907,
       "valid_to": 1908,
-      "position_status": "fictional_narrator_at_estimated_bookshop"
+      "position_status": "fictional_narrator_at_estimated_bookshop",
+      "indoors": true,
+      "local_position_m": [
+        0,
+        2.6
+      ],
+      "wander": true
     },
     {
       "building": "geunjeongjeon-1907",
@@ -4016,56 +4022,127 @@
       "position_status": "fictional_attendant_not_documented_individual",
       "appearance": "caretaker",
       "dialogue": {
-        "name": "성당 안내인",
+        "name": "명동성당 관리인",
         "name_en": "Cathedral attendant",
-        "subtitle": "명동성당 · 가상 안내 인물",
+        "subtitle": "종현성당의 건축 · 자료를 바탕으로 구성한 가상 인물",
         "subtitle_en": "Fictional attendant",
         "portrait": "merchant",
         "nodes": {
           "hello": {
-            "text": "명동성당에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
-            "text_en": "Welcome. Would you like to hear about this place?",
+            "text": "종현성당에 오셨구려. 저는 이 건물의 공사와 생김새를 안내하고 있소. 신앙이 이 땅에 전해진 이야기는 안에 계신 신부님께 여쭈어 보시오.",
+            "text_en": "Welcome to Jonghyeon Cathedral. I can explain its construction and spaces. The priest inside tells the history of the faith here.",
             "options": [
               {
-                "label": "이곳 이야기를 들려주시오.",
-                "label_en": "Tell me about this place.",
-                "next": "history"
+                "label": "처음부터 들려주십시오.",
+                "label_en": "Tell me from the beginning.",
+                "next": "part1"
               },
               {
-                "label": "다음에 뵙겠소.",
+                "label": "다음에 뵙겠습니다.",
                 "label_en": "Goodbye.",
                 "action": "close"
               }
             ]
           },
-          "history": {
-            "text": "이 언덕의 종현성당은 1898년에 축성되었소. 붉은 벽돌과 뾰족한 아치, 높은 종탑이 멀리서도 눈에 띄지요. 정문으로 들어가면 기둥이 나누는 세 갈래 공간과 제단 쪽으로 이어지는 긴 내부를 볼 수 있소.",
-            "text_en": "The cathedral was consecrated in 1898. Its brickwork, pointed arches and tower mark the hill; inside, columns divide the nave and aisles.",
+          "part1": {
+            "text": "이 성당은 하루아침에 올라간 건물이 아니오. 1892년에 머릿돌을 놓고 공사를 이어 갔는데, 설계와 감독을 맡은 코스트 신부가 1896년에 세상을 떠났소. 뒤를 맡은 푸아넬 신부가 내부 공사를 이어서 1898년에 완공했지요. 지금 바라보는 벽에는 여러 해에 걸친 일손이 쌓여 있는 셈이오.",
+            "text_en": "The foundation stone was laid in 1892. Father Coste designed and supervised the work, but died in 1896. Father Poisnel continued the interior work, and the cathedral was completed in 1898. These walls represent years of labour.",
+            "story_title": "종현 언덕에 세운 벽돌 성당",
+            "story_title_en": "Building the cathedral on Jonghyeon",
+            "story_part": 1,
+            "story_parts": 3,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
             "sources": [
               {
                 "title": "국가기록원 — 명동성당",
-                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do",
-                "title_en": "국가기록원 — 명동성당"
+                "title_en": "국가기록원 — 명동성당",
+                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part2"
               },
               {
-                "title": "서울역사박물관 — 최신경성전도",
-                "title_en": "Seoul Museum of History — 1907 map",
-                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
               },
               {
-                "title": "한국민족문화대백과사전 — 서울 명동성당",
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part2": {
+            "text": "바깥에서는 벽돌 벽과 뾰족한 아치, 높이 솟은 종탑부터 보시오. 고딕 양식을 따른 성당이라 거리의 기와집과는 인상이 아주 다르지요. 이곳이 언덕 위라 먼 길에서도 종탑을 찾기 쉽소. 다만 탑만 올려다보지 말고, 벽과 창이 어떻게 되풀이되는지도 살펴보시오.",
+            "text_en": "Notice the brick walls, pointed arches and tall bell tower. The Gothic design looks quite different from the tiled houses below. On this hill the tower is easy to spot. Look also at the repeated arrangement of walls and windows.",
+            "story_title": "종현 언덕에 세운 벽돌 성당",
+            "story_title_en": "Building the cathedral on Jonghyeon",
+            "story_part": 2,
+            "story_parts": 3,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
+            "sources": [
+              {
+                "title": "한국민족문화대백과 — 서울 명동성당",
                 "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
                 "url": "https://encykorea.aks.ac.kr/Article/E0018240"
               }
             ],
             "options": [
               {
-                "label": "다시 처음 이야기로.",
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part3"
+              },
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part1"
+              },
+              {
+                "label": "처음 이야기로.",
                 "label_en": "Back to the beginning.",
                 "next": "hello"
               },
               {
-                "label": "다음에 뵙겠소.",
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part3": {
+            "text": "정문으로 들어가면 기둥 사이로 가운데의 긴 공간과 양옆의 통로가 이어지오. 높은 천장과 아치는 제단 쪽으로 눈길을 이끌지요. 안에는 기도하는 분들도 있으니 통로를 따라 천천히 둘러보시오. 저는 건물 이야기를 맡고, 신부님은 이 공간에 모인 사람들이 지켜 온 신앙의 역사를 들려주실 것이오.",
+            "text_en": "Inside, columns divide the long nave from the side aisles. The high ceiling and arches draw the eye toward the altar. Walk quietly along the aisles while others pray. I explain the building; the priest tells the history of the community’s faith.",
+            "story_title": "종현 언덕에 세운 벽돌 성당",
+            "story_title_en": "Building the cathedral on Jonghyeon",
+            "story_part": 3,
+            "story_parts": 3,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
+            "sources": [
+              {
+                "title": "한국민족문화대백과 — 서울 명동성당",
+                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
+                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
+              }
+            ],
+            "options": [
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part2"
+              },
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
                 "label_en": "Goodbye.",
                 "action": "close"
               }
@@ -4081,14 +4158,14 @@
       "position_status": "fictional_attendant_not_documented_individual",
       "appearance": "caretaker",
       "dialogue": {
-        "name": "정동교회 안내인",
+        "name": "정동교회 관리인",
         "name_en": "Chungdong Church attendant",
-        "subtitle": "정동교회 · 가상 안내 인물",
+        "subtitle": "예배당과 학교의 이웃 · 가상 인물",
         "subtitle_en": "Fictional attendant",
         "portrait": "merchant",
         "nodes": {
           "hello": {
-            "text": "정동교회에 오셨구려. 이곳에 관한 이야기를 들려드릴까요?",
+            "text": "정동교회에 오셨구려. 붉은 벽돌 예배당의 내력이나 곁에 있는 학교 이야기가 궁금하시오? 잠시 쉬어 가며 들어 보시오.",
             "text_en": "Welcome. Would you like to hear about this place?",
             "options": [
               {
@@ -4104,32 +4181,131 @@
             ]
           },
           "history": {
-            "text": "정동의 이 예배당은 1897년에 완성되었소. 공사관과 학교들이 들어선 동네에 벽돌 예배당도 자리를 잡은 셈이지요. 정동을 걸을 때에는 한 건물만 보지 말고 주변 시설과 이어서 살펴보시오.",
-            "text_en": "This brick church was completed in 1897, in a Jeongdong neighborhood also shaped by schools and foreign legations.",
+            "text": "처음부터 이 벽돌집에서 모인 것은 아니오. 1885년 10월 11일, 아펜젤러 목사가 정동의 사택에서 예배와 성찬식을 거행한 일이 우리 교회의 시작이라오. 1887년에는 남대문 안의 작은 한옥에 따로 예배처를 마련하고 벧엘이라 불렀소. 낯선 종교가 들어왔다 하여 신기하게 보는 이도 있었을 것이오. 작은 집에서 시작한 모임이 이만큼 자라 지금의 예배당을 갖게 되었지요.",
+            "text_en": "The congregation began with worship and communion at Appenzeller’s Jeongdong home on 11 October 1885. In 1887 it acquired a separate small Korean-style chapel inside Namdaemun, called Bethel. The congregation grew from those modest beginnings.",
             "sources": [
               {
-                "title": "한국관광공사 — 서울 정동교회",
-                "url": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c354b2fc-4c84-496f-822e-e8d78bbd6488",
-                "title_en": "한국관광공사 — 서울 정동교회"
+                "title": "한국민족문화대백과 — 서울 정동교회",
+                "url": "https://encykorea.aks.ac.kr/Article/E0050096"
               },
               {
-                "title": "서울역사박물관 — 최신경성전도",
-                "title_en": "Seoul Museum of History — 1907 map",
-                "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+                "title": "한국민족문화대백과 — 정동제일교회",
+                "url": "https://encykorea.aks.ac.kr/Article/E0050108"
               }
             ],
             "options": [
               {
-                "label": "다시 처음 이야기로.",
+                "label": "붉은 벽돌 예배당 이야기도 듣겠소.",
+                "label_en": "Continue the story.",
+                "next": "building"
+              },
+              {
+                "label": "처음 이야기로.",
                 "label_en": "Back to the beginning.",
                 "next": "hello"
               },
               {
-                "label": "다음에 뵙겠소.",
+                "label": "잘 들었소.",
                 "label_en": "Goodbye.",
                 "action": "close"
               }
-            ]
+            ],
+            "story_part": 1,
+            "story_parts": 4,
+            "story_title": "정동교회의 내력",
+            "story_title_en": "The story of Chungdong Church"
+          },
+          "building": {
+            "text": "교인이 늘어 한옥 예배처만으로는 비좁아지자 1895년 새 예배당 공사를 시작했소. 1897년 12월 26일 봉헌했으니 이제 꼭 십 년을 바라보는 셈이지요. 붉은 벽돌과 뾰족한 창이 익숙한 기와집과는 다르지 않소? 위에서 보면 양옆으로 날개가 뻗은 십자 모양의 예배당이라오. 지금 보이는 모습도 이 시대 건물의 특징을 간추린 것이니, 실제 치수와 장식 하나하나까지 똑같다 여기지는 마시오.",
+            "text_en": "Construction began in 1895 as the congregation outgrew its Korean-style chapel. The brick church was dedicated on 26 December 1897. Its pointed windows and cruciform plan distinguish it from nearby tiled houses. This model simplifies the period building rather than reproducing every measurement and ornament.",
+            "sources": [
+              {
+                "title": "한국민족문화대백과 — 서울 정동교회",
+                "url": "https://encykorea.aks.ac.kr/Article/E0050096"
+              }
+            ],
+            "options": [
+              {
+                "label": "바로 곁 배재학당의 학생들 이야기도 듣겠소.",
+                "label_en": "Continue the story.",
+                "next": "schools"
+              },
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "잘 들었소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ],
+            "story_part": 2,
+            "story_parts": 4,
+            "story_title": "정동교회의 내력",
+            "story_title_en": "The story of Chungdong Church"
+          },
+          "schools": {
+            "text": "곁의 배재학당과 이화학당 이야기도 빼놓을 수 없소. 이곳에는 학생들도 드나들고 학교 행사와 예배도 열렸지요. 교회가 기도하는 곳이기만 했겠소? 연설과 토론, 시민을 위한 문화 행사, 서양식 혼례를 치르는 자리도 되었소. 정동의 학교와 교회가 서로 이어져 사람들이 새 글과 새 생각을 접하는 마당이 된 셈이오. 건물 하나만 보면 그 안팎을 오가던 학생들의 모습은 놓치기 쉽지요.",
+            "text_en": "Students from nearby Paichai and Ewha schools were part of church life. The chapel hosted school events and worship, as well as lectures, debates, cultural events and Western-style weddings. Church and schools formed a connected setting for new learning and ideas.",
+            "sources": [
+              {
+                "title": "한국민족문화대백과 — 정동제일교회",
+                "url": "https://encykorea.aks.ac.kr/Article/E0050108"
+              },
+              {
+                "title": "대한민국역사박물관 — 정동제일교회",
+                "url": "https://archive.much.go.kr/data/01/folderView.do?jobdirSeq=597"
+              }
+            ],
+            "options": [
+              {
+                "label": "아펜젤러와 최병헌 이야기도 듣겠소.",
+                "label_en": "Continue the story.",
+                "next": "pastors"
+              },
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "잘 들었소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ],
+            "story_part": 3,
+            "story_parts": 4,
+            "story_title": "정동교회의 내력",
+            "story_title_en": "The story of Chungdong Church"
+          },
+          "pastors": {
+            "text": "아펜젤러 목사는 교회 일뿐 아니라 배재학당의 교육과 성서 번역에도 힘을 쏟았소. 그러나 1902년 6월, 목포의 성서 번역자 모임에 가던 중 배가 충돌하는 사고로 세상을 떠났지요. 뒤를 이은 최병헌 목사는 우리말과 동양의 학문에 밝은 한국인 목사라오. 유학을 배운 이들에게 기독교를 어떻게 설명할 것인가도 고민했소. 이 교회의 역사는 서양에서 온 사람들만의 일이 아니라, 그것을 받아들이고 생각을 넓혀 가던 조선 사람들의 일이기도 하오.",
+            "text_en": "Appenzeller worked in education and Bible translation as well as ministry. He died in a ship collision in June 1902 while traveling to a translators’ meeting in Mokpo. His Korean successor Choe Byeong-heon sought ways to explain Christianity to people familiar with Confucian learning. The church’s story also concerns Koreans interpreting and engaging with new ideas.",
+            "sources": [
+              {
+                "title": "한국민족문화대백과 — 정동제일교회",
+                "url": "https://encykorea.aks.ac.kr/Article/E0050108"
+              }
+            ],
+            "options": [
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "잘 들었소.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ],
+            "story_part": 4,
+            "story_parts": 4,
+            "story_title": "정동교회의 내력",
+            "story_title_en": "The story of Chungdong Church"
           }
         }
       }
@@ -4744,17 +4920,17 @@
       "dialogue": {
         "name": "명동성당 신부",
         "name_en": "Cathedral priest",
-        "subtitle": "1907년 · 자료를 바탕으로 구성한 가상 인물",
-        "subtitle_en": "1907 · Fictional attendant informed by sources",
+        "subtitle": "1907년 · 한국 천주교의 역사 · 가상 신부",
+        "subtitle_en": "1907 · History of Catholicism in Korea · fictional priest",
         "portrait": "priest1907",
         "nodes": {
           "hello": {
-            "text": "어서 오십시오. 종현의 성당에 관해 궁금하시면 잠시 이야기를 나누시지요.",
-            "text_en": "Welcome. Would you like to hear about the cathedral on jonghyeon?",
+            "text": "어서 오십시오. 이 성당보다 먼저 시작된 이야기가 있습니다. 책을 읽던 이들이 신앙 공동체를 이루고, 박해를 겪으며 여기까지 이어 온 조선 천주교의 역사지요. 잠시 함께 들어 보시겠습니까? 건물의 모습은 바깥 관리인이 안내해 드립니다.",
+            "text_en": "Welcome. Our story began before this cathedral: readers formed a community of faith which endured persecution. Shall I tell it? The attendant outside explains the building.",
             "options": [
               {
-                "label": "이야기를 들려주십시오.",
-                "label_en": "Tell me the story.",
+                "label": "처음부터 들려주십시오.",
+                "label_en": "Tell me from the beginning.",
                 "next": "part1"
               },
               {
@@ -4765,22 +4941,18 @@
             ]
           },
           "part1": {
-            "text": "어서 오십시오. 잠깐 쉬어 가셔도 좋습니다. 이 성당은 1898년에 완공되어, 지금은 문을 연 지 아홉 해가 되었지요. 높은 천장을 향해 시선을 올려 보세요. 바깥 거리의 분주함에서 한 걸음 물러나 조용히 생각할 자리를 찾는 분들도 이 문을 들어옵니다.",
-            "text_en": "Welcome; you may rest here a while. The cathedral was completed in 1898, nine years before our present scene. Look up at the high ceiling and take a quiet moment away from the street.",
-            "story_title": "종현의 성당",
-            "story_title_en": "The cathedral on Jonghyeon",
+            "text": "우리 교회의 첫머리에는 외국 선교사보다 먼저 책을 읽고 믿음을 받아들인 이들이 있습니다. 이승훈이 1784년 북경에서 세례를 받고 돌아온 뒤 신자들이 공동체를 이루었지요. 그래서 저는 시작을 이야기할 때 큰 성당보다 작은 모임을 먼저 떠올립니다. 누군가 책을 펼치고, 다른 이가 묻고, 함께 믿음의 뜻을 살피던 자리 말입니다.",
+            "text_en": "Our first believers studied the faith before foreign missionaries arrived. Yi Seung-hun returned after baptism in Beijing in 1784, and a community formed. When I think of that beginning, I picture a small gathering around a book rather than a great cathedral: one person reading, another asking, all seeking understanding.",
+            "story_title": "이 땅에서 이어 온 신앙",
+            "story_title_en": "A faith carried through generations",
             "story_part": 1,
-            "story_parts": 3,
+            "story_parts": 6,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
             "sources": [
               {
-                "title": "국가기록원 — 명동성당",
-                "title_en": "국가기록원 — 명동성당",
-                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
-              },
-              {
-                "title": "한국민족문화대백과 — 명동성당",
-                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
-                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
+                "title": "한국천주교주교회의 — 한국 교회의 시작과 박해",
+                "title_en": "한국천주교주교회의 — 한국 교회의 시작과 박해",
+                "url": "https://missa.cbck.or.kr/DailyMissa/20180923/13128"
               }
             ],
             "options": [
@@ -4790,6 +4962,11 @@
                 "next": "part2"
               },
               {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
                 "label": "다음에 뵙겠습니다.",
                 "label_en": "Goodbye.",
                 "action": "close"
@@ -4797,22 +4974,18 @@
             ]
           },
           "part2": {
-            "text": "뾰족한 아치와 높은 공간이 낯설게 느껴지십니까? 이곳은 고딕 양식을 따른 벽돌 성당입니다. 그래서 사람들이 뾰죽집이라고 부르기도 했지요. 가운데 통로에서는 제단 쪽으로 시선이 이어집니다. 의자 사이를 급히 지나기보다, 다른 이들의 기도를 방해하지 않도록 천천히 둘러보십시오.",
-            "text_en": "Pointed arches and tall spaces distinguish this brick Gothic church, nicknamed the pointed house. The central aisle directs attention toward the altar. Please explore quietly around those at prayer.",
-            "story_title": "종현의 성당",
-            "story_title_en": "The cathedral on Jonghyeon",
+            "text": "그러나 신자들만으로 할 수 없는 성사의 일도 있었습니다. 1794년에는 중국인 주문모 신부가 들어와 신자들을 돌보았지요. 그는 1801년 새남터에서 목숨을 잃었습니다. 사람 한 분이 오고 떠난 일로만 들리지 않았으면 합니다. 만나기를 기다리던 이들과, 다시 그를 잃은 공동체의 마음도 생각해 보십시오.",
+            "text_en": "Some sacraments required a priest. Zhou Wenmo entered Korea in 1794 to serve the believers, and was executed at Saenamteo in 1801. This is more than the arrival and loss of one man. Think also of those who waited for him, and of a community bereaved once more.",
+            "story_title": "이 땅에서 이어 온 신앙",
+            "story_title_en": "A faith carried through generations",
             "story_part": 2,
-            "story_parts": 3,
+            "story_parts": 6,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
             "sources": [
               {
-                "title": "국가기록원 — 명동성당",
-                "title_en": "국가기록원 — 명동성당",
-                "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
-              },
-              {
-                "title": "한국민족문화대백과 — 명동성당",
-                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
-                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
+                "title": "한국민족문화대백과 — 신부",
+                "title_en": "한국민족문화대백과 — 신부",
+                "url": "https://encykorea.aks.ac.kr/Article/E0033017"
               }
             ],
             "options": [
@@ -4827,6 +5000,11 @@
                 "next": "part1"
               },
               {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
                 "label": "다음에 뵙겠습니다.",
                 "label_en": "Goodbye.",
                 "action": "close"
@@ -4834,29 +5012,149 @@
             ]
           },
           "part3": {
-            "text": "성당 아래에는 순교자들의 유해를 모신 자리가 있습니다. 1900년과 1901년에 이곳으로 옮겨 모셨지요. 이 건물이 우리에게 소중한 것은 높고 큰 모습 때문만은 아닙니다. 신앙을 지켜 온 사람들을 기억하는 장소이기도 합니다. 오늘 보신 모습을 마음에 담아 가시면 좋겠습니다.",
-            "text_en": "Martyrs’ remains were brought to the cathedral crypt in 1900 and 1901. The church is a place of remembrance as well as worship, beyond the scale of its architecture.",
-            "story_title": "종현의 성당",
-            "story_title_en": "The cathedral on Jonghyeon",
+            "text": "신부님을 모시려는 노력은 끊어지지 않았습니다. 정하상은 북경을 오가며 성직자를 보내 달라고 청했고, 유진길과 조신철도 그 일을 도왔지요. 1831년에는 조선대목구가 세워졌습니다. 먼 나라의 결정 한 줄 뒤에는 길을 걷고 소식을 나르던 사람들의 수고가 있었습니다. 이름을 기억하는 까닭도 그 때문입니다.",
+            "text_en": "Jeong Ha-sang travelled to Beijing seeking clergy; Yu Jin-gil and Jo Sin-cheol helped him. The Apostolic Vicariate of Korea was established in 1831. Behind an official decision stood people who travelled and carried messages. That is why remembering their names matters.",
+            "story_title": "이 땅에서 이어 온 신앙",
+            "story_title_en": "A faith carried through generations",
             "story_part": 3,
-            "story_parts": 3,
+            "story_parts": 6,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
+            "sources": [
+              {
+                "title": "한국가톨릭대사전 — 조선대목구",
+                "title_en": "한국가톨릭대사전 — 조선대목구",
+                "url": "https://encyclopedia.catholic.or.kr/entry/3177"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part4"
+              },
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part2"
+              },
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part4": {
+            "text": "이 땅 사람 가운데서도 사제가 나왔습니다. 김대건 신부는 1845년에 서품을 받았지만 이듬해 새남터에서 순교했습니다. 최양업 신부는 1849년에 서품을 받고 돌아와 여러 지역의 신자들을 찾아다녔지요. 한 분의 짧고 절박한 사목과 다른 한 분의 오랜 순방을 함께 기억합니다. 신앙을 잇는 길이 한 모습만은 아니었으니까요.",
+            "text_en": "Kim Dae-geon was ordained in 1845 and martyred at Saenamteo the following year. Choe Yang-eop was ordained in 1849, returned, and travelled among believers. We remember both a brief, urgent ministry and years of journeys. Faith was sustained in more than one way.",
+            "story_title": "이 땅에서 이어 온 신앙",
+            "story_title_en": "A faith carried through generations",
+            "story_part": 4,
+            "story_parts": 6,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
+            "sources": [
+              {
+                "title": "한국민족문화대백과 — 신부",
+                "title_en": "한국민족문화대백과 — 신부",
+                "url": "https://encykorea.aks.ac.kr/Article/E0033017"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part5"
+              },
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part3"
+              },
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part5": {
+            "text": "믿음을 지키는 일은 때로 나라의 질서와 충돌했습니다. 조상을 모시는 예를 둘러싼 갈등도 있었지요. 1839년 기해박해와 1866년 병인박해 때에는 선교사들도 목숨을 잃었습니다. 저는 이 이야기를 승리담처럼 들려드릴 수 없습니다. 처형된 이와 남겨진 가족, 흩어진 이들의 삶을 함께 생각해야 하니까요. 오늘 조용히 기도할 수 있는 시간을 가볍게 여기지 않는 까닭입니다.",
+            "text_en": "The faith sometimes conflicted with the established order, including over ancestral rites. Missionaries too were killed in the persecutions of 1839 and 1866. I cannot tell this as a simple tale of triumph. We must remember the dead, the families left behind, and those scattered from home. Quiet prayer today is not something to take lightly.",
+            "story_title": "이 땅에서 이어 온 신앙",
+            "story_title_en": "A faith carried through generations",
+            "story_part": 5,
+            "story_parts": 6,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
+            "sources": [
+              {
+                "title": "한국천주교주교회의 — 한국 교회의 시작과 박해",
+                "title_en": "한국천주교주교회의 — 한국 교회의 시작과 박해",
+                "url": "https://missa.cbck.or.kr/DailyMissa/20180923/13128"
+              },
+              {
+                "title": "한국민족문화대백과 — 기독교 선교",
+                "title_en": "한국민족문화대백과 — 기독교 선교",
+                "url": "https://encykorea.aks.ac.kr/Article/E0028618"
+              }
+            ],
+            "options": [
+              {
+                "label": "계속 들려주십시오.",
+                "label_en": "Continue.",
+                "next": "part6"
+              },
+              {
+                "label": "앞 이야기로 돌아갑시다.",
+                "label_en": "Previous part.",
+                "next": "part4"
+              },
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
+              },
+              {
+                "label": "다음에 뵙겠습니다.",
+                "label_en": "Goodbye.",
+                "action": "close"
+              }
+            ]
+          },
+          "part6": {
+            "text": "그렇게 이어 온 사람들이 이제 이 종현 언덕에서 함께 기도합니다. 성당 지하에는 1900년과 1901년에 모셔 온 순교자들의 유해도 있습니다. 제게는 벽돌의 크기보다 그 기억이 먼저 다가옵니다. 누구의 믿음이든 서둘러 판단하기보다 그 사람이 걸어온 길을 들어 보시면 좋겠습니다. 오늘은 그 길의 한 부분을 함께 돌아본 셈이지요.",
+            "text_en": "Here on Jonghyeon, the community now gathers for prayer. Martyrs’ remains were brought to the crypt in 1900 and 1901. Their memory means more to me than the size of the building. Before judging someone’s faith, listen to the road they have travelled. Today we have traced a little of that road together.",
+            "story_title": "이 땅에서 이어 온 신앙",
+            "story_title_en": "A faith carried through generations",
+            "story_part": 6,
+            "story_parts": 6,
+            "knowledge_mode": "fictional_dialogue_based_on_pre_1908_history",
             "sources": [
               {
                 "title": "국가기록원 — 명동성당",
                 "title_en": "국가기록원 — 명동성당",
                 "url": "https://theme.archives.go.kr/next/koreaOfRecord/myeongdongCathedral.do"
-              },
-              {
-                "title": "한국민족문화대백과 — 명동성당",
-                "title_en": "Encyclopedia of Korean Culture — Myeongdong Cathedral",
-                "url": "https://encykorea.aks.ac.kr/Article/E0018240"
               }
             ],
             "options": [
               {
                 "label": "앞 이야기로 돌아갑시다.",
                 "label_en": "Previous part.",
-                "next": "part2"
+                "next": "part5"
+              },
+              {
+                "label": "처음 이야기로.",
+                "label_en": "Back to the beginning.",
+                "next": "hello"
               },
               {
                 "label": "다음에 뵙겠습니다.",
@@ -5203,5 +5501,39 @@
         ]
       }
     }
+  },
+  "bookshop_private": {
+    "shop": "회동서관 별책",
+    "offer": "(작게) 남녀상열지사를 다룬 책도 있습니까?",
+    "offer_en": "(Quietly) Do you have tales of romance?",
+    "node": {
+      "text": "허허, 책장 뒤까지 찾아오셨구려. 사랑 때문에 세상과 부딪치는 춘향 이야기, 꿈속 인연과 부귀를 돌아보는 구운몽, 헤어졌다 다시 만나는 숙향 이야기가 있소. 남녀의 정을 그렸다고 다 같은 이야기는 아니지요. 여기서는 큰 소리로 책명을 외칠 것 없이 차분히 골라 보시오. 책장을 넘기는 재미는 손님 몫이오.",
+      "text_en": "You have found the quiet corner behind the shelves. There is Chunhyang’s love and defiance, The Cloud Dream of the Nine with its dream of love and worldly fortune, and Sukhyang’s separation and reunion. Love stories do not all say the same thing. Browse quietly and choose one; the pleasure of turning its pages is yours.",
+      "sources": [
+        {
+          "title": "한국민족문화대백과 — 독서",
+          "title_en": "Encyclopedia of Korean Culture — Reading",
+          "url": "https://encykorea.aks.ac.kr/Article/E0016007"
+        }
+      ],
+      "options": [
+        {
+          "label": "책을 보여 주시오.",
+          "label_en": "Show me the books.",
+          "action": "shop"
+        },
+        {
+          "label": "다른 이야기도 들려주시오.",
+          "label_en": "Tell me something else.",
+          "next": "hello"
+        },
+        {
+          "label": "다음에 뵙겠소.",
+          "label_en": "Goodbye.",
+          "action": "close"
+        }
+      ]
+    },
+    "note": "1907년 이전 유통된 소설을 고른 놀이용 판매. 회동서관의 1907년 재고·실내·은밀한 판매 관행을 입증한 것이 아니다."
   }
 }

@@ -89,6 +89,22 @@ export function createStationaryPeople1907(buildings,data,groundAt){
  for(const r of data.merchants)place(r,'merchant',0,0);
  for(const r of data.storytellers??[])place(r,'storyteller',0,0);
  for(const r of data.guards)for(let i=0;i<r.count;i++)place(r,'guard',i%2?1:-1,i);
- function update(camera){for(const r of records){r.person.group.visible=r.owner.visible&&camera.position.distanceTo(r.position)<650;r.person.update(0,false)}}
+ function update(camera,dt=0){for(const r of records){
+  r.person.group.visible=r.owner.visible&&camera.position.distanceTo(r.position)<650;
+  let moving=false;
+  const route=r.wander?r.owner.userData.booksellerRoute:null;
+  if(route&&!r.talking&&dt>0){
+   r.routeIndex??=0;r.pause??=3;r.walked??=0;
+   if(r.pause>0)r.pause=Math.max(0,r.pause-dt);
+   else{
+    const dest=route[(r.routeIndex+1)%route.length],p=new THREE.Vector3(dest[0],0,dest[1]).applyAxisAngle(new THREE.Vector3(0,1,0),r.owner.rotation.y);
+    p.x+=r.owner.position.x;p.z+=r.owner.position.z;
+    const dx=p.x-r.position.x,dz=p.z-r.position.z,distance=Math.hypot(dx,dz),step=Math.min(distance,.75*Math.min(dt,.1));
+    if(distance>.01){r.position.x+=dx/distance*step;r.position.z+=dz/distance*step;r.position.y=r.owner.userData.groundFloor+.34;r.person.group.rotation.y=Math.atan2(dx,dz);r.walked+=step;moving=true}
+    if(distance<.02){r.routeIndex=(r.routeIndex+1)%route.length;r.pause=r.routeIndex===4?12:3}
+   }
+  }
+  r.person.update(r.walked??0,moving);
+ }}
  return {group,records,update};
 }

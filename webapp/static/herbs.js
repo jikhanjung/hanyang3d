@@ -21,7 +21,23 @@ export function createHerbs({scene,camera,canvas,firstPerson,shop,dialogue,data,
   dummy.position.y=r.position.y+height/2;dummy.scale.set(1,height,1).multiplyScalar(shown&&type.bloom?1:0);dummy.updateMatrix();stems.setMatrixAt(i,dummy.matrix);
   dummy.position.y=r.position.y+height;dummy.scale.set(r.item==='herb_plantain'?.07:.22,r.item==='herb_plantain'?.22:.08,r.item==='herb_plantain'?.07:.22).multiplyScalar(shown&&type.bloom?1:0);dummy.updateMatrix();flowers.setMatrixAt(i,dummy.matrix);
  });for(const part of [mesh,flowers,stems]){part.instanceMatrix.needsUpdate=true;part.computeBoundingSphere()}}
- function pick(e){if(!firstPerson.active||!mesh.visible)return null;const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(pointer,camera);return ray.intersectObjects([mesh,flowers,stems]).map(h=>rows[h.instanceId]).find(n=>Math.hypot(n.position.x-firstPerson.eye.x,n.position.z-firstPerson.eye.z)<5&&(cooldowns.get(n.id)??0)<=performance.now())??null}
+ // Project a generous target in CSS pixels, retaining the same five-metre reach.
+ const target=new THREE.Vector3();
+ function pick(e){
+  if(!firstPerson.active||!mesh.visible)return null;
+  const rect=canvas.getBoundingClientRect(),now=performance.now();let best=null,bestDistance=Infinity;
+  for(const row of rows){
+   if(Math.hypot(row.position.x-firstPerson.eye.x,row.position.z-firstPerson.eye.z)>=5||(cooldowns.get(row.id)??0)>now)continue;
+   target.copy(row.position);target.y+=.4;target.project(camera);
+   if(target.z < -1||target.z > 1)continue;
+   const distance=Math.hypot(e.clientX-(rect.left+(target.x+1)*rect.width/2),e.clientY-(rect.top+(1-target.y)*rect.height/2));
+   if(distance<=26&&distance<bestDistance){best=row;bestDistance=distance}
+  }
+  // Preserve direct picking on tall leaves and flowers outside the padded target.
+  if(best)return best;
+  pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);ray.setFromCamera(pointer,camera);
+  return ray.intersectObjects([mesh,flowers,stems]).map(h=>rows[h.instanceId]).find(n=>Math.hypot(n.position.x-firstPerson.eye.x,n.position.z-firstPerson.eye.z)<5&&(cooldowns.get(n.id)??0)<=now)??null;
+ }
  canvas.addEventListener('pointermove',e=>{hover=pick(e);if(hover){canvas.style.cursor=press?'grabbing':'grab';const item=data.items[hover.item];canvas.title=(item?.name??'약초')+' · 우클릭 채집'}else{if(['grab','grabbing'].includes(canvas.style.cursor))canvas.style.cursor='';canvas.removeAttribute('title')}},true);
  canvas.addEventListener('pointerdown',e=>{if(e.button!==2)return;const row=pick(e);if(!row)return;e.preventDefault();e.stopImmediatePropagation();press={row,x:e.clientX,y:e.clientY,id:e.pointerId};canvas.style.cursor='grabbing'},true);
  canvas.addEventListener('pointerup',async e=>{if(!press||e.pointerId!==press.id)return;const p=press;press=null;e.preventDefault();e.stopImmediatePropagation();canvas.style.cursor='grab';if(busy||Math.hypot(e.clientX-p.x,e.clientY-p.y)>7||pick(e)?.id!==p.row.id)return;busy=true;firstPerson.clearInput();firstPerson.fishing?.cancel();say('약초를 모으는 중…');try{const result=await post({action:'gather',node:p.row.id});cooldowns.set(p.row.id,performance.now()+result.cooldown_ms);refreshPlants();hover=null;canvas.style.cursor='';canvas.removeAttribute('title');await shop.refresh();say(result.message+' 5분 뒤 이 자리에 다시 자라오.')}catch(error){say(error.message)}finally{busy=false}},true);

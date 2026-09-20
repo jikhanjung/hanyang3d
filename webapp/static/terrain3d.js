@@ -1,3 +1,4 @@
+import {createScreenshotMode} from './screenshot_mode.js';
 import {createHerbs} from './herbs.js';
 import {createFishing} from './fishing.js';
 import {drawMinimapLandmarks} from './large_map.js';
@@ -56,6 +57,7 @@ async function main(){
  const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
  renderer.outputColorSpace=THREE.SRGBColorSpace;el('scene').append(renderer.domElement);
  const camera=new THREE.PerspectiveCamera(43,1,10,60000);
+ createScreenshotMode({renderer,scene,camera,menu:el('map-options'),era:1750});
  const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=1;controls.maxDistance=21000;controls.maxPolarAngle=Math.PI*.47;
  scene.add(new THREE.HemisphereLight(0xffffff,0x6a7864,1.6));const light=new THREE.DirectionalLight(0xfff5db,1.5);light.position.set(-4000,9000,3500);scene.add(light);
 
@@ -182,7 +184,7 @@ async function main(){
  const mapGround=terrain; // One physical surface for terrain, map and road overlays.
  const sourceImagePositions=historical.geometry.attributes.position.clone();
  await stage(2,t('지도 표시 완료 · 주요 건물과 문을 준비합니다'));
- const labels=new THREE.Group();labels.visible=el('anchors3d').checked;scene.add(labels);
+ const labels=new THREE.Group();labels.name='calibration-labels';labels.visible=el('anchors3d').checked;scene.add(labels);
  const dotCanvas=document.createElement('canvas');dotCanvas.width=32;dotCanvas.height=32;
  const dotContext=dotCanvas.getContext('2d');dotContext.beginPath();dotContext.arc(16,16,12,0,Math.PI*2);dotContext.fillStyle='#167bb5';dotContext.fill();dotContext.strokeStyle='#ffffff';dotContext.lineWidth=4;dotContext.stroke();
  const dotTexture=new THREE.CanvasTexture(dotCanvas);

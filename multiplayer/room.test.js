@@ -11,11 +11,12 @@ test('only finite, bounded coordinates reach other browsers', () => {
     { x: Infinity, z: 0, yaw: 0 }, { x: 30001, z: 0, yaw: 0 }]) {
     assert.equal(readPose(pose), null);
   }
-  assert.deepEqual(readPose({ x: 10, z: -20, yaw: 0, id: 'forged' }), { x: 10, z: -20, yaw: 0, mounted: false, air: 0 });
+  assert.deepEqual(readPose({ x: 10, z: -20, yaw: 0, id: 'forged' }), { x: 10, z: -20, yaw: 0, mounted: false, galloping: false, air: 0 });
   assert.equal(readPose({ x: 0, z: 0, yaw: 0, air: .987 }).air, .99);
   for (const air of [-1, 6, NaN, '1', Infinity]) assert.equal(readPose({ x: 0, z: 0, yaw: 0, air }).air, 0);
   assert.equal(readPose({ x: 0, z: 0, yaw: 0, mounted: true }).mounted, true);
   assert.equal(readPose({ x: 0, z: 0, yaw: 0, mounted: 'yes' }).mounted, false);
+  for (const mounted of [false,true]) for (const galloping of [true,false,'yes']) assert.equal(readPose({x:0,z:0,yaw:0,mounted,galloping}).galloping,mounted&&galloping===true);
   assert.ok(Math.abs(readPose({ x: 0, z: 0, yaw: 100 }).yaw) <= Math.PI);
 });
 

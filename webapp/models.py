@@ -192,7 +192,7 @@ class Item(EditedModel):
     name_en = models.CharField('이름(영어)', max_length=80, blank=True)
     unit_en = models.CharField('단위(영어)', max_length=20, blank=True)
     description_en = models.TextField('설명(영어)', blank=True)
-    icon_shape = models.CharField('아이콘 모양', max_length=20, choices=[('bolt', '옷감 필'), ('roll', '옷감 두루마리'), ('fish', '어물'), ('reins', '고삐'), ('rod', '낚싯대'), ('herb', '약초')])
+    icon_shape = models.CharField('아이콘 모양', max_length=20, choices=[('bolt', '옷감 필'), ('roll', '옷감 두루마리'), ('fish', '어물'), ('reins', '고삐'), ('rod', '낚싯대'), ('herb', '약초'), ('book', '책')])
     icon_color = models.CharField('아이콘 색', max_length=7, validators=[RegexValidator(r'^#[0-9a-fA-F]{6}$', '#rrggbb 형식으로 입력하세요.')])
     use = models.CharField('쓰임', max_length=20, blank=True, choices=[('', '없음'), ('mount', '말 타기'), ('fish', '낚시')])
     max_owned = models.PositiveSmallIntegerField('최대 보유 수', null=True, blank=True, help_text='비워 두면 제한 없음')

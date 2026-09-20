@@ -506,5 +506,11 @@
  "액션바": "Action bar",
  "빈 칸": "Empty slot",
  "이전 페이지": "Previous page",
- "다음 페이지": "Next page"
+ "다음 페이지": "Next page",
+ "UI 숨기기 · Alt+Z": "Hide UI · Alt+Z",
+ "스크린샷 저장": "Save screenshot",
+ "UI 없는 PNG 저장 · Alt+P": "Save PNG without UI · Alt+P",
+ "스크린샷을 저장하지 못했습니다. 다시 시도해 주세요.": "Could not save the screenshot. Please try again.",
+ "Alt+Z 또는 Esc로 UI 복원": "Restore UI with Alt+Z or Esc",
+ "3D 지형 화면에서 스크린샷을 저장해 주세요.": "Switch to the 3D terrain view to save a screenshot."
 }

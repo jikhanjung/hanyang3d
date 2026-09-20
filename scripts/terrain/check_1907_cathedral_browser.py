@@ -24,7 +24,10 @@ with tempfile.TemporaryDirectory() as tmp:
      page.evaluate("""()=>{const s=seoul1907,b=s.buildings.find(b=>b.userData.feature.id==='myeongdong-cathedral-1907');s.showBuilding(b,{focus:true});s.camera.position.copy(b.position).add(b.position.clone().set(55,25,75).applyAxisAngle(b.up,b.rotation.y));s.controls.target.copy(b.position).add({x:0,y:-7,z:0});s.controls.update()}""")
      page.wait_for_timeout(1000)
      page.screenshot(path='/tmp/cathedral-outside-'+str(width)+'.png')
-     page.locator('#cathedral-interior-view').click()
+     assert page.locator('#cathedral-interior-view').count()==0
+     assert page.locator('#bookshop-talk').count()==0
+     # Camera fixture for indoor checks; users now walk in through the entrance.
+     page.evaluate("""async()=>{const T=await import('three'),s=seoul1907,b=s.buildings.find(b=>b.userData.interior),h=b.userData.feature.symbol_size_m[1],point=c=>b.localToWorld(new T.Vector3(c[0],c[1]-h/2,c[2]));s.camera.position.copy(point(b.userData.interior.view));s.controls.target.copy(point(b.userData.interior.target));s.controls.update();document.getElementById('building-info').hidden=true;}""")
      page.wait_for_timeout(800)
      page.screenshot(path='/tmp/cathedral-inside-'+str(width)+'.png')
      preview=page.evaluate("()=>{const s=seoul1907,b=s.buildings.find(b=>b.userData.interior);return b.worldToLocal(s.camera.position.clone()).y+b.userData.feature.symbol_size_m[1]/2}")

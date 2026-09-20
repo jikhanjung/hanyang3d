@@ -74,5 +74,26 @@ export function createCityGate(feature,w,h,d){
  }
  for(const [material,values] of buckets){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(values,3));g.computeVertexNormals();const mesh=new THREE.Mesh(g,material);mesh.name='gate-surfaces';model.add(mesh)}
  model.userData={doors,centres,doorWidth,archTestY:-h/2+spring*.6,tiers,parts,conceptual:true};
+ // Plaques are physical surfaces, not camera-facing labels. Keep passages untouched.
+ const inscription={gwanghwamun:'光化門',sungnyemun:'崇禮門',heunginjimun:'興仁之門',donuimun:'敦義門',sukjeongmun:'肅靖門'}[feature.id];
+ if(inscription){
+  const vertical=feature.id==='sungnyemun',step=tiers?(h-base)/tiers:0;
+  const ph=tiers?(vertical?step*.63:step*.30):Math.max(.35,base*.10),pw=vertical?ph*.42:ph*(inscription.length+.6);
+  const canvas=document.createElement('canvas');canvas.width=vertical?256:1024;canvas.height=vertical?768:256;
+  const ctx=canvas.getContext('2d');ctx.fillStyle='#181b19';ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle='#a78951';ctx.lineWidth=12;ctx.strokeRect(9,9,canvas.width-18,canvas.height-18);
+  ctx.fillStyle=feature.id==='gwanghwamun'?'#dfbd71':'#ede3c8';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.font=`bold ${vertical?184:180}px "Noto Serif CJK KR", "Noto Serif KR", "Batang", serif`;
+  const chars=vertical?[...inscription]:[...inscription].reverse();
+  chars.forEach((c,i)=>ctx.fillText(c,vertical?128:80+(i+.5)*(864/chars.length),vertical?65+(i+.5)*(638/chars.length):132));
+  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
+  const plaque=new THREE.Group();plaque.name='gate-plaque';
+  plaque.userData={inscription,vertical,historicalStatus:tiers?'simplified-lettering':'interpretive-sign-without-pavilion'};
+  const board=new THREE.Mesh(new THREE.BoxGeometry(pw,ph,.16),new THREE.MeshStandardMaterial({color:0x62472d,roughness:1}));plaque.add(board);
+  const letters=new THREE.Mesh(new THREE.PlaneGeometry(pw*.97,ph*.97),new THREE.MeshBasicMaterial({map:texture}));letters.position.z=.085;plaque.add(letters);
+  const side=feature.outer_side??1,td=d*.62*(1-Math.max(0,tiers-1)*.12);
+  plaque.position.set(0,tiers?base+.6+(tiers-1)*step+step*.30-h/2:base*.925-h/2,side*((tiers?td:d)/2+.20));
+  plaque.rotation.y=side<0?Math.PI:0;model.add(plaque);parts.push('gate-plaque');
+ }
  return model;
 }

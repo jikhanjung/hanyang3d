@@ -69,7 +69,19 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  together=createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
  const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='shop')shop.open(npc.merchant)}});
  const nodes=(source,trade)=>Object.fromEntries(Object.entries(source).map(([key,n])=>[key,{...n,text:n.text.replaceAll('{shop}',trade??'')} ]));
- const npcFor=r=>{const info=r.dialogue??data[r.role];return {key:r.key,name:info.name,subtitle:info.subtitle,portrait:info.portrait??(r.role==='guard'?'guard1907':'merchant'),nodes:nodes(info.nodes,r.trade),position:()=>r.position,merchant:r.role==='merchant'?{trade:r.trade,sells:r.trade}:null,maxDistance:100,begin:()=>firstPerson.clearInput()}};
+ const npcFor=r=>{
+  const info=r.dialogue??data[r.role],dialogueNodes=nodes(info.nodes,r.trade);
+  let merchant=r.role==='merchant'?{trade:r.trade,sells:r.trade}:null;
+  const corner=r.owner.userData.privateCorner;
+  if(r.wander&&corner&&firstPerson.active&&interiorAt(firstPerson.eye)===r.owner&&firstPerson.eye.distanceTo(r.position)<3){
+   const p=r.owner.worldToLocal(r.position.clone());
+   if(p.x>corner.x0&&p.x<corner.x1&&p.z>corner.z0&&p.z<corner.z1){
+    dialogueNodes.hello={...dialogueNodes.hello,options:[{label:data.bookshop_private.offer,label_en:data.bookshop_private.offer_en,next:'private_books'},...dialogueNodes.hello.options]};
+    dialogueNodes.private_books=data.bookshop_private.node;merchant={trade:data.bookshop_private.shop,sells:data.bookshop_private.shop};
+   }
+  }
+  return {key:r.key,name:info.name,subtitle:info.subtitle,portrait:info.portrait??(r.role==='guard'?'guard1907':'merchant'),nodes:dialogueNodes,position:()=>r.position,merchant,maxDistance:r.indoors?12:100,begin:()=>{firstPerson.clearInput();r.talking=true},finish:()=>{r.talking=false}};
+ };
  const horseNpc=()=>({key:'horse-dealer-1907',name:horseData.name,subtitle:horseData.subtitle,portrait:'horseDealer',nodes:horseData.nodes,position:()=>horseDealer.position,merchant:{trade:'말 장수',sells:'말'},maxDistance:100,begin:()=>firstPerson.clearInput(),finish:()=>horseDealer.userData.stopTalk(),face:p=>horseDealer.userData.face(p)});
  dialogue.register({pick(event,hitTest){if(!horseDealer.visible)return null;const distance=hitTest(event,horseDealer.position,1.95,100);return distance===null?null:{distance,npc:horseNpc()}}});
  dialogue.register({pick(event,hitTest){let best=null;if(stationary.group.visible)for(const r of stationary.records){if(r.pose==='seated_prayer'||!r.person.group.visible||(r.indoors&&interiorAt(camera.position)!==r.owner))continue;const distance=hitTest(event,r.position,1.95,100);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:npcFor(r)}}return best}});
