@@ -29,16 +29,23 @@ try:
    const scene=new T.Scene(),camera=new T.PerspectiveCamera(),canvas=document.createElement('canvas');document.body.append(canvas);
    const fp=createFirstPerson({scene,camera,renderer:{domElement:canvas},controls:{target:new T.Vector3(),enabled:true,update(){}},pedestrians:{routes:[{points:[new T.Vector3(),new T.Vector3(0,0,-10)]}]},shop:{state:{items:{reins:1}},showHud(){}},npcData:{items:{reins:{use:'mount'}}},walkProfile:{name:'test',readPosition:()=>null,savePosition(){}},navigation:{largeMapSource:{flatMap:{}},show(){},hide(){},update(){}},positionWorld:{},terrainGround:()=>0,getWalkables:()=>[]});
    fp.enter();fp.setMounted(true);const key=(type,code)=>canvas.dispatchEvent(new KeyboardEvent(type,{code,bubbles:true}));
-   key('keydown','KeyW');const travel=()=>{const p=fp.eye;for(let i=0;i<10;i++)fp.update(.1);return p.distanceTo(fp.eye)};
+   key('keydown','KeyW');let riderError=0;const travel=()=>{const p=fp.eye;for(let i=0;i<10;i++){fp.update(.1);riderError=Math.max(riderError,Math.abs(fp.walker.group.position.y-fp.horse.group.position.y-.35-fp.horse.riderVerticalOffset));}return p.distanceTo(fp.eye)};
    const trot=travel();key('keydown','ShiftLeft');const gallop=travel(),fast=fp.galloping;key('keyup','ShiftLeft');const released=travel(),slow=!fp.galloping;
    key('keydown','ShiftRight');const right=travel();key('keyup','ShiftRight');key('keyup','KeyW');const stopped=travel();fp.jump();fp.update(.1);const jumping=fp.air>0;fp.exit();
    const horse=createHorse(),front=horse.group.getObjectByName('horse-front-left'),rear=horse.group.getObjectByName('horse-hind-right');let diagonal=true,trotExtended=0;
    const feet=l=>l.getObjectByName('horse-knee').localToWorld(new T.Vector3(0,-.425,0));
    for(let t=0;t<720;t+=30){horse.update(t,true,false,false);horse.group.updateMatrixWorld(true);const a=feet(front),b=feet(rear);if(front.getObjectByName('horse-knee').rotation.x<.30&&a.z-front.getWorldPosition(new T.Vector3()).z>.27)trotExtended++;diagonal&&=Math.abs(a.y-b.y)<1e-6&&Math.abs((a.z-front.position.z)-(b.z-rear.position.z))<1e-6;}
-   return {trot,gallop,released,right,stopped,fast,slow,jumping,diagonal,trotExtended};}''')
+   return {trot,gallop,released,right,stopped,fast,slow,jumping,diagonal,trotExtended,riderError};}''')
   print('CONTROLS',result,flush=True)
   for name,value in [('trot',12),('gallop',24),('released',12),('right',24),('stopped',0)]:assert abs(result[name]-value)<.001,result
   assert result['trotExtended']>=2,result
+  assert result['riderError']<1e-8,result
   assert all(result[k] for k in ['fast','slow','jumping','diagonal']),result
+  remote=motion.evaluate('''async()=>{const T=await import('three'),{createWalkTogether}=await import('/webapp/static/walk_together.js'),{createWalker}=await import('/webapp/static/pedestrians.js');
+   const scene=new T.Scene(),walker=createWalker();scene.add(walker.group);const together=createWalkTogether({scene,firstPerson:{active:false},pedestrians:{},profile:{},groundAt:()=>2,button:document.createElement('button'),status:document.createElement('div')});
+   const peer={walker,horse:null,target:{x:0,z:0,yaw:0,mounted:true,air:0},air:0,distance:0};together.peers.set('test',peer);let riderError=0,horseError=0;
+   for(const galloping of [false,true])for(const air of [0,.7])for(let i=0;i<12;i++){peer.target.x+=.4;peer.target.galloping=galloping;peer.target.air=air;together.update(.1);scene.updateMatrixWorld(true);const hp=peer.horse.group.getWorldPosition(new T.Vector3()),body=peer.horse.group.getObjectByName('horse-body'),seat=body.localToWorld(new T.Vector3(0,1.1,0));horseError=Math.max(horseError,Math.abs(hp.y-2-peer.air));riderError=Math.max(riderError,Math.abs(walker.group.position.y+.75-seat.y));}
+   peer.target.mounted=false;peer.target.air=0;together.update(.1);return {riderError,horseError,dismounted:!peer.horse.group.visible&&Math.abs(walker.group.position.y-2)<1e-8};}''')
+  print('REMOTE RIDER',remote,flush=True);assert remote['riderError']<1e-8 and remote['horseError']<1e-8 and remote['dismounted'],remote
   browser.close()
 finally:server.terminate();server.wait()

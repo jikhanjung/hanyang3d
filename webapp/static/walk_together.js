@@ -156,7 +156,13 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
       const angle = target.yaw + Math.PI - walker.group.rotation.y;
       walker.group.rotation.y += Math.atan2(Math.sin(angle), Math.cos(angle)) * alpha;
       peer.distance += moved; walker.update(peer.distance, moved > .002 && !target.mounted, !!target.mounted);
-      if (target.mounted) peer.horse.update(performance.now(), moved > .002, peer.air > .025 || target.air > 0, target.galloping === true);
+      if (target.mounted) {
+        peer.horse.update(performance.now(), moved > .002, peer.air > .025 || target.air > 0, target.galloping === true);
+        const bob = peer.horse.riderVerticalOffset;
+        if (ground !== null) p.y += bob;
+        // Horse is a child of the rider: cancel the parent's bob so its hooves stay at ground + air.
+        peer.horse.group.position.y = -SADDLE - (ground !== null ? bob : 0);
+      }
     }
   }
 

@@ -91,7 +91,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    if(walker){
     const feet=eye.y-eyeHeight();
     walker.group.visible=view>=.8;
-    walker.group.position.set(eye.x,feet+(mounted?SADDLE:0),eye.z);walker.group.rotation.y=yaw+Math.PI;
+    walker.group.position.set(eye.x,feet+(mounted?SADDLE+(horse?.riderVerticalOffset??0):0),eye.z);walker.group.rotation.y=yaw+Math.PI;
     if(horse){horse.group.visible=mounted&&view>=.8;horse.group.position.set(eye.x,feet,eye.z);horse.group.rotation.y=yaw+Math.PI}
    }
   }

@@ -73,7 +73,8 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
    head.rotation.x=.35+Math.sin(time/1400)*.15;tail.rotation.x*=.9;tail.rotation.z=Math.sin(time/600)*.25;
   }
  }
- return {group,update};
+ // Vertical displacement of the seat on the animated torso, relative to its rest pose.
+ return {group,update,get riderVerticalOffset(){return body.position.y+1.1*(Math.cos(body.rotation.x)-1)}};
 }
 
 // A horse dealer at the north end of 수표교. The bridge was also called 마전교; in 1744 officials cited that name as
