@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.27`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.28`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -20,6 +20,8 @@
 검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
 
 ## 운영 주소
+
+2026-09-20 웹 **v0.5.28** 배포: 공통 낚시·산약초 채집·약재상, 1907년 화강암·숲, 경복궁 담장·관리인과 경회루 접근, 성당 신자·관청 안뜰, 미니맵·HUD 정리. 멀티플레이 v0.5.24 유지. [기록](../devlog/20260920_215_deploy_v0528.md).
 
 2026-09-20 웹 **v0.5.27** 배포: 공통 양쪽 마우스 버튼 이동·승마 점프·직사각형 M 지도·큰길/랜드마크·우클릭 차단·정보 패널 배치, 공사관 문지기·실내 신부·대한문/환구단 보행 수정. 멀티플레이 v0.5.24 유지. [기록](../devlog/20260920_212_deploy_v0527.md).
 
