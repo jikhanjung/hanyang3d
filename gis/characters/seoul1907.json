@@ -5384,6 +5384,58 @@
           }
         }
       }
+    },
+    {
+      "id": "jongno-alley-tipsy-1907",
+      "building": "jongno-shops-north-2-1907",
+      "appearance": "tipsy",
+      "pose": "seated_tipsy",
+      "mode": "bubble",
+      "local_position_m": [
+        24,
+        -10
+      ],
+      "yaw_offset_deg": 165,
+      "temporal": {
+        "start_year": 1907,
+        "end_year": 1907,
+        "status": "fictional_scene_character"
+      },
+      "position_status": "fictional_alley_placement",
+      "note": "김홍도 풍속화의 해학적인 분위기를 참고한 가상 취객. 특정 그림 속 인물·1907년 실존 인물 복원이 아님. 술병도 일반 도기병의 개념 표현.",
+      "dialogue": {
+        "name": "골목의 취객",
+        "name_en": "Tipsy alley sitter",
+        "nodes": {
+          "hello": {
+            "text": "저 달이 둘이오… 아니, 대낮인데 달이 어디 갔지?",
+            "text_en": "Two moons up there… Wait, where did the moon go in daylight?",
+            "options": []
+          }
+        },
+        "lines": [
+          {
+            "text": "저 달이 둘이오… 아니, 대낮인데 달이 어디 갔지?",
+            "text_en": "Two moons up there… Wait, where did the moon go in daylight?"
+          },
+          {
+            "text": "내가 길을 잃은 게 아니오. 길이 먼저 집을 나갔지.",
+            "text_en": "I am not lost. The road wandered off first."
+          },
+          {
+            "text": "전차는 종을 치고… 나는 종로에 있고… 그러니 내가 전차인가?",
+            "text_en": "The tram rings a bell… I am on Bell Street… Am I a tram?"
+          },
+          {
+            "text": "이 병은 비었소. 그런데 왜 자꾸 무거워지는 게요…",
+            "text_en": "This bottle is empty. Why does it keep getting heavier?"
+          },
+          {
+            "text": "집은 저쪽이오. 아니, 이쪽인가… 잠깐만 앉았다 갑시다.",
+            "text_en": "Home is that way. Or this way… Let us sit a moment."
+          }
+        ]
+      }
     }
   ],
   "horse_dealer": {

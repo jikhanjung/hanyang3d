@@ -4058,6 +4058,48 @@
       "status": "downloaded_research_only",
       "rights": "사진 원저작자·촬영일·재사용 허락 미확인. 기사에는 저작권 고지 있음. 연구용 로컬 보관, 웹 배포 대상 아님.",
       "detail_manifest": "docs/paichai_photo_manifest.json"
+    },
+    {
+      "id": "EWHA-REFERENCE-01",
+      "repository": "이화여자대학교",
+      "catalog_url": "https://ewha.ac.kr/ewha/intro/history-campus.do",
+      "title_original": "정동 캠퍼스 배치도",
+      "title_ko": "정동 캠퍼스 배치도",
+      "date": {
+        "label": "작성/촬영 연도 미상",
+        "capture_date": null,
+        "certainty": "unconfirmed"
+      },
+      "themes": [
+        "교육",
+        "의료"
+      ],
+      "local_path": "data/photos/ewha/jeongdong-campus-plan-undated.gif",
+      "sha256": "0b705c90da28c81dca1d972bf55a7976093eb80cc963fd56a1e178953079b75c",
+      "status": "downloaded_research_only",
+      "rights": "촬영자·저작권자·재사용 허락 미확인. 로컬 연구 자료로만 보관; 웹 서비스·Docker 이미지에 포함하지 않음.",
+      "detail_manifest": "docs/ewha_reference_manifest.json"
+    },
+    {
+      "id": "EWHA-REFERENCE-02",
+      "repository": "이화여자대학교",
+      "catalog_url": "https://ewha.ac.kr/ewha/intro/history02-1.do",
+      "title_original": "보구녀관 옛 사진",
+      "title_ko": "보구녀관 옛 사진",
+      "date": {
+        "label": "작성/촬영 연도 미상",
+        "capture_date": null,
+        "certainty": "unconfirmed"
+      },
+      "themes": [
+        "교육",
+        "의료"
+      ],
+      "local_path": "data/photos/ewha/bogunyeogwan-undated.jpg",
+      "sha256": "f95a1cb68ba51fca5937ea555691a38179d116229a058dc234655e592de9fdac",
+      "status": "downloaded_research_only",
+      "rights": "촬영자·저작권자·재사용 허락 미확인. 로컬 연구 자료로만 보관; 웹 서비스·Docker 이미지에 포함하지 않음.",
+      "detail_manifest": "docs/ewha_reference_manifest.json"
     }
   ],
   "discovery_collections": [

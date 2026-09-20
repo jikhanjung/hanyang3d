@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "path": "data/photos/ewha/jeongdong-campus-plan-undated.gif",
+      "asset_url": "https://ewha.ac.kr/_res/ewha/img/intro/img-campus01.gif",
+      "source_page": "https://ewha.ac.kr/ewha/intro/history-campus.do",
+      "description": "정동 캠퍼스 배치도. 작성 연도 및 번호 범례 미상; 1907년 배치 확정 근거로 쓰지 않음.",
+      "downloaded_at": "2026-09-20",
+      "sha256": "0b705c90da28c81dca1d972bf55a7976093eb80cc963fd56a1e178953079b75c",
+      "bytes": 105204,
+      "dimensions_px": [
+        389,
+        292
+      ],
+      "capture_date": null,
+      "rights": "촬영자·저작권자·재사용 허락 미확인. 로컬 연구 자료로만 보관; 웹 서비스·Docker 이미지에 포함하지 않음."
+    },
+    {
+      "path": "data/photos/ewha/bogunyeogwan-undated.jpg",
+      "asset_url": "https://www.ewha.ac.kr/_res/ewha/img/intro/img-history01-3.jpg",
+      "source_page": "https://ewha.ac.kr/ewha/intro/history02-1.do",
+      "description": "공식 페이지가 보구녀관(1887)으로 소개하는 사진. 1887은 설립 연도이며 촬영 연도로 확정하지 않음.",
+      "downloaded_at": "2026-09-20",
+      "sha256": "f95a1cb68ba51fca5937ea555691a38179d116229a058dc234655e592de9fdac",
+      "bytes": 64042,
+      "dimensions_px": [
+        600,
+        420
+      ],
+      "capture_date": null,
+      "rights": "촬영자·저작권자·재사용 허락 미확인. 로컬 연구 자료로만 보관; 웹 서비스·Docker 이미지에 포함하지 않음."
+    }
+  ]
+}

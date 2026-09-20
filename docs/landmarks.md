@@ -1627,3 +1627,17 @@
 - [아펜젤러 행전 — 본당·동관·기숙사의 내력과 옛 사진](https://missionews.co.kr/news/583627)
 - [국사편찬위원회 — 배재 학당 설립](https://contents.history.go.kr/front/hm/view.do?levelId=hm_140_0030)
 - [서울역사박물관 — 최신경성전도](https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001)
+
+
+### 1907년 이화학당
+
+1886년 메리 스크랜튼이 설립한 이화학당의 옛 본당(메인홀)입니다. 1897년 기존 한옥 교사를 헐고 2층 붉은 벽돌 교사를 짓기 시작했습니다. 준공 연도는 자료에 따라 1899년 또는 1900년으로 설명됩니다. 1904년에는 중학과를 설치했습니다. 현재 남아 있는 1915년 심슨기념관과는 다른 건물입니다. 위치와 치수, 창문·현관 등 세부 외관은 추정한 개념 표현입니다.
+
+1897년 착공 · 1899~1900년경 준공 · 1907년 모습
+
+손탁호텔 남동쪽, 정동교회 서쪽과 도성 안쪽 구획의 추정 위치. 이화학당 본당 외곽·개별 필지를 원도에서 확정 판독한 좌표는 아님.
+
+- [이화여자대학교 — 캠퍼스 역사](https://ewha.ac.kr/ewha/intro/history-campus.do)
+- [이화여자대학교 — 이화학당 연혁](https://www.ewha.ac.kr/ewha/intro/history01-1.do)
+- [장규식 — 이화학당 역사](https://www.pressian.com/pages/articles/8414)
+- [국민일보 — 이화학당 심슨홀과 본당](https://www.kmib.co.kr/article/view.asp?arcid=0923281641)

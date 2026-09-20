@@ -1424,17 +1424,17 @@
         12,
         10
       ],
-      "display_yaw_deg": -65,
+      "display_yaw_deg": -72.2,
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          475,
-          2480
+          470,
+          2620
         ],
         "anchor": "structure_center",
         "method": "manual_map_reading",
-        "note": "소의문 [475,2480] 중심 유지. 원도의 서쪽에서 꺾여 남쪽으로 이어지는 성벽을 재판독하고 육축 방향을 -65도로 조정. 추정 방향."
+        "note": "2026-09-20 재판독: 昭義門·一名西小門 표기 옆 붉은 문 기호 중심. 기존 [475,2480]은 북쪽 성벽 굽이를 문으로 오인한 위치. 문 방향은 주변 성벽과 진입로를 따른 추정."
       },
       "position_status": "approximate_map_reading",
       "size_status": "estimated_not_measured",
@@ -5300,6 +5300,85 @@
             "title": "서울역사박물관 — 최신경성전도",
             "title_en": "Seoul Museum of History — 1907 map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ewha-main-hall-1907",
+      "name": "1907년 이화학당",
+      "name_en": "Ewha School (1907)",
+      "scene_year": 1907,
+      "category": "교육",
+      "landmark_kind": "ewha_school",
+      "display_model": "landmark_1907",
+      "symbol_size_m": [
+        30,
+        13,
+        17
+      ],
+      "display_yaw_deg": 30,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          456,
+          2421
+        ],
+        "anchor": "structure_center",
+        "method": "estimated_block_from_source_map",
+        "note": "손탁호텔 남동쪽, 정동교회 서쪽과 도성 안쪽 구획의 추정 위치. 이화학당 본당 외곽·개별 필지를 원도에서 확정 판독한 좌표는 아님."
+      },
+      "position_status": "estimated_source_map_block",
+      "size_status": "estimated_not_measured",
+      "temporal": {
+        "existence": {
+          "start_year": 1900,
+          "end_year": null,
+          "status": "approximate",
+          "note": "1897 착공. 준공 1899/1900 이설; 시작값 1900은 보수적 표시 경계. 한국전쟁 중 소실, 정확한 종료 연도 미확정."
+        },
+        "depiction": {
+          "start_year": 1900,
+          "end_year": 1907,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://ewha.ac.kr/ewha/intro/history-campus.do",
+          "https://www.ewha.ac.kr/ewha/intro/history01-1.do",
+          "https://www.pressian.com/pages/articles/8414",
+          "https://www.kmib.co.kr/article/view.asp?arcid=0923281641"
+        ]
+      },
+      "model_note": "1897년 착공한 2층 붉은 벽돌 메인홀의 개념 모형. 실측 복원이나 확정된 1907년 사진 복제가 아니며 창문·현관·지붕·굴뚝·치수·방향은 추정. 1915년 심슨홀·1923년 프라이홀 제외.",
+      "info": {
+        "summary": "1886년 메리 스크랜튼이 설립한 이화학당의 옛 본당(메인홀)입니다. 1897년 기존 한옥 교사를 헐고 2층 붉은 벽돌 교사를 짓기 시작했습니다. 준공 연도는 자료에 따라 1899년 또는 1900년으로 설명됩니다. 1904년에는 중학과를 설치했습니다. 현재 남아 있는 1915년 심슨기념관과는 다른 건물입니다. 위치와 치수, 창문·현관 등 세부 외관은 추정한 개념 표현입니다.",
+        "summary_en": "A conceptual model of the old two-storey brick Main Hall of Ewha School, founded by Mary Scranton in 1886. Construction began in 1897; sources give 1899 or 1900 for completion. A secondary course opened in 1904. This is distinct from the surviving 1915 Simpson Hall. Location, dimensions, windows, porch and roof details are approximate.",
+        "period": "1897년 착공 · 1899~1900년경 준공 · 1907년 모습",
+        "period_en": "Begun 1897; completed circa 1899–1900 · shown in 1907",
+        "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
+        "in_1750_en": "Separate object for the 1907 scene.",
+        "sources": [
+          {
+            "title": "이화여자대학교 — 캠퍼스 역사",
+            "title_en": "Ewha — Campus history",
+            "url": "https://ewha.ac.kr/ewha/intro/history-campus.do"
+          },
+          {
+            "title": "이화여자대학교 — 이화학당 연혁",
+            "title_en": "Ewha — Chronology",
+            "url": "https://www.ewha.ac.kr/ewha/intro/history01-1.do"
+          },
+          {
+            "title": "장규식 — 이화학당 역사",
+            "title_en": "Chang Kyu-sik — History of Ewha",
+            "url": "https://www.pressian.com/pages/articles/8414"
+          },
+          {
+            "title": "국민일보 — 이화학당 심슨홀과 본당",
+            "title_en": "Kookmin Ilbo — Ewha buildings",
+            "url": "https://www.kmib.co.kr/article/view.asp?arcid=0923281641"
           }
         ]
       }

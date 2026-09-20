@@ -1001,12 +1001,12 @@
             "source_asset": "asset-0024",
             "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
             "pixel": [
-              475,
-              2480
+              470,
+              2620
             ],
             "anchor": "structure_center",
             "method": "manual_map_reading",
-            "note": "1907년 정규화 원도의 문·종각 기호 중심 육안 판독. 평면·방향·치수는 추정."
+            "note": "2026-09-20 재판독: 昭義門·一名西小門 표기 옆 붉은 문 기호 중심. 기존 [475,2480]은 북쪽 성벽 굽이를 문으로 오인한 위치. 문 방향은 주변 성벽과 진입로를 따른 추정."
           }
         }
       ],

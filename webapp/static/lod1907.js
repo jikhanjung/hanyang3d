@@ -61,6 +61,8 @@ export function prepareLandmarkLod(model){
  }else if(kind==='altar'||kind==='hwanggungu'){
   add(new THREE.CylinderGeometry(w*.45,w*.5,1,kind==='altar'?24:8),0,.5,0,'stone');
   if(kind==='hwanggungu')for(let i=0;i<3;i++){add(new THREE.CylinderGeometry(7-i,7-i,3.5,8),0,3+i*5,0,'wall');add(new THREE.CylinderGeometry(2,10-i,3,8),0,6+i*5,0,'roof')}
+ }else if(kind==='ewha_school'){
+  box(0,5,0,w*.94,8.7,d*.8,'brick');roof(0,9.4,0,w*1.03,d*.94,2.9);box(0,.4,d*.46,5,.8,2.6,'stone');
  }else if(kind==='paichai_school'){
   box(0,3.2,0,w*.95,6.4,d*.76,'brick');roof(0,6.4,0,w*1.04,d*.9,2.7);box(0,3.3,d*.42,w*.25,6.6,2,'wall');
  }else if(kind==='cathedral'||kind==='church'){

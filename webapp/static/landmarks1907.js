@@ -34,7 +34,34 @@ export function createLandmark1907(f,w,h,d){
   for(let i=0;i<4;i++)box('hall-door',x+(i/4-.375)*hw,eave*.43,z+hd/2+.06,hw/5,eave*.65,.15,'door');
   roof(x,eave,z,hw+2,hd+2,2.5);
  };
- if(kind==='paichai_school'){
+ if(kind==='ewha_school'){
+  // Documented two-storey brick Main Hall; details are conceptual, not measured.
+  const front=d*.4,eave=9.4;
+  box('ewha-base',0,.35,0,w,.7,d,'stone');
+  box('ewha-main-hall',0,5,0,w*.94,8.7,d*.8,'brick');
+  for(const y of [.8,4.9,9.2])box('ewha-course',0,y,0,w*.97,.2,d*.83,'cream');
+  roof(0,eave,0,w*1.03,d*.94,2.9,1);
+  for(const side of [-1,1])for(const y of [2.9,7.1])for(let i=-4;i<=4;i++){
+   if(side===1&&i===0&&y<4)continue;
+   const x=i*w*.092,z=side*(front+.04);
+   box('ewha-window-frame',x,y,z,1.65,2.5,.14,'cream');
+   box('ewha-window',x,y,z+side*.09,1.35,2.22,.08,'glass');
+   box('ewha-window-mullion',x,y,z+side*.14,.08,2.22,.08,'cream');
+   box('ewha-window-transom',x,y,z+side*.14,1.35,.08,.08,'cream');
+  }
+  for(const side of [-1,1])for(const y of [2.9,7.1])for(const z of [-d*.23,0,d*.23]){
+   box('ewha-side-frame',side*w*.472,y,z,.14,2.5,1.65,'cream');
+   box('ewha-side-window',side*w*.476,y,z,.14,2.2,1.35,'glass');
+  }
+  box('ewha-door',0,2.2,front+.1,2.1,3,.18,'door');
+  box('ewha-porch',0,.4,front+1.1,5,.8,2.6,'stone');
+  for(const x of [-2.1,2.1])box('ewha-porch-column',x,2.6,front+2,.26,3.6,.26,'cream');
+  gable(0,4.5,front+1,5.3,3.2,1.4);
+  for(const x of [-w*.3,w*.3]){box('ewha-chimney',x,10.6,-d*.14,.75,3.1,.85,'brick');box('ewha-chimney-cap',x,12.2,-d*.14,1,.22,1.1,'cream')}
+  group.userData.blockingRects=[{x:0,z:0,hw:w*.47,hd:d*.4}];
+  group.userData.accessFront=front+2.4;group.userData.accessHeight=.8;
+  group.userData.plan='circa-1900-two-storey-main-hall';
+ }else if(kind==='paichai_school'){
   // 1887 main hall: a single storey, tiled hip roof and projecting central arcade.
   const eave=6.2,front=d*.38;
   box('school-base',0,.25,0,w,.5,d,'stone');

@@ -2,10 +2,32 @@ import * as THREE from 'three';
 import {createWalker} from './pedestrians.js';
 
 // Small code-authored silhouettes, not uniform or population reconstructions.
-export function createPerson1907({guard=false,merchant=false,storyteller=false,priest=false,praying=false}={}){
+export function createPerson1907({guard=false,merchant=false,storyteller=false,priest=false,praying=false,tipsy=false}={}){
  const person=createWalker(),g=person.group;
  const add=(geo,color,x,y,z,name)=>{const m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color,roughness:1}));m.position.set(x,y,z);m.name=name;g.add(m);return m};
  const box=(w,h,d,color,x,y,z,name)=>add(new THREE.BoxGeometry(w,h,d),color,x,y,z,name);
+ if(tipsy){
+  // Fictional alley sitter: a low, relaxed silhouette with an earthenware bottle.
+  g.traverse(o=>{if(o.isMesh)o.geometry.dispose()});g.clear();
+  const shirt=0xd9cfb7,skin=0xc5a17e,hair=0x302b28;
+  const body=box(.48,.57,.32,shirt,0,.49,0,'tipsy-jacket');body.rotation.z=.12;
+  for(const side of [-1,1]){
+   const leg=box(.22,.19,.62,0xaaa28a,side*.22,.15,.24,'tipsy-folded-leg');leg.rotation.y=side*.55;
+   box(.18,.1,.28,0x493c30,side*.37,.08,.44,'tipsy-shoe');
+   const arm=box(.17,.42,.2,shirt,side*.28,.41,.09,'tipsy-sleeve');arm.rotation.x=-.55;arm.rotation.z=side*.15;
+   add(new THREE.SphereGeometry(.075,8,6),skin,side*.3,.23,.21,'tipsy-hand');
+  }
+  add(new THREE.SphereGeometry(.18,12,8),skin,-.05,.91,.01,'tipsy-head');
+  add(new THREE.SphereGeometry(.17,10,8),hair,-.055,.97,-.055,'tipsy-hair');
+  add(new THREE.SphereGeometry(.065,8,6),hair,-.055,1.12,-.035,'tipsy-topknot');
+  add(new THREE.SphereGeometry(.052,8,6),0xc95d4d,-.05,.9,.18,'tipsy-red-nose');
+  for(const x of [-.12,.015])box(.045,.012,.018,hair,x,.955,.17,'tipsy-sleepy-eye');
+  add(new THREE.CylinderGeometry(.11,.14,.29,12),0x6e5535,.63,.16,.06,'tipsy-bottle-body');
+  add(new THREE.CylinderGeometry(.045,.1,.12,12),0x6e5535,.63,.365,.06,'tipsy-bottle-shoulder');
+  add(new THREE.CylinderGeometry(.047,.047,.12,12),0x6e5535,.63,.48,.06,'tipsy-bottle-neck');
+  add(new THREE.CylinderGeometry(.037,.037,.015,12),0x30291d,.63,.546,.06,'tipsy-bottle-mouth');
+  g.userData.pose='seated-tipsy';g.userData.era=1907;g.userData.costume='fictional-alley-hanbok';person.update=()=>{};return person;
+ }
  if(priest){
   g.traverse(m=>{if(m.isMesh&&m.geometry.type==='BoxGeometry'&&m.geometry.parameters.height>.1)m.material.color.set(0x272627);if(m.isMesh&&m.geometry.type==='SphereGeometry'&&m.geometry.parameters.radius===.07)m.visible=false});
   add(new THREE.CylinderGeometry(.24,.33,1.15,12),0x272627,0,.72,0,'priest-cassock');
@@ -82,7 +104,7 @@ export function createStationaryPeople1907(buildings,data,groundAt){
    const hits=ray.intersectObjects(owner.userData.walkSurfaces??[],true);
    if(hits.length)local.y=Math.max(local.y,hits[0].point.y+.04);
   }
-  const person=createPerson1907({praying,guard:role==='guard',merchant:role==='merchant',priest:record.appearance==='priest',storyteller:role==='storyteller'&&!['caretaker','priest','worshipper'].includes(record.appearance)});person.group.position.copy(local);person.group.rotation.y=owner.rotation.y+(Number.isFinite(record.yaw_offset_deg)?record.yaw_offset_deg*Math.PI/180:0);
+  const person=createPerson1907({praying,tipsy:record.appearance==='tipsy',guard:role==='guard',merchant:role==='merchant',priest:record.appearance==='priest',storyteller:role==='storyteller'&&!['caretaker','priest','worshipper'].includes(record.appearance)});person.group.position.copy(local);person.group.rotation.y=owner.rotation.y+(Number.isFinite(record.yaw_offset_deg)?record.yaw_offset_deg*Math.PI/180:0);
   person.group.name=record.id??`${role}-${record.building}-${index}`;person.group.userData.temporal=record;group.add(person.group);
   records.push({...record,role,owner,person,position:person.group.position,key:person.group.name});
  }

@@ -8,6 +8,30 @@ from .resources import public_resource_paths, resource_path
 
 @override_settings(CONTENT_SOURCE='files')
 class Seoul1907Tests(TestCase):
+    def test_seosomun_gate_and_road_registration(self):
+        from .content import building_seeds
+        from .scene_data import seed, validate
+        data = seed('infrastructure1907')
+        validate('infrastructure1907', data)
+        gate = next(f for f in building_seeds()['features'] if f['id']=='souimun-1907')
+        opening = next(o for o in data['wall']['openings'] if o['id']==gate['id'])
+        self.assertEqual(gate['source_position']['pixel'], [470, 2620])
+        self.assertEqual(opening['pixel'], gate['source_position']['pixel'])
+        self.assertIn(opening['pixel'], data['wall']['centerline'])
+        roads = {r['id']: r['centerline'] for r in data['roads']['features']}
+        self.assertIn(opening['pixel'], roads['seosomun-street-1907'])
+        self.assertIn(roads['seosomun-street-1907'][-1], roads['taepyeong-road-1907'])
+        self.assertEqual(roads['jeongdong-street-1907'][-1], roads['deoksugung-south-street-1907'][0])
+
+    def test_tipsy_sitter_bubble_translation(self):
+        def sitter(lang):
+            data = self.client.get('/1907/?lang='+lang).context['people1907']
+            return next(r for r in data['storytellers'] if r.get('id')=='jongno-alley-tipsy-1907')
+        ko, en = sitter('ko'), sitter('en')
+        self.assertEqual(ko['mode'], 'bubble')
+        self.assertEqual(len(ko['dialogue']['lines']), 5)
+        self.assertNotEqual(ko['dialogue']['lines'][1]['text'], en['dialogue']['lines'][1]['text'])
+
     def test_horse_dealer_period_dialogue_and_trade(self):
         response = self.client.get('/1907/')
         dealer = response.context['people1907']['horse_dealer']
@@ -116,7 +140,7 @@ class Seoul1907BuildingTests(TestCase):
         from .content import load_buildings, content_problems
         from .models import Building
         self.assertEqual(len(load_buildings()['features']), 114)
-        self.assertEqual(len(load_buildings(scene_year=1907)['features']), 74)
+        self.assertEqual(len(load_buildings(scene_year=1907)['features']), 75)
         self.assertEqual(content_problems(), [])
         b = Building.objects.get(key='geunjeongjeon-1907')
         b.full_clean()
@@ -143,7 +167,7 @@ class Seoul1907BuildingTests(TestCase):
         self.assertFalse(Resource.objects.filter(key='model-landmark-1907').exists())
         call_command('sync_content', apply=True, stdout=StringIO())
         self.assertTrue(Resource.objects.filter(key='model-landmark-1907').exists())
-        self.assertEqual(Building.objects.filter(map_config__scene_year=1907).count(), 74)
+        self.assertEqual(Building.objects.filter(map_config__scene_year=1907).count(), 75)
 
     def test_temporal_bounds_and_source_provenance(self):
         from .content import load_buildings
