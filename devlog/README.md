@@ -16,6 +16,8 @@
 
 ## 작업 기록
 
+- [219 — 관리인 발밑 높이·말 꼬리 방향](20260920_219_caretaker_floor_and_horse_tail.md)
+
 - [218 — v0.5.29 운영 배포·낚시와 채집 확장](20260920_218_deploy_v0529.md)
 
 - [217 — dolfinid 구버전 배포 파일 정리](20260920_217_dolfinid_release_cleanup.md)

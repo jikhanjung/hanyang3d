@@ -18,16 +18,17 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
  add(body,new THREE.BoxGeometry(.06,.5,.35),mane,0,1.52,.7).rotation.x=.6;
  const head=new THREE.Group();head.position.set(0,1.72,1.02);body.add(head);
  add(head,new THREE.BoxGeometry(.2,.22,.5),coat,0,0,.14);
- const tail=new THREE.Group();tail.position.set(0,1.25,-.75);body.add(tail);
+ // Forward is +Z; a hanging tail needs positive X rotation to trail toward -Z.
+ const tail=new THREE.Group();tail.name='horse-tail';tail.position.set(0,1.25,-.79);body.add(tail);
  add(tail,new THREE.CylinderGeometry(.04,.08,.6,6),mane,0,-.3,0);
  function update(time,moving,airborne=false){
   if(airborne){
    // Hold a gathered jump pose; the running cycle resumes only after landing.
    for(const {hip,knee} of legs){hip.rotation.x=hip.position.z>0?-1.1:.65;knee.rotation.x=hip.position.z>0?1.5:-1.1}
-   body.position.y=0;head.rotation.x=-.12;tail.rotation.x=-.6;tail.rotation.z=0;
+   body.position.y=0;head.rotation.x=-.12;tail.rotation.x=1;tail.rotation.z=0;
   }else if(moving){
    const t=time/95;for(const {hip,knee,phase} of legs){hip.rotation.x=Math.sin(t+phase)*.55;knee.rotation.x=0}
-   body.position.y=Math.abs(Math.sin(t))*.08;head.rotation.x=Math.sin(t)*.08;tail.rotation.x=-.5;tail.rotation.z=0;
+   body.position.y=Math.abs(Math.sin(t))*.08;head.rotation.x=Math.sin(t)*.08;tail.rotation.x=.85+Math.sin(time/160)*.08;tail.rotation.z=Math.sin(time/130)*.12;
   }else{
    for(const {hip,knee} of legs){hip.rotation.x*=.8;knee.rotation.x=0}body.position.y*=.8;
    head.rotation.x=.35+Math.sin(time/1400)*.15;tail.rotation.x*=.9;tail.rotation.z=Math.sin(time/600)*.25;
