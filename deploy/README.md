@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.31`**, **`honestjung/hanyang3d-multiplayer:v0.5.31`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.32`**, **`honestjung/hanyang3d-multiplayer:v0.5.31`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -20,6 +20,8 @@
 검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
 
 ## 운영 주소
+
+2026-09-20 웹 **v0.5.32** 배포: 속보·갤롭 다리 전방 신전, 속보 몸통 높이 교정. 멀티플레이 v0.5.31 유지, DB 변경 0. [기록](../devlog/20260920_230_deploy_v0532.md).
 
 2026-09-20 웹·멀티플레이 **v0.5.31** 배포: 속보/Shift 갤롭, UI 숨김·스크린샷, 회동서관 실내·소설 거래, 성당·정동교회 대화, 성문 현판·약초 판정 확대, 배재학당 본당. 검증 백업 후 migration 0011·콘텐츠 추가 5·인물 데이터 갱신, 충돌 0. [기록](../devlog/20260920_228_deploy_v0531.md).
 
