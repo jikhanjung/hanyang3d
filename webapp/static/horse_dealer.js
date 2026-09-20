@@ -23,17 +23,31 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
  // Forward is +Z; a hanging tail needs positive X rotation to trail toward -Z.
  const tail=new THREE.Group();tail.name='horse-tail';tail.position.set(0,1.25,-.79);body.add(tail);
  add(tail,new THREE.CylinderGeometry(.04,.08,.6,6),mane,0,-.3,0);
- const hoof=new THREE.Vector3(),pitchAxis=new THREE.Vector3(1,0,0);
+ const hoof=new THREE.Vector3(),shoulder=new THREE.Vector3(),pitchAxis=new THREE.Vector3(1,0,0);
  function strideLeg(leg,cycle,galloping){
   const {hip,knee}=leg;
   const phase=galloping?leg.phase:((hip.position.x<0)===(hip.position.z>0)?0:.5);
   const p=(cycle-phase+1)%1,stance=galloping?.24:.42;
   let reach,lift;
-  if(p<stance){reach=.24-.48*p/stance;lift=0}
+  const foreGallop=galloping&&hip.position.z>0;
+  if(p<stance){reach=(foreGallop?.32:.24)-(foreGallop?.56:.48)*p/stance;lift=0}
   else{
-   const swing=(p-stance)/(1-stance);
-   reach=-.24+.48*(swing*swing*(3-2*swing));
-   lift=Math.sin(Math.PI*swing)*(galloping?(hip.position.z>0?.42:.34):.18);
+   const swing=(p-stance)/(1-stance),smooth=t=>t*t*(3-2*t);
+   if(foreGallop||!galloping){
+    // Fold during recovery, then reach forward with an almost straight leg before touchdown.
+    // A sine-only recovery arc kept the knee folded throughout the forward swing.
+    shoulder.copy(hip.position).applyAxisAngle(pitchAxis,body.rotation.x);shoulder.y+=body.position.y;
+    const extendedHeight=reach=>Math.max(.025,shoulder.y-Math.sqrt(Math.max(0,.844**2-(hip.position.z+reach-shoulder.z)**2)));
+    const reachOut=foreGallop?.54:.34,reachDown=foreGallop?.46:.29;
+    const poses=[[0,-.24,0],[.35,-.06,foreGallop?.42:.18],[.70,reachOut,extendedHeight(reachOut)],[.84,reachDown,extendedHeight(reachDown)],[1,foreGallop?.32:.24,0]];
+    let i=0;while(i<poses.length-2&&swing>poses[i+1][0])i++;
+    const a=poses[i],b=poses[i+1],t=smooth((swing-a[0])/(b[0]-a[0]));
+    reach=a[1]+(b[1]-a[1])*t;lift=a[2]+(b[2]-a[2])*t;
+    if(swing>=.70&&swing<=.84)lift=extendedHeight(reach);
+   }else{
+    reach=-.24+.48*smooth(swing);
+    lift=Math.sin(Math.PI*swing)*(galloping?.34:.18);
+   }
   }
   // Solve two leg segments to a hoof path. During stance the hoof stays on the
   // ground while the body rises/pitches; during recovery the knee/hock folds.
@@ -50,7 +64,7 @@ export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}
    body.position.y=0;body.rotation.x=0;head.rotation.x=-.12;tail.rotation.x=1;tail.rotation.z=0;
   }else if(moving){
    const period=galloping?560:720,cycle=((time%period)+period)%period/period,t=cycle*Math.PI*2;
-   body.position.y=galloping?-.09+(cycle>.70?Math.sin((cycle-.70)/.30*Math.PI)*.16:Math.sin(cycle/.70*Math.PI)*.02):-.09+Math.abs(Math.sin(t))*.025;
+   body.position.y=galloping?-.09+(cycle>.70?Math.sin((cycle-.70)/.30*Math.PI)*.16:Math.sin(cycle/.70*Math.PI)*.02):-.035+Math.abs(Math.sin(t))*.012;
    body.rotation.x=galloping?Math.sin(t-.6)*.055:0;
    for(const leg of legs)strideLeg(leg,cycle,galloping);
    head.rotation.x=-.04+Math.sin(t+.5)*(galloping?.10:.035);tail.rotation.x=.85+Math.sin(t)*.08;tail.rotation.z=Math.sin(t)*.12;
