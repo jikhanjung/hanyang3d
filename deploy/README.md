@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.28`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.29`**, **`honestjung/hanyang3d-multiplayer:v0.5.24`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
@@ -20,6 +20,8 @@
 검사: `.venv/bin/python deploy/test_release_env.py`, `node multiplayer/room.test.js`, 이미지 내 연결 검사, 배포 후 `WALK_URL=https://hanyang3d.nopeoplestime.info/multiplayer node multiplayer/check_connections.js`와 두 브라우저 검사.
 
 ## 운영 주소
+
+2026-09-20 웹 **v0.5.29** 배포: 청계천 전역·시선 방향 낚시, 10초 진행 막대·30% 성공률, 약초/물고기 각 4종·가격 차등, 약초 재생, 액션바 우클릭과 M 지도 이동 유지. 멀티플레이 v0.5.24 유지. [기록](../devlog/20260920_218_deploy_v0529.md).
 
 2026-09-20 웹 **v0.5.28** 배포: 공통 낚시·산약초 채집·약재상, 1907년 화강암·숲, 경복궁 담장·관리인과 경회루 접근, 성당 신자·관청 안뜰, 미니맵·HUD 정리. 멀티플레이 v0.5.24 유지. [기록](../devlog/20260920_215_deploy_v0528.md).
 

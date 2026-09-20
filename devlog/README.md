@@ -16,6 +16,8 @@
 
 ## 작업 기록
 
+- [218 — v0.5.29 운영 배포·낚시와 채집 확장](20260920_218_deploy_v0529.md)
+
 - [217 — dolfinid 구버전 배포 파일 정리](20260920_217_dolfinid_release_cleanup.md)
 
 - [216 — 낚시·채집 종류 확장과 지도 이동 유지](20260920_216_fishing_bank_aim_and_action_click.md)
