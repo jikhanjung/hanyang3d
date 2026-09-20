@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [241 — 기술 현황·Steam 전환 보고서](20260920_241_technical_report_steam.md)
+
 - [240 — 영추문 문루·숭례문 현판](20260920_240_yeongchumun_and_gate_plaque.md)
 
 - [239 — 취객 무작위 대사·무응답](20260920_239_random_tipsy_replies.md)
