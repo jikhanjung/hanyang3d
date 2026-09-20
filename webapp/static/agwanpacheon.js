@@ -22,8 +22,12 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
  settlement.group.visible=false;trams.group.visible=false;walking.pedestrians.group.visible=false;walking.stationary.group.visible=false;walking.horseDealer.visible=false;
  // Roads are 1907 reference geometry, not a claim of a surveyed 1896 escape route.
  const root=new THREE.Group();root.name='agwanpacheon-procession';root.visible=false;scene.add(root);
- document.title=say('아관파천 회상 · 한양3D','Agwanpacheon · Hanyang3D');scene.background=new THREE.Color('#8d9da5');
- scene.traverse(o=>{if(o.isLight)o.intensity*=.72});
+ document.title=say('아관파천 회상 · 한양3D','Agwanpacheon · Hanyang3D');scene.background=new THREE.Color('#101827');
+ // Before dawn: cool, subdued illumination keeps the procession and lane readable.
+ scene.traverse(o=>{
+  if(o.isHemisphereLight){o.color.set('#859bbd');o.groundColor.set('#383e48');o.intensity=.95}
+  else if(o.isDirectionalLight){o.color.set('#b9cef1');o.intensity=.65}
+ });
  function chair(index){
   const group=new THREE.Group(),cabin=new THREE.Group();group.add(cabin);root.add(group);
   const mats={wood:new THREE.MeshStandardMaterial({color:0x66442f}),cloth:new THREE.MeshStandardMaterial({color:index?0x736d61:0x5b6870}),roof:new THREE.MeshStandardMaterial({color:0x363934})};

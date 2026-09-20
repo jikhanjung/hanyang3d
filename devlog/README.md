@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [246 — 아관파천 새벽 하늘·조명](20260921_246_agwanpacheon_predawn_lighting.md)
+
 - [245 — 아관파천 속도·경관·교량·공사관 도착](20260921_245_agwanpacheon_route_and_arrival.md)
 
 - [244 — v0.5.37 아관파천·계정 액션바 배포](20260920_244_deploy_v0537.md)
