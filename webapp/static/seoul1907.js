@@ -101,6 +101,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  };
  for(const f of JSON.parse(el('buildings-1907').textContent).features){
   if(f.scene_year!==1907||!['throne_hall','landmark_1907','conceptual_gate_with_open_arch_and_roof'].includes(f.display_model))continue;
+  if(eventData&&f.id==='russian-legation-1907')f.eventEntrance=true;
   const [w,h,d]=f.symbol_size_m,model=createLandmark1907(f,w,h,d),yaw=THREE.MathUtils.degToRad(f.display_yaw_deg??0);
   const hall=world(...project(...f.source_position.pixel),0),offset=new THREE.Vector3(model.userData.anchorOffset?.[0]??0,0,model.userData.anchorOffset?.[1]??model.userData.hallCenterZ??0).applyAxisAngle(new THREE.Vector3(0,1,0),yaw),center=hall.clone().sub(offset);
   const samples=[];
@@ -117,6 +118,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  }
  await stage(3,t('주요 건물·문 표시 완료 · 성벽과 길·물길을 준비합니다'));
  const surface=(x,y)=>{const p=world(...project(x,y),0);p.y=groundAt(p.x,p.z);if(p.y===null)throw Error('Infrastructure outside terrain');return p};surface.original=originalSurface;surface.ground=(x,z)=>groundAt(x,z);surface.grid={xmin:(xmin-cx)*scale,zmin:-(ymax-cy)*scale,stepX:(xmax-xmin)*scale/(n-1),stepZ:(ymax-ymin)*scale/(n-1),size:n};
+ if(eventData?.bridge)infraData.river.bridges.push(eventData.bridge);
  const infrastructure=createInfrastructure1907(infraData,surface,buildings);scene.add(infrastructure.wall.group,...infrastructure.palaceWalls.map(w=>w.group),infrastructure.water,infrastructure.bridges,infrastructure.roads);
  const tramData=JSON.parse(el('trams-1907').textContent);
  if(tramData.source_sha256!==cfg.image_sha256)throw Error('Tram map hash mismatch');
@@ -223,7 +225,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   return false;
  };
  const herbs=createHerbs({era:1907,scene,camera,canvas:renderer.domElement,firstPerson:walking.firstPerson,shop:walking.shop,dialogue:walking.dialogue,data:JSON.parse(el('npcs').textContent),source:nature.source,groundAt,collision:()=>walking.collision,market:buildings.find(b=>b.userData.feature.id==='bosingak-1907'),visible:()=>el('people3d').checked});
- const historicalEvent=eventData?createAgwanpacheon({data:eventData,scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface}):null;
+ const historicalEvent=eventData?createAgwanpacheon({data:eventData,scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface,channel}):null;
  if(!eventData&&new URLSearchParams(location.search).has('returnFromAgwan'))walking.shop.whenReady.then(()=>{try{const saved=JSON.parse(sessionStorage.getItem('agwan-return'));if(saved?.name===walking.shop.state.name){walking.firstPerson.enter();walking.firstPerson.setMounted(saved.mounted);sessionStorage.removeItem('agwan-return')}}catch{}});
  let lastFrame=performance.now();
  renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){herbs.update();walking.update(dt);historicalEvent?.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);

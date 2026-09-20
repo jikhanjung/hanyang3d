@@ -19,7 +19,7 @@ def progress(player, action, checkpoint=None, version=None):
         raise TradeError(409,'회상 내용이 변경되었습니다. 새로고침해 주세요.')
     with transaction.atomic():
         # One row per account/event; no currency or inventory side effects.
-        row,_=EventProgress.objects.get_or_create(player=player,event_id=data['id'])
+        row,_=EventProgress.objects.get_or_create(player=player,event_id=data['id'],defaults={'definition_version':data['version']})
         if row.definition_version!=data['version']:
             if action not in ('status','restart'):raise TradeError(409,'새 버전의 회상을 처음부터 시작해 주세요.')
         if action=='restart':

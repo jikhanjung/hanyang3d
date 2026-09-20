@@ -86,7 +86,7 @@ export function createInfrastructure1907(data,surface,buildings){
    }
    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setIndex(side>0?[0,2,1,1,2,3]:[0,1,2,1,3,2]);g.computeVertexNormals();group.add(new THREE.Mesh(g,stone));
   }
-  const label=mid.clone();label.y+=deckY+2;group.userData={feature:f,labelPosition:label};bridges.add(group);
+  const label=mid.clone();label.y+=deckY+2;group.userData={feature:f,labelPosition:label,approachDistance:length/2+7};bridges.add(group);
  }
  return {wall,palaceWalls,water,bridges,roads};
 }

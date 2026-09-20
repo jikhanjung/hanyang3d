@@ -1,6 +1,7 @@
 import json
 from django.test import TestCase, Client, override_settings
 from .models import Player, EventProgress
+from .events import definition
 
 class HistoricalEventTests(TestCase):
     def setUp(self):
@@ -10,15 +11,22 @@ class HistoricalEventTests(TestCase):
     def test_auth_version_order_resume_completion_replay(self):
         self.assertEqual(Client().post('/api/events/agwanpacheon/',data='{}',content_type='application/json').status_code,401)
         self.assertEqual(self.post(action='start',version=99).status_code,409)
-        self.assertEqual(self.post(action='start',version=1).json()['checkpoint'],0)
-        self.assertEqual(self.post(action='checkpoint',checkpoint=3,version=1).status_code,409)
-        for i in range(1,8):self.assertEqual(self.post(action='checkpoint',checkpoint=i,version=1).json()['checkpoint'],i)
-        first=self.post(action='complete',version=1).json()
+        self.assertEqual(self.post(action='start',version=definition()['version']).json()['checkpoint'],0)
+        self.assertEqual(self.post(action='checkpoint',checkpoint=3,version=definition()['version']).status_code,409)
+        for i in range(1,len(definition()['route'])):self.assertEqual(self.post(action='checkpoint',checkpoint=i,version=definition()['version']).json()['checkpoint'],i)
+        first=self.post(action='complete',version=definition()['version']).json()
         self.assertEqual(first['status'],'completed')
-        self.assertEqual(self.post(action='complete',version=1).json()['completed_at'],first['completed_at'])
-        self.assertEqual(self.post(action='restart',version=1).json()['checkpoint'],0)
+        self.assertEqual(self.post(action='complete',version=definition()['version']).json()['completed_at'],first['completed_at'])
+        self.assertEqual(self.post(action='restart',version=definition()['version']).json()['checkpoint'],0)
         self.assertEqual(self.post(action='status').json()['completed_at'],first['completed_at'])
         self.assertEqual(EventProgress.objects.count(),1)
+    def test_old_route_requires_restart_but_new_account_uses_current_version(self):
+        current=definition()['version']
+        self.assertEqual(self.post(action='status').json()['version'],current)
+        row=EventProgress.objects.get();row.definition_version=current-1;row.status='active';row.checkpoint=4;row.save()
+        self.assertEqual(self.post(action='start',version=current).status_code,409)
+        restarted=self.post(action='restart',version=current).json()
+        self.assertEqual((restarted['version'],restarted['checkpoint']),(current,0))
     @override_settings(CONTENT_SOURCE='files')
     def test_flashback_page_is_separate(self):
         self.assertEqual(self.client.get('/events/agwanpacheon/').context['historical_event']['date'],'1896-02-11')

@@ -372,7 +372,19 @@ export function createLandmark1907(f,w,h,d){
   }
   cylinder('finial',0,18,0,0,.5,2,'gold');
  }else if(kind==='legation'){
-  box('main-masonry-hall',0,5,0,w*.8,10,d*.55,'cream');roof(0,10,0,w*.85,d*.62,3,1);
+  if(f.eventEntrance){
+   // Interpretive entrance for the private arrival scene; an actual opening, not actors crossing a wall.
+   const front=d*.275,half=w*.4,door=1.7;
+   box('rear-wall',0,5,-front,w*.8,10,.5,'cream');
+   for(const side of [-1,1]){
+    box('side-wall',side*(half-.25),5,0,.5,10,d*.55,'cream');
+    box('front-wall',side*(half+door)/2,5,front-.25,half-door,10,.5,'cream');
+   }
+   box('door-lintel',0,6.6,front-.25,door*2,6.8,.5,'cream');
+   box('entrance-floor',0,.02,0,w*.8,.04,d*.55,'wood');
+   for(const side of [-1,1])box('open-door-leaf',side*1.65,1.6,front-.8,.12,3.2,1.6,'door');
+  }else box('main-masonry-hall',0,5,0,w*.8,10,d*.55,'cream');
+  roof(0,10,0,w*.85,d*.62,3,1);
   box('side-wing',-w*.26,4,-d*.28,w*.28,8,d*.45,'cream');roof(-w*.26,8,-d*.28,w*.34,d*.5,2,1);
   const tx=w*.32,tz=d*.12;box('side-tower',tx,9,tz,7,18,7,'cream');roof(tx,18,tz,9,9,2,1);
   for(let floor=0;floor<2;floor++)for(let i=0;i<8;i++)for(const side of [-1,1]){

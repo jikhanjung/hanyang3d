@@ -62,6 +62,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
   positionWorld:{alignment:eventVisit?'agwanpacheon1896':'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
   terrainGround:(x,z)=>{const y=groundAt(x,z);return y===null?null:y+.025},
+  getSurfaceVersion:()=>infrastructure.walkableVersion??1,
   getWalkables:()=>[...infrastructure.bridges.children.map(o=>[o,()=>infrastructure.bridges.visible]),...buildings.flatMap(b=>(b.userData.walkSurfaces??[]).map(o=>[o,()=>b.visible]))],
   getInterior:interiorAt,
   getCameraObstacles:()=>buildings.filter(b=>b.visible&&camera.position.distanceToSquared(b.position)<160*160).flatMap(b=>b.userData.cameraShell??[]),

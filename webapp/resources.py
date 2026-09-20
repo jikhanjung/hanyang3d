@@ -17,6 +17,8 @@ def public_resource_paths():
     allowed.update({
         'webapp/static/seoul1907.js',
         'webapp/static/agwanpacheon.js',
+        'webapp/static/event_neighborhood.js',
+        'webapp/static/royal_arrival.js',
         'webapp/static/settlement1907.js',
         'gis/buildings/seoul1907_settlement.json',
         'webapp/static/trams1907.js',
