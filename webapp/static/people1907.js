@@ -54,7 +54,7 @@ export function createStationaryPeople1907(buildings,data,groundAt){
    const hits=ray.intersectObjects(owner.userData.walkSurfaces??[],true);
    if(hits.length)local.y=hits[0].point.y+.04;
   }
-  const person=createPerson1907({guard:role==='guard',merchant:role==='merchant',priest:record.appearance==='priest',storyteller:role==='storyteller'&&!['caretaker','priest'].includes(record.appearance)});person.group.position.copy(local);person.group.rotation.y=owner.rotation.y;
+  const person=createPerson1907({guard:role==='guard',merchant:role==='merchant',priest:record.appearance==='priest',storyteller:role==='storyteller'&&!['caretaker','priest'].includes(record.appearance)});person.group.position.copy(local);person.group.rotation.y=owner.rotation.y+(Number.isFinite(record.yaw_offset_deg)?record.yaw_offset_deg*Math.PI/180:0);
   person.group.name=record.id??`${role}-${record.building}-${index}`;person.group.userData.temporal=record;group.add(person.group);
   records.push({...record,role,owner,person,position:person.group.position,key:person.group.name});
  }

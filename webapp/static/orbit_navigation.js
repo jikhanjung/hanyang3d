@@ -2,6 +2,7 @@ import * as THREE from 'three';
 
 // Focus zoom on the visible ground instead of an arbitrary fixed-height orbit plane.
 export function setupOrbitNavigation(camera,controls,canvas,pickGround,isFirstPerson,groundAt){
+ canvas.ownerDocument.addEventListener('contextmenu',event=>event.preventDefault());
  controls.mouseButtons={LEFT:THREE.MOUSE.PAN,MIDDLE:THREE.MOUSE.ROTATE,RIGHT:THREE.MOUSE.DOLLY};
  controls.screenSpacePanning=false;
  controls.minDistance=1;controls.zoomToCursor=true;controls.zoomSpeed=1.6;

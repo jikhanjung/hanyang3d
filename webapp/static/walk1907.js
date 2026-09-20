@@ -11,7 +11,7 @@ import {createNavigation1907} from './navigation1907.js';
 import {createHorseDealer} from './horse_dealer.js';
 const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
 
-export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture,settlement}){
+export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture,settlement,flatMap}){
  // Tiny local volumes avoid triangle tests and follow each building's rotation/height.
  const indoorBuildings=buildings.filter(b=>b.userData.interior?.volumes),local=new THREE.Vector3();
  function interiorAt(point){
@@ -55,7 +55,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  const horseFrame={x:horseDealer.position.x,z:horseDealer.position.z,yaw:horseDealer.rotation.y};
  collision.addLocal(horseFrame,3.5,.6,2.4,1.5,()=>horseDealer.visible);
  const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
- const profile=createWalkProfile({account:shop}),navigation=createNavigation1907(geometry,texture);
+ const profile=createWalkProfile({account:shop}),navigation=createNavigation1907(geometry,texture);navigation.largeMapSource.flatMap=flatMap;
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
   positionWorld:{alignment:'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
   terrainGround:(x,z)=>{const y=groundAt(x,z);return y===null?null:y+.025},

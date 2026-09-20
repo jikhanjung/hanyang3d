@@ -898,7 +898,14 @@ async function main(){
    ctx.fillStyle='#fffdf2dd';ctx.fillRect(9,210,68,23);ctx.fillStyle='#24372e';ctx.fillRect(15,216,200/span*size,2);ctx.font='11px system-ui';ctx.fillText('200 m',15,230);
    map.dataset.worldX=x;map.dataset.worldZ=z;map.dataset.heading=heading;
   }
-  return {largeMapSource:{image:baked,minX,minZ,maxX,maxZ,scale,prepare:bake},show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
+  const toPixel=({x,z})=>{
+   for(const index of bins.get(Math.floor(x/binSize)+','+Math.floor(z/binSize))??[]){
+    const {points,uv}=sourceTriangles[index],weights=DoseongWarp.barycentric({x,y:z},...points.map(p=>({x:p[0],y:p[1]})));
+    if(weights&&weights.every(w=>w>=-1e-7))return [weights.reduce((v,w,k)=>v+w*uv[k][0],0)*iw,(1-weights.reduce((v,w,k)=>v+w*uv[k][1],0))*ih];
+   }return null;
+  };
+  const flatMap={image:texture.image,crop:[128,116,2998,2600],toPixel,roads:walkingData.routes.map(r=>({name:r.name,points:r.pixel_points})),landmarks:buildings.children.filter(b=>buildingLevel(b.userData.feature)<=1).map(b=>({name:b.userData.feature.name.split(' · ')[0],pixel:toPixel(b.position)})).filter(b=>b.pixel)};
+  return {largeMapSource:{flatMap,image:baked,minX,minZ,maxX,maxZ,scale,prepare:bake},show(yaw,at){bake();panel.hidden=false;update(yaw,at)},hide(){panel.hidden=true},update};
  })();
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  // The shop owns the account state (login, coins); the walking profile takes its name from it.

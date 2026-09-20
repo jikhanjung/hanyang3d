@@ -4,6 +4,22 @@ from pathlib import Path
 from urllib.request import urlopen
 from playwright.sync_api import sync_playwright
 from account_login import LOGIN_JS
+def check_large_map(page,scene,identifier,crop):
+ expected=page.evaluate("""([key,id])=>{const s=window[key],buildings=key==='terrain3d'?s.buildings.children:s.buildings,b=buildings.find(b=>b.userData.feature.id===id);s.controls.target.copy(b.position);return b.userData.feature.source_position.pixel}""",[scene,identifier])
+ for width,height in [(1280,900),(390,844)]:
+  page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(100)
+  page.locator('#scene > canvas').focus();page.keyboard.press('m');assert page.locator('#large-map').is_visible()
+  data=page.locator('#large-map canvas').evaluate('(c)=>({...c.dataset})')
+  assert list(map(float,data['crop'].split(',')))==crop,data
+  dx,dy,w,h=map(float,data['mapRect'].split(','));left,top,right,bottom=crop
+  assert abs(w/h-(right-left)/(bottom-top))<.00001
+  assert abs(float(data['markerX'])-(dx+(expected[0]-left)*w/(right-left)))<2,data
+  assert abs(float(data['markerY'])-(dy+(expected[1]-top)*h/(bottom-top)))<2,data
+  assert int(data['roadCount'])>=3 and int(data['landmarkCount'])>=15 and int(data['labelCount'])>=5,data
+  assert page.locator('#large-map').evaluate("e=>!e.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,button:2}))")
+  page.screenshot(path=f'/tmp/M-flat-{scene}-{width}.png');page.keyboard.press('Escape')
+ assert page.locator('#scene > canvas').evaluate("e=>!e.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,button:2}))")
+ page.set_viewport_size({'width':1280,'height':900});print('PASS flat map, inverse marker, roads/labels, context menu',scene,flush=True)
 root=Path(__file__).resolve().parents[2];os.chdir(root)
 with tempfile.TemporaryDirectory() as tmp:
  env={**os.environ,'HANYANG_DB_PATH':tmp+'/db.sqlite3','HANYANG_CONTENT_SOURCE':'files'}
@@ -18,6 +34,7 @@ with tempfile.TemporaryDirectory() as tmp:
     browser=p.chromium.launch(args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
     page=browser.new_page(viewport={'width':1280,'height':900});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
     page.goto('http://127.0.0.1:18099/1907/');page.wait_for_function('window.seoul1907?.ready||window.seoul1907?.error',timeout=180000);assert page.evaluate('seoul1907.ready'),page.evaluate('seoul1907.error')
+    check_large_map(page,'seoul1907','bosingak-1907',[115,560,2580,3530])
     page.evaluate('seoul1907.renderer.setAnimationLoop(null)')
     result=page.evaluate('''()=>{const s=seoul1907,fp=s.firstPerson;
      const gate=s.buildings.find(b=>b.userData.feature.id==='daehanmun-1907');
@@ -81,10 +98,11 @@ with tempfile.TemporaryDirectory() as tmp:
      page.keyboard.press('Escape')
     page.set_viewport_size({'width':1280,'height':900})
     page.wait_for_timeout(150)
-    page.evaluate('''async()=>{const {updateLandmarkLod}=await import('/webapp/static/lod1907.js');const s=seoul1907,r=s.walking.stationary.records.find(r=>r.appearance==='priest');s.firstPerson.exit();s.camera.near=.08;s.camera.fov=70;s.camera.updateProjectionMatrix();document.getElementById('building-info').hidden=true;document.getElementById('walk-chat').hidden=true;s.camera.position.copy(r.position).set(5.5,1.77-r.owner.userData.feature.symbol_size_m[1]/2,25.5);r.owner.localToWorld(s.camera.position);s.camera.lookAt(r.position.clone().add({x:0,y:1,z:0}));for(const b of s.buildings)updateLandmarkLod(b,s.camera);s.walking.stationary.update(s.camera);document.getElementById('labels').hidden=true;s.renderer.setAnimationLoop(()=>s.renderer.render(s.scene,s.camera))}''')
+    page.evaluate('''async()=>{const {updateLandmarkLod}=await import('/webapp/static/lod1907.js');const s=seoul1907,r=s.walking.stationary.records.find(r=>r.appearance==='priest');s.firstPerson.exit();s.camera.near=.08;s.camera.fov=70;s.camera.updateProjectionMatrix();document.getElementById('building-info').hidden=true;document.getElementById('walk-chat').hidden=true;s.camera.position.copy(r.position).set(6.8,1.77-r.owner.userData.feature.symbol_size_m[1]/2,18.5);r.owner.localToWorld(s.camera.position);s.camera.lookAt(r.position.clone().add({x:0,y:1,z:0}));for(const b of s.buildings)updateLandmarkLod(b,s.camera);s.walking.stationary.update(s.camera);document.getElementById('labels').hidden=true;s.renderer.setAnimationLoop(()=>s.renderer.render(s.scene,s.camera))}''')
     page.wait_for_timeout(150)
     page.screenshot(path='/tmp/cathedral-priest.png')
     page.goto('http://127.0.0.1:18099/');page.wait_for_function('window.terrain3d?.ready',timeout=180000)
+    check_large_map(page,'terrain3d','donhwamun',[128,116,2998,2600])
     page.set_viewport_size({'width':1280,'height':900})
     page.evaluate('''async()=>{document.getElementById('walk-chat')?.remove();document.getElementById('walk-chat-toggle')?.remove();const {createWalkChat}=await import('/webapp/static/walk_chat.js');const c=createWalkChat({scene:document.getElementById('scene'),firstPerson:terrain3d.firstPerson,send:()=>{}});c.connect();const p=document.getElementById('building-popup');p.hidden=false;p.textContent='1750 건물 정보';}''')
     page.wait_for_timeout(150)
