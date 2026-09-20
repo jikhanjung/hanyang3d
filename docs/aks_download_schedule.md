@@ -43,3 +43,5 @@ systemctl --user stop hanyang3d-aks@objects.service hanyang3d-aks@food.service
 중단된 작업은 예정일 이후 `systemctl --user start hanyang3d-aks@objects.service` 또는 food로 재개한다. 개별 실패 링크를 나중에 재검사하려면 원본 서버 상태를 확인한 뒤 `python3 scripts/download/fetch_aks_costumes.py --category objects --download --pause 3`을 사용한다(`food`도 동일). 수동 다운로드 후 `python3 scripts/download/backup_aks_archive.py`로 NAS를 갱신한다.
 
 등록 원본은 `scripts/download/systemd/`, 실제 설치본은 `/home/jikhanjung/.config/systemd/user/`다. 서비스 경로와 ConditionHost는 m710q에 맞춰 고정했다.
+
+2026-09-20 운영 확인: 물품 서비스가 09:00:04 KST에 실제 시작했다. 음식 타이머의 다음 실행은 2026-09-21 09:00 KST다. 물품은 수집 중이며 완료 결과는 위 요약 JSON과 manifest를 확인한다.

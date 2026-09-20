@@ -21,6 +21,8 @@
 
 ## 운영 주소
 
+2026-09-20 웹 **v0.5.27** 배포: 공통 양쪽 마우스 버튼 이동·승마 점프·직사각형 M 지도·큰길/랜드마크·우클릭 차단·정보 패널 배치, 공사관 문지기·실내 신부·대한문/환구단 보행 수정. 멀티플레이 v0.5.24 유지. [기록](../devlog/20260920_212_deploy_v0527.md).
+
 2026-09-19 웹 **v0.5.25** 배포: M 키 큰 지도·현재 위치, 청계천 하도 보행, 주요 건물 관리인·단성사 문지기, 채팅·설정 메뉴·봇짐 표시 정리. 인물 데이터는 검증 백업 후 별도 적용했다. 멀티플레이 v0.5.24 유지. [기록](../devlog/20260919_207_deploy_v0525.md).
 
 2026-09-19 웹·멀티플레이 **v0.5.24** 배포: 장면 데이터 DB 전환, 육조거리·단성사 교정, 걷기 HUD·액션바·봇짐·채팅·미니맵·포커스 이동 유지. v0.5.23의 내부 Host 연결 실패를 수정한 버전. [기록](../devlog/20260919_202_deploy_v0524.md).
@@ -79,8 +81,8 @@
 - 출처·저작권: https://hanyang3d.nopeoplestime.info/credits/
 - 작업 현황: https://hanyang3d.nopeoplestime.info/gis/
 - 상태 확인: https://hanyang3d.nopeoplestime.info/healthz
-- 웹: `honestjung/hanyang3d:v0.5.26`
-  - digest: `sha256:e46ee2fbe4bd724952b4aff8ac2df049965555a6fc8fdef02bc507c776997067`
+- 웹: `honestjung/hanyang3d:v0.5.27`
+  - digest: `sha256:e6b66f11dae640e7b25686db10c87201c694c542064e2dd55358544e2c403343`
 - 멀티플레이: `honestjung/hanyang3d-multiplayer:v0.5.24`
   - digest: `sha256:0c9df6ffc3aa8fcc1b6bc8e7facf501518f6c56bd89344ec2ae0ce7f6c764c64`
 
