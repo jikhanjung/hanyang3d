@@ -33,10 +33,17 @@ with tempfile.TemporaryDirectory() as tmp:
      page.evaluate(f"{key}.{'walking.' if era==1907 else ''}shop.openPack()")
      page.evaluate("""()=>{const src=document.querySelector('#pack-window .shop-slot[data-item=fishing_rod]'),dst=document.querySelector('#action-bar [data-slot="0"]'),transfer=new DataTransfer();transfer.setData('application/x-hanyang-item','fishing_rod');dst.dispatchEvent(new DragEvent('drop',{bubbles:true,dataTransfer:transfer}))}""")
      page.evaluate(f"{key}.{'walking.' if era==1907 else ''}shop.closePack()")
-     page.locator('#scene > canvas').focus();page.keyboard.press('1')
+     # Looking independently of body yaw must determine the cast bearing.
+     page.evaluate(f'{key}.camera.rotation.y+=.25;{key}.camera.updateMatrixWorld(true)')
+     page.locator('#action-bar [data-slot="0"]').click(button='right')
      assert page.evaluate(f'{key}.firstPerson.fishing.active')
+     aim=page.evaluate("""key=>{const s=window[key],f=s.firstPerson.fishing,d=f.castTarget.clone().sub(s.firstPerson.eye).setY(0).normalize(),v=s.camera.getWorldDirection(d.clone()).setY(0).normalize();f.update();return {dot:d.dot(v),bankDistance:f.shore.clone().setY(0).distanceTo(f.water.clone().setY(0)),rod:s.scene.children.find(o=>o.name==='fishing-tackle').children[0].scale.y,binding:JSON.parse(localStorage.getItem('hanyang3d-actions:'+('채집검사'+(key==='terrain3d'?1750:1907))))[0]}}""",key)
+     assert aim['dot']>.99999 and aim['bankDistance']<6.1 and aim['rod']<=2.401 and aim['binding']=='fishing_rod',aim
+     print('PASS right-click use, camera bearing, bank proximity and short NPC rod',era,aim,flush=True)
      page.evaluate(f'{key}.renderer.setAnimationLoop(()=>{{{key}.firstPerson.update(.016);{key}.herbs.update();{key}.renderer.render({key}.scene,{key}.camera)}})')
      page.wait_for_timeout(1000);assert page.locator('#fishing-status').is_visible()
+     assert page.locator('#fishing-status progress').is_visible()
+     assert page.locator('#fishing-status progress').evaluate('e=>e.value>0&&e.value<100')
      page.screenshot(path=f'/tmp/fishing-{era}.png')
      page.wait_for_function(f'!{key}.firstPerson.fishing.active',timeout=40000)
      assert '잡았소' in page.locator('#fishing-status').inner_text() or '입질 없이' in page.locator('#fishing-status').inner_text()
@@ -51,11 +58,15 @@ with tempfile.TemporaryDirectory() as tmp:
      page.evaluate(f'()=>{{const f={key}.firstPerson,p=f.eye;f.placeAt(p.x+2,p.z,f.yaw);f.update(.016)}}')
      assert not page.evaluate(f'{key}.firstPerson.fishing.active')
      page.evaluate(f'{key}.renderer.setAnimationLoop(null)')
-     plant=page.evaluate("""key=>{const s=window[key],r=s.herbs.rows[0],p=r.position;s.firstPerson.placeAt(p.x,p.z+2,0);s.firstPerson.walker.group.visible=false;s.camera.position.copy(p).add({x:0,y:1.5,z:2.5});s.camera.lookAt(p.clone().add({x:0,y:.4,z:0}));s.camera.updateMatrixWorld(true);s.renderer.render(s.scene,s.camera);const q=p.clone().add({x:0,y:.4,z:0}).project(s.camera),rect=s.renderer.domElement.getBoundingClientRect();return {id:r.id,x:rect.left+(q.x+1)*rect.width/2,y:rect.top+(1-q.y)*rect.height/2}}""",key)
+     plant=page.evaluate("""key=>{const s=window[key],r=s.herbs.rows[0],p=r.position,aim=.4*JSON.parse(document.getElementById('npcs').textContent).herbs.types[r.item].scale[1];s.firstPerson.placeAt(p.x,p.z+2,0);s.firstPerson.walker.group.visible=false;s.camera.position.copy(p).add({x:0,y:1.5,z:2.5});s.camera.lookAt(p.clone().add({x:0,y:aim,z:0}));s.camera.updateMatrixWorld(true);s.renderer.render(s.scene,s.camera);const q=p.clone().add({x:0,y:aim,z:0}).project(s.camera),rect=s.renderer.domElement.getBoundingClientRect();return {id:r.id,x:rect.left+(q.x+1)*rect.width/2,y:rect.top+(1-q.y)*rect.height/2}}""",key)
      page.mouse.move(plant['x'],plant['y']);assert page.locator('#scene > canvas').evaluate("c=>c.style.cursor")=='grab'
      page.evaluate(f'{key}.renderer.setAnimationLoop(()=>{key}.renderer.render({key}.scene,{key}.camera))');page.screenshot(path=f'/tmp/herb-{era}.png');page.mouse.click(plant['x'],plant['y'],button='right')
      page.wait_for_function(f"{key}.herbs.cooldowns.has('{plant['id']}')",timeout=10000)
-     print('PASS grab cursor, right-click harvesting and cooldown',era,flush=True)
+     assert page.evaluate(f'{key}.herbs.mesh.instanceMatrix.array[5]===0 && {key}.herbs.flowers.instanceMatrix.array[5]===0 && {key}.herbs.stems.instanceMatrix.array[5]===0')
+     page.evaluate(f"{key}.herbs.cooldowns.set('{plant['id']}',performance.now()-1)")
+     page.wait_for_function(f'()=>{{{key}.herbs.update();return {key}.herbs.mesh.instanceMatrix.array[5]>0}}',timeout=3000)
+     assert page.evaluate(f"!{key}.herbs.cooldowns.has('{plant['id']}')")
+     print('PASS grab cursor, right-click harvesting, disappearance and timed respawn',era,flush=True)
      seller=page.evaluate(f'()=>{{const s={key},d=s.walking?.dialogue??s.npcDialogue;return s.herbs.merchantAt.toArray()}}')
      assert seller
      if era==1907:

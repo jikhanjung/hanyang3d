@@ -987,7 +987,7 @@ async function main(){
    return best;
   }});
  }
- firstPerson.fishing=createFishing({scene,camera,firstPerson,shop,dialogue:npcDialogue,bridge:bridges.children.find(b=>b.userData.feature.id===npcData.fishing.bridge_ids['1750']),groundAt:(x,z)=>firstPerson.groundAt(x,z),collision:()=>collision,data:npcData,era:1750,visible:()=>el('people3d').checked});
+ firstPerson.fishing=createFishing({scene,camera,firstPerson,shop,dialogue:npcDialogue,waterSurface:waterLayer.children[0],bridge:bridges.children.find(b=>b.userData.feature.id===npcData.fishing.bridge_ids['1750']),groundAt:(x,z)=>firstPerson.groundAt(x,z),collision:()=>collision,data:npcData,era:1750,visible:()=>el('people3d').checked});
  const herbs=createHerbs({era:1750,scene,camera,canvas:renderer.domElement,firstPerson,shop,dialogue:npcDialogue,data:npcData,source:sourceSurface,groundAt:(x,z)=>firstPerson.groundAt(x,z),collision:()=>collision,market:buildings.children.find(b=>b.userData.feature.id==='jongru'),visible:()=>el('people3d').checked});
  frameUpdate=dt=>{herbs.update();firstPerson?.update(dt);if(!firstPerson?.active)firstPerson?.fishing?.update();together?.update(dt);npcDialogue?.update();pedestrians?.setAvoidPoint(firstPerson?.active?firstPerson.eye:null);pedestrians?.update(dt);const time=pedestrians.networkSnapshot?pedestrians.elapsed*1000:performance.now();for(const drill of drills)if(drill.visible&&drill.parent?.visible)drill.userData.update(time,groundAt(drill));if(horseDealer){horseDealer.visible=bridges.visible;if(horseDealer.visible)horseDealer.userData.update(time,groundAt(horseDealer))}updateBuildingNames()};
  toolbarControls.forEach(c=>c.disabled=false);el('channel-depth').disabled=!channelState.enabled;

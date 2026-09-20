@@ -9,7 +9,7 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self,*args,**options):
         data=json.loads((settings.BASE_DIR/'gis/characters/npcs.json').read_text())
-        for key in ['fishing_rod','river_fish','mountain_herb']:
+        for key in ['fishing_rod','river_fish','mountain_herb',*data['herbs']['types'],*(r['item'] for r in data['fishing']['catches'])]:
             r=data['items'][key]
             Item.objects.get_or_create(key=key,defaults=dict(name=r['name'],name_en=r['name_en'],unit=r['unit'],unit_en=r['unit_en'],price=r['price'],description=r['desc'],description_en=r['desc_en'],icon_shape=r['icon']['shape'],icon_color=r['icon']['color'],use=r.get('use',''),max_owned=r.get('max_owned'),position=100))
         shop,created=Shop.objects.get_or_create(key='청계천 낚시꾼',defaults={'about':data['shops']['청계천 낚시꾼']['about'],'position':100})

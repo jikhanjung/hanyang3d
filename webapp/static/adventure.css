@@ -60,3 +60,5 @@
 #fishing-status{position:absolute;z-index:1005;left:50%;bottom:90px;transform:translateX(-50%);max-width:80%;padding:7px 12px;border-radius:5px;background:#211d15bb;color:#fff1cf;pointer-events:none;text-align:center}#fishing-status[hidden]{display:none}
 
 #herb-status{position:absolute;z-index:1005;left:50%;top:100px;transform:translateX(-50%);max-width:80%;padding:7px 12px;background:#24351cce;color:#f4eed1;border-radius:5px;pointer-events:none;text-align:center}#herb-status[hidden]{display:none}
+
+#fishing-status progress{display:block;width:240px;max-width:60vw;height:12px;margin:6px auto 3px;accent-color:#b8cf65}#fishing-status progress[hidden],#fishing-status small[hidden]{display:none}#fishing-status small{display:block;font-variant-numeric:tabular-nums}

@@ -895,6 +895,110 @@
     "shape": "herb",
     "color": "#83ae50"
    }
+  },
+  "herb_mugwort": {
+   "name": "쑥잎(애엽)",
+   "name_en": "Mugwort leaves",
+   "unit": "묶음",
+   "unit_en": "bundle",
+   "price": 6,
+   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+   "icon": {
+    "shape": "herb",
+    "color": "#9bad87"
+   }
+  },
+  "herb_plantain": {
+   "name": "질경이(차전초)",
+   "name_en": "Plantain",
+   "unit": "묶음",
+   "unit_en": "bundle",
+   "price": 8,
+   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+   "icon": {
+    "shape": "herb",
+    "color": "#9b8150"
+   }
+  },
+  "herb_dandelion": {
+   "name": "민들레(포공영)",
+   "name_en": "Dandelion",
+   "unit": "묶음",
+   "unit_en": "bundle",
+   "price": 10,
+   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+   "icon": {
+    "shape": "herb",
+    "color": "#f1cf42"
+   }
+  },
+  "herb_bellflower": {
+   "name": "도라지뿌리(길경)",
+   "name_en": "Bellflower root",
+   "unit": "묶음",
+   "unit_en": "bundle",
+   "price": 14,
+   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+   "icon": {
+    "shape": "herb",
+    "color": "#9784df"
+   }
+  },
+  "fish_pale_chub": {
+   "name": "피라미",
+   "name_en": "Pale chub",
+   "unit": "마리",
+   "unit_en": "fish",
+   "price": 6,
+   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+   "icon": {
+    "shape": "fish",
+    "color": "#b3c7cd"
+   }
+  },
+  "fish_loach": {
+   "name": "미꾸라지",
+   "name_en": "Loach",
+   "unit": "마리",
+   "unit_en": "fish",
+   "price": 10,
+   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+   "icon": {
+    "shape": "fish",
+    "color": "#9b885e"
+   }
+  },
+  "fish_crucian": {
+   "name": "붕어",
+   "name_en": "Crucian carp",
+   "unit": "마리",
+   "unit_en": "fish",
+   "price": 16,
+   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+   "icon": {
+    "shape": "fish",
+    "color": "#b6ae83"
+   }
+  },
+  "fish_carp": {
+   "name": "잉어",
+   "name_en": "Carp",
+   "unit": "마리",
+   "unit_en": "fish",
+   "price": 24,
+   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+   "icon": {
+    "shape": "fish",
+    "color": "#cd9e57"
+   }
   }
  },
  "wallet": {
@@ -1225,7 +1329,7 @@
     ]
    },
    "how": {
-    "text": "낚싯대를 봇짐에서 쓰거나 액션바에 놓고 키를 누르시오. 내 곁 물가에서 물 쪽으로 향하면 줄을 드리울 수 있소. 한 번에 18~30초쯤 기다리고, 고기가 잡힐 확률은 열다섯 번에 한 번이 아니라 백 번 중 열다섯 번 정도라오. 매번 새로 운을 보는 것이니 빈손이 이어질 수도 있지요. 움직이거나 뛰거나 말에 오르면 줄을 거두오. 이 시간과 확률은 놀이를 위한 설정이오.",
+    "text": "낚싯대를 봇짐에서 쓰거나 액션바에 놓고 키를 누르거나 우클릭하시오. 청계천 어느 물가에서든 수면을 바라보면 줄을 드리울 수 있소. 한 번에 10초 기다리고, 고기가 잡힐 확률은 백 번 중 서른 번 정도라오. 매번 새로 운을 보는 것이니 빈손이 이어질 수도 있지요. 움직이거나 뛰거나 말에 오르면 줄을 거두오. 이 시간과 확률은 놀이를 위한 설정이오.",
     "options": [
      {
       "label": "강태공은 누구요?",
@@ -1286,7 +1390,49 @@
      }
     ]
    }
-  }
+  },
+  "catches": [
+   {
+    "item": "fish_pale_chub",
+    "weight": 40,
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
+   },
+   {
+    "item": "fish_loach",
+    "weight": 25,
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
+   },
+   {
+    "item": "fish_crucian",
+    "weight": 25,
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
+   },
+   {
+    "item": "fish_carp",
+    "weight": 10,
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
+   }
+  ]
  },
  "herbs": {
   "nodes": [
@@ -1296,7 +1442,8 @@
      663,
      714
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1343",
@@ -1304,7 +1451,8 @@
      789,
      737
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_plantain"
    },
    {
     "id": "1360",
@@ -1312,7 +1460,8 @@
      741,
      752
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_dandelion"
    },
    {
     "id": "1377",
@@ -1320,7 +1469,8 @@
      591,
      777
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_bellflower"
    },
    {
     "id": "1394",
@@ -1328,7 +1478,8 @@
      571,
      786
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1411",
@@ -1336,7 +1487,8 @@
      596,
      796
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_plantain"
    },
    {
     "id": "1428",
@@ -1344,7 +1496,8 @@
      565,
      804
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_dandelion"
    },
    {
     "id": "1445",
@@ -1352,7 +1505,8 @@
      693,
      812
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_bellflower"
    },
    {
     "id": "1462",
@@ -1360,7 +1514,8 @@
      733,
      823
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1479",
@@ -1368,7 +1523,8 @@
      766,
      830
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_plantain"
    },
    {
     "id": "1496",
@@ -1376,7 +1532,8 @@
      725,
      856
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_dandelion"
    },
    {
     "id": "1513",
@@ -1384,7 +1541,8 @@
      626,
      874
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_bellflower"
    },
    {
     "id": "1530",
@@ -1392,7 +1550,8 @@
      736,
      885
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1547",
@@ -1400,7 +1559,8 @@
      740,
      900
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_plantain"
    },
    {
     "id": "1564",
@@ -1408,7 +1568,8 @@
      722,
      922
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_dandelion"
    },
    {
     "id": "1581",
@@ -1416,7 +1577,8 @@
      766,
      940
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_bellflower"
    },
    {
     "id": "1598",
@@ -1424,7 +1586,8 @@
      661,
      971
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1615",
@@ -1432,7 +1595,8 @@
      657,
      1005
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_plantain"
    },
    {
     "id": "1632",
@@ -1440,7 +1604,8 @@
      747,
      1025
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_dandelion"
    },
    {
     "id": "1649",
@@ -1448,7 +1613,8 @@
      674,
      1042
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_bellflower"
    },
    {
     "id": "1666",
@@ -1456,7 +1622,8 @@
      741,
      1070
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1683",
@@ -1464,7 +1631,8 @@
      706,
      1092
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_plantain"
    },
    {
     "id": "1700",
@@ -1472,7 +1640,8 @@
      725,
      1120
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_dandelion"
    },
    {
     "id": "1717",
@@ -1480,7 +1649,8 @@
      623,
      1141
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_bellflower"
    },
    {
     "id": "1734",
@@ -1488,7 +1658,8 @@
      582,
      1163
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1751",
@@ -1496,7 +1667,8 @@
      570,
      1185
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_plantain"
    },
    {
     "id": "1768",
@@ -1504,7 +1676,8 @@
      837,
      1194
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_dandelion"
    },
    {
     "id": "1785",
@@ -1512,7 +1685,8 @@
      786,
      1233
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_bellflower"
    },
    {
     "id": "1802",
@@ -1520,7 +1694,8 @@
      789,
      1344
     ],
-    "region": "inwang"
+    "region": "inwang",
+    "item": "herb_mugwort"
    },
    {
     "id": "1819",
@@ -1528,7 +1703,8 @@
      1411,
      454
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_plantain"
    },
    {
     "id": "1836",
@@ -1536,7 +1712,8 @@
      1112,
      476
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_dandelion"
    },
    {
     "id": "1853",
@@ -1544,7 +1721,8 @@
      1377,
      499
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_bellflower"
    },
    {
     "id": "1870",
@@ -1552,7 +1730,8 @@
      1161,
      531
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_mugwort"
    },
    {
     "id": "1887",
@@ -1560,7 +1739,8 @@
      1178,
      551
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_plantain"
    },
    {
     "id": "1904",
@@ -1568,7 +1748,8 @@
      1097,
      571
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_dandelion"
    },
    {
     "id": "1921",
@@ -1576,7 +1757,8 @@
      1111,
      583
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_bellflower"
    },
    {
     "id": "1938",
@@ -1584,7 +1766,8 @@
      1135,
      597
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_mugwort"
    },
    {
     "id": "1955",
@@ -1592,7 +1775,8 @@
      1118,
      612
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_plantain"
    },
    {
     "id": "1972",
@@ -1600,7 +1784,8 @@
      1100,
      615
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_dandelion"
    },
    {
     "id": "1989",
@@ -1608,7 +1793,8 @@
      1185,
      627
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_bellflower"
    },
    {
     "id": "2006",
@@ -1616,7 +1802,8 @@
      939,
      653
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_mugwort"
    },
    {
     "id": "2023",
@@ -1624,7 +1811,8 @@
      1499,
      663
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_plantain"
    },
    {
     "id": "2040",
@@ -1632,7 +1820,8 @@
      969,
      683
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_dandelion"
    },
    {
     "id": "2057",
@@ -1640,7 +1829,8 @@
      1218,
      697
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_bellflower"
    },
    {
     "id": "2074",
@@ -1648,7 +1838,8 @@
      1415,
      708
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_mugwort"
    },
    {
     "id": "2091",
@@ -1656,7 +1847,8 @@
      1092,
      726
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_plantain"
    },
    {
     "id": "2108",
@@ -1664,7 +1856,8 @@
      1474,
      777
     ],
-    "region": "baegak"
+    "region": "baegak",
+    "item": "herb_dandelion"
    },
    {
     "id": "2380",
@@ -1672,7 +1865,8 @@
      2033,
      2105
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_bellflower"
    },
    {
     "id": "2397",
@@ -1680,7 +1874,8 @@
      2058,
      2145
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_mugwort"
    },
    {
     "id": "2414",
@@ -1688,7 +1883,8 @@
      2063,
      2160
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_plantain"
    },
    {
     "id": "2431",
@@ -1696,7 +1892,8 @@
      1878,
      2182
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_dandelion"
    },
    {
     "id": "2448",
@@ -1704,7 +1901,8 @@
      1865,
      2190
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_bellflower"
    },
    {
     "id": "2465",
@@ -1712,7 +1910,8 @@
      1303,
      2212
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_mugwort"
    },
    {
     "id": "2482",
@@ -1720,7 +1919,8 @@
      1801,
      2211
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_plantain"
    },
    {
     "id": "2499",
@@ -1728,7 +1928,8 @@
      1736,
      2222
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_dandelion"
    },
    {
     "id": "2516",
@@ -1736,7 +1937,8 @@
      1747,
      2238
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_bellflower"
    },
    {
     "id": "2533",
@@ -1744,7 +1946,8 @@
      1640,
      2248
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_mugwort"
    },
    {
     "id": "2550",
@@ -1752,7 +1955,8 @@
      1601,
      2260
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_plantain"
    },
    {
     "id": "2567",
@@ -1760,7 +1964,8 @@
      1673,
      2264
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_dandelion"
    },
    {
     "id": "2584",
@@ -1768,7 +1973,8 @@
      1464,
      2290
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_bellflower"
    },
    {
     "id": "2601",
@@ -1776,7 +1982,8 @@
      1531,
      2301
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_mugwort"
    },
    {
     "id": "2618",
@@ -1784,7 +1991,8 @@
      1601,
      2316
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_plantain"
    },
    {
     "id": "2635",
@@ -1792,7 +2000,8 @@
      1549,
      2347
     ],
-    "region": "namsan"
+    "region": "namsan",
+    "item": "herb_dandelion"
    }
   ],
   "note": "1750년 수목 분포를 참고한 두 시대 공통 게임용 약초 위치. 식생·약효의 고증 자료가 아닙니다.",
@@ -1819,6 +2028,72 @@
       }
      ]
     }
+   }
+  },
+  "types": {
+   "herb_mugwort": {
+    "name": "쑥잎(애엽)",
+    "color": "#9bad87",
+    "scale": [
+     0.8,
+     1.15,
+     0.8
+    ],
+    "bloom": null,
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
+   },
+   "herb_plantain": {
+    "name": "질경이(차전초)",
+    "color": "#61924d",
+    "scale": [
+     1.1,
+     0.4,
+     1.1
+    ],
+    "bloom": "#9b8150",
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
+   },
+   "herb_dandelion": {
+    "name": "민들레(포공영)",
+    "color": "#79a53c",
+    "scale": [
+     1,
+     0.45,
+     1
+    ],
+    "bloom": "#f1cf42",
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
+   },
+   "herb_bellflower": {
+    "name": "도라지뿌리(길경)",
+    "color": "#507e48",
+    "scale": [
+     0.65,
+     1.4,
+     0.65
+    ],
+    "bloom": "#9784df",
+    "sources": [
+     {
+      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+     }
+    ]
    }
   }
  }

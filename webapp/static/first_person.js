@@ -31,7 +31,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const held=code=>keys.has(code);
   function clearInput(){joystick.reset();keys.clear();drag=null;autoRun=false;unfocusedMotion=null;mouseForward=false;mouseChord=false}
   const mapDirection=new THREE.Vector3();
-  const largeMap=createLargeMap({source:navigation.largeMapSource,container:el('scene'),getPose:()=>{camera.getWorldDirection(mapDirection);return {at:active?eye:controls.target,yaw:Math.atan2(-mapDirection.x,-mapDirection.z),walking:active}},onOpen:clearInput,returnFocus:()=>canvas.focus({preventScroll:true})});
+  const largeMap=createLargeMap({source:navigation.largeMapSource,container:el('scene'),getPose:()=>{camera.getWorldDirection(mapDirection);return {at:active?eye:controls.target,yaw:Math.atan2(-mapDirection.x,-mapDirection.z),walking:active}},onOpen:()=>{drag=null},returnFocus:()=>canvas.focus({preventScroll:true})});
   function rememberPosition(){if(active){walkProfile.savePosition(positionWorld,{x:eye.x,z:eye.z,yaw});lastRemembered=performance.now()}}
   // Walkable raised surfaces: bridge decks and their ramps, and the Gyeongbokgung hall sites (foundation, terraces,
   // stairs). The displayed meshes are cast against straight down, so height exaggeration is followed. While walking
@@ -178,7 +178,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const movement=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight']);
   document.addEventListener('keydown',event=>{
    if(!active)return;if(event.code==='Escape'){event.preventDefault();exit();return}
-   if(event.target.matches?.('input,select,textarea,button'))return;
+   if(event.target.matches?.('input,select,textarea,button')&&!event.target.closest?.('#large-map'))return;
    if(movement.has(event.code))unfocusedMotion=null;
    if(event.altKey&&event.code==='KeyW'){event.preventDefault();autoRun=!autoRun;return}
    if(event.code==='KeyI'&&!event.ctrlKey&&!event.metaKey&&!event.altKey){event.preventDefault();shop?.togglePack();return}

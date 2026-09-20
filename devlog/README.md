@@ -16,6 +16,10 @@
 
 ## 작업 기록
 
+- [217 — dolfinid 구버전 배포 파일 정리](20260920_217_dolfinid_release_cleanup.md)
+
+- [216 — 낚시·채집 종류 확장과 지도 이동 유지](20260920_216_fishing_bank_aim_and_action_click.md)
+
 - [215 — v0.5.28 운영 배포·낚시와 채집](20260920_215_deploy_v0528.md)
 
 - [214 — 청계천 낚시·산약초 채집·1907년 자연](20260920_214_fishing_herbs_and_1907_nature.md)

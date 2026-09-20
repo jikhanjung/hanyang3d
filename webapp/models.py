@@ -306,6 +306,7 @@ class FishingCast(models.Model):
     expires_at = models.DateTimeField()
     status = models.CharField(max_length=12, choices=[('waiting','기다림'),('finished','완료'),('cancelled','취소')])
     caught = models.BooleanField(default=False)
+    item = models.CharField(max_length=60, blank=True)
 
 
 class HerbHarvest(models.Model):

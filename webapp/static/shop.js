@@ -169,11 +169,11 @@ export function createShop({container,data,onLogout,onUse}){
   const button=document.createElement('button');button.type='button';button.className='action-slot';button.dataset.slot=i;button.onclick=()=>activate(i);
   button.ondragover=e=>{e.preventDefault();e.dataTransfer.dropEffect='copy'};
   button.ondrop=e=>{e.preventDefault();e.stopPropagation();const id=e.dataTransfer.getData('application/x-hanyang-item');if(!data.items[id]?.use||!(state.items[id]>0))return;bindings[i]=id;saveActions();renderActions()};
-  button.oncontextmenu=e=>{e.preventDefault();bindings[i]=null;saveActions();renderActions()};actionBar.append(button);return button;
+  button.oncontextmenu=e=>{e.preventDefault();e.stopPropagation();if(e.shiftKey){bindings[i]=null;saveActions();renderActions()}else activate(i)};actionBar.append(button);return button;
  });container.append(actionBar);
  function renderActions(){
   actionBar.hidden=!state.loggedIn||!hudShown;
-  actionSlots.forEach((button,i)=>{const id=bindings[i],item=data.items[id],available=item&&state.items[id]>0;button.draggable=false;button.ondragstart=null;button.replaceChildren();if(item)button.append(drawIcon(item.icon));const key=document.createElement('kbd');key.textContent=(i+1)%10;button.append(key);button.classList.toggle('unavailable',!!item&&!available);button.setAttribute('aria-disabled',String(!available));button.title=`${(i+1)%10}: ${item?.name??t('빈 칸')}`;button.setAttribute('aria-label',button.title);if(item)makeDraggable(button,id)});
+  actionSlots.forEach((button,i)=>{const id=bindings[i],item=data.items[id],available=item&&state.items[id]>0;button.draggable=false;button.ondragstart=null;button.replaceChildren();if(item)button.append(drawIcon(item.icon));const key=document.createElement('kbd');key.textContent=(i+1)%10;button.append(key);button.classList.toggle('unavailable',!!item&&!available);button.setAttribute('aria-disabled',String(!available));button.title=`${(i+1)%10}: ${item?.name??t('빈 칸')}`;button.title+=item?' — '+t('우클릭: 쓰기 · Shift+우클릭: 칸 비우기'):'';button.setAttribute('aria-label',button.title);if(item)makeDraggable(button,id)});
  }
  function activate(i){if(!hudShown||!state.loggedIn)return;const id=bindings[i];if(!id||!(state.items[id]>0))return;useItem(id);actionSlots[i].animate([{filter:'brightness(1.8)'},{filter:'brightness(1)'}],{duration:180})}
  document.addEventListener('keydown',event=>{
