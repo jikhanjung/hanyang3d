@@ -119,6 +119,9 @@ def trade(player, action, shop, item, quantity, lang='ko'):
                 PlayerItem.objects.create(player=player, item=item, quantity=quantity)
             delta, message = -cost, t('{name} {quantity}{unit}을(를) 샀소.', lang, name=name, quantity=quantity, unit=unit)
         else:
+            # A keepsake that opens a historical visit is not merchandise.
+            if row.get('use') == 'flashback':
+                raise TradeError(400, t('{name}은(는) 팔 물건이 아니오.', lang, name=name))
             if not stock or stock.quantity < quantity:
                 raise TradeError(400, t('봇짐에 그만큼 없소.', lang))
             gain = sell_price(item) * quantity

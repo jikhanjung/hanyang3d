@@ -16,9 +16,14 @@ with tempfile.TemporaryDirectory() as tmp:
    with sync_playwright() as p:
     browser=p.chromium.launch(args=['--no-sandbox','--use-angle=vulkan','--enable-features=Vulkan','--ignore-gpu-blocklist'])
     page=browser.new_page(viewport={'width':1280,'height':900});page.on('pageerror',lambda error: print('JS ERROR',error,flush=True));page.on('console',lambda msg: print('CONSOLE',msg.text,flush=True) if msg.type=='error' else None);page.goto('http://127.0.0.1:18110/events/agwanpacheon/');page.wait_for_function('window.seoul1907?.ready',timeout=180000)
-    page.evaluate("""async()=>{await seoul1907.walking.shop.whenReady;const csrf=document.cookie.split('; ').find(x=>x.startsWith('csrftoken='))?.slice(10);await fetch('/api/account/register',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({name:'가마검사',password:'test-secret'})});await seoul1907.walking.shop.refresh();await seoul1907.historicalEvent.begin(true)}""")
+    page.evaluate("""async()=>{await seoul1907.walking.shop.whenReady;const csrf=document.cookie.split('; ').find(x=>x.startsWith('csrftoken='))?.slice(10);await fetch('/api/account/register',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({name:'가마검사',password:'test-secret'})});await seoul1907.walking.shop.refresh();await seoul1907.historicalEvent.begin(true);window.refused=document.querySelector('#historical-event-panel p').textContent;const r=await fetch('/api/events/agwanpacheon/',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({action:'keepsake'})});window.keepsake=await r.json();await seoul1907.walking.shop.refresh();await seoul1907.historicalEvent.begin(true)}""")
+    gate=page.evaluate("({refused,keepsake,owned:seoul1907.walking.shop.state.items.legation_keepsake})");print('KEEPSAKE',gate,flush=True)
+    assert '꾸러미' in gate['refused'] and gate['keepsake']['received'] and gate['owned']==1,gate
     print('PANEL',page.locator('#historical-event-panel').inner_text(),flush=True)
+    assert '꾸러미가 봉인된 밀서로' in page.locator('#historical-event-task').inner_text()
     result=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent;return {active:e.active,phase:e.phase,points:e.path.length,milestones:e.milestones,visible:s.buildings.filter(b=>b.visible).map(b=>b.userData.feature.id),connected:s.walking.together.connected,trams:s.trams.group.visible,chairCount:e.chairs.length,chairsShown:e.root.visible,contact:e.contacts.letter.p.group.visible,task:document.getElementById('historical-event-task').textContent}}""")
+    quest=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent;e.update(.1);const c=e.contacts.letter.p.group.position,q=e.quest.sprite;return {shown:q.visible,above:q.position.y-c.y,offset:Math.hypot(q.position.x-c.x,q.position.z-c.z),mapMarks:s.walking.navigation.questMarkers.length,minimapDrawn:!!document.getElementById('walking-minimap')}}""")
+    print('QUEST',quest,flush=True);assert quest['shown'] and 2<quest['above']<3 and quest['offset']<.01 and quest['mapMarks']==1,quest
     print(result,flush=True);assert result['active'] and result['phase']=='letter' and result['points']>20 and result['chairCount']==2 and not result['chairsShown'] and result['contact'] and '밀서' in result['task'] and not result['trams'] and not result['connected'],result
     page.screenshot(path='/tmp/agwanpacheon-start.png')
     # Stage dialogues: walk up to each contact, read through, and take the final option. Closing early must not advance.
@@ -30,6 +35,9 @@ with tempfile.TemporaryDirectory() as tmp:
      for(let i=0;i<20&&e.saving;i++)await new Promise(r=>setTimeout(r,100));
      return {name,reopened,phase:e.phase,checkpoint:e.checkpoint,expected:e.phase===expectPhase}}"""
     letter=page.evaluate(TALK,['letter','gate']);print('LETTER',letter,flush=True);assert letter['expected'] and not letter['reopened'] and letter['checkpoint']==1 and letter['name']=='정동의 연락책',letter
+    # After the letter the mark moves to the gate contact, 1.3 km away: off the maps until the walker gets close.
+    moved=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent;e.update(.1);const g=e.contacts.gate.p.group.position,q=e.quest.sprite;return {gate:q.visible&&Math.hypot(q.position.x-g.x,q.position.z-g.z)<.01,farMarks:s.walking.navigation.questMarkers.length}}""")
+    assert moved['gate'] and moved['farMarks']==0,moved
     page.screenshot(path='/tmp/agwanpacheon-letter.png')
     gate=page.evaluate(TALK,['gate','procession']);print('GATE',gate,flush=True);assert gate['expected'] and gate['checkpoint']==3 and gate['name']=='영추문 밖 연락책',gate
     assert page.evaluate("seoul1907.historicalEvent.root.visible && !seoul1907.historicalEvent.contacts.gate.p.group.visible")
@@ -41,6 +49,11 @@ with tempfile.TemporaryDirectory() as tmp:
     for name in ['middle','arrival']:
      shot=page.evaluate(name+'Shot');Path('/tmp/agwanpacheon-'+name+'.png').write_bytes(base64.b64decode(shot.split(',')[1]))
     assert page.evaluate("seoul1907.historicalEvent.arrival.done && seoul1907.historicalEvent.guard.guards.length===4 && arrivalText.includes('폐하')")
+    # Guards and the interpreter stand on the plinth top, never inside the foundation block.
+    plinth=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,b=s.buildings.find(b=>b.userData.feature.id==='russian-legation-1907'),floor=b.userData.groundFloor;const feet=[...e.guard.guards.map(g=>g.group.position),e.arrival.host.group.position];return {floor,feet:feet.map(p=>+(p.y-floor).toFixed(2)),ground:feet.map(p=>+(s.firstPerson.groundAt(p.x,p.z)-floor).toFixed(2))}}""")
+    # The two guards by the door and the interpreter stand on the plinth (0); the outer pair stand on the terrain beyond its edge.
+    print('PLINTH',plinth,flush=True);assert all(f>=g-.1 for f,g in zip(plinth['feet'],plinth['ground'])) and [plinth['feet'][i] for i in (0,1,4)]==[0,0,0],plinth
+    assert page.evaluate("!seoul1907.historicalEvent.quest.sprite.visible")
     print('ARRIVED',result,flush=True);assert result['reached']>=4 and result['paused'] and result['resumed'] and result['checkpoint']==12 and result['phase']=='aftermath',result
     AFTER="""async expectName=>{const s=seoul1907,e=s.historicalEvent,d=s.walking.dialogue;for(let i=0;i<20&&!d.current;i++){e.update(.1);await new Promise(r=>setTimeout(r,50))}if(!d.current)throw Error('aftermath dialogue did not open');
      const plate=()=>document.querySelector('#npc-dialog .npc-plate strong').textContent,name=plate(),sources=[];let steps=0;while(d.current&&plate()===name&&steps++<8){d.finishTyping();sources.push(document.querySelector('#npc-dialog .npc-sources').textContent);[...document.querySelectorAll('#npc-dialog .npc-options button')].at(-1).click();await new Promise(r=>setTimeout(r,30))}
@@ -60,7 +73,18 @@ with tempfile.TemporaryDirectory() as tmp:
     assert '말고삐' in second.locator('.action-slot').first.get_attribute('title')
     assert second.evaluate("localStorage.getItem('hanyang3d-actions:가마검사')") is None
     print('PASS CROSS-BROWSER ACTION BAR',flush=True)
-    second.evaluate("""async()=>{const s=seoul1907;s.firstPerson.enter();window.returnPose={x:s.firstPerson.eye.x,z:s.firstPerson.eye.z};sessionStorage.setItem('test-return-pose',JSON.stringify(returnPose));await s.walking.startHistoricalVisit()}""")
+    # A second account meets the caretaker: the rumour node hands over the bundle, the pack use opens the visit.
+    second.evaluate("""async()=>{const csrf=document.cookie.split('; ').find(x=>x.startsWith('csrftoken='))?.slice(10),post=(u,b)=>fetch(u,{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify(b)});await post('/api/account/logout',{});await post('/api/account/register',{name:'꾸러미검사',password:'test-secret'});await seoul1907.walking.shop.refresh()}""")
+    talk=second.evaluate("""async()=>{const s=seoul1907,w=s.walking,d=w.dialogue,r=w.stationary.records.find(r=>r.owner.userData.feature.id==='russian-legation-1907');s.firstPerson.enter();
+     d.start(w.npcFor(r));d.finishTyping();const labels=[...document.querySelectorAll('#npc-dialog .npc-options button')].map(b=>b.textContent);
+     [...document.querySelectorAll('#npc-dialog .npc-options button')].find(b=>b.textContent.includes('아관파천')).click();await new Promise(r=>setTimeout(r,30));d.finishTyping();
+     const rumour=document.querySelector('#npc-dialog .npc-line').textContent;[...document.querySelectorAll('#npc-dialog .npc-options button')].find(b=>b.textContent.includes('받아')).click();
+     for(let i=0;i<40&&!(w.shop.state.items.legation_keepsake>0);i++)await new Promise(r=>setTimeout(r,100));
+     d.start(w.npcFor(r));d.finishTyping();[...document.querySelectorAll('#npc-dialog .npc-options button')].find(b=>b.textContent.includes('아관파천')).click();await new Promise(r=>setTimeout(r,30));d.finishTyping();const hint=document.querySelector('#npc-dialog .npc-line').textContent;d.end();
+     const sell=await (await fetch('/api/shop/trade',{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':document.cookie.split('; ').find(x=>x.startsWith('csrftoken='))?.slice(10)},body:JSON.stringify({action:'sell',shop:Object.keys(JSON.parse(document.getElementById('npcs').textContent).shops)[0],item:'legation_keepsake',quantity:1})})).status;
+     return {labels,rumour,owned:w.shop.state.items.legation_keepsake,hint,sell,message:document.getElementById('action-message').textContent}}""")
+    print('CARETAKER',talk,flush=True);assert '꾸러미' in talk['rumour'] and talk['owned']==1 and '이미' in talk['hint'] and talk['sell']==400 and '봇짐' in talk['message'],talk
+    second.evaluate("""async()=>{const s=seoul1907;window.returnPose={x:s.firstPerson.eye.x,z:s.firstPerson.eye.z};sessionStorage.setItem('test-return-pose',JSON.stringify(returnPose));s.walking.shop.openPack();document.querySelector('.pack-items .shop-slot[data-item="legation_keepsake"]').dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,button:2}))}""")
     second.wait_for_url('**/events/agwanpacheon/');second.wait_for_function('window.seoul1907?.ready',timeout=180000)
     second.get_by_role('button',name='1907년으로 돌아가기',exact=True).click();second.wait_for_url('**/1907/?returnFromAgwan=1');second.wait_for_function('window.seoul1907?.firstPerson.active',timeout=180000)
     assert second.evaluate("(()=>{const p=JSON.parse(sessionStorage.getItem('test-return-pose')),e=seoul1907.firstPerson.eye;return Math.hypot(p.x-e.x,p.z-e.z)<.1})()")

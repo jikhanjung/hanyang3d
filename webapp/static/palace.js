@@ -168,6 +168,6 @@ export function createPalaceGate(feature,w,h,d){
  const blockingRects=model.children.filter(m=>['gate-door','gate-wall','flanking-wall','column-foot'].includes(m.name)).map(m=>({x:m.position.x,z:m.position.z,hw:m.geometry.parameters.width/2,hd:m.geometry.parameters.depth/2}));
  for(const m of walkSurfaces){m.userData.walkable=true;m.userData.solidSupport=true;model.remove(m)}
  mergeByMaterial(model);
- model.add(...walkSurfaces);
+ if(walkSurfaces.length)model.add(...walkSurfaces);
  model.userData={conceptual:true,roofTiers:tiers,bays,roof:feature.palace_gate_roof??'hip-gable',parts,footprint:[w,d],period:feature.temporal,walkSurfaces,blockingRects,accessHeight:base};return model;
 }

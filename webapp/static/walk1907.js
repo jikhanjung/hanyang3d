@@ -57,7 +57,9 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  // Keep the hitching rail and horses off the walking corridor.
  const horseFrame={x:horseDealer.position.x,z:horseDealer.position.z,yaw:horseDealer.rotation.y};
  collision.addLocal(horseFrame,3.5,.6,2.4,1.5,()=>horseDealer.visible);
- const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>eventVisit?null:npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
+ const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='flashback'?useKeepsake():eventVisit?null:npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
+ // Using the bundle in 1907 opens the visit; inside the visit it is already the sealed letter.
+ function useKeepsake(){const en=document.documentElement.lang==='en';if(eventVisit)return en?'It is the sealed letter now. Deliver it to the contact.':'지금은 봉인된 밀서요. 연락책에게 전하시오.';startHistoricalVisit();return en?'The bundle stirs. Heading into the small hours of 11 February 1896…':'꾸러미가 꿈틀거린다. 1896년 2월 11일 새벽으로 들어갑니다…'}
  const profile=createWalkProfile({account:shop}),navigation=createNavigation1907(geometry,texture,flatMap);
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
   positionWorld:{alignment:eventVisit?'agwanpacheon1896':'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
@@ -69,8 +71,18 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
   onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
  const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
  together=eventVisit?{stop(){},update(){},connected:false}:createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
- const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='agwanpacheon')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant);else if(action.startsWith('event:'))eventAction?.(action.slice(6),npc)}});
+ const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='agwanpacheon')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant);else if(action==='event:keepsake')receiveKeepsake();else if(action.startsWith('event:'))eventAction?.(action.slice(6),npc)}});
  let eventAction=null;
+ async function receiveKeepsake(){
+  const k=npcData.legation_keepsake,en=document.documentElement.lang==='en';
+  try{
+   if(!shop.state.loggedIn&&!await shop.requireLogin())return;
+   const csrf=document.cookie.split('; ').find(v=>v.startsWith('csrftoken='))?.slice(10)??'';
+   const r=await fetch('/api/events/agwanpacheon/',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({action:'keepsake'})});
+   const result=await r.json();if(!r.ok)throw Error(result.error||'keepsake request failed');
+   await shop.refresh();shop.notify(en?k.received_en:k.received);
+  }catch(error){shop.notify(error.message)}
+ }
  const nodes=(source,trade)=>Object.fromEntries(Object.entries(source).map(([key,n])=>[key,{...n,text:n.text.replaceAll('{shop}',trade??'')} ]));
  const npcFor=r=>{
   const info=r.dialogue??data[r.role],dialogueNodes=nodes(info.nodes,r.trade);
@@ -80,7 +92,12 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
    return info.lines[Math.floor(Math.random()*info.lines.length)].text;
   }:undefined;
   let merchant=r.role==='merchant'?{trade:r.trade,sells:r.trade}:null;
-  if(!eventVisit&&r.owner.userData.feature.id==='russian-legation-1907')dialogueNodes.hello={...dialogueNodes.hello,options:[{label:document.documentElement.lang==='en'?'Follow the chairs in 1896':'1896년 가마 행렬을 따라가 보겠습니다.',action:'agwanpacheon'},...dialogueNodes.hello.options]};
+  // The legation caretaker hands over the bundle that opens the 1896 visit; once owned, only a reminder remains.
+  if(!eventVisit&&r.owner.userData.feature.id==='russian-legation-1907'&&npcData.legation_keepsake){
+   const k=npcData.legation_keepsake,en=document.documentElement.lang==='en',owned=shop.state.items[k.item]>0,node=k.nodes[owned?'hint':'rumour'];
+   dialogueNodes.hello={...dialogueNodes.hello,options:[{label:en?k.offer_en:k.offer,next:'legation_keepsake'},...dialogueNodes.hello.options]};
+   dialogueNodes.legation_keepsake={text:en?node.text_en:node.text,options:node.options.map(o=>({...o,label:en?o.label_en:o.label}))};
+  }
   const corner=r.owner.userData.privateCorner;
   if(r.wander&&corner&&firstPerson.active&&interiorAt(firstPerson.eye)===r.owner&&firstPerson.eye.distanceTo(r.position)<3){
    const p=r.owner.worldToLocal(r.position.clone());
@@ -107,5 +124,5 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  canvas.addEventListener('pointerup',e=>{if(!eventVisit&&!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
  el('people3d').addEventListener('change',()=>{stationary.group.visible=el('people3d').checked;horseDealer.visible=el('people3d').checked});
  function update(dt){firstPerson.update(dt);if(!firstPerson.active)firstPerson.fishing?.update();together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);if(horseDealer.visible)horseDealer.userData.update(performance.now(),groundAt);dialogue.update()}
- return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor,startHistoricalVisit,setEventAction:handler=>{eventAction=handler}};
+ return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,navigation,together,update,npcFor,startHistoricalVisit,setEventAction:handler=>{eventAction=handler}};
 }

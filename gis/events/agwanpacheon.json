@@ -206,7 +206,9 @@
           }
         ]
       }
-    }
+    },
+    "transformed": "봇짐의 낡은 밀봉 꾸러미가 봉인된 밀서로 돌아갔다.",
+    "transformed_en": "The old sealed bundle in your pack has become a sealed letter again."
   },
   "gate": {
     "contact_pixel": [
@@ -351,5 +353,6 @@
         "source": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401000"
       }
     ]
-  }
+  },
+  "keepsake_item": "legation_keepsake"
 }

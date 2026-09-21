@@ -241,5 +241,7 @@ export function createShop({container,data,onLogout,onUse}){
  document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const done=()=>{event.preventDefault();event.stopImmediatePropagation()};if(!account.hidden){done();closeAccount()}else if(shop){done();close()}else if(!packWin.hidden){done();closePack()}},true);
  refresh();
  function showHud(shown){hudShown=shown;hud.hidden=playerHud.hidden=!state.loggedIn||!hudShown;renderActions();if(!shown)closePack()}
- return {open,close,refresh,requireLogin,whenReady,showHud,openPack,closePack,togglePack,get packOpen(){return !packWin.hidden},packWindow:packWin,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
+ // A short status line on the action bar and in the pack, for gifts and other non-trade events.
+ function notify(text){packMessage(text);actionMessage.textContent=text;clearTimeout(notify.timer);notify.timer=setTimeout(()=>{if(actionMessage.textContent===text)actionMessage.textContent=''},6000)}
+ return {open,close,refresh,requireLogin,whenReady,showHud,openPack,closePack,togglePack,notify,get packOpen(){return !packWin.hidden},packWindow:packWin,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
 }

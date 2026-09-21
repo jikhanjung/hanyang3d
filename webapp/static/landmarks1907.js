@@ -27,7 +27,7 @@ export function createLandmark1907(f,w,h,d){
  const roof=(x,y,z,a,b,rise,hip=.55)=>add('roof',hipGableRoof(a,b,rise,.45,hip),x,y,z,'roof');
  const post=(x,z,y,height,mat='wood')=>cylinder('column',x,y+height/2,z,.25,.3,height,mat,8);
  const cross=(x,y,z,size)=>{box('cross',x,y,z,.2,size,.2,'cream');box('cross',x,y+size*.15,z,size*.6,.2,.2,'cream')};
- const gable=(x,y,z,a,b,rise)=>{const shape=new THREE.Shape();shape.moveTo(-a/2,0);shape.lineTo(0,rise);shape.lineTo(a/2,0);shape.closePath();const g=new THREE.ExtrudeGeometry(shape,{depth:b,bevelEnabled:false});add('gable-roof',g,x,y,z-b/2,'roof')};
+ const gable=(x,y,z,a,b,rise)=>{const shape=new THREE.Shape();shape.moveTo(-a/2,0);shape.lineTo(0,rise);shape.lineTo(a/2,0);shape.closePath();const g=new THREE.ExtrudeGeometry(shape,{depth:b,bevelEnabled:false});return add('gable-roof',g,x,y,z-b/2,'roof')};
  const smallHall=(x,z,hw,hd,eave=5)=>{
   box('hall-base',x,.3,z,hw+1,.6,hd+1,'stone');box('hall-wall',x,eave/2+.5,z,hw,eave-1,hd,'cream');
   for(let i=0;i<=4;i++)for(const side of [-1,1])post(x+(i/4-.5)*hw,z+side*hd/2,.6,eave-.6);
@@ -420,7 +420,8 @@ export function createLandmark1907(f,w,h,d){
  group.updateMatrixWorld(true);const buckets=new Map(),v=new THREE.Vector3();
  group.traverse(m=>{if(!m.isMesh)return;const g=m.geometry.index?m.geometry.toNonIndexed():m.geometry,p=g.attributes.position;if(!buckets.has(m.material))buckets.set(m.material,[]);const data=buckets.get(m.material);for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m.matrixWorld);data.push(v.x,v.y,v.z)}if(g!==m.geometry)g.dispose();m.geometry.dispose()});
  group.clear();for(const [mat,data] of buckets){const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(data,3));g.computeVertexNormals();group.add(new THREE.Mesh(g,mat))}
- group.add(...textured);
- group.add(...(group.userData.walkSurfaces??[]));
+ // Object3D.add() with no arguments logs an error, so only add when there is something to add.
+ if(textured.length)group.add(...textured);
+ if(group.userData.walkSurfaces?.length)group.add(...group.userData.walkSurfaces);
  Object.assign(group.userData,{conceptual:true,kind,parts,period:f.temporal});return group;
 }

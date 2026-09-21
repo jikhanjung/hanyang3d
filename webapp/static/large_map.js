@@ -1,4 +1,5 @@
 import {t} from './i18n.js';
+import {drawQuestMark} from './quest_marker.js';
 
 // Flat source maps stay rectangular; only world markers are inverse-calibrated.
 export function createLargeMap({source,container,getPose,onOpen,returnFocus}){
@@ -10,7 +11,7 @@ export function createLargeMap({source,container,getPose,onOpen,returnFocus}){
  const ctx=canvas.getContext('2d');let last='';
  function hide(){panel.hidden=true;returnFocus()}
  function update(){
-  if(panel.hidden)return;const {at,yaw,walking}=getPose(),rect=canvas.getBoundingClientRect(),w=Math.round(rect.width),h=Math.round(rect.height),key=[at.x,at.z,yaw,walking,w,h].join(',');if(key===last)return;last=key;
+  if(panel.hidden)return;const {at,yaw,walking}=getPose(),rect=canvas.getBoundingClientRect(),w=Math.round(rect.width),h=Math.round(rect.height),key=[at.x,at.z,yaw,walking,w,h,(source.questMarkers??[]).map(q=>q.x+':'+q.z).join('|')].join(',');if(key===last)return;last=key;
   canvas.width=Math.max(1,w*devicePixelRatio);canvas.height=Math.max(1,h*devicePixelRatio);ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.fillStyle='#ded1ad';ctx.fillRect(0,0,w,h);
   const [left,top,right,bottom]=flat.crop,bw=right-left,bh=bottom-top,fit=Math.min((w-16)/bw,(h-16)/bh),dx=(w-bw*fit)/2,dy=(h-bh*fit)/2;
   const mapPoint=p=>[dx+(p[0]-left)*fit,dy+(p[1]-top)*fit];
@@ -34,6 +35,7 @@ export function createLargeMap({source,container,getPose,onOpen,returnFocus}){
     ctx.strokeStyle='#fff4df';ctx.lineWidth=3.5;ctx.strokeText(text,bx,by);ctx.fillStyle='#183c32';ctx.fillText(text,bx,by);occupied.push({x:bx,y:by,w:width});count++;break;
    }
   }
+  for(const q of source.questMarkers??[]){const qp=flat.toPixel(q);if(!qp)continue;const [qx,qy]=mapPoint(qp);if(qx>dx&&qx<dx+bw*fit&&qy>dy&&qy<dy+bh*fit)drawQuestMark(ctx,qx,qy,w<600?16:20)}
   ctx.restore();
   const pixel=flat.toPixel(at),aim=flat.toPixel({x:at.x-Math.sin(yaw)*20,z:at.z-Math.cos(yaw)*20});
   let x=null,y=null,outside=!pixel;

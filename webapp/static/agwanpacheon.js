@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {createRoyalArrival,createLegationGuard} from './royal_arrival.js';
 import {createEventNeighborhood} from './event_neighborhood.js';
 import {createWalker} from './pedestrians.js';
+import {createQuestMarker} from './quest_marker.js';
 
 // Interpretive scenery and motion; checkpoints are account-scoped and grant no economic rewards.
 export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface,channel}){
@@ -46,19 +47,23 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
  const routeOffset=data.stages_before.length+1,routeEnd=routeOffset+data.route.length-1,lastCheckpoint=routeEnd+data.stages_after.length;
  const phaseOf=c=>c<1?'letter':c<2?'gate':c<routeEnd?'procession':c<lastCheckpoint?'aftermath':'done';
  const dialogue=walking.dialogue;let talking=null,pendingDone=null,retryAt=0,aftermathStep=0;
+ // The person to talk to next carries a floating question mark; within MAP_MARK_M it is also drawn on both maps.
+ const quest=createQuestMarker();scene.add(quest.sprite);const MAP_MARK_M=250;
+ function pointQuest(actor){quest.follow(actor?actor.p.group:null);walking.navigation.questMarkers.length=0}
  const localize=nodes=>Object.fromEntries(Object.entries(nodes).map(([k,n])=>[k,{...n,text:say(n.text,n.text_en),options:n.options?.map(o=>({...o,label:say(o.label,o.label_en)}))}]));
  const person=(spec,color)=>{const p=createWalker();p.group.name='event-'+spec.portrait;p.group.getObjectByName('walker-body').material.color.set(color);p.group.visible=false;scene.add(p.group);return {p,spec,nodes:null}};
  const contacts={letter:person(data.letter.contact,'#8a8378'),gate:person(data.gate.contact,'#6f6a5e'),neighbour:person(data.aftermath.neighbour,'#b9ad93')};
  function standAt(actor,p,facing){actor.p.group.position.set(p.x,fp.groundAt(p.x,p.z),p.z);actor.p.group.rotation.y=facing;actor.p.group.visible=true;actor.p.update(0,false)}
  function talk(actor,nodes,onDone){
   if(dialogue.current)return;
+  if(quest.sprite.visible)pointQuest(null);
   actor.nodes=localize(nodes);const spec=actor.spec,position=actor.p.group.position;
   talking=actor;pendingDone=onDone;fp.clearInput();
   // Closing the window early leaves the contact waiting; a short pause stops it reopening on the same spot.
-  dialogue.start({key:'event-'+spec.portrait,name:say(spec.name,spec.name_en),subtitle:say(spec.subtitle,spec.subtitle_en),portrait:spec.portrait,nodes:actor.nodes,position:()=>position,maxDistance:200,finish:()=>{talking=null;retryAt=performance.now()+3000}});
+  dialogue.start({key:'event-'+spec.portrait,name:say(spec.name,spec.name_en),subtitle:say(spec.subtitle,spec.subtitle_en),portrait:spec.portrait,nodes:actor.nodes,position:()=>position,maxDistance:200,finish:()=>{talking=null;retryAt=performance.now()+3000;if(!pendingDone)return;const phase=phaseOf(checkpoint);pointQuest(phase==='letter'?contacts.letter:phase==='gate'?contacts.gate:null)}});
  }
  walking.setEventAction(action=>{
-  const done=pendingDone;pendingDone=null;
+  const done=pendingDone;pendingDone=null;pointQuest(null);
   if(action==='letter_done'||action==='gate_done'||action==='reveal_done'||action==='aftermath_done')done?.(action);
  });
  const csrf=()=>document.cookie.split('; ').find(v=>v.startsWith('csrftoken='))?.slice(10)??'';
@@ -115,7 +120,8 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   // Put the walker where the current stage begins; the procession phases keep the existing regroup.
   const phase=phaseOf(checkpoint);
   contacts.letter.p.group.visible=phase==='letter';contacts.gate.p.group.visible=phase==='gate';contacts.neighbour.p.group.visible=false;
-  task.hidden=phase!=='letter';task.textContent=say(`임무 물품: ${data.letter.item} (거래 불가)`,`Task item: ${data.letter.item_en} (cannot be traded)`);
+  pointQuest(phase==='letter'?contacts.letter:phase==='gate'?contacts.gate:null);
+  task.hidden=phase!=='letter';task.textContent=say(`${data.letter.transformed} 임무 물품: ${data.letter.item} (거래 불가)`,`${data.letter.transformed_en} Task item: ${data.letter.item_en} (cannot be traded)`);
   root.visible=phase==='procession'||phase==='aftermath';rejoin.hidden=phase!=='procession';face.hidden=!(phase==='letter'||phase==='gate');
   if(phase==='letter'){fp.placeAt(spots.start.x,spots.start.z,faceTowards(spots.start,spots.letter));fp.clearInput()}
   else if(phase==='gate'){fp.placeAt(spots.letter.x,spots.letter.z,faceTowards(spots.letter,spots.gate));fp.clearInput()}
@@ -133,6 +139,8 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   try{
    await walking.shop.whenReady;
    if(!walking.shop.state.loggedIn){const name=await walking.shop.requireLogin({message:say('회상 진행을 저장하려면 로그인해 주세요.','Sign in to save your progress.')});if(!name)return}
+   await walking.shop.refresh();
+   if(!(walking.shop.state.items[data.keepsake_item]>0)){message.textContent=say('1907년 러시아공사관 관리인에게 낡은 꾸러미를 받아 봇짐에서 써야 들어올 수 있습니다.','Receive the old bundle from the legation caretaker in 1907 and use it from your pack to enter.');return}
    if(!lengths.length)prepare();
    saved=await api(restart?'restart':'status');
    if(saved.version!==data.version){finished=true;start.textContent=say('새 버전으로 다시 시작','Restart updated visit');message.textContent=say('회상 경로가 바뀌었습니다. 처음부터 다시 시작해 주세요.','The route changed. Please restart.');return}
@@ -170,6 +178,7 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   if(phase==='letter'||phase==='gate'){
    const to=target(),actor=phase==='letter'?contacts.letter:contacts.gate,left=Math.hypot(fp.eye.x-to.x,fp.eye.z-to.z);
    actor.p.group.rotation.y=Math.atan2(fp.eye.x-to.x,fp.eye.z-to.z);
+   quest.update(dt);const marks=walking.navigation.questMarkers;if(left<MAP_MARK_M){if(!marks.length)marks.push({x:to.x,z:to.z})}else marks.length=0;
    if(!talking&&!dialogue.current)message.textContent=phase==='letter'?say(`정동의 연락책에게 밀서를 전하세요. ${Math.round(left)}m`,`Deliver the letter to the contact in Jeongdong. ${Math.round(left)} m`):say(`영추문 밖 연락책까지 ${Math.round(left)}m — 궁궐 서쪽 문으로 가세요.`,`${Math.round(left)} m to the contact outside Yeongchumun, the west gate.`);
    if(left<3.5&&!talking&&!dialogue.current&&!saveError&&performance.now()>=retryAt)talk(actor,phase==='letter'?data.letter.nodes:data.gate.nodes,phase==='letter'?letterDone:gateDone);
    return;
@@ -199,5 +208,5 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
     message.append(list,document.createElement('br'),say('회상 완료가 계정에 기록되었습니다.','Completion has been saved.'));note.open=true;
    }).catch(error=>{message.textContent=error.message;start.hidden=false});
  }
- return {update,begin,regroup,root,chairs,contacts,get dawn(){return dawn},get spots(){return spots},get phase(){return phaseOf(checkpoint)},get arrival(){return arrival},guard,get neighborhood(){return neighborhood},get path(){return path},get milestones(){return milestones},get active(){return active},get distance(){return distance},get checkpoint(){return checkpoint},get saving(){return writeCount>0}};
+ return {update,begin,regroup,root,chairs,contacts,quest,get dawn(){return dawn},get spots(){return spots},get phase(){return phaseOf(checkpoint)},get arrival(){return arrival},guard,get neighborhood(){return neighborhood},get path(){return path},get milestones(){return milestones},get active(){return active},get distance(){return distance},get checkpoint(){return checkpoint},get saving(){return writeCount>0}};
 }

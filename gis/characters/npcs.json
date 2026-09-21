@@ -1,2147 +1,2198 @@
 {
- "schema_version": 1,
- "note": "인물의 말투와 대사는 기록을 바탕으로 지어낸 것입니다. 사실을 말하는 대사에는 출처를 붙였습니다. 가게의 가격은 기록에서 확인하지 않은 놀이용 값입니다.",
- "keeper": {
-  "name": "경복궁 궁감",
-  "subtitle": "빈 궁궐을 지키는 사람",
-  "start": "hello",
-  "nodes": {
-   "hello": {
-    "text": "어서 오시오. 여기는 옛 경복궁 터요. 무엇이 궁금하오?",
-    "options": [
-     {
-      "label": "이 궁은 어쩌다 이렇게 되었소?",
-      "next": "history",
-      "label_en": "How did the palace come to this?"
-     },
-     {
-      "label": "연못의 돌기둥은 무엇이오?",
-      "next": "pond",
-      "label_en": "What are the stone pillars in the pond?"
-     },
-     {
-      "label": "궁감은 무슨 일을 하시오?",
-      "next": "duty",
-      "label_en": "What does a palace keeper do?"
-     },
-     {
-      "label": "요즘 궁터에 무슨 일이 있었소?",
-      "next": "trees",
-      "label_en": "Anything happen here lately?"
-     },
-     {
-      "label": "처음부터 옛날이야기를 들려주시오. (긴 이야기)",
-      "next": "tale_taejo",
-      "label_en": "Tell the old tale from the start. (Long)"
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "Come in, traveler. This is the old site of Gyeongbokgung. What would you like to know?"
-   },
-   "history": {
-    "text": "이 궁은 태조 임금 때인 1395년에 지은 조선의 으뜸 궁궐이었소. 임진년(1592) 난리에 모두 타 버리고, 지금은 이렇게 담과 터만 남았다오.",
-    "year": "1395·1592",
-    "sources": [
-     {
-      "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
-      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 이야기도 들려주시오.",
-      "next": "hello",
-      "label_en": "Tell me something else."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "This was the foremost palace of Joseon, built in 1395 in the reign of King Taejo. In the troubles of the imjin year (1592) it all burned down, and now only the walls and the grounds remain, as you see."
-   },
-   "pond": {
-    "text": "저기 연못 가운데 돌기둥들 보이시오? 경회루 자리요. 태종 임금 때(1412) 연못을 넓히며 크게 지은 누각인데, 누각은 불타고 돌기둥만 줄지어 남았지.",
-    "year": "1412",
-    "sources": [
-     {
-      "title": "위키백과 경회루(태종실록·춘성유기 인용)",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8",
-      "title_en": "Wikipedia (Korean): Gyeonghoeru (citing the Annals of Taejong and Chunseong yugi)"
-     }
-    ],
-    "options": [
-     {
-      "label": "연못은 누가 돌보오?",
-      "next": "drought",
-      "label_en": "Who looks after the pond?"
-     },
-     {
-      "label": "다른 이야기도 들려주시오.",
-      "next": "hello",
-      "label_en": "Tell me something else."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "Do you see the stone pillars in the middle of the pond there? That is where Gyeonghoeru stood. It was a great pavilion raised in King Taejong's reign (1412), when the pond was widened. The pavilion burned, and only the rows of stone pillars are left."
-   },
-   "duty": {
-    "text": "나라에서는 이 빈 궁을 그냥 버려두지 않고, 나 같은 궁감을 두어 담이며 나무며 연못을 돌보게 하였소.",
-    "year": null,
-    "sources": [
-     {
-      "title": "유재빈, 「영조대 경복궁 터에서 행한 행사와 궁중 회화」, 『한국미술사학회지』 323 (2024)",
-      "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader",
-      "title_en": "Yoo Jae-bin, \"Events Held on the Gyeongbokgung Site in the Reign of Yeongjo and Court Painting,\" Korean Journal of Art History 323 (2024)"
-     },
-     {
-      "title": "위키백과 경복궁",
-      "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81",
-      "title_en": "Wikipedia (Korean): Gyeongbokgung"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 이야기도 들려주시오.",
-      "next": "hello",
-      "label_en": "Tell me something else."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "The state did not simply abandon this empty palace. It appointed palace keepers like me to look after the walls, the trees and the pond."
-   },
-   "trees": {
-    "text": "스무 해쯤 전(1729)엔 바람에 쓰러진 나무를 치우던 수직군들이 멀쩡한 나무까지 베어 민가에 팔아먹었다고, 사헌부에서 관원들을 잡아 죄를 묻자고 아뢰었다오. 그 뒤로는 나무 한 그루도 조심스럽지.",
-    "year": "1729",
-    "sources": [
-     {
-      "title": "영조실록 5년 3월 27일 제2기사 — 사헌부가 경복궁 나무를 판 수직군 문제를 아뢰다",
-      "url": "https://sillok.history.go.kr/id/kua_10503027_002",
-      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 5 (1729), 3rd month, day 27, entry 2: the Inspector-General reports on guards who sold Gyeongbokgung trees"
-     }
-    ],
-    "options": [
-     {
-      "label": "가물 때는 어찌하오?",
-      "next": "drought",
-      "label_en": "What do you do in a drought?"
-     },
-     {
-      "label": "다른 이야기도 들려주시오.",
-      "next": "hello",
-      "label_en": "Tell me something else."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "Some twenty years ago (1729), the guards sent to clear trees felled by the wind cut down sound trees as well and sold them to private houses, so the Office of the Inspector-General petitioned to arrest the officials and try them. Since then, we are careful with every single tree."
-   },
-   "drought": {
-    "text": "가물면 경회루 연못도 친다오. 계해년(1743)에 연못을 쳐냈고, 이듬해에는 가뭄이 길어 오부 사람들과 군사들이 개천과 도랑, 이 연못까지 쳐냈지.",
-    "year": "1743·1744",
-    "sources": [
-     {
-      "title": "영조실록 19년 4월 16일 제1기사 — 경회루의 연못을 준설하게 하다",
-      "url": "https://sillok.history.go.kr/id/kua_11904016_001",
-      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 19 (1743), 4th month, day 16, entry 1: the Gyeonghoeru pond is ordered dredged"
-     },
-     {
-      "title": "영조실록 20년 5월 10일 제2기사 — 가뭄에 계천·도랑·경회루 연지를 치게 하다",
-      "url": "https://sillok.history.go.kr/id/kua_12005010_002",
-      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 5th month, day 10, entry 2: in a drought the stream, ditches and Gyeonghoeru pond are ordered dredged"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 이야기도 들려주시오.",
-      "next": "hello",
-      "label_en": "Tell me something else."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "When there is a drought, we dredge the Gyeonghoeru pond too. In the gyehae year (1743) the pond was dredged, and the next year the drought ran so long that people from the five districts and the soldiers dredged the stream, the ditches and even this pond."
-   },
-   "tale_taejo": {
-    "text": "허허, 옛날이야기라. 그럼 처음부터 하리다. 우리 태조 대왕 이성계께서는 원래 고려의 장수셨소. 홍건적이며 왜구를 여러 번 물리치셨고, 경신년(1380)에는 황산에서 왜구를 크게 이기셨지. 무진년(1388)에 위화도에서 군사를 돌려 개경으로 돌아오셨고, 임신년(1392) 7월 개경 수창궁에서 마침내 왕위에 오르셨소. 실록에는 신하들이 간곡히 청하여 받으셨다고 적혀 있다오.",
-    "year": "1380·1388·1392",
-    "sources": [
-     {
-      "title": "한국민족문화대백과사전 태조",
-      "url": "https://encykorea.aks.ac.kr/Article/E0059033",
-      "title_en": "Encyclopedia of Korean Culture: Taejo"
-     },
-     {
-      "title": "조선왕조실록 태조 1년(1392) 7월 17일",
-      "url": "https://sillok.history.go.kr/id/kaa_10107017_001",
-      "title_en": "Annals of the Joseon Dynasty, Taejo year 1 (1392), 7th month, day 17"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_capital",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "Ha, an old tale, is it? Then I shall begin at the beginning. Our great King Taejo, Yi Seong-gye, was originally a general of Goryeo. He drove back the Red Turbans and the Japanese raiders many times, and in the gyeongsin year (1380) he won a great victory over the raiders at Hwangsan. In the mujin year (1388) he turned his army back at Wihwa Island and returned to Gaegyeong, and in the imsin year (1392), in the 7th month, he at last took the throne at Suchang Palace in Gaegyeong. The Annals record that he accepted it only after the officials earnestly begged him."
-   },
-   "tale_capital": {
-    "text": "임금이 되시고는 새 도읍을 찾으셨소. 즉위하신 그해에 한양으로 옮기라 하셨다가 신하들이 말려 거두셨고, 이듬해(1393)에는 계룡산에 도읍 공사까지 벌이셨는데 하륜이 반대하여 그만두었다오. 갑술년(1394) 8월에 무악과 한양을 몸소 둘러보셨는데, 이때 왕사 무학 스님도 불러 함께 보셨지. 그러고는 한양으로 정하셨소.",
-    "year": "1392·1393·1394",
-    "sources": [
-     {
-      "title": "우리역사넷 한양 천도 1394",
-      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i306100&code=kc_age_30",
-      "title_en": "Uri Yeoksa Net (National Institute of Korean History): Moving the capital to Hanyang, 1394"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_legend",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "Once he was king, he looked for a new capital. In the very year he took the throne he ordered a move to Hanyang, but the officials talked him out of it. The next year (1393) he even began building a capital at Mount Gyeryong, but Ha Ryun objected and it was stopped. In the gapsul year (1394), in the 8th month, he went in person to look over Muak and Hanyang, and he summoned the royal preceptor, the monk Muhak, to look with him. Then he settled on Hanyang."
-   },
-   "tale_legend": {
-    "text": "이건 옛 사람들 사이에 도는 이야기요, 사실인지는 모르오. 무학 스님이 대궐을 지으려는데 자꾸 무너졌더라오. 한 노인이 나타나 이 땅은 학이 날개를 편 모양이니 날개부터 눌러야 한다며 성부터 쌓으라 일렀다지. 또 노인이 십 리를 더 가라 해서 왕십리라는 이름이 붙었다는 말도 있소. 『지봉유설』 같은 책에도 실린 설화라오.",
-    "sources": [
-     {
-      "title": "한국민족문화대백과사전 무학대사 설화",
-      "url": "https://encykorea.aks.ac.kr/Article/E0019294",
-      "title_en": "Encyclopedia of Korean Culture: Legends of Master Muhak"
-     }
-    ],
-    "legend": true,
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_move",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "Now this is a story that goes around among the old folk, and I cannot say whether it is true. When the monk Muhak tried to build the palace, it kept collapsing. An old man appeared and said that this land has the shape of a crane with its wings spread, so the wings must be pressed down first, and told him to build the city wall before anything else. Some also say the old man told him to go ten li further, and that is how Wangsimni got its name. It is a tale that appears in books like the Jibong yuseol."
-   },
-   "tale_move": {
-    "text": "갑술년(1394) 10월에 도읍을 한양으로 옮기셨소. 궁궐 짓는 도감을 두고 그해 겨울에 공사를 시작해서, 이듬해(1395) 9월에 종묘와 새 궁궐이 다 지어졌지. 그날 새 대궐 뜰에 장끼 한 마리가 날아들었다는 것까지 실록에 적혀 있다 하오. 옛 사람들은 그런 것도 다 적어 두었다오.",
-    "year": "1394·1395",
-    "sources": [
-     {
-      "title": "조선왕조실록 태조 3년(1394) 10월 25일",
-      "url": "https://sillok.history.go.kr/id/kaa_10310025_001",
-      "title_en": "Annals of the Joseon Dynasty, Taejo year 3 (1394), 10th month, day 25"
-     },
-     {
-      "title": "조선왕조실록 태조 4년(1395) 9월 29일 종묘·새 궁궐 완공",
-      "url": "https://sillok.history.go.kr/id/kaa_10409029_006",
-      "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 9th month, day 29: completion of Jongmyo and the new palace"
-     },
-     {
-      "title": "조선왕조실록 태조 4년(1395) 9월 29일 꿩 기사",
-      "url": "https://sillok.history.go.kr/id/kaa_10409029_002",
-      "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 9th month, day 29: the pheasant entry"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_name",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "In the gapsul year (1394), in the 10th month, the capital was moved to Hanyang. A directorate for building the palace was set up, work began that winter, and by the 9th month of the next year (1395) the Jongmyo shrine and the new palace were finished. They say the Annals even record that on that day a cock pheasant flew into the courtyard of the new palace. The old folk wrote down everything, you see."
-   },
-   "tale_name": {
-    "text": "궁궐 이름은 정도전이 지었소. 태조께서 새 궁궐과 전각 이름을 지으라 하시자, 『시경』의 ‘이미 술에 취하고 덕에 배불렀으니 군자께서 큰 복을 누리소서’라는 구절에서 ‘경복(景福)’ 두 글자를 따 왔지. 근정전, 사정전, 강녕전 같은 이름도 이때 붙였는데, 이름마다 임금이 지녀야 할 마음가짐을 담았다오.",
-    "year": "1395",
-    "sources": [
-     {
-      "title": "조선왕조실록 태조 4년(1395) 10월 7일",
-      "url": "https://sillok.history.go.kr/id/kaa_10410007_002",
-      "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 10th month, day 7"
-     },
-     {
-      "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
-      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_strife",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "The palace was named by Jeong Do-jeon. When Taejo ordered him to name the new palace and its halls, he took the two characters 'Gyeongbok' (景福), meaning 'great blessing', from a line in the Classic of Poetry: 'Already drunk with wine and filled with virtue, may the lord enjoy great blessings.' Names like Geunjeongjeon, Sajeongjeon and Gangnyeongjeon were given at the same time, and each one holds a lesson on the frame of mind a king should keep."
-   },
-   "tale_strife": {
-    "text": "그런데 좋은 날만 있었겠소. 무인년(1398) 8월, 태조의 아드님 방원 대군이 군사를 일으켜 정도전과 남은 무리를 쳤소. 그들이 송현에 모여 있던 집을 에워싸 불을 지르니, 정도전은 이웃집으로 달아났다가 붙잡혀 죽었다 하오. 세자 방석과 그 형 방번도 이 난리에 목숨을 잃었지. 이 궁궐 문밖 행랑 언저리까지 난리 통이었다오.",
-    "year": "1398",
-    "sources": [
-     {
-      "title": "조선왕조실록 태조 7년(1398) 8월 26일",
-      "url": "https://sillok.history.go.kr/id/kaa_10708026_001",
-      "title_en": "Annals of the Joseon Dynasty, Taejo year 7 (1398), 8th month, day 26"
-     },
-     {
-      "title": "한국민족문화대백과사전 제1차 왕자의 난",
-      "url": "https://encykorea.aks.ac.kr/Article/E0051385",
-      "title_en": "Encyclopedia of Korean Culture: The First Strife of the Princes"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_away",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "But it was not all good days. In the muin year (1398), in the 8th month, Taejo's son Prince Bang-won raised troops and struck at Jeong Do-jeon and Nam Eun's party. They surrounded the house at Songhyeon where those men had gathered and set it afire; Jeong Do-jeon fled to a neighbor's house, they say, but was caught and killed. The crown prince Bang-seok and his elder brother Bang-beon also lost their lives in the strife. The turmoil reached as far as the corridors outside this palace gate."
-   },
-   "tale_away": {
-    "text": "난리가 끝나고 정종 임금이 서셨는데, 기묘년(1399)에 도읍을 다시 개경으로 옮기셨소. 이 궁은 한동안 텅 비었지. 태종 임금께서 을유년(1405)에 한양으로 도로 오셨는데, 그해 창덕궁을 따로 지으셨소. 이 경복궁에서 있었던 일을 꺼리셨다고들 하오. 그 뒤로 임금들이 창덕궁을 더 좋아하셨다오.",
-    "year": "1399·1405",
-    "sources": [
-     {
-      "title": "한국민족문화대백과사전 정종",
-      "url": "https://encykorea.aks.ac.kr/Article/E0050884",
-      "title_en": "Encyclopedia of Korean Culture: Jeongjong"
-     },
-     {
-      "title": "한국민족문화대백과사전 창덕궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0055378",
-      "title_en": "Encyclopedia of Korean Culture: Changdeokgung"
-     },
-     {
-      "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
-      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_sejong",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "When the strife was over, King Jeongjong came to the throne, and in the gimyo year (1399) he moved the capital back to Gaegyeong. This palace stood empty for a time. King Taejong returned to Hanyang in the eulyu year (1405), but that same year he built Changdeokgung separately. People say he shrank from what had happened here at Gyeongbokgung. From then on the kings preferred Changdeokgung."
-   },
-   "tale_sejong": {
-    "text": "그래도 세종 대왕 때는 이 궁이 참 번듯했소. 궁 안에 집현전을 두고 학자들을 가까이하셨고, 간의대를 마련해 하늘을 살피셨지. 병오년(1426)에는 집현전 학자들에게 문 이름을 짓게 하셔서 광화문, 건춘문, 영추문, 영제교 같은 이름이 그때 붙었소. 문은 태조 때 섰지만 이름은 그때 얻은 거요. 무오년(1438)에는 장영실이 만든 옥루를 흠경각에 두었는데, 종이로 만든 산 위로 해가 뜨고 졌다 하오.",
-    "year": "1420·1426·1438",
-    "sources": [
-     {
-      "title": "한국민족문화대백과사전 집현전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0055081",
-      "title_en": "Encyclopedia of Korean Culture: Jiphyeonjeon"
-     },
-     {
-      "title": "조선왕조실록 세종 8년(1426) 10월 26일",
-      "url": "https://sillok.history.go.kr/id/kda_10810026_003",
-      "title_en": "Annals of the Joseon Dynasty, Sejong year 8 (1426), 10th month, day 26"
-     },
-     {
-      "title": "한국민족문화대백과사전 옥루",
-      "url": "https://encykorea.aks.ac.kr/Article/E0038703",
-      "title_en": "Encyclopedia of Korean Culture: Ongnu (jade clepsydra)"
-     },
-     {
-      "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
-      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
-     },
-     {
-      "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
-      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_fire1553",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "Still, in the days of King Sejong the Great this palace was a fine sight. He set up the Jiphyeonjeon, the Hall of Worthies, inside the palace and kept the scholars close, and he built the Ganuidae observatory to watch the heavens. In the byeongo year (1426) he had the Jiphyeonjeon scholars name the gates, and that is when Gwanghwamun, Geonchunmun, Yeongchumun and the Yeongjegyo bridge got their names. The gates had stood since Taejo's time, but the names came then. In the muo year (1438) the jade clepsydra made by Jang Yeong-sil was placed in the Heumgyeonggak, and they say the sun rose and set over a mountain made of paper."
-   },
-   "tale_fire1553": {
-    "text": "명종 임금 때 계축년(1553) 9월에는 궁 안에 큰불이 났소. 강녕전에서 불이 나 사정전과 흠경각까지 탔고, 대대로 내려온 보물과 책들이 재가 되었지. 겨우 책 몇 궤짝을 연못의 작은 배에 실어 건졌다 하오. 근정전은 무사했고, 이듬해에 다시 지었다오.",
-    "year": "1553·1554",
-    "sources": [
-     {
-      "title": "조선왕조실록 명종 8년(1553) 9월 14일",
-      "url": "https://sillok.history.go.kr/id/kma_10809014_001",
-      "title_en": "Annals of the Joseon Dynasty, Myeongjong year 8 (1553), 9th month, day 14"
-     },
-     {
-      "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
-      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
-     },
-     {
-      "title": "한국민족문화대백과사전 경복궁 사정전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002445",
-      "title_en": "Encyclopedia of Korean Culture: Sajeongjeon Hall, Gyeongbokgung"
-     },
-     {
-      "title": "한국민족문화대백과사전 옥루",
-      "url": "https://encykorea.aks.ac.kr/Article/E0038703",
-      "title_en": "Encyclopedia of Korean Culture: Ongnu (jade clepsydra)"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_imjin",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "In King Myeongjong's reign, in the gyechuk year (1553), in the 9th month, a great fire broke out inside the palace. It started in Gangnyeongjeon and burned Sajeongjeon and the Heumgyeonggak as well, and treasures and books handed down for generations turned to ash. They say only a few chests of books were saved by loading them onto a small boat on the pond. Geunjeongjeon was spared, and the rest was rebuilt the following year."
-   },
-   "tale_imjin": {
-    "text": "그리고 임진년(1592)이오. 왜적이 충주를 깨뜨렸다는 소식에 선조 임금께서 밤에 서쪽으로 피란을 떠나셨소. 실록에는 임금이 떠나시자 난민들이 먼저 노비 문서가 있는 장례원과 형조에 불을 지르고, 궁궐 창고를 털고 불을 놓아 경복궁·창덕궁·창경궁이 한꺼번에 사라졌다고 적혀 있소. 왜적이 들어와 태웠다는 말도 전하니, 누가 불을 놓았는지는 나도 딱 잘라 말 못 하겠소.",
-    "year": "1592",
-    "sources": [
-     {
-      "title": "선조수정실록 25년(1592) 4월 14일",
-      "url": "https://sillok.history.go.kr/id/knb_12504014_028",
-      "title_en": "Revised Annals of Seonjo, year 25 (1592), 4th month, day 14"
-     },
-     {
-      "title": "한국민족문화대백과사전 임진왜란",
-      "url": "https://encykorea.aks.ac.kr/Article/E0047674",
-      "title_en": "Encyclopedia of Korean Culture: The Imjin War"
-     },
-     {
-      "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
-      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_ruins",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "And then came the imjin year (1592). At the news that the Japanese had broken through at Chungju, King Seonjo fled westward in the night. The Annals record that once the king had gone, rioters first set fire to the Jangnyewon and the Ministry of Punishments, where the slave registers were kept, then looted the palace storehouses and set them alight, so that Gyeongbokgung, Changdeokgung and Changgyeonggung vanished all at once. Others say the Japanese came in and burned them, so who lit the fire I cannot say for sure."
-   },
-   "tale_ruins": {
-    "text": "난리가 끝나고 창덕궁은 다시 지었지만, 이 궁은 끝내 다시 짓지 못했소. 그 뒤로는 창덕궁이 으뜸 궁궐 노릇을 하고 있지. 임진년부터 올해까지 따져 보면 벌써 백오십팔 년째 이렇게 담과 터만 남아 있다오. 나 같은 궁감이 풀 베고 나무 지키며 빈 터를 돌보는 거요.",
-    "year": "1592·1750",
-    "sources": [
-     {
-      "title": "한국민족문화대백과사전 창덕궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0055378",
-      "title_en": "Encyclopedia of Korean Culture: Changdeokgung"
-     },
-     {
-      "title": "한국민족문화대백과사전 경복궁",
-      "url": "https://encykorea.aks.ac.kr/Article/E0002434",
-      "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
-     },
-     {
-      "title": "궁능유적본부 경복궁 소개·역사",
-      "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
-      "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
-     }
-    ],
-    "options": [
-     {
-      "label": "그래서 어찌 되었소?",
-      "next": "tale_1747",
-      "label_en": "And then what happened?"
-     },
-     {
-      "label": "이야기는 여기까지 듣겠소.",
-      "next": "hello",
-      "label_en": "That is enough of the tale for now."
-     }
-    ],
-    "text_en": "When the war was over, Changdeokgung was rebuilt, but this palace never was. Since then Changdeokgung has served as the principal palace. Counting from the imjin year to this year, it is already the hundred and fifty-eighth year that only the walls and grounds have remained like this. Palace keepers like me cut the grass, guard the trees and look after the empty site."
-   },
-   "tale_1747": {
-    "text": "그래도 이 빈 터가 아주 잊힌 건 아니오. 삼 년 전 정묘년(1747)에 인원왕후께 존호를 올린 경사를 기념하여, 저 옛 근정전 터에서 정시를 열었소. 임금께서 시를 지으시고 신하 쉰 명이 화답했지. 그 모습을 그린 병풍도 있다 하오. 자, 내 이야기는 여기까지요. 길게 들어 주어 고맙소.",
-    "year": "1747",
-    "sources": [
-     {
-      "title": "국가유산청 보도자료 「친림광화문내근정전정시시도」",
-      "url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156686659&pWise=sub&pWiseSub=J2",
-      "title_en": "Korea Heritage Service press release: \"Painting of the Royal Visit to the Special Examination at the Geunjeongjeon Site inside Gwanghwamun\""
-     },
-     {
-      "title": "국가유산포털 친림광화문내근정전정시시도",
-      "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2111101380000&pageNo=1_1_1_1",
-      "title_en": "National Heritage Portal: Painting of the Royal Visit to the Special Examination at the Geunjeongjeon Site inside Gwanghwamun"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 이야기도 들려주시오.",
-      "next": "hello",
-      "label_en": "Tell me something else."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "Still, this empty site is not wholly forgotten. Three years ago, in the jeongmyo year (1747), to mark the joyful occasion of an honorific title being offered to Queen Dowager Inwon, a special examination was held on the old site of Geunjeongjeon over there. The king composed a poem and fifty officials answered it in verse. There is even a folding screen painted of the scene, they say. Well, that is the end of my tale. Thank you for listening so long."
-   }
-  },
-  "name_en": "Gyeongbokgung palace keeper",
-  "subtitle_en": "The one who keeps the empty palace"
- },
- "pedestrian": {
-  "name": "길 가는 사람",
-  "greetings": {
-   "male": [
-    "안녕하시오.",
-    "좋은 날이오.",
-    "어디 가시는 길이오?",
-    "바삐 가는 중이라 이만."
-   ],
-   "female": [
-    "안녕하세요.",
-    "날이 좋네요.",
-    "장 보러 가는 길이에요.",
-    "조심히 가세요."
-   ]
-  },
-  "name_en": "Passer-by",
-  "greetings_en": {
-   "male": [
-    "Good day to you.",
-    "A fine day, is it not?",
-    "Where are you headed?",
-    "I am in a hurry, so excuse me."
-   ],
-   "female": [
-    "Hello there.",
-    "What lovely weather.",
-    "I am on my way to the market.",
-    "Mind how you go."
-   ]
-  }
- },
- "merchant": {
-  "name": "시전 상인",
-  "nodes": {
-   "hello": {
-    "text": "어서 오시오, 손님. {shop}이오. {sells} 좋은 것만 들여놓았소.",
-    "options": [
-     {
-      "label": "무엇을 파는 가게요?",
-      "next": "about",
-      "label_en": "What does this shop sell?"
-     },
-     {
-      "label": "물건을 보여 주시오. (거래하기)",
-      "action": "shop",
-      "label_en": "Show me your goods. (Trade)"
-     },
-     {
-      "label": "다음에 오겠소.",
-      "action": "close",
-      "label_en": "I will come another time."
-     }
-    ],
-    "text_en": "Welcome, good customer. This is the {shop}. We stock only the finest {sells}."
-   },
-   "about": {
-    "text": "{about}",
-    "sources": [
-     {
-      "title": "우리역사넷 육의전",
-      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010",
-      "title_en": "Uri Yeoksa Net (National Institute of Korean History): The Six Licensed Shops (Yugujeon)"
-     }
-    ],
-    "options": [
-     {
-      "label": "물건을 보여 주시오. (거래하기)",
-      "action": "shop",
-      "label_en": "Show me your goods. (Trade)"
-     },
-     {
-      "label": "다음에 오겠소.",
-      "action": "close",
-      "label_en": "I will come another time."
-     }
-    ]
-   }
-  },
-  "name_en": "Market merchant"
- },
- "shops": {
-  "선전": {
-   "about": "중국에서 들여온 비단을 파는 시전이오. 육의전 가운데 으뜸이라 나라에 바치는 몫도 가장 크다오.",
-   "items": [
-    "silk_red",
-    "silk_blue",
-    "silk_gold"
-   ],
-   "about_en": "This is a licensed shop selling silk brought in from China. It ranks first among the Six Licensed Shops, so its dues to the state are the largest, too."
-  },
-  "면포전": {
-   "about": "무명을 파는 시전이오. 무명은 돈처럼도 쓰여서, 육의전에 드는 큰 가게라오.",
-   "items": [
-    "cotton_bolt",
-    "cotton_fine"
-   ],
-   "about_en": "This is a licensed shop selling cotton cloth. Cotton is used like money as well, so ours is a big shop among the Six Licensed Shops."
-  },
-  "면주전": {
-   "about": "우리 땅에서 짠 명주를 파는 시전이오. 육의전에 드는 가게라오.",
-   "items": [
-    "mingju_white",
-    "mingju_pink"
-   ],
-   "about_en": "This is a licensed shop selling silk woven here in our own land. It is one of the Six Licensed Shops."
-  },
-  "내어물전": {
-   "about": "말린 어물과 소금에 절인 어물을 파는 시전이오. 육의전에 드는 어물전이라오.",
-   "items": [
-    "dried_pollack",
-    "dried_croaker"
-   ],
-   "about_en": "This is a licensed shop selling dried fish and salted fish. It is the fish shop among the Six Licensed Shops."
-  },
-  "저포전": {
-   "about": "모시를 파는 시전이오. 육의전에 드는 가게라오.",
-   "items": [
-    "ramie_bolt"
-   ],
-   "about_en": "This is a licensed shop selling ramie cloth. It is one of the Six Licensed Shops."
-  },
-  "말 장수": {
-   "about": "수표교 어귀에서 말을 파는 장수요.",
-   "items": [
-    "horse_reins"
-   ],
-   "about_en": "I am a dealer selling horses at the foot of Supyo Bridge."
-  },
-  "청계천 낚시꾼": {
-   "about": "낚싯대를 팔고 강태공의 고사를 들려주는 창작 인물이오.",
-   "items": [
-    "fishing_rod"
-   ]
-  },
-  "약재상": {
-   "about": "산에서 모은 약초를 사들이는 창작 약전이오.",
-   "items": []
-  },
-  "회동서관 별책": {
-   "about": "책장 뒤에서 권하는 옛 소설. 개별 판본과 재고는 추정입니다.",
-   "items": [
-    "book_chunhyang",
-    "book_guunmong",
-    "book_sukhyang"
-   ]
-  }
- },
- "items": {
-  "silk_red": {
-   "name": "붉은 비단",
-   "unit": "필",
-   "price": 1200,
-   "icon": {
-    "shape": "bolt",
-    "color": "#b8322f"
-   },
-   "desc": "중국에서 들여온 붉은 비단 한 필.",
-   "name_en": "Red silk",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of red silk brought in from China."
-  },
-  "silk_blue": {
-   "name": "쪽빛 비단",
-   "unit": "필",
-   "price": 1100,
-   "icon": {
-    "shape": "bolt",
-    "color": "#2f5f9e"
-   },
-   "desc": "중국에서 들여온 쪽빛 비단 한 필.",
-   "name_en": "Indigo silk",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of indigo silk brought in from China."
-  },
-  "silk_gold": {
-   "name": "노란 비단",
-   "unit": "필",
-   "price": 1500,
-   "icon": {
-    "shape": "bolt",
-    "color": "#d6a53a"
-   },
-   "desc": "귀한 노란 비단 한 필.",
-   "name_en": "Yellow silk",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of precious yellow silk."
-  },
-  "cotton_bolt": {
-   "name": "무명",
-   "unit": "필",
-   "price": 250,
-   "icon": {
-    "shape": "roll",
-    "color": "#f1ead8"
-   },
-   "desc": "흰 무명 한 필. 옷감으로도, 셈을 치를 때도 쓰였다.",
-   "name_en": "Cotton cloth",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of white cotton cloth. Used for clothing and for settling accounts alike."
-  },
-  "cotton_fine": {
-   "name": "고운 무명",
-   "unit": "필",
-   "price": 380,
-   "icon": {
-    "shape": "roll",
-    "color": "#e7dcc1"
-   },
-   "desc": "올이 고운 무명 한 필.",
-   "name_en": "Fine cotton cloth",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of finely woven cotton cloth."
-  },
-  "mingju_white": {
-   "name": "흰 명주",
-   "unit": "필",
-   "price": 700,
-   "icon": {
-    "shape": "bolt",
-    "color": "#efd9c6"
-   },
-   "desc": "우리 땅에서 짠 흰 명주 한 필.",
-   "name_en": "White Korean silk",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of white silk woven in our own land."
-  },
-  "mingju_pink": {
-   "name": "분홍 명주",
-   "unit": "필",
-   "price": 760,
-   "icon": {
-    "shape": "bolt",
-    "color": "#e8c9c2"
-   },
-   "desc": "물들인 분홍 명주 한 필.",
-   "name_en": "Pink Korean silk",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of silk dyed pink."
-  },
-  "dried_pollack": {
-   "name": "북어",
-   "unit": "쾌",
-   "price": 120,
-   "icon": {
-    "shape": "fish",
-    "color": "#a38d6c"
-   },
-   "desc": "말린 명태 스무 마리를 한 쾌로 묶었다.",
-   "name_en": "Dried pollack",
-   "unit_en": "string",
-   "desc_en": "Twenty dried pollack tied into one string."
-  },
-  "dried_croaker": {
-   "name": "굴비",
-   "unit": "두름",
-   "price": 180,
-   "icon": {
-    "shape": "fish",
-    "color": "#b7955e"
-   },
-   "desc": "소금에 절여 말린 조기 한 두름.",
-   "name_en": "Dried croaker",
-   "unit_en": "bunch",
-   "desc_en": "A bunch of salted and dried yellow croaker."
-  },
-  "ramie_bolt": {
-   "name": "모시",
-   "unit": "필",
-   "price": 520,
-   "icon": {
-    "shape": "roll",
-    "color": "#dfe6cf"
-   },
-   "desc": "시원한 모시 한 필.",
-   "name_en": "Ramie cloth",
-   "unit_en": "bolt",
-   "desc_en": "A bolt of cool ramie cloth."
-  },
-  "horse_reins": {
-   "name": "말고삐",
-   "unit": "개",
-   "price": 900,
-   "icon": {
-    "shape": "reins",
-    "color": "#8a5a2b"
-   },
-   "desc": "말 장수에게서 산 말 한 필의 고삐. 1인칭에서 봇짐을 열고 오른쪽 클릭하면 말에 오르고, 다시 오른쪽 클릭하면 내린다.",
-   "use": "mount",
-   "max_owned": 1,
-   "name_en": "Horse reins",
-   "unit_en": "piece",
-   "desc_en": "The reins of a horse bought from the horse dealer. In first-person view, open your pack and right-click to mount the horse; right-click again to dismount."
-  },
-  "fishing_rod": {
-   "name": "낚싯대",
-   "name_en": "Fishing rod",
-   "unit": "개",
-   "unit_en": "rod",
-   "price": 15,
-   "desc": "청계천 낚시꾼 옆 물가에서 사용하시오. 다시 사용하거나 움직이면 줄을 거둡니다. 액션바에도 놓을 수 있습니다.",
-   "desc_en": "Use beside the stream fisherman. Use again or move to cancel. Can be assigned to the action bar.",
-   "icon": {
-    "shape": "rod",
-    "color": "#bba36c"
-   },
-   "use": "fish",
-   "max_owned": 1
-  },
-  "river_fish": {
-   "name": "민물고기",
-   "name_en": "River fish",
-   "unit": "마리",
-   "unit_en": "fish",
-   "price": 10,
-   "desc": "낚시로 잡은 작은 민물고기. 상점의 내 봇짐에서 팔 수 있습니다. 어종과 가격은 놀이용 표현입니다.",
-   "desc_en": "A small catch. Sell it from your pack at a merchant. Species and prices are illustrative.",
-   "icon": {
-    "shape": "fish",
-    "color": "#a4b6aa"
-   }
-  },
-  "mountain_herb": {
-   "name": "산약초",
-   "name_en": "Mountain herbs",
-   "unit": "묶음",
-   "unit_en": "bundle",
-   "price": 8,
-   "desc": "산에서 모은 게임용 약초 묶음. 약재상에게 팔 수 있습니다. 실제 식물의 식별·약효를 나타내지 않습니다.",
-   "desc_en": "Illustrative gathered herbs for trading, not a botanical or medicinal identification.",
-   "icon": {
-    "shape": "herb",
-    "color": "#83ae50"
-   }
-  },
-  "herb_mugwort": {
-   "name": "쑥잎(애엽)",
-   "name_en": "Mugwort leaves",
-   "unit": "묶음",
-   "unit_en": "bundle",
-   "price": 6,
-   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
-   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
-   "icon": {
-    "shape": "herb",
-    "color": "#9bad87"
-   }
-  },
-  "herb_plantain": {
-   "name": "질경이(차전초)",
-   "name_en": "Plantain",
-   "unit": "묶음",
-   "unit_en": "bundle",
-   "price": 8,
-   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
-   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
-   "icon": {
-    "shape": "herb",
-    "color": "#9b8150"
-   }
-  },
-  "herb_dandelion": {
-   "name": "민들레(포공영)",
-   "name_en": "Dandelion",
-   "unit": "묶음",
-   "unit_en": "bundle",
-   "price": 10,
-   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
-   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
-   "icon": {
-    "shape": "herb",
-    "color": "#f1cf42"
-   }
-  },
-  "herb_bellflower": {
-   "name": "도라지뿌리(길경)",
-   "name_en": "Bellflower root",
-   "unit": "묶음",
-   "unit_en": "bundle",
-   "price": 14,
-   "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
-   "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
-   "icon": {
-    "shape": "herb",
-    "color": "#9784df"
-   }
-  },
-  "fish_pale_chub": {
-   "name": "피라미",
-   "name_en": "Pale chub",
-   "unit": "마리",
-   "unit_en": "fish",
-   "price": 6,
-   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
-   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
-   "icon": {
-    "shape": "fish",
-    "color": "#b3c7cd"
-   }
-  },
-  "fish_loach": {
-   "name": "미꾸라지",
-   "name_en": "Loach",
-   "unit": "마리",
-   "unit_en": "fish",
-   "price": 10,
-   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
-   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
-   "icon": {
-    "shape": "fish",
-    "color": "#9b885e"
-   }
-  },
-  "fish_crucian": {
-   "name": "붕어",
-   "name_en": "Crucian carp",
-   "unit": "마리",
-   "unit_en": "fish",
-   "price": 16,
-   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
-   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
-   "icon": {
-    "shape": "fish",
-    "color": "#b6ae83"
-   }
-  },
-  "fish_carp": {
-   "name": "잉어",
-   "name_en": "Carp",
-   "unit": "마리",
-   "unit_en": "fish",
-   "price": 24,
-   "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
-   "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
-   "icon": {
-    "shape": "fish",
-    "color": "#cd9e57"
-   }
-  },
-  "book_chunhyang": {
-   "name": "춘향전",
-   "name_en": "The Tale of Chunhyang",
-   "unit": "책",
-   "unit_en": "volume",
-   "price": 18,
-   "icon": {
-    "shape": "book",
-    "color": "#87554b"
-   },
-   "desc": "신분의 벽을 넘어선 사랑과 춘향의 절개를 다룬 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
-   "desc_en": "A tale of love across social divisions and Chunhyang’s constancy. Shop, edition and price are illustrative."
-  },
-  "book_guunmong": {
-   "name": "구운몽",
-   "name_en": "The Cloud Dream of the Nine",
-   "unit": "책",
-   "unit_en": "volume",
-   "price": 26,
-   "icon": {
-    "shape": "book",
-    "color": "#476177"
-   },
-   "desc": "꿈속 인연과 부귀영화, 깨어난 뒤의 깨달음을 다룬 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
-   "desc_en": "Dreamed encounters, worldly success and awakening. Shop, edition and price are illustrative."
-  },
-  "book_sukhyang": {
-   "name": "숙향전",
-   "name_en": "The Tale of Sukhyang",
-   "unit": "책",
-   "unit_en": "volume",
-   "price": 22,
-   "icon": {
-    "shape": "book",
-    "color": "#58735a"
-   },
-   "desc": "시련과 이별을 겪는 숙향의 인연 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
-   "desc_en": "Sukhyang’s trials, separation and reunion. Shop, edition and price are illustrative."
-  }
- },
- "wallet": {
-  "start": 3000,
-  "sell_rate": 0.6
- },
- "soldier": {
-  "greetings": [
-   "문을 지키는 중이오. 지나가시오.",
-   "수상한 자는 들이지 않소.",
-   "날이 저물면 문을 닫으니 서두르시오.",
-   "무슨 일이오? 볼일이 있으면 수문장께 여쭈시오."
-  ],
-  "greetings_en": [
-   "I am guarding the gate. Move along.",
-   "No suspicious persons are let through.",
-   "The gate closes at dusk, so make haste.",
-   "What is it? If you have business, ask the gatekeeper officer."
-  ]
- },
- "officer": {
-  "subtitle": "{unit} · 궁문을 여닫는 관원",
-  "nodes": {
-   "hello": {
-    "text": "나는 {gate}의 수문장이오. 이 문을 여닫고 드나드는 이를 살피는 일을 맡았소. 무엇이 궁금하오?",
-    "options": [
-     {
-      "label": "수문장은 어떤 관원이오?",
-      "next": "office",
-      "label_en": "What kind of official are you?"
-     },
-     {
-      "label": "궁성은 누가 지키오?",
-      "next": "guard",
-      "label_en": "Who guards the palace walls?"
-     },
-     {
-      "label": "밤에도 문을 열 수 있소?",
-      "next": "night",
-      "label_en": "Can the gate be opened at night?"
-     },
-     {
-      "label": "수고하시오.",
-      "action": "close",
-      "label_en": "Keep up the good work."
-     }
-    ],
-    "text_en": "I am the gatekeeper officer of {gate}. My charge is to open and close this gate and to watch those who pass through. What would you like to know?"
-   },
-   "office": {
-    "text": "궁궐 문을 여닫는 일은 우리 수문장이 맡는다오. 몇 해 전(1746) 『속대전』에서 수문장청이 관청으로 자리를 잡았고, 수문장은 스물세 명이오. 번갈아 입직하며 문을 지키지.",
-    "year": "1746",
-    "sources": [
-     {
-      "title": "한국민족문화대백과사전 수문장청",
-      "url": "https://encykorea.aks.ac.kr/Article/E0031377",
-      "title_en": "Encyclopedia of Korean Culture: Sumunjangcheong (Gatekeepers' Office)"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 것도 묻겠소.",
-      "next": "hello",
-      "label_en": "I have another question."
-     },
-     {
-      "label": "수고하시오.",
-      "action": "close",
-      "label_en": "Keep up the good work."
-     }
-    ],
-    "text_en": "Opening and closing the palace gates is the duty of us gatekeeper officers. A few years ago (1746) the Sok Daejeon (Supplement to the Great Code) established the Gatekeepers' Office as a proper government office, and there are twenty-three gatekeeper officers. We take turns on duty and keep the gates."
-   },
-   "guard": {
-    "text": "창덕궁 궁성 밖 파수는 세 군영이 나누어 맡소. 돈화문은 훈련도감, 금호문은 금위영, 홍화문은 어영청 몫이오. 문을 여닫는 일은 따로 우리 수문장이 하고.",
-    "sources": [
-     {
-      "title": "우리역사넷 신편 한국사 「궁성 파수」",
-      "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040",
-      "title_en": "Uri Yeoksa Net (National Institute of Korean History), New History of Korea: \"Guarding the palace walls\""
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 것도 묻겠소.",
-      "next": "hello",
-      "label_en": "I have another question."
-     },
-     {
-      "label": "수고하시오.",
-      "action": "close",
-      "label_en": "Keep up the good work."
-     }
-    ],
-    "text_en": "The watch outside the walls of Changdeokgung is shared among three military commands. Donhwamun falls to the Hullyeon Dogam (Military Training Command), Geumhomun to the Geumwiyeong (Capital Garrison), and Honghwamun to the Eoyeongcheong (Royal Guards Command). Opening and closing the gates is a separate matter, done by us gatekeeper officers."
-   },
-   "night": {
-    "text": "밤에 닫힌 궁문은 함부로 열지 않소. 급한 일이 있으면 선전관이 표신을 보여야만 문을 연다오.",
-    "sources": [
-     {
-      "title": "조선왕조실록사전 표신",
-      "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29",
-      "title_en": "Encyclopedia of the Annals of the Joseon Dynasty: Pyosin (gate tally)"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 것도 묻겠소.",
-      "next": "hello",
-      "label_en": "I have another question."
-     },
-     {
-      "label": "수고하시오.",
-      "action": "close",
-      "label_en": "Keep up the good work."
-     }
-    ],
-    "text_en": "A palace gate closed for the night is not opened lightly. If there is urgent business, the gate is opened only when a royal messenger shows a gate tally (pyosin)."
-   }
-  },
-  "subtitle_en": "{unit} · Official who opens and closes the palace gate"
- },
- "horse_dealer": {
-  "name": "말 장수",
-  "subtitle": "수표교(마전교) 어귀 · 말을 끌고 나온 사람",
-  "nodes": {
-   "hello": {
-    "text": "어서 오시오. 이 녀석 좀 보시오, 튼튼하지? 이 다리 어귀에 원래 나라가 정한 우마전이 있었는데, 요즘은 형편이 말이 아니오.",
-    "options": [
-     {
-      "label": "우마전이 어떻게 되었소?",
-      "next": "closed",
-      "label_en": "What became of the Umajeon?"
-     },
-     {
-      "label": "이 다리를 왜 마전교라 부르오?",
-      "next": "bridge",
-      "label_en": "Why is this bridge called Majeongyo?"
-     },
-     {
-      "label": "언제부터 여기서 말을 팔았소?",
-      "next": "origin",
-      "label_en": "How long have horses been sold here?"
-     },
-     {
-      "label": "말을 한 필 사고 싶소. (거래하기)",
-      "action": "shop",
-      "label_en": "I want to buy a horse. (Trade)"
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "Come, have a look. See this one? Sturdy, is he not? There used to be an Umajeon, the cattle and horse market the state set up, at the foot of this bridge, but these days it is in a sorry state."
-   },
-   "closed": {
-    "text": "몇 해 전(1744)에 조정에서도 이야기가 나왔다오. 여러 군문이 전을 침범하는 통에 전이 없어지고, 그 자리는 논밭으로 갈아엎었다지. 평시서 제조에게 다시 세우게 하자고 아뢰어 임금께서 허락하셨다는데, 나는 아직 소식을 기다리는 중이오.",
-    "year": "1744",
-    "sources": [
-     {
-      "title": "조선왕조실록 영조 20년(1744) 8월 26일",
-      "url": "https://sillok.history.go.kr/id/kua_12008026_001",
-      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 8th month, day 26"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 것도 묻겠소.",
-      "next": "hello",
-      "label_en": "I have another question."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "A few years ago (1744) it even came up at court. The various military commands kept encroaching on the market until it disappeared, and the site was plowed up into fields. It was proposed that the director of the Pyeongsiseo (market office) be made to set it up again, and the king approved, they say, but I am still waiting for word."
-   },
-   "bridge": {
-    "text": "그때 조정에서는 마전교(馬廛橋)라는 이름만 봐도 국초부터 우마전이 여기 있었던 걸 알 수 있다고 아뢰었소. 그런데 세종 임금 때(1441) 개천에 수표를 세운 기록에는 馬前橋라고 적혀 있다 하니, 이름 풀이는 사람마다 조금씩 다르오. 수표를 세운 뒤로 수표교라고들 부르지.",
-    "year": "1441·1744",
-    "sources": [
-     {
-      "title": "조선왕조실록 영조 20년(1744) 8월 26일",
-      "url": "https://sillok.history.go.kr/id/kua_12008026_001",
-      "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 8th month, day 26"
-     },
-     {
-      "title": "조선왕조실록 세종 23년(1441) 8월 18일",
-      "url": "https://sillok.history.go.kr/id/kda_12308018_004",
-      "title_en": "Annals of the Joseon Dynasty, Sejong year 23 (1441), 8th month, day 18"
-     },
-     {
-      "title": "한국민족문화대백과사전 수표교",
-      "url": "https://encykorea.aks.ac.kr/Article/E0031766",
-      "title_en": "Encyclopedia of Korean Culture: Supyogyo"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 것도 묻겠소.",
-      "next": "hello",
-      "label_en": "I have another question."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "At that time the court said that the very name Majeongyo (馬廛橋, 'horse market bridge') showed that the Umajeon had been here since the founding of the dynasty. But the record of setting up the water gauge in the stream in King Sejong's reign (1441) is said to write it as 馬前橋, so people read the name a little differently. Since the water gauge was set up, folk call it Supyogyo, the Water Gauge Bridge."
-   },
-   "origin": {
-    "text": "태종 임금 때(1410) 시전 자리를 정하면서 소와 말은 장통방 아래 개천가로 정했다고 하오. 그러니 개천가 말 시장은 나라 처음부터 있던 셈이지. 요즘 시전 목록에는 동대문 안에 마전이 따로 있다고도 하오.",
-    "year": "1410",
-    "sources": [
-     {
-      "title": "조선왕조실록 태종 10년(1410) 2월 7일",
-      "url": "https://sillok.history.go.kr/id/kca_11002007_008",
-      "title_en": "Annals of the Joseon Dynasty, Taejong year 10 (1410), 2nd month, day 7"
-     },
-     {
-      "title": "한국민족문화대백과사전 시전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0032450",
-      "title_en": "Encyclopedia of Korean Culture: Sijeon (licensed shops)"
-     },
-     {
-      "title": "우리역사넷 『한국문화사』 유분각전",
-      "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020",
-      "title_en": "Uri Yeoksa Net (National Institute of Korean History), Cultural History of Korea: Yubungakjeon (shops with assigned dues)"
-     }
-    ],
-    "options": [
-     {
-      "label": "다른 것도 묻겠소.",
-      "next": "hello",
-      "label_en": "I have another question."
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close",
-      "label_en": "Farewell."
-     }
-    ],
-    "text_en": "In King Taejong's reign (1410), when the sites of the licensed shops were fixed, cattle and horses were assigned to the bank of the stream below Jangtongbang, they say. So the horse market by the stream has been here since the very start of the dynasty. The recent lists of licensed shops also mention a separate horse market inside the East Gate."
-   }
-  },
-  "name_en": "Horse dealer",
-  "subtitle_en": "Foot of Supyo Bridge (Majeongyo) · A man who has brought out horses to sell"
- },
- "note_en": "The characters' manner of speech and lines are invented on the basis of records. Lines that state facts carry a source. Shop prices are play values not confirmed in the records.",
- "fishing": {
-  "name": "청계천 낚시꾼",
-  "subtitle": "강태공 고사 · 낚싯대 장수",
-  "note": "창작 인물·추정 배치. 어획 확률·시간·가격은 게임 설정입니다.",
-  "bridge_ids": {
-   "1750": "gwangtong",
-   "1907": "gwangtong-1907"
-  },
-  "nodes": {
-   "hello": {
-    "text": "청계천 물살을 보고 있소? 낚싯줄을 드리웠다고 매번 고기가 올라오는 것은 아니라오. 기다리는 동안 강태공 이야기를 들려드릴 수도 있고, 낚싯대 한 자루를 내드릴 수도 있지요. 나는 이 물가에 놓인 창작 낚시꾼이니, 실제 장사하던 사람의 이름이나 자리를 복원한 것은 아니오.",
-    "options": [
-     {
-      "label": "강태공은 누구요?",
-      "next": "taigong"
-     },
-     {
-      "label": "낚시는 어떻게 하오?",
-      "next": "how"
-     },
-     {
-      "label": "잡은 물고기는 어디에 파오?",
-      "next": "market"
-     },
-     {
-      "label": "낚싯대를 사고 싶소.",
-      "action": "shop"
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close"
-     }
-    ],
-    "sources": [
-     {
-      "title": "우리역사넷 — 무성왕 강태공",
-      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
-     },
-     {
-      "title": "한국민족문화대백과 — 어물전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
-     }
-    ]
-   },
-   "taigong": {
-    "text": "강태공은 옛 중국 주나라의 문왕과 무왕을 도운 강상이오. 위수 가에서 문왕을 만나 뜻을 펼쳤다는 고사가 전해지지요. 후세에는 물가에서 때를 기다리는 낚시꾼을 강태공이라 부르곤 하오. 고기만 기다리는 것이 아니라 자신을 알아줄 때를 기다렸다는 이야기로도 읽을 수 있겠지요. 그렇다고 청계천에 그 사람이 왔다는 뜻은 아니오. 먼 옛날의 고사를 이 물가에서 나누는 것이오.",
-    "options": [
-     {
-      "label": "낚시는 어떻게 하오?",
-      "next": "how"
-     },
-     {
-      "label": "잡은 물고기는 어디에 파오?",
-      "next": "market"
-     },
-     {
-      "label": "낚싯대를 사고 싶소.",
-      "action": "shop"
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close"
-     }
-    ],
-    "sources": [
-     {
-      "title": "우리역사넷 — 무성왕 강태공",
-      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
-     },
-     {
-      "title": "한국민족문화대백과 — 어물전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
-     }
-    ]
-   },
-   "how": {
-    "text": "낚싯대를 봇짐에서 쓰거나 액션바에 놓고 키를 누르거나 우클릭하시오. 청계천 어느 물가에서든 수면을 바라보면 줄을 드리울 수 있소. 한 번에 10초 기다리고, 고기가 잡힐 확률은 백 번 중 서른 번 정도라오. 매번 새로 운을 보는 것이니 빈손이 이어질 수도 있지요. 움직이거나 뛰거나 말에 오르면 줄을 거두오. 이 시간과 확률은 놀이를 위한 설정이오.",
-    "options": [
-     {
-      "label": "강태공은 누구요?",
-      "next": "taigong"
-     },
-     {
-      "label": "잡은 물고기는 어디에 파오?",
-      "next": "market"
-     },
-     {
-      "label": "낚싯대를 사고 싶소.",
-      "action": "shop"
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close"
-     }
-    ],
-    "sources": [
-     {
-      "title": "우리역사넷 — 무성왕 강태공",
-      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
-     },
-     {
-      "title": "한국민족문화대백과 — 어물전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
-     }
-    ]
-   },
-   "market": {
-    "text": "종로의 내어물전 상인에게 가져가 보시오. 지금 시전에는 말린 명태와 조기를 파는 가게가 있소. 옛 기록에서는 어물전 외에 생선전과 젓갈을 다루는 가게가 따로 구분되기도 했지요. 여기서는 편의를 위해 잡은 민물고기를 기존 상점의 내 봇짐에서 팔 수 있게 했소. 청계천의 특정 어종이나 당시 실제 거래값을 그대로 옮긴 것은 아니라오.",
-    "options": [
-     {
-      "label": "강태공은 누구요?",
-      "next": "taigong"
-     },
-     {
-      "label": "낚시는 어떻게 하오?",
-      "next": "how"
-     },
-     {
-      "label": "낚싯대를 사고 싶소.",
-      "action": "shop"
-     },
-     {
-      "label": "잘 있으시오.",
-      "action": "close"
-     }
-    ],
-    "sources": [
-     {
-      "title": "우리역사넷 — 무성왕 강태공",
-      "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
-     },
-     {
-      "title": "한국민족문화대백과 — 어물전",
-      "url": "https://encykorea.aks.ac.kr/Article/E0035969"
-     }
-    ]
-   }
-  },
-  "catches": [
-   {
-    "item": "fish_pale_chub",
-    "weight": 40,
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   },
-   {
-    "item": "fish_loach",
-    "weight": 25,
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   },
-   {
-    "item": "fish_crucian",
-    "weight": 25,
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   },
-   {
-    "item": "fish_carp",
-    "weight": 10,
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   }
-  ]
- },
- "herbs": {
-  "nodes": [
-   {
-    "id": "1326",
-    "pixel": [
-     663,
-     714
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1343",
-    "pixel": [
-     789,
-     737
-    ],
-    "region": "inwang",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1360",
-    "pixel": [
-     741,
-     752
-    ],
-    "region": "inwang",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1377",
-    "pixel": [
-     591,
-     777
-    ],
-    "region": "inwang",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1394",
-    "pixel": [
-     571,
-     786
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1411",
-    "pixel": [
-     596,
-     796
-    ],
-    "region": "inwang",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1428",
-    "pixel": [
-     565,
-     804
-    ],
-    "region": "inwang",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1445",
-    "pixel": [
-     693,
-     812
-    ],
-    "region": "inwang",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1462",
-    "pixel": [
-     733,
-     823
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1479",
-    "pixel": [
-     766,
-     830
-    ],
-    "region": "inwang",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1496",
-    "pixel": [
-     725,
-     856
-    ],
-    "region": "inwang",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1513",
-    "pixel": [
-     626,
-     874
-    ],
-    "region": "inwang",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1530",
-    "pixel": [
-     736,
-     885
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1547",
-    "pixel": [
-     740,
-     900
-    ],
-    "region": "inwang",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1564",
-    "pixel": [
-     722,
-     922
-    ],
-    "region": "inwang",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1581",
-    "pixel": [
-     766,
-     940
-    ],
-    "region": "inwang",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1598",
-    "pixel": [
-     661,
-     971
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1615",
-    "pixel": [
-     657,
-     1005
-    ],
-    "region": "inwang",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1632",
-    "pixel": [
-     747,
-     1025
-    ],
-    "region": "inwang",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1649",
-    "pixel": [
-     674,
-     1042
-    ],
-    "region": "inwang",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1666",
-    "pixel": [
-     741,
-     1070
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1683",
-    "pixel": [
-     706,
-     1092
-    ],
-    "region": "inwang",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1700",
-    "pixel": [
-     725,
-     1120
-    ],
-    "region": "inwang",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1717",
-    "pixel": [
-     623,
-     1141
-    ],
-    "region": "inwang",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1734",
-    "pixel": [
-     582,
-     1163
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1751",
-    "pixel": [
-     570,
-     1185
-    ],
-    "region": "inwang",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1768",
-    "pixel": [
-     837,
-     1194
-    ],
-    "region": "inwang",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1785",
-    "pixel": [
-     786,
-     1233
-    ],
-    "region": "inwang",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1802",
-    "pixel": [
-     789,
-     1344
-    ],
-    "region": "inwang",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1819",
-    "pixel": [
-     1411,
-     454
-    ],
-    "region": "baegak",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1836",
-    "pixel": [
-     1112,
-     476
-    ],
-    "region": "baegak",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1853",
-    "pixel": [
-     1377,
-     499
-    ],
-    "region": "baegak",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1870",
-    "pixel": [
-     1161,
-     531
-    ],
-    "region": "baegak",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1887",
-    "pixel": [
-     1178,
-     551
-    ],
-    "region": "baegak",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1904",
-    "pixel": [
-     1097,
-     571
-    ],
-    "region": "baegak",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1921",
-    "pixel": [
-     1111,
-     583
-    ],
-    "region": "baegak",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "1938",
-    "pixel": [
-     1135,
-     597
-    ],
-    "region": "baegak",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "1955",
-    "pixel": [
-     1118,
-     612
-    ],
-    "region": "baegak",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "1972",
-    "pixel": [
-     1100,
-     615
-    ],
-    "region": "baegak",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "1989",
-    "pixel": [
-     1185,
-     627
-    ],
-    "region": "baegak",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "2006",
-    "pixel": [
-     939,
-     653
-    ],
-    "region": "baegak",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "2023",
-    "pixel": [
-     1499,
-     663
-    ],
-    "region": "baegak",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "2040",
-    "pixel": [
-     969,
-     683
-    ],
-    "region": "baegak",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "2057",
-    "pixel": [
-     1218,
-     697
-    ],
-    "region": "baegak",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "2074",
-    "pixel": [
-     1415,
-     708
-    ],
-    "region": "baegak",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "2091",
-    "pixel": [
-     1092,
-     726
-    ],
-    "region": "baegak",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "2108",
-    "pixel": [
-     1474,
-     777
-    ],
-    "region": "baegak",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "2380",
-    "pixel": [
-     2033,
-     2105
-    ],
-    "region": "namsan",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "2397",
-    "pixel": [
-     2058,
-     2145
-    ],
-    "region": "namsan",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "2414",
-    "pixel": [
-     2063,
-     2160
-    ],
-    "region": "namsan",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "2431",
-    "pixel": [
-     1878,
-     2182
-    ],
-    "region": "namsan",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "2448",
-    "pixel": [
-     1865,
-     2190
-    ],
-    "region": "namsan",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "2465",
-    "pixel": [
-     1303,
-     2212
-    ],
-    "region": "namsan",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "2482",
-    "pixel": [
-     1801,
-     2211
-    ],
-    "region": "namsan",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "2499",
-    "pixel": [
-     1736,
-     2222
-    ],
-    "region": "namsan",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "2516",
-    "pixel": [
-     1747,
-     2238
-    ],
-    "region": "namsan",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "2533",
-    "pixel": [
-     1640,
-     2248
-    ],
-    "region": "namsan",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "2550",
-    "pixel": [
-     1601,
-     2260
-    ],
-    "region": "namsan",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "2567",
-    "pixel": [
-     1673,
-     2264
-    ],
-    "region": "namsan",
-    "item": "herb_dandelion"
-   },
-   {
-    "id": "2584",
-    "pixel": [
-     1464,
-     2290
-    ],
-    "region": "namsan",
-    "item": "herb_bellflower"
-   },
-   {
-    "id": "2601",
-    "pixel": [
-     1531,
-     2301
-    ],
-    "region": "namsan",
-    "item": "herb_mugwort"
-   },
-   {
-    "id": "2618",
-    "pixel": [
-     1601,
-     2316
-    ],
-    "region": "namsan",
-    "item": "herb_plantain"
-   },
-   {
-    "id": "2635",
-    "pixel": [
-     1549,
-     2347
-    ],
-    "region": "namsan",
-    "item": "herb_dandelion"
-   }
-  ],
-  "note": "1750년 수목 분포를 참고한 두 시대 공통 게임용 약초 위치. 식생·약효의 고증 자료가 아닙니다.",
-  "merchant": {
-   "name": "종로 약재상",
-   "subtitle": "산약초를 사들이는 창작 약전",
-   "nodes": {
-    "hello": {
-     "text": "산에서 약초를 모아 왔소? 봇짐을 펴 보시오. 조선 후기에는 약전과 민간 약국이 약재를 사고팔았지요. 나는 종로의 상업 공간을 참고하여 놓은 창작 상인이오. 이 자리의 실제 상호나 약초 품종을 복원한 것은 아니오. 약초는 내 가게의 내 봇짐 칸에서 팔 수 있소.",
-     "sources": [
-      {
-       "title": "국사편찬위원회 — 조선 후기 약전·약국",
-       "url": "https://db.history.go.kr/id/kn_107_0040_0020_0020"
+  "schema_version": 1,
+  "note": "인물의 말투와 대사는 기록을 바탕으로 지어낸 것입니다. 사실을 말하는 대사에는 출처를 붙였습니다. 가게의 가격은 기록에서 확인하지 않은 놀이용 값입니다.",
+  "keeper": {
+    "name": "경복궁 궁감",
+    "subtitle": "빈 궁궐을 지키는 사람",
+    "start": "hello",
+    "nodes": {
+      "hello": {
+        "text": "어서 오시오. 여기는 옛 경복궁 터요. 무엇이 궁금하오?",
+        "options": [
+          {
+            "label": "이 궁은 어쩌다 이렇게 되었소?",
+            "next": "history",
+            "label_en": "How did the palace come to this?"
+          },
+          {
+            "label": "연못의 돌기둥은 무엇이오?",
+            "next": "pond",
+            "label_en": "What are the stone pillars in the pond?"
+          },
+          {
+            "label": "궁감은 무슨 일을 하시오?",
+            "next": "duty",
+            "label_en": "What does a palace keeper do?"
+          },
+          {
+            "label": "요즘 궁터에 무슨 일이 있었소?",
+            "next": "trees",
+            "label_en": "Anything happen here lately?"
+          },
+          {
+            "label": "처음부터 옛날이야기를 들려주시오. (긴 이야기)",
+            "next": "tale_taejo",
+            "label_en": "Tell the old tale from the start. (Long)"
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "Come in, traveler. This is the old site of Gyeongbokgung. What would you like to know?"
+      },
+      "history": {
+        "text": "이 궁은 태조 임금 때인 1395년에 지은 조선의 으뜸 궁궐이었소. 임진년(1592) 난리에 모두 타 버리고, 지금은 이렇게 담과 터만 남았다오.",
+        "year": "1395·1592",
+        "sources": [
+          {
+            "title": "궁능유적본부 경복궁 소개·역사",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 이야기도 들려주시오.",
+            "next": "hello",
+            "label_en": "Tell me something else."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "This was the foremost palace of Joseon, built in 1395 in the reign of King Taejo. In the troubles of the imjin year (1592) it all burned down, and now only the walls and the grounds remain, as you see."
+      },
+      "pond": {
+        "text": "저기 연못 가운데 돌기둥들 보이시오? 경회루 자리요. 태종 임금 때(1412) 연못을 넓히며 크게 지은 누각인데, 누각은 불타고 돌기둥만 줄지어 남았지.",
+        "year": "1412",
+        "sources": [
+          {
+            "title": "위키백과 경회루(태종실록·춘성유기 인용)",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9A%8C%EB%A3%A8",
+            "title_en": "Wikipedia (Korean): Gyeonghoeru (citing the Annals of Taejong and Chunseong yugi)"
+          }
+        ],
+        "options": [
+          {
+            "label": "연못은 누가 돌보오?",
+            "next": "drought",
+            "label_en": "Who looks after the pond?"
+          },
+          {
+            "label": "다른 이야기도 들려주시오.",
+            "next": "hello",
+            "label_en": "Tell me something else."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "Do you see the stone pillars in the middle of the pond there? That is where Gyeonghoeru stood. It was a great pavilion raised in King Taejong's reign (1412), when the pond was widened. The pavilion burned, and only the rows of stone pillars are left."
+      },
+      "duty": {
+        "text": "나라에서는 이 빈 궁을 그냥 버려두지 않고, 나 같은 궁감을 두어 담이며 나무며 연못을 돌보게 하였소.",
+        "year": null,
+        "sources": [
+          {
+            "title": "유재빈, 「영조대 경복궁 터에서 행한 행사와 궁중 회화」, 『한국미술사학회지』 323 (2024)",
+            "url": "https://www.kjah.org/journal/view.php?number=1929&viewtype=pubreader",
+            "title_en": "Yoo Jae-bin, \"Events Held on the Gyeongbokgung Site in the Reign of Yeongjo and Court Painting,\" Korean Journal of Art History 323 (2024)"
+          },
+          {
+            "title": "위키백과 경복궁",
+            "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%B3%B5%EA%B6%81",
+            "title_en": "Wikipedia (Korean): Gyeongbokgung"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 이야기도 들려주시오.",
+            "next": "hello",
+            "label_en": "Tell me something else."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "The state did not simply abandon this empty palace. It appointed palace keepers like me to look after the walls, the trees and the pond."
+      },
+      "trees": {
+        "text": "스무 해쯤 전(1729)엔 바람에 쓰러진 나무를 치우던 수직군들이 멀쩡한 나무까지 베어 민가에 팔아먹었다고, 사헌부에서 관원들을 잡아 죄를 묻자고 아뢰었다오. 그 뒤로는 나무 한 그루도 조심스럽지.",
+        "year": "1729",
+        "sources": [
+          {
+            "title": "영조실록 5년 3월 27일 제2기사 — 사헌부가 경복궁 나무를 판 수직군 문제를 아뢰다",
+            "url": "https://sillok.history.go.kr/id/kua_10503027_002",
+            "title_en": "Annals of the Joseon Dynasty, Yeongjo year 5 (1729), 3rd month, day 27, entry 2: the Inspector-General reports on guards who sold Gyeongbokgung trees"
+          }
+        ],
+        "options": [
+          {
+            "label": "가물 때는 어찌하오?",
+            "next": "drought",
+            "label_en": "What do you do in a drought?"
+          },
+          {
+            "label": "다른 이야기도 들려주시오.",
+            "next": "hello",
+            "label_en": "Tell me something else."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "Some twenty years ago (1729), the guards sent to clear trees felled by the wind cut down sound trees as well and sold them to private houses, so the Office of the Inspector-General petitioned to arrest the officials and try them. Since then, we are careful with every single tree."
+      },
+      "drought": {
+        "text": "가물면 경회루 연못도 친다오. 계해년(1743)에 연못을 쳐냈고, 이듬해에는 가뭄이 길어 오부 사람들과 군사들이 개천과 도랑, 이 연못까지 쳐냈지.",
+        "year": "1743·1744",
+        "sources": [
+          {
+            "title": "영조실록 19년 4월 16일 제1기사 — 경회루의 연못을 준설하게 하다",
+            "url": "https://sillok.history.go.kr/id/kua_11904016_001",
+            "title_en": "Annals of the Joseon Dynasty, Yeongjo year 19 (1743), 4th month, day 16, entry 1: the Gyeonghoeru pond is ordered dredged"
+          },
+          {
+            "title": "영조실록 20년 5월 10일 제2기사 — 가뭄에 계천·도랑·경회루 연지를 치게 하다",
+            "url": "https://sillok.history.go.kr/id/kua_12005010_002",
+            "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 5th month, day 10, entry 2: in a drought the stream, ditches and Gyeonghoeru pond are ordered dredged"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 이야기도 들려주시오.",
+            "next": "hello",
+            "label_en": "Tell me something else."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "When there is a drought, we dredge the Gyeonghoeru pond too. In the gyehae year (1743) the pond was dredged, and the next year the drought ran so long that people from the five districts and the soldiers dredged the stream, the ditches and even this pond."
+      },
+      "tale_taejo": {
+        "text": "허허, 옛날이야기라. 그럼 처음부터 하리다. 우리 태조 대왕 이성계께서는 원래 고려의 장수셨소. 홍건적이며 왜구를 여러 번 물리치셨고, 경신년(1380)에는 황산에서 왜구를 크게 이기셨지. 무진년(1388)에 위화도에서 군사를 돌려 개경으로 돌아오셨고, 임신년(1392) 7월 개경 수창궁에서 마침내 왕위에 오르셨소. 실록에는 신하들이 간곡히 청하여 받으셨다고 적혀 있다오.",
+        "year": "1380·1388·1392",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 태조",
+            "url": "https://encykorea.aks.ac.kr/Article/E0059033",
+            "title_en": "Encyclopedia of Korean Culture: Taejo"
+          },
+          {
+            "title": "조선왕조실록 태조 1년(1392) 7월 17일",
+            "url": "https://sillok.history.go.kr/id/kaa_10107017_001",
+            "title_en": "Annals of the Joseon Dynasty, Taejo year 1 (1392), 7th month, day 17"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_capital",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "Ha, an old tale, is it? Then I shall begin at the beginning. Our great King Taejo, Yi Seong-gye, was originally a general of Goryeo. He drove back the Red Turbans and the Japanese raiders many times, and in the gyeongsin year (1380) he won a great victory over the raiders at Hwangsan. In the mujin year (1388) he turned his army back at Wihwa Island and returned to Gaegyeong, and in the imsin year (1392), in the 7th month, he at last took the throne at Suchang Palace in Gaegyeong. The Annals record that he accepted it only after the officials earnestly begged him."
+      },
+      "tale_capital": {
+        "text": "임금이 되시고는 새 도읍을 찾으셨소. 즉위하신 그해에 한양으로 옮기라 하셨다가 신하들이 말려 거두셨고, 이듬해(1393)에는 계룡산에 도읍 공사까지 벌이셨는데 하륜이 반대하여 그만두었다오. 갑술년(1394) 8월에 무악과 한양을 몸소 둘러보셨는데, 이때 왕사 무학 스님도 불러 함께 보셨지. 그러고는 한양으로 정하셨소.",
+        "year": "1392·1393·1394",
+        "sources": [
+          {
+            "title": "우리역사넷 한양 천도 1394",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i306100&code=kc_age_30",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Moving the capital to Hanyang, 1394"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_legend",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "Once he was king, he looked for a new capital. In the very year he took the throne he ordered a move to Hanyang, but the officials talked him out of it. The next year (1393) he even began building a capital at Mount Gyeryong, but Ha Ryun objected and it was stopped. In the gapsul year (1394), in the 8th month, he went in person to look over Muak and Hanyang, and he summoned the royal preceptor, the monk Muhak, to look with him. Then he settled on Hanyang."
+      },
+      "tale_legend": {
+        "text": "이건 옛 사람들 사이에 도는 이야기요, 사실인지는 모르오. 무학 스님이 대궐을 지으려는데 자꾸 무너졌더라오. 한 노인이 나타나 이 땅은 학이 날개를 편 모양이니 날개부터 눌러야 한다며 성부터 쌓으라 일렀다지. 또 노인이 십 리를 더 가라 해서 왕십리라는 이름이 붙었다는 말도 있소. 『지봉유설』 같은 책에도 실린 설화라오.",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 무학대사 설화",
+            "url": "https://encykorea.aks.ac.kr/Article/E0019294",
+            "title_en": "Encyclopedia of Korean Culture: Legends of Master Muhak"
+          }
+        ],
+        "legend": true,
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_move",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "Now this is a story that goes around among the old folk, and I cannot say whether it is true. When the monk Muhak tried to build the palace, it kept collapsing. An old man appeared and said that this land has the shape of a crane with its wings spread, so the wings must be pressed down first, and told him to build the city wall before anything else. Some also say the old man told him to go ten li further, and that is how Wangsimni got its name. It is a tale that appears in books like the Jibong yuseol."
+      },
+      "tale_move": {
+        "text": "갑술년(1394) 10월에 도읍을 한양으로 옮기셨소. 궁궐 짓는 도감을 두고 그해 겨울에 공사를 시작해서, 이듬해(1395) 9월에 종묘와 새 궁궐이 다 지어졌지. 그날 새 대궐 뜰에 장끼 한 마리가 날아들었다는 것까지 실록에 적혀 있다 하오. 옛 사람들은 그런 것도 다 적어 두었다오.",
+        "year": "1394·1395",
+        "sources": [
+          {
+            "title": "조선왕조실록 태조 3년(1394) 10월 25일",
+            "url": "https://sillok.history.go.kr/id/kaa_10310025_001",
+            "title_en": "Annals of the Joseon Dynasty, Taejo year 3 (1394), 10th month, day 25"
+          },
+          {
+            "title": "조선왕조실록 태조 4년(1395) 9월 29일 종묘·새 궁궐 완공",
+            "url": "https://sillok.history.go.kr/id/kaa_10409029_006",
+            "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 9th month, day 29: completion of Jongmyo and the new palace"
+          },
+          {
+            "title": "조선왕조실록 태조 4년(1395) 9월 29일 꿩 기사",
+            "url": "https://sillok.history.go.kr/id/kaa_10409029_002",
+            "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 9th month, day 29: the pheasant entry"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_name",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "In the gapsul year (1394), in the 10th month, the capital was moved to Hanyang. A directorate for building the palace was set up, work began that winter, and by the 9th month of the next year (1395) the Jongmyo shrine and the new palace were finished. They say the Annals even record that on that day a cock pheasant flew into the courtyard of the new palace. The old folk wrote down everything, you see."
+      },
+      "tale_name": {
+        "text": "궁궐 이름은 정도전이 지었소. 태조께서 새 궁궐과 전각 이름을 지으라 하시자, 『시경』의 ‘이미 술에 취하고 덕에 배불렀으니 군자께서 큰 복을 누리소서’라는 구절에서 ‘경복(景福)’ 두 글자를 따 왔지. 근정전, 사정전, 강녕전 같은 이름도 이때 붙였는데, 이름마다 임금이 지녀야 할 마음가짐을 담았다오.",
+        "year": "1395",
+        "sources": [
+          {
+            "title": "조선왕조실록 태조 4년(1395) 10월 7일",
+            "url": "https://sillok.history.go.kr/id/kaa_10410007_002",
+            "title_en": "Annals of the Joseon Dynasty, Taejo year 4 (1395), 10th month, day 7"
+          },
+          {
+            "title": "한국민족문화대백과사전 경복궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+            "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_strife",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "The palace was named by Jeong Do-jeon. When Taejo ordered him to name the new palace and its halls, he took the two characters 'Gyeongbok' (景福), meaning 'great blessing', from a line in the Classic of Poetry: 'Already drunk with wine and filled with virtue, may the lord enjoy great blessings.' Names like Geunjeongjeon, Sajeongjeon and Gangnyeongjeon were given at the same time, and each one holds a lesson on the frame of mind a king should keep."
+      },
+      "tale_strife": {
+        "text": "그런데 좋은 날만 있었겠소. 무인년(1398) 8월, 태조의 아드님 방원 대군이 군사를 일으켜 정도전과 남은 무리를 쳤소. 그들이 송현에 모여 있던 집을 에워싸 불을 지르니, 정도전은 이웃집으로 달아났다가 붙잡혀 죽었다 하오. 세자 방석과 그 형 방번도 이 난리에 목숨을 잃었지. 이 궁궐 문밖 행랑 언저리까지 난리 통이었다오.",
+        "year": "1398",
+        "sources": [
+          {
+            "title": "조선왕조실록 태조 7년(1398) 8월 26일",
+            "url": "https://sillok.history.go.kr/id/kaa_10708026_001",
+            "title_en": "Annals of the Joseon Dynasty, Taejo year 7 (1398), 8th month, day 26"
+          },
+          {
+            "title": "한국민족문화대백과사전 제1차 왕자의 난",
+            "url": "https://encykorea.aks.ac.kr/Article/E0051385",
+            "title_en": "Encyclopedia of Korean Culture: The First Strife of the Princes"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_away",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "But it was not all good days. In the muin year (1398), in the 8th month, Taejo's son Prince Bang-won raised troops and struck at Jeong Do-jeon and Nam Eun's party. They surrounded the house at Songhyeon where those men had gathered and set it afire; Jeong Do-jeon fled to a neighbor's house, they say, but was caught and killed. The crown prince Bang-seok and his elder brother Bang-beon also lost their lives in the strife. The turmoil reached as far as the corridors outside this palace gate."
+      },
+      "tale_away": {
+        "text": "난리가 끝나고 정종 임금이 서셨는데, 기묘년(1399)에 도읍을 다시 개경으로 옮기셨소. 이 궁은 한동안 텅 비었지. 태종 임금께서 을유년(1405)에 한양으로 도로 오셨는데, 그해 창덕궁을 따로 지으셨소. 이 경복궁에서 있었던 일을 꺼리셨다고들 하오. 그 뒤로 임금들이 창덕궁을 더 좋아하셨다오.",
+        "year": "1399·1405",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 정종",
+            "url": "https://encykorea.aks.ac.kr/Article/E0050884",
+            "title_en": "Encyclopedia of Korean Culture: Jeongjong"
+          },
+          {
+            "title": "한국민족문화대백과사전 창덕궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0055378",
+            "title_en": "Encyclopedia of Korean Culture: Changdeokgung"
+          },
+          {
+            "title": "한국민족문화대백과사전 경복궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+            "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_sejong",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "When the strife was over, King Jeongjong came to the throne, and in the gimyo year (1399) he moved the capital back to Gaegyeong. This palace stood empty for a time. King Taejong returned to Hanyang in the eulyu year (1405), but that same year he built Changdeokgung separately. People say he shrank from what had happened here at Gyeongbokgung. From then on the kings preferred Changdeokgung."
+      },
+      "tale_sejong": {
+        "text": "그래도 세종 대왕 때는 이 궁이 참 번듯했소. 궁 안에 집현전을 두고 학자들을 가까이하셨고, 간의대를 마련해 하늘을 살피셨지. 병오년(1426)에는 집현전 학자들에게 문 이름을 짓게 하셔서 광화문, 건춘문, 영추문, 영제교 같은 이름이 그때 붙었소. 문은 태조 때 섰지만 이름은 그때 얻은 거요. 무오년(1438)에는 장영실이 만든 옥루를 흠경각에 두었는데, 종이로 만든 산 위로 해가 뜨고 졌다 하오.",
+        "year": "1420·1426·1438",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 집현전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0055081",
+            "title_en": "Encyclopedia of Korean Culture: Jiphyeonjeon"
+          },
+          {
+            "title": "조선왕조실록 세종 8년(1426) 10월 26일",
+            "url": "https://sillok.history.go.kr/id/kda_10810026_003",
+            "title_en": "Annals of the Joseon Dynasty, Sejong year 8 (1426), 10th month, day 26"
+          },
+          {
+            "title": "한국민족문화대백과사전 옥루",
+            "url": "https://encykorea.aks.ac.kr/Article/E0038703",
+            "title_en": "Encyclopedia of Korean Culture: Ongnu (jade clepsydra)"
+          },
+          {
+            "title": "한국민족문화대백과사전 경복궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+            "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
+          },
+          {
+            "title": "궁능유적본부 경복궁 소개·역사",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_fire1553",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "Still, in the days of King Sejong the Great this palace was a fine sight. He set up the Jiphyeonjeon, the Hall of Worthies, inside the palace and kept the scholars close, and he built the Ganuidae observatory to watch the heavens. In the byeongo year (1426) he had the Jiphyeonjeon scholars name the gates, and that is when Gwanghwamun, Geonchunmun, Yeongchumun and the Yeongjegyo bridge got their names. The gates had stood since Taejo's time, but the names came then. In the muo year (1438) the jade clepsydra made by Jang Yeong-sil was placed in the Heumgyeonggak, and they say the sun rose and set over a mountain made of paper."
+      },
+      "tale_fire1553": {
+        "text": "명종 임금 때 계축년(1553) 9월에는 궁 안에 큰불이 났소. 강녕전에서 불이 나 사정전과 흠경각까지 탔고, 대대로 내려온 보물과 책들이 재가 되었지. 겨우 책 몇 궤짝을 연못의 작은 배에 실어 건졌다 하오. 근정전은 무사했고, 이듬해에 다시 지었다오.",
+        "year": "1553·1554",
+        "sources": [
+          {
+            "title": "조선왕조실록 명종 8년(1553) 9월 14일",
+            "url": "https://sillok.history.go.kr/id/kma_10809014_001",
+            "title_en": "Annals of the Joseon Dynasty, Myeongjong year 8 (1553), 9th month, day 14"
+          },
+          {
+            "title": "한국민족문화대백과사전 경복궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+            "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
+          },
+          {
+            "title": "한국민족문화대백과사전 경복궁 사정전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002445",
+            "title_en": "Encyclopedia of Korean Culture: Sajeongjeon Hall, Gyeongbokgung"
+          },
+          {
+            "title": "한국민족문화대백과사전 옥루",
+            "url": "https://encykorea.aks.ac.kr/Article/E0038703",
+            "title_en": "Encyclopedia of Korean Culture: Ongnu (jade clepsydra)"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_imjin",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "In King Myeongjong's reign, in the gyechuk year (1553), in the 9th month, a great fire broke out inside the palace. It started in Gangnyeongjeon and burned Sajeongjeon and the Heumgyeonggak as well, and treasures and books handed down for generations turned to ash. They say only a few chests of books were saved by loading them onto a small boat on the pond. Geunjeongjeon was spared, and the rest was rebuilt the following year."
+      },
+      "tale_imjin": {
+        "text": "그리고 임진년(1592)이오. 왜적이 충주를 깨뜨렸다는 소식에 선조 임금께서 밤에 서쪽으로 피란을 떠나셨소. 실록에는 임금이 떠나시자 난민들이 먼저 노비 문서가 있는 장례원과 형조에 불을 지르고, 궁궐 창고를 털고 불을 놓아 경복궁·창덕궁·창경궁이 한꺼번에 사라졌다고 적혀 있소. 왜적이 들어와 태웠다는 말도 전하니, 누가 불을 놓았는지는 나도 딱 잘라 말 못 하겠소.",
+        "year": "1592",
+        "sources": [
+          {
+            "title": "선조수정실록 25년(1592) 4월 14일",
+            "url": "https://sillok.history.go.kr/id/knb_12504014_028",
+            "title_en": "Revised Annals of Seonjo, year 25 (1592), 4th month, day 14"
+          },
+          {
+            "title": "한국민족문화대백과사전 임진왜란",
+            "url": "https://encykorea.aks.ac.kr/Article/E0047674",
+            "title_en": "Encyclopedia of Korean Culture: The Imjin War"
+          },
+          {
+            "title": "궁능유적본부 경복궁 소개·역사",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_ruins",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "And then came the imjin year (1592). At the news that the Japanese had broken through at Chungju, King Seonjo fled westward in the night. The Annals record that once the king had gone, rioters first set fire to the Jangnyewon and the Ministry of Punishments, where the slave registers were kept, then looted the palace storehouses and set them alight, so that Gyeongbokgung, Changdeokgung and Changgyeonggung vanished all at once. Others say the Japanese came in and burned them, so who lit the fire I cannot say for sure."
+      },
+      "tale_ruins": {
+        "text": "난리가 끝나고 창덕궁은 다시 지었지만, 이 궁은 끝내 다시 짓지 못했소. 그 뒤로는 창덕궁이 으뜸 궁궐 노릇을 하고 있지. 임진년부터 올해까지 따져 보면 벌써 백오십팔 년째 이렇게 담과 터만 남아 있다오. 나 같은 궁감이 풀 베고 나무 지키며 빈 터를 돌보는 거요.",
+        "year": "1592·1750",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 창덕궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0055378",
+            "title_en": "Encyclopedia of Korean Culture: Changdeokgung"
+          },
+          {
+            "title": "한국민족문화대백과사전 경복궁",
+            "url": "https://encykorea.aks.ac.kr/Article/E0002434",
+            "title_en": "Encyclopedia of Korean Culture: Gyeongbokgung"
+          },
+          {
+            "title": "궁능유적본부 경복궁 소개·역사",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung, introduction and history"
+          }
+        ],
+        "options": [
+          {
+            "label": "그래서 어찌 되었소?",
+            "next": "tale_1747",
+            "label_en": "And then what happened?"
+          },
+          {
+            "label": "이야기는 여기까지 듣겠소.",
+            "next": "hello",
+            "label_en": "That is enough of the tale for now."
+          }
+        ],
+        "text_en": "When the war was over, Changdeokgung was rebuilt, but this palace never was. Since then Changdeokgung has served as the principal palace. Counting from the imjin year to this year, it is already the hundred and fifty-eighth year that only the walls and grounds have remained like this. Palace keepers like me cut the grass, guard the trees and look after the empty site."
+      },
+      "tale_1747": {
+        "text": "그래도 이 빈 터가 아주 잊힌 건 아니오. 삼 년 전 정묘년(1747)에 인원왕후께 존호를 올린 경사를 기념하여, 저 옛 근정전 터에서 정시를 열었소. 임금께서 시를 지으시고 신하 쉰 명이 화답했지. 그 모습을 그린 병풍도 있다 하오. 자, 내 이야기는 여기까지요. 길게 들어 주어 고맙소.",
+        "year": "1747",
+        "sources": [
+          {
+            "title": "국가유산청 보도자료 「친림광화문내근정전정시시도」",
+            "url": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156686659&pWise=sub&pWiseSub=J2",
+            "title_en": "Korea Heritage Service press release: \"Painting of the Royal Visit to the Special Examination at the Geunjeongjeon Site inside Gwanghwamun\""
+          },
+          {
+            "title": "국가유산포털 친림광화문내근정전정시시도",
+            "url": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaCpno=2111101380000&pageNo=1_1_1_1",
+            "title_en": "National Heritage Portal: Painting of the Royal Visit to the Special Examination at the Geunjeongjeon Site inside Gwanghwamun"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 이야기도 들려주시오.",
+            "next": "hello",
+            "label_en": "Tell me something else."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "Still, this empty site is not wholly forgotten. Three years ago, in the jeongmyo year (1747), to mark the joyful occasion of an honorific title being offered to Queen Dowager Inwon, a special examination was held on the old site of Geunjeongjeon over there. The king composed a poem and fifty officials answered it in verse. There is even a folding screen painted of the scene, they say. Well, that is the end of my tale. Thank you for listening so long."
       }
-     ],
-     "options": [
+    },
+    "name_en": "Gyeongbokgung palace keeper",
+    "subtitle_en": "The one who keeps the empty palace"
+  },
+  "pedestrian": {
+    "name": "길 가는 사람",
+    "greetings": {
+      "male": [
+        "안녕하시오.",
+        "좋은 날이오.",
+        "어디 가시는 길이오?",
+        "바삐 가는 중이라 이만."
+      ],
+      "female": [
+        "안녕하세요.",
+        "날이 좋네요.",
+        "장 보러 가는 길이에요.",
+        "조심히 가세요."
+      ]
+    },
+    "name_en": "Passer-by",
+    "greetings_en": {
+      "male": [
+        "Good day to you.",
+        "A fine day, is it not?",
+        "Where are you headed?",
+        "I am in a hurry, so excuse me."
+      ],
+      "female": [
+        "Hello there.",
+        "What lovely weather.",
+        "I am on my way to the market.",
+        "Mind how you go."
+      ]
+    }
+  },
+  "merchant": {
+    "name": "시전 상인",
+    "nodes": {
+      "hello": {
+        "text": "어서 오시오, 손님. {shop}이오. {sells} 좋은 것만 들여놓았소.",
+        "options": [
+          {
+            "label": "무엇을 파는 가게요?",
+            "next": "about",
+            "label_en": "What does this shop sell?"
+          },
+          {
+            "label": "물건을 보여 주시오. (거래하기)",
+            "action": "shop",
+            "label_en": "Show me your goods. (Trade)"
+          },
+          {
+            "label": "다음에 오겠소.",
+            "action": "close",
+            "label_en": "I will come another time."
+          }
+        ],
+        "text_en": "Welcome, good customer. This is the {shop}. We stock only the finest {sells}."
+      },
+      "about": {
+        "text": "{about}",
+        "sources": [
+          {
+            "title": "우리역사넷 육의전",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0010",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History): The Six Licensed Shops (Yugujeon)"
+          }
+        ],
+        "options": [
+          {
+            "label": "물건을 보여 주시오. (거래하기)",
+            "action": "shop",
+            "label_en": "Show me your goods. (Trade)"
+          },
+          {
+            "label": "다음에 오겠소.",
+            "action": "close",
+            "label_en": "I will come another time."
+          }
+        ]
+      }
+    },
+    "name_en": "Market merchant"
+  },
+  "shops": {
+    "선전": {
+      "about": "중국에서 들여온 비단을 파는 시전이오. 육의전 가운데 으뜸이라 나라에 바치는 몫도 가장 크다오.",
+      "items": [
+        "silk_red",
+        "silk_blue",
+        "silk_gold"
+      ],
+      "about_en": "This is a licensed shop selling silk brought in from China. It ranks first among the Six Licensed Shops, so its dues to the state are the largest, too."
+    },
+    "면포전": {
+      "about": "무명을 파는 시전이오. 무명은 돈처럼도 쓰여서, 육의전에 드는 큰 가게라오.",
+      "items": [
+        "cotton_bolt",
+        "cotton_fine"
+      ],
+      "about_en": "This is a licensed shop selling cotton cloth. Cotton is used like money as well, so ours is a big shop among the Six Licensed Shops."
+    },
+    "면주전": {
+      "about": "우리 땅에서 짠 명주를 파는 시전이오. 육의전에 드는 가게라오.",
+      "items": [
+        "mingju_white",
+        "mingju_pink"
+      ],
+      "about_en": "This is a licensed shop selling silk woven here in our own land. It is one of the Six Licensed Shops."
+    },
+    "내어물전": {
+      "about": "말린 어물과 소금에 절인 어물을 파는 시전이오. 육의전에 드는 어물전이라오.",
+      "items": [
+        "dried_pollack",
+        "dried_croaker"
+      ],
+      "about_en": "This is a licensed shop selling dried fish and salted fish. It is the fish shop among the Six Licensed Shops."
+    },
+    "저포전": {
+      "about": "모시를 파는 시전이오. 육의전에 드는 가게라오.",
+      "items": [
+        "ramie_bolt"
+      ],
+      "about_en": "This is a licensed shop selling ramie cloth. It is one of the Six Licensed Shops."
+    },
+    "말 장수": {
+      "about": "수표교 어귀에서 말을 파는 장수요.",
+      "items": [
+        "horse_reins"
+      ],
+      "about_en": "I am a dealer selling horses at the foot of Supyo Bridge."
+    },
+    "청계천 낚시꾼": {
+      "about": "낚싯대를 팔고 강태공의 고사를 들려주는 창작 인물이오.",
+      "items": [
+        "fishing_rod"
+      ]
+    },
+    "약재상": {
+      "about": "산에서 모은 약초를 사들이는 창작 약전이오.",
+      "items": []
+    },
+    "회동서관 별책": {
+      "about": "책장 뒤에서 권하는 옛 소설. 개별 판본과 재고는 추정입니다.",
+      "items": [
+        "book_chunhyang",
+        "book_guunmong",
+        "book_sukhyang"
+      ]
+    }
+  },
+  "items": {
+    "silk_red": {
+      "name": "붉은 비단",
+      "unit": "필",
+      "price": 1200,
+      "icon": {
+        "shape": "bolt",
+        "color": "#b8322f"
+      },
+      "desc": "중국에서 들여온 붉은 비단 한 필.",
+      "name_en": "Red silk",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of red silk brought in from China."
+    },
+    "silk_blue": {
+      "name": "쪽빛 비단",
+      "unit": "필",
+      "price": 1100,
+      "icon": {
+        "shape": "bolt",
+        "color": "#2f5f9e"
+      },
+      "desc": "중국에서 들여온 쪽빛 비단 한 필.",
+      "name_en": "Indigo silk",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of indigo silk brought in from China."
+    },
+    "silk_gold": {
+      "name": "노란 비단",
+      "unit": "필",
+      "price": 1500,
+      "icon": {
+        "shape": "bolt",
+        "color": "#d6a53a"
+      },
+      "desc": "귀한 노란 비단 한 필.",
+      "name_en": "Yellow silk",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of precious yellow silk."
+    },
+    "cotton_bolt": {
+      "name": "무명",
+      "unit": "필",
+      "price": 250,
+      "icon": {
+        "shape": "roll",
+        "color": "#f1ead8"
+      },
+      "desc": "흰 무명 한 필. 옷감으로도, 셈을 치를 때도 쓰였다.",
+      "name_en": "Cotton cloth",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of white cotton cloth. Used for clothing and for settling accounts alike."
+    },
+    "cotton_fine": {
+      "name": "고운 무명",
+      "unit": "필",
+      "price": 380,
+      "icon": {
+        "shape": "roll",
+        "color": "#e7dcc1"
+      },
+      "desc": "올이 고운 무명 한 필.",
+      "name_en": "Fine cotton cloth",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of finely woven cotton cloth."
+    },
+    "mingju_white": {
+      "name": "흰 명주",
+      "unit": "필",
+      "price": 700,
+      "icon": {
+        "shape": "bolt",
+        "color": "#efd9c6"
+      },
+      "desc": "우리 땅에서 짠 흰 명주 한 필.",
+      "name_en": "White Korean silk",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of white silk woven in our own land."
+    },
+    "mingju_pink": {
+      "name": "분홍 명주",
+      "unit": "필",
+      "price": 760,
+      "icon": {
+        "shape": "bolt",
+        "color": "#e8c9c2"
+      },
+      "desc": "물들인 분홍 명주 한 필.",
+      "name_en": "Pink Korean silk",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of silk dyed pink."
+    },
+    "dried_pollack": {
+      "name": "북어",
+      "unit": "쾌",
+      "price": 120,
+      "icon": {
+        "shape": "fish",
+        "color": "#a38d6c"
+      },
+      "desc": "말린 명태 스무 마리를 한 쾌로 묶었다.",
+      "name_en": "Dried pollack",
+      "unit_en": "string",
+      "desc_en": "Twenty dried pollack tied into one string."
+    },
+    "dried_croaker": {
+      "name": "굴비",
+      "unit": "두름",
+      "price": 180,
+      "icon": {
+        "shape": "fish",
+        "color": "#b7955e"
+      },
+      "desc": "소금에 절여 말린 조기 한 두름.",
+      "name_en": "Dried croaker",
+      "unit_en": "bunch",
+      "desc_en": "A bunch of salted and dried yellow croaker."
+    },
+    "ramie_bolt": {
+      "name": "모시",
+      "unit": "필",
+      "price": 520,
+      "icon": {
+        "shape": "roll",
+        "color": "#dfe6cf"
+      },
+      "desc": "시원한 모시 한 필.",
+      "name_en": "Ramie cloth",
+      "unit_en": "bolt",
+      "desc_en": "A bolt of cool ramie cloth."
+    },
+    "horse_reins": {
+      "name": "말고삐",
+      "unit": "개",
+      "price": 900,
+      "icon": {
+        "shape": "reins",
+        "color": "#8a5a2b"
+      },
+      "desc": "말 장수에게서 산 말 한 필의 고삐. 1인칭에서 봇짐을 열고 오른쪽 클릭하면 말에 오르고, 다시 오른쪽 클릭하면 내린다.",
+      "use": "mount",
+      "max_owned": 1,
+      "name_en": "Horse reins",
+      "unit_en": "piece",
+      "desc_en": "The reins of a horse bought from the horse dealer. In first-person view, open your pack and right-click to mount the horse; right-click again to dismount."
+    },
+    "fishing_rod": {
+      "name": "낚싯대",
+      "name_en": "Fishing rod",
+      "unit": "개",
+      "unit_en": "rod",
+      "price": 15,
+      "desc": "청계천 낚시꾼 옆 물가에서 사용하시오. 다시 사용하거나 움직이면 줄을 거둡니다. 액션바에도 놓을 수 있습니다.",
+      "desc_en": "Use beside the stream fisherman. Use again or move to cancel. Can be assigned to the action bar.",
+      "icon": {
+        "shape": "rod",
+        "color": "#bba36c"
+      },
+      "use": "fish",
+      "max_owned": 1
+    },
+    "river_fish": {
+      "name": "민물고기",
+      "name_en": "River fish",
+      "unit": "마리",
+      "unit_en": "fish",
+      "price": 10,
+      "desc": "낚시로 잡은 작은 민물고기. 상점의 내 봇짐에서 팔 수 있습니다. 어종과 가격은 놀이용 표현입니다.",
+      "desc_en": "A small catch. Sell it from your pack at a merchant. Species and prices are illustrative.",
+      "icon": {
+        "shape": "fish",
+        "color": "#a4b6aa"
+      }
+    },
+    "mountain_herb": {
+      "name": "산약초",
+      "name_en": "Mountain herbs",
+      "unit": "묶음",
+      "unit_en": "bundle",
+      "price": 8,
+      "desc": "산에서 모은 게임용 약초 묶음. 약재상에게 팔 수 있습니다. 실제 식물의 식별·약효를 나타내지 않습니다.",
+      "desc_en": "Illustrative gathered herbs for trading, not a botanical or medicinal identification.",
+      "icon": {
+        "shape": "herb",
+        "color": "#83ae50"
+      }
+    },
+    "herb_mugwort": {
+      "name": "쑥잎(애엽)",
+      "name_en": "Mugwort leaves",
+      "unit": "묶음",
+      "unit_en": "bundle",
+      "price": 6,
+      "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+      "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+      "icon": {
+        "shape": "herb",
+        "color": "#9bad87"
+      }
+    },
+    "herb_plantain": {
+      "name": "질경이(차전초)",
+      "name_en": "Plantain",
+      "unit": "묶음",
+      "unit_en": "bundle",
+      "price": 8,
+      "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+      "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+      "icon": {
+        "shape": "herb",
+        "color": "#9b8150"
+      }
+    },
+    "herb_dandelion": {
+      "name": "민들레(포공영)",
+      "name_en": "Dandelion",
+      "unit": "묶음",
+      "unit_en": "bundle",
+      "price": 10,
+      "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+      "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+      "icon": {
+        "shape": "herb",
+        "color": "#f1cf42"
+      }
+    },
+    "herb_bellflower": {
+      "name": "도라지뿌리(길경)",
+      "name_en": "Bellflower root",
+      "unit": "묶음",
+      "unit_en": "bundle",
+      "price": 14,
+      "desc": "옛 의서의 이름을 참고한 채집물. 약재상에게 팔 수 있습니다. 모양·분포·가격은 게임용 표현입니다.",
+      "desc_en": "A gatherable inspired by historical materia medica names. Sell to a merchant; appearance, placement and price are illustrative.",
+      "icon": {
+        "shape": "herb",
+        "color": "#9784df"
+      }
+    },
+    "fish_pale_chub": {
+      "name": "피라미",
+      "name_en": "Pale chub",
+      "unit": "마리",
+      "unit_en": "fish",
+      "price": 6,
+      "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+      "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+      "icon": {
+        "shape": "fish",
+        "color": "#b3c7cd"
+      }
+    },
+    "fish_loach": {
+      "name": "미꾸라지",
+      "name_en": "Loach",
+      "unit": "마리",
+      "unit_en": "fish",
+      "price": 10,
+      "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+      "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+      "icon": {
+        "shape": "fish",
+        "color": "#9b885e"
+      }
+    },
+    "fish_crucian": {
+      "name": "붕어",
+      "name_en": "Crucian carp",
+      "unit": "마리",
+      "unit_en": "fish",
+      "price": 16,
+      "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+      "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+      "icon": {
+        "shape": "fish",
+        "color": "#b6ae83"
+      }
+    },
+    "fish_carp": {
+      "name": "잉어",
+      "name_en": "Carp",
+      "unit": "마리",
+      "unit_en": "fish",
+      "price": 24,
+      "desc": "청계천 낚시로 얻는 게임용 어획물. 빈도·가격·배치는 추정 설정이며 상인에게 팔 수 있습니다.",
+      "desc_en": "An illustrative stream catch. Sell to a merchant; abundance, price and historical placement are game settings.",
+      "icon": {
+        "shape": "fish",
+        "color": "#cd9e57"
+      }
+    },
+    "book_chunhyang": {
+      "name": "춘향전",
+      "name_en": "The Tale of Chunhyang",
+      "unit": "책",
+      "unit_en": "volume",
+      "price": 18,
+      "icon": {
+        "shape": "book",
+        "color": "#87554b"
+      },
+      "desc": "신분의 벽을 넘어선 사랑과 춘향의 절개를 다룬 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
+      "desc_en": "A tale of love across social divisions and Chunhyang’s constancy. Shop, edition and price are illustrative."
+    },
+    "book_guunmong": {
+      "name": "구운몽",
+      "name_en": "The Cloud Dream of the Nine",
+      "unit": "책",
+      "unit_en": "volume",
+      "price": 26,
+      "icon": {
+        "shape": "book",
+        "color": "#476177"
+      },
+      "desc": "꿈속 인연과 부귀영화, 깨어난 뒤의 깨달음을 다룬 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
+      "desc_en": "Dreamed encounters, worldly success and awakening. Shop, edition and price are illustrative."
+    },
+    "book_sukhyang": {
+      "name": "숙향전",
+      "name_en": "The Tale of Sukhyang",
+      "unit": "책",
+      "unit_en": "volume",
+      "price": 22,
+      "icon": {
+        "shape": "book",
+        "color": "#58735a"
+      },
+      "desc": "시련과 이별을 겪는 숙향의 인연 이야기. 판매 장소·판본·가격은 놀이용 추정입니다.",
+      "desc_en": "Sukhyang’s trials, separation and reunion. Shop, edition and price are illustrative."
+    },
+    "legation_keepsake": {
+      "name": "낡은 밀봉 꾸러미",
+      "unit": "개",
+      "price": 1,
+      "icon": {
+        "shape": "roll",
+        "color": "#6b4a2e"
+      },
+      "desc": "러시아공사관 관리인이 건넨 낡은 꾸러미. 아관파천과 관련이 있다는 소문만 있고 무엇인지는 모른다. 1인칭에서 봇짐을 열고 오른쪽 클릭하면 1896년 2월 11일 새벽으로 들어간다. 팔 수 없다.",
+      "use": "flashback",
+      "max_owned": 1,
+      "name_en": "Old sealed bundle",
+      "unit_en": "piece",
+      "desc_en": "An old bundle handed over by the Russian legation caretaker. Rumour links it to the flight to the legation; nobody knows what it is. In first-person view, open your pack and right-click it to enter the small hours of 11 February 1896. It cannot be sold."
+    }
+  },
+  "wallet": {
+    "start": 3000,
+    "sell_rate": 0.6
+  },
+  "soldier": {
+    "greetings": [
+      "문을 지키는 중이오. 지나가시오.",
+      "수상한 자는 들이지 않소.",
+      "날이 저물면 문을 닫으니 서두르시오.",
+      "무슨 일이오? 볼일이 있으면 수문장께 여쭈시오."
+    ],
+    "greetings_en": [
+      "I am guarding the gate. Move along.",
+      "No suspicious persons are let through.",
+      "The gate closes at dusk, so make haste.",
+      "What is it? If you have business, ask the gatekeeper officer."
+    ]
+  },
+  "officer": {
+    "subtitle": "{unit} · 궁문을 여닫는 관원",
+    "nodes": {
+      "hello": {
+        "text": "나는 {gate}의 수문장이오. 이 문을 여닫고 드나드는 이를 살피는 일을 맡았소. 무엇이 궁금하오?",
+        "options": [
+          {
+            "label": "수문장은 어떤 관원이오?",
+            "next": "office",
+            "label_en": "What kind of official are you?"
+          },
+          {
+            "label": "궁성은 누가 지키오?",
+            "next": "guard",
+            "label_en": "Who guards the palace walls?"
+          },
+          {
+            "label": "밤에도 문을 열 수 있소?",
+            "next": "night",
+            "label_en": "Can the gate be opened at night?"
+          },
+          {
+            "label": "수고하시오.",
+            "action": "close",
+            "label_en": "Keep up the good work."
+          }
+        ],
+        "text_en": "I am the gatekeeper officer of {gate}. My charge is to open and close this gate and to watch those who pass through. What would you like to know?"
+      },
+      "office": {
+        "text": "궁궐 문을 여닫는 일은 우리 수문장이 맡는다오. 몇 해 전(1746) 『속대전』에서 수문장청이 관청으로 자리를 잡았고, 수문장은 스물세 명이오. 번갈아 입직하며 문을 지키지.",
+        "year": "1746",
+        "sources": [
+          {
+            "title": "한국민족문화대백과사전 수문장청",
+            "url": "https://encykorea.aks.ac.kr/Article/E0031377",
+            "title_en": "Encyclopedia of Korean Culture: Sumunjangcheong (Gatekeepers' Office)"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "next": "hello",
+            "label_en": "I have another question."
+          },
+          {
+            "label": "수고하시오.",
+            "action": "close",
+            "label_en": "Keep up the good work."
+          }
+        ],
+        "text_en": "Opening and closing the palace gates is the duty of us gatekeeper officers. A few years ago (1746) the Sok Daejeon (Supplement to the Great Code) established the Gatekeepers' Office as a proper government office, and there are twenty-three gatekeeper officers. We take turns on duty and keep the gates."
+      },
+      "guard": {
+        "text": "창덕궁 궁성 밖 파수는 세 군영이 나누어 맡소. 돈화문은 훈련도감, 금호문은 금위영, 홍화문은 어영청 몫이오. 문을 여닫는 일은 따로 우리 수문장이 하고.",
+        "sources": [
+          {
+            "title": "우리역사넷 신편 한국사 「궁성 파수」",
+            "url": "https://contents.history.go.kr/front/nh/print.do?levelId=nh_030_0040_0050_0010_0040",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History), New History of Korea: \"Guarding the palace walls\""
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "next": "hello",
+            "label_en": "I have another question."
+          },
+          {
+            "label": "수고하시오.",
+            "action": "close",
+            "label_en": "Keep up the good work."
+          }
+        ],
+        "text_en": "The watch outside the walls of Changdeokgung is shared among three military commands. Donhwamun falls to the Hullyeon Dogam (Military Training Command), Geumhomun to the Geumwiyeong (Capital Garrison), and Honghwamun to the Eoyeongcheong (Royal Guards Command). Opening and closing the gates is a separate matter, done by us gatekeeper officers."
+      },
+      "night": {
+        "text": "밤에 닫힌 궁문은 함부로 열지 않소. 급한 일이 있으면 선전관이 표신을 보여야만 문을 연다오.",
+        "sources": [
+          {
+            "title": "조선왕조실록사전 표신",
+            "url": "https://dh.aks.ac.kr/sillokwiki/index.php/%ED%91%9C%EC%8B%A0%28%E6%A8%99%E4%BF%A1%29",
+            "title_en": "Encyclopedia of the Annals of the Joseon Dynasty: Pyosin (gate tally)"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "next": "hello",
+            "label_en": "I have another question."
+          },
+          {
+            "label": "수고하시오.",
+            "action": "close",
+            "label_en": "Keep up the good work."
+          }
+        ],
+        "text_en": "A palace gate closed for the night is not opened lightly. If there is urgent business, the gate is opened only when a royal messenger shows a gate tally (pyosin)."
+      }
+    },
+    "subtitle_en": "{unit} · Official who opens and closes the palace gate"
+  },
+  "horse_dealer": {
+    "name": "말 장수",
+    "subtitle": "수표교(마전교) 어귀 · 말을 끌고 나온 사람",
+    "nodes": {
+      "hello": {
+        "text": "어서 오시오. 이 녀석 좀 보시오, 튼튼하지? 이 다리 어귀에 원래 나라가 정한 우마전이 있었는데, 요즘은 형편이 말이 아니오.",
+        "options": [
+          {
+            "label": "우마전이 어떻게 되었소?",
+            "next": "closed",
+            "label_en": "What became of the Umajeon?"
+          },
+          {
+            "label": "이 다리를 왜 마전교라 부르오?",
+            "next": "bridge",
+            "label_en": "Why is this bridge called Majeongyo?"
+          },
+          {
+            "label": "언제부터 여기서 말을 팔았소?",
+            "next": "origin",
+            "label_en": "How long have horses been sold here?"
+          },
+          {
+            "label": "말을 한 필 사고 싶소. (거래하기)",
+            "action": "shop",
+            "label_en": "I want to buy a horse. (Trade)"
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "Come, have a look. See this one? Sturdy, is he not? There used to be an Umajeon, the cattle and horse market the state set up, at the foot of this bridge, but these days it is in a sorry state."
+      },
+      "closed": {
+        "text": "몇 해 전(1744)에 조정에서도 이야기가 나왔다오. 여러 군문이 전을 침범하는 통에 전이 없어지고, 그 자리는 논밭으로 갈아엎었다지. 평시서 제조에게 다시 세우게 하자고 아뢰어 임금께서 허락하셨다는데, 나는 아직 소식을 기다리는 중이오.",
+        "year": "1744",
+        "sources": [
+          {
+            "title": "조선왕조실록 영조 20년(1744) 8월 26일",
+            "url": "https://sillok.history.go.kr/id/kua_12008026_001",
+            "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 8th month, day 26"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "next": "hello",
+            "label_en": "I have another question."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "A few years ago (1744) it even came up at court. The various military commands kept encroaching on the market until it disappeared, and the site was plowed up into fields. It was proposed that the director of the Pyeongsiseo (market office) be made to set it up again, and the king approved, they say, but I am still waiting for word."
+      },
+      "bridge": {
+        "text": "그때 조정에서는 마전교(馬廛橋)라는 이름만 봐도 국초부터 우마전이 여기 있었던 걸 알 수 있다고 아뢰었소. 그런데 세종 임금 때(1441) 개천에 수표를 세운 기록에는 馬前橋라고 적혀 있다 하니, 이름 풀이는 사람마다 조금씩 다르오. 수표를 세운 뒤로 수표교라고들 부르지.",
+        "year": "1441·1744",
+        "sources": [
+          {
+            "title": "조선왕조실록 영조 20년(1744) 8월 26일",
+            "url": "https://sillok.history.go.kr/id/kua_12008026_001",
+            "title_en": "Annals of the Joseon Dynasty, Yeongjo year 20 (1744), 8th month, day 26"
+          },
+          {
+            "title": "조선왕조실록 세종 23년(1441) 8월 18일",
+            "url": "https://sillok.history.go.kr/id/kda_12308018_004",
+            "title_en": "Annals of the Joseon Dynasty, Sejong year 23 (1441), 8th month, day 18"
+          },
+          {
+            "title": "한국민족문화대백과사전 수표교",
+            "url": "https://encykorea.aks.ac.kr/Article/E0031766",
+            "title_en": "Encyclopedia of Korean Culture: Supyogyo"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "next": "hello",
+            "label_en": "I have another question."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "At that time the court said that the very name Majeongyo (馬廛橋, 'horse market bridge') showed that the Umajeon had been here since the founding of the dynasty. But the record of setting up the water gauge in the stream in King Sejong's reign (1441) is said to write it as 馬前橋, so people read the name a little differently. Since the water gauge was set up, folk call it Supyogyo, the Water Gauge Bridge."
+      },
+      "origin": {
+        "text": "태종 임금 때(1410) 시전 자리를 정하면서 소와 말은 장통방 아래 개천가로 정했다고 하오. 그러니 개천가 말 시장은 나라 처음부터 있던 셈이지. 요즘 시전 목록에는 동대문 안에 마전이 따로 있다고도 하오.",
+        "year": "1410",
+        "sources": [
+          {
+            "title": "조선왕조실록 태종 10년(1410) 2월 7일",
+            "url": "https://sillok.history.go.kr/id/kca_11002007_008",
+            "title_en": "Annals of the Joseon Dynasty, Taejong year 10 (1410), 2nd month, day 7"
+          },
+          {
+            "title": "한국민족문화대백과사전 시전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0032450",
+            "title_en": "Encyclopedia of Korean Culture: Sijeon (licensed shops)"
+          },
+          {
+            "title": "우리역사넷 『한국문화사』 유분각전",
+            "url": "https://contents.history.go.kr/front/km/view.do?levelId=km_003_0040_0030_0020",
+            "title_en": "Uri Yeoksa Net (National Institute of Korean History), Cultural History of Korea: Yubungakjeon (shops with assigned dues)"
+          }
+        ],
+        "options": [
+          {
+            "label": "다른 것도 묻겠소.",
+            "next": "hello",
+            "label_en": "I have another question."
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close",
+            "label_en": "Farewell."
+          }
+        ],
+        "text_en": "In King Taejong's reign (1410), when the sites of the licensed shops were fixed, cattle and horses were assigned to the bank of the stream below Jangtongbang, they say. So the horse market by the stream has been here since the very start of the dynasty. The recent lists of licensed shops also mention a separate horse market inside the East Gate."
+      }
+    },
+    "name_en": "Horse dealer",
+    "subtitle_en": "Foot of Supyo Bridge (Majeongyo) · A man who has brought out horses to sell"
+  },
+  "note_en": "The characters' manner of speech and lines are invented on the basis of records. Lines that state facts carry a source. Shop prices are play values not confirmed in the records.",
+  "fishing": {
+    "name": "청계천 낚시꾼",
+    "subtitle": "강태공 고사 · 낚싯대 장수",
+    "note": "창작 인물·추정 배치. 어획 확률·시간·가격은 게임 설정입니다.",
+    "bridge_ids": {
+      "1750": "gwangtong",
+      "1907": "gwangtong-1907"
+    },
+    "nodes": {
+      "hello": {
+        "text": "청계천 물살을 보고 있소? 낚싯줄을 드리웠다고 매번 고기가 올라오는 것은 아니라오. 기다리는 동안 강태공 이야기를 들려드릴 수도 있고, 낚싯대 한 자루를 내드릴 수도 있지요. 나는 이 물가에 놓인 창작 낚시꾼이니, 실제 장사하던 사람의 이름이나 자리를 복원한 것은 아니오.",
+        "options": [
+          {
+            "label": "강태공은 누구요?",
+            "next": "taigong"
+          },
+          {
+            "label": "낚시는 어떻게 하오?",
+            "next": "how"
+          },
+          {
+            "label": "잡은 물고기는 어디에 파오?",
+            "next": "market"
+          },
+          {
+            "label": "낚싯대를 사고 싶소.",
+            "action": "shop"
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close"
+          }
+        ],
+        "sources": [
+          {
+            "title": "우리역사넷 — 무성왕 강태공",
+            "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+          },
+          {
+            "title": "한국민족문화대백과 — 어물전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+          }
+        ]
+      },
+      "taigong": {
+        "text": "강태공은 옛 중국 주나라의 문왕과 무왕을 도운 강상이오. 위수 가에서 문왕을 만나 뜻을 펼쳤다는 고사가 전해지지요. 후세에는 물가에서 때를 기다리는 낚시꾼을 강태공이라 부르곤 하오. 고기만 기다리는 것이 아니라 자신을 알아줄 때를 기다렸다는 이야기로도 읽을 수 있겠지요. 그렇다고 청계천에 그 사람이 왔다는 뜻은 아니오. 먼 옛날의 고사를 이 물가에서 나누는 것이오.",
+        "options": [
+          {
+            "label": "낚시는 어떻게 하오?",
+            "next": "how"
+          },
+          {
+            "label": "잡은 물고기는 어디에 파오?",
+            "next": "market"
+          },
+          {
+            "label": "낚싯대를 사고 싶소.",
+            "action": "shop"
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close"
+          }
+        ],
+        "sources": [
+          {
+            "title": "우리역사넷 — 무성왕 강태공",
+            "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+          },
+          {
+            "title": "한국민족문화대백과 — 어물전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+          }
+        ]
+      },
+      "how": {
+        "text": "낚싯대를 봇짐에서 쓰거나 액션바에 놓고 키를 누르거나 우클릭하시오. 청계천 어느 물가에서든 수면을 바라보면 줄을 드리울 수 있소. 한 번에 10초 기다리고, 고기가 잡힐 확률은 백 번 중 서른 번 정도라오. 매번 새로 운을 보는 것이니 빈손이 이어질 수도 있지요. 움직이거나 뛰거나 말에 오르면 줄을 거두오. 이 시간과 확률은 놀이를 위한 설정이오.",
+        "options": [
+          {
+            "label": "강태공은 누구요?",
+            "next": "taigong"
+          },
+          {
+            "label": "잡은 물고기는 어디에 파오?",
+            "next": "market"
+          },
+          {
+            "label": "낚싯대를 사고 싶소.",
+            "action": "shop"
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close"
+          }
+        ],
+        "sources": [
+          {
+            "title": "우리역사넷 — 무성왕 강태공",
+            "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+          },
+          {
+            "title": "한국민족문화대백과 — 어물전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+          }
+        ]
+      },
+      "market": {
+        "text": "종로의 내어물전 상인에게 가져가 보시오. 지금 시전에는 말린 명태와 조기를 파는 가게가 있소. 옛 기록에서는 어물전 외에 생선전과 젓갈을 다루는 가게가 따로 구분되기도 했지요. 여기서는 편의를 위해 잡은 민물고기를 기존 상점의 내 봇짐에서 팔 수 있게 했소. 청계천의 특정 어종이나 당시 실제 거래값을 그대로 옮긴 것은 아니라오.",
+        "options": [
+          {
+            "label": "강태공은 누구요?",
+            "next": "taigong"
+          },
+          {
+            "label": "낚시는 어떻게 하오?",
+            "next": "how"
+          },
+          {
+            "label": "낚싯대를 사고 싶소.",
+            "action": "shop"
+          },
+          {
+            "label": "잘 있으시오.",
+            "action": "close"
+          }
+        ],
+        "sources": [
+          {
+            "title": "우리역사넷 — 무성왕 강태공",
+            "url": "https://contents.history.go.kr/front/km/print.do?levelId=km_007_0060_0010_0030_0010&whereStr="
+          },
+          {
+            "title": "한국민족문화대백과 — 어물전",
+            "url": "https://encykorea.aks.ac.kr/Article/E0035969"
+          }
+        ]
+      }
+    },
+    "catches": [
       {
-       "label": "약초를 팔겠소.",
-       "action": "shop"
+        "item": "fish_pale_chub",
+        "weight": 40,
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
       },
       {
-       "label": "잘 있으시오.",
-       "action": "close"
+        "item": "fish_loach",
+        "weight": 25,
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
+      },
+      {
+        "item": "fish_crucian",
+        "weight": 25,
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
+      },
+      {
+        "item": "fish_carp",
+        "weight": 10,
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
       }
-     ]
-    }
-   }
+    ]
   },
-  "types": {
-   "herb_mugwort": {
-    "name": "쑥잎(애엽)",
-    "color": "#9bad87",
-    "scale": [
-     0.8,
-     1.15,
-     0.8
+  "herbs": {
+    "nodes": [
+      {
+        "id": "1326",
+        "pixel": [
+          663,
+          714
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1343",
+        "pixel": [
+          789,
+          737
+        ],
+        "region": "inwang",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1360",
+        "pixel": [
+          741,
+          752
+        ],
+        "region": "inwang",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1377",
+        "pixel": [
+          591,
+          777
+        ],
+        "region": "inwang",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1394",
+        "pixel": [
+          571,
+          786
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1411",
+        "pixel": [
+          596,
+          796
+        ],
+        "region": "inwang",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1428",
+        "pixel": [
+          565,
+          804
+        ],
+        "region": "inwang",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1445",
+        "pixel": [
+          693,
+          812
+        ],
+        "region": "inwang",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1462",
+        "pixel": [
+          733,
+          823
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1479",
+        "pixel": [
+          766,
+          830
+        ],
+        "region": "inwang",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1496",
+        "pixel": [
+          725,
+          856
+        ],
+        "region": "inwang",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1513",
+        "pixel": [
+          626,
+          874
+        ],
+        "region": "inwang",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1530",
+        "pixel": [
+          736,
+          885
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1547",
+        "pixel": [
+          740,
+          900
+        ],
+        "region": "inwang",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1564",
+        "pixel": [
+          722,
+          922
+        ],
+        "region": "inwang",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1581",
+        "pixel": [
+          766,
+          940
+        ],
+        "region": "inwang",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1598",
+        "pixel": [
+          661,
+          971
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1615",
+        "pixel": [
+          657,
+          1005
+        ],
+        "region": "inwang",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1632",
+        "pixel": [
+          747,
+          1025
+        ],
+        "region": "inwang",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1649",
+        "pixel": [
+          674,
+          1042
+        ],
+        "region": "inwang",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1666",
+        "pixel": [
+          741,
+          1070
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1683",
+        "pixel": [
+          706,
+          1092
+        ],
+        "region": "inwang",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1700",
+        "pixel": [
+          725,
+          1120
+        ],
+        "region": "inwang",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1717",
+        "pixel": [
+          623,
+          1141
+        ],
+        "region": "inwang",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1734",
+        "pixel": [
+          582,
+          1163
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1751",
+        "pixel": [
+          570,
+          1185
+        ],
+        "region": "inwang",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1768",
+        "pixel": [
+          837,
+          1194
+        ],
+        "region": "inwang",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1785",
+        "pixel": [
+          786,
+          1233
+        ],
+        "region": "inwang",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1802",
+        "pixel": [
+          789,
+          1344
+        ],
+        "region": "inwang",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1819",
+        "pixel": [
+          1411,
+          454
+        ],
+        "region": "baegak",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1836",
+        "pixel": [
+          1112,
+          476
+        ],
+        "region": "baegak",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1853",
+        "pixel": [
+          1377,
+          499
+        ],
+        "region": "baegak",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1870",
+        "pixel": [
+          1161,
+          531
+        ],
+        "region": "baegak",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1887",
+        "pixel": [
+          1178,
+          551
+        ],
+        "region": "baegak",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1904",
+        "pixel": [
+          1097,
+          571
+        ],
+        "region": "baegak",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1921",
+        "pixel": [
+          1111,
+          583
+        ],
+        "region": "baegak",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "1938",
+        "pixel": [
+          1135,
+          597
+        ],
+        "region": "baegak",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "1955",
+        "pixel": [
+          1118,
+          612
+        ],
+        "region": "baegak",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "1972",
+        "pixel": [
+          1100,
+          615
+        ],
+        "region": "baegak",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "1989",
+        "pixel": [
+          1185,
+          627
+        ],
+        "region": "baegak",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "2006",
+        "pixel": [
+          939,
+          653
+        ],
+        "region": "baegak",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "2023",
+        "pixel": [
+          1499,
+          663
+        ],
+        "region": "baegak",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "2040",
+        "pixel": [
+          969,
+          683
+        ],
+        "region": "baegak",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "2057",
+        "pixel": [
+          1218,
+          697
+        ],
+        "region": "baegak",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "2074",
+        "pixel": [
+          1415,
+          708
+        ],
+        "region": "baegak",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "2091",
+        "pixel": [
+          1092,
+          726
+        ],
+        "region": "baegak",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "2108",
+        "pixel": [
+          1474,
+          777
+        ],
+        "region": "baegak",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "2380",
+        "pixel": [
+          2033,
+          2105
+        ],
+        "region": "namsan",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "2397",
+        "pixel": [
+          2058,
+          2145
+        ],
+        "region": "namsan",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "2414",
+        "pixel": [
+          2063,
+          2160
+        ],
+        "region": "namsan",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "2431",
+        "pixel": [
+          1878,
+          2182
+        ],
+        "region": "namsan",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "2448",
+        "pixel": [
+          1865,
+          2190
+        ],
+        "region": "namsan",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "2465",
+        "pixel": [
+          1303,
+          2212
+        ],
+        "region": "namsan",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "2482",
+        "pixel": [
+          1801,
+          2211
+        ],
+        "region": "namsan",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "2499",
+        "pixel": [
+          1736,
+          2222
+        ],
+        "region": "namsan",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "2516",
+        "pixel": [
+          1747,
+          2238
+        ],
+        "region": "namsan",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "2533",
+        "pixel": [
+          1640,
+          2248
+        ],
+        "region": "namsan",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "2550",
+        "pixel": [
+          1601,
+          2260
+        ],
+        "region": "namsan",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "2567",
+        "pixel": [
+          1673,
+          2264
+        ],
+        "region": "namsan",
+        "item": "herb_dandelion"
+      },
+      {
+        "id": "2584",
+        "pixel": [
+          1464,
+          2290
+        ],
+        "region": "namsan",
+        "item": "herb_bellflower"
+      },
+      {
+        "id": "2601",
+        "pixel": [
+          1531,
+          2301
+        ],
+        "region": "namsan",
+        "item": "herb_mugwort"
+      },
+      {
+        "id": "2618",
+        "pixel": [
+          1601,
+          2316
+        ],
+        "region": "namsan",
+        "item": "herb_plantain"
+      },
+      {
+        "id": "2635",
+        "pixel": [
+          1549,
+          2347
+        ],
+        "region": "namsan",
+        "item": "herb_dandelion"
+      }
     ],
-    "bloom": null,
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   },
-   "herb_plantain": {
-    "name": "질경이(차전초)",
-    "color": "#61924d",
-    "scale": [
-     1.1,
-     0.4,
-     1.1
-    ],
-    "bloom": "#9b8150",
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   },
-   "herb_dandelion": {
-    "name": "민들레(포공영)",
-    "color": "#79a53c",
-    "scale": [
-     1,
-     0.45,
-     1
-    ],
-    "bloom": "#f1cf42",
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   },
-   "herb_bellflower": {
-    "name": "도라지뿌리(길경)",
-    "color": "#507e48",
-    "scale": [
-     0.65,
-     1.4,
-     0.65
-    ],
-    "bloom": "#9784df",
-    "sources": [
-     {
-      "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
-      "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
-     }
-    ]
-   }
+    "note": "1750년 수목 분포를 참고한 두 시대 공통 게임용 약초 위치. 식생·약효의 고증 자료가 아닙니다.",
+    "merchant": {
+      "name": "종로 약재상",
+      "subtitle": "산약초를 사들이는 창작 약전",
+      "nodes": {
+        "hello": {
+          "text": "산에서 약초를 모아 왔소? 봇짐을 펴 보시오. 조선 후기에는 약전과 민간 약국이 약재를 사고팔았지요. 나는 종로의 상업 공간을 참고하여 놓은 창작 상인이오. 이 자리의 실제 상호나 약초 품종을 복원한 것은 아니오. 약초는 내 가게의 내 봇짐 칸에서 팔 수 있소.",
+          "sources": [
+            {
+              "title": "국사편찬위원회 — 조선 후기 약전·약국",
+              "url": "https://db.history.go.kr/id/kn_107_0040_0020_0020"
+            }
+          ],
+          "options": [
+            {
+              "label": "약초를 팔겠소.",
+              "action": "shop"
+            },
+            {
+              "label": "잘 있으시오.",
+              "action": "close"
+            }
+          ]
+        }
+      }
+    },
+    "types": {
+      "herb_mugwort": {
+        "name": "쑥잎(애엽)",
+        "color": "#9bad87",
+        "scale": [
+          0.8,
+          1.15,
+          0.8
+        ],
+        "bloom": null,
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
+      },
+      "herb_plantain": {
+        "name": "질경이(차전초)",
+        "color": "#61924d",
+        "scale": [
+          1.1,
+          0.4,
+          1.1
+        ],
+        "bloom": "#9b8150",
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
+      },
+      "herb_dandelion": {
+        "name": "민들레(포공영)",
+        "color": "#79a53c",
+        "scale": [
+          1,
+          0.45,
+          1
+        ],
+        "bloom": "#f1cf42",
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
+      },
+      "herb_bellflower": {
+        "name": "도라지뿌리(길경)",
+        "color": "#507e48",
+        "scale": [
+          0.65,
+          1.4,
+          0.65
+        ],
+        "bloom": "#9784df",
+        "sources": [
+          {
+            "title": "국립생물자원관 — 해제로 보는 조선시대 생물자원 2",
+            "url": "https://www.nibr.go.kr/aiibook/catImage/93/Joseon%202.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "legation_keepsake": {
+    "item": "legation_keepsake",
+    "offer": "아관파천 이야기를 듣고 싶습니다.",
+    "offer_en": "I would like to hear about the flight to the legation.",
+    "nodes": {
+      "rumour": {
+        "text": "아관파천 말이오? 그 일에 관심을 보이는 분이 가끔 있소. 실은 창고에서 나온 낡은 꾸러미가 하나 있는데, 그 일과 관련된 물건이라는 소리는 있지만 나도 뭔지는 잘 모르오. 관심이 있다니 가져가서 한 번 살펴보시오.",
+        "text_en": "The flight to the legation? Now and then someone asks about it. There is an old bundle that turned up in the storeroom; people say it has to do with that night, but I cannot tell you what it is. Since you are interested, take it and have a look.",
+        "options": [
+          {
+            "label": "받아 두겠습니다.",
+            "label_en": "I will take it.",
+            "action": "event:keepsake"
+          },
+          {
+            "label": "다음에 보겠습니다.",
+            "label_en": "Another time.",
+            "action": "close"
+          }
+        ]
+      },
+      "hint": {
+        "text": "그 꾸러미는 이미 드렸소. 봇짐을 열어 한 번 써 보시오. 무슨 일이 일어나는지 나도 궁금하오.",
+        "text_en": "You already have the bundle. Open your pack and try it; I am curious what happens myself.",
+        "options": [
+          {
+            "label": "그리하겠습니다.",
+            "label_en": "I will.",
+            "action": "close"
+          }
+        ]
+      }
+    },
+    "received": "낡은 밀봉 꾸러미를 봇짐에 넣었소. 1인칭에서 봇짐을 열고 써 보시오.",
+    "received_en": "The old sealed bundle is in your pack. Open the pack in first-person view and use it."
   }
- }
 }
