@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [250 — AKS 물품·음식 모형 수집 완료](20260921_250_aks_objects_food_archive.md)
+
 - [249 — v0.5.39 공통 키보드 이동 배포](20260921_249_deploy_v0539.md)
 
 - [248 — 공통 A/D 회전·Q/E 대각선 이동](20260921_248_keyboard_turn_and_diagonal.md)

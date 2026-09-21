@@ -6,14 +6,14 @@
 |---|---|---|
 | 건축 GLB 1,034개 URL | `data/models/aks-hanyang/glb/` | `docs/aks_architecture_manifest.json` |
 | 복식 414개 URL | `data/models/aks-hanyang/costumes/` (407개 검증) | `docs/aks_objects_manifest.json`, CSV |
-| 물품 609개·음식 180개 URL | 현재 목록만 확보 | 같은 JSON/CSV |
+| 물품 609개·음식 180개 URL | `data/models/aks-hanyang/objects/` (603개 검증), `food/` (177개 검증) | 같은 JSON/CSV |
 | PDF 92개 URL | `data/texts/aks-hanyang/pdf/` | `docs/aks_pdf_manifest.json` |
 
 NAS 루트는 `/nas/JikhanJung/hanyang3d_backup/research/aks-hanyang/`이다. 그 안에서 프로젝트 상대 경로를 유지한다. 예를 들어 건축 모델은 `data/models/aks-hanyang/glb/`, PDF는 `data/texts/aks-hanyang/pdf/` 아래에 들어간다. 목록, 출처 HTML과 수집 계획도 함께 보관한다. 운영 DB 백업과 별도 폴더이며 기존 자료를 삭제하지 않는다.
 
 ## 복식 추가 수집
 
-2026-09-19 추가 수집: 복식 414개 URL 중 **407개(10.56GiB)** 검증 완료, 7개 실패. 한 파일씩 완료 후 최소 3초 간격으로 요청했다. 물품 609개·음식 180개는 목록만 유지한다.
+2026-09-19 추가 수집: 복식 414개 URL 중 **407개(10.56GiB)** 검증 완료, 7개 실패. 한 파일씩 완료 후 최소 3초 간격으로 요청했다.
 
 복식도 NAS의 동일 상대 경로에 복사하고 SHA-256을 확인한다. 원본에 없는 파일이나 잘못된 응답을 성공으로 세지 않는다. URL 해시를 파일명 앞에 붙여 동명 파일의 충돌을 막는다.
 
@@ -25,9 +25,13 @@ NAS 루트는 `/nas/JikhanJung/hanyang3d_backup/research/aks-hanyang/`이다. �
 - `어여미.glb`: ValueError: Truncated GLB header
 - `쪽머리.glb`: HTTPError: HTTP Error 404: Not Found
 
-## 물품·음식 예약
+## 물품·음식 수집
 
-2026-09-20·21일 각각 오전 9시(한국시간) 순차 다운로드와 NAS 보관을 예약했다. [일정과 실행 상태 확인](aks_download_schedule.md)을 참고한다.
+예약 실행([일정](aks_download_schedule.md))으로 2026-09-20 물품 609개 URL 중 **603개(20GiB)**, 2026-09-21 음식 180개 URL 중 **177개(3.5GiB)** 를 검증 완료했다. NAS 동일 상대 경로에 복사·SHA-256 검증을 마쳤다(`scheduled-jobs/objects.json`, `food.json`의 `nas_verified`). 실패 9개는 원본 서버 응답이며 성공에 포함하지 않는다.
+
+- 물품 `3D-신주_책장_01.glb`, `3D-답장.glb`, `명성황후_보록.glb`, `시가.glb`, `자물쇠.glb`: HTTP 404
+- 물품 `광화문_해치상.glb`: ValueError: Invalid GLB magic/version/length
+- 음식 `3D-우성칠체.glb`, `3D-홍매화강정.glb`, `3D-오색령강정.glb`: HTTP 404
 
 ## 실행·재개
 

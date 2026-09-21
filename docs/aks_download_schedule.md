@@ -44,4 +44,6 @@ systemctl --user stop hanyang3d-aks@objects.service hanyang3d-aks@food.service
 
 등록 원본은 `scripts/download/systemd/`, 실제 설치본은 `/home/jikhanjung/.config/systemd/user/`다. 서비스 경로와 ConditionHost는 m710q에 맞춰 고정했다.
 
-2026-09-20 운영 확인: 물품 서비스가 09:00:04 KST에 실제 시작했다. 음식 타이머의 다음 실행은 2026-09-21 09:00 KST다. 물품은 수집 중이며 완료 결과는 위 요약 JSON과 manifest를 확인한다.
+2026-09-20 운영 확인: 물품 서비스가 09:00:04 KST에 실제 시작했다. 음식 타이머의 다음 실행은 2026-09-21 09:00 KST다.
+
+2026-09-21 완료 확인: 물품은 09:46 KST에 603개 검증·6개 실패, 음식은 09:13 KST에 177개 검증·3개 실패로 `complete_with_failures`·`nas_verified` 상태다. 두 타이머는 다음 실행 예정이 없다. 실패 목록은 [보관 문서](aks_archive_storage.md)에 있다.
