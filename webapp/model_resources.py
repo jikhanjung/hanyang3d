@@ -15,5 +15,6 @@ MODEL_RESOURCES = {
     'bell_tower': ('종루', 'webapp/static/bell_tower.js', 'bell_tower'),
     'site_marker': ('집터 표석', 'webapp/static/site_marker.js', 'site_marker'),
     'house_site': ('집터 모형', 'webapp/static/house_site.js', 'house_site'),
+    'walled_garden': ('담장 원유', 'webapp/static/walled_garden.js', 'walled_garden'),
     'yukjo_compound': ('관아', 'webapp/static/yukjo.js', 'yukjo_compound'),
 }

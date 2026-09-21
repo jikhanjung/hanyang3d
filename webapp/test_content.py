@@ -140,6 +140,18 @@ class SceneYearTests(SimpleTestCase):
                 self.assertFalse(start is not None and start > year and not site_only, f"{feature['id']} starts {start}, after the {year} scene")
                 self.assertFalse(end is not None and end < year and not site_only, f"{feature['id']} ended {end}, before the {year} scene")
 
+class DisplayModelRegistryTests(SimpleTestCase):
+    """Every display_model used by a landmark file must be an approved renderer, or DB mode silently draws a box."""
+    def test_display_models_are_registered(self):
+        import json
+        from django.conf import settings
+        from .model_resources import MODEL_RESOURCES
+        renderers = {row[2] for row in MODEL_RESOURCES.values()}
+        for path in ('gis/buildings/1750_landmarks.json', 'gis/buildings/1907_landmarks.json'):
+            for feature in json.loads((settings.BASE_DIR / path).read_text())['features']:
+                model = feature.get('display_model')
+                self.assertTrue(model is None or model in renderers, f"{feature['id']}: display_model {model!r} is not in MODEL_RESOURCES")
+
 class SecretKeyTests(SimpleTestCase):
     def test_production_secret_requirement(self):
         from django.core.exceptions import ImproperlyConfigured
@@ -180,7 +192,7 @@ class ContentTests(TestCase):
         self.assertEqual([s['title_en'] for s in loaded['stories']], [s['title_en'] for s in source['stories']])
         self.assertTrue(all(s['text_en'] for s in loaded['stories']))
         self.assertEqual(Building.objects.count(), 190)
-        self.assertEqual(Resource.objects.count(), 144)
+        self.assertEqual(Resource.objects.count(), 145)
         self.assertTrue(Resource.objects.filter(path='webapp/static/building_access1907.js').exists())
         originals = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']
         for original, actual in zip(originals, load_buildings()['features']):
