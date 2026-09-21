@@ -17,4 +17,4 @@ Django 테스트 90개 통과. `check_agwanpacheon_browser.py`에 순찰 시나�
 
 ![골목에 숨은 가마](images/20260921_agwan_patrol_hidden.png)
 
-운영 반영 전이다.
+2026-09-21 웹 v0.5.42로 운영 반영했다([기록 257](20260921_257_deploy_v0542.md)).
