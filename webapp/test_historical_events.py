@@ -1,7 +1,7 @@
 import json
 from django.test import TestCase, Client, override_settings
 from .models import Player, EventProgress
-from .events import definition
+from .events import definition, last_checkpoint
 
 class HistoricalEventTests(TestCase):
     def setUp(self):
@@ -13,7 +13,9 @@ class HistoricalEventTests(TestCase):
         self.assertEqual(self.post(action='start',version=99).status_code,409)
         self.assertEqual(self.post(action='start',version=definition()['version']).json()['checkpoint'],0)
         self.assertEqual(self.post(action='checkpoint',checkpoint=3,version=definition()['version']).status_code,409)
-        for i in range(1,len(definition()['route'])):self.assertEqual(self.post(action='checkpoint',checkpoint=i,version=definition()['version']).json()['checkpoint'],i)
+        self.assertEqual(last_checkpoint(definition()),13)
+        self.assertEqual(self.post(action='complete',version=definition()['version']).status_code,409)
+        for i in range(1,last_checkpoint(definition())+1):self.assertEqual(self.post(action='checkpoint',checkpoint=i,version=definition()['version']).json()['checkpoint'],i)
         first=self.post(action='complete',version=definition()['version']).json()
         self.assertEqual(first['status'],'completed')
         self.assertEqual(self.post(action='complete',version=definition()['version']).json()['completed_at'],first['completed_at'])

@@ -69,7 +69,8 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
   onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
  const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
  together=eventVisit?{stop(){},update(){},connected:false}:createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
- const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='agwanpacheon')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant)}});
+ const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='agwanpacheon')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant);else if(action.startsWith('event:'))eventAction?.(action.slice(6),npc)}});
+ let eventAction=null;
  const nodes=(source,trade)=>Object.fromEntries(Object.entries(source).map(([key,n])=>[key,{...n,text:n.text.replaceAll('{shop}',trade??'')} ]));
  const npcFor=r=>{
   const info=r.dialogue??data[r.role],dialogueNodes=nodes(info.nodes,r.trade);
@@ -106,5 +107,5 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  canvas.addEventListener('pointerup',e=>{if(!eventVisit&&!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
  el('people3d').addEventListener('change',()=>{stationary.group.visible=el('people3d').checked;horseDealer.visible=el('people3d').checked});
  function update(dt){firstPerson.update(dt);if(!firstPerson.active)firstPerson.fishing?.update();together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);if(horseDealer.visible)horseDealer.userData.update(performance.now(),groundAt);dialogue.update()}
- return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor,startHistoricalVisit};
+ return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,together,update,npcFor,startHistoricalVisit,setEventAction:handler=>{eventAction=handler}};
 }

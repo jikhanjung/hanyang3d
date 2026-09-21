@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [251 — 아관파천 밀서·서쪽 문·후일담](20260921_251_agwanpacheon_letter_gate_aftermath.md)
+
 - [250 — AKS 물품·음식 모형 수집 완료](20260921_250_aks_objects_food_archive.md)
 
 - [249 — v0.5.39 공통 키보드 이동 배포](20260921_249_deploy_v0539.md)

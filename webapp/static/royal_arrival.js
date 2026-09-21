@@ -52,5 +52,5 @@ export function createRoyalArrival({scene,camera,container,chairs,building,fp,sa
   if(time>=21){done=true;bubble.hidden=true}return done;
  }
  function reset(){bubble.remove();scene.remove(group);for(const c of chairs){c.cabin.position.y=0;c.curtain.scale.z=1}}
- return {update,reset,actors,group,get time(){return time},get done(){return done}};
+ return {update,reset,actors,group,host,get time(){return time},get done(){return done}};
 }

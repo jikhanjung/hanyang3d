@@ -11,8 +11,13 @@ def definition():
     return json.loads((settings.BASE_DIR/'gis/events/agwanpacheon.json').read_text())
 
 
+def last_checkpoint(data):
+    """Checkpoint 0 is 'started'; then the stages before the route, one per route point, and the stages after."""
+    return len(data.get('stages_before',[]))+len(data['route'])+len(data.get('stages_after',[]))
+
+
 def progress(player, action, checkpoint=None, version=None):
-    data=definition();last=len(data['route'])-1
+    data=definition();last=last_checkpoint(data)
     if action not in ('status','start','checkpoint','complete','restart'):
         raise TradeError(400,'잘못된 회상 요청입니다.')
     if action!='status' and (type(version) is not int or version!=data['version']):
@@ -30,7 +35,7 @@ def progress(player, action, checkpoint=None, version=None):
             if row.status!='active' or checkpoint>row.checkpoint+1:raise TradeError(409,'차례대로 길을 따라가 주세요.')
             row.checkpoint=max(row.checkpoint,checkpoint)
         elif action=='complete':
-            if row.checkpoint!=last or row.status not in ('active','completed'):raise TradeError(409,'아직 공사관에 도착하지 않았습니다.')
+            if row.checkpoint!=last or row.status not in ('active','completed'):raise TradeError(409,'아직 회상을 끝까지 보지 않았습니다.')
             row.status='completed'
             if row.completed_at is None:row.completed_at=timezone.now()
         if action!='status':row.save()
