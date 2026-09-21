@@ -1,6 +1,6 @@
 # Hanyang 3D Docker 배포
 
-이미지: **`honestjung/hanyang3d:v0.5.39`**, **`honestjung/hanyang3d-multiplayer:v0.5.31`**, 플랫폼: `linux/amd64`.
+이미지: **`honestjung/hanyang3d:v0.5.40`**, **`honestjung/hanyang3d-multiplayer:v0.5.31`**, 플랫폼: `linux/amd64`.
 `../fsis2026/deploy`의 Gunicorn·버전 이미지·Compose·상태 확인 구성을 참고했다.
 운영 콘텐츠는 SQLite DB이며 DB 모드 배포 시 검증 백업·migration·최초 가져오기를 수행한다. [백오피스](../docs/backoffice.md), [백업·복원](../docs/content_backup.md)을 함께 따른다.
 
