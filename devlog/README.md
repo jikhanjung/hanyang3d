@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [253 — 1750년 건물 재검토 반영](20260921_253_landmarks_1750_review_applied.md)
+
 - [252 — 1750년 건물 존재 여부 재검토](20260921_252_landmarks_1750_existence_review.md)
 
 - [251 — 아관파천 밀서·서쪽 문·후일담](20260921_251_agwanpacheon_letter_gate_aftermath.md)

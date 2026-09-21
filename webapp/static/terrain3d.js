@@ -10,6 +10,7 @@ import {createTrees} from './trees.js';
 import {createPedestrians} from './pedestrians.js';
 import {createCollision} from './collision.js';
 import {createHouseSite} from './house_site.js';
+import {createWalledGarden} from './walled_garden.js';
 import {createSiteMarker} from './site_marker.js';
 import {createBellTower} from './bell_tower.js';
 import {createTrainingGround} from './training_ground.js';
@@ -277,6 +278,7 @@ async function main(){
   if(feature.display_model==='training_ground'){box.material.visible=false;foundation.visible=false;box.add(createTrainingGround(feature,w,h,d));const drill=createDrill(feature,w,h,d);box.add(drill);drills.push(drill)}
   if(feature.display_model==='bell_tower'){box.material.visible=false;box.add(createBellTower(feature,w,h,d))}
   if(feature.display_model==='site_marker'){box.material.visible=false;foundation.visible=false;box.add(createSiteMarker(feature,w,h,d));siteMarkers.push({box,foundation})}
+  if(feature.display_model==='walled_garden'){box.material.visible=false;foundation.visible=false;box.add(createWalledGarden(feature,w,h,d))}
   if(feature.display_model==='house_site'){box.material.visible=false;foundation.visible=false;box.add(createHouseSite(feature,w,h,d));siteMarkers.push({box,foundation})}
   if(feature.display_model==='jongmyo_15_chambers'){box.material.visible=false;box.add(createJongmyo(w,h,d))}
   if(feature.display_model==='yukjo_compound'){box.material.visible=false;foundation.visible=false;box.add(createYukjo(feature,w,h,d))}
@@ -295,7 +297,7 @@ async function main(){
    for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(m);positions.push(v.x,v.y,v.z);const up=tileTop&&n&&n.getY(i)>.5;colors.push(up?tileC.r:c.r,up?tileC.g:c.g,up?tileC.b:c.b)}};
   const roof=(rw,rd,rise)=>{const g=new THREE.BufferGeometry(),a=rw/2,b=rd/2;
    g.setAttribute('position',new THREE.Float32BufferAttribute([-a,0,-b,a,0,-b,a,rise,0, -a,0,-b,a,rise,0,-a,rise,0, a,0,b,-a,0,b,-a,rise,0, a,0,b,-a,rise,0,a,rise,0, -a,0,-b,-a,rise,0,-a,0,b, a,0,b,a,rise,0,a,0,-b],3));return g};
-  const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','palace_compound','observatory','throne_hall'].includes(feature.display_model);
+  const ground=-h/2,compound=['yukjo_compound','training_ground','house_site','walled_garden','palace_compound','observatory','throne_hall'].includes(feature.display_model);
   // Walls stay close to the beige of the detailed timber-and-plaster models, with only a hint of the category colour.
   const wall=new THREE.Color(0xc9bb9f).lerp(new THREE.Color(colors3d[feature.category]??0x856549),.25);
   // A hall is a wall block with a pitched roof of ordinary house pitch; the rise never scales with the plot.
@@ -315,6 +317,12 @@ async function main(){
    hall(0,front,gateW,7,4.8);push(new THREE.BoxGeometry(w,2.3,1.2),0xd5c8ad,0,ground+.6+1.15,-d/2+2);
    hall(0,-d*.12,w*(feature.court_type==='large'?.52:.6),Math.min(13,d*.2),feature.court_type==='large'?5.7:4.8);
    for(const side of [-1,1])hall(side*w*.33,d*.05,Math.min(d*.36,25),7,3.5,Math.PI/2);
+  }else if(feature.display_model==='walled_garden'){
+   // Far view of a garden: the plate, the wall ring and a few dark cones for the pines.
+   push(new THREE.BoxGeometry(w,.6,d),0xa9a06f,0,ground+.3,0,0,false);
+   for(const side of [-1,1])push(new THREE.BoxGeometry(1.2,2.3,d-2),0xd5c8ad,side*(w/2-.8),ground+.6+1.15,0);
+   for(const side of [-1,1])push(new THREE.BoxGeometry(w,2.3,1.2),0xd5c8ad,0,ground+.6+1.15,side*(d/2-.8));
+   for(const [x,z] of [[-.3,-.25],[.25,-.1],[0,.15],[-.2,.3],[.3,.3]])push(new THREE.ConeGeometry(2.4,6,6),0x4e6b3d,x*w,ground+3.6,z*d,0,false);
   }else if(compound){
    push(new THREE.BoxGeometry(w,.6,d),0xc6b48f,0,ground+.3,0,0,false);
    const hw=Math.max(6,w*.5),hd=Math.min(14,Math.max(5,d*.25)),hh=Math.min(Math.max(3,h*.45),7);
@@ -1024,7 +1032,7 @@ async function main(){
   if(f.display_model==='yukjo_compound'){
    const model=b.getObjectByName('yukjo-compound'),c=Math.cos(frame.yaw),sn=Math.sin(frame.yaw);
    for(const r of model.userData.blockingRects)collision.add({x:frame.x+r.x*c+r.z*sn,z:frame.z-r.x*sn+r.z*c,hw:r.hw,hd:r.hd,yaw:frame.yaw+(r.yaw??0),visible:shown});
-  }else if(f.display_model==='house_site'||f.display_model==='training_ground'){
+  }else if(f.display_model==='house_site'||f.display_model==='training_ground'||f.display_model==='walled_garden'){
    // Walled compounds block only their walls, leaving the south gate open.
    const t=1.2,gate=Math.min(9,w*.2),run=(w-gate)/2;
    collision.addLocal(frame,0,-d/2+t/2,w/2,t/2,shown);

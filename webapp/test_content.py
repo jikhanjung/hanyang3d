@@ -127,6 +127,19 @@ class SyncTests(TestCase):
         self.assertEqual(section.body, '편집자가 보완한 설명')
 
 
+class SceneYearTests(SimpleTestCase):
+    """A landmark drawn in a scene must not begin after that scene's year, and must not have ended before it."""
+    def test_landmark_existence_covers_scene_year(self):
+        import json
+        from django.conf import settings
+        for path, year in (('gis/buildings/1750_landmarks.json', 1750), ('gis/buildings/1907_landmarks.json', 1907)):
+            for feature in json.loads((settings.BASE_DIR / path).read_text())['features']:
+                existence = feature.get('temporal', {}).get('existence', {})
+                start, end = existence.get('start_year'), existence.get('end_year')
+                site_only = feature.get('display_model') == 'site_marker'
+                self.assertFalse(start is not None and start > year and not site_only, f"{feature['id']} starts {start}, after the {year} scene")
+                self.assertFalse(end is not None and end < year and not site_only, f"{feature['id']} ended {end}, before the {year} scene")
+
 class SecretKeyTests(SimpleTestCase):
     def test_production_secret_requirement(self):
         from django.core.exceptions import ImproperlyConfigured
@@ -167,7 +180,7 @@ class ContentTests(TestCase):
         self.assertEqual([s['title_en'] for s in loaded['stories']], [s['title_en'] for s in source['stories']])
         self.assertTrue(all(s['text_en'] for s in loaded['stories']))
         self.assertEqual(Building.objects.count(), 190)
-        self.assertEqual(Resource.objects.count(), 143)
+        self.assertEqual(Resource.objects.count(), 144)
         self.assertTrue(Resource.objects.filter(path='webapp/static/building_access1907.js').exists())
         originals = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']
         for original, actual in zip(originals, load_buildings()['features']):

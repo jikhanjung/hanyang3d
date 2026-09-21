@@ -2002,7 +2002,7 @@
         12,
         9
       ],
-      "gate_tiers": 1,
+      "gate_tiers": 0,
       "source_position": {
         "pixel": [
           1406,
@@ -2024,7 +2024,7 @@
         "source_sha256": "f5b791653d008346d9eaa5dc612e498175f28f6ecf579d1c56c7082df36267f0",
         "method": "manual_local_road_reading_then_current_tps"
       },
-      "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 현재 지리 위치나 당시 외형의 정밀 복원은 아닙니다.",
+      "note": "원도의 문 기호와 진입로에 맞춘 개념 모형. 조선 후기 문루 존재 여부가 확인되지 않아 홍예만 둔다(현재 문루는 1976년 건립). 도성대지도 도상을 판독하면 갱신한다.",
       "reference": "https://seoulcitywall.seoul.go.kr/content/8.do",
       "size_status": "conceptual_relative_scale",
       "temporal": {
@@ -2044,7 +2044,7 @@
       "info": {
         "summary": "한양도성의 북대문.",
         "period": "조선 초 창건. 1968년 이후 문루를 다시 세웠다.",
-        "in_1750": "문은 있었다. 당시 문루 여부는 미확인.",
+        "in_1750": "문은 있었다. 1413년 이후 상시 폐쇄됐고 문루 여부는 자료가 엇갈려 홍예만 표시한다. 현재 문루는 1976년에 세운 것이다.",
         "sources": [
           {
             "title": "서울 한양도성 도성의 역사",
@@ -2054,7 +2054,7 @@
         ],
         "summary_en": "The North Great Gate of the Seoul City Wall.",
         "period_en": "Founded in early Joseon. Gate tower rebuilt after 1968.",
-        "in_1750_en": "The gate existed. Whether it had a gate tower at the time is unconfirmed."
+        "in_1750_en": "The gate existed but stayed closed from 1413; whether it had a tower then is unverified, so only the arch is shown. The present tower dates from 1976."
       },
       "name_en": "Sukjeongmun (North Great Gate)"
     },
@@ -3083,17 +3083,17 @@
     },
     {
       "id": "songsiyeol_site",
-      "name": "송시열 집터",
+      "name": "송시열 집터(옛터)",
       "lat": 37.58861,
       "lon": 126.99689,
       "category": "집터",
       "reference": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaKdcd=21&ccbaAsno=0000570000000&ccbaCtcd=11",
-      "note": "우암 송시열이 살던 자리로 전해지는 곳입니다. 서울특별시 유형문화유산으로 지정된 집터이며 건물은 남아 있지 않고 증주벽립 각자와 우암구기 비석이 전합니다.",
+      "note": "우암 송시열(1607~1689)이 살던 자리로 전해지는 곳. 1750년에는 송시열의 집으로 부를 건물이 없었고 원도에도 표시가 없어 표석만 둔다. 증주벽립 각자와 우암구기 비석이 전한다.",
       "position_status": "manual_display_point_inside_wall",
       "symbol_size_m": [
-        40,
-        8,
-        81
+        12,
+        4,
+        10
       ],
       "size_status": "assumed_compound_extent",
       "size_note": "정도전 집 모형의 절반 규모로 잡은 가정값이다. 집의 실제 범위를 전하는 자료를 확인하지 못했다.",
@@ -3120,7 +3120,7 @@
         "precision_m": 300,
         "note": "지정 소재지의 동 이름을 기준으로 잡은 개략 지점이다. 증주벽립 각자 바위의 실측 위치가 아니며 수백 m 오차가 있을 수 있다. 이 위경도를 원도 화면에 그대로 두면 성곽 밖으로 나가므로 화면 배치는 아래 source_position을 사용한다."
       },
-      "display_model": "house_site",
+      "display_model": "site_marker",
       "display_yaw_deg": 0,
       "model_note": "담장과 마당, 남향 안채·사랑채·별당·행랑채, 남쪽 대문을 단순화한 개념 모형. 실제 가옥 배치를 복원한 것이 아니다.",
       "source_position": {
@@ -3136,7 +3136,7 @@
       "info": {
         "summary": "우암 송시열이 살던 서울 집터. 증주벽립 각자와 우암구기 비석이 전한다.",
         "period": "송시열(1607–1689)이 살던 17세기. 집 건물은 남아 있지 않다.",
-        "in_1750": "송시열의 집으로는 없었다. 옛 자리를 기억하는 표시다.",
+        "in_1750": "송시열의 집으로는 없었다. 사후 60년이 지난 때이며 원도에 표시가 없어 옛 자리를 기억하는 표석만 둔다.",
         "sources": [
           {
             "title": "국가유산포털 우암 송시열 집터",
@@ -3146,9 +3146,9 @@
         ],
         "summary_en": "The Seoul house site of Uam Song Si-yeol. The rock inscription Jeungjubyeongnip and the Uamgugi stele survive.",
         "period_en": "The 17th century, when Song Si-yeol (1607–1689) lived here. The house building does not survive.",
-        "in_1750_en": "Did not exist as Song Si-yeol's house. This is a marker recalling the old site."
+        "in_1750_en": "Not Song Si-yeol's house by then; sixty years after his death and absent from the map, only a marker remembers the site."
       },
-      "name_en": "Site of Song Si-yeol's House"
+      "name_en": "Site of Song Si-yeol's House (remembered site)"
     },
     {
       "id": "jongru",
@@ -3681,10 +3681,10 @@
     },
     {
       "id": "yuksanggung",
-      "name": "육상궁",
+      "name": "육상묘(1753년 육상궁)",
       "category": "제례",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R107010000.do",
-      "note": "영조의 생모 숙빈 최씨의 사당. 도성대지도에 毓祥宮으로 적혀 있습니다.",
+      "note": "영조의 생모 숙빈 최씨의 사당. 도성대지도에 毓祥宮으로 적혀 있습니다. 1750년 당시 이름은 육상묘이며 1753년 육상궁으로 승격했다.",
       "lat": 37.5853169,
       "lon": 126.9738851,
       "position_status": "manual_source_symbol_hint",
@@ -3765,38 +3765,48 @@
         "period_en": "Built 1725 as the Sukbinmyo. Renamed Yuksangmyo 1744 and Yuksanggung 1753. Fire 1882, rebuilt 1883. Other consorts' shrines were moved here under Gojong and Sunjong, and it became the Chilgung (Seven Shrines) in 1929. Extant.",
         "in_1750_en": "In 1750 it was the Yuksangmyo; it became Yuksanggung in 1753. The Doseong Daejido writes 毓祥宮, showing the map was drawn after 1753. It is placed at that inscription."
       },
-      "name_en": "Yuksanggung (Shrine of Lady Choe)"
+      "name_en": "Yuksangmyo (Yuksanggung from 1753)"
     },
     {
       "id": "gyeongmogung",
-      "name": "경모궁",
+      "name": "함춘원",
       "lat": 37.58,
       "lon": 127.0031,
-      "category": "제례",
-      "reference": "https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%AA%A8%EA%B6%81",
-      "note": "사도세자의 사당입니다. 1764년에 세웠으므로 18세기 중엽 원도에는 그려져 있지 않습니다.",
+      "category": "궁궐",
+      "reference": "https://encykorea.aks.ac.kr/Article/E0062249",
+      "note": "창경궁 동쪽의 왕실 원유(苑囿). 1484년(성종 15) 창경궁을 지으며 담장을 두르고 나무를 심었고, 인조 때 절반을 사복시의 방마장(말 놓아 기르는 곳)으로 내주었다. 1764년 이 자리에 사도세자 사당 수은묘(뒤의 경모궁)를 세웠다. 1750년에는 담장 안에 수목과 방마장이 있는 원유였다.",
       "position_status": "approximate_modern_site",
       "symbol_size_m": [
-        40,
-        14,
-        32
+        60,
+        10,
+        48
       ],
       "size_status": "assumed_display_scale",
       "size_note": "표시용 개략 치수. 실측 복원값이나 시설군 전체 범위가 아닙니다.",
       "temporal": {
         "existence": {
-          "start_year": 1764,
-          "end_year": null,
-          "status": "founded_1764",
-          "note": "영조 40년에 세운 사당이라 1750년 무렵 원도의 표현 대상이 아니다."
+          "start_year": 1484,
+          "end_year": 1764,
+          "status": "garden_1484_shrine_built_1764",
+          "note": "1484년 창경궁 조성 때 동쪽에 둔 원유. 인조 때 절반이 사복시 방마장이 됐고, 1764년 수은묘(1776년 경모궁) 건립으로 사당 구역이 됐다. 1750년 장면은 원유·방마장 상태를 담장과 수목으로만 표시한다."
         },
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": null,
-          "status": "not_read_on_source_map"
+          "reference_year": 1750,
+          "status": "estimated",
+          "note": "원도에서 기호를 판독하지 않은 추정 표시. 담장 범위와 수목은 개략값이다."
         },
-        "sources": []
+        "sources": [
+          {
+            "url": "https://encykorea.aks.ac.kr/Article/E0062249",
+            "supports": "함춘원지: 성종 대 후원 조성, 인조 대 절반을 방마장으로 사용, 1764년 수은묘 이건"
+          },
+          {
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300150&code=kc_age_30",
+            "supports": "경모궁(수은묘) 1764년 건립"
+          }
+        ]
       },
       "modern_position": {
         "method": "approximate_modern_site",
@@ -3804,19 +3814,23 @@
         "precision_m": 100,
         "note": "문헌·표석이 전하는 현재 위치를 개략 좌표로 옮겼다. 원도에서 해당 기호를 판독한 값이 아니다."
       },
-      "display_model": "palace_compound",
+      "display_model": "walled_garden",
       "display_yaw_deg": 0,
-      "model_note": "정전 한 채와 앞뜰을 단순화한 개념 모형. 실측 복원이 아니다.",
-      "palace_roof_tiers": 1,
+      "model_note": "담장과 소나무 숲을 단순화한 개념 모형. 실측 복원이 아니며 수목 배치는 임의다.",
       "info": {
-        "summary": "사도세자의 사당. 터는 오늘날 서울대학교병원 일대다.",
-        "period": "1764년 수은묘로 세움. 1776년 경모궁으로 개칭. 1899년 장조 추존으로 신주를 종묘로 옮기며 폐지.",
-        "in_1750": "없었다. 지도 기준 시점보다 뒤에 세웠다.",
+        "summary": "창경궁 동쪽의 왕실 원유 함춘원. 인조 때부터 절반은 사복시의 방마장으로 썼고, 1764년 이 자리에 사도세자 사당(수은묘, 뒤의 경모궁)이 들어섰다. 터는 오늘날 서울대학교병원 일대다.",
+        "period": "1484년 창경궁 조성 때 원유로 둠. 인조 대 절반을 방마장으로 사용. 1764년 수은묘 건립, 1776년 경모궁 개칭, 1899년 신주를 종묘로 옮기며 폐지.",
+        "in_1750": "담장을 두른 원유였고 절반은 사복시 방마장이었다. 사당(경모궁)은 1764년 이후이므로 1750년 장면에는 담장과 수목만 둔다. 이전 버전에서는 경모궁 사당 모형을 두었으나 2026-09-21 재검토로 바꿨다. 말과 방마장 시설은 표현하지 않았다.",
         "sources": [
+          {
+            "title": "한국민족문화대백과사전 함춘원지",
+            "url": "https://encykorea.aks.ac.kr/Article/E0062249",
+            "title_en": "Encyclopedia of Korean Culture: Hamchunwon Site"
+          },
           {
             "title": "우리역사넷 경모궁 1764",
             "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300150&code=kc_age_30",
-            "title_en": "Uri Yeoksa Net (National Institute of Korean History): Gyeongmogung 1764"
+            "title_en": "National Institute of Korean History: Gyeongmogung 1764"
           },
           {
             "title": "한국민족문화대백과사전 경모궁",
@@ -3824,11 +3838,11 @@
             "title_en": "Encyclopedia of Korean Culture: Gyeongmogung"
           }
         ],
-        "summary_en": "The shrine of Crown Prince Sado. Its site is the area of today's Seoul National University Hospital.",
-        "period_en": "Built 1764 as the Sueunmyo. Renamed Gyeongmogung 1776. Abolished 1899 when Sado was posthumously honored as King Jangjo and his tablet moved to Jongmyo.",
-        "in_1750_en": "Did not exist. It was built after the map's reference date."
+        "summary_en": "Hamchunwon, a walled royal garden east of Changgyeonggung; from the reign of Injo half of it served as a horse pasture of the Saboksi. In 1764 the shrine of Crown Prince Sado (later Gyeongmogung) was built here, today the area of Seoul National University Hospital.",
+        "period_en": "Laid out as a garden in 1484 with Changgyeonggung; half used as a horse pasture from the 1600s. Shrine built 1764, renamed Gyeongmogung 1776, abolished 1899.",
+        "in_1750_en": "A walled garden, half of it a horse pasture. The shrine came after 1764, so the 1750 scene shows only the wall and trees."
       },
-      "name_en": "Gyeongmogung (Shrine of Crown Prince Sado)"
+      "name_en": "Hamchunwon Garden (later site of Gyeongmogung)"
     },
     {
       "id": "jamungam",
@@ -5659,12 +5673,12 @@
       "name": "태평관",
       "category": "관청",
       "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%ED%83%9C%ED%8F%89%EA%B4%80(%E5%A4%AA%E5%B9%B3%E9%A4%A8)",
-      "note": "명 사신의 숙소. 도성대지도에 大平館으로 적혀 있습니다.",
+      "note": "명 사신의 숙소였던 태평관 자리. 임진왜란 뒤 사신 숙소는 남별궁으로 옮겨 갔고 남은 건물의 규모는 확인되지 않았다. 도성대지도의 大平館 글씨는 지명일 수 있어 작은 모형으로만 표시한다.",
       "position_status": "label_read_on_detail_sheet",
       "symbol_size_m": [
-        36,
-        9,
-        32
+        28,
+        8,
+        22
       ],
       "size_status": "assumed_display_scale",
       "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
@@ -5720,7 +5734,7 @@
       "info": {
         "summary": "명나라 사신이 묵던 숙소. 임진왜란 때 크게 부서져 사신 숙소는 남별궁으로 옮겨 갔지만 일부 건물이 남아 연향 장소로 쓰였다. 지금의 서소문동이다.",
         "period": "1395년 한양 천도 뒤 신축. 임진왜란 때 파괴돼 남별궁이 사신 숙소가 됨. 남은 건물은 연향 장소로 썼고, 1908년 이후 일대가 관사로 바뀜.",
-        "in_1750": "있었다. 명이 망한 뒤라 사신 숙소로는 쓰이지 않았으나 도성대지도 부분도 10에 大平館으로 적혀 있어 그 글씨 자리에 두었다.",
+        "in_1750": "자리는 있었으나 남은 건물의 규모는 미확인이다. 명이 망한 뒤라 사신 숙소로는 쓰이지 않았고 도성대지도 부분도 10의 大平館 글씨는 지명(태평관동)일 수 있다. 그 글씨 자리에 축소한 모형으로 두었다.",
         "sources": [
           {
             "title": "조선왕조실록사전 태평관",
@@ -5730,7 +5744,7 @@
         ],
         "summary_en": "The lodge where envoys from Ming China stayed. Heavily damaged in the Imjin War, after which envoys lodged at the Nambyeolgung instead, but some buildings remained and were used for banquets. It is today's Seosomun-dong.",
         "period_en": "Newly built after the move of the capital to Hanyang in 1395. Destroyed in the Imjin War, after which the Nambyeolgung became the envoys' lodge. The remaining buildings were used for banquets, and after 1908 the area became official residences.",
-        "in_1750_en": "Existed. With Ming already fallen it was no longer used to lodge envoys, but sheet 10 of the Doseong Daejido shows 大平館, so it is placed at that inscription."
+        "in_1750_en": "The site remained, but how much of the building survived is unverified; the map label may be a place name. Shown as a reduced model."
       },
       "name_en": "Taepyeonggwan (Ming Envoys' Lodge)"
     },
@@ -7135,15 +7149,15 @@
     },
     {
       "id": "saonseo",
-      "name": "사온서",
+      "name": "사온서 터",
       "category": "관청",
       "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)",
-      "note": "궁중 술을 맡은 관청. 도성대지도에 司醞署로 적혀 있습니다.",
+      "note": "궁중 술을 맡던 관청의 옛 자리. 조선왕조실록사전은 17세기 초 이전 혁파를 추정하므로 1750년에는 기관이 없었을 가능성이 높다. 도성대지도의 司醞署 글씨는 옛 자리 이름으로 보고 표석만 둔다.",
       "position_status": "label_read_on_detail_sheet",
       "symbol_size_m": [
-        26,
-        9,
-        22
+        12,
+        4,
+        10
       ],
       "size_status": "assumed_display_scale",
       "size_note": "청사와 마당을 담은 표시용 치수. 실측 범위가 아닙니다.",
@@ -7151,8 +7165,8 @@
         "existence": {
           "start_year": 1392,
           "end_year": null,
-          "status": "established_1392_end_unknown",
-          "note": "1392년(태조 1) 설치. 서부 적선방에 있었다. 언제 혁파됐는지 알 수 없으며 1617년 이전 폐지 추정도 있다."
+          "status": "established_1392_abolished_probably_before_1617",
+          "note": "1392년(태조 1) 설치. 서부 적선방에 있었다. 실록사전은 17세기 초 이전 혁파를 추정하며 정확한 연도는 확인하지 못했다."
         },
         "depiction": {
           "start_year": null,
@@ -7193,13 +7207,13 @@
         ],
         "note": "부분도 4에서 적선방 원 글씨 동쪽의 가로 글씨 司醞署를 읽어 전체 원도 좌표로 환산했다. 길 판독 마스크와 겹치지 않는다."
       },
-      "display_model": "yukjo_compound",
+      "display_model": "site_marker",
       "display_yaw_deg": 0,
       "model_note": "담장 안 청사를 단순화한 개념 모형. 사온서의 실제 배치를 복원한 것이 아니다.",
       "info": {
         "summary": "궁중에서 쓰는 술과 감주를 맡은 관청. 서부 적선방에 있었다.",
-        "period": "1392년 설치. 혁파 시기는 알 수 없고 17세기 초 이전에 없어졌다고 추정하기도 한다.",
-        "in_1750": "확실하지 않다. 사전은 17세기 초 이전 혁파를 추정하지만, 도성대지도 부분도 4 적선방에 司醞署 글씨가 있어 그 자리에 두었다. 관청이 남아 있었는지, 옛 이름만 적은 것인지는 확인하지 못했다.",
+        "period": "1392년 설치. 17세기 초 이전 혁파 추정. 정확한 연도는 미확인.",
+        "in_1750": "기관은 없었을 가능성이 높다. 실록사전이 17세기 초 이전 혁파를 추정한다. 도성대지도 부분도 4 적선방의 司醞署 글씨는 옛 자리 이름(사온서동)으로 보아 그 자리에 표석만 둔다. 2026-09-21 재검토 전에는 관청 모형을 두었다.",
         "sources": [
           {
             "title": "조선왕조실록사전 사온서",
@@ -7209,9 +7223,9 @@
         ],
         "summary_en": "The office in charge of wine and sweet rice drink for the palace. It stood in Jeokseon-bang in the western district.",
         "period_en": "Established 1392. Date of abolition unknown; some estimate it disappeared before the early 17th century.",
-        "in_1750_en": "Uncertain. The dictionary estimates abolition before the early 17th century, but sheet 4 of the Doseong Daejido has the inscription 司醞署 in Jeokseon-bang, so it is placed there. Whether the office still existed or only the old name was recorded could not be confirmed."
+        "in_1750_en": "Probably no longer existed: the office is thought to have been abolished before the early 1600s. The label on the 1750s map is read as a place name, so only a marker stands here."
       },
-      "name_en": "Saonseo (Palace Wine Office)"
+      "name_en": "Site of Saonseo (Royal Brewery Office)"
     },
     {
       "id": "gyeonggi_gamyeong",
@@ -7955,7 +7969,7 @@
       "name": "만리창",
       "category": "관청",
       "reference": "https://ko.wikipedia.org/wiki/%ED%9A%A8%EC%B0%BD%EA%B3%B5%EC%9B%90",
-      "note": "선혜청의 창고. 도성대지도에 萬里倉으로 적혀 있습니다.",
+      "note": "선혜청의 창고. 도성대지도에 萬里倉으로 적혀 있으나 설치 연도는 확인하지 못했다.",
       "lat": 37.5447104,
       "lon": 126.9608147,
       "position_status": "label_read_on_detail_sheet_shifted_clear_of_roads",
