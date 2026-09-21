@@ -4,8 +4,8 @@
   "date": "1896-02-11",
   "title": "두 대의 가마",
   "title_en": "Two Sedan Chairs",
-  "note": "아관파천 기록을 바탕으로 구성한 개인 회상 체험. 밀서·연락책·통역·이웃과 그 대사, 가마의 수·세부 동선·가마꾼은 창작이며 1907년 지도를 소급 참고한 추정 경로입니다. 현대 지형을 사용합니다. 금천교의 위치·형태와 민가·담장은 추정이며, 새문고개 구간은 현재 새문안교회 앞 부근을 경유하도록 구성했습니다. 현재 교회 건물을 1896년에 재현한 것은 아닙니다. 후일담의 날짜는 출처의 기록을 따르되 인물의 발언으로 인용하지 않습니다.",
-  "note_en": "A personal historical reconstruction. The sealed letter, contacts, interpreter, neighbour and their lines, the two-chair staging, bearers and detailed route are interpretive, using the 1907 map and modern terrain as references. The bridge, roadside houses and walls are speculative. The pass is routed near the front of today’s Saemoonan Church; the modern church is not depicted in 1896. Dates in the epilogue follow the cited sources and are not quoted as anyone’s words.",
+  "note": "아관파천 기록을 바탕으로 구성한 개인 회상 체험. 밀서·연락책·통역·이웃과 그 대사, 가마의 수·세부 동선·가마꾼은 창작이며 1907년 지도를 소급 참고한 추정 경로입니다. 현대 지형을 사용합니다. 금천교의 위치·형태와 민가·담장은 추정이며, 새문고개 구간은 현재 새문안교회 앞 부근을 경유하도록 구성했습니다. 현재 교회 건물을 1896년에 재현한 것은 아닙니다. 후일담의 날짜는 출처의 기록을 따르되 인물의 발언으로 인용하지 않습니다. 새문고개 앞 일본군 순찰과의 조우는 창작 연출입니다.",
+  "note_en": "A personal historical reconstruction. The sealed letter, contacts, interpreter, neighbour and their lines, the two-chair staging, bearers and detailed route are interpretive, using the 1907 map and modern terrain as references. The bridge, roadside houses and walls are speculative. The pass is routed near the front of today’s Saemoonan Church; the modern church is not depicted in 1896. Dates in the epilogue follow the cited sources and are not quoted as anyone’s words. The Japanese patrol before the pass is an invented scene.",
   "speed_mps": 2.8,
   "spacing_m": 9,
   "route": [
@@ -354,5 +354,18 @@
       }
     ]
   },
-  "keepsake_item": "legation_keepsake"
+  "keepsake_item": "legation_keepsake",
+  "patrol": {
+    "before_route_index": 5,
+    "lead_m": 30,
+    "approach_from_m": 100,
+    "leave_m": 35,
+    "soldiers": 3,
+    "speed_mps": 2.4,
+    "warn_distance_m": 8,
+    "notice_distance_m": 80,
+    "note": "일본군 순찰과의 조우는 기록에 없는 창작 연출이다. 1896년 2월 서울에 일본군 수비대가 주둔했다는 사실만 참고했으며 순찰 경로·시각·병력은 추정이 아니라 놀이 장치다.",
+    "note_en": "The encounter with a Japanese patrol is an invented scene. Only the presence of a Japanese garrison in Seoul in February 1896 is factual; the route, hour and party are a game device.",
+    "start_before_m": 60
+  }
 }

@@ -41,6 +41,16 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   return {group,cabin,bearers,curtain};
  }
  const chairs=[chair(0),chair(1)];
+ // Invented near miss: a Japanese patrol comes down the road before the pass. The walker who scouts ahead can send
+ // the bearers into a side lane; if nobody warns them they duck in by themselves, so nothing ever ends in capture.
+ const patrol={state:'pending',soldiers:[],group:new THREE.Group(),along:0,hideAt:0,spot:null,anim:0,from:[],warned:false};patrol.group.name='japanese-patrol';patrol.group.visible=false;root.add(patrol.group);
+ for(let i=0;i<data.patrol.soldiers;i++){
+  const p=createWalker();p.group.name='patrol-soldier';p.group.getObjectByName('walker-body').material.color.set('#3b3f3a');
+  const cap=new THREE.Mesh(new THREE.CylinderGeometry(.19,.18,.11,12),new THREE.MeshStandardMaterial({color:0x2c2f2a}));cap.position.y=1.76;p.group.add(cap);
+  const rifle=new THREE.Mesh(new THREE.BoxGeometry(.055,1.2,.065),new THREE.MeshStandardMaterial({color:0x584434}));rifle.position.set(.38,.83,.02);p.group.add(rifle);
+  patrol.group.add(p.group);patrol.soldiers.push(p);
+ }
+ const warn=document.createElement('button');warn.id='historical-event-warn';warn.textContent=say('가마꾼에게 숨으라고 이르기','Tell the bearers to hide');warn.hidden=true;panel.insertBefore(warn,start);
  const guard=createLegationGuard({scene,groundAt:surface.ground,infrastructure,building:buildings.find(b=>b.userData.feature.id==='russian-legation-1907')});
  let path=[],lengths=[],milestones=[],distance=0,active=false,busy=false,saved=null,finished=false,checkpoint=0,saveQueue=Promise.resolve(),saveError=false,writeCount=0;
  // Checkpoints run through the stages before the route (letter, gate), the route points, then the aftermath.
@@ -99,6 +109,11 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   }
   lengths=[0];for(let i=1;i<path.length;i++)lengths.push(lengths[i-1]+path[i].distanceTo(path[i-1]));milestones=milestones.map(i=>lengths[i]);
   if(!neighborhood)neighborhood=createEventNeighborhood({path,surface,scene,walking,buildings,waterAt});
+  // The hiding place: a passable pocket beside the road a little before the patrol's route point.
+  patrol.hideAt=Math.max(data.spacing_m+20,milestones[data.patrol.before_route_index]-data.patrol.lead_m);
+  const {p:h,yaw}=sample(patrol.hideAt),side=new THREE.Vector3(Math.cos(yaw),0,-Math.sin(yaw));patrol.spot=null;
+  for(const r of [9,12,15,7]){for(const sign of [1,-1]){const q=h.clone().addScaledVector(side,sign*r);if(safe(q)&&safe(h.clone().addScaledVector(side,sign*r/2))){patrol.spot=q;break}}if(patrol.spot)break}
+  if(!patrol.spot)patrol.spot=h.clone();
  }
  // The contacts stand a few steps off the lane; if a data point overlaps a wall, take the nearest passable spot.
  function nearestSafe(p){
@@ -147,6 +162,7 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
    if(saved.status==='completed'&&!restart){start.textContent=say('처음부터 다시 보기','Replay');finished=true;message.textContent=say('이미 마친 회상입니다. 다시 체험할 수 있습니다.','You have completed this visit. You can replay it.');return}
    saved=await api('start');checkpoint=saved.checkpoint;prepareStages();
    distance=Math.min(lengths.at(-1),Math.max(data.spacing_m+7,milestones[Math.max(0,Math.min(data.route.length-1,checkpoint-routeOffset))]));saveError=false;finished=false;arrival?.reset();arrival=null;aftermathStep=0;dialogue.end();setDawn(0);
+   patrol.state=distance>=patrol.hideAt?'done':'pending';patrol.group.visible=false;patrol.warned=false;patrol.seen=false;warn.hidden=true;patrolMessage='';
    if(!fp.active)fp.enter();if(!fp.active)throw Error(say('1인칭을 시작하지 못했습니다.','Could not start walking.'));
    fp.setMounted(false);stagePlacement();active=true;start.hidden=true;
    if(phaseOf(checkpoint)==='done'){complete();return}
@@ -169,6 +185,50 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   });
  }
  leave.onclick=async()=>{active=false;fp.clearInput();await saveQueue;location.href='/1907/?returnFromAgwan=1'+(english?'&lang=en':'')};
+ let patrolMessage='';
+ const patrolPos=()=>patrol.soldiers[0].group.position;
+ function placePatrol(){for(const [i,p] of patrol.soldiers.entries()){const {p:q,yaw}=sample(patrol.along+i*1.6);p.group.position.set(q.x,fp.groundAt(q.x,q.z),q.z);p.group.rotation.y=yaw+Math.PI;p.update(patrol.along*1.4,true)}}
+ function startHiding(byPlayer){
+  patrol.state='hiding';patrol.anim=0;patrol.warned=byPlayer;warn.hidden=true;patrol.from=chairs.map(c=>c.group.position.clone());
+  patrolMessage=byPlayer?say('가마꾼들이 골목으로 들어갑니다. 당신도 눈에 띄지 않게 물러서세요.','The bearers slip into the lane. Keep out of sight yourself.'):say('가마꾼들이 스스로 골목에 숨었습니다. 다음에는 먼저 알려 주세요.','The bearers hid on their own. Warn them sooner next time.');
+ }
+ function updatePatrol(dt){
+  const pd=data.patrol;
+  if(patrol.state==='done'||(patrol.state==='pending'&&distance<patrol.hideAt-pd.start_before_m)){patrolMessage='';return false}
+  if(patrol.state==='pending'){patrol.state='approaching';patrol.along=patrol.hideAt+pd.approach_from_m;patrol.group.visible=true;placePatrol()}
+  const leader=chairs[0].group.position,eye=fp.eye;
+  if(patrol.state==='approaching'){
+   patrol.along-=dt*pd.speed_mps;placePatrol();
+   // Once spotted, the patrol stays known while the walker runs back to the chairs.
+   if(Math.hypot(eye.x-patrolPos().x,eye.z-patrolPos().z)<pd.notice_distance_m)patrol.seen=true;
+   const seen=patrol.seen,close=Math.hypot(eye.x-leader.x,eye.z-leader.z)<pd.warn_distance_m;
+   warn.hidden=!(seen&&close);
+   patrolMessage=seen?close?say('앞에서 순찰이 옵니다. 지금 가마꾼에게 이르세요.','A patrol is coming. Tell the bearers now.'):say('앞에서 순찰이 옵니다! 가마로 돌아가 가마꾼에게 숨으라고 이르세요.','A patrol ahead! Get back to the chairs and tell the bearers to hide.'):'';
+   // Left unwarned, the bearers see the patrol themselves at the last moment.
+   if(distance>=patrol.hideAt||Math.hypot(patrolPos().x-leader.x,patrolPos().z-leader.z)<40)startHiding(false);
+   return false;
+  }
+  if(patrol.state==='hiding'||patrol.state==='returning'){
+   patrol.along-=dt*pd.speed_mps;placePatrol();patrol.anim=Math.min(1,patrol.anim+dt/4);
+   const back=patrol.state==='returning';
+   for(const [i,c] of chairs.entries()){
+    const road=sample(patrol.hideAt-i*data.spacing_m).p,target=patrol.spot.clone().add(new THREE.Vector3(0,0,i*3.2)),a=back?target:patrol.from[i],b=back?road:target;
+    c.group.position.copy(a).lerp(b,patrol.anim);c.group.position.y=fp.groundAt(c.group.position.x,c.group.position.z);c.group.rotation.y=Math.atan2(b.x-a.x,b.z-a.z);
+    for(const p of c.bearers)p.update(patrol.anim*12,patrol.anim<1);
+   }
+   if(patrol.anim>=1){if(back){patrol.state='done';distance=patrol.hideAt;patrol.group.visible=false;patrolMessage='';place();return false}patrol.state='hidden'}
+   return true;
+  }
+  if(patrol.state==='hidden'){
+   patrol.along-=dt*pd.speed_mps;placePatrol();for(const c of chairs)for(const p of c.bearers)p.update(0,false);
+   const brush=Math.hypot(eye.x-patrolPos().x,eye.z-patrolPos().z)<5;
+   patrolMessage=brush?say('순찰이 당신을 힐끗 보고 지나갑니다. 가만히 있으세요.','The patrol glances at you and moves on. Stay still.'):say('가마가 골목에 숨어 있습니다. 순찰이 지나갈 때까지 기다리세요.','The chairs are hidden. Wait for the patrol to pass.');
+   if(patrol.along<patrol.hideAt-pd.leave_m){patrol.state='returning';patrol.anim=0;patrolMessage=say('순찰이 지나갔습니다. 가마가 길로 돌아옵니다.','The patrol has gone. The chairs return to the road.')}
+   return true;
+  }
+  return false;
+ }
+ warn.onclick=()=>{if(patrol.state==='approaching'&&!warn.hidden)startHiding(true)};
  function update(dt){
   neighborhood?.setLod(camera.position);
   if(!active)return;
@@ -186,11 +246,13 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   if(phase==='aftermath'){if(!arrival)arrival=createRoyalArrival({scene,camera,container,chairs,building:buildings.find(b=>b.userData.feature.id==='russian-legation-1907'),fp,say,guard});if(arrival.done){if(!aftermathStep){aftermathStep=1;startAftermath()}if(dawn<1)setDawn(Math.min(1,dawn+Math.min(dt,.1)/25));return}arrival.update(Math.min(dt,.1));return}
   if(arrival){if(arrival.update(Math.min(dt,.1)))advance(routeEnd);return}
   const leader=chairs[0].group.position,tail=chairs[1].group.position,eye=fp.eye,near=Math.min(Math.hypot(eye.x-leader.x,eye.z-leader.z),Math.hypot(eye.x-tail.x,eye.z-tail.z)),far=Math.hypot(eye.x-tail.x,eye.z-tail.z);
-  const moving=far<=45&&near>=3&&!saveError;
-  if(moving)distance=Math.min(lengths.at(-1),distance+Math.min(dt,.1)*data.speed_mps);
-  place();for(const c of chairs){c.cabin.position.y=moving?Math.sin(distance*2)*.025:0;for(const p of c.bearers){p.update(distance,moving);for(const arm of p.group.children.filter(o=>o.isGroup&&Math.abs(o.position.y-1.35)<.01))arm.rotation.x=-1.25}}
+  const step=Math.min(dt,.1),hidden=updatePatrol(step);
+  const moving=far<=45&&near>=3&&!saveError&&!hidden;
+  if(moving)distance=Math.min(lengths.at(-1),distance+step*data.speed_mps);
+  if(!hidden)place();for(const c of chairs){c.cabin.position.y=moving?Math.sin(distance*2)*.025:0;for(const p of c.bearers){p.update(distance,moving);for(const arm of p.group.children.filter(o=>o.isGroup&&Math.abs(o.position.y-1.35)<.01))arm.rotation.x=-1.25}}
   while(checkpoint-routeOffset<milestones.length-2&&distance>=milestones[checkpoint-routeOffset+1]&&far<45){checkpoint++;enqueue(checkpoint)}
   const percent=Math.round(distance/lengths.at(-1)*100),name=data.route[Math.min(checkpoint-routeOffset+1,data.route.length-1)];
+  if(patrolMessage){message.textContent=patrolMessage;return}
   message.textContent=near<3?say('가마에 너무 가깝습니다. 조금 물러서 주세요.','Step back from the chairs.'):far>45?say('가마가 기다립니다. 가까이 오거나 가마 뒤로 돌아가세요.','The chairs are waiting. Catch up or rejoin.'):say(`${name.name} · ${percent}% — 가마와 거리를 두고 따라가세요.`,`${name.name_en} · ${percent}% — Follow at a distance.`);
   if(distance>=lengths.at(-1)&&far<30&&!writeCount){
    fp.clearInput();rejoin.hidden=true;
@@ -208,5 +270,5 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
     message.append(list,document.createElement('br'),say('회상 완료가 계정에 기록되었습니다.','Completion has been saved.'));note.open=true;
    }).catch(error=>{message.textContent=error.message;start.hidden=false});
  }
- return {update,begin,regroup,root,chairs,contacts,quest,get dawn(){return dawn},get spots(){return spots},get phase(){return phaseOf(checkpoint)},get arrival(){return arrival},guard,get neighborhood(){return neighborhood},get path(){return path},get milestones(){return milestones},get active(){return active},get distance(){return distance},get checkpoint(){return checkpoint},get saving(){return writeCount>0}};
+ return {update,begin,regroup,root,chairs,contacts,quest,patrol,warnButton:warn,get dawn(){return dawn},get spots(){return spots},get phase(){return phaseOf(checkpoint)},get arrival(){return arrival},guard,get neighborhood(){return neighborhood},get path(){return path},get milestones(){return milestones},get active(){return active},get distance(){return distance},get checkpoint(){return checkpoint},get saving(){return writeCount>0}};
 }
