@@ -964,7 +964,13 @@ async function main(){
      let npc;
      if(role==='keeper')npc={key:'keeper',mode:'overlay',portrait:'keeper',name:npcData.keeper.name,subtitle:npcData.keeper.subtitle,nodes:npcData.keeper.nodes,position,maxDistance:300,
       begin:()=>model.userData.startTalk(),finish:()=>model.userData.stopTalk(),face:camera=>{model.userData.talk.face=model.worldToLocal(camera.clone())}};
-     else if(role==='officer')npc={key:'officer:'+feature.id,mode:'overlay',portrait:'officer',name:t('{gate} 수문장',{gate}),subtitle:fill(npcData.officer.subtitle,{unit}),nodes:fillNodes(npcData.officer.nodes,{gate,unit}),position};
+     else if(role==='officer'){
+      // Gate-specific court gossip (e.g. the Changdeokgung gates in 1750) adds an option and its nodes to the shared officer script.
+      let nodes=fillNodes(npcData.officer.nodes,{gate,unit});
+      const extra=npcData.officer_changdeok;
+      if(extra?.gates.includes(feature.id)){const opt=extra.option;nodes={...nodes,...extra.nodes,hello:{...nodes.hello,options:[...nodes.hello.options.slice(0,-1),{label:opt.label,next:opt.next},nodes.hello.options.at(-1)]}}}
+      npc={key:'officer:'+feature.id,mode:'overlay',portrait:'officer',name:t('{gate} 수문장',{gate}),subtitle:fill(npcData.officer.subtitle,{unit}),nodes,position};
+     }
      else npc={key:'soldier:'+feature.id,mode:'bubble',portrait:'soldier',name:t('{unit} 군사',{unit:feature.category==='성문'?gate:unit}),nodes:{hello:{text:pickOne(npcData.soldier.greetings,at.x+at.z)}},position};
      best={distance,npc};
     }
