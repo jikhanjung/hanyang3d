@@ -1,0 +1,24 @@
+{% extends "office/base.html" %}{% block title %}대시보드 · 한양도감{% endblock %}{% block content %}
+<h1>대시보드</h1>
+<div class="cards">
+<div class="card"><div class="n">{{ counts.accounts }}</div><div class="l">계정 (전체 방문 {{ counts.players }})</div></div>
+<div class="card"><div class="n">{{ counts.active_day }}</div><div class="l">24시간 활동 · 7일 {{ counts.active_week }}</div></div>
+<div class="card"><div class="n">{{ counts.trades_day }}</div><div class="l">24시간 거래 · 7일 {{ counts.trades_week }}</div></div>
+<div class="card"><div class="n">{{ counts.money }}</div><div class="l">유통 엽전(문)</div></div>
+<div class="card"><div class="n">{{ counts.buildings }}</div><div class="l">공개 건물 · 비공개 {{ counts.buildings_draft }}</div></div>
+<div class="card"><div class="n">{{ counts.stories }}</div><div class="l">공개 이야기</div></div>
+<div class="card"><div class="n">{{ counts.items }}</div><div class="l">공개 물건 · 가게 {{ counts.shops }}</div></div>
+<div class="card"><div class="n">{{ counts.datasets }}</div><div class="l">장면 데이터셋</div></div>
+</div>
+<h2>이벤트(회상) 진행</h2>
+<table><tr><th>이벤트</th><th class="num">진행 중</th><th class="num">완료</th><th class="num">미시작</th></tr>
+{% for id, s in events.items %}<tr><td>{{ id }}</td><td class="num">{{ s.active|default:0 }}</td><td class="num">{{ s.completed|default:0 }}</td><td class="num">{{ s.new|default:0 }}</td></tr>{% empty %}<tr><td colspan="4" class="muted">아직 시작한 계정이 없습니다.</td></tr>{% endfor %}</table>
+<h2>운영 상태</h2>
+<table><tr><th>콘텐츠 원본</th><td>{{ content_source }}</td></tr><tr><th>마지막 콘텐츠 가져오기</th><td>{% if last_import %}{{ last_import.key }} · {{ last_import.imported_at|date:"Y-m-d H:i" }}{% else %}<span class="muted">기록 없음</span>{% endif %}</td></tr></table>
+<h2>최근 거래</h2>
+<table><tr><th>시각</th><th>플레이어</th><th>거래</th><th>물건</th><th class="num">수량</th><th class="num">엽전 변화</th></tr>
+{% for t in recent_trades %}<tr><td>{{ t.created_at|date:"m-d H:i" }}</td><td><a href="{% url 'office:player' t.player_id %}">{{ t.player.name }}</a></td><td>{{ t.get_action_display }}</td><td>{{ t.item }}</td><td class="num">{{ t.quantity }}</td><td class="num">{{ t.money_delta }}</td></tr>{% empty %}<tr><td colspan="6" class="muted">거래 없음</td></tr>{% endfor %}</table>
+<h2>최근 활동 계정</h2>
+<table><tr><th>이름</th><th>마지막 활동</th><th class="num">엽전</th></tr>
+{% for p in recent_players %}<tr><td><a href="{% url 'office:player' p.pk %}">{{ p.name }}</a></td><td>{{ p.last_seen|date:"Y-m-d H:i" }}</td><td class="num">{{ p.money }}</td></tr>{% endfor %}</table>
+{% endblock %}

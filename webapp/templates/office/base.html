@@ -1,0 +1,26 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>{% block title %}한양도감{% endblock %}</title>
+<style>
+:root{--ink:#1f2a24;--muted:#5f6d66;--line:#d9d4c7;--paper:#f8f5ee;--card:#fff;--accent:#1f5f52;--accent-ink:#fff;--warn:#9a4a1f;--ok:#2d7a4f}
+*{box-sizing:border-box}body{margin:0;font:14px/1.55 system-ui,'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper)}
+a{color:var(--accent)}.office{display:grid;grid-template-columns:200px 1fr;min-height:100vh}
+nav.side{background:#17302a;color:#e6e1d3;padding:16px 12px}nav.side .brand{display:block;font-weight:700;font-size:16px;color:#f2ead6;text-decoration:none;margin-bottom:14px}
+nav.side a.module{display:block;color:#cfd8d2;text-decoration:none;padding:7px 10px;border-radius:6px}nav.side a.module.active,nav.side a.module:hover{background:#245248;color:#fff}
+nav.side .foot{margin-top:24px;font-size:12px;color:#9fb0a8}nav.side .foot a{color:#cfd8d2}
+main{padding:20px 24px;min-width:0}h1{font-size:20px;margin:0 0 14px}h2{font-size:15px;margin:22px 0 8px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.card .n{font-size:22px;font-weight:700}.card .l{font-size:12px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;background:var(--card);border:1px solid var(--line);font-size:13px}th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f1ede2;font-weight:600}
+tr:last-child td{border-bottom:none}.num{text-align:right;font-variant-numeric:tabular-nums}.muted{color:var(--muted)}.warn{color:var(--warn)}.ok{color:var(--ok)}
+form.inline{display:inline-flex;gap:4px;align-items:center}input[type=text],input[type=number],input[type=search]{padding:4px 6px;border:1px solid var(--line);border-radius:4px;font:inherit}
+button,.btn{padding:4px 10px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:4px;font:inherit;cursor:pointer;text-decoration:none}.btn.quiet{background:none;color:var(--accent)}
+.messages{list-style:none;padding:0;margin:0 0 12px}.messages li{padding:6px 10px;border-radius:6px;background:#e7f2ea;border:1px solid #bfd9c6;margin-bottom:4px}.messages li.error{background:#f8e6dc;border-color:#e2b9a3}
+pre{background:#f1ede2;padding:8px;border-radius:6px;overflow:auto;font-size:12px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+@media(max-width:700px){.office{grid-template-columns:1fr}nav.side{display:flex;flex-wrap:wrap;gap:4px;align-items:center}nav.side .brand{margin:0 8px 0 0}nav.side .foot{margin:0 0 0 auto}main{padding:14px 16px}}
+</style></head>
+<body><div class="office">
+<nav class="side"><a class="brand" href="{% url 'office:dashboard' %}">한양도감 <small style="font-weight:400;color:#9fb0a8">漢陽都監</small></a>
+{% for name, label in modules %}<a class="module{% if name == active %} active{% endif %}" href="{% url name %}">{{ label }}</a>{% endfor %}
+<div class="foot">{{ user.get_username }} · <a href="{% url 'office:logout' %}">나가기</a><br><a href="/backoffice/">Django 관리(편집)</a><br>웹 {{ app_version }}</div></nav>
+<main>{% if messages %}<ul class="messages">{% for m in messages %}<li class="{{ m.tags }}">{{ m }}</li>{% endfor %}</ul>{% endif %}
+{% block content %}{% endblock %}</main></div></body></html>

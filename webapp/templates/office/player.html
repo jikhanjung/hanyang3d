@@ -1,0 +1,10 @@
+{% extends "office/base.html" %}{% block title %}{{ player.name }} · 한양도감{% endblock %}{% block content %}
+<h1>{{ player.name }}</h1>
+<div class="cards"><div class="card"><div class="n">{{ player.money }}</div><div class="l">엽전(문)</div></div><div class="card"><div class="n">{{ player.created_at|date:"Y-m-d" }}</div><div class="l">처음 방문</div></div><div class="card"><div class="n">{{ player.last_seen|date:"m-d H:i" }}</div><div class="l">마지막 활동</div></div></div>
+<h2>봇짐</h2>
+<table><tr><th>물건</th><th class="num">수량</th></tr>{% for name, n in items %}<tr><td>{{ name }}</td><td class="num">{{ n }}</td></tr>{% empty %}<tr><td colspan="2" class="muted">비어 있음</td></tr>{% endfor %}</table>
+<h2>이벤트 진행</h2>
+<table><tr><th>이벤트</th><th>상태</th><th class="num">확인 지점</th><th>정의 버전</th><th>완료 시각</th></tr>{% for e in progress %}<tr><td>{{ e.event_id }}</td><td>{{ e.get_status_display }}</td><td class="num">{{ e.checkpoint }}</td><td>{{ e.definition_version }}</td><td>{{ e.completed_at|date:"Y-m-d H:i"|default:"—" }}</td></tr>{% empty %}<tr><td colspan="5" class="muted">없음</td></tr>{% endfor %}</table>
+<h2>최근 거래 (50건)</h2>
+<table><tr><th>시각</th><th>거래</th><th>가게</th><th>물건</th><th class="num">수량</th><th class="num">엽전 변화</th><th class="num">거래 뒤</th></tr>{% for t in trades %}<tr><td>{{ t.created_at|date:"m-d H:i" }}</td><td>{{ t.get_action_display }}</td><td>{{ t.shop }}</td><td>{{ t.item }}</td><td class="num">{{ t.quantity }}</td><td class="num">{{ t.money_delta }}</td><td class="num">{{ t.money_after }}</td></tr>{% empty %}<tr><td colspan="7" class="muted">없음</td></tr>{% endfor %}</table>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "office/base.html" %}{% load office %}{% block title %}건물 · 한양도감{% endblock %}{% block content %}
+<h1>건물</h1>
+<form class="filters" method="get"><input type="search" name="q" value="{{ q }}" placeholder="이름·ID 검색">
+<select name="year"><option value="">모든 시대</option><option value="1750"{% if year == "1750" %} selected{% endif %}>1750년</option><option value="1907"{% if year == "1907" %} selected{% endif %}>1907년</option></select>
+<button type="submit">찾기</button><span class="muted">{{ total }}개</span></form>
+<table><tr><th>이름</th><th>ID</th><th>시대</th><th>분류</th><th>모형</th><th class="num">이야기</th><th>공개</th><th></th></tr>
+{% for b in buildings %}<tr><td>{{ b.name }}</td><td class="muted">{{ b.key }}</td><td>{{ b.map_config.scene_year|default:1750 }}</td><td>{{ b.category }}</td><td>{{ b.model_resource.name }}</td><td class="num">{{ story_counts|get_item:b.id|default:0 }}</td><td>{% if b.published %}<span class="ok">공개</span>{% else %}<span class="warn">비공개</span>{% endif %}</td><td><a class="btn quiet" href="/backoffice/webapp/building/{{ b.pk }}/change/">편집</a></td></tr>{% endfor %}</table>
+<p class="muted">편집은 아직 Django 관리 화면에서 합니다. 위치·모형 매개변수 편집기와 지도 미리보기는 다음 단계입니다.</p>
+{% endblock %}

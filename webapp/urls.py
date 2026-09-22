@@ -1,10 +1,11 @@
-from django.urls import path
+from django.urls import include, path
 from django.contrib import admin
 from django.contrib.staticfiles.views import serve as serve_static
 from . import views
 
 urlpatterns = [
     path('backoffice/', admin.site.urls),
+    path('office/', include('webapp.office.urls')),
     path('static/<path:path>', serve_static, {'insecure': True}),
     path('api/scene-data/<slug:key>/', views.scene_dataset, name='scene-dataset'),
     path('events/<slug:event>/', views.seoul1907, name='historical-event'),
