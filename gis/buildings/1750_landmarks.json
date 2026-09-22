@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "period": "18세기 중엽 개관; 정확한 기준연도 미확정",
+  "period": "1750년대 중엽 (도성대지도 제작 창 1753~1760년, 기준 연도 1756)",
   "coordinate_crs": "EPSG:4326",
   "position_method": "Approximate modern site locations manually entered for overview, not surveyed historical building centres or source-map readings.",
   "geometry_status": "symbolic_boxes_not_reconstructed_footprints",
@@ -656,7 +656,7 @@
       "info": {
         "summary": "태조·세조·원종·숙종 등 역대 임금의 어진을 모시고 제사를 지낸 진전. 지금의 중구 저동, 옛 중부경찰서 자리 부근이다.",
         "period": "1619년 남별전으로 시작. 1677년 중건, 1690년 영희전으로 개칭. 1748년 5실로 중건. 1857년 순조 어진 추가. 1899년 경모궁 터로 이전.",
-        "in_1750": "있었다. 1748년 5실로 막 중건한 무렵이다. 도성대지도에 훈도방 남쪽, 나무와 담장으로 둘러싼 永禧殿으로 그려져 있어 그 그림 자리에 두었다.",
+        "in_1750": "있었다. 1748년 5실로 중건한 지 여덟 해쯤 된 때다. 도성대지도에 훈도방 남쪽, 나무와 담장으로 둘러싼 永禧殿으로 그려져 있어 그 그림 자리에 두었다.",
         "sources": [
           {
             "title": "한국민족문화대백과사전 영희전",
@@ -1006,7 +1006,7 @@
         "depiction": {
           "start_year": 1726,
           "end_year": 1835,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "documented_chamber_count",
           "note": "1726년 15칸 증축 이후, 1836년 19칸 증축 이전의 칸수. 형상·치수는 개략이며 정전의 전체 존속 기간과 다름."
         },
@@ -3015,7 +3015,7 @@
       "lon": 126.979405,
       "category": "집터",
       "reference": "https://encykorea.aks.ac.kr/Article/E0050380",
-      "note": "조선 개국공신 정도전의 집이 있던 자리로 전해지는 지점입니다. 1398년 이후 집은 남지 않았고, 1750년 무렵 이 일대에는 사복시가 있었습니다. 표석으로만 표시합니다.",
+      "note": "조선 개국공신 정도전의 집이 있던 자리로 전해지는 지점입니다. 1398년 이후 집은 남지 않았고, 1750년대 중엽 이 일대에는 사복시가 있었습니다. 표석으로만 표시합니다.",
       "position_status": "user_supplied_modern_point",
       "symbol_size_m": [
         1.2,
@@ -3088,7 +3088,7 @@
       "lon": 126.99689,
       "category": "집터",
       "reference": "https://www.heritage.go.kr/heri/cul/culSelectDetail.do?ccbaKdcd=21&ccbaAsno=0000570000000&ccbaCtcd=11",
-      "note": "우암 송시열(1607~1689)이 살던 자리로 전해지는 곳. 1750년에는 송시열의 집으로 부를 건물이 없었고 원도에도 표시가 없어 표석만 둔다. 증주벽립 각자와 우암구기 비석이 전한다.",
+      "note": "우암 송시열(1607~1689)이 살던 자리로 전해지는 곳. 1750년대 중엽에는 송시열의 집으로 부를 건물이 없었고 원도에도 표시가 없어 표석만 둔다. 증주벽립 각자와 우암구기 비석이 전한다.",
       "position_status": "manual_display_point_inside_wall",
       "symbol_size_m": [
         12,
@@ -3258,7 +3258,7 @@
         "depiction": {
           "start_year": null,
           "end_year": 1946,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "seven_storeys_standing_three_on_ground",
           "note": "1750년 무렵에는 일곱 층만 서 있고 세 층은 곁에 놓여 있던 모습으로 표시한다."
         },
@@ -3681,10 +3681,10 @@
     },
     {
       "id": "yuksanggung",
-      "name": "육상묘(1753년 육상궁)",
+      "name": "육상궁",
       "category": "제례",
       "reference": "https://royal.khs.go.kr/ROYAL/contents/R107010000.do",
-      "note": "영조의 생모 숙빈 최씨의 사당. 도성대지도에 毓祥宮으로 적혀 있습니다. 1750년 당시 이름은 육상묘이며 1753년 육상궁으로 승격했다.",
+      "note": "영조의 생모 숙빈 최씨의 사당. 도성대지도에 毓祥宮으로 적혀 있습니다. 1744년 육상묘, 1753년 육상궁으로 승격했으므로 기준 연도(1756)에는 육상궁이 맞습니다.",
       "lat": 37.5853169,
       "lon": 126.9738851,
       "position_status": "manual_source_symbol_hint",
@@ -3743,7 +3743,7 @@
       "info": {
         "summary": "영조의 생모 숙빈 최씨의 사당. 영조가 어머니의 지위를 높여 궁으로 올렸다. 지금의 칠궁 자리다.",
         "period": "1725년 숙빈묘로 세움. 1744년 육상묘, 1753년 육상궁. 1882년 화재, 1883년 중건. 고종·순종 때 다른 후궁 사당들이 옮겨 와 1929년 칠궁이 됐다. 현존.",
-        "in_1750": "1750년에는 육상묘였고 1753년 육상궁이 됐다. 도성대지도에는 毓祥宮으로 적혀 있어, 이 지도가 1753년 이후에 그려졌음을 보여 준다. 그 글씨 자리에 두었다.",
+        "in_1750": "있었다. 1753년 육상궁으로 승격한 뒤다. 도성대지도에 毓祥宮으로 적혀 있어 이 지도가 1753년 이후에 그려졌음을 보여 주며, 그 글씨 자리에 두었다.",
         "sources": [
           {
             "title": "궁능유적본부 칠궁 소개·역사",
@@ -3763,9 +3763,9 @@
         ],
         "summary_en": "The shrine of Royal Noble Consort Sukbin Choe, mother of King Yeongjo. Yeongjo raised his mother's status and elevated it to a gung (palace shrine). It is the site of today's Chilgung.",
         "period_en": "Built 1725 as the Sukbinmyo. Renamed Yuksangmyo 1744 and Yuksanggung 1753. Fire 1882, rebuilt 1883. Other consorts' shrines were moved here under Gojong and Sunjong, and it became the Chilgung (Seven Shrines) in 1929. Extant.",
-        "in_1750_en": "In 1750 it was the Yuksangmyo; it became Yuksanggung in 1753. The Doseong Daejido writes 毓祥宮, showing the map was drawn after 1753. It is placed at that inscription."
+        "in_1750_en": "Stood here, elevated to Yuksanggung in 1753. The map writes 毓祥宮, one of the clues that dates it after 1753; placed at that label."
       },
-      "name_en": "Yuksangmyo (Yuksanggung from 1753)"
+      "name_en": "Yuksanggung (Shrine of Royal Consort Sukbin)"
     },
     {
       "id": "gyeongmogung",
@@ -3793,7 +3793,7 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
           "note": "원도에서 기호를 판독하지 않은 추정 표시. 담장 범위와 수목은 개략값이다."
         },
@@ -3820,7 +3820,7 @@
       "info": {
         "summary": "창경궁 동쪽의 왕실 원유 함춘원. 인조 때부터 절반은 사복시의 방마장으로 썼고, 1764년 이 자리에 사도세자 사당(수은묘, 뒤의 경모궁)이 들어섰다. 터는 오늘날 서울대학교병원 일대다.",
         "period": "1484년 창경궁 조성 때 원유로 둠. 인조 대 절반을 방마장으로 사용. 1764년 수은묘 건립, 1776년 경모궁 개칭, 1899년 신주를 종묘로 옮기며 폐지.",
-        "in_1750": "담장을 두른 원유였고 절반은 사복시 방마장이었다. 사당(경모궁)은 1764년 이후이므로 1750년 장면에는 담장과 수목만 둔다. 이전 버전에서는 경모궁 사당 모형을 두었으나 2026-09-21 재검토로 바꿨다. 말과 방마장 시설은 표현하지 않았다.",
+        "in_1750": "담장을 두른 원유였고 절반은 사복시 방마장이었다. 사당(경모궁)은 1764년 이후이므로 1750년대 장면에는 담장과 수목만 둔다. 이전 버전에서는 경모궁 사당 모형을 두었으나 2026-09-21 재검토로 바꿨다. 말과 방마장 시설은 표현하지 않았다.",
         "sources": [
           {
             "title": "한국민족문화대백과사전 함춘원지",
@@ -4160,7 +4160,7 @@
       "info": {
         "summary": "영조가 왕이 되기 전 연잉군 시절에 살던 집. 경복궁 영추문 맞은편 의통방에 있었고, 영조는 즉위 뒤에도 잠저라 부르며 자주 찾았다. 지금의 통의동 백송 일대다.",
         "period": "1707년 숙종이 인평위궁을 사서 연잉군에게 줌. 1721년 연잉군이 왕세제가 되어 궁으로 들어감. 1729년 효장묘, 1752년 의소묘를 안에 세움. 1907년 폐지되어 국유가 됨.",
-        "in_1750": "있었다. 영조의 잠저로 효장묘가 있었고 1752년 의소묘가 더해졌다. 도성대지도 부분도 4에 경복궁 서쪽 담장 밖에 彰義宮으로 적혀 있어 그 글씨 자리에 두었다.",
+        "in_1750": "있었다. 영조의 잠저로 효장묘와 1752년 더해진 의소묘가 있었다. 도성대지도 부분도 4에 경복궁 서쪽 담장 밖에 彰義宮으로 적혀 있어 그 글씨 자리에 두었다.",
         "sources": [
           {
             "title": "조선왕조실록사전 창의궁",
@@ -4728,7 +4728,7 @@
       "info": {
         "summary": "임진왜란 때 군대를 보낸 명 신종을 제사하려고 창덕궁 후원 서쪽에 쌓은 제단. 영조 때 명 태조와 의종을 더해 크게 고쳤다.",
         "period": "1704년 창덕궁 후원 요금문 밖 옛 별대영 자리에 세움. 1749년 명나라 제도에 맞춰 크게 고치고 태조·의종을 더함. 1884년 폐지.",
-        "in_1750": "있었다. 1749년 막 크게 고친 뒤다. 도성대지도 부분도 2에 창덕궁 후원 북서쪽에 大報壇으로 적혀 있어 그 글씨 자리에 낮은 단으로 두었다.",
+        "in_1750": "있었다. 1749년 크게 고친 뒤 일곱 해쯤 된 때다. 도성대지도 부분도 2에 창덕궁 후원 북서쪽에 大報壇으로 적혀 있어 그 글씨 자리에 낮은 단으로 두었다.",
         "sources": [
           {
             "title": "조선왕조실록사전 대보단",
@@ -5136,7 +5136,7 @@
       "info": {
         "summary": "영조가 탕평의 뜻을 유생들에게 알리려 1742년 성균관 입구에 세운 탕평비를 보호하는 비각.",
         "period": "1742년 건립. 현존.",
-        "in_1750": "있었다. 세운 지 8년째다. 도성대지도 부분도 3에 성균관 입구에 碑閣으로 적혀 있고 작은 집 그림이 있어 그 자리에 두었다.",
+        "in_1750": "있었다. 1742년에 세워 열네 해쯤 된 때다. 도성대지도 부분도 3에 성균관 입구에 碑閣으로 적혀 있고 작은 집 그림이 있어 그 자리에 두었다.",
         "sources": [
           {
             "title": "위키백과 탕평비",
@@ -6224,7 +6224,7 @@
       "info": {
         "summary": "창의문 밖 홍제천 바위 위의 정자. 실록을 완성한 뒤 사초를 씻어 낸 자리로 전한다. 1941년 불타 1977년 다시 지었다.",
         "period": "1500~1505년 무렵 창건으로 추정. 1747년 영조 때 고쳐 지음. 1941년 소실, 1977년 복원. 서울특별시 기념물.",
-        "in_1750": "있었다. 1747년 고쳐 지은 직후다. 도성대지도 부분도 1에 창의문 밖 홍제천 가에 洗劍亭으로 적혀 있어 그 글씨 자리에 작은 정자로 두었다. 도성 밖이다.",
+        "in_1750": "있었다. 1747년 고쳐 지은 지 아홉 해쯤 된 때다. 도성대지도 부분도 1에 창의문 밖 홍제천 가에 洗劍亭으로 적혀 있어 그 글씨 자리에 작은 정자로 두었다. 도성 밖이다.",
         "sources": [
           {
             "title": "위키백과 세검정 (서울)",
@@ -7152,7 +7152,7 @@
       "name": "사온서 터",
       "category": "관청",
       "reference": "http://dh.aks.ac.kr/sillokwiki/index.php/%EC%82%AC%EC%98%A8%EC%84%9C(%E5%8F%B8%E9%86%9E%E7%BD%B2)",
-      "note": "궁중 술을 맡던 관청의 옛 자리. 조선왕조실록사전은 17세기 초 이전 혁파를 추정하므로 1750년에는 기관이 없었을 가능성이 높다. 도성대지도의 司醞署 글씨는 옛 자리 이름으로 보고 표석만 둔다.",
+      "note": "궁중 술을 맡던 관청의 옛 자리. 조선왕조실록사전은 17세기 초 이전 혁파를 추정하므로 1750년대 중엽에는 기관이 없었을 가능성이 높다. 도성대지도의 司醞署 글씨는 옛 자리 이름으로 보고 표석만 둔다.",
       "position_status": "label_read_on_detail_sheet",
       "symbol_size_m": [
         12,
@@ -8152,9 +8152,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8195,7 +8195,7 @@
       "info": {
         "summary": "병조 소속으로 무기와 깃발 등 군수 기물을 만들던 관청. 후기에는 군영의 자체 생산과 역할을 나누었다.",
         "period": "1466년 군기감에서 군기시로 개칭. 1884년 폐지. 기관 연혁이며 개별 청사의 존속 기간은 별도다.",
-        "in_1750": "있었다. 발굴된 시청 부지 권역을 원도의 숭례문 북쪽으로 추정 정합했다. 건물지의 1750년 평면을 복원한 것은 아니다.",
+        "in_1750": "있었다. 발굴된 시청 부지 권역을 원도의 숭례문 북쪽으로 추정 정합했다. 건물지의 1750년대 중엽 평면을 복원한 것은 아니다.",
         "sources": [
           {
             "title": "군기시",
@@ -8240,9 +8240,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8341,9 +8341,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8384,7 +8384,7 @@
       "info": {
         "summary": "창덕궁 옥류천 권역의 초가 정자. 작은 논과 함께 농사의 의미를 돌아보는 공간으로 설명된다.",
         "period": "1636년 건립 기록. 현존 부재와 현재 경작지 형태가 당시와 모두 같다는 뜻은 아니다.",
-        "in_1750": "존재 근거가 있다. 옥류천 권역에 추정 배치했다. 초가지붕과 논은 축약 표현이며 1750년의 경작 면적은 미확정이다.",
+        "in_1750": "존재 근거가 있다. 옥류천 권역에 추정 배치했다. 초가지붕과 논은 축약 표현이며 1750년대 중엽의 경작 면적은 미확정이다.",
         "sources": [
           {
             "title": "궁궐의 연표",
@@ -8399,7 +8399,7 @@
         ],
         "summary_en": "A thatched pavilion in the Ongnyucheon area of Changdeokgung. It is described as a place, together with a small rice paddy, for reflecting on the meaning of farming.",
         "period_en": "Recorded as built 1636. This does not mean the surviving members and the present shape of the paddy are all the same as at the time.",
-        "in_1750_en": "There is evidence it existed. Placed by estimate in the Ongnyucheon area. The thatched roof and paddy are abbreviated representations, and the cultivated area in 1750 is undetermined."
+        "in_1750_en": "There is evidence it existed. Placed by estimate in the Ongnyucheon area. The thatched roof and paddy are abbreviated representations, and the cultivated area in the mid-1750s is undetermined."
       },
       "pavilion": {
         "roof": "thatch",
@@ -8434,9 +8434,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8527,9 +8527,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8576,7 +8576,7 @@
         ],
         "summary_en": "A pavilion in the rear garden of Changdeokgung named by King Sukjong with the virtues of the lotus in mind.",
         "period_en": "Built 1692. The position in the middle of the pond given in records differs from the present position at the pond's edge, and the date of the move is undetermined.",
-        "in_1750_en": "Existed. The pavilion and pond are placed roughly in the rear garden area. The exact position of the pavilion in 1750 and the shape of the pond are estimates."
+        "in_1750_en": "Existed. The pavilion and pond are placed roughly in the rear garden area. The exact position of the pavilion in the mid-1750s and the shape of the pond are estimates."
       },
       "pavilion": {
         "roof": "pyramid",
@@ -8611,9 +8611,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8703,9 +8703,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8754,7 +8754,7 @@
       "info": {
         "summary": "청풍계 김상용 집의 초가 정자. 문인들의 모임과 후대 국왕의 방문 기록이 남았다.",
         "period": "1607년 건립으로 설명되며 1620년 모임, 1790년 방문 기록이 있다. 1750년 존속은 전후 자료에 근거한 추정.",
-        "in_1750": "1750년에도 존속한 것으로 추정한다. 청운동·청풍계 권역에 놓았으며 옛 집터의 정확한 필지는 미확정이다.",
+        "in_1750": "1750년대 중엽에도 존속한 것으로 추정한다. 청운동·청풍계 권역에 놓았으며 옛 집터의 정확한 필지는 미확정이다.",
         "sources": [
           {
             "title": "태고정",
@@ -8779,7 +8779,7 @@
         ],
         "summary_en": "The thatched pavilion of Kim Sang-yong's house at Cheongpunggye. Records survive of literati gatherings and a visit by a later king.",
         "period_en": "Described as built in 1607, with records of a gathering in 1620 and a royal visit in 1790. Its survival in 1750 is an estimate based on sources before and after.",
-        "in_1750_en": "Estimated to have still existed in 1750. Placed in the Cheongun-dong and Cheongpunggye area; the exact lot of the old house is undetermined."
+        "in_1750_en": "Estimated to have still existed in the mid-1750s. Placed in the Cheongun-dong and Cheongpunggye area; the exact lot of the old house is undetermined."
       },
       "pavilion": {
         "roof": "thatch",
@@ -8813,9 +8813,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8906,9 +8906,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -8994,9 +8994,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -9082,9 +9082,9 @@
         "depiction": {
           "start_year": null,
           "end_year": null,
-          "reference_year": 1750,
+          "reference_year": 1756,
           "status": "estimated",
-          "note": "1750년 무렵을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
+          "note": "1750년대 중엽을 설명하기 위한 개략 모형. 현존 모습이나 문헌의 형태 단서를 참고했으며 당시 형상의 확정 복원이 아니다."
         },
         "sources": [
           {
@@ -9157,5 +9157,7 @@
     }
   ],
   "temporal_schema_version": 1,
-  "temporal_policy": "CE integer years, inclusive bounds; null means unverified, not unbounded. Existence and depicted layout periods are independent. Child meshes inherit their parent feature period. Future year filtering must handle unknown bounds explicitly."
+  "temporal_policy": "CE integer years, inclusive bounds; null means unverified, not unbounded. Existence and depicted layout periods are independent. Child meshes inherit their parent feature period. Future year filtering must handle unknown bounds explicitly.",
+  "reference_year": 1756,
+  "reference_note": "서울역사박물관 유물 설명: 육상궁(1753년 승격) 표기로 상한, 북한산성 암문(1760년 대남문 개칭 전)·1760년 준천 뒤 수표 미표시로 하한. 화면 표기는 \"1750년대 중엽\", 존재 판정 기준 연도는 1756."
 }

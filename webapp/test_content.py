@@ -132,7 +132,8 @@ class SceneYearTests(SimpleTestCase):
     def test_landmark_existence_covers_scene_year(self):
         import json
         from django.conf import settings
-        for path, year in (('gis/buildings/1750_landmarks.json', 1750), ('gis/buildings/1907_landmarks.json', 1907)):
+        # The 1750 scene's reference year is 1756 (the map was drawn 1753-1760); the file keeps its 1750 scene key.
+        for path, year in (('gis/buildings/1750_landmarks.json', 1756), ('gis/buildings/1907_landmarks.json', 1907)):
             for feature in json.loads((settings.BASE_DIR / path).read_text())['features']:
                 existence = feature.get('temporal', {}).get('existence', {})
                 start, end = existence.get('start_year'), existence.get('end_year')

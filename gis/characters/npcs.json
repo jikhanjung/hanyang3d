@@ -2160,7 +2160,7 @@
     }
   },
   "officer_changdeok": {
-    "note": "창덕궁 문(돈화문·금호문) 수문장에게만 붙는 1750년 무렵 궁중 소식. 대리청정(1749)·영조의 꾸짖음·세자의 성향·의소세손 출생(1750)은 출처를 따르되 대사는 창작이다. 1762년의 일은 1750년 인물이 알 수 없으므로 말하지 않는다.",
+    "note": "창덕궁 문(돈화문·금호문) 수문장에게만 붙는 1750년대 중엽(기준 1756) 궁중 소식. 대리청정(1749~)·영조의 꾸짖음·세자의 성향·의소세손 요절(1752)과 원손(뒷날 정조) 출생(1752)은 출처를 따르되 대사는 창작이다. 1762년의 일은 당시 인물이 알 수 없으므로 말하지 않는다.",
     "gates": [
       "donhwamun",
       "geumhomun"
@@ -2172,9 +2172,9 @@
     },
     "nodes": {
       "court": {
-        "text": "(목소리를 낮추며) 문지기가 함부로 입에 올릴 일은 아니오만… 작년(1749) 정월부터 세자 저하께서 대리청정을 하고 계시오. 전하께서는 쉰을 넘기셨고 저하는 이제 열여섯이오. 시민당에 나가 신하들을 만나시는데, 큰일은 다 전하께 여쭈어야 한다오.",
-        "text_en": "(lowering his voice) It is not a gatekeeper's place to speak of it, but… since the first month of last year (1749) the Crown Prince has been acting as regent. His Majesty is past fifty and the prince is now sixteen. He receives the ministers at Simindang, yet every weighty matter must still go up to His Majesty.",
-        "year": "1749",
+        "text": "(목소리를 낮추며) 문지기가 함부로 입에 올릴 일은 아니오만… 세자 저하께서 대리청정을 하신 지 벌써 일곱 해째요(1749년부터). 전하께서는 예순을 넘기셨고 저하는 스물둘이시오. 시민당에 나가 신하들을 만나시는데, 큰일은 다 전하께 여쭈어야 한다오.",
+        "text_en": "(lowering his voice) It is not a gatekeeper's place to speak of it, but… the Crown Prince has been acting as regent for seven years now, since 1749. His Majesty is past sixty and the prince is twenty-two. He receives the ministers at Simindang, yet every weighty matter must still go up to His Majesty.",
+        "year": "1749~",
         "sources": [
           {
             "title": "우리역사넷 사도세자",
@@ -2213,7 +2213,7 @@
       "relation": {
         "text": "전하께서 저하를 꾸짖으시는 일이 잦다는 말이 궁 안에 돌고 있소. 신하들 보는 데서도 지으신 글이 모자란다, 먹고 즐기는 욕심을 다스리라 하신다지. 저하께서 전하 앞에서는 말씀도 잘 못 하신다는 이야기도 있고. 우리야 문이나 지키는 처지니 들은 말은 여기서 끊으시오.",
         "text_en": "Word inside the palace is that His Majesty rebukes the prince often, even before the ministers: that his writing falls short, that he must master his appetite for food and pleasure. Some say the prince can hardly speak in his father's presence. We only keep the gate, so let what you have heard stop here.",
-        "year": "1750 무렵",
+        "year": "1750년대",
         "sources": [
           {
             "title": "우리역사넷 사도세자",
@@ -2247,7 +2247,7 @@
       "prince": {
         "text": "저하는 글보다 활과 말을 좋아하시고 병서를 즐겨 읽으신다 하오. 군사들 사이에서는 그 점을 반기는 이가 많소. 다만 전하께서는 학문에 힘쓰라 하시니, 그게 두 분이 어긋나는 까닭이라는 말도 있소.",
         "text_en": "They say the prince prefers the bow and the saddle to the brush, and reads the military classics for pleasure. Many of the soldiers like him for it. But His Majesty presses him to his studies, and some say that is where father and son part ways.",
-        "year": "1750 무렵",
+        "year": "1750년대",
         "sources": [
           {
             "title": "우리역사넷 사도세자",
@@ -2279,14 +2279,19 @@
         ]
       },
       "grandson": {
-        "text": "올해(1750) 팔월에 저하께서 첫아드님을 보셨소. 전하께서 손자를 보시고 크게 기뻐하셨다고 궁 안이 한동안 떠들썩했다오. 원손께서 무탈하게 자라시기를 빌 뿐이오.",
-        "text_en": "In the eighth month of this year (1750) the prince's first son was born. The whole palace was astir with how glad His Majesty was to see a grandson. We only pray the young prince grows up in good health.",
-        "year": "1750",
+        "text": "경사와 슬픔이 함께 있었소. 몇 해 전(1752) 저하의 첫아드님이 세 살에 돌아가셨고, 그해 가을 둘째 원손이 태어나셨소. 이제 다섯 살이신데 전하께서 무척 아끼신다는 말이 돌아 궁 안이 그나마 밝다오.",
+        "text_en": "Joy and sorrow both. A few years ago (1752) the prince's first son died at three, and that autumn a second grandson was born. He is five now, and they say His Majesty dotes on him, which lifts the mood inside the palace a little.",
+        "year": "1752",
         "sources": [
           {
             "title": "국가유산청 조선왕릉 — 의령원(의소세손)",
             "url": "https://royaltombs.cha.go.kr/tombs/selectTombInfoList.do?tombseq=154&mn=RT_01_11_02",
             "title_en": "Korea Heritage Service, Royal Tombs: Uiryeongwon (Prince Uiso)"
+          },
+          {
+            "title": "우리역사넷 사도세자",
+            "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_n304700&code=kc_age_30",
+            "title_en": "National Institute of Korean History: Crown Prince Sado"
           }
         ],
         "options": [

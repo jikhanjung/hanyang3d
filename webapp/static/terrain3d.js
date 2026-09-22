@@ -594,7 +594,7 @@ async function main(){
   close.onclick=()=>{selected=null;clearHover()};
   head.append(title,kind,close);popup.append(head);
   const para=(label,text)=>{if(!text)return;const p=document.createElement('p');if(label){const b=document.createElement('b');b.textContent=label+' ';p.append(b)}p.append(text);popup.append(p)};
-  para('',info.summary);para(t('존재 시기'),info.period);para(t('1750년 무렵'),info.in_1750);
+  para('',info.summary);para(t('존재 시기'),info.period);para(t('1750년대 중엽'),info.in_1750);
   if(f.position_status==='estimated_region')para(t('위치·모형'),t('추정 위치 · 개략 모형. ')+(f.source_position?.note||''));
   if(info.stories?.length){
    const label=document.createElement('p');label.className='popup-stories';label.textContent=t('이야기');popup.append(label);
