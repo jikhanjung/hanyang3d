@@ -2158,41 +2158,5 @@
         ]
       }
     }
-  },
-  "legation_keepsake": {
-    "item": "legation_keepsake",
-    "offer": "아관파천 이야기를 듣고 싶습니다.",
-    "offer_en": "I would like to hear about the flight to the legation.",
-    "nodes": {
-      "rumour": {
-        "text": "아관파천 말이오? 그 일에 관심을 보이는 분이 가끔 있소. 실은 창고에서 나온 낡은 꾸러미가 하나 있는데, 그 일과 관련된 물건이라는 소리는 있지만 나도 뭔지는 잘 모르오. 관심이 있다니 가져가서 한 번 살펴보시오.",
-        "text_en": "The flight to the legation? Now and then someone asks about it. There is an old bundle that turned up in the storeroom; people say it has to do with that night, but I cannot tell you what it is. Since you are interested, take it and have a look.",
-        "options": [
-          {
-            "label": "받아 두겠습니다.",
-            "label_en": "I will take it.",
-            "action": "event:keepsake"
-          },
-          {
-            "label": "다음에 보겠습니다.",
-            "label_en": "Another time.",
-            "action": "close"
-          }
-        ]
-      },
-      "hint": {
-        "text": "그 꾸러미는 이미 드렸소. 봇짐을 열어 한 번 써 보시오. 무슨 일이 일어나는지 나도 궁금하오.",
-        "text_en": "You already have the bundle. Open your pack and try it; I am curious what happens myself.",
-        "options": [
-          {
-            "label": "그리하겠습니다.",
-            "label_en": "I will.",
-            "action": "close"
-          }
-        ]
-      }
-    },
-    "received": "낡은 밀봉 꾸러미를 봇짐에 넣었소. 1인칭에서 봇짐을 열고 써 보시오.",
-    "received_en": "The old sealed bundle is in your pack. Open the pack in first-person view and use it."
   }
 }

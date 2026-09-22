@@ -12,6 +12,9 @@ import {createNavigation1907} from './navigation1907.js';
 import {createSceneCurtain} from './scene_curtain.js';
 import {createHorseDealer} from './horse_dealer.js';
 const eventVisit=!!JSON.parse(document.getElementById('historical-event')?.textContent??'null');
+// Visits that start from this scene: each brings a keepsake item, a giver's dialogue and its transition captions.
+const visits=JSON.parse(document.getElementById('historical-events')?.textContent??'[]');
+const visitByItem=id=>visits.find(v=>v.keepsake.item===id);
 const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
 
 export function createWalk1907({scene,camera,controls,renderer,buildings,infrastructure,infraData,groundAt,surface,geometry,texture,settlement,flatMap}){
@@ -58,12 +61,16 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  // Keep the hitching rail and horses off the walking corridor.
  const horseFrame={x:horseDealer.position.x,z:horseDealer.position.z,yaw:horseDealer.rotation.y};
  collision.addLocal(horseFrame,3.5,.6,2.4,1.5,()=>horseDealer.visible);
- const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='flashback'?useKeepsake():eventVisit?null:npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
- // Using the bundle in 1907 opens the visit; inside the visit it is already the sealed letter.
- function useKeepsake(){const en=document.documentElement.lang==='en';if(eventVisit)return en?'It is the sealed letter now. Deliver it to the contact.':'지금은 봉인된 밀서요. 연락책에게 전하시오.';startHistoricalVisit();return en?'The bundle stirs. Heading into the small hours of 11 February 1896…':'꾸러미가 꿈틀거린다. 1896년 2월 11일 새벽으로 들어갑니다…'}
+ const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='flashback'?useKeepsake(id):eventVisit?null:npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
+ // Using a keepsake in the base scene opens its visit; inside a visit the item is already whatever the story says.
+ function useKeepsake(id){
+  const en=document.documentElement.lang==='en';
+  if(eventVisit){const k=JSON.parse(document.getElementById('historical-event').textContent).keepsake;return en?k.in_visit_en:k.in_visit}
+  const v=visitByItem(id);if(!v)return '';startHistoricalVisit(v);return en?v.keepsake.on_use_en:v.keepsake.on_use;
+ }
  const profile=createWalkProfile({account:shop}),navigation=createNavigation1907(geometry,texture,flatMap);
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile:profile,navigation,
-  positionWorld:{alignment:eventVisit?'agwanpacheon1896':'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
+  positionWorld:{alignment:eventVisit?'visit-'+JSON.parse(document.getElementById('historical-event').textContent).slug:'seoul1907',routeKey:pedestrians.routeKey},getCollision:()=>collision,walkerFactory:()=>createPerson1907(),
   terrainGround:(x,z)=>{const y=groundAt(x,z);return y===null?null:y+.025},
   getSurfaceVersion:()=>infrastructure.walkableVersion??1,
   getWalkables:()=>[...infrastructure.bridges.children.map(o=>[o,()=>infrastructure.bridges.visible]),...buildings.flatMap(b=>(b.userData.walkSurfaces??[]).map(o=>[o,()=>b.visible]))],
@@ -72,14 +79,14 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
   onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
  const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
  together=eventVisit?{stop(){},update(){},connected:false}:createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
- const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='agwanpacheon')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant);else if(action==='event:keepsake')receiveKeepsake();else if(action.startsWith('event:'))eventAction?.(action.slice(6),npc)}});
+ const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='historical-visit')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant);else if(action.startsWith('event:keepsake:'))receiveKeepsake(action.slice(15));else if(action.startsWith('event:'))eventAction?.(action.slice(6),npc)}});
  let eventAction=null;
- async function receiveKeepsake(){
-  const k=npcData.legation_keepsake,en=document.documentElement.lang==='en';
+ async function receiveKeepsake(slug){
+  const v=visits.find(v=>v.slug===slug);if(!v)return;const k=v.keepsake,en=document.documentElement.lang==='en';
   try{
    if(!shop.state.loggedIn&&!await shop.requireLogin())return;
    const csrf=document.cookie.split('; ').find(v=>v.startsWith('csrftoken='))?.slice(10)??'';
-   const r=await fetch('/api/events/agwanpacheon/',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({action:'keepsake'})});
+   const r=await fetch(`/api/events/${slug}/`,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify({action:'keepsake'})});
    const result=await r.json();if(!r.ok)throw Error(result.error||'keepsake request failed');
    await shop.refresh();shop.notify(en?k.received_en:k.received);
   }catch(error){shop.notify(error.message)}
@@ -93,11 +100,11 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
    return info.lines[Math.floor(Math.random()*info.lines.length)].text;
   }:undefined;
   let merchant=r.role==='merchant'?{trade:r.trade,sells:r.trade}:null;
-  // The legation caretaker hands over the bundle that opens the 1896 visit; once owned, only a reminder remains.
-  if(!eventVisit&&r.owner.userData.feature.id==='russian-legation-1907'&&npcData.legation_keepsake){
-   const k=npcData.legation_keepsake,en=document.documentElement.lang==='en',owned=shop.state.items[k.item]>0,node=k.nodes[owned?'hint':'rumour'];
-   dialogueNodes.hello={...dialogueNodes.hello,options:[{label:en?k.offer_en:k.offer,next:'legation_keepsake'},...dialogueNodes.hello.options]};
-   dialogueNodes.legation_keepsake={text:en?node.text_en:node.text,options:node.options.map(o=>({...o,label:en?o.label_en:o.label}))};
+  // A visit's giver hands over the keepsake that opens it; once owned, only a reminder remains.
+  for(const v of eventVisit?[]:visits.filter(v=>v.keepsake.giver_building===r.owner.userData.feature.id)){
+   const k=v.keepsake,en=document.documentElement.lang==='en',owned=shop.state.items[k.item]>0,node=k.nodes[owned?'hint':'rumour'],key='keepsake_'+v.slug;
+   dialogueNodes.hello={...dialogueNodes.hello,options:[{label:en?k.offer_en:k.offer,next:key},...dialogueNodes.hello.options]};
+   dialogueNodes[key]={text:en?node.text_en:node.text,options:node.options.map(o=>({...o,label:en?o.label_en:o.label,action:o.action==='event:keepsake'?'event:keepsake:'+v.slug:o.action}))};
   }
   const corner=r.owner.userData.privateCorner;
   if(r.wander&&corner&&firstPerson.active&&interiorAt(firstPerson.eye)===r.owner&&firstPerson.eye.distanceTo(r.position)<3){
@@ -115,16 +122,16 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  dialogue.register({pick(event,hitTest){let best=null;if(pedestrians.group.visible)for(const w of pedestrians.walkers){const distance=hitTest(event,w.position,1.95,80);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:{key:w.id,mode:'bubble',name:data.pedestrian.name,portrait:'walker1907',nodes:data.pedestrian.nodes,position:()=>w.position,maxDistance:100}}}return best}});
  firstPerson.fishing=createFishing({scene,camera,firstPerson,shop,dialogue,waterSurface:infrastructure.water.children[0],bridge:infrastructure.bridges.children.find(b=>b.userData.feature.id===npcData.fishing.bridge_ids['1907']),groundAt,collision:()=>collision,data:npcData,era:1907,visible:()=>el('people3d').checked});
  const curtain=createSceneCurtain();
- async function startHistoricalVisit(){
+ async function startHistoricalVisit(visit=visits[0]){
+  if(!visit)return;
   if(!shop.state.loggedIn&&!await shop.requireLogin())return;
   if(!firstPerson.active)firstPerson.enter();if(!firstPerson.active)return;
   try{sessionStorage.setItem('agwan-return',JSON.stringify({name:shop.state.name,mounted:firstPerson.mounted}))}catch{}
-  // Dissolve out of 1907 and arrive in 1896 still on foot: the next page opens behind the same curtain.
-  const en=document.documentElement.lang==='en';
+  // Dissolve out of 1907 and arrive in the visit still on foot: the next page opens behind the same curtain.
+  const en=document.documentElement.lang==='en',t=visit.transition;
   firstPerson.clearInput();
-  await curtain.show(en?'You open the bundle. Everything goes dark and the ground tilts…':'꾸러미를 펼치자 눈앞이 캄캄해지고 어지럽다…');
-  curtain.remember(en?'When you come to — the small hours of 11 February 1896, Jeongdong':'정신을 차려 보니 — 1896년 2월 11일 새벽, 정동');
-  location.href='/events/agwanpacheon/'+(document.documentElement.lang==='en'?'?lang=en':'');
+  await curtain.show(en?t.out_en:t.out);curtain.remember(en?t.in_en:t.in);
+  location.href=`/events/${visit.slug}/`+(en?'?lang=en':'');
  }
  let press=null;const canvas=renderer.domElement;
  canvas.addEventListener('pointerdown',e=>{if(e.button===0)press={x:e.clientX,y:e.clientY,id:e.pointerId}});

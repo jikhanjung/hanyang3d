@@ -17,6 +17,8 @@
 
 ## 작업 기록
 
+- [258 — 회상 전환 커튼과 퀘스트 틀](20260922_258_historical_event_framework.md)
+
 - [257 — v0.5.42 배포](20260921_257_deploy_v0542.md)
 
 - [256 — 아관파천 순찰 조우 연출](20260921_256_agwan_patrol_near_miss.md)

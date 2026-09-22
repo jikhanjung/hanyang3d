@@ -1,7 +1,8 @@
 import json
 from django.test import TestCase, Client, override_settings
 from .models import Player, EventProgress
-from .events import definition, last_checkpoint
+from .events import definition as _definition, definitions, last_checkpoint, validate
+def definition():return _definition('agwanpacheon')
 from .economy import catalog
 def definition_shops():return catalog()['shops']
 
@@ -41,7 +42,19 @@ class HistoricalEventTests(TestCase):
     @override_settings(CONTENT_SOURCE='files')
     def test_flashback_page_is_separate(self):
         self.assertEqual(self.client.get('/events/agwanpacheon/').context['historical_event']['date'],'1896-02-11')
-        self.assertIsNone(self.client.get('/1907/').context['historical_event'])
+        page=self.client.get('/1907/')
+        self.assertIsNone(page.context['historical_event'])
+        # The base scene learns only what it needs from each visit: slug, keepsake giver and transition captions.
+        self.assertEqual([v['slug'] for v in page.context['historical_events']],['agwanpacheon'])
+        self.assertEqual(page.context['historical_events'][0]['keepsake']['giver_building'],'russian-legation-1907')
+        self.assertEqual(self.client.get('/events/no-such-visit/').status_code,404)
+        self.assertEqual(self.post_to('no-such-visit',action='status').status_code,404)
+    def post_to(self,slug,**data):return self.client.post(f'/api/events/{slug}/',json.dumps(data),content_type='application/json')
+    def test_every_definition_validates(self):
+        for slug,data in definitions().items():
+            validate(data)
+            self.assertEqual(data['slug'],slug)
+            self.assertGreaterEqual(last_checkpoint(data),1)
 
 class ActionBarTests(TestCase):
     def setUp(self):

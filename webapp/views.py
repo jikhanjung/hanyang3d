@@ -60,9 +60,16 @@ def terrain3d(request, canvas_only=False):
 
 @require_safe
 @ensure_csrf_cookie
-def seoul1907(request, flashback=False):
+def seoul1907(request, event=None):
     from .economy import catalog
-    from .events import definition
+    from .events import definition, summaries
+    if event is not None:
+        try:
+            event = definition(event)
+        except KeyError:
+            raise Http404
+        if event.get('base_scene') != 'seoul1907':
+            raise Http404
     config = json.loads((settings.BASE_DIR / 'gis/control_points/seoul1907.json').read_text())
     if settings.CONTENT_SOURCE == 'database':
         from .content import load_buildings
@@ -71,7 +78,7 @@ def seoul1907(request, flashback=False):
         buildings = json.loads((settings.BASE_DIR / 'gis/buildings/1907_landmarks.json').read_text())
     from .scene_data import load
     infrastructure = load('infrastructure1907')
-    response = render(request, 'seoul1907.html', {'historical_event': definition() if flashback else None, 'npcs': localize(catalog(), request.lang), 'people1907': localize(load('people1907'), request.lang), 'trams1907': load('trams1907'), 'walking1907': load('walking1907'), 'multiplayer_url': settings.MULTIPLAYER_URL, 'walk_world_version': settings.WALK_WORLD_VERSION, 'infrastructure': infrastructure, 'settlement1907': load('settlement1907'), 'map': config, 'buildings': localize(buildings, request.lang), 'app_version': settings.APP_VERSION})
+    response = render(request, 'seoul1907.html', {'historical_event': event, 'historical_events': [] if event else summaries('seoul1907'), 'npcs': localize(catalog(), request.lang), 'people1907': localize(load('people1907'), request.lang), 'trams1907': load('trams1907'), 'walking1907': load('walking1907'), 'multiplayer_url': settings.MULTIPLAYER_URL, 'walk_world_version': settings.WALK_WORLD_VERSION, 'infrastructure': infrastructure, 'settlement1907': load('settlement1907'), 'map': config, 'buildings': localize(buildings, request.lang), 'app_version': settings.APP_VERSION})
 
     response['Cache-Control']='no-cache, must-revalidate'
     return response
@@ -278,14 +285,14 @@ def herb_action(request):
 
 
 @require_POST
-def historical_event(request):
+def historical_event(request, slug):
     from .economy import TradeError, player_from_cookie
     from .events import progress
     player=player_from_cookie(request)
     if not player or not player.name_key:return _no_store(JsonResponse({'error':'로그인이 필요합니다.'},status=401))
     body=_json_body(request)
     if body is None:return _no_store(JsonResponse({'error':'잘못된 요청입니다.'},status=400))
-    try:return _no_store(JsonResponse(progress(player,body.get('action'),body.get('checkpoint'),body.get('version'))))
+    try:return _no_store(JsonResponse(progress(player,slug,body.get('action'),body.get('checkpoint'),body.get('version'))))
     except TradeError as error:return _no_store(JsonResponse({'error':error.message},status=error.status))
 
 

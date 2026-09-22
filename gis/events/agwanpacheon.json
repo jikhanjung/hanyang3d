@@ -1,109 +1,20 @@
 {
+  "schema_version": 2,
   "id": "agwanpacheon-1896",
+  "slug": "agwanpacheon",
   "version": 3,
+  "base_scene": "seoul1907",
   "date": "1896-02-11",
   "title": "두 대의 가마",
   "title_en": "Two Sedan Chairs",
+  "panel_title": "1896년 2월 11일 · 두 대의 가마",
+  "panel_title_en": "11 February 1896 · Two Sedan Chairs",
+  "document_title": "아관파천 회상 · 한양3D",
+  "document_title_en": "Agwanpacheon · Hanyang3D",
+  "intro": "영추문 밖에서 가마를 따라 정동으로 향합니다.",
+  "intro_en": "Follow the chairs from Yeongchumun to Jeongdong.",
   "note": "아관파천 기록을 바탕으로 구성한 개인 회상 체험. 밀서·연락책·통역·이웃과 그 대사, 가마의 수·세부 동선·가마꾼은 창작이며 1907년 지도를 소급 참고한 추정 경로입니다. 현대 지형을 사용합니다. 금천교의 위치·형태와 민가·담장은 추정이며, 새문고개 구간은 현재 새문안교회 앞 부근을 경유하도록 구성했습니다. 현재 교회 건물을 1896년에 재현한 것은 아닙니다. 후일담의 날짜는 출처의 기록을 따르되 인물의 발언으로 인용하지 않습니다. 새문고개 앞 일본군 순찰과의 조우는 창작 연출입니다.",
   "note_en": "A personal historical reconstruction. The sealed letter, contacts, interpreter, neighbour and their lines, the two-chair staging, bearers and detailed route are interpretive, using the 1907 map and modern terrain as references. The bridge, roadside houses and walls are speculative. The pass is routed near the front of today’s Saemoonan Church; the modern church is not depicted in 1896. Dates in the epilogue follow the cited sources and are not quoted as anyone’s words. The Japanese patrol before the pass is an invented scene.",
-  "speed_mps": 2.8,
-  "spacing_m": 9,
-  "route": [
-    {
-      "pixel": [
-        666,
-        1783
-      ],
-      "name": "영추문 안",
-      "name_en": "Inside Yeongchumun"
-    },
-    {
-      "pixel": [
-        650,
-        1783
-      ],
-      "name": "영추문 밖",
-      "name_en": "Outside Yeongchumun"
-    },
-    {
-      "pixel": [
-        600,
-        1865
-      ],
-      "name": "금천교 동쪽 진입",
-      "name_en": "Bridge east approach",
-      "bridge_id": "geumcheon-reconstruction-1896",
-      "bridge_side": -1
-    },
-    {
-      "pixel": [
-        560,
-        1875
-      ],
-      "name": "금천교 건너편",
-      "name_en": "Across the bridge",
-      "bridge_id": "geumcheon-reconstruction-1896",
-      "bridge_side": 1
-    },
-    {
-      "pixel": [
-        550,
-        2010
-      ],
-      "name": "내수사 앞길",
-      "name_en": "Naesusa road"
-    },
-    {
-      "pixel": [
-        570,
-        2110
-      ],
-      "name": "새문고개 방면",
-      "name_en": "Towards Saemungogae"
-    },
-    {
-      "pixel": [
-        598,
-        2207
-      ],
-      "name": "새문고개 · 현 새문안교회 앞 부근",
-      "name_en": "Saemungogae / near today’s Saemoonan Church"
-    },
-    {
-      "pixel": [
-        486,
-        2250
-      ],
-      "name": "정동으로",
-      "name_en": "Towards Jeongdong"
-    },
-    {
-      "pixel": [
-        411,
-        2315
-      ],
-      "name": "정동 입구",
-      "name_en": "Entering Jeongdong"
-    },
-    {
-      "pixel": [
-        420,
-        2340
-      ],
-      "name": "러시아공사관 앞",
-      "name_en": "Outside the Russian legation",
-      "building_front": "russian-legation-1907"
-    }
-  ],
-  "retained_buildings": [
-    "yeongchumun-1907",
-    "gwanghwamun-1907",
-    "geunjeongjeon-1907",
-    "gyeonghoeru-1907",
-    "russian-legation-1907",
-    "donuimun-1907",
-    "sungnyemun-1907"
-  ],
   "sources": [
     {
       "title": "한국민족문화대백과 — 아관파천",
@@ -126,220 +37,445 @@
       "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401000"
     }
   ],
-  "bridge": {
-    "id": "geumcheon-reconstruction-1896",
-    "name": "금천교 (위치·형태 추정)",
-    "name_en": "Geumcheongyo (interpretive placement)",
-    "pixel": [
-      580,
-      1870
-    ],
-    "width_m": 7,
-    "rails": false,
-    "temporal": {
-      "reference_year": 1896,
-      "status": "interpretive_route_crossing"
-    },
-    "note": "아관파천 경로에 금천교가 언급되나 정확한 교량 위치·규모 미확정. 백운동천 횡단을 위한 체험용 추정 배치."
-  },
-  "stages_before": [
-    "letter",
-    "gate"
-  ],
-  "stages_after": [
-    "aftermath"
-  ],
-  "letter": {
-    "item": "봉인된 밀서",
-    "item_en": "Sealed letter",
-    "start_pixel": [
-      420,
-      2340
-    ],
-    "contact_pixel": [
-      411,
-      2315
-    ],
-    "contact": {
-      "name": "정동의 연락책",
-      "name_en": "Contact in Jeongdong",
-      "subtitle": "창작 인물",
-      "subtitle_en": "Fictional character",
-      "portrait": "keeper"
-    },
+  "keepsake": {
+    "item": "legation_keepsake",
+    "giver_building": "russian-legation-1907",
+    "missing": "1907년 러시아공사관 관리인에게 낡은 꾸러미를 받아 봇짐에서 써야 들어올 수 있습니다.",
+    "missing_en": "Receive the old bundle from the legation caretaker in 1907 and use it from your pack to enter.",
+    "in_visit": "지금은 봉인된 밀서요. 연락책에게 전하시오.",
+    "in_visit_en": "It is the sealed letter now. Deliver it to the contact.",
+    "on_use": "꾸러미가 꿈틀거린다. 1896년 2월 11일 새벽으로 들어갑니다…",
+    "on_use_en": "The bundle stirs. Heading into the small hours of 11 February 1896…",
+    "offer": "아관파천 이야기를 듣고 싶습니다.",
+    "offer_en": "I would like to hear about the flight to the legation.",
     "nodes": {
-      "hello": {
-        "text": "밤길에 수고요. 정동 안쪽까지 오는 데 눈에 띄지는 않았소? 편지는 가져왔소?",
-        "text_en": "A long walk in the dark. Nobody followed you into Jeongdong? Do you have the letter?",
+      "rumour": {
+        "text": "아관파천 말이오? 그 일에 관심을 보이는 분이 가끔 있소. 실은 창고에서 나온 낡은 꾸러미가 하나 있는데, 그 일과 관련된 물건이라는 소리는 있지만 나도 뭔지는 잘 모르오. 관심이 있다니 가져가서 한 번 살펴보시오.",
+        "text_en": "The flight to the legation? Now and then someone asks about it. There is an old bundle that turned up in the storeroom; people say it has to do with that night, but I cannot tell you what it is. Since you are interested, take it and have a look.",
         "options": [
           {
-            "label": "봉인된 편지를 건넨다.",
-            "label_en": "Hand over the sealed letter.",
-            "next": "letter"
-          }
-        ]
-      },
-      "letter": {
-        "text": "봉인이 그대로군. 좋소. 오늘 새벽, 궁에서 조용히 나오는 이들이 있소. 자네는 궁궐 서쪽 문, 영추문 밖으로 가서 거기 연락책을 만나시오. 가는 길에 이 근처 골목을 눈에 익혀 두고.",
-        "text_en": "The seal is unbroken. Good. Before dawn some people will leave the palace quietly. Go to the west gate, Yeongchumun, and meet our contact outside it. Learn these lanes on the way.",
-        "options": [
-          {
-            "label": "누가 나옵니까?",
-            "label_en": "Who is leaving?",
-            "next": "who"
+            "label": "받아 두겠습니다.",
+            "label_en": "I will take it.",
+            "action": "event:keepsake"
           },
           {
-            "label": "알겠습니다. 영추문으로 가겠습니다.",
-            "label_en": "Understood. I will go to Yeongchumun.",
-            "action": "event:letter_done"
+            "label": "다음에 보겠습니다.",
+            "label_en": "Another time.",
+            "action": "close"
           }
         ]
       },
-      "who": {
-        "text": "묻지 마시오. 자네가 할 일은 앞길에 사람만 몰리지 않게 살피는 것뿐이오. 이름은 입에 올리지 마시오.",
-        "text_en": "Do not ask. Your task is only to see that no crowd gathers on the road ahead. Do not speak any names.",
+      "hint": {
+        "text": "그 꾸러미는 이미 드렸소. 봇짐을 열어 한 번 써 보시오. 무슨 일이 일어나는지 나도 궁금하오.",
+        "text_en": "You already have the bundle. Open your pack and try it; I am curious what happens myself.",
         "options": [
           {
-            "label": "알겠습니다. 영추문으로 가겠습니다.",
-            "label_en": "Understood. I will go to Yeongchumun.",
-            "action": "event:letter_done"
+            "label": "그리하겠습니다.",
+            "label_en": "I will.",
+            "action": "close"
           }
         ]
       }
     },
-    "transformed": "봇짐의 낡은 밀봉 꾸러미가 봉인된 밀서로 돌아갔다.",
-    "transformed_en": "The old sealed bundle in your pack has become a sealed letter again."
+    "received": "낡은 밀봉 꾸러미를 봇짐에 넣었소. 1인칭에서 봇짐을 열고 써 보시오.",
+    "received_en": "The old sealed bundle is in your pack. Open the pack in first-person view and use it."
   },
-  "gate": {
-    "contact_pixel": [
-      646,
-      1794
+  "transition": {
+    "out": "꾸러미를 펼치자 눈앞이 캄캄해지고 어지럽다…",
+    "out_en": "You open the bundle. Everything goes dark and the ground tilts…",
+    "in": "정신을 차려 보니 — 1896년 2월 11일 새벽, 정동",
+    "in_en": "When you come to — the small hours of 11 February 1896, Jeongdong",
+    "back_out": "새벽의 기억이 흐려지고 다시 눈앞이 어두워진다…",
+    "back_out_en": "The memory of that dawn blurs and the dark returns…",
+    "back_in": "정신을 차려 보니 — 1907년, 정동",
+    "back_in_en": "When you come to — Jeongdong, 1907"
+  },
+  "scene": {
+    "retained_buildings": [
+      "yeongchumun-1907",
+      "gwanghwamun-1907",
+      "geunjeongjeon-1907",
+      "gyeonghoeru-1907",
+      "russian-legation-1907",
+      "donuimun-1907",
+      "sungnyemun-1907"
     ],
-    "contact": {
-      "name": "영추문 밖 연락책",
-      "name_en": "Contact outside Yeongchumun",
-      "subtitle": "창작 인물",
-      "subtitle_en": "Fictional character",
-      "portrait": "keeper"
-    },
-    "nodes": {
-      "hello": {
-        "text": "정동에서 왔소? 목소리를 낮추시오. 곧 문이 열릴 거요.",
-        "text_en": "From Jeongdong? Keep your voice down. The gate will open soon.",
-        "options": [
-          {
-            "label": "무엇을 하면 됩니까?",
-            "label_en": "What should I do?",
-            "next": "wait"
-          }
-        ]
+    "hide_people": true,
+    "lighting": {
+      "start": {
+        "sky": "#101827",
+        "hemi": "#859bbd",
+        "ground": "#383e48",
+        "sun": "#b9cef1",
+        "hemi_intensity": 0.95,
+        "sun_intensity": 0.65
       },
-      "wait": {
-        "text": "가마 두 대가 나올 것이오. 가마 안을 들여다보려 하지 마시오. 거리를 두고 뒤따르면서 앞길에 사람만 몰리지 않게 살펴주면 되오. 가마가 정동에 닿는지 확인하시오.",
-        "text_en": "Two chairs will come out. Do not try to look inside. Follow at a distance and see that no crowd gathers ahead. Make sure the chairs reach Jeongdong.",
-        "options": [
-          {
-            "label": "조용히 기다리겠습니다.",
-            "label_en": "I will wait quietly.",
-            "action": "event:gate_done"
-          }
-        ]
+      "end": {
+        "sky": "#9fb3cc",
+        "hemi": "#d9dfe6",
+        "ground": "#6a6457",
+        "sun": "#f1e3c4",
+        "hemi_intensity": 1.4,
+        "sun_intensity": 1.2
       }
     }
   },
-  "aftermath": {
-    "interpreter": {
-      "name": "공사관의 통역",
-      "name_en": "Legation interpreter",
-      "subtitle": "창작 인물",
-      "subtitle_en": "Fictional character",
-      "portrait": "walker"
-    },
-    "interpreter_nodes": {
-      "hello": {
-        "text": "먼 길 고생했소. 이제 알아도 되오. 가마에 타신 분은 대군주 폐하와 왕세자 저하시오.",
-        "text_en": "You have come a long way. You may know now: the chairs carried His Majesty and the crown prince.",
-        "options": [
-          {
-            "label": "어째서 궁을 떠나신 겁니까?",
-            "label_en": "Why did they leave the palace?",
-            "next": "why"
-          }
-        ]
+  "stages": [
+    {
+      "key": "letter",
+      "type": "talk",
+      "walker_start_pixel": [
+        420,
+        2340
+      ],
+      "contact_pixel": [
+        411,
+        2315
+      ],
+      "contact": {
+        "name": "정동의 연락책",
+        "name_en": "Contact in Jeongdong",
+        "subtitle": "창작 인물",
+        "subtitle_en": "Fictional character",
+        "portrait": "keeper",
+        "color": "#8a8378"
       },
-      "why": {
-        "text": "궁 안이 안전하지 않다고 여기신 게요. 오늘 새벽 폐하께서는 경복궁을 떠나 이곳 러시아공사관으로 거처를 옮기셨소. 위협은 피하셨으나 외국 공관에 기대야 하는 처지가 된 것이오.",
-        "text_en": "The palace was judged unsafe. Before dawn today His Majesty left Gyeongbokgung and moved his residence here, to the Russian legation — safe from the threat, yet dependent on a foreign mission.",
-        "year": "1896년 2월 11일",
-        "sources": [
-          {
-            "title": "한국민족문화대백과 — 아관파천",
-            "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+      "nodes": {
+        "hello": {
+          "text": "밤길에 수고요. 정동 안쪽까지 오는 데 눈에 띄지는 않았소? 편지는 가져왔소?",
+          "text_en": "A long walk in the dark. Nobody followed you into Jeongdong? Do you have the letter?",
+          "options": [
+            {
+              "label": "봉인된 편지를 건넨다.",
+              "label_en": "Hand over the sealed letter.",
+              "next": "letter"
+            }
+          ]
+        },
+        "letter": {
+          "text": "봉인이 그대로군. 좋소. 오늘 새벽, 궁에서 조용히 나오는 이들이 있소. 자네는 궁궐 서쪽 문, 영추문 밖으로 가서 거기 연락책을 만나시오. 가는 길에 이 근처 골목을 눈에 익혀 두고.",
+          "text_en": "The seal is unbroken. Good. Before dawn some people will leave the palace quietly. Go to the west gate, Yeongchumun, and meet our contact outside it. Learn these lanes on the way.",
+          "options": [
+            {
+              "label": "누가 나옵니까?",
+              "label_en": "Who is leaving?",
+              "next": "who"
+            },
+            {
+              "label": "알겠습니다. 영추문으로 가겠습니다.",
+              "label_en": "Understood. I will go to Yeongchumun.",
+              "action": "event:letter_done"
+            }
+          ]
+        },
+        "who": {
+          "text": "묻지 마시오. 자네가 할 일은 앞길에 사람만 몰리지 않게 살피는 것뿐이오. 이름은 입에 올리지 마시오.",
+          "text_en": "Do not ask. Your task is only to see that no crowd gathers on the road ahead. Do not speak any names.",
+          "options": [
+            {
+              "label": "알겠습니다. 영추문으로 가겠습니다.",
+              "label_en": "Understood. I will go to Yeongchumun.",
+              "action": "event:letter_done"
+            }
+          ]
+        }
+      },
+      "task": "봇짐의 낡은 밀봉 꾸러미가 봉인된 밀서로 돌아갔다. 임무 물품: 봉인된 밀서 (거래 불가)",
+      "task_en": "The old sealed bundle in your pack has become a sealed letter again. Task item: Sealed letter (cannot be traded)",
+      "hint": "정동의 연락책에게 밀서를 전하세요. {m}m",
+      "hint_en": "Deliver the letter to the contact in Jeongdong. {m} m",
+      "done_action": "letter_done",
+      "after": "영추문 밖의 연락책을 찾아가세요. 궁궐 서쪽 문입니다.",
+      "after_en": "Find the contact outside Yeongchumun, the west gate of the palace."
+    },
+    {
+      "key": "gate",
+      "type": "talk",
+      "contact_pixel": [
+        646,
+        1794
+      ],
+      "contact": {
+        "name": "영추문 밖 연락책",
+        "name_en": "Contact outside Yeongchumun",
+        "subtitle": "창작 인물",
+        "subtitle_en": "Fictional character",
+        "portrait": "keeper",
+        "color": "#6f6a5e"
+      },
+      "nodes": {
+        "hello": {
+          "text": "정동에서 왔소? 목소리를 낮추시오. 곧 문이 열릴 거요.",
+          "text_en": "From Jeongdong? Keep your voice down. The gate will open soon.",
+          "options": [
+            {
+              "label": "무엇을 하면 됩니까?",
+              "label_en": "What should I do?",
+              "next": "wait"
+            }
+          ]
+        },
+        "wait": {
+          "text": "가마 두 대가 나올 것이오. 가마 안을 들여다보려 하지 마시오. 거리를 두고 뒤따르면서 앞길에 사람만 몰리지 않게 살펴주면 되오. 가마가 정동에 닿는지 확인하시오.",
+          "text_en": "Two chairs will come out. Do not try to look inside. Follow at a distance and see that no crowd gathers ahead. Make sure the chairs reach Jeongdong.",
+          "options": [
+            {
+              "label": "조용히 기다리겠습니다.",
+              "label_en": "I will wait quietly.",
+              "action": "event:gate_done"
+            }
+          ]
+        }
+      },
+      "hint": "영추문 밖 연락책까지 {m}m — 궁궐 서쪽 문으로 가세요.",
+      "hint_en": "{m} m to the contact outside Yeongchumun, the west gate.",
+      "done_action": "gate_done",
+      "after": "문이 열립니다. 가마와 거리를 두고 따라가세요.",
+      "after_en": "The gate opens. Follow the chairs at a distance."
+    },
+    {
+      "key": "procession",
+      "type": "module",
+      "module": "procession",
+      "route": [
+        {
+          "pixel": [
+            666,
+            1783
+          ],
+          "name": "영추문 안",
+          "name_en": "Inside Yeongchumun"
+        },
+        {
+          "pixel": [
+            650,
+            1783
+          ],
+          "name": "영추문 밖",
+          "name_en": "Outside Yeongchumun"
+        },
+        {
+          "pixel": [
+            600,
+            1865
+          ],
+          "name": "금천교 동쪽 진입",
+          "name_en": "Bridge east approach",
+          "bridge_id": "geumcheon-reconstruction-1896",
+          "bridge_side": -1
+        },
+        {
+          "pixel": [
+            560,
+            1875
+          ],
+          "name": "금천교 건너편",
+          "name_en": "Across the bridge",
+          "bridge_id": "geumcheon-reconstruction-1896",
+          "bridge_side": 1
+        },
+        {
+          "pixel": [
+            550,
+            2010
+          ],
+          "name": "내수사 앞길",
+          "name_en": "Naesusa road"
+        },
+        {
+          "pixel": [
+            570,
+            2110
+          ],
+          "name": "새문고개 방면",
+          "name_en": "Towards Saemungogae"
+        },
+        {
+          "pixel": [
+            598,
+            2207
+          ],
+          "name": "새문고개 · 현 새문안교회 앞 부근",
+          "name_en": "Saemungogae / near today’s Saemoonan Church"
+        },
+        {
+          "pixel": [
+            486,
+            2250
+          ],
+          "name": "정동으로",
+          "name_en": "Towards Jeongdong"
+        },
+        {
+          "pixel": [
+            411,
+            2315
+          ],
+          "name": "정동 입구",
+          "name_en": "Entering Jeongdong"
+        },
+        {
+          "pixel": [
+            420,
+            2340
+          ],
+          "name": "러시아공사관 앞",
+          "name_en": "Outside the Russian legation",
+          "building_front": "russian-legation-1907"
+        }
+      ],
+      "speed_mps": 2.8,
+      "spacing_m": 9,
+      "bridge": {
+        "id": "geumcheon-reconstruction-1896",
+        "name": "금천교 (위치·형태 추정)",
+        "name_en": "Geumcheongyo (interpretive placement)",
+        "pixel": [
+          580,
+          1870
+        ],
+        "width_m": 7,
+        "rails": false,
+        "temporal": {
+          "reference_year": 1896,
+          "status": "interpretive_route_crossing"
+        },
+        "note": "아관파천 경로에 금천교가 언급되나 정확한 교량 위치·규모 미확정. 백운동천 횡단을 위한 체험용 추정 배치."
+      },
+      "patrol": {
+        "before_route_index": 5,
+        "lead_m": 30,
+        "approach_from_m": 100,
+        "leave_m": 35,
+        "soldiers": 3,
+        "speed_mps": 2.4,
+        "warn_distance_m": 8,
+        "notice_distance_m": 80,
+        "note": "일본군 순찰과의 조우는 기록에 없는 창작 연출이다. 1896년 2월 서울에 일본군 수비대가 주둔했다는 사실만 참고했으며 순찰 경로·시각·병력은 추정이 아니라 놀이 장치다.",
+        "note_en": "The encounter with a Japanese patrol is an invented scene. Only the presence of a Japanese garrison in Seoul in February 1896 is factual; the route, hour and party are a game device.",
+        "start_before_m": 60
+      },
+      "arrival_building": "russian-legation-1907",
+      "arrival_message": "러시아공사관에 도착했습니다. 가마에서 내리는 일행을 지켜보세요.",
+      "arrival_message_en": "The chairs have arrived. Watch the passengers enter the legation."
+    },
+    {
+      "key": "aftermath",
+      "type": "talks",
+      "lighting_to": "end",
+      "lighting_seconds": 25,
+      "speakers": [
+        {
+          "key": "interpreter",
+          "at": "module:host",
+          "spec": {
+            "name": "공사관의 통역",
+            "name_en": "Legation interpreter",
+            "subtitle": "창작 인물",
+            "subtitle_en": "Fictional character",
+            "portrait": "walker"
           },
-          {
-            "title": "고종실록 1896년 2월 11일",
-            "url": "https://sillok.history.go.kr/id/kza_13302011_005"
-          }
-        ],
-        "options": [
-          {
-            "label": "이제 어떻게 됩니까?",
-            "label_en": "What happens now?",
-            "next": "next"
-          }
-        ]
-      },
-      "next": {
-        "text": "날이 밝으면 알게 될 것이오. 거리로 나가 보시오. 소문이 벌써 돌고 있을 게요.",
-        "text_en": "You will see when it is light. Go out to the street; the rumours have already started.",
-        "options": [
-          {
-            "label": "거리로 나가 본다.",
-            "label_en": "Go out to the street.",
-            "action": "event:reveal_done"
-          }
-        ]
-      }
-    },
-    "neighbour": {
-      "name": "정동 골목의 이웃",
-      "name_en": "Neighbour in Jeongdong",
-      "subtitle": "창작 인물",
-      "subtitle_en": "Fictional character",
-      "portrait": "walker1907"
-    },
-    "neighbour_nodes": {
-      "hello": {
-        "text": "들었소? 대군주 폐하께서 아라사 공사관으로 옮기셨다오. 새벽에 가마를 타고 나오셨다는구려.",
-        "text_en": "Have you heard? His Majesty has moved to the Russian legation. They say he came out before dawn in a chair.",
-        "options": [
-          {
-            "label": "도성은 어떻습니까?",
-            "label_en": "And the city?",
-            "next": "city"
-          }
-        ]
-      },
-      "city": {
-        "text": "이날 김홍집 내각은 무너졌고, 김홍집과 정병하는 거리에서 목숨을 잃었다 하오. 세상이 하루아침에 뒤집혔소.",
-        "text_en": "The Kim Hong-jip cabinet fell that day; Kim Hong-jip and Jeong Byeong-ha were killed in the street, they say. The world turned over in a morning.",
-        "year": "1896년 2월 11일",
-        "sources": [
-          {
-            "title": "한국민족문화대백과 — 아관파천",
-            "url": "https://encykorea.aks.ac.kr/Article/E0034214"
-          }
-        ],
-        "options": [
-          {
-            "label": "그 뒤의 이야기를 듣는다.",
-            "label_en": "Hear what came after.",
-            "action": "event:aftermath_done"
-          }
-        ]
-      }
-    },
-    "epilogue": [
+          "nodes": {
+            "hello": {
+              "text": "먼 길 고생했소. 이제 알아도 되오. 가마에 타신 분은 대군주 폐하와 왕세자 저하시오.",
+              "text_en": "You have come a long way. You may know now: the chairs carried His Majesty and the crown prince.",
+              "options": [
+                {
+                  "label": "어째서 궁을 떠나신 겁니까?",
+                  "label_en": "Why did they leave the palace?",
+                  "next": "why"
+                }
+              ]
+            },
+            "why": {
+              "text": "궁 안이 안전하지 않다고 여기신 게요. 오늘 새벽 폐하께서는 경복궁을 떠나 이곳 러시아공사관으로 거처를 옮기셨소. 위협은 피하셨으나 외국 공관에 기대야 하는 처지가 된 것이오.",
+              "text_en": "The palace was judged unsafe. Before dawn today His Majesty left Gyeongbokgung and moved his residence here, to the Russian legation — safe from the threat, yet dependent on a foreign mission.",
+              "year": "1896년 2월 11일",
+              "sources": [
+                {
+                  "title": "한국민족문화대백과 — 아관파천",
+                  "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+                },
+                {
+                  "title": "고종실록 1896년 2월 11일",
+                  "url": "https://sillok.history.go.kr/id/kza_13302011_005"
+                }
+              ],
+              "options": [
+                {
+                  "label": "이제 어떻게 됩니까?",
+                  "label_en": "What happens now?",
+                  "next": "next"
+                }
+              ]
+            },
+            "next": {
+              "text": "날이 밝으면 알게 될 것이오. 거리로 나가 보시오. 소문이 벌써 돌고 있을 게요.",
+              "text_en": "You will see when it is light. Go out to the street; the rumours have already started.",
+              "options": [
+                {
+                  "label": "거리로 나가 본다.",
+                  "label_en": "Go out to the street.",
+                  "action": "event:reveal_done"
+                }
+              ]
+            }
+          },
+          "intro": "공사관의 통역이 다가옵니다.",
+          "intro_en": "The legation interpreter approaches."
+        },
+        {
+          "key": "neighbour",
+          "at": "beside_walker",
+          "spec": {
+            "name": "정동 골목의 이웃",
+            "name_en": "Neighbour in Jeongdong",
+            "subtitle": "창작 인물",
+            "subtitle_en": "Fictional character",
+            "portrait": "walker1907",
+            "color": "#b9ad93"
+          },
+          "nodes": {
+            "hello": {
+              "text": "들었소? 대군주 폐하께서 아라사 공사관으로 옮기셨다오. 새벽에 가마를 타고 나오셨다는구려.",
+              "text_en": "Have you heard? His Majesty has moved to the Russian legation. They say he came out before dawn in a chair.",
+              "options": [
+                {
+                  "label": "도성은 어떻습니까?",
+                  "label_en": "And the city?",
+                  "next": "city"
+                }
+              ]
+            },
+            "city": {
+              "text": "이날 김홍집 내각은 무너졌고, 김홍집과 정병하는 거리에서 목숨을 잃었다 하오. 세상이 하루아침에 뒤집혔소.",
+              "text_en": "The Kim Hong-jip cabinet fell that day; Kim Hong-jip and Jeong Byeong-ha were killed in the street, they say. The world turned over in a morning.",
+              "year": "1896년 2월 11일",
+              "sources": [
+                {
+                  "title": "한국민족문화대백과 — 아관파천",
+                  "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+                }
+              ],
+              "options": [
+                {
+                  "label": "그 뒤의 이야기를 듣는다.",
+                  "label_en": "Hear what came after.",
+                  "action": "event:aftermath_done"
+                }
+              ]
+            }
+          },
+          "intro": "날이 밝았습니다. 이웃이 소문을 전합니다.",
+          "intro_en": "It is light now. A neighbour brings the rumours."
+        }
+      ]
+    }
+  ],
+  "epilogue": {
+    "lead": "1896년 2월 11일, 고종과 왕세자는 경복궁을 떠나 러시아공사관으로 거처를 옮겼습니다. 그 뒤의 일은 날짜와 함께 남깁니다.",
+    "lead_en": "On 11 February 1896 Gojong and the crown prince moved from Gyeongbokgung to the Russian legation. What followed is listed with its dates.",
+    "items": [
       {
         "date": "1897-02-20",
         "text": "고종은 약 1년 만에 러시아공사관을 떠나 경운궁(지금의 덕수궁)으로 돌아왔다.",
@@ -353,19 +489,5 @@
         "source": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401000"
       }
     ]
-  },
-  "keepsake_item": "legation_keepsake",
-  "patrol": {
-    "before_route_index": 5,
-    "lead_m": 30,
-    "approach_from_m": 100,
-    "leave_m": 35,
-    "soldiers": 3,
-    "speed_mps": 2.4,
-    "warn_distance_m": 8,
-    "notice_distance_m": 80,
-    "note": "일본군 순찰과의 조우는 기록에 없는 창작 연출이다. 1896년 2월 서울에 일본군 수비대가 주둔했다는 사실만 참고했으며 순찰 경로·시각·병력은 추정이 아니라 놀이 장치다.",
-    "note_en": "The encounter with a Japanese patrol is an invented scene. Only the presence of a Japanese garrison in Seoul in February 1896 is factual; the route, hour and party are a game device.",
-    "start_before_m": 60
   }
 }

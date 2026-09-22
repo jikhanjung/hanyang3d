@@ -16,7 +16,6 @@ def public_resource_paths():
     allowed = {a['local_path'] for a in assets()}
     allowed.update({
         'webapp/static/seoul1907.js',
-        'webapp/static/agwanpacheon.js',
         'webapp/static/event_neighborhood.js',
         'webapp/static/royal_arrival.js',
         'webapp/static/settlement1907.js',
@@ -53,6 +52,8 @@ def public_resource_paths():
         'webapp/static/walled_garden.js',
         'webapp/static/quest_marker.js',
         'webapp/static/scene_curtain.js',
+        'webapp/static/historical_event.js',
+        'webapp/static/events/procession.js',
         'webapp/static/site_marker.js',
         'webapp/static/bell_tower.js',
         'webapp/static/training_ground.js',
