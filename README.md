@@ -74,7 +74,7 @@
 
 ## Docker 배포
 
-운영 이미지는 `honestjung/hanyang3d:v0.5.46`과 `honestjung/hanyang3d-multiplayer:v0.5.31`입니다. 개발 호스트에서 `bash deploy/build.sh <버전> --web-only`로 웹 이미지와 지도 데이터 묶음을 만들고 검증한 뒤, dolfinid에서는 이미지를 받아 교체만 합니다. 절차·배포 기록·digest는 [배포 안내](deploy/README.md)에 있습니다. 산출물은 `dist/`에 생성하며 Git에는 포함하지 않습니다.
+운영 이미지는 `honestjung/hanyang3d:v0.5.47`과 `honestjung/hanyang3d-multiplayer:v0.5.31`입니다. 개발 호스트에서 `bash deploy/build.sh <버전> --web-only`로 웹 이미지와 지도 데이터 묶음을 만들고 검증한 뒤, dolfinid에서는 이미지를 받아 교체만 합니다. 절차·배포 기록·digest는 [배포 안내](deploy/README.md)에 있습니다. 산출물은 `dist/`에 생성하며 Git에는 포함하지 않습니다.
 
 ## 실행과 검사
 
