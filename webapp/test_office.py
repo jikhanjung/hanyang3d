@@ -2,7 +2,7 @@ import json
 from django.contrib.admin.models import LogEntry
 from django.contrib.auth.models import Permission, User
 from django.test import TestCase, override_settings
-from .models import Item, Player
+from .models import EventProgress, Item, Player
 
 
 @override_settings(CONTENT_SOURCE='files')
@@ -44,3 +44,29 @@ class OfficeTests(TestCase):
         self.client.post('/office/items/paper/price/', {'price': 20})
         self.assertEqual(Item.objects.get(key='paper').price, 20)
         self.assertEqual(LogEntry.objects.filter(object_repr__contains='종이').count(), 1)
+
+    def test_money_adjustment_and_event_reset_need_permission_reason_and_log(self):
+        player = Player.objects.get(name='사무검사')
+        progress = EventProgress.objects.create(player=player, event_id='agwanpacheon-1896', definition_version=3, status='completed', checkpoint=13)
+        money_url, reset_url = f'/office/players/{player.pk}/money/', f'/office/players/{player.pk}/events/{progress.pk}/reset/'
+        self.client.login(username='viewer', password='viewer-secret')
+        self.assertNotContains(self.client.get(f'/office/players/{player.pk}/'), 'name="delta"')
+        self.assertEqual(self.client.post(money_url, {'delta': 100, 'reason': '검사'}).status_code, 403)
+        self.assertEqual(self.client.post(reset_url, {'reason': '검사'}).status_code, 403)
+        self.staff.user_permissions.add(Permission.objects.get(codename='change_player'), Permission.objects.get(codename='change_eventprogress'))
+        self.client.login(username='office', password='office-secret')
+        self.assertContains(self.client.get(f'/office/players/{player.pk}/'), 'name="delta"')
+        before = player.money
+        self.client.post(money_url, {'delta': 100, 'reason': ''})          # no reason: refused
+        self.client.post(money_url, {'delta': -(before + 1), 'reason': '너무 많이'})  # below zero: refused
+        self.client.post(money_url, {'delta': 0, 'reason': '영'})           # zero: refused
+        self.assertEqual(Player.objects.get(pk=player.pk).money, before)
+        self.client.post(money_url, {'delta': 150, 'reason': '검사 지급'})
+        self.assertEqual(Player.objects.get(pk=player.pk).money, before + 150)
+        self.client.post(reset_url, {'reason': '다시 보기 요청'})
+        progress.refresh_from_db()
+        self.assertEqual((progress.status, progress.checkpoint, progress.completed_at), ('new', 0, None))
+        logs = LogEntry.objects.filter(object_id=str(player.pk)).order_by('id')
+        self.assertEqual(logs.count(), 2)
+        self.assertIn('검사 지급', logs[0].change_message); self.assertIn('다시 보기 요청', logs[1].change_message)
+        self.assertContains(self.client.get(f'/office/players/{player.pk}/'), '다시 보기 요청')

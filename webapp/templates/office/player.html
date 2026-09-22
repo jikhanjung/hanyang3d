@@ -1,10 +1,15 @@
 {% extends "office/base.html" %}{% block title %}{{ player.name }} · 도성도감{% endblock %}{% block content %}
 <h1>{{ player.name }}</h1>
 <div class="cards"><div class="card"><div class="n">{{ player.money }}</div><div class="l">엽전(문)</div></div><div class="card"><div class="n">{{ player.created_at|date:"Y-m-d" }}</div><div class="l">처음 방문</div></div><div class="card"><div class="n">{{ player.last_seen|date:"m-d H:i" }}</div><div class="l">마지막 활동</div></div></div>
+{% if can_adjust %}<h2>엽전 조정</h2>
+<form class="inline" method="post" action="{% url 'office:player-money' player.pk %}">{% csrf_token %}<input type="number" name="delta" placeholder="+100 / -50" required style="width:8em"><input type="text" name="reason" placeholder="사유 (필수)" required minlength="2" style="width:18em"><button type="submit" onclick="return confirm('엽전을 조정합니다. 계속할까요?')">적용</button></form>
+<p class="muted">변화량을 문 단위로 적습니다. 0 아래로 내려가는 조정은 거부되며 사유와 함께 관리 기록에 남습니다.</p>{% endif %}
 <h2>봇짐</h2>
 <table><tr><th>물건</th><th class="num">수량</th></tr>{% for name, n in items %}<tr><td>{{ name }}</td><td class="num">{{ n }}</td></tr>{% empty %}<tr><td colspan="2" class="muted">비어 있음</td></tr>{% endfor %}</table>
 <h2>이벤트 진행</h2>
-<table><tr><th>이벤트</th><th>상태</th><th class="num">확인 지점</th><th>정의 버전</th><th>완료 시각</th></tr>{% for e in progress %}<tr><td>{{ e.event_id }}</td><td>{{ e.get_status_display }}</td><td class="num">{{ e.checkpoint }}</td><td>{{ e.definition_version }}</td><td>{{ e.completed_at|date:"Y-m-d H:i"|default:"—" }}</td></tr>{% empty %}<tr><td colspan="5" class="muted">없음</td></tr>{% endfor %}</table>
+<table><tr><th>이벤트</th><th>상태</th><th class="num">확인 지점</th><th>정의 버전</th><th>완료 시각</th>{% if can_reset %}<th>초기화</th>{% endif %}</tr>{% for e in progress %}<tr><td>{{ e.event_id }}</td><td>{{ e.get_status_display }}</td><td class="num">{{ e.checkpoint }}</td><td>{{ e.definition_version }}</td><td>{{ e.completed_at|date:"Y-m-d H:i"|default:"—" }}</td>{% if can_reset %}<td><form class="inline" method="post" action="{% url 'office:player-event-reset' player.pk e.pk %}">{% csrf_token %}<input type="text" name="reason" placeholder="사유 (필수)" required minlength="2" style="width:14em"><button type="submit" class="quiet" onclick="return confirm('{{ e.event_id }} 진행을 처음으로 되돌립니다. 계속할까요?')">처음으로</button></form></td>{% endif %}</tr>{% empty %}<tr><td colspan="6" class="muted">없음</td></tr>{% endfor %}</table>
+<h2>관리 기록 (최근 20)</h2>
+<table><tr><th>시각</th><th>관원</th><th>내용</th></tr>{% for h in history %}<tr><td>{{ h.action_time|date:"Y-m-d H:i" }}</td><td>{{ h.user.get_username }}</td><td>{{ h.get_change_message }}</td></tr>{% empty %}<tr><td colspan="3" class="muted">없음</td></tr>{% endfor %}</table>
 <h2>최근 거래 (50건)</h2>
 <table><tr><th>시각</th><th>거래</th><th>가게</th><th>물건</th><th class="num">수량</th><th class="num">엽전 변화</th><th class="num">거래 뒤</th></tr>{% for t in trades %}<tr><td>{{ t.created_at|date:"m-d H:i" }}</td><td>{{ t.get_action_display }}</td><td>{{ t.shop }}</td><td>{{ t.item }}</td><td class="num">{{ t.quantity }}</td><td class="num">{{ t.money_delta }}</td><td class="num">{{ t.money_after }}</td></tr>{% empty %}<tr><td colspan="7" class="muted">없음</td></tr>{% endfor %}</table>
 {% endblock %}

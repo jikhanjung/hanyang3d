@@ -6,7 +6,8 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.models import CHANGE, LogEntry
 from django.contrib.contenttypes.models import ContentType
-from django.db.models import Count, Q, Sum
+from django.db import transaction
+from django.db.models import Count, F, Q, Sum
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
@@ -67,8 +68,68 @@ def player_detail(request, pk):
     from ..economy import catalog
     names = {k: v['name'] for k, v in catalog()['items'].items()}
     items = [(names.get(i.item, i.item), i.quantity) for i in player.items.order_by('item')]
+    content_type = ContentType.objects.get_for_model(Player)
+    history = LogEntry.objects.filter(content_type=content_type, object_id=str(player.pk)).select_related('user').order_by('-action_time')[:20]
     return page(request, 'player', 'office:players', player=player, items=items,
-                trades=player.trades.order_by('-created_at')[:50], progress=player.historical_events.order_by('event_id'))
+                trades=player.trades.order_by('-created_at')[:50], progress=player.historical_events.order_by('event_id'),
+                history=history, can_adjust=request.user.has_perm('webapp.change_player'), can_reset=request.user.has_perm('webapp.change_eventprogress'))
+
+
+def _reason(request):
+    reason = request.POST.get('reason', '').strip()
+    if len(reason) < 2:
+        messages.error(request, '사유를 적어야 합니다.')
+        return None
+    return reason
+
+
+def _log_player(request, player, note):
+    LogEntry.objects.log_actions(request.user.pk, [player], CHANGE, note, single_object=True)
+
+
+@require_POST
+@office_required('webapp.change_player')
+def player_money(request, pk):
+    """Add or take coins with a reason. The delta is applied atomically and can never push the purse below zero."""
+    player = get_object_or_404(Player, pk=pk)
+    reason = _reason(request)
+    try:
+        delta = int(request.POST.get('delta', ''))
+        if delta == 0 or abs(delta) > 1_000_000:
+            raise ValueError
+    except ValueError:
+        messages.error(request, '변화량은 0이 아닌 정수(±1,000,000문 이내)여야 합니다.')
+        return redirect('office:player', pk)
+    if reason is None:
+        return redirect('office:player', pk)
+    with transaction.atomic():
+        locked = Player.objects.select_for_update().get(pk=pk)
+        if locked.money + delta < 0:
+            messages.error(request, f'엽전이 {locked.money}문뿐이라 {-delta}문을 뺄 수 없습니다.')
+            return redirect('office:player', pk)
+        before = locked.money
+        Player.objects.filter(pk=pk).update(money=F('money') + delta)
+        after = before + delta
+        _log_player(request, locked, f'엽전 {before} → {after} ({delta:+}) · {reason}')
+    messages.success(request, f'{player.name}: 엽전 {before}문 → {after}문')
+    return redirect('office:player', pk)
+
+
+@require_POST
+@office_required('webapp.change_eventprogress')
+def player_event_reset(request, pk, progress_pk):
+    """Put one visit back to 'not started' so the account plays it from the beginning; completion time is kept in the log."""
+    player = get_object_or_404(Player, pk=pk)
+    row = get_object_or_404(EventProgress, pk=progress_pk, player=player)
+    reason = _reason(request)
+    if reason is None:
+        return redirect('office:player', pk)
+    note = f'회상 {row.event_id} 초기화 (이전: {row.status}, 확인 지점 {row.checkpoint}, 완료 {row.completed_at.isoformat() if row.completed_at else "없음"}) · {reason}'
+    row.status, row.checkpoint, row.completed_at = 'new', 0, None
+    row.save()
+    _log_player(request, player, note)
+    messages.success(request, f'{player.name}: {row.event_id} 진행을 처음으로 되돌렸습니다.')
+    return redirect('office:player', pk)
 
 
 @office_required()
@@ -110,7 +171,7 @@ def item_price(request, key):
     if price != before:
         item.price = price
         item.full_clean(); item.save()
-        LogEntry.objects.log_actions(request.user.pk, [item], CHANGE, [{'changed': {'fields': ['값(문)'], 'office': f'{before} → {price}'}}], single_object=True)
+        LogEntry.objects.log_actions(request.user.pk, [item], CHANGE, f'값 {before}문 → {price}문 (도성도감)', single_object=True)
         messages.success(request, f'{item.name}: {before}문 → {price}문')
     return redirect('office:items')
 
