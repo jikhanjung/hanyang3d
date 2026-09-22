@@ -29,7 +29,7 @@ export function formatMoney(mun){const nyang=Math.floor(mun/100),rest=mun%100;re
 const csrfToken=()=>document.cookie.split('; ').find(c=>c.startsWith('csrftoken='))?.slice(10)??'';
 const post=(url,body)=>fetch(url,{method:'POST',credentials:'same-origin',cache:'no-store',headers:{'Content-Type':'application/json','X-CSRFToken':csrfToken()},body:JSON.stringify(body)});
 
-export function createShop({container,data,onLogout,onUse}){
+export function createShop({container,data,onLogout,onUse,onMessage}){
  const state={money:null,items:{},ready:false,loggedIn:false,name:''};
  let shop=null,quantity=1,busy=false,loginResolve=null,readyResolve,hudShown=false,packPage=0;
  const whenReady=new Promise(resolve=>{readyResolve=resolve});
@@ -99,7 +99,7 @@ export function createShop({container,data,onLogout,onUse}){
  function useItem(id){
   const item=data.items[id];if(!item||!(state.items[id]>0))return;
   if(!item.use){packMessage(t('{name}은(는) 쓸 데가 없소.',{name:item.name}));return}
-  const result=onUse?.(id)??'';packMessage(result);actionMessage.textContent=result;renderPack();renderActions();
+  const result=onUse?.(id)??'';packMessage(result);actionMessage.textContent=result;onMessage?.(result);renderPack();renderActions();
  }
  function renderPack(){
   if(packWin.hidden)return;
@@ -242,6 +242,6 @@ export function createShop({container,data,onLogout,onUse}){
  refresh();
  function showHud(shown){hudShown=shown;hud.hidden=playerHud.hidden=!state.loggedIn||!hudShown;renderActions();if(!shown)closePack()}
  // A short status line on the action bar and in the pack, for gifts and other non-trade events.
- function notify(text){packMessage(text);actionMessage.textContent=text;clearTimeout(notify.timer);notify.timer=setTimeout(()=>{if(actionMessage.textContent===text)actionMessage.textContent=''},6000)}
+ function notify(text){packMessage(text);actionMessage.textContent=text;onMessage?.(text);clearTimeout(notify.timer);notify.timer=setTimeout(()=>{if(actionMessage.textContent===text)actionMessage.textContent=''},6000)}
  return {open,close,refresh,requireLogin,whenReady,showHud,openPack,closePack,togglePack,notify,get packOpen(){return !packWin.hidden},packWindow:packWin,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
 }

@@ -61,7 +61,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  // Keep the hitching rail and horses off the walking corridor.
  const horseFrame={x:horseDealer.position.x,z:horseDealer.position.z,yaw:horseDealer.rotation.y};
  collision.addLocal(horseFrame,3.5,.6,2.4,1.5,()=>horseDealer.visible);
- const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onUse:id=>npcData.items[id]?.use==='flashback'?useKeepsake(id):eventVisit?null:npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
+ const shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onMessage:text=>together?.chat?.system(text),onUse:id=>npcData.items[id]?.use==='flashback'?useKeepsake(id):eventVisit?null:npcData.items[id]?.use==='fish'?firstPerson.fishing?.use():npcData.items[id]?.use==='mount'?firstPerson.setMounted(!firstPerson.mounted):null});shop.showHud(false);
  // Using a keepsake in the base scene opens its visit; inside a visit the item is already whatever the story says.
  function useKeepsake(id){
   const en=document.documentElement.lang==='en';
@@ -78,7 +78,7 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
   getCameraObstacles:()=>buildings.filter(b=>b.visible&&camera.position.distanceToSquared(b.position)<160*160).flatMap(b=>b.userData.cameraShell??[]),
   onBeforeEnter:()=>{el('building-info').hidden=true;el('options').classList.remove('open');el('menu').setAttribute('aria-expanded','false')},onExit:()=>together?.stop()});
  const status=document.createElement('div');status.id='walk-together-status';status.hidden=true;status.setAttribute('role','status');el('scene').append(status);
- together=eventVisit?{stop(){},update(){},connected:false}:createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
+ together=eventVisit?{stop(){},update(){},connected:false,chat:null}:createWalkTogether({scene,firstPerson,pedestrians,profile,alignment:'seoul1907',groundAt:firstPerson.groundAt,endpoint:new URL(json('multiplayer-url'),location.href).href,mapVersion:json('map-version'),button:el('walk-together'),status,walkerFactory:()=>createPerson1907()});
  const dialogue=createNpcDialogue({camera,canvas:renderer.domElement,container:el('scene'),note:data.note,onAction:(action,npc)=>{if(action==='historical-visit')startHistoricalVisit();else if(action==='shop'&&!eventVisit)shop.open(npc.merchant);else if(action.startsWith('event:keepsake:'))receiveKeepsake(action.slice(15));else if(action.startsWith('event:'))eventAction?.(action.slice(6),npc)}});
  let eventAction=null;
  async function receiveKeepsake(slug){

@@ -168,5 +168,5 @@ export function createWalkTogether({ scene, firstPerson, pedestrians, profile, g
 
   button.addEventListener('click', () => room || pending || firstPerson.active ? firstPerson.exit() : start());
   window.addEventListener('pagehide', () => stop());
-  return { update, stop, get connected() { return !!room; }, get peers() { return peers; } };
+  return { update, stop, chat, get connected() { return !!room; }, get peers() { return peers; } };
 }

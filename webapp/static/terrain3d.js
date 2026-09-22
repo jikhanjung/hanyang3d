@@ -924,7 +924,7 @@ async function main(){
  // Ground-following first-person exploration; drag works over plain Tailscale HTTP too.
  // The shop owns the account state (login, coins); the walking profile takes its name from it.
  const npcData=JSON.parse(el('npcs').textContent);
- shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),
+ shop=createShop({container:el('scene'),data:npcData,onLogout:()=>firstPerson?.exit(),onMessage:text=>together?.chat?.system(text),
   onUse:id=>npcData.items[id]?.use==='fish'?firstPerson?.fishing?.use():npcData.items[id]?.use==='mount'?(firstPerson?.active?firstPerson.setMounted(!firstPerson.mounted):t('1인칭에서만 말을 탈 수 있소.')):null});
  const walkProfile=createWalkProfile({account:shop});
  firstPerson=createFirstPerson({scene,camera,controls,renderer,pedestrians,shop,npcData,walkProfile,navigation,

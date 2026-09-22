@@ -23,13 +23,14 @@ export function createWalkChat({ scene, firstPerson, send }) {
   new ResizeObserver(layoutInfo).observe(panel);
   window.addEventListener('resize',layoutInfo);
   const input = panel.querySelector('input'), log = panel.querySelector('[role=log]'), error = panel.querySelector('#walk-chat-error');
-  let connected = false, unread = 0;
+  let connected = false, unread = 0, notices = 0;
   const desktop=()=>matchMedia('(min-width:601px) and (pointer:fine)').matches;
   const form=panel.querySelector('form'),closeButton=panel.querySelector('#walk-chat-close');
   const chatTitle=panel.querySelector('strong');
   const seen = new Set();
+  // On desktop the panel also stays open as a plain notice log while walking alone; the input only appears when connected.
   function show(open) {
-    panel.hidden=desktop()?!connected:!open;form.hidden=!open;closeButton.hidden=!open;chatTitle.hidden=desktop();panel.classList.toggle('editing',open);toggle.setAttribute('aria-expanded',String(open));
+    panel.hidden=desktop()?!(connected||notices):!open;if(open&&!connected)open=false;form.hidden=!open;closeButton.hidden=!open;chatTitle.hidden=desktop();panel.classList.toggle('editing',open);toggle.setAttribute('aria-expanded',String(open));
     layoutInfo();
     if (open) { unread = 0; toggle.textContent = t('채팅'); firstPerson.clearInput(); input.focus(); log.scrollTop = log.scrollHeight; }
     else if (connected) scene.querySelector('canvas')?.focus({ preventScroll: true });
@@ -67,10 +68,20 @@ export function createWalkChat({ scene, firstPerson, send }) {
     if (panel.hidden && !history) toggle.textContent = `${t('채팅')} (${++unread})`;
     log.scrollTop = log.scrollHeight;
   }
+  // Game notices (mounting a horse, receiving an item…) go into the same log, in a quieter style and without a name.
+  function system(text) {
+    if (!text) return;
+    const row = document.createElement('div'); row.className = 'walk-chat-notice'; row.dataset.messageId = 'n' + (++notices);
+    row.style.cssText = 'color:#5f6d66;font-style:italic'; row.textContent = `· ${text}`; log.append(row);
+    while (log.children.length > 50) { seen.delete(Number(log.firstChild.dataset.messageId)); log.firstChild.remove(); }
+    if (panel.hidden && !connected && !desktop()) toggle.hidden = false;
+    if (panel.hidden) toggle.textContent = `${t('채팅')} (${++unread})`; else log.scrollTop = log.scrollHeight;
+    if (desktop() && !connected) { panel.hidden = false; form.hidden = true; closeButton.hidden = true; chatTitle.hidden = true; layoutInfo(); log.scrollTop = log.scrollHeight; }
+  }
   return {
-    receive,
+    receive, system,
     error(message) { error.textContent = t(message); if (connected) show(true); },
     connect() {connected=true;toggle.hidden=desktop();show(false)},
-    disconnect() { connected = false; panel.hidden = toggle.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = t('채팅'); unread = 0; log.replaceChildren(); seen.clear(); input.value = ''; error.textContent = ''; },
+    disconnect() { connected = false; notices = 0; panel.hidden = toggle.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = t('채팅'); unread = 0; log.replaceChildren(); seen.clear(); input.value = ''; error.textContent = ''; },
   };
 }
