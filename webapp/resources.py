@@ -52,6 +52,7 @@ def public_resource_paths():
         'webapp/static/house_site.js',
         'webapp/static/walled_garden.js',
         'webapp/static/quest_marker.js',
+        'webapp/static/scene_curtain.js',
         'webapp/static/site_marker.js',
         'webapp/static/bell_tower.js',
         'webapp/static/training_ground.js',

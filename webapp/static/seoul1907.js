@@ -226,7 +226,10 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  };
  const herbs=createHerbs({era:1907,scene,camera,canvas:renderer.domElement,firstPerson:walking.firstPerson,shop:walking.shop,dialogue:walking.dialogue,data:JSON.parse(el('npcs').textContent),source:nature.source,groundAt,collision:()=>walking.collision,market:buildings.find(b=>b.userData.feature.id==='bosingak-1907'),visible:()=>el('people3d').checked});
  const historicalEvent=eventData?createAgwanpacheon({data:eventData,scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface,channel}):null;
- if(!eventData&&new URLSearchParams(location.search).has('returnFromAgwan'))walking.shop.whenReady.then(()=>{try{const saved=JSON.parse(sessionStorage.getItem('agwan-return'));if(saved?.name===walking.shop.state.name){walking.firstPerson.enter();walking.firstPerson.setMounted(saved.mounted);sessionStorage.removeItem('agwan-return')}}catch{}});
+ // Coming back from 1896: the page opened behind the curtain; restore the walk first, then lift it.
+ const curtainText=walking.curtain.take();if(curtainText)walking.curtain.hold(curtainText);
+ if(!eventData&&new URLSearchParams(location.search).has('returnFromAgwan'))walking.shop.whenReady.then(()=>{try{const saved=JSON.parse(sessionStorage.getItem('agwan-return'));if(saved?.name===walking.shop.state.name){walking.firstPerson.enter();walking.firstPerson.setMounted(saved.mounted);sessionStorage.removeItem('agwan-return')}}catch{}finally{if(!eventData)walking.curtain.hide()}});
+ else if(!eventData)walking.curtain.hide();
  let lastFrame=performance.now();
  renderer.setAnimationLoop(()=>{const now=performance.now(),dt=Math.min(.1,(now-lastFrame)/1000);lastFrame=now;if(!original){herbs.update();walking.update(dt);historicalEvent?.update(dt);if(trams.update(dt,camera,[...(walking.pedestrians.group.visible?walking.pedestrians.walkers.map(w=>w.position):[]),...(walking.stationary.group.visible?walking.stationary.records.map(r=>r.position):[]),...(walking.firstPerson.active?[walking.firstPerson.eye]:[])]))needsRender=true;if(walking.firstPerson.active||(camera.position.y-controls.target.y<180&&el('people3d').checked&&el('walking3d').checked))needsRender=true;if(!walking.firstPerson.active)controls.update();if(!needsRender)return;needsRender=false;compass.update(camera);
   settlement.setLod(camera.position);
@@ -248,4 +251,4 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  await stage(6,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
  el('status').hidden=true;window.seoul1907={ready:true,historicalEvent,nature,herbs,channel,baseGroundAt,settlement,labelOccluded,trams,scene,renderer,camera,controls,terrain,historical,config:cfg,project,inverse,buildings,groundAt,showBuilding,infrastructure,labels,walking,firstPerson:walking.firstPerson,pedestrians:walking.pedestrians};
 }
-main().catch(error=>{console.error(error);el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;window.seoul1907={ready:false,error:String(error)}});
+main().catch(error=>{console.error(error);document.getElementById('scene-curtain')?.remove();document.documentElement.classList.remove('curtain-start');el('loading-message').textContent=t('불러오기가 중단되었습니다. 새로고침해서 다시 시도해 주세요.');el('loading-retry').hidden=false;window.seoul1907={ready:false,error:String(error)}});

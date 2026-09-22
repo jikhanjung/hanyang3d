@@ -96,8 +96,20 @@ with tempfile.TemporaryDirectory() as tmp:
      return {labels,rumour,owned:w.shop.state.items.legation_keepsake,hint,sell,message:document.getElementById('action-message').textContent}}""")
     print('CARETAKER',talk,flush=True);assert '꾸러미' in talk['rumour'] and talk['owned']==1 and '이미' in talk['hint'] and talk['sell']==400 and '봇짐' in talk['message'],talk
     second.evaluate("""async()=>{const s=seoul1907;window.returnPose={x:s.firstPerson.eye.x,z:s.firstPerson.eye.z};sessionStorage.setItem('test-return-pose',JSON.stringify(returnPose));s.walking.shop.openPack();document.querySelector('.pack-items .shop-slot[data-item="legation_keepsake"]').dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,button:2}))}""")
-    second.wait_for_url('**/events/agwanpacheon/');second.wait_for_function('window.seoul1907?.ready',timeout=180000)
-    second.get_by_role('button',name='1907년으로 돌아가기',exact=True).click();second.wait_for_url('**/1907/?returnFromAgwan=1');second.wait_for_function('window.seoul1907?.firstPerson.active',timeout=180000)
+    second.wait_for_function("document.getElementById('scene-curtain')?.classList.contains('opaque') && document.body.classList.contains('dizzy')",timeout=5000)
+    print('CURTAIN OUT',second.locator('#scene-curtain .curtain-caption').text_content(),flush=True)
+    second.wait_for_url('**/events/agwanpacheon/')
+    # The arrival is dark before the scene is ready, and the overview is never shown: first person is active when it lifts.
+    early=second.evaluate("({opaque:document.getElementById('scene-curtain')?.classList.contains('opaque'),caption:document.querySelector('#scene-curtain .curtain-caption')?.textContent,ready:!!window.seoul1907?.ready})")
+    print('CURTAIN IN',early,flush=True);assert early['opaque'] and '1896' in early['caption'] and not early['ready'],early
+    second.wait_for_function('window.seoul1907?.ready',timeout=180000)
+    lifted=second.evaluate("""async()=>{const s=seoul1907,e=s.historicalEvent;let frames=0;while(s.walking.curtain.holding&&frames++<200)await new Promise(r=>setTimeout(r,50));return {walkingWhenLifted:s.firstPerson.active,phase:e.phase,lifted:!s.walking.curtain.holding,dizzy:document.body.classList.contains('dizzy')}}""")
+    print('ARRIVAL',lifted,flush=True);assert lifted['walkingWhenLifted'] and lifted['lifted'] and lifted['phase']=='letter' and not lifted['dizzy'],lifted
+    second.get_by_role('button',name='1907년으로 돌아가기',exact=True).click()
+    second.wait_for_function("document.getElementById('scene-curtain')?.classList.contains('opaque')",timeout=5000)
+    second.wait_for_url('**/1907/?returnFromAgwan=1');assert second.evaluate("document.getElementById('scene-curtain')?.classList.contains('opaque')"),'return did not open behind the curtain'
+    second.wait_for_function('window.seoul1907?.firstPerson.active',timeout=180000)
+    second.wait_for_function("!document.body.classList.contains('dizzy')",timeout=10000)
     assert second.evaluate("(()=>{const p=JSON.parse(sessionStorage.getItem('test-return-pose')),e=seoul1907.firstPerson.eye;return Math.hypot(p.x-e.x,p.z-e.z)<.1})()")
     print('PASS RETURN TO ORIGINAL POSITION',flush=True)
     second.evaluate("""async()=>{const csrf=document.cookie.split('; ').find(x=>x.startsWith('csrftoken='))?.slice(10),post=(u,b)=>fetch(u,{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':csrf},body:JSON.stringify(b)});await post('/api/account/logout',{});await seoul1907.walking.shop.refresh();await post('/api/account/register',{name:'옛액션',password:'test-secret'});localStorage.setItem('hanyang3d-actions:옛액션',JSON.stringify(['fishing_rod',...Array(9).fill(null)]));await seoul1907.walking.shop.refresh()}""")

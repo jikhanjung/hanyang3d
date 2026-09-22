@@ -153,7 +153,7 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   if(busy)return;busy=true;start.disabled=true;
   try{
    await walking.shop.whenReady;
-   if(!walking.shop.state.loggedIn){const name=await walking.shop.requireLogin({message:say('회상 진행을 저장하려면 로그인해 주세요.','Sign in to save your progress.')});if(!name)return}
+   if(!walking.shop.state.loggedIn){curtain.hide();const name=await walking.shop.requireLogin({message:say('회상 진행을 저장하려면 로그인해 주세요.','Sign in to save your progress.')});if(!name)return}
    await walking.shop.refresh();
    if(!(walking.shop.state.items[data.keepsake_item]>0)){message.textContent=say('1907년 러시아공사관 관리인에게 낡은 꾸러미를 받아 봇짐에서 써야 들어올 수 있습니다.','Receive the old bundle from the legation caretaker in 1907 and use it from your pack to enter.');return}
    if(!lengths.length)prepare();
@@ -169,6 +169,9 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
   }catch(error){message.textContent=error.message}finally{busy=false;start.disabled=false}
  }
  start.onclick=()=>begin(finished);rejoin.onclick=()=>{if(fp.active)regroup()};
+ // Arrived behind the curtain from 1907: begin at once so the first thing seen is the lane, not the overview.
+ const curtain=walking.curtain;
+ if(curtain.holding)begin().finally(()=>curtain.hide());
  face.onclick=()=>{const to=target();if(fp.active&&to){fp.placeAt(fp.eye.x,fp.eye.z,faceTowards(fp.eye,to));fp.clearInput()}};
  // Stage transitions: each saves its checkpoint in order; the walker never moves past a wall to reach the next.
  function advance(point,then){checkpoint=Math.max(checkpoint,point);retryAt=0;enqueue(point);then?.()}
@@ -184,7 +187,7 @@ export function createAgwanpacheon({data,scene,camera,walking,buildings,infrastr
    talk(contacts.neighbour,data.aftermath.neighbour_nodes,()=>advance(lastCheckpoint,complete));
   });
  }
- leave.onclick=async()=>{active=false;fp.clearInput();await saveQueue;location.href='/1907/?returnFromAgwan=1'+(english?'&lang=en':'')};
+ leave.onclick=async()=>{active=false;fp.clearInput();await Promise.all([saveQueue,curtain.show(say('새벽의 기억이 흐려지고 다시 눈앞이 어두워진다…','The memory of that dawn blurs and the dark returns…'))]);curtain.remember(say('정신을 차려 보니 — 1907년, 정동','When you come to — Jeongdong, 1907'));location.href='/1907/?returnFromAgwan=1'+(english?'&lang=en':'')};
  let patrolMessage='';
  const patrolPos=()=>patrol.soldiers[0].group.position;
  function placePatrol(){for(const [i,p] of patrol.soldiers.entries()){const {p:q,yaw}=sample(patrol.along+i*1.6);p.group.position.set(q.x,fp.groundAt(q.x,q.z),q.z);p.group.rotation.y=yaw+Math.PI;p.update(patrol.along*1.4,true)}}

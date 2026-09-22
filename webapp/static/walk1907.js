@@ -9,6 +9,7 @@ import {createWalkTogether} from './walk_together.js';
 import {createNpcDialogue} from './npc_dialogue.js';
 import {createPerson1907,createStationaryPeople1907} from './people1907.js';
 import {createNavigation1907} from './navigation1907.js';
+import {createSceneCurtain} from './scene_curtain.js';
 import {createHorseDealer} from './horse_dealer.js';
 const eventVisit=!!JSON.parse(document.getElementById('historical-event')?.textContent??'null');
 const el=id=>document.getElementById(id),json=id=>JSON.parse(el(id).textContent);
@@ -113,10 +114,16 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  dialogue.register({pick(event,hitTest){let best=null;if(stationary.group.visible)for(const r of stationary.records){if(r.pose==='seated_prayer'||!r.person.group.visible||(r.indoors&&interiorAt(camera.position)!==r.owner))continue;const distance=hitTest(event,r.position,1.95,100);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:npcFor(r)}}return best}});
  dialogue.register({pick(event,hitTest){let best=null;if(pedestrians.group.visible)for(const w of pedestrians.walkers){const distance=hitTest(event,w.position,1.95,80);if(distance!==null&&(!best||distance<best.distance))best={distance,npc:{key:w.id,mode:'bubble',name:data.pedestrian.name,portrait:'walker1907',nodes:data.pedestrian.nodes,position:()=>w.position,maxDistance:100}}}return best}});
  firstPerson.fishing=createFishing({scene,camera,firstPerson,shop,dialogue,waterSurface:infrastructure.water.children[0],bridge:infrastructure.bridges.children.find(b=>b.userData.feature.id===npcData.fishing.bridge_ids['1907']),groundAt,collision:()=>collision,data:npcData,era:1907,visible:()=>el('people3d').checked});
+ const curtain=createSceneCurtain();
  async function startHistoricalVisit(){
   if(!shop.state.loggedIn&&!await shop.requireLogin())return;
   if(!firstPerson.active)firstPerson.enter();if(!firstPerson.active)return;
   try{sessionStorage.setItem('agwan-return',JSON.stringify({name:shop.state.name,mounted:firstPerson.mounted}))}catch{}
+  // Dissolve out of 1907 and arrive in 1896 still on foot: the next page opens behind the same curtain.
+  const en=document.documentElement.lang==='en';
+  firstPerson.clearInput();
+  await curtain.show(en?'You open the bundle. Everything goes dark and the ground tilts…':'꾸러미를 펼치자 눈앞이 캄캄해지고 어지럽다…');
+  curtain.remember(en?'When you come to — the small hours of 11 February 1896, Jeongdong':'정신을 차려 보니 — 1896년 2월 11일 새벽, 정동');
   location.href='/events/agwanpacheon/'+(document.documentElement.lang==='en'?'?lang=en':'');
  }
  let press=null;const canvas=renderer.domElement;
@@ -124,5 +131,5 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
  canvas.addEventListener('pointerup',e=>{if(!eventVisit&&!e.defaultPrevented&&press?.id===e.pointerId&&Math.hypot(e.clientX-press.x,e.clientY-press.y)<7)dialogue.pick(e);press=null});canvas.addEventListener('pointercancel',()=>press=null);
  el('people3d').addEventListener('change',()=>{stationary.group.visible=el('people3d').checked;horseDealer.visible=el('people3d').checked});
  function update(dt){firstPerson.update(dt);if(!firstPerson.active)firstPerson.fishing?.update();together.update(dt);pedestrians.setAvoidPoint(firstPerson.active?firstPerson.eye:null);pedestrians.update(dt);stationary.update(camera);if(horseDealer.visible)horseDealer.userData.update(performance.now(),groundAt);dialogue.update()}
- return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,navigation,together,update,npcFor,startHistoricalVisit,setEventAction:handler=>{eventAction=handler}};
+ return {interiorAt,firstPerson,pedestrians,stationary,horseDealer,horseNpc,collision,shop,dialogue,navigation,curtain,together,update,npcFor,startHistoricalVisit,setEventAction:handler=>{eventAction=handler}};
 }
