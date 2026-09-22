@@ -67,9 +67,10 @@ def cookie_value(player):
     return signing.dumps(str(player.token), salt=SALT)
 
 
-def attach_cookie(response, value):
+def attach_cookie(response, value, remember=True):
+    """Set the signed player cookie: a year on this device when remembered, else until the browser closes."""
     if value:
-        response.set_cookie(COOKIE, value, max_age=365 * 24 * 3600, httponly=True, samesite='Lax',
+        response.set_cookie(COOKIE, value, max_age=365 * 24 * 3600 if remember else None, httponly=True, samesite='Lax',
                             secure=settings.SESSION_COOKIE_SECURE)
     return response
 

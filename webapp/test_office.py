@@ -71,3 +71,10 @@ class OfficeTests(TestCase):
         self.assertEqual(logs.count(), 2)
         self.assertIn('검사 지급', logs[0].change_message); self.assertIn('다시 보기 요청', logs[1].change_message)
         self.assertContains(self.client.get(f'/office/players/{player.pk}/'), '다시 보기 요청')
+
+    def test_login_remember_controls_session_length(self):
+        self.client.post('/office/login/', {'username': 'viewer', 'password': 'viewer-secret', 'remember': 'on'})
+        self.assertGreater(self.client.session.get_expiry_age(), 20 * 24 * 3600)
+        self.client.logout()
+        self.client.post('/office/login/', {'username': 'viewer', 'password': 'viewer-secret'})
+        self.assertTrue(self.client.session.get_expire_at_browser_close())

@@ -4,5 +4,6 @@
 {% if form.errors %}<p class="err">이름이나 비밀번호가 맞지 않습니다.</p>{% endif %}
 <label>관리자 이름<input name="username" autocomplete="username" autofocus required></label>
 <label>비밀번호<input name="password" type="password" autocomplete="current-password" required></label>
+<label style="display:flex;gap:6px;align-items:center;font-size:13px"><input name="remember" type="checkbox" checked> 기억하기 (30일 동안 로그인 유지)</label>
 <input type="hidden" name="next" value="{{ next }}"><button type="submit">들어가기</button>
 <small>관원(운영진) 계정만 들어올 수 있습니다. 플레이어 계정과는 다릅니다.</small></form></body></html>

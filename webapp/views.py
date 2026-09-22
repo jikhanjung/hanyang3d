@@ -187,7 +187,7 @@ def account_register(request):
         player = register(request, player_from_cookie(request), body.get('name'), body.get('password'), catalog()['wallet']['start'])
     except AccountError as error:
         return _no_store(JsonResponse({'error': error.message, 'logged_in': False}, status=error.status))
-    return _no_store(attach_cookie(JsonResponse({'message': t('{name}, 어서 오시오.', request.lang, name=player.name), **state(player)}), cookie_value(player)))
+    return _no_store(attach_cookie(JsonResponse({'message': t('{name}, 어서 오시오.', request.lang, name=player.name), **state(player)}), cookie_value(player), body.get('remember', True) is not False))
 
 
 @require_POST
@@ -201,7 +201,7 @@ def account_login(request):
         player = login(request, body.get('name'), body.get('password'))
     except AccountError as error:
         return _no_store(JsonResponse({'error': error.message, 'logged_in': False}, status=error.status))
-    return _no_store(attach_cookie(JsonResponse({'message': f'{player.name}, 다시 오셨구려.', **state(player)}), cookie_value(player)))
+    return _no_store(attach_cookie(JsonResponse({'message': f'{player.name}, 다시 오셨구려.', **state(player)}), cookie_value(player), body.get('remember', True) is not False))
 
 
 @require_POST

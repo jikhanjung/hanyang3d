@@ -49,6 +49,7 @@ export function createShop({container,data,onLogout,onUse,onMessage}){
   <strong>${t('한양 나그네 명부')}</strong><p class="account-intro">${t('1인칭으로 들어가려면 이름을 대시오. 이 이름으로 함께 걷고, 엽전과 봇짐도 서버에 기록됩니다. 처음이면 이름과 비밀번호를 정하시오.')}</p>
   <label>${t('이름')} <input name="name" autocomplete="username" maxlength="16" required></label>
   <label>${t('비밀번호')} <input name="password" type="password" autocomplete="current-password" minlength="6" maxlength="128" required></label>
+  <label class="account-remember"><input name="remember" type="checkbox" checked> ${t('이 기기에서 기억하기 (다음에 이름을 다시 대지 않아도 됩니다)')}</label>
   <p class="account-message" aria-live="polite"></p>
   <div class="account-buttons"><button type="submit" value="login">${t('들어가기')}</button><button type="submit" value="register">${t('처음 왔소 (이름 정하기)')}</button><button type="button" class="account-cancel">${t('닫기')}</button></div>
   <small>${t('비밀번호는 6자 이상. 이름은 1~16자의 한글·한자·영문·숫자·공백·_ . -')}</small></form>`;
@@ -61,7 +62,7 @@ export function createShop({container,data,onLogout,onUse,onMessage}){
   const mode=event.submitter?.value==='register'?'register':'login',msg=account.querySelector('.account-message');
   msg.textContent=mode==='register'?t('이름을 적는 중…'):t('명부를 찾는 중…');
   try{
-   const response=await post('/api/account/'+mode,{name:form.name.value,password:form.password.value});
+   const response=await post('/api/account/'+mode,{name:form.name.value,password:form.password.value,remember:form.remember.checked});
    const answer=await response.json().catch(()=>null);
    // Take the waiting merchant before closing: closing the dialog forgets it.
    if(response.ok&&answer?.logged_in){apply(answer);form.password.value='';const resolve=loginResolve;loginResolve=null;account.hidden=true;resolve?.(answer.name)}

@@ -41,7 +41,13 @@ class EconomyTests(TestCase):
         other.get('/api/player/')
         token = other.cookies['csrftoken'].value
         post = lambda url, body: other.post(url, data=json.dumps(body), content_type='application/json', HTTP_X_CSRFTOKEN=token)
-        self.assertEqual(post('/api/account/register', {'name': 'ＮＡＧＥＵＮＥ', 'password': 'another-pass'}).status_code, 200)
+        registered = post('/api/account/register', {'name': 'ＮＡＧＥＵＮＥ', 'password': 'another-pass'})
+        self.assertEqual(registered.status_code, 200)
+        # 'Remember me' (the default) keeps the player cookie for a year; opting out makes it a browser-session cookie.
+        self.assertEqual(registered.cookies[COOKIE]['max-age'], 365 * 24 * 3600)
+        forgetful = post('/api/account/login', {'name': 'ＮＡＧＥＵＮＥ', 'password': 'another-pass', 'remember': False})
+        self.assertEqual(forgetful.status_code, 200)
+        self.assertEqual(forgetful.cookies[COOKIE]['max-age'], '')
         self.assertEqual(post('/api/account/register', {'name': 'nageune', 'password': 'another-pass'}).status_code, 409)  # same name key
         self.assertEqual(post('/api/account/register', {'name': '나그네', 'password': 'x' * 10}).status_code, 409)
         self.assertEqual(post('/api/account/register', {'name': 'Аlice', 'password': 'x' * 10}).status_code, 400)

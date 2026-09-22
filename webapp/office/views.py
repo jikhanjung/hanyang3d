@@ -12,6 +12,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views.decorators.http import require_POST
+from django.contrib.auth.views import LoginView
 from ..models import Building, ContentImport, EventProgress, Item, Player, PlayerItem, SceneDataset, Shop, Story, Trade
 from .access import office_required
 
@@ -31,6 +32,20 @@ def named_trades(rows, names):
     for t in rows:
         t.item_name = names.get(t.item, t.item)
         yield t
+
+
+REMEMBER_SECONDS = 30 * 24 * 3600
+
+
+class OfficeLoginView(LoginView):
+    """Staff login with a 'remember me' box: checked keeps the session 30 days, unchecked ends it with the browser."""
+    template_name = 'office/login.html'
+    redirect_authenticated_user = True
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.request.session.set_expiry(REMEMBER_SECONDS if self.request.POST.get('remember') else 0)
+        return response
 
 
 def page(request, template, active, **context):
