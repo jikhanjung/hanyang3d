@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>{% block title %}한양도감{% endblock %}</title>
+<title>{% block title %}도성도감{% endblock %}</title>
 <style>
 :root{--ink:#1f2a24;--muted:#5f6d66;--line:#d9d4c7;--paper:#f8f5ee;--card:#fff;--accent:#1f5f52;--accent-ink:#fff;--warn:#9a4a1f;--ok:#2d7a4f}
 *{box-sizing:border-box}body{margin:0;font:14px/1.55 system-ui,'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper)}
@@ -19,7 +19,7 @@ pre{background:#f1ede2;padding:8px;border-radius:6px;overflow:auto;font-size:12p
 @media(max-width:700px){.office{grid-template-columns:1fr}nav.side{display:flex;flex-wrap:wrap;gap:4px;align-items:center}nav.side .brand{margin:0 8px 0 0}nav.side .foot{margin:0 0 0 auto}main{padding:14px 16px}}
 </style></head>
 <body><div class="office">
-<nav class="side"><a class="brand" href="{% url 'office:dashboard' %}">한양도감 <small style="font-weight:400;color:#9fb0a8">漢陽都監</small></a>
+<nav class="side"><a class="brand" href="{% url 'office:dashboard' %}">도성도감 <small style="font-weight:400;color:#9fb0a8">都城都監</small></a>
 {% for name, label in modules %}<a class="module{% if name == active %} active{% endif %}" href="{% url name %}">{{ label }}</a>{% endfor %}
 <div class="foot">{{ user.get_username }} · <a href="{% url 'office:logout' %}">나가기</a><br><a href="/backoffice/">Django 관리(편집)</a><br>웹 {{ app_version }}</div></nav>
 <main>{% if messages %}<ul class="messages">{% for m in messages %}<li class="{{ m.tags }}">{{ m }}</li>{% endfor %}</ul>{% endif %}

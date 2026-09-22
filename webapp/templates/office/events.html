@@ -1,4 +1,4 @@
-{% extends "office/base.html" %}{% block title %}이벤트 · 한양도감{% endblock %}{% block content %}
+{% extends "office/base.html" %}{% block title %}이벤트 · 도성도감{% endblock %}{% block content %}
 <h1>이벤트(회상 퀘스트)</h1>
 <table><tr><th>제목</th><th>slug</th><th>기반 장면</th><th class="num">정의 버전</th><th class="num">확인 지점</th><th>꾸러미</th><th class="num">진행 중</th><th class="num">완료</th><th>검증</th></tr>
 {% for e in events %}<tr><td><a href="{% url 'office:event' e.slug %}">{{ e.data.title }}</a></td><td class="muted">{{ e.slug }}</td><td>{{ e.data.base_scene }}</td><td class="num">{{ e.data.version }}</td><td class="num">{{ e.last }}</td><td>{{ e.data.keepsake.item }}</td><td class="num">{{ e.stats.active|default:0 }}</td><td class="num">{{ e.stats.completed|default:0 }}</td><td>{% if e.problem %}<span class="warn">{{ e.problem }}</span>{% else %}<span class="ok">통과</span>{% endif %}</td></tr>{% empty %}<tr><td colspan="9" class="muted">정의가 없습니다.</td></tr>{% endfor %}</table>

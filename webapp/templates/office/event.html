@@ -1,4 +1,4 @@
-{% extends "office/base.html" %}{% block title %}{{ event.data.title }} · 한양도감{% endblock %}{% block content %}
+{% extends "office/base.html" %}{% block title %}{{ event.data.title }} · 도성도감{% endblock %}{% block content %}
 <h1>{{ event.data.title }} <span class="muted">({{ event.slug }} · 버전 {{ event.data.version }})</span></h1>
 {% if event.problem %}<p class="warn">검증 실패: {{ event.problem }}</p>{% endif %}
 <div class="cards"><div class="card"><div class="n">{{ event.data.date }}</div><div class="l">날짜</div></div><div class="card"><div class="n">{{ event.last }}</div><div class="l">마지막 확인 지점</div></div><div class="card"><div class="n">{{ event.stats.completed|default:0 }}</div><div class="l">완료 · 진행 중 {{ event.stats.active|default:0 }}</div></div><div class="card"><div class="n">{{ event.data.keepsake.item }}</div><div class="l">꾸러미 · {{ event.data.keepsake.giver_building }}</div></div></div>

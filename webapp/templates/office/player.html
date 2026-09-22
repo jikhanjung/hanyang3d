@@ -1,4 +1,4 @@
-{% extends "office/base.html" %}{% block title %}{{ player.name }} · 한양도감{% endblock %}{% block content %}
+{% extends "office/base.html" %}{% block title %}{{ player.name }} · 도성도감{% endblock %}{% block content %}
 <h1>{{ player.name }}</h1>
 <div class="cards"><div class="card"><div class="n">{{ player.money }}</div><div class="l">엽전(문)</div></div><div class="card"><div class="n">{{ player.created_at|date:"Y-m-d" }}</div><div class="l">처음 방문</div></div><div class="card"><div class="n">{{ player.last_seen|date:"m-d H:i" }}</div><div class="l">마지막 활동</div></div></div>
 <h2>봇짐</h2>

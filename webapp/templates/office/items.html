@@ -1,4 +1,4 @@
-{% extends "office/base.html" %}{% block title %}물건·가격 · 한양도감{% endblock %}{% block content %}
+{% extends "office/base.html" %}{% block title %}물건·가격 · 도성도감{% endblock %}{% block content %}
 <h1>물건·가격</h1>
 <table><tr><th>물건</th><th>ID</th><th>단위</th><th class="num">값(문)</th><th>파는 가게</th><th>쓰임</th><th class="num">플레이어 보유</th><th>공개</th></tr>
 {% for item, shops, owned in items %}<tr><td>{{ item.name }}</td><td class="muted">{{ item.key }}</td><td>{{ item.unit }}</td>

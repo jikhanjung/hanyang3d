@@ -1,4 +1,4 @@
-{% extends "office/base.html" %}{% load office %}{% block title %}건물 · 한양도감{% endblock %}{% block content %}
+{% extends "office/base.html" %}{% load office %}{% block title %}건물 · 도성도감{% endblock %}{% block content %}
 <h1>건물</h1>
 <form class="filters" method="get"><input type="search" name="q" value="{{ q }}" placeholder="이름·ID 검색">
 <select name="year"><option value="">모든 시대</option><option value="1750"{% if year == "1750" %} selected{% endif %}>1750년</option><option value="1907"{% if year == "1907" %} selected{% endif %}>1907년</option></select>
