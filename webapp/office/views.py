@@ -21,6 +21,18 @@ MODULES = [
 ]
 
 
+def item_names():
+    """Item key → Korean name from the goods catalog (DB in database mode), for trade and progress tables."""
+    from ..economy import catalog
+    return {k: v['name'] for k, v in catalog()['items'].items()}
+
+
+def named_trades(rows, names):
+    for t in rows:
+        t.item_name = names.get(t.item, t.item)
+        yield t
+
+
 def page(request, template, active, **context):
     context.update(modules=MODULES, active=active, app_version=settings.APP_VERSION)
     return render(request, f'office/{template}.html', context)
@@ -48,7 +60,7 @@ def dashboard(request):
             'datasets': SceneDataset.objects.count(),
         },
         events=events, last_import=last_import,
-        recent_trades=trades.select_related('player').order_by('-created_at')[:10],
+        recent_trades=list(named_trades(trades.select_related('player').order_by('-created_at')[:10], item_names())),
         recent_players=players.exclude(name_key=None).order_by('-last_seen')[:10],
         content_source=settings.CONTENT_SOURCE)
 
@@ -65,13 +77,12 @@ def players(request):
 @office_required()
 def player_detail(request, pk):
     player = get_object_or_404(Player, pk=pk)
-    from ..economy import catalog
-    names = {k: v['name'] for k, v in catalog()['items'].items()}
+    names = item_names()
     items = [(names.get(i.item, i.item), i.quantity) for i in player.items.order_by('item')]
     content_type = ContentType.objects.get_for_model(Player)
     history = LogEntry.objects.filter(content_type=content_type, object_id=str(player.pk)).select_related('user').order_by('-action_time')[:20]
     return page(request, 'player', 'office:players', player=player, items=items,
-                trades=player.trades.order_by('-created_at')[:50], progress=player.historical_events.order_by('event_id'),
+                trades=list(named_trades(player.trades.order_by('-created_at')[:50], names)), progress=player.historical_events.order_by('event_id'),
                 history=history, can_adjust=request.user.has_perm('webapp.change_player'), can_reset=request.user.has_perm('webapp.change_eventprogress'))
 
 
@@ -185,7 +196,8 @@ def _events():
         except ValueError as error:
             problem = str(error)
         stats = {r['status']: r['n'] for r in EventProgress.objects.filter(event_id=data['id']).values('status').annotate(n=Count('id'))}
-        result.append({'slug': slug, 'data': data, 'problem': problem, 'last': last_checkpoint(data), 'stats': stats})
+        result.append({'slug': slug, 'data': data, 'problem': problem, 'last': last_checkpoint(data), 'stats': stats,
+                       'keepsake_name': item_names().get(data['keepsake']['item'], data['keepsake']['item'])})
     return result
 
 

@@ -31,6 +31,7 @@ class OfficeTests(TestCase):
             self.assertEqual(response.status_code, 200, url)
         self.assertContains(self.client.get('/office/players/'), '사무검사')
         self.assertContains(self.client.get('/office/events/agwanpacheon/'), 'procession')
+        self.assertContains(self.client.get('/office/events/'), '낡은 밀봉 꾸러미')
         self.assertEqual(self.client.get('/office/events/none/').status_code, 404)
         # Without change_item the price form is not offered and the write is refused.
         self.assertNotContains(self.client.get('/office/items/'), 'name="price"')

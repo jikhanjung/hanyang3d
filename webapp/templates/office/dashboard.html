@@ -17,7 +17,7 @@
 <table><tr><th>콘텐츠 원본</th><td>{{ content_source }}</td></tr><tr><th>마지막 콘텐츠 가져오기</th><td>{% if last_import %}{{ last_import.key }} · {{ last_import.imported_at|date:"Y-m-d H:i" }}{% else %}<span class="muted">기록 없음</span>{% endif %}</td></tr></table>
 <h2>최근 거래</h2>
 <table><tr><th>시각</th><th>플레이어</th><th>거래</th><th>물건</th><th class="num">수량</th><th class="num">엽전 변화</th></tr>
-{% for t in recent_trades %}<tr><td>{{ t.created_at|date:"m-d H:i" }}</td><td><a href="{% url 'office:player' t.player_id %}">{{ t.player.name }}</a></td><td>{{ t.get_action_display }}</td><td>{{ t.item }}</td><td class="num">{{ t.quantity }}</td><td class="num">{{ t.money_delta }}</td></tr>{% empty %}<tr><td colspan="6" class="muted">거래 없음</td></tr>{% endfor %}</table>
+{% for t in recent_trades %}<tr><td>{{ t.created_at|date:"m-d H:i" }}</td><td><a href="{% url 'office:player' t.player_id %}">{{ t.player.name }}</a></td><td>{{ t.get_action_display }}</td><td>{{ t.item_name }}</td><td class="num">{{ t.quantity }}</td><td class="num">{{ t.money_delta }}</td></tr>{% empty %}<tr><td colspan="6" class="muted">거래 없음</td></tr>{% endfor %}</table>
 <h2>최근 활동 계정</h2>
 <table><tr><th>이름</th><th>마지막 활동</th><th class="num">엽전</th></tr>
 {% for p in recent_players %}<tr><td><a href="{% url 'office:player' p.pk %}">{{ p.name }}</a></td><td>{{ p.last_seen|date:"Y-m-d H:i" }}</td><td class="num">{{ p.money }}</td></tr>{% endfor %}</table>

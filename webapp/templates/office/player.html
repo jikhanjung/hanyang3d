@@ -11,5 +11,5 @@
 <h2>관리 기록 (최근 20)</h2>
 <table><tr><th>시각</th><th>관원</th><th>내용</th></tr>{% for h in history %}<tr><td>{{ h.action_time|date:"Y-m-d H:i" }}</td><td>{{ h.user.get_username }}</td><td>{{ h.get_change_message }}</td></tr>{% empty %}<tr><td colspan="3" class="muted">없음</td></tr>{% endfor %}</table>
 <h2>최근 거래 (50건)</h2>
-<table><tr><th>시각</th><th>거래</th><th>가게</th><th>물건</th><th class="num">수량</th><th class="num">엽전 변화</th><th class="num">거래 뒤</th></tr>{% for t in trades %}<tr><td>{{ t.created_at|date:"m-d H:i" }}</td><td>{{ t.get_action_display }}</td><td>{{ t.shop }}</td><td>{{ t.item }}</td><td class="num">{{ t.quantity }}</td><td class="num">{{ t.money_delta }}</td><td class="num">{{ t.money_after }}</td></tr>{% empty %}<tr><td colspan="7" class="muted">없음</td></tr>{% endfor %}</table>
+<table><tr><th>시각</th><th>거래</th><th>가게</th><th>물건</th><th class="num">수량</th><th class="num">엽전 변화</th><th class="num">거래 뒤</th></tr>{% for t in trades %}<tr><td>{{ t.created_at|date:"m-d H:i" }}</td><td>{{ t.get_action_display }}</td><td>{{ t.shop }}</td><td>{{ t.item_name }}</td><td class="num">{{ t.quantity }}</td><td class="num">{{ t.money_delta }}</td><td class="num">{{ t.money_after }}</td></tr>{% empty %}<tr><td colspan="7" class="muted">없음</td></tr>{% endfor %}</table>
 {% endblock %}
