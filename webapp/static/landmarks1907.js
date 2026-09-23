@@ -403,7 +403,8 @@ export function createLandmark1907(f,w,h,d){
   box('gwanmungak',-31,4,-22,10,8,9,'brick');rects.push({x:-31,z:-22,hw:5,hd:4.5});
   for(const y of [2.5,6])for(let i=-1;i<=1;i++)box('gwanmungak-window',-31+i*3,y,-17.4,1.2,1.8,.1,'glass');
   roof(-31,8,-22,11,10,2.2,1);
-  group.userData.blockingRects=rects;group.userData.gate=[gateX,hd];
+  // The access stairs from the ground (building_access1907) lead up to this gate, not to the centre of the wall.
+  group.userData.blockingRects=rects;group.userData.gate=[gateX,hd];group.userData.accessX=gateX;
  }else if(kind==='legation'){
   if(f.eventEntrance){
    // Interpretive entrance for the private arrival scene; an actual opening, not actors crossing a wall.
