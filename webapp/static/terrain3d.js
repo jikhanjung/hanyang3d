@@ -355,13 +355,16 @@ async function main(){
  function updateSites(){const on=el('sites3d').checked;for(const {box} of siteMarkers)box.visible=on}
  el('sites3d').onchange=()=>{updateSites();updateBuildingNames()};updateSites();
  // Transparent text sprites live above the models in the 3D scene.
+ // Drawn at the renderer's pixel density so a tag shows one texel per screen pixel (16px text in a 24px-high tag, as
+ // the 1907 HTML labels). Without mipmaps, so the text is not softened by a smaller level at that exact size.
+ const tagDensity=renderer.getPixelRatio();
  function nameSprite(name){
-  const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
-  ctx.font='500 24px system-ui';canvas.width=Math.ceil(ctx.measureText(name).width)+8;canvas.height=36;
-  ctx.font='500 24px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
-  ctx.strokeStyle='rgba(255,253,243,.9)';ctx.lineWidth=3;ctx.strokeText(name,canvas.width/2,18);
-  ctx.fillStyle='#25362f';ctx.fillText(name,canvas.width/2,18);
-  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
+  const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),k=tagDensity,font=`500 ${16*k}px system-ui`;
+  ctx.font=font;canvas.width=Math.ceil(ctx.measureText(name).width+8*k);canvas.height=Math.round(24*k);
+  ctx.font=font;ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
+  ctx.strokeStyle='rgba(255,253,243,.92)';ctx.lineWidth=2.6*k;ctx.strokeText(name,canvas.width/2,canvas.height/2);
+  ctx.fillStyle='#25362f';ctx.fillText(name,canvas.width/2,canvas.height/2);
+  const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.generateMipmaps=false;texture.minFilter=THREE.LinearFilter;
   const tag=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:true,depthWrite:false,sizeAttenuation:false}));
   tag.center.set(.5,0);return {tag,aspect:canvas.width/canvas.height};
  }
@@ -422,7 +425,7 @@ async function main(){
   updateLandmarkLod();settlement?.setLod(camera.position);
   const namesOn=el('names3d').checked;
   buildingNames.visible=buildings.visible&&namesOn;mountainNames.visible=namesOn;districtNames.visible=namesOn;
-  const scale=24*2*Math.tan(camera.fov*Math.PI/360)/Math.max(1,el('scene').clientHeight); // 24px font on a 36px canvas yields ~16px text.
+  const scale=24*2*Math.tan(camera.fov*Math.PI/360)/Math.max(1,el('scene').clientHeight); // a 24px-high tag holding 16px text
   const yukjoCentre=new THREE.Vector3();for(const b of yukjoOffices)yukjoCentre.add(b.position);yukjoCentre.multiplyScalar(1/Math.max(1,yukjoOffices.length));
   const yukjoFar=camera.position.distanceTo(yukjoCentre)>YUKJO_NEAR_M;
   const r=renderer.domElement.getBoundingClientRect(),candidates=[];
