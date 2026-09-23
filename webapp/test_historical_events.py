@@ -54,7 +54,7 @@ class HistoricalEventTests(TestCase):
     def test_eulmi_line_has_its_own_keepsake_and_checkpoints(self):
         from .events import definition as by_slug
         eulmi=by_slug('eulmi')
-        self.assertEqual(last_checkpoint(eulmi),21)  # night talk, 18 route points, the hiding, the market
+        self.assertEqual(last_checkpoint(eulmi),17)  # night talk, 14 route points, the hiding, the market
         self.assertEqual(eulmi['next']['slug'],'agwanpacheon')
         self.assertEqual(self.post_to('eulmi',action='start',version=eulmi['version']).status_code,409)
         self.assertEqual(self.post_to('eulmi',action='keepsake').json(),{'item':'eulmi_keepsake','received':True})

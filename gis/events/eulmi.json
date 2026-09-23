@@ -11,10 +11,10 @@
   "panel_title_en": "8 October 1895 · Dawn of the Eulmi Year",
   "document_title": "을미사변 회상 · 한양3D",
   "document_title_en": "The Eulmi Incident · Hanyang3D",
-  "intro": "인적 끊긴 새벽, 서대문 안 골목을 걷고 있습니다.",
-  "intro_en": "Before dawn you are walking a deserted lane inside the West Gate.",
-  "note": "을미사변 기록을 바탕으로 구성한 개인 회상 체험. 플레이어·야경꾼·저잣거리 사람들과 그 대사, 무리의 인원·복장·세부 동선, 궁 안에서 숨는 자리와 횃불의 움직임은 창작·추정입니다. 무리가 도성 밖 공덕리에서 와서 서대문(돈의문)에서 훈련대와 합류해 광화문으로 간 일, 광화문의 총성과 홍계훈의 전사, 건청궁 난입과 왕비 시해, 새벽 5~6시 무렵이라는 시각은 출처를 따랐습니다. 왕비 시해 장면은 보여 주지 않습니다. 1907년 지도·건물과 현대 지형을 소급 참고했으며 건청궁은 개념 모형입니다. 당시 호칭에 따라 ‘명성황후’(1897년 추존) 대신 ‘중전마마’라고 부릅니다. 새문안 길의 개천 다리는 위치·형태를 추정한 체험용 배치입니다. 서대문과 광화문 사이의 거리 동선(새문안 길–황토현–육조거리)과 궁 안 경로는 사료로 확인한 것이 아니라 추정입니다.",
-  "note_en": "A personal historical reconstruction. The player, the watchman, the people in the market and their lines, the group's size, dress and exact route, the hiding place and the movement of torches are interpretive. The group joining near the West Gate and entering by Gwanghwamun, the shots at the gate and the death of Hong Gye-hun, the break-in at Geoncheonggung and the killing of the queen, and the hour of about five to six in the morning follow the sources. The killing is not shown. The 1907 map and buildings and modern terrain are used as references, and Geoncheonggung is a conceptual model. People call her the queen, not Empress Myeongseong, the title given in 1897. The stream bridge on the Saemun road is an interpretive placement. The streets between the West Gate and Gwanghwamun (the Saemun road, Hwangtohyeon, Yukjo Street) and the path inside the palace are reconstructions, not attested.",
+  "intro": "인적 끊긴 새벽, 새문안 길을 걷고 있습니다.",
+  "intro_en": "Before dawn you are walking the deserted Saemun road.",
+  "note": "을미사변 기록을 바탕으로 구성한 개인 회상 체험. 플레이어·야경꾼·저잣거리 사람들과 그 대사, 무리의 인원·복장·세부 동선, 궁 안에서 숨는 자리와 횃불의 움직임은 창작·추정입니다. 무리가 도성 밖 공덕리에서 와서 서대문(돈의문)에서 훈련대와 합류해 광화문으로 간 일, 광화문의 총성과 홍계훈의 전사, 건청궁 난입과 왕비 시해, 새벽 5~6시 무렵이라는 시각은 출처를 따랐습니다. 왕비 시해 장면은 보여 주지 않습니다. 1907년 지도·건물과 현대 지형을 소급 참고했으며 건청궁은 개념 모형입니다. 당시 호칭에 따라 ‘명성황후’(1897년 추존) 대신 ‘중전마마’라고 부릅니다. 새문안 길의 개천 다리는 위치·형태를 추정한 체험용 배치입니다. 무리가 서대문에서 합류하는 장면은 보여 주지 않고 새문고개부터 따라가며, 서대문과 광화문 사이의 거리 동선(새문안 길–황토현–육조거리)과 궁 안 경로는 사료로 확인한 것이 아니라 추정입니다.",
+  "note_en": "A personal historical reconstruction. The player, the watchman, the people in the market and their lines, the group's size, dress and exact route, the hiding place and the movement of torches are interpretive. The group joining near the West Gate and entering by Gwanghwamun, the shots at the gate and the death of Hong Gye-hun, the break-in at Geoncheonggung and the killing of the queen, and the hour of about five to six in the morning follow the sources. The killing is not shown. The 1907 map and buildings and modern terrain are used as references, and Geoncheonggung is a conceptual model. People call her the queen, not Empress Myeongseong, the title given in 1897. The stream bridge on the Saemun road is an interpretive placement. The joining at the West Gate is not shown; the player picks the group up at Saemungogae. The streets between the West Gate and Gwanghwamun (the Saemun road, Hwangtohyeon, Yukjo Street) and the path inside the palace are reconstructions, not attested.",
   "sources": [
     {
       "title": "한국민족문화대백과 — 을미사변",
@@ -79,8 +79,8 @@
   "transition": {
     "out": "노리개를 쥐자 먼 데서 총소리 같은 것이 울리고 눈앞이 캄캄해진다…",
     "out_en": "As you grip the norigae something like a distant shot rings out and everything goes dark…",
-    "in": "정신을 차려 보니 — 1895년 10월 8일 새벽, 서대문 안",
-    "in_en": "When you come to — before dawn, 8 October 1895, inside the West Gate",
+    "in": "정신을 차려 보니 — 1895년 10월 8일 새벽, 새문안 길",
+    "in_en": "When you come to — before dawn, 8 October 1895, the Saemun road",
     "back_out": "새벽의 연기가 흩어지고 다시 눈앞이 어두워진다…",
     "back_out_en": "The smoke of that dawn thins and the dark returns…",
     "back_in": "정신을 차려 보니 — 1907년, 광화문 앞",
@@ -145,12 +145,12 @@
       "key": "night",
       "type": "talk",
       "walker_start_pixel": [
-        436,
-        2276
+        664,
+        2207
       ],
       "contact_pixel": [
-        452,
-        2268
+        652,
+        2201
       ],
       "contact": {
         "name": "야경꾼",
@@ -164,8 +164,8 @@
       "hint_en": "Go to the watchman at the end of the lane. {m} m",
       "nodes": {
         "hello": {
-          "text": "이 새벽에 어딜 그리 다니시오? 요새 도성 안이 뒤숭숭하니 일찍 들어가시오. …방금 서대문 쪽이 소란하던데, 등불 든 무리가 들어오는 것 같았소.",
-          "text_en": "Where are you off to at this hour? The city is uneasy these days; best get indoors. …There was a stir at the West Gate just now — a group with lanterns coming in, it looked like.",
+          "text": "이 새벽에 어딜 그리 다니시오? 요새 도성 안이 뒤숭숭하니 일찍 들어가시오. …방금 서대문 쪽이 소란하던데, 등불 든 무리가 이리로 오는 것 같았소.",
+          "text_en": "Where are you off to at this hour? The city is uneasy these days; best get indoors. …There was a stir at the West Gate just now — a group with lanterns coming this way, it looked like.",
           "options": [
             {
               "label": "어떤 무리였소?",
@@ -191,8 +191,8 @@
           ]
         }
       },
-      "after": "등불 든 무리가 돈의문 안으로 들어왔습니다. 거리를 두고 따라가세요.",
-      "after_en": "The lantern-lit group has come in by the West Gate. Follow at a distance."
+      "after": "서대문 쪽에서 무리가 오고 있습니다. 새문고개 쪽으로 가 보세요.",
+      "after_en": "A group is coming from the West Gate. Go towards Saemungogae."
     },
     {
       "key": "shadow",
@@ -228,43 +228,11 @@
       "route": [
         {
           "pixel": [
-            384,
-            2302.5
+            574,
+            2214
           ],
-          "name": "돈의문 밖",
-          "name_en": "Outside the West Gate"
-        },
-        {
-          "pixel": [
-            394,
-            2301
-          ],
-          "name": "돈의문",
-          "name_en": "West Gate"
-        },
-        {
-          "pixel": [
-            404,
-            2299.5
-          ],
-          "name": "돈의문 안쪽 문턱",
-          "name_en": "West Gate, inner threshold"
-        },
-        {
-          "pixel": [
-            416,
-            2294
-          ],
-          "name": "돈의문 안",
-          "name_en": "Inside the West Gate"
-        },
-        {
-          "pixel": [
-            486,
-            2250
-          ],
-          "name": "정동 길목",
-          "name_en": "Jeongdong corner"
+          "name": "새문고개 서쪽",
+          "name_en": "West of Saemungogae"
         },
         {
           "pixel": [
@@ -376,7 +344,7 @@
         }
       ],
       "gate": {
-        "at": 11,
+        "at": 7,
         "defender_pixel": [
           758,
           1920
@@ -426,15 +394,15 @@
       },
       "appear": {
         "pixel": [
-          404,
-          2299.5
+          598,
+          2207
         ],
-        "radius_m": 30
+        "radius_m": 25
       },
-      "wait_hint": "서대문(돈의문) 쪽으로 가 보세요. {m}m",
-      "wait_hint_en": "Head towards the West Gate (Donuimun). {m} m",
-      "appear_text": "돈의문 밖에서 등불이 흔들린다 — 무리가 문을 지나 들어온다. 몸을 숨기고 지켜보세요.",
-      "appear_text_en": "Lanterns sway outside Donuimun — the group comes in through the gate. Keep out of sight and watch."
+      "wait_hint": "서대문 쪽, 새문고개로 가 보세요. {m}m",
+      "wait_hint_en": "Go west to Saemungogae, towards the West Gate. {m} m",
+      "appear_text": "서대문 쪽에서 등불이 다가온다 — 무리가 새문고개를 넘어온다. 몸을 숨기고 지켜보세요.",
+      "appear_text_en": "Lanterns come from the West Gate — the group crosses Saemungogae. Keep out of sight and watch."
     },
     {
       "key": "hide",
