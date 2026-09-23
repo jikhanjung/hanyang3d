@@ -13,8 +13,8 @@
   "document_title_en": "The Eulmi Incident · Hanyang3D",
   "intro": "인적 끊긴 새벽, 서대문 안 골목을 걷고 있습니다.",
   "intro_en": "Before dawn you are walking a deserted lane inside the West Gate.",
-  "note": "을미사변 기록을 바탕으로 구성한 개인 회상 체험. 플레이어·야경꾼·저잣거리 사람들과 그 대사, 무리의 인원·복장·세부 동선, 궁 안에서 숨는 자리와 횃불의 움직임은 창작·추정입니다. 무리가 서대문 부근에서 합류해 광화문으로 들어간 일, 광화문의 총성과 홍계훈의 전사, 건청궁 난입과 왕비 시해, 새벽 5~6시 무렵이라는 시각은 출처를 따랐습니다. 왕비 시해 장면은 보여 주지 않습니다. 1907년 지도·건물과 현대 지형을 소급 참고했으며 건청궁은 개념 모형입니다. 당시 호칭에 따라 ‘명성황후’(1897년 추존) 대신 ‘중전마마’라고 부릅니다. 새문안 길의 개천 다리는 위치·형태를 추정한 체험용 배치입니다.",
-  "note_en": "A personal historical reconstruction. The player, the watchman, the people in the market and their lines, the group's size, dress and exact route, the hiding place and the movement of torches are interpretive. The group joining near the West Gate and entering by Gwanghwamun, the shots at the gate and the death of Hong Gye-hun, the break-in at Geoncheonggung and the killing of the queen, and the hour of about five to six in the morning follow the sources. The killing is not shown. The 1907 map and buildings and modern terrain are used as references, and Geoncheonggung is a conceptual model. People call her the queen, not Empress Myeongseong, the title given in 1897. The stream bridge on the Saemun road is an interpretive placement.",
+  "note": "을미사변 기록을 바탕으로 구성한 개인 회상 체험. 플레이어·야경꾼·저잣거리 사람들과 그 대사, 무리의 인원·복장·세부 동선, 궁 안에서 숨는 자리와 횃불의 움직임은 창작·추정입니다. 무리가 도성 밖 공덕리에서 와서 서대문(돈의문)에서 훈련대와 합류해 광화문으로 간 일, 광화문의 총성과 홍계훈의 전사, 건청궁 난입과 왕비 시해, 새벽 5~6시 무렵이라는 시각은 출처를 따랐습니다. 왕비 시해 장면은 보여 주지 않습니다. 1907년 지도·건물과 현대 지형을 소급 참고했으며 건청궁은 개념 모형입니다. 당시 호칭에 따라 ‘명성황후’(1897년 추존) 대신 ‘중전마마’라고 부릅니다. 새문안 길의 개천 다리는 위치·형태를 추정한 체험용 배치입니다. 서대문과 광화문 사이의 거리 동선(새문안 길–황토현–육조거리)과 궁 안 경로는 사료로 확인한 것이 아니라 추정입니다.",
+  "note_en": "A personal historical reconstruction. The player, the watchman, the people in the market and their lines, the group's size, dress and exact route, the hiding place and the movement of torches are interpretive. The group joining near the West Gate and entering by Gwanghwamun, the shots at the gate and the death of Hong Gye-hun, the break-in at Geoncheonggung and the killing of the queen, and the hour of about five to six in the morning follow the sources. The killing is not shown. The 1907 map and buildings and modern terrain are used as references, and Geoncheonggung is a conceptual model. People call her the queen, not Empress Myeongseong, the title given in 1897. The stream bridge on the Saemun road is an interpretive placement. The streets between the West Gate and Gwanghwamun (the Saemun road, Hwangtohyeon, Yukjo Street) and the path inside the palace are reconstructions, not attested.",
   "sources": [
     {
       "title": "한국민족문화대백과 — 을미사변",
@@ -210,7 +210,7 @@
       "too_far_en": "The lanterns are drawing away. Follow a little closer.",
       "group": {
         "count": 12,
-        "speed_mps": 2.7,
+        "speed_mps": 3.6,
         "spacing_m": 2.3,
         "lantern_every": 3,
         "colors": [
@@ -222,14 +222,38 @@
       },
       "keep": {
         "near_m": 7,
-        "far_m": 55,
+        "far_m": 70,
         "start_behind_m": 28
       },
       "route": [
         {
           "pixel": [
-            414,
-            2292
+            384,
+            2302.5
+          ],
+          "name": "돈의문 밖",
+          "name_en": "Outside the West Gate"
+        },
+        {
+          "pixel": [
+            394,
+            2301
+          ],
+          "name": "돈의문",
+          "name_en": "West Gate"
+        },
+        {
+          "pixel": [
+            404,
+            2299.5
+          ],
+          "name": "돈의문 안쪽 문턱",
+          "name_en": "West Gate, inner threshold"
+        },
+        {
+          "pixel": [
+            416,
+            2294
           ],
           "name": "돈의문 안",
           "name_en": "Inside the West Gate"
@@ -352,7 +376,7 @@
         }
       ],
       "gate": {
-        "at": 8,
+        "at": 11,
         "defender_pixel": [
           758,
           1920
@@ -399,7 +423,18 @@
           "status": "interpretive_route_crossing"
         },
         "note": "새문안 길에서 육조거리로 가려면 백운동천을 건너야 한다. 1907년 지도 데이터에 이 자리의 다리가 없어 체험용으로 추정 배치했다."
-      }
+      },
+      "appear": {
+        "pixel": [
+          404,
+          2299.5
+        ],
+        "radius_m": 30
+      },
+      "wait_hint": "서대문(돈의문) 쪽으로 가 보세요. {m}m",
+      "wait_hint_en": "Head towards the West Gate (Donuimun). {m} m",
+      "appear_text": "돈의문 밖에서 등불이 흔들린다 — 무리가 문을 지나 들어온다. 몸을 숨기고 지켜보세요.",
+      "appear_text_en": "Lanterns sway outside Donuimun — the group comes in through the gate. Keep out of sight and watch."
     },
     {
       "key": "hide",

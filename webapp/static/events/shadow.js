@@ -25,13 +25,14 @@ export function createShadow(api){
  // The figure who bars the gate: seen from the far end of the square, never close up.
  const gateGuard=createWalker();gateGuard.group.name='gate-defender';gateGuard.group.getObjectByName('walker-body').material.color.set('#3c4d6b');gateGuard.group.visible=false;scene.add(gateGuard.group);
  const rejoin=api.panel.button('historical-event-rejoin',say('무리를 다시 찾기','Find the group again'),()=>{if(fp.active)regroup()});
- let route=null,distance=0,neighborhood=null,closeFor=0,notice=0,gate={state:'pending',t:0,fall:0},finished=false;
+ let route=null,distance=0,neighborhood=null,closeFor=0,notice=0,waiting=false,appearAt=null,gate={state:'pending',t:0,fall:0},finished=false;
  const spacing=g.spacing_m??2.4,tailOffset=()=>spacing*(g.count-1);
 
  function prepare(){
   if(route)return;
   route=buildRoute(api,data.route);
   neighborhood=createEventNeighborhood({path:route.path,surface,scene,walking,buildings,waterAt});
+  if(data.appear)appearAt=api.atPixel(data.appear.pixel);
   if(data.gate){const p=api.atPixel(data.gate.defender_pixel);gateGuard.group.position.set(p.x,fp.groundAt(p.x,p.z),p.z);gateGuard.group.rotation.y=route.sample(route.milestones[data.gate.at]).yaw+Math.PI}
  }
  function place(moving){
@@ -49,7 +50,13 @@ export function createShadow(api){
   gate.state=data.gate&&distance>=route.milestones[data.gate.at]?'done':'pending';
   gateGuard.group.visible=!!data.gate&&gate.state==='pending';gateGuard.group.rotation.x=0;
   place(false);
-  // Starting fresh the walker stays where the previous stage left them; a resume puts them behind the group.
+  // Fresh start with an 'appear' point: the group waits unseen beyond it until the walker comes near, then walks in.
+  waiting=!!appearAt&&index===0;
+  // Waiting, the whole group stands beyond the gate: the leader at the first route point, the rest bunched behind it.
+  if(waiting){distance=0;place(false)}
+  for(const m of members)m.group.visible=!waiting;
+  if(waiting){api.markMap(appearAt);api.reach(0);return}
+  // A resume puts the walker behind the group; otherwise they stay where the previous stage left them.
   const tail=members.at(-1).group.position;if(index>0||Math.hypot(fp.eye.x-tail.x,fp.eye.z-tail.z)>keep.far_m*1.5)regroup();
   api.panel.message(text(data,'intro'));api.reach(0);
  }
@@ -66,9 +73,16 @@ export function createShadow(api){
  }
  function update(dt){
   if(finished)return;
+  if(waiting){
+   const left=Math.hypot(fp.eye.x-appearAt.x,fp.eye.z-appearAt.z);
+   if(left>data.appear.radius_m){api.panel.message(text(data,'wait_hint').replace('{m}',Math.round(left)));return}
+   waiting=false;for(const m of members)m.group.visible=true;notice=5;api.panel.message(text(data,'appear_text'));
+  }
   const eye=fp.eye,tail=members.at(-1).group.position,lead=members[0].group.position;
   let near=Infinity;for(const m of members)near=Math.min(near,Math.hypot(eye.x-m.group.position.x,eye.z-m.group.position.z));
-  const far=Math.hypot(eye.x-tail.x,eye.z-tail.z);
+  // 'Too far' is measured to the nearest member: behind the group that is the tail, while it comes towards the walker
+  // (through the gate) it is whoever is closest.
+  const far=near;
   api.markMap(lead);
   // Too close for too long: someone turns round, and the walker ducks back into the dark.
   if(near<keep.near_m){closeFor+=dt;if(closeFor>2.5){const {p,yaw}=behind(10);fp.placeAt(p.x,p.z,yaw+Math.PI);fp.clearInput();closeFor=0;notice=4;api.panel.message(text(data,'too_close_caught'));return}}
@@ -88,6 +102,6 @@ export function createShadow(api){
   }
   if(distance>=route.total&&far<keep.far_m*.6&&!api.saving){finished=true;api.finish()}
  }
- return {prepare,enter,exit,reset,idle,update,regroup,root,members,gateGuard,
+ return {prepare,enter,exit,reset,idle,update,regroup,root,members,gateGuard,get waiting(){return waiting},get appearAt(){return appearAt},
   get route(){return route},get distance(){return distance},get gateState(){return gate.state},get neighborhood(){return neighborhood}};
 }

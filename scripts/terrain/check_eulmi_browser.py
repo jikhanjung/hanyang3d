@@ -28,7 +28,7 @@ with tempfile.TemporaryDirectory() as tmp:
      await e.begin(true);const refused=document.querySelector('#historical-event-panel p').textContent;
      await post('/api/events/eulmi/',{{action:'keepsake'}});await e.begin(true);s.renderer.setAnimationLoop(null);
      return {{refused,msg:document.querySelector('#historical-event-panel p').textContent,phase:e.phase,active:e.active,last:e.lastCheckpoint,contact:e.contacts.night?.p.group.visible,visible:s.buildings.filter(b=>b.visible).length,trams:s.trams.group.visible}}}}""")
-    print('START',gate,flush=True);assert '노리개' in gate['refused'] and gate['phase']=='night' and gate['active'] and gate['last']==18 and gate['contact'] and not gate['trams'],gate
+    print('START',gate,flush=True);assert '노리개' in gate['refused'] and gate['phase']=='night' and gate['active'] and gate['last']==21 and gate['contact'] and not gate['trams'],gate
     shot(page,'night')
     night=page.evaluate("""async()=>{const s=seoul1907,e=s.historicalEvent,d=s.walking.dialogue,spot=e.spots.night;s.firstPerson.placeAt(spot.x+1.5,spot.z+1.5,0);e.update(.1);
      const name=document.querySelector('#npc-dialog .npc-plate strong')?.textContent;let n=0;while(d.current&&n++<6){d.finishTyping();[...document.querySelectorAll('#npc-dialog .npc-options button')].at(-1).click();await new Promise(r=>setTimeout(r,30))}
@@ -38,6 +38,13 @@ with tempfile.TemporaryDirectory() as tmp:
     print('NAN',nan,flush=True)
     info=page.evaluate("""()=>{const m=seoul1907.historicalEvent.module('shadow');return {points:m.route.path.length,total:Math.round(m.route.total),members:m.members.length}}""")
     print('ROUTE',info,flush=True);assert not page.evaluate('''(()=>{let bad=false;seoul1907.scene.traverse(o=>{const a=o.isMesh&&o.geometry.attributes.position?.array;if(a&&a.some(v=>!Number.isFinite(v)))bad=true});return bad})()'''),'NaN geometry'
+    # The group waits unseen outside Donuimun until the walker comes near the gate, then walks in through it.
+    appear=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson;e.update(.1);
+     const before={waiting:m.waiting,shown:m.members[0].group.visible,hint:document.querySelector('#historical-event-panel p').textContent,distance:m.distance};
+     const a=m.appearAt;fp.placeAt(a.x+10,a.z-5,0);for(let i=0;i<40;i++)e.update(.1);
+     const lead=m.members[0].group.position,start=m.route.path[0];
+     return {before,waiting:m.waiting,shown:m.members[0].group.visible,text:document.querySelector('#historical-event-panel p').textContent,moved:+(m.distance-before.distance).toFixed(1),outsideFirst:start.distanceTo(m.route.sample(0).p)<.1}}""")
+    print('APPEAR',{k:v for k,v in appear.items() if k!='text'},appear['text'][:30],flush=True);assert appear['before']['waiting'] and not appear['before']['shown'] and '돈의문' in appear['before']['hint'] and not appear['waiting'] and appear['shown'] and appear['moved']>8 and '문을 지나' in appear['text'],appear
     # Too close: stand among the group for a few seconds and the walker is put back into the dark.
     close=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson;for(let i=0;i<60;i++){const t=m.members.at(-1).group.position;fp.placeAt(t.x+10,t.z+10,0);e.update(.1)}
      const lead=m.members[0].group.position;fp.placeAt(lead.x+.5,lead.z+.5,0);for(let i=0;i<30;i++)e.update(.1);const near=Math.min(...m.members.map(x=>Math.hypot(fp.eye.x-x.group.position.x,fp.eye.z-x.group.position.z)));
@@ -48,11 +55,11 @@ with tempfile.TemporaryDirectory() as tmp:
      for(;i<30000&&e.phase==='shadow';i++){const {p,yaw}=m.route.sample(Math.max(0,m.distance-2.3*11-18));fp.placeAt(p.x,p.z,yaw+Math.PI);e.update(.1);
       if(m.gateState==='running'){halt++;if(!gateText)gateText='';const t=document.querySelector('#historical-event-panel p').textContent;if(t.includes('홍계훈'))gateText=t;if(m.gateGuard.group.rotation.x<-1.4)fell=true;
        if(halt===40){s.renderer.render(s.scene,s.camera);window.gateShot=s.renderer.domElement.toDataURL()}}
-      if(!window.palaceShot&&m.distance>m.route.milestones[12]){s.renderer.render(s.scene,s.camera);window.palaceShot=s.renderer.domElement.toDataURL()}
+      if(!window.palaceShot&&m.distance>m.route.milestones[15]){s.renderer.render(s.scene,s.camera);window.palaceShot=s.renderer.domElement.toDataURL()}
       if(i%200===0)await new Promise(r=>setTimeout(r,0))}
      for(let k=0;k<30&&e.saving;k++)await new Promise(r=>setTimeout(r,100));
      return {frames:i,phase:e.phase,checkpoint:e.checkpoint,halt,fell,gateText:gateText.slice(0,40),minutes:+(i/600).toFixed(1)}}""")
-    print('SHADOW',run,flush=True);assert run['phase']=='hide' and run['checkpoint']==16 and run['halt']>50 and run['fell'] and '홍계훈' in run['gateText'],run
+    print('SHADOW',run,flush=True);assert run['phase']=='hide' and run['checkpoint']==19 and run['halt']>50 and run['fell'] and '홍계훈' in run['gateText'],run
     for name in ['gate','palace']:Path(f'/tmp/eulmi-{name}.png').write_bytes(base64.b64decode(page.evaluate(name+'Shot').split(',')[1]))
     # Hiding: approach the corner, stray out and get pulled back, then sit out the timeline to first light.
     hide=page.evaluate("""async()=>{const s=seoul1907,e=s.historicalEvent,h=e.module('hide'),fp=s.firstPerson,spot=h.spot;
@@ -73,7 +80,7 @@ with tempfile.TemporaryDirectory() as tmp:
      for(let i=0;i<30&&e.saving;i++)await new Promise(r=>setTimeout(r,100));await new Promise(r=>setTimeout(r,400));
      return {sky,names,phase:e.phase,checkpoint:e.checkpoint,epilogue:[...document.querySelectorAll('#historical-event-epilogue a')].map(a=>a.textContent),next:document.getElementById('historical-event-next')?.textContent}}""")
     print('MARKET',market,flush=True)
-    assert market['names']==['포목전 상인','지게꾼','장 보러 나온 아낙','늙은 선비'] and market['checkpoint']==18 and market['epilogue']==['1895-10-08','1895-12-30','1896-02-11'] and '러시아공사관' in (market['next'] or ''),market
+    assert market['names']==['포목전 상인','지게꾼','장 보러 나온 아낙','늙은 선비'] and market['checkpoint']==21 and market['epilogue']==['1895-10-08','1895-12-30','1896-02-11'] and '러시아공사관' in (market['next'] or ''),market
     Path('/tmp/eulmi-market.png').write_bytes(base64.b64decode(page.evaluate('marketShot').split(',')[1]))
     assert not errors,errors
     print('PASS EULMI',flush=True)
