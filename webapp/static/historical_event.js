@@ -38,11 +38,22 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
  document.title=text(data,'document_title');
  const lights=[];scene.traverse(o=>{if(o.isHemisphereLight||o.isDirectionalLight)lights.push(o)});
  const presets=data.scene.lighting,color=k=>new THREE.Color(k);
- let lightMix=0;
- // Lighting is a blend between the 'start' and 'end' presets; a stage can ask to drift towards 'end' over some seconds.
- function setLighting(t){lightMix=t;const a=presets.start,b=presets.end??presets.start;scene.background=color(a.sky).lerp(color(b.sky),t);
-  for(const o of lights){if(o.isHemisphereLight){o.color=color(a.hemi).lerp(color(b.hemi),t);o.groundColor=color(a.ground).lerp(color(b.ground),t);o.intensity=a.hemi_intensity+(b.hemi_intensity-a.hemi_intensity)*t}else{o.color=color(a.sun).lerp(color(b.sun),t);o.intensity=a.sun_intensity+(b.sun_intensity-a.sun_intensity)*t}}}
- setLighting(0);
+ // Lighting presets are named in the definition ('start', 'end', 'dawn', 'day'…). A stage or module can switch to one
+ // at once or drift towards it over some seconds; `lightMix` reports the progress of the latest drift (0 → 1).
+ let light={...presets.start},lightMix=0,lightDrift=null;
+ const mixHex=(a,b,t)=>'#'+color(a).lerp(color(b),t).getHexString();
+ function mixLight(a,b,t){return {sky:mixHex(a.sky,b.sky,t),hemi:mixHex(a.hemi,b.hemi,t),ground:mixHex(a.ground,b.ground,t),sun:mixHex(a.sun,b.sun,t),hemi_intensity:a.hemi_intensity+(b.hemi_intensity-a.hemi_intensity)*t,sun_intensity:a.sun_intensity+(b.sun_intensity-a.sun_intensity)*t}}
+ function applyLight(v){light=v;scene.background=color(v.sky);for(const o of lights){if(o.isHemisphereLight){o.color=color(v.hemi);o.groundColor=color(v.ground);o.intensity=v.hemi_intensity}else{o.color=color(v.sun);o.intensity=v.sun_intensity}}}
+ function setPreset(name){if(!presets[name])return;lightDrift=null;lightMix=0;applyLight({...presets[name]})}
+ function driftTo(name,seconds=20){if(!presets[name])return;lightDrift={from:{...light},to:presets[name],t:0,seconds};lightMix=0}
+ function stepLight(dt){if(!lightDrift)return;lightDrift.t=Math.min(1,lightDrift.t+dt/lightDrift.seconds);lightMix=lightDrift.t;applyLight(mixLight(lightDrift.from,lightDrift.to,lightDrift.t));if(lightDrift.t>=1)lightDrift=null}
+ setPreset('start');
+ // A white flash over the scene (gunfire seen from afar) and optional sound cues. Text always carries the event;
+ // sounds play only when the definition names a file for the cue and the viewer turned sound on (off by default).
+ const flashLayer=document.createElement('div');flashLayer.style.cssText='position:absolute;inset:0;z-index:1040;background:#fff;opacity:0;pointer-events:none;transition:opacity .5s';container.append(flashLayer);
+ function flash(strength=.55){flashLayer.style.transition='none';flashLayer.style.opacity=String(strength);requestAnimationFrame(()=>{flashLayer.style.transition='opacity .6s';flashLayer.style.opacity='0'})}
+ const soundOn=()=>{try{return localStorage.getItem('hanyang3d-event-sound')==='on'}catch{return false}};
+ function cue(id){const url=data.sounds?.[id];if(!url||!soundOn())return;try{const a=new Audio(url);a.volume=.5;a.play().catch(()=>{})}catch{}}
 
  // ---- helpers shared with modules ---------------------------------------------------------------------------------
  const waterAt=(x,z)=>globalThis.ChannelTerrain.nearest(x,z,channel.path);
@@ -84,7 +95,8 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
   // Closing the window early leaves the person waiting; a short pause stops it reopening on the same spot.
   dialogue.start({key:'event-'+(spec.portrait??'person'),name:say(spec.name,spec.name_en),subtitle:say(spec.subtitle,spec.subtitle_en),portrait:spec.portrait??'walker',nodes:actor.nodes,position:()=>position,maxDistance:200,finish:()=>{talking=null;retryAt=performance.now()+3000;if(pendingDone)pointQuest(currentTalk()?.actor??null)}});
  }
- walking.setEventAction(()=>{const done=pendingDone;pendingDone=null;pointQuest(null);done?.()});
+ // Finishing a talk (rather than closing it early) lifts the reopen pause at once, so the next person can speak.
+ walking.setEventAction(()=>{const done=pendingDone;pendingDone=null;retryAt=0;pointQuest(null);done?.()});
  // Each talk stage owns one standing person; the walker starts where the stage says (or where the last one ended).
  const talks=new Map();
  function prepareTalks(){
@@ -104,20 +116,28 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
   if(left<3.5&&!talking&&!dialogue.current&&!saveError&&performance.now()>=retryAt)talk(actor,stage.nodes,()=>advance(stage.last,()=>{enterStage();if(stage.after)message.textContent=text(stage,'after')}));
  }
  // ---- talks stages (speakers come to the walker) ------------------------------------------------------------------
- let talksStep=null,lightDrift=null;
+ let talksStep=null;
+ function updateTalks(dt){
+  const w=talksStep?.waiting;if(!w)return;
+  const left=Math.hypot(fp.eye.x-w.spot.x,fp.eye.z-w.spot.z);w.actor.p.group.rotation.y=Math.atan2(fp.eye.x-w.spot.x,fp.eye.z-w.spot.z);
+  quest.update(dt);const marks=walking.navigation.questMarkers;if(left<MAP_MARK_M){if(!marks.length)marks.push({x:w.spot.x,z:w.spot.z})}else marks.length=0;
+  if(left<3.5&&!talking&&!dialogue.current&&performance.now()>=retryAt){talksStep.waiting=null;w.go()}
+ }
  function runTalks(stage){
   const speakers=stage.speakers.map(sp=>({...sp,actor:sp.at?.startsWith('module:')?null:person(sp.spec)}));
   let i=0;
   const next=()=>{
-   if(i>=speakers.length){advance(stage.last,complete);return}
+   if(i>=speakers.length){talksStep=null;advance(stage.last,complete);return}
    const sp=speakers[i++];let actor=sp.actor;
    if(sp.at?.startsWith('module:')){const anchor=lastModule?.anchors?.()[sp.at.slice(7)];if(!anchor)throw Error('missing module anchor '+sp.at);actor={p:anchor,spec:sp.spec,nodes:null}}
-   else{const q=nearestSafe(fp.eye.clone().add(new THREE.Vector3(3.2,0,2.4)).setY(0));standAt(actor,q,faceTowards(q,fp.eye)+Math.PI)}
+   else{const q=sp.pixel?atPixel(sp.pixel):nearestSafe(fp.eye.clone().add(new THREE.Vector3(3.2,0,2.4)).setY(0));standAt(actor,q,faceTowards(q,fp.eye)+Math.PI)}
    if(sp.intro)message.textContent=text(sp,'intro');
-   talk(actor,sp.nodes,()=>{if(sp.actor)sp.actor.p.group.visible=false;next()});
+   // A speaker placed at a spot is walked to (question mark on the head and the maps); one beside the walker speaks at once.
+   if(sp.pixel){pointQuest(actor);talksStep.waiting={actor,spot:actor.p.group.position.clone(),go:()=>talk(actor,sp.nodes,()=>{if(sp.actor&&!sp.stay)sp.actor.p.group.visible=false;next()})};return}
+   talk(actor,sp.nodes,()=>{if(sp.actor&&!sp.stay)sp.actor.p.group.visible=false;next()});
   };
-  if(stage.lighting_to)lightDrift={target:stage.lighting_to==='end'?1:0,seconds:stage.lighting_seconds??20};
-  talksStep={stage,next};next();
+  if(stage.lighting_to)driftTo(stage.lighting_to,stage.lighting_seconds??20);
+  talksStep={stage,next,waiting:null};next();
  }
 
  // ---- module stages -----------------------------------------------------------------------------------------------
@@ -125,6 +145,8 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
  const moduleApi=stage=>({
   data:stage,say,text,fp,scene,camera,container,walking,buildings,infrastructure,surface,safe,nearestSafe,atPixel,faceTowards,waterAt,
   panel:{message:t=>{message.textContent=t},button:(id,label,onclick)=>button(id,label,onclick)},
+  light:(name,seconds)=>seconds?driftTo(name,seconds):setPreset(name),flash,cue,quest,
+  markMap:p=>{const marks=walking.navigation.questMarkers;marks.length=0;if(p)marks.push({x:p.x,z:p.z})},
   // A module reports its checkpoints by index within its own range, and finish() when its last one is reached.
   reach:i=>{const point=stage.first+i;if(point>checkpoint&&point<stage.last)advance(point)},
   finish:()=>{advance(stage.last,()=>{lastModule=instances.get(stage.key);enterStage()})},
@@ -137,8 +159,16 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
  }
 
  // ---- stage entry -------------------------------------------------------------------------------------------------
+ let transitioning=false;
  function enterStage(resume=false){
   const i=stageAt(checkpoint),stage=i<0?null:stages[i];
+  // A stage may open elsewhere and later ('the next day, the market'): dissolve, move the walker, set the light, lift.
+  if(stage?.transition&&!stage.entered){stage.entered=true;transitioning=true;fp.clearInput();
+   const tr=stage.transition;
+   curtain.show(text(tr,'text')).then(()=>{if(tr.walker_pixel){const p=atPixel(tr.walker_pixel),f=tr.facing_pixel?atPixel(tr.facing_pixel):null;fp.placeAt(p.x,p.z,f?faceTowards(p,f):0);fp.clearInput()}
+    if(tr.lighting)setPreset(tr.lighting);if(tr.show_settlement)settlement.group.visible=true;transitioning=false;enterStage(resume);curtain.hide()});
+   return}
+  if(stage?.lighting&&!stage.transition)setPreset(stage.lighting);
   for(const t of talks.values())t.actor.p.group.visible=false;
   pointQuest(null);task.hidden=true;face.hidden=true;
   if(current?.exit&&current!==(stage?.type==='module'?moduleFor(stage):null))current.exit();current=null;
@@ -172,7 +202,7 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
    let saved=await api(restart?'restart':'status');
    if(saved.version!==data.version){finished=true;start.textContent=say('새 버전으로 다시 시작','Restart updated visit');message.textContent=say('회상 내용이 바뀌었습니다. 처음부터 다시 시작해 주세요.','The visit changed. Please restart.');return}
    if(saved.status==='completed'&&!restart){start.textContent=say('처음부터 다시 보기','Replay');finished=true;message.textContent=say('이미 마친 회상입니다. 다시 체험할 수 있습니다.','You have completed this visit. You can replay it.');return}
-   saved=await api('start');checkpoint=saved.checkpoint;saveError=false;finished=false;dialogue.end();setLighting(0);lightDrift=null;talksStep=null;
+   saved=await api('start');checkpoint=saved.checkpoint;saveError=false;finished=false;dialogue.end();setPreset('start');if(data.scene.hide_people!==false)settlement.group.visible=false;talksStep=null;for(const s of stages)s.entered=false;
    for(const m of instances.values())m.reset?.();lastModule=null;
    if(!fp.active)fp.enter();if(!fp.active)throw Error(say('1인칭을 시작하지 못했습니다.','Could not start walking.'));
    fp.setMounted(false);active=true;start.hidden=true;
@@ -186,8 +216,10 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
   if(!active)return;
   if(!fp.active){active=false;start.hidden=false;start.textContent=say('이어서 걷기','Resume walking');message.textContent=say('회상을 멈췄습니다. 마지막 확인 지점부터 이어갈 수 있습니다.','Paused. Resume from the last checkpoint.');current?.exit?.();return}
   if(fp.mounted)fp.setMounted(false);
-  if(lightDrift&&lightMix!==lightDrift.target)setLighting(Math.min(1,lightMix+Math.min(dt,.1)/lightDrift.seconds));
+  stepLight(Math.min(dt,.1));
+  if(transitioning)return;
   const t=currentTalk();if(t){updateTalk(dt,t);return}
+  if(talksStep){updateTalks(dt);if(talksStep.waiting)return}
   current?.update(Math.min(dt,.1));
  }
  function complete(){
@@ -197,11 +229,14 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
    const list=document.createElement('ul');list.id='historical-event-epilogue';list.style.cssText='margin:6px 0 0;padding-left:18px';
    for(const e of data.epilogue.items){const li=document.createElement('li');const a=document.createElement('a');a.href=e.source;a.target='_blank';a.rel='noopener';a.style.color='#e9d7a2';a.textContent=e.date;li.append(a,' — ',say(e.text,e.text_en));list.append(li)}
    message.append(list,document.createElement('br'),say('회상 완료가 계정에 기록되었습니다.','Completion has been saved.'));note.open=true;
+   // A quest line points on to the next visit; it never gates it.
+   if(data.next){const n=document.createElement('p');n.id='historical-event-next';n.style.cssText='margin:8px 0 0;color:#e9d7a2';n.textContent=text(data.next,'text');message.append(n)}
   }).catch(error=>{message.textContent=error.message;start.hidden=false});
  }
  // Arrived behind the curtain from the base scene: begin at once so the first thing seen is the street, not the overview.
  if(curtain.holding)begin().finally(()=>curtain.hide());
- return {update,begin,quest,stages,panel,
+ // probe(px,py): whether an original-map pixel is passable — for authoring routes and hiding places.
+ return {update,begin,quest,stages,panel,probe:(px,py)=>{const p=surface(px,py);p.y=0;return safe(p)},
   regroup:()=>current?.regroup?.(),
   module:key=>instances.get(key),get current(){return current},
   get spots(){return Object.fromEntries([...talks].map(([k,t])=>[k,t.spot]))},get contacts(){return Object.fromEntries([...talks].map(([k,t])=>[k,t.actor]))},

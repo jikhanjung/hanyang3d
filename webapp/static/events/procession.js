@@ -2,12 +2,13 @@ import * as THREE from 'three';
 import {createRoyalArrival,createLegationGuard} from '../royal_arrival.js';
 import {createEventNeighborhood} from '../event_neighborhood.js';
 import {createWalker} from '../pedestrians.js';
+import {buildRoute} from './route.js';
 
 // Stage module: follow two sedan chairs along a route of checkpoints, with an invented patrol near miss on the way
 // and an arrival scene at the end. One checkpoint per route point; the module claims the first when it starts and
 // reports the last when the arrival scene has played. Interpretive scenery and motion throughout.
 export function createProcession(api){
- const {data,say,text,fp,scene,camera,container,walking,buildings,infrastructure,surface,safe,nearestSafe,waterAt}=api;
+ const {data,say,text,fp,scene,camera,container,walking,buildings,infrastructure,surface,safe,waterAt}=api;
  const root=new THREE.Group();root.name='procession';root.visible=false;scene.add(root);
  function chair(index){
   const group=new THREE.Group(),cabin=new THREE.Group();group.add(cabin);root.add(group);
@@ -32,36 +33,12 @@ export function createProcession(api){
  }
  const rejoin=api.panel.button('historical-event-rejoin',say('가마 뒤로 돌아가기','Rejoin the chairs'),()=>{if(fp.active)regroup()});
  const warn=api.panel.button('historical-event-warn',say('가마꾼에게 숨으라고 이르기','Tell the bearers to hide'),()=>{if(patrol.state==='approaching'&&!warn.hidden)startHiding(true)});
- let path=[],lengths=[],milestones=[],distance=0,neighborhood=null,arrival=null,patrolMessage='',entered=false;
+ let path=[],lengths=[],milestones=[],sampleRoute=null,distance=0,neighborhood=null,arrival=null,patrolMessage='',entered=false;
 
- // ---- route -------------------------------------------------------------------------------------------------------
- // Short A* detours respect current walls and retained buildings. Never fall back to moving through solids.
- function connect(a,b){
-  const span=a.distanceTo(b),steps=Math.ceil(span/2),direct=Array.from({length:steps+1},(_,i)=>a.clone().lerp(b,i/steps));if(direct.every(safe))return direct;
-  const step=3,margin=60,minX=Math.min(a.x,b.x)-margin,minZ=Math.min(a.z,b.z)-margin,maxX=Math.max(a.x,b.x)+margin,maxZ=Math.max(a.z,b.z)+margin;
-  const point=(x,z)=>new THREE.Vector3(minX+x*step,0,minZ+z*step),cell=p=>[Math.round((p.x-minX)/step),Math.round((p.z-minZ)/step)],startCell=cell(a),goalCell=cell(b),key=(x,z)=>x+','+z;
-  const nodes=new Map(),open=[];const seed={x:startCell[0],z:startCell[1],g:0,f:0,parent:null};open.push(seed);nodes.set(key(seed.x,seed.z),seed);
-  for(let count=0;open.length&&count<18000;count++){
-   let bi=0;for(let i=1;i<open.length;i++)if(open[i].f<open[bi].f)bi=i;const n=open.splice(bi,1)[0];if(n.closed)continue;n.closed=true;
-   if(n.x===goalCell[0]&&n.z===goalCell[1]){const result=[b];for(let c=n;c;c=c.parent)result.push(point(c.x,c.z));result.push(a);return result.reverse()}
-   for(const [dx,dz] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]){
-    const x=n.x+dx,z=n.z+dz,p=point(x,z);if(p.x<minX||p.x>maxX||p.z<minZ||p.z>maxZ||!safe(p))continue;
-    if(dx&&dz&&(!safe(point(n.x+dx,n.z))||!safe(point(n.x,n.z+dz))))continue;
-    const k=key(x,z),prev=nodes.get(k),g=n.g+Math.hypot(dx,dz);if(prev&&g>=prev.g)continue;
-    const v={x,z,g,f:g+Math.hypot(x-goalCell[0],z-goalCell[1]),parent:n};nodes.set(k,v);open.push(v);
-   }
-  }
-  throw Error(say('가마가 통과할 길을 찾지 못했습니다. 회상 경로 점검이 필요합니다.','No passable route. This reconstruction needs a route check.'));
- }
+ // ---- route (shared helper in route.js) ----
  function prepare(){
   if(lengths.length)return;
-  const nodes=data.route.map(r=>{let p;if(r.bridge_id){const bridge=infrastructure.bridges.getObjectByName(r.bridge_id);bridge.updateWorldMatrix(true,false);p=bridge.localToWorld(new THREE.Vector3(0,0,r.bridge_side*bridge.userData.approachDistance))}else if(r.building_front){const b=buildings.find(b=>b.userData.feature.id===r.building_front);b.updateWorldMatrix(true,false);p=b.localToWorld(new THREE.Vector3(0,0,25))}else p=surface(...r.pixel);p.y=0;return p});
-  for(let i=0;i<nodes.length;i++){
-   if(!safe(nodes[i]))throw Error(say('확인 지점이 건물과 겹칩니다. 경로 점검이 필요합니다.','A checkpoint overlaps an obstacle.'));
-   if(i)path.push(...connect(nodes[i-1],nodes[i]).slice(1));else path.push(nodes[i]);
-   milestones.push(path.length-1);
-  }
-  lengths=[0];for(let i=1;i<path.length;i++)lengths.push(lengths[i-1]+path[i].distanceTo(path[i-1]));milestones=milestones.map(i=>lengths[i]);
+  const route=buildRoute(api,data.route);path=route.path;lengths=route.lengths;milestones=route.milestones;sampleRoute=route.sample;
   neighborhood=createEventNeighborhood({path,surface,scene,walking,buildings,waterAt});
   if(data.patrol){
    // The hiding place: a passable pocket beside the road a little before the patrol's route point.
@@ -71,9 +48,8 @@ export function createProcession(api){
    if(!patrol.spot)patrol.spot=h.clone();
   }
  }
- function sample(s){
-  s=Math.max(0,Math.min(s,lengths.at(-1)));let i=1;while(i<lengths.length-1&&lengths[i]<s)i++;const a=path[i-1],b=path[i],p=a.clone().lerp(b,(s-lengths[i-1])/Math.max(.0001,lengths[i]-lengths[i-1]));return {p,yaw:Math.atan2(b.x-a.x,b.z-a.z)};
- }
+ const sample=s=>sampleRoute(s);
+
  function place(){for(const [i,c] of chairs.entries()){const {p,yaw}=sample(distance-i*data.spacing_m);c.group.position.set(p.x,fp.groundAt(p.x,p.z),p.z);c.group.rotation.y=yaw}}
  function regroup(){const {p,yaw}=sample(Math.max(0,distance-data.spacing_m-7));fp.placeAt(p.x,p.z,yaw+Math.PI);fp.clearInput()}
  const startArrival=()=>{arrival=createRoyalArrival({scene,camera,container,chairs,building:arrivalBuilding,fp,say,guard});return arrival};

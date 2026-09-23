@@ -1061,6 +1061,21 @@
       "name_en": "Old sealed bundle",
       "unit_en": "piece",
       "desc_en": "An old bundle handed over by the Russian legation caretaker. Rumour links it to the flight to the legation; nobody knows what it is. In first-person view, open your pack and right-click it to enter the small hours of 11 February 1896. It cannot be sold."
+    },
+    "eulmi_keepsake": {
+      "name": "그을린 노리개",
+      "unit": "개",
+      "price": 1,
+      "icon": {
+        "shape": "roll",
+        "color": "#7a3b3b"
+      },
+      "desc": "1907년 경복궁 관리인이 건넨 그을린 노리개. 을미년 가을 새벽과 관련이 있다는 말만 전한다. 1인칭에서 봇짐을 열고 오른쪽 클릭하면 1895년 10월 8일 새벽으로 들어간다. 팔 수 없다.",
+      "use": "flashback",
+      "max_owned": 1,
+      "name_en": "Scorched norigae",
+      "unit_en": "piece",
+      "desc_en": "A scorched norigae handed over by the Gyeongbokgung caretaker in 1907, said only to be connected with a dawn in the autumn of 1895. In first-person view, open your pack and right-click it to enter the small hours of 8 October 1895. It cannot be sold."
     }
   },
   "wallet": {

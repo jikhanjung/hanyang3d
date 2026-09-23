@@ -1,0 +1,733 @@
+{
+  "schema_version": 2,
+  "id": "eulmi-1895",
+  "slug": "eulmi",
+  "version": 1,
+  "base_scene": "seoul1907",
+  "date": "1895-10-08",
+  "title": "을미년의 새벽",
+  "title_en": "Dawn of the Eulmi Year",
+  "panel_title": "1895년 10월 8일 · 을미년의 새벽",
+  "panel_title_en": "8 October 1895 · Dawn of the Eulmi Year",
+  "document_title": "을미사변 회상 · 한양3D",
+  "document_title_en": "The Eulmi Incident · Hanyang3D",
+  "intro": "인적 끊긴 새벽, 서대문 안 골목을 걷고 있습니다.",
+  "intro_en": "Before dawn you are walking a deserted lane inside the West Gate.",
+  "note": "을미사변 기록을 바탕으로 구성한 개인 회상 체험. 플레이어·야경꾼·저잣거리 사람들과 그 대사, 무리의 인원·복장·세부 동선, 궁 안에서 숨는 자리와 횃불의 움직임은 창작·추정입니다. 무리가 서대문 부근에서 합류해 광화문으로 들어간 일, 광화문의 총성과 홍계훈의 전사, 건청궁 난입과 왕비 시해, 새벽 5~6시 무렵이라는 시각은 출처를 따랐습니다. 왕비 시해 장면은 보여 주지 않습니다. 1907년 지도·건물과 현대 지형을 소급 참고했으며 건청궁은 개념 모형입니다. 당시 호칭에 따라 ‘명성황후’(1897년 추존) 대신 ‘중전마마’라고 부릅니다. 새문안 길의 개천 다리는 위치·형태를 추정한 체험용 배치입니다.",
+  "note_en": "A personal historical reconstruction. The player, the watchman, the people in the market and their lines, the group's size, dress and exact route, the hiding place and the movement of torches are interpretive. The group joining near the West Gate and entering by Gwanghwamun, the shots at the gate and the death of Hong Gye-hun, the break-in at Geoncheonggung and the killing of the queen, and the hour of about five to six in the morning follow the sources. The killing is not shown. The 1907 map and buildings and modern terrain are used as references, and Geoncheonggung is a conceptual model. People call her the queen, not Empress Myeongseong, the title given in 1897. The stream bridge on the Saemun road is an interpretive placement.",
+  "sources": [
+    {
+      "title": "한국민족문화대백과 — 을미사변",
+      "url": "https://encykorea.aks.ac.kr/Article/E0042948"
+    },
+    {
+      "title": "한국민족문화대백과 — 홍계훈",
+      "url": "https://encykorea.aks.ac.kr/Article/E0063970"
+    },
+    {
+      "title": "우리역사넷 — 을미의병",
+      "url": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i402700&code=kc_age_40"
+    },
+    {
+      "title": "한국민족문화대백과 — 아관파천",
+      "url": "https://encykorea.aks.ac.kr/Article/E0034214"
+    }
+  ],
+  "keepsake": {
+    "item": "eulmi_keepsake",
+    "giver_building": "gwanghwamun-1907",
+    "offer": "을미년 일을 들려주십시오.",
+    "offer_en": "Tell me about the Eulmi year.",
+    "nodes": {
+      "rumour": {
+        "text": "을미년 가을 새벽 일 말이오…(잠시 말이 없다) 몇 해 전 건청궁 뒤를 치우던 이가 그을린 노리개 하나를 주웠다오. 그날 밤과 관련이 있다는 말만 돌지, 누구 것인지는 아무도 모르오. 궁금하다니 가져가 한번 살펴보시오.",
+        "text_en": "The dawn in the autumn of the Eulmi year… (he falls silent for a moment) A few years ago someone clearing the ground behind Geoncheonggung picked up a scorched norigae. People say it has to do with that night, but nobody knows whose it was. Since you ask, take it and have a look.",
+        "options": [
+          {
+            "label": "받아 두겠습니다.",
+            "label_en": "I will take it.",
+            "action": "event:keepsake"
+          },
+          {
+            "label": "다음에 보겠습니다.",
+            "label_en": "Another time.",
+            "action": "close"
+          }
+        ]
+      },
+      "hint": {
+        "text": "그 노리개는 이미 드렸소. 봇짐에서 꺼내 쥐어 보시오.",
+        "text_en": "You already have the norigae. Take it out of your pack and hold it.",
+        "options": [
+          {
+            "label": "그리하겠습니다.",
+            "label_en": "I will.",
+            "action": "close"
+          }
+        ]
+      }
+    },
+    "received": "그을린 노리개를 봇짐에 넣었소. 1인칭에서 봇짐을 열고 써 보시오.",
+    "received_en": "The scorched norigae is in your pack. Open the pack in first-person view and use it.",
+    "missing": "1907년 광화문 앞 경복궁 관리인에게 그을린 노리개를 받아 봇짐에서 써야 들어올 수 있습니다.",
+    "missing_en": "Receive the scorched norigae from the Gyeongbokgung caretaker at Gwanghwamun in 1907 and use it from your pack.",
+    "in_visit": "노리개를 꼭 쥐고 있소.",
+    "in_visit_en": "You hold the norigae tight.",
+    "on_use": "노리개가 손 안에서 따뜻해진다. 1895년 가을 새벽으로 들어갑니다…",
+    "on_use_en": "The norigae grows warm in your hand. Into a dawn in the autumn of 1895…"
+  },
+  "transition": {
+    "out": "노리개를 쥐자 먼 데서 총소리 같은 것이 울리고 눈앞이 캄캄해진다…",
+    "out_en": "As you grip the norigae something like a distant shot rings out and everything goes dark…",
+    "in": "정신을 차려 보니 — 1895년 10월 8일 새벽, 서대문 안",
+    "in_en": "When you come to — before dawn, 8 October 1895, inside the West Gate",
+    "back_out": "새벽의 연기가 흩어지고 다시 눈앞이 어두워진다…",
+    "back_out_en": "The smoke of that dawn thins and the dark returns…",
+    "back_in": "정신을 차려 보니 — 1907년, 광화문 앞",
+    "back_in_en": "When you come to — Gwanghwamun, 1907"
+  },
+  "sounds": {},
+  "scene": {
+    "retained_buildings": [
+      "donuimun-1907",
+      "heunghwamun-1907",
+      "gwanghwamun-1907",
+      "geunjeongjeon-1907",
+      "sajeongjeon-1907",
+      "gangnyeongjeon-1907",
+      "gyeonghoeru-1907",
+      "hyangwonjeong-1907",
+      "yeongchumun-1907",
+      "bosingak-1907",
+      "jongno-shops-north-1-1907",
+      "jongno-shops-north-2-1907",
+      "jongno-shops-north-3-1907",
+      "jongno-shops-north-4-1907",
+      "jongno-shops-north-5-1907",
+      "jongno-shops-north-6-1907",
+      "jongno-shops-south-1-1907",
+      "jongno-shops-south-2-1907",
+      "jongno-shops-south-3-1907",
+      "jongno-shops-south-4-1907",
+      "jongno-shops-south-5-1907",
+      "jongno-shops-south-6-1907"
+    ],
+    "hide_people": true,
+    "lighting": {
+      "start": {
+        "sky": "#070b14",
+        "hemi": "#5d6f8f",
+        "ground": "#262a31",
+        "sun": "#8fa4c8",
+        "hemi_intensity": 0.7,
+        "sun_intensity": 0.35
+      },
+      "dawn": {
+        "sky": "#3e4a63",
+        "hemi": "#9aa6bd",
+        "ground": "#4a4a4a",
+        "sun": "#c9b9a4",
+        "hemi_intensity": 1.0,
+        "sun_intensity": 0.7
+      },
+      "day": {
+        "sky": "#b9c9d8",
+        "hemi": "#e6e9ea",
+        "ground": "#7a7361",
+        "sun": "#fff1d6",
+        "hemi_intensity": 1.5,
+        "sun_intensity": 1.3
+      }
+    }
+  },
+  "stages": [
+    {
+      "key": "night",
+      "type": "talk",
+      "walker_start_pixel": [
+        436,
+        2276
+      ],
+      "contact_pixel": [
+        452,
+        2268
+      ],
+      "contact": {
+        "name": "야경꾼",
+        "name_en": "Night watchman",
+        "subtitle": "창작 인물",
+        "subtitle_en": "Fictional character",
+        "portrait": "walker",
+        "color": "#5b5448"
+      },
+      "hint": "골목 끝의 야경꾼에게 가 보세요. {m}m",
+      "hint_en": "Go to the watchman at the end of the lane. {m} m",
+      "nodes": {
+        "hello": {
+          "text": "이 새벽에 어딜 그리 다니시오? 요새 도성 안이 뒤숭숭하니 일찍 들어가시오. …방금 서대문 쪽이 소란하던데, 등불 든 무리가 들어오는 것 같았소.",
+          "text_en": "Where are you off to at this hour? The city is uneasy these days; best get indoors. …There was a stir at the West Gate just now — a group with lanterns coming in, it looked like.",
+          "options": [
+            {
+              "label": "어떤 무리였소?",
+              "label_en": "What kind of group?",
+              "next": "who"
+            },
+            {
+              "label": "조심히 살펴보겠소.",
+              "label_en": "I will look carefully.",
+              "action": "event:night_done"
+            }
+          ]
+        },
+        "who": {
+          "text": "어두워서 똑똑히는 못 봤소. 칼 찬 이들도, 군복 입은 이들도 섞였고… 가마도 하나 있었던 것 같소. 이 새벽에 대궐 쪽으로 가는 행차라니, 좋은 일은 아닐 게요. 가까이 가지 마시오.",
+          "text_en": "Too dark to see clearly. Men with swords, men in uniform, all mixed… and a sedan chair, I think. A party heading for the palace at this hour means no good. Keep away from them.",
+          "options": [
+            {
+              "label": "멀찍이 따라가 보겠소.",
+              "label_en": "I will follow at a distance.",
+              "action": "event:night_done"
+            }
+          ]
+        }
+      },
+      "after": "등불 든 무리가 돈의문 안으로 들어왔습니다. 거리를 두고 따라가세요.",
+      "after_en": "The lantern-lit group has come in by the West Gate. Follow at a distance."
+    },
+    {
+      "key": "shadow",
+      "type": "module",
+      "module": "shadow",
+      "intro": "등불 든 무리가 동쪽으로 움직입니다. 들키지 않게 거리를 두고 따라가세요.",
+      "intro_en": "The lantern-lit group moves east. Follow without being seen.",
+      "follow_hint": "등불을 놓치지 말고 거리를 두세요.",
+      "follow_hint_en": "Keep the lanterns in sight, and your distance.",
+      "too_close": "너무 가깝습니다. 뒤에서 누군가 돌아볼 것 같습니다.",
+      "too_close_en": "Too close. Someone at the back may turn round.",
+      "too_close_caught": "누군가 뒤를 돌아보았다 — 급히 골목 그늘로 물러났습니다.",
+      "too_close_caught_en": "Someone looked back — you ducked into the shadow of a lane.",
+      "too_far": "등불이 멀어집니다. 조금 더 가까이 따라가세요.",
+      "too_far_en": "The lanterns are drawing away. Follow a little closer.",
+      "group": {
+        "count": 12,
+        "speed_mps": 2.7,
+        "spacing_m": 2.3,
+        "lantern_every": 3,
+        "colors": [
+          "#2e2f31",
+          "#3b3a36",
+          "#303a4a",
+          "#46413a"
+        ]
+      },
+      "keep": {
+        "near_m": 7,
+        "far_m": 55,
+        "start_behind_m": 28
+      },
+      "route": [
+        {
+          "pixel": [
+            414,
+            2292
+          ],
+          "name": "돈의문 안",
+          "name_en": "Inside the West Gate"
+        },
+        {
+          "pixel": [
+            486,
+            2250
+          ],
+          "name": "정동 길목",
+          "name_en": "Jeongdong corner"
+        },
+        {
+          "pixel": [
+            598,
+            2207
+          ],
+          "name": "새문고개",
+          "name_en": "Saemungogae"
+        },
+        {
+          "pixel": [
+            682,
+            2206
+          ],
+          "name": "개천 다리 서쪽",
+          "name_en": "West end of the stream bridge",
+          "bridge_id": "saemun-stream-crossing-1895",
+          "bridge_side": -1
+        },
+        {
+          "pixel": [
+            696,
+            2206
+          ],
+          "name": "개천 다리 동쪽",
+          "name_en": "East end of the stream bridge",
+          "bridge_id": "saemun-stream-crossing-1895",
+          "bridge_side": 1
+        },
+        {
+          "pixel": [
+            700,
+            2206
+          ],
+          "name": "황토현",
+          "name_en": "Hwangtohyeon"
+        },
+        {
+          "pixel": [
+            758,
+            2100
+          ],
+          "name": "육조거리 남쪽",
+          "name_en": "South end of Yukjo Street"
+        },
+        {
+          "pixel": [
+            758,
+            1995
+          ],
+          "name": "육조거리",
+          "name_en": "Yukjo Street"
+        },
+        {
+          "pixel": [
+            758,
+            1936
+          ],
+          "name": "광화문 앞",
+          "name_en": "Before Gwanghwamun"
+        },
+        {
+          "pixel": [
+            758,
+            1884
+          ],
+          "name": "광화문 안",
+          "name_en": "Inside Gwanghwamun"
+        },
+        {
+          "pixel": [
+            818,
+            1852
+          ],
+          "name": "흥례문 동쪽",
+          "name_en": "East of Heungnyemun"
+        },
+        {
+          "pixel": [
+            836,
+            1760
+          ],
+          "name": "근정전 동쪽",
+          "name_en": "East of Geunjeongjeon"
+        },
+        {
+          "pixel": [
+            838,
+            1662
+          ],
+          "name": "경회루 동북쪽",
+          "name_en": "North-east of Gyeonghoeru"
+        },
+        {
+          "pixel": [
+            852,
+            1604
+          ],
+          "name": "향원지 동쪽",
+          "name_en": "East of the Hyangwon pond"
+        },
+        {
+          "pixel": [
+            818,
+            1558
+          ],
+          "name": "건청궁 앞",
+          "name_en": "Before Geoncheonggung"
+        }
+      ],
+      "gate": {
+        "at": 8,
+        "defender_pixel": [
+          758,
+          1920
+        ],
+        "hold_s": 10,
+        "beats": [
+          {
+            "t": 0,
+            "text": "무리가 광화문 앞에서 멈췄다. 문 앞을 막아선 이가 무어라 외친다.",
+            "text_en": "The group halts before Gwanghwamun. Someone barring the gate shouts at them."
+          },
+          {
+            "t": 2.5,
+            "flash": 0.6,
+            "cue": "gunfire",
+            "text": "번쩍 — 총소리가 새벽을 가른다.",
+            "text_en": "A flash — shots split the dawn."
+          },
+          {
+            "t": 3.3,
+            "flash": 0.45,
+            "cue": "gunfire",
+            "fall": true
+          },
+          {
+            "t": 5.5,
+            "text": "문 앞의 사람이 쓰러졌다. 훈련대 연대장 홍계훈이었다고 한다. 문이 열리고 무리가 안으로 몰려 들어간다.",
+            "text_en": "The man at the gate has fallen — Hong Gye-hun, colonel of the Training Corps, it is said. The gate opens and the group pours in."
+          }
+        ]
+      },
+      "bridge": {
+        "id": "saemun-stream-crossing-1895",
+        "name": "개천 건널목 다리 (위치·형태 추정)",
+        "name_en": "Stream crossing (interpretive placement)",
+        "pixel": [
+          689,
+          2206
+        ],
+        "width_m": 7,
+        "rails": false,
+        "temporal": {
+          "reference_year": 1895,
+          "status": "interpretive_route_crossing"
+        },
+        "note": "새문안 길에서 육조거리로 가려면 백운동천을 건너야 한다. 1907년 지도 데이터에 이 자리의 다리가 없어 체험용으로 추정 배치했다."
+      }
+    },
+    {
+      "key": "hide",
+      "type": "module",
+      "module": "hide",
+      "checkpoints": 1,
+      "compound": {
+        "pixel": [
+          815,
+          1524
+        ],
+        "yaw_deg": 3.735,
+        "w": 64,
+        "d": 46,
+        "wall_h": 3,
+        "gate_w": 5,
+        "halls": [
+          [
+            -8,
+            -10,
+            26,
+            10,
+            4.2
+          ],
+          [
+            16,
+            -9,
+            14,
+            10,
+            4.6
+          ],
+          [
+            22,
+            8,
+            8,
+            14,
+            3.8
+          ]
+        ]
+      },
+      "spot_local": [
+        -26,
+        17
+      ],
+      "radius_m": 3,
+      "torches": 5,
+      "torch_loop": [
+        [
+          -14,
+          4
+        ],
+        [
+          -2,
+          -2
+        ],
+        [
+          10,
+          -2
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          -10,
+          10
+        ]
+      ],
+      "torch_gather": [
+        4,
+        -2
+      ],
+      "torch_exit": [
+        40,
+        -6
+      ],
+      "smoke_local": [
+        70,
+        -40
+      ],
+      "intro": "무리가 건청궁 문 안으로 사라졌습니다. 조심조심 따라 들어가 담 안쪽 어두운 구석에 몸을 숨기세요.",
+      "intro_en": "The group has vanished through the gate of Geoncheonggung. Creep in after them and hide in a dark corner inside the wall.",
+      "approach": "담 안쪽 어두운 구석까지 {m}m — 횃불을 피해 움직이세요.",
+      "approach_en": "{m} m to the dark corner inside the wall — keep clear of the torches.",
+      "settled": "어두운 구석에 몸을 낮췄습니다. 숨을 죽이고 지켜보세요.",
+      "settled_en": "You crouch in the dark corner. Hold your breath and watch.",
+      "stray": "구석에서 너무 나왔습니다. 횃불 빛이 닿을 것 같습니다.",
+      "stray_en": "You have left the corner. The torchlight may reach you.",
+      "pulled_back": "횃불이 이쪽을 비추었다 — 숨을 삼키며 어둠 속으로 물러났습니다.",
+      "pulled_back_en": "A torch swung your way — you held your breath and sank back into the dark.",
+      "duration_s": 60,
+      "leave_after_s": 10,
+      "timeline": [
+        {
+          "t": 2,
+          "torches": "scatter",
+          "text": "횃불 든 이들이 전각 사이로 흩어진다. 문짝 부서지는 소리가 난다.",
+          "text_en": "Men with torches scatter between the halls. A door gives way with a crash.",
+          "cue": "doors"
+        },
+        {
+          "t": 12,
+          "text": "안쪽에서 궁녀들의 비명과 고함이 뒤섞인다. 무언가를 찾는 듯 이 방 저 방을 뒤지는 발소리.",
+          "text_en": "From inside come screams of court women and shouting, and footsteps going from room to room as if searching for someone.",
+          "cue": "shouts"
+        },
+        {
+          "t": 22,
+          "flash": 0.35,
+          "cue": "gunfire",
+          "text": "총소리 — 누군가 두 팔을 벌려 막아서다 쓰러졌다는 외침이 들린다.",
+          "text_en": "A shot — a cry goes up that someone who stood in the way with arms outspread has fallen."
+        },
+        {
+          "t": 32,
+          "torches": "gather",
+          "text": "횃불들이 한 전각 앞으로 몰린다. 그곳에서 무슨 일이 일어나는지는 보이지 않는다. 한참 동안 아무 소리도 나지 않는다.",
+          "text_en": "The torches crowd before one hall. What happens there cannot be seen. For a long while there is no sound at all."
+        },
+        {
+          "t": 44,
+          "torches": "leave",
+          "text": "무리가 무언가를 들고 동쪽 숲으로 향한다.",
+          "text_en": "The group heads for the woods to the east, carrying something."
+        },
+        {
+          "t": 52,
+          "light": "dawn",
+          "light_s": 14,
+          "smoke": true,
+          "text": "날이 희끄무레해진다. 동쪽 숲에서 연기가 오른다… 몸을 낮춘 채 궁을 빠져나가세요.",
+          "text_en": "The sky pales. Smoke rises from the woods to the east… Keep low and get out of the palace."
+        }
+      ]
+    },
+    {
+      "key": "market",
+      "type": "talks",
+      "transition": {
+        "text": "이튿날 · 종로 저자거리",
+        "text_en": "The next day · Jongno market",
+        "walker_pixel": [
+          848,
+          2226
+        ],
+        "facing_pixel": [
+          930,
+          2226
+        ],
+        "lighting": "day",
+        "show_settlement": true
+      },
+      "speakers": [
+        {
+          "key": "cloth",
+          "at": "pixel",
+          "pixel": [
+            870,
+            2221
+          ],
+          "stay": true,
+          "spec": {
+            "name": "포목전 상인",
+            "name_en": "Cloth merchant",
+            "subtitle": "창작 인물",
+            "subtitle_en": "Fictional character",
+            "portrait": "merchant",
+            "color": "#8a7a5c"
+          },
+          "nodes": {
+            "hello": {
+              "text": "들었소? 간밤 새벽에 대궐 쪽에서 총소리가 났다지 않소. 광화문 앞에서 훈련대 연대장 나리가 막아서다 돌아가셨다는 말도 돌고.",
+              "text_en": "Have you heard? Shots from the palace before dawn yesterday, they say. And that the colonel of the Training Corps died barring Gwanghwamun.",
+              "year": "1895",
+              "sources": [
+                {
+                  "title": "한국민족문화대백과 — 홍계훈",
+                  "url": "https://encykorea.aks.ac.kr/Article/E0063970"
+                }
+              ],
+              "options": [
+                {
+                  "label": "다른 이야기도 들어 보겠소.",
+                  "label_en": "I will hear the others.",
+                  "action": "event:done"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "key": "porter",
+          "at": "pixel",
+          "pixel": [
+            888,
+            2231
+          ],
+          "stay": true,
+          "spec": {
+            "name": "지게꾼",
+            "name_en": "Porter",
+            "subtitle": "창작 인물",
+            "subtitle_en": "Fictional character",
+            "portrait": "walker1907",
+            "color": "#9c8f78"
+          },
+          "nodes": {
+            "hello": {
+              "text": "훈련대가 들고일어났다고들 하는데, 나는 그리 안 보오. 새벽에 서대문으로 칼 찬 왜인들이 무리 지어 들어가는 걸 본 사람이 있다오. 소문이니 확실한 건 모르지만.",
+              "text_en": "They say the Training Corps rose up, but I doubt it. Someone saw a band of Japanese with swords go in by the West Gate before dawn. Rumour, mind — who knows for certain.",
+              "year": "1895",
+              "sources": [
+                {
+                  "title": "한국민족문화대백과 — 을미사변",
+                  "url": "https://encykorea.aks.ac.kr/Article/E0042948"
+                }
+              ],
+              "options": [
+                {
+                  "label": "듣고 있소.",
+                  "label_en": "I am listening.",
+                  "action": "event:done"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "key": "woman",
+          "at": "pixel",
+          "pixel": [
+            906,
+            2221
+          ],
+          "stay": true,
+          "spec": {
+            "name": "장 보러 나온 아낙",
+            "name_en": "Woman at the market",
+            "subtitle": "창작 인물",
+            "subtitle_en": "Fictional character",
+            "portrait": "walker",
+            "color": "#c9bfae"
+          },
+          "nodes": {
+            "hello": {
+              "text": "중전마마 소식이 없다오. 궁에서 흘러나온 말이 차마 입에 담지 못할 것이라… 나는 그 말을 믿고 싶지 않소.",
+              "text_en": "There is no word of the queen. What has leaked from the palace cannot be spoken aloud… I do not want to believe it.",
+              "options": [
+                {
+                  "label": "…",
+                  "label_en": "…",
+                  "action": "event:done"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "key": "scholar",
+          "at": "pixel",
+          "pixel": [
+            924,
+            2231
+          ],
+          "stay": true,
+          "spec": {
+            "name": "늙은 선비",
+            "name_en": "Old scholar",
+            "subtitle": "창작 인물",
+            "subtitle_en": "Fictional character",
+            "portrait": "walker1907",
+            "color": "#dcd6c6"
+          },
+          "nodes": {
+            "hello": {
+              "text": "대원위 대감이 가마를 타고 입궐하셨다 하고, 새 내각이 선다는 말도 있소. 하룻밤 사이에 세상이 뒤집혔소. 두고 보시오, 이 일은 그냥 넘어가지 않을 게요. 백성들도, 전하께서도.",
+              "text_en": "They say the Daewongun entered the palace in a sedan chair, and that a new cabinet will be formed. The world turned over in one night. Mark my words, this will not simply pass — not for the people, nor for His Majesty.",
+              "year": "1895",
+              "sources": [
+                {
+                  "title": "한국민족문화대백과 — 을미사변",
+                  "url": "https://encykorea.aks.ac.kr/Article/E0042948"
+                }
+              ],
+              "options": [
+                {
+                  "label": "그 뒤의 일을 생각해 본다.",
+                  "label_en": "Think on what followed.",
+                  "action": "event:done"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "epilogue": {
+    "lead": "1895년 10월 8일 새벽, 일본 세력이 경복궁에 침입해 건청궁에서 왕비를 시해했다. 그 뒤의 일은 날짜와 함께 남깁니다.",
+    "lead_en": "Before dawn on 8 October 1895 a Japanese-led force broke into Gyeongbokgung and killed the queen at Geoncheonggung. What followed is listed with its dates.",
+    "items": [
+      {
+        "date": "1895-10-08",
+        "text": "같은 날 새 내각 구성과 왕후 폐위 조칙이 강요되었다.",
+        "text_en": "The same day a new cabinet and a decree deposing the queen were forced through.",
+        "source": "https://encykorea.aks.ac.kr/Article/E0042948"
+      },
+      {
+        "date": "1895-12-30",
+        "text": "단발령이 내려지고, 을미사변과 함께 을미의병이 일어나는 원인이 되었다.",
+        "text_en": "The topknot decree was issued; with the killing of the queen it set off the Eulmi righteous armies.",
+        "source": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i402700&code=kc_age_40"
+      },
+      {
+        "date": "1896-02-11",
+        "text": "고종과 왕세자가 경복궁을 빠져나와 러시아공사관으로 옮겼다(아관파천).",
+        "text_en": "Gojong and the crown prince left Gyeongbokgung for the Russian legation (Agwanpacheon).",
+        "source": "https://encykorea.aks.ac.kr/Article/E0034214"
+      }
+    ]
+  },
+  "next": {
+    "slug": "agwanpacheon",
+    "text": "넉 달 뒤인 1896년 2월, 임금과 왕세자는 궁을 빠져나와 러시아공사관으로 몸을 옮긴다. 1907년 정동 러시아공사관의 관리인을 찾아가 보시오.",
+    "text_en": "Four months later, in February 1896, the king and the crown prince slip out of the palace to the Russian legation. Find the caretaker of the Russian legation in Jeongdong, 1907."
+  }
+}

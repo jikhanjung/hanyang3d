@@ -37,10 +37,13 @@ export function createEventNeighborhood({path,surface,scene,walking,buildings,wa
  // A narrow earthen lane makes the reconstructed route legible without painting over water.
  const positions=[],indices=[];
  for(const {a,b,length} of segments){
+  // Repeated route points give zero-length segments; they have no direction and would write NaN vertices.
+  if(!(length>.01))continue;
   const dx=(b.x-a.x)/length,dz=(b.z-a.z)/length,water=waterAt((a.x+b.x)/2,(a.z+b.z)/2);
   if(water.distance<water.width+5)continue;
   const k=positions.length/3;
-  for(const p of [a,b])for(const side of [-1,1]){const x=p.x+side*dz*3.5,z=p.z-side*dx*3.5;positions.push(x,surface.ground(x,z)+.045,z)}
+  const corners=[];for(const p of [a,b])for(const side of [-1,1]){const x=p.x+side*dz*3.5,z=p.z-side*dx*3.5,y=surface.ground(x,z);corners.push(x,y+.045,z)}
+  if(corners.some(v=>!Number.isFinite(v)))continue;positions.push(...corners);
   indices.push(k,k+2,k+1,k+1,k+2,k+3);
  }
  const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setIndex(indices);geometry.computeVertexNormals();

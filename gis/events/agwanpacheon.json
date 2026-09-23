@@ -489,5 +489,8 @@
         "source": "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_i401000"
       }
     ]
+  },
+  "previous": {
+    "slug": "eulmi"
   }
 }

@@ -40,16 +40,31 @@
 
 - `talk` — 한 사람을 찾아가 대화한다(확인 지점 1개). `contact_pixel`(원도 픽셀), `contact`(이름·부제·초상·`color`), `nodes`(마지막 선택지는 `"action": "event:<아무 이름>"`), `hint`(`{m}`에 남은 거리), `task`(패널의 임무 물품 문구), `after`(끝난 뒤 안내), 첫 단계라면 `walker_start_pixel`. 머리 위 물음표와 지도 표식은 틀이 붙인다.
 - `talks` — 화자들이 차례로 다가온다(확인 지점 1개). `speakers[].at`은 `"beside_walker"`(플레이어 옆 안전한 자리) 또는 `"module:<anchor>"`(앞 모듈이 내놓는 인물, 예: 통역). `lighting_to: "end"`와 `lighting_seconds`로 조명을 바꿀 수 있다.
-- `module` — 이름으로 등록한 모듈(확인 지점 `checkpoints`개, 없으면 `route` 길이). 나머지 필드는 모듈이 정한다.
+- `module` — 이름으로 등록한 모듈(확인 지점 `checkpoints`개, 없으면 `route` 길이). 나머지 필드는 모듈이 정한다. 지금 있는 모듈:
+  - `procession` — 가마 행렬 따라가기와 순찰 회피, 도착 연출(아관파천).
+  - `shadow` — 등불 든 무리를 들키지 않게 뒤따르기. `group`(인원·속도·간격·등불·색), `keep`(너무 가까움·너무 멂 거리), `gate`(멈춤·섬광·쓰러짐 연출 `beats`), 문구(`intro`·`follow_hint`·`too_close`·`too_close_caught`·`too_far`)(을미사변).
+  - `hide` — 담장 두른 개념 모형(`compound`)에 들어가 어두운 구석(`spot_local`, `radius_m`)에 머무는 동안 `timeline`이 문자·섬광·횃불 움직임(`torches`: scatter·gather·leave)·조명·연기로 진행. 구석을 벗어나면 멈추고, 오래 벗어나면 되돌린다(을미사변).
+  - 경로를 쓰는 모듈은 `events/route.js`의 `buildRoute`를 함께 쓴다(원도 픽셀·다리 양끝·건물 앞, 막히면 A* 우회, 실패 시 구간 이름을 밝힌 오류).
+
+단계 공통 선택 항목:
+
+- `transition` — 이 단계가 다른 때·곳에서 열린다(예: '이튿날 · 종로 저자거리'). 커튼으로 가리고 `walker_pixel`·`facing_pixel`로 옮기고 `lighting` 프리셋과 `show_settlement`(민가 다시 보이기)를 적용한 뒤 걷는다.
+- `lighting` — 들어갈 때 바로 바꿀 조명 프리셋 이름. `talks`는 `lighting_to`·`lighting_seconds`로 서서히 바꾼다. 프리셋은 `scene.lighting`에 이름을 붙여 둔다(`start` 필수, 그 밖에 `end`·`dawn`·`day` 등 자유).
+- `talks`의 화자는 `pixel`을 주면 그 자리에 서서 기다리고(머리 위 물음표·지도 표식), `stay: true`면 대화 뒤에도 남는다.
+
+## 정의 공통 선택 항목
+
+- `next` — 완료 메시지 끝에 다음 회상을 안내한다(`slug`, `text`). 선행 조건으로 막지는 않는다. `previous`는 앞 회상을 적어 두는 기록용.
+- `sounds` — 소리 단서 이름 → 파일 주소. 모듈·단계가 `cue`(예: `gunfire`, `shouts`, `doors`)를 부르면 파일이 있고 보는 사람이 소리를 켰을 때만(`localStorage`의 `hanyang3d-event-sound`를 `on`) 재생한다. 없으면 문자만으로 진행한다. 켜는 UI는 아직 없다.
 
 ## 모듈 만들기
 
 `createXxx(api)`가 다음을 돌려준다.
 
 - `prepare()` 경로·배치 계산(시작 전 1회), `enter(index, silent)` 이 단계에 들어가거나 재개(silent는 지나간 모듈을 조용히 복원해 뒤 단계의 anchor를 제공), `update(dt)` 매 프레임, `exit()` 단계를 떠날 때(버튼 숨김 등), `reset()` 처음부터 다시 볼 때, `idle(dt)` 비활성 중에도 할 일(LOD), `regroup()` '돌아가기' 버튼, `anchors()` 뒤 단계가 쓸 인물 `{host: walker}`.
-- `api`가 주는 것: `data`(단계 정의), `say`/`text`, `fp`, `scene`, `camera`, `walking`, `buildings`, `infrastructure`, `surface`, `safe`, `nearestSafe`, `atPixel`, `faceTowards`, `panel.message(text)`, `panel.button(id,label,onclick)`, `reach(i)`(모듈 안 i번째 확인 지점 저장, 마지막 전까지), `finish()`(마지막 확인 지점 저장 후 다음 단계), `checkpointIndex`, `saving`, `saveError`.
+- `api`가 주는 것: `data`(단계 정의), `say`/`text`, `fp`, `scene`, `camera`, `walking`, `buildings`, `infrastructure`, `surface`, `safe`, `nearestSafe`, `atPixel`, `faceTowards`, `panel.message(text)`, `panel.button(id,label,onclick)`, `light(preset, seconds)`, `flash(strength)`, `cue(id)`, `quest`(물음표 표식), `markMap(point)`, `reach(i)`(모듈 안 i번째 확인 지점 저장, 마지막 전까지), `finish()`(마지막 확인 지점 저장 후 다음 단계), `checkpointIndex`, `saving`, `saveError`.
 
-`procession.js`가 예다: 경로 A*·이웃 민가·가마·순찰·도착을 모두 이 인터페이스 안에서 처리한다.
+`procession.js`·`shadow.js`·`hide.js`가 예다. 경로·숨을 자리를 잡을 때는 회상 페이지 콘솔에서 `seoul1907.historicalEvent.probe(px,py)`로 원도 픽셀이 통행 가능한지 확인할 수 있다.
 
 ## 새 사건 추가 절차
 

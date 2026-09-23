@@ -45,11 +45,23 @@ class HistoricalEventTests(TestCase):
         page=self.client.get('/1907/')
         self.assertIsNone(page.context['historical_event'])
         # The base scene learns only what it needs from each visit: slug, keepsake giver and transition captions.
-        self.assertEqual([v['slug'] for v in page.context['historical_events']],['agwanpacheon'])
+        self.assertEqual(sorted(v['slug'] for v in page.context['historical_events']),['agwanpacheon','eulmi'])
+        self.assertEqual({v['slug']:v['keepsake']['giver_building'] for v in page.context['historical_events']}['eulmi'],'gwanghwamun-1907')
         self.assertEqual(page.context['historical_events'][0]['keepsake']['giver_building'],'russian-legation-1907')
         self.assertEqual(self.client.get('/events/no-such-visit/').status_code,404)
         self.assertEqual(self.post_to('no-such-visit',action='status').status_code,404)
     def post_to(self,slug,**data):return self.client.post(f'/api/events/{slug}/',json.dumps(data),content_type='application/json')
+    def test_eulmi_line_has_its_own_keepsake_and_checkpoints(self):
+        from .events import definition as by_slug
+        eulmi=by_slug('eulmi')
+        self.assertEqual(last_checkpoint(eulmi),18)  # night talk, 15 route points, the hiding, the market
+        self.assertEqual(eulmi['next']['slug'],'agwanpacheon')
+        self.assertEqual(self.post_to('eulmi',action='start',version=eulmi['version']).status_code,409)
+        self.assertEqual(self.post_to('eulmi',action='keepsake').json(),{'item':'eulmi_keepsake','received':True})
+        self.assertEqual(self.post_to('eulmi',action='start',version=eulmi['version']).json()['checkpoint'],0)
+        # The line points on to Agwanpacheon but never gates it.
+        self.assertEqual(self.post(action='keepsake').json()['received'],True)
+        self.assertEqual(self.post(action='start',version=definition()['version']).status_code,200)
     def test_every_definition_validates(self):
         for slug,data in definitions().items():
             validate(data)
