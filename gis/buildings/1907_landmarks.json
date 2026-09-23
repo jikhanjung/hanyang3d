@@ -2054,6 +2054,74 @@
       }
     },
     {
+      "id": "geoncheonggung-1907",
+      "name": "1907년 건청궁",
+      "name_en": "Geoncheonggung (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "geoncheonggung",
+      "symbol_size_m": [
+        84,
+        10,
+        66
+      ],
+      "display_yaw_deg": 3.735,
+      "gate_x": 11,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          820,
+          1546
+        ],
+        "anchor": "compound_center",
+        "method": "manual_map_reading",
+        "note": "원도에서 향원지 바로 북쪽에 乾淸宮과 觀文閣이 적힌 건물 무리를 읽었다. 그림은 x 800~842, y 1532~1573 부근이다. 향원지와 사이에 길을 남기려고 중심을 조금 북쪽으로 두었다."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "approximate_map_reading",
+      "model_note": "단청 없는 사대부가 방식의 궁궐 안 거처. 서쪽 장안당, 동쪽 곤녕합과 남쪽으로 내민 옥호루, 복수당, 북서쪽 양관 관문각(1891)을 담장 안에 개념적으로 배치했다. 치수·배치는 추정이다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1873,
+          "end_year": 1909,
+          "status": "documented",
+          "note": "1873년 건립, 1909년 철거, 2007년 복원."
+        },
+        "depiction": {
+          "start_year": 1891,
+          "end_year": 1909,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+          "https://encykorea.aks.ac.kr/Article/E0042948"
+        ]
+      },
+      "info": {
+        "summary": "고종이 1873년 경복궁 북쪽 향원지 뒤에 지은 거처. 단청을 하지 않은 사대부 집 방식으로, 서쪽 장안당은 왕의, 동쪽 곤녕합은 왕비의 공간이었다. 1895년 을미사변 때 왕비가 이곳에서 시해되었고, 공식 궁궐 자료는 곤녕합의 옥호루를 관련 장소로 설명한다. 1909년 철거되었다가 2007년 복원되었다.",
+        "summary_en": "The residence Gojong built in 1873 behind the Hyangwon pond in the north of Gyeongbokgung, unpainted in the manner of a gentry house: Jangandang to the west for the king, Gonnyeonghap to the east for the queen. The queen was killed here in the Eulmi incident of 1895; official palace materials name Okhoru in Gonnyeonghap as the place. Demolished in 1909 and restored in 2007.",
+        "period": "1873년 건립 · 1909년 철거 · 2007년 복원",
+        "period_en": "Built 1873 · demolished 1909 · restored 2007",
+        "in_1750": "1907년의 별도 전각 모형.",
+        "in_1750_en": "A separate 1907 building model.",
+        "sources": [
+          {
+            "title": "궁능유적본부 경복궁 소개·역사",
+            "url": "https://royal.khs.go.kr/ROYAL/contents/R101010000.do",
+            "title_en": "Royal Palaces and Tombs Center: Gyeongbokgung"
+          },
+          {
+            "title": "한국민족문화대백과 — 을미사변",
+            "url": "https://encykorea.aks.ac.kr/Article/E0042948",
+            "title_en": "Encyclopedia of Korean Culture: Eulmi Incident"
+          }
+        ]
+      }
+    },
+    {
       "id": "jibokjae-1907",
       "name": "1907년 집옥재",
       "name_en": "Jibokjae (1907)",

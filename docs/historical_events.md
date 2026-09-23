@@ -42,9 +42,11 @@
 - `talks` — 화자들이 차례로 다가온다(확인 지점 1개). `speakers[].at`은 `"beside_walker"`(플레이어 옆 안전한 자리) 또는 `"module:<anchor>"`(앞 모듈이 내놓는 인물, 예: 통역). `lighting_to: "end"`와 `lighting_seconds`로 조명을 바꿀 수 있다.
 - `module` — 이름으로 등록한 모듈(확인 지점 `checkpoints`개, 없으면 `route` 길이). 나머지 필드는 모듈이 정한다. 지금 있는 모듈:
   - `procession` — 가마 행렬 따라가기와 순찰 회피, 도착 연출(아관파천).
-  - `shadow` — 등불 든 무리를 들키지 않게 뒤따르기. `group`(인원·속도·간격·등불·색), `keep`(너무 가까움·너무 멂 거리), `gate`(멈춤·섬광·쓰러짐 연출 `beats`), 문구(`intro`·`follow_hint`·`too_close`·`too_close_caught`·`too_far`)(을미사변).
-  - `hide` — 담장 두른 개념 모형(`compound`)에 들어가 어두운 구석(`spot_local`, `radius_m`)에 머무는 동안 `timeline`이 문자·섬광·횃불 움직임(`torches`: scatter·gather·leave)·조명·연기로 진행. 구석을 벗어나면 멈추고, 오래 벗어나면 되돌린다(을미사변).
+  - `shadow` — 등불 든 무리를 들키지 않게 뒤따르기. `group`(`kinds` 구성·속도·`spread_m`·등불·`seed`), `keep`(너무 가까움·너무 멂 거리), `appear`(다가가야 나타남), `gate`·`stops`(멈춤: `defenders`, `beats`의 `aim`·`flash`·`fall`·`text`), `chatter`(가까울 때 의심·평소 잡담, 일본어와 번역), `neighborhood: false`(경로 곁 추정 민가 끄기), 문구(`intro`·`follow_hint`·`too_close`·`too_close_caught`·`too_far`)(을미사변).
+  - `hide` — 기존 건물(`compound.building`) 또는 담장 두른 개념 모형(`compound`)에 들어가 어두운 구석(`spot_local`, `radius_m`)에 머무는 동안 `timeline`이 문자·섬광·횃불 움직임(`torches`: scatter·gather·leave)·조명·연기로 진행. 구석을 벗어나면 멈추고, 오래 벗어나면 되돌린다(을미사변).
   - 경로를 쓰는 모듈은 `events/route.js`의 `buildRoute`를 함께 쓴다(원도 픽셀·다리 양끝·건물 앞, 막히면 A* 우회, 실패 시 구간 이름을 밝힌 오류).
+
+장면(`scene`): `retained_buildings`(남길 1907년 건물 목록) 또는 `retain_up_to_year`(그해에 이미 있던 건물 모두), `hidden_buildings`, `show_settlement`(1907년 민가 유지), `hide_people`, `lighting`.
 
 단계 공통 선택 항목:
 

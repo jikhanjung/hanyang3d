@@ -13,8 +13,8 @@
   "document_title_en": "The Eulmi Incident · Hanyang3D",
   "intro": "인적 끊긴 새벽, 새문안 길을 걷고 있습니다.",
   "intro_en": "Before dawn you are walking the deserted Saemun road.",
-  "note": "을미사변 기록을 바탕으로 구성한 개인 회상 체험. 플레이어·야경꾼·저잣거리 사람들과 그 대사, 무리의 인원·복장·세부 동선, 궁 안에서 숨는 자리와 횃불의 움직임은 창작·추정입니다. 무리가 도성 밖 공덕리에서 와서 서대문(돈의문)에서 훈련대와 합류해 광화문으로 간 일, 광화문의 총성과 홍계훈의 전사, 건청궁 난입과 왕비 시해, 새벽 5~6시 무렵이라는 시각은 출처를 따랐습니다. 왕비 시해 장면은 보여 주지 않습니다. 1907년 지도·건물과 현대 지형을 소급 참고했으며 건청궁은 개념 모형입니다. 당시 호칭에 따라 ‘명성황후’(1897년 추존) 대신 ‘중전마마’라고 부릅니다. 새문안 길의 개천 다리는 위치·형태를 추정한 체험용 배치입니다. 무리가 서대문에서 합류하는 장면은 보여 주지 않고 새문고개부터 따라가며, 서대문과 광화문 사이의 거리 동선(새문안 길–황토현–육조거리)과 궁 안 경로는 사료로 확인한 것이 아니라 추정입니다.",
-  "note_en": "A personal historical reconstruction. The player, the watchman, the people in the market and their lines, the group's size, dress and exact route, the hiding place and the movement of torches are interpretive. The group joining near the West Gate and entering by Gwanghwamun, the shots at the gate and the death of Hong Gye-hun, the break-in at Geoncheonggung and the killing of the queen, and the hour of about five to six in the morning follow the sources. The killing is not shown. The 1907 map and buildings and modern terrain are used as references, and Geoncheonggung is a conceptual model. People call her the queen, not Empress Myeongseong, the title given in 1897. The stream bridge on the Saemun road is an interpretive placement. The joining at the West Gate is not shown; the player picks the group up at Saemungogae. The streets between the West Gate and Gwanghwamun (the Saemun road, Hwangtohyeon, Yukjo Street) and the path inside the palace are reconstructions, not attested.",
+  "note": "을미사변 기록을 바탕으로 구성한 개인 회상 체험. 플레이어·야경꾼·저잣거리 사람들과 그 대사, 무리의 인원·복장·세부 동선, 궁 안에서 숨는 자리와 횃불의 움직임은 창작·추정입니다. 무리가 도성 밖 공덕리에서 와서 서대문(돈의문)에서 훈련대와 합류해 광화문으로 간 일, 광화문의 총성과 홍계훈의 전사, 건청궁 난입과 왕비 시해, 새벽 5~6시 무렵이라는 시각은 출처를 따랐습니다. 왕비 시해 장면은 보여 주지 않습니다. 1907년 지도와 1895년에 이미 있던 1907년 건물·민가, 현대 지형을 소급 참고했으며, 건청궁은 원도의 乾淸宮 자리에 둔 개념 모형입니다. 궁 안 시위대의 저항 장면(두 번)은 \"궁내 시위대가 저항했으나 무기의 열세로 곧 무너졌다\"는 서술을 바탕으로 한 연출이며, 무리가 나누는 일본어 혼잣말·잡담은 창작이며, 무리의 구성(기모노·하카마 차림, 양복 차림, 일본군 수비대, 훈련대)과 인원·칼·총도 개념 표현입니다. 당시 호칭에 따라 ‘명성황후’(1897년 추존) 대신 ‘중전마마’라고 부릅니다. 새문안 길의 개천 다리는 위치·형태를 추정한 체험용 배치입니다. 무리가 서대문에서 합류하는 장면은 보여 주지 않고 새문고개부터 따라가며, 서대문과 광화문 사이의 거리 동선(새문안 길–황토현–육조거리)과 궁 안 경로는 사료로 확인한 것이 아니라 추정입니다.",
+  "note_en": "A personal historical reconstruction. The player, the watchman, the people in the market and their lines, the group's size, dress and exact route, the hiding place and the movement of torches are interpretive. The group joining near the West Gate and entering by Gwanghwamun, the shots at the gate and the death of Hong Gye-hun, the break-in at Geoncheonggung and the killing of the queen, and the hour of about five to six in the morning follow the sources. The killing is not shown. The 1907 map, the 1907 buildings and houses already standing in 1895, and modern terrain are used as references; Geoncheonggung is a conceptual model at the 乾淸宮 place on the map. The two moments of resistance by the palace guard stage the record that the guards resisted but soon collapsed, outgunned; the group's swords and rifles are conceptual. People call her the queen, not Empress Myeongseong, the title given in 1897. The stream bridge on the Saemun road is an interpretive placement. The joining at the West Gate is not shown; the player picks the group up at Saemungogae. The streets between the West Gate and Gwanghwamun (the Saemun road, Hwangtohyeon, Yukjo Street) and the path inside the palace are reconstructions, not attested.",
   "sources": [
     {
       "title": "한국민족문화대백과 — 을미사변",
@@ -88,30 +88,6 @@
   },
   "sounds": {},
   "scene": {
-    "retained_buildings": [
-      "donuimun-1907",
-      "heunghwamun-1907",
-      "gwanghwamun-1907",
-      "geunjeongjeon-1907",
-      "sajeongjeon-1907",
-      "gangnyeongjeon-1907",
-      "gyeonghoeru-1907",
-      "hyangwonjeong-1907",
-      "yeongchumun-1907",
-      "bosingak-1907",
-      "jongno-shops-north-1-1907",
-      "jongno-shops-north-2-1907",
-      "jongno-shops-north-3-1907",
-      "jongno-shops-north-4-1907",
-      "jongno-shops-north-5-1907",
-      "jongno-shops-north-6-1907",
-      "jongno-shops-south-1-1907",
-      "jongno-shops-south-2-1907",
-      "jongno-shops-south-3-1907",
-      "jongno-shops-south-4-1907",
-      "jongno-shops-south-5-1907",
-      "jongno-shops-south-6-1907"
-    ],
     "hide_people": true,
     "lighting": {
       "start": {
@@ -138,7 +114,9 @@
         "hemi_intensity": 1.5,
         "sun_intensity": 1.3
       }
-    }
+    },
+    "retain_up_to_year": 1895,
+    "show_settlement": true
   },
   "stages": [
     {
@@ -209,16 +187,17 @@
       "too_far": "등불이 멀어집니다. 조금 더 가까이 따라가세요.",
       "too_far_en": "The lanterns are drawing away. Follow a little closer.",
       "group": {
-        "count": 12,
+        "count": 24,
         "speed_mps": 3.6,
-        "spacing_m": 2.3,
-        "lantern_every": 3,
-        "colors": [
-          "#2e2f31",
-          "#3b3a36",
-          "#303a4a",
-          "#46413a"
-        ]
+        "lantern_every": 4,
+        "kinds": {
+          "ronin": 11,
+          "suit": 3,
+          "garrison": 6,
+          "training": 4
+        },
+        "spread_m": 2.4,
+        "seed": 1895
       },
       "keep": {
         "near_m": 7,
@@ -336,8 +315,16 @@
         },
         {
           "pixel": [
-            818,
-            1558
+            848,
+            1572
+          ],
+          "name": "향원지 동북쪽",
+          "name_en": "North-east of the Hyangwon pond"
+        },
+        {
+          "pixel": [
+            825,
+            1565
           ],
           "name": "건청궁 앞",
           "name_en": "Before Geoncheonggung"
@@ -355,6 +342,10 @@
             "t": 0,
             "text": "무리가 광화문 앞에서 멈췄다. 문 앞을 막아선 이가 무어라 외친다.",
             "text_en": "The group halts before Gwanghwamun. Someone barring the gate shouts at them."
+          },
+          {
+            "t": 1.6,
+            "aim": true
           },
           {
             "t": 2.5,
@@ -402,7 +393,147 @@
       "wait_hint": "서대문 쪽, 새문고개로 가 보세요. {m}m",
       "wait_hint_en": "Go west to Saemungogae, towards the West Gate. {m} m",
       "appear_text": "서대문 쪽에서 등불이 다가온다 — 무리가 새문고개를 넘어온다. 몸을 숨기고 지켜보세요.",
-      "appear_text_en": "Lanterns come from the West Gate — the group crosses Saemungogae. Keep out of sight and watch."
+      "appear_text_en": "Lanterns come from the West Gate — the group crosses Saemungogae. Keep out of sight and watch.",
+      "neighborhood": false,
+      "stops": [
+        {
+          "at": 9,
+          "ahead_m": 12,
+          "hold_s": 7,
+          "defenders": [
+            {},
+            {},
+            {}
+          ],
+          "beats": [
+            {
+              "t": 0,
+              "text": "궁궐 시위대 병사 몇이 앞을 막아선다.",
+              "text_en": "A few soldiers of the palace guard bar the way."
+            },
+            {
+              "t": 1.2,
+              "aim": true
+            },
+            {
+              "t": 2,
+              "flash": 0.5,
+              "cue": "gunfire",
+              "fall": true,
+              "text": "총소리 — 병사들이 쓰러진다.",
+              "text_en": "Shots — the soldiers go down."
+            },
+            {
+              "t": 4,
+              "text": "남은 병사들은 흩어져 달아난다. 궁 안의 시위대는 무기가 모자라 오래 버티지 못했다고 한다.",
+              "text_en": "The rest scatter and run. The guards inside the palace were outgunned and could not hold for long, it is said."
+            }
+          ]
+        },
+        {
+          "at": 11,
+          "ahead_m": 10,
+          "hold_s": 6,
+          "defenders": [
+            {},
+            {}
+          ],
+          "beats": [
+            {
+              "t": 0,
+              "text": "어둠 속에서 병사 둘이 창을 들고 달려든다.",
+              "text_en": "Out of the dark two soldiers rush at them with spears."
+            },
+            {
+              "t": 0.8,
+              "aim": true
+            },
+            {
+              "t": 1.5,
+              "flash": 0.45,
+              "cue": "gunfire",
+              "fall": true
+            },
+            {
+              "t": 3,
+              "text": "칼을 든 이들이 쓰러진 병사들을 넘어 북쪽으로 달려간다.",
+              "text_en": "Men with swords step over the fallen and run on northwards."
+            }
+          ]
+        }
+      ],
+      "chatter": {
+        "near_m": 16,
+        "cooldown_s": 9,
+        "idle_every_s": [
+          10,
+          22
+        ],
+        "suspicious": [
+          {
+            "ja": "誰かつけて来てないか？",
+            "ko": "누가 따라오는 것 같지 않나?",
+            "en": "Is someone following us?"
+          },
+          {
+            "ja": "今、何か音がしなかったか？",
+            "ko": "방금 무슨 소리 나지 않았나?",
+            "en": "Did you hear something just now?"
+          },
+          {
+            "ja": "後ろを見て来い。",
+            "ko": "뒤를 좀 살펴봐.",
+            "en": "Go and check behind us."
+          },
+          {
+            "ja": "気のせいだろう。急げ。",
+            "ko": "기분 탓이겠지. 서둘러.",
+            "en": "Just nerves. Hurry."
+          },
+          {
+            "ja": "猫か何かだ。放っておけ。",
+            "ko": "고양이 같은 거겠지. 내버려 둬.",
+            "en": "A cat or something. Leave it."
+          }
+        ],
+        "idle": [
+          {
+            "ja": "冷えるな。",
+            "ko": "쌀쌀하군.",
+            "en": "Cold, isn't it."
+          },
+          {
+            "ja": "腹が減った。",
+            "ko": "배고프다.",
+            "en": "I'm hungry."
+          },
+          {
+            "ja": "足が痛くてかなわん。",
+            "ko": "발이 아파 죽겠군.",
+            "en": "My feet are killing me."
+          },
+          {
+            "ja": "煙草はないか？",
+            "ko": "담배 없나?",
+            "en": "Got any tobacco?"
+          },
+          {
+            "ja": "この辺りの道はわかりにくいな。",
+            "ko": "이 근처 길은 헷갈리는군.",
+            "en": "These streets are confusing."
+          },
+          {
+            "ja": "静かにしろ。",
+            "ko": "조용히 해.",
+            "en": "Keep it down."
+          },
+          {
+            "ja": "国の酒が飲みたいもんだ。",
+            "ko": "고향 술 한잔 하고 싶군.",
+            "en": "I could do with a drink from home."
+          }
+        ]
+      }
     },
     {
       "key": "hide",
@@ -410,85 +541,50 @@
       "module": "hide",
       "checkpoints": 1,
       "compound": {
-        "pixel": [
-          815,
-          1524
-        ],
-        "yaw_deg": 3.735,
-        "w": 64,
-        "d": 46,
-        "wall_h": 3,
-        "gate_w": 5,
-        "halls": [
-          [
-            -8,
-            -10,
-            26,
-            10,
-            4.2
-          ],
-          [
-            16,
-            -9,
-            14,
-            10,
-            4.6
-          ],
-          [
-            22,
-            8,
-            8,
-            14,
-            3.8
-          ]
-        ]
+        "building": "geoncheonggung-1907"
       },
       "spot_local": [
-        -26,
-        17
+        -6,
+        26
       ],
       "radius_m": 3,
       "torches": 5,
       "torch_loop": [
         [
-          -14,
-          4
+          8,
+          0
         ],
         [
-          -2,
-          -2
+          16,
+          -3
         ],
         [
-          10,
-          -2
-        ],
-        [
-          14,
+          20,
           6
         ],
         [
-          2,
-          10
+          14,
+          12
         ],
         [
-          -10,
-          10
+          8,
+          8
         ]
       ],
       "torch_gather": [
-        4,
-        -2
+        18,
+        -3
       ],
       "torch_exit": [
-        40,
-        -6
+        11,
+        40
       ],
       "smoke_local": [
-        70,
-        -40
+        90,
+        -30
       ],
-      "intro": "무리가 건청궁 문 안으로 사라졌습니다. 조심조심 따라 들어가 담 안쪽 어두운 구석에 몸을 숨기세요.",
-      "intro_en": "The group has vanished through the gate of Geoncheonggung. Creep in after them and hide in a dark corner inside the wall.",
+      "intro": "무리가 건청궁 문 안으로 사라졌습니다. 조심조심 따라 들어가 복수당 옆 어두운 구석에 몸을 숨기세요.",
+      "intro_en": "The group has vanished through the gate of Geoncheonggung. Creep in after them and hide in the dark corner by Boksudang.",
       "approach": "담 안쪽 어두운 구석까지 {m}m — 횃불을 피해 움직이세요.",
       "approach_en": "{m} m to the dark corner inside the wall — keep clear of the torches.",
       "settled": "어두운 구석에 몸을 낮췄습니다. 숨을 죽이고 지켜보세요.",

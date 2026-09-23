@@ -6,22 +6,30 @@ import {createWalker} from '../pedestrians.js';
 // corner pauses the timeline; staying out draws a torch and the walker is pulled back into the dark. Ends at first
 // light with smoke rising, then the walker leaves. One checkpoint. The compound is a conceptual model built here.
 export function createHide(api){
- const {data,say,text,fp,scene,walking,surface}=api;
- const c=data.compound,yaw=THREE.MathUtils.degToRad(c.yaw_deg??0);
- // ---- the compound: plain walls with a south gate, a main hall and a side wing ------------------------------------
- const centre=surface(...c.pixel),frame={x:centre.x,z:centre.z,yaw};
- const floor=fp.groundAt(centre.x,centre.z)??centre.y;
- const compound=new THREE.Group();compound.name='hide-compound';compound.position.set(centre.x,floor,centre.z);compound.rotation.y=yaw;scene.add(compound);
+ const {data,say,text,fp,scene,walking,surface,buildings}=api;
+ const c=data.compound;
+ // The compound is either an existing landmark of the base scene (walls, gate and collisions come with it) or a
+ // conceptual one built here from `pixel`, `w`, `d` and `halls`.
+ const building=c.building?buildings.find(b=>b.userData.feature.id===c.building):null;
+ if(c.building&&!building)throw Error('hide: missing building '+c.building);
+ const yaw=building?building.rotation.y:THREE.MathUtils.degToRad(c.yaw_deg??0);
+ const centre=building?building.position.clone():surface(...c.pixel),frame={x:centre.x,z:centre.z,yaw};
+ const floor=building?building.userData.groundFloor:(fp.groundAt(centre.x,centre.z)??centre.y);
+ const compound=building??new THREE.Group();
+ if(!building){compound.name='hide-compound';compound.position.set(centre.x,floor,centre.z);compound.rotation.y=yaw;scene.add(compound)}
  const mats={wall:new THREE.MeshStandardMaterial({color:0x8a8172,roughness:1}),roof:new THREE.MeshStandardMaterial({color:0x2f3436,roughness:1}),wood:new THREE.MeshStandardMaterial({color:0x5a3f2c,roughness:1}),paper:new THREE.MeshStandardMaterial({color:0xcfc6b0,roughness:1}),stone:new THREE.MeshStandardMaterial({color:0x8d887c,roughness:1})};
  const shown=()=>compound.visible;
  function box(x,y,z,w,h,d,mat,solid=false){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mats[mat]);m.position.set(x,y,z);compound.add(m);if(solid)walking.collision.addLocal(frame,x,z,w/2,d/2,shown);return m}
  function hall(x,z,w,d,h){box(x,.35,z,w+1,.7,d+1,'stone',true);box(x,.7+h/2,z,w,h,d,'paper');for(const sx of [-1,1])for(const sz of [-1,1])box(x+sx*(w/2-.2),.7+h/2,z+sz*(d/2-.2),.35,h,.35,'wood');
   const roof=new THREE.Mesh(new THREE.ConeGeometry(Math.hypot(w,d)/2+1.2,2.6,4),mats.roof);roof.rotation.y=Math.PI/4;roof.scale.set(w/Math.hypot(w,d)*1.45,1,d/Math.hypot(w,d)*1.45);roof.position.set(x,.7+h+1.2,z);compound.add(roof)}
- const W=c.w,D=c.d,H=c.wall_h??3,T=.9,gap=c.gate_w??5;
- box(0,H/2-1,-D/2,W,H+2,T,'wall',true);for(const sx of [-1,1])box(sx*W/2,H/2-1,0,T,H+2,D,'wall',true);
- for(const sx of [-1,1])box(sx*(gap/2+(W/2-gap/2)/2),H/2-1,D/2,W/2-gap/2,H+2,T,'wall',true);
- box(0,H+.3,D/2,gap+2,.5,T+1.4,'roof');
- for(const [x,z,w,d,h] of c.halls)hall(x,z,w,d,h);
+ const [W,,D]=building?building.userData.feature.symbol_size_m:[c.w,0,c.d],H=c.wall_h??3,T=.9,gap=c.gate_w??5;
+ const gateX=building?(building.userData.feature.gate_x??0):0;
+ if(!building){
+  box(0,H/2-1,-D/2,W,H+2,T,'wall',true);for(const sx of [-1,1])box(sx*W/2,H/2-1,0,T,H+2,D,'wall',true);
+  for(const sx of [-1,1])box(sx*(gap/2+(W/2-gap/2)/2),H/2-1,D/2,W/2-gap/2,H+2,T,'wall',true);
+  box(0,H+.3,D/2,gap+2,.5,T+1.4,'roof');
+  for(const [x,z,w,d,h] of c.halls)hall(x,z,w,d,h);
+ }
  // ---- torchbearers and the smoke at first light ----------------------------------------------------------------
  const torchMat=new THREE.MeshBasicMaterial({color:0xff9d3c}),torches=[];
  const local=(x,z)=>{const v=new THREE.Vector3(x,0,z).applyAxisAngle(new THREE.Vector3(0,1,0),yaw);return new THREE.Vector3(centre.x+v.x,0,centre.z+v.z)};
@@ -57,7 +65,7 @@ export function createHide(api){
   prepare();state='approach';clock=0;outFor=0;ending=0;torchMode='scatter';smoke.visible=false;
   for(const [i,t] of torches.entries()){const s=loop[i%loop.length];t.p.group.position.set(s.x,fp.groundAt(s.x,s.z)??floor,s.z);t.p.group.visible=true}
   // Resuming from elsewhere puts the walker outside the gate; coming straight from the previous stage keeps them there.
-  const gateFront=local(0,D/2+6);if(Math.hypot(fp.eye.x-gateFront.x,fp.eye.z-gateFront.z)>60){fp.placeAt(gateFront.x,gateFront.z,Math.atan2(-(centre.x-gateFront.x),-(centre.z-gateFront.z)));fp.clearInput()}
+  const gateFront=local(gateX,D/2+6);if(Math.hypot(fp.eye.x-gateFront.x,fp.eye.z-gateFront.z)>60){fp.placeAt(gateFront.x,gateFront.z,Math.atan2(-(centre.x-gateFront.x),-(centre.z-gateFront.z)));fp.clearInput()}
   api.quest.follow(marker);api.markMap(spot);api.panel.message(text(data,'intro'));
   for(const beat of data.timeline)beat.done=false;
  }
@@ -68,13 +76,14 @@ export function createHide(api){
   const left=Math.hypot(fp.eye.x-spot.x,fp.eye.z-spot.z);
   if(state==='approach'){
    api.panel.message(text(data,'approach').replace('{m}',Math.round(left)));
-   if(left<data.radius_m){state='watch';api.quest.follow(null);api.markMap(null);api.panel.message(text(data,'settled'))}
+   // Settling in, the walker turns towards where the torches will gather, so the scene plays out in front of them.
+   if(left<data.radius_m){state='watch';const look=local(...data.torch_gather);fp.placeAt(fp.eye.x,fp.eye.z,Math.atan2(-(look.x-fp.eye.x),-(look.z-fp.eye.z)));fp.clearInput();api.quest.follow(null);api.markMap(null);api.panel.message(text(data,'settled'))}
    return;
   }
   if(state==='watch'){
    if(left>data.radius_m+1.5){
     outFor+=dt;api.panel.message(text(data,'stray'));
-    if(outFor>4){fp.placeAt(spot.x,spot.z,Math.atan2(-(centre.x-spot.x),-(centre.z-spot.z)));fp.clearInput();outFor=0;api.panel.message(text(data,'pulled_back'))}
+    if(outFor>4){const look=local(...data.torch_gather);fp.placeAt(spot.x,spot.z,Math.atan2(-(look.x-spot.x),-(look.z-spot.z)));fp.clearInput();outFor=0;api.panel.message(text(data,'pulled_back'))}
     return;
    }
    outFor=0;clock+=dt;

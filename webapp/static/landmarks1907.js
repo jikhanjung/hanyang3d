@@ -371,6 +371,39 @@ export function createLandmark1907(f,w,h,d){
    cylinder('octagonal-roof',0,base+4.5,0,r*.24,r+2.4,2.8,'roof',8);
   }
   cylinder('finial',0,18,0,0,.5,2,'gold');
+ }else if(kind==='geoncheonggung'){
+  // Geoncheonggung (1873–1909): a residence built in the manner of a gentry house, unpainted, behind plain walls.
+  // Western range Jangandang (the king's quarters), eastern range Gonnyeonghap (the queen's) with the projecting
+  // Okhoru, and the Western-style Gwanmungak (1891) in the north-west as on the 1907 map. Layout is conceptual.
+  const t=.8,wallH=3,gateX=f.gate_x??11,gateW=6,hw=w/2,hd=d/2,rects=[];
+  const wall=(x,z,a,c)=>{box('compound-wall',x,wallH/2,z,a,wallH,c,'cream');box('wall-cap',x,wallH+.15,z,a+.3,.3,c+.5,'roof');rects.push({x,z,hw:a/2,hd:c/2})};
+  wall(0,-hd,w,t);wall(-hw,0,t,d);wall(hw,0,t,d);
+  const westRun=gateX-gateW/2+hw,eastRun=hw-(gateX+gateW/2);
+  wall(-hw+westRun/2,hd,westRun,t);wall(hw-eastRun/2,hd,eastRun,t);
+  // Inner wall between the two ranges, with an opening in the middle.
+  wall(2,-hd+10,t,20);wall(2,hd-12,t,16);
+  // Main gate: a plain roofed gateway.
+  for(const side of [-1,1])post(gateX+side*gateW/2,hd,0,3.4,'door');box('gate-lintel',gateX,3.5,hd,gateW+1,.4,1,'door');roof(gateX,3.7,hd,gateW+2,3,1.2);
+  const hall=(name,x,z,a,c,eave=4.2,floor=.7)=>{
+   box(name+'-base',x,floor/2,z,a+1.2,floor,c+1.2,'stone');rects.push({x,z,hw:(a+1.2)/2,hd:(c+1.2)/2});
+   box(name+'-wall',x,floor+eave/2,z,a-.6,eave,c-.6,'cream');
+   const bays=Math.max(3,Math.round(a/3.2));for(let i=0;i<=bays;i++)for(const side of [-1,1])post(x+(i/bays-.5)*a,z+side*c/2,floor,eave,'door');
+   for(let i=0;i<bays;i++)box(name+'-door',x+((i+.5)/bays-.5)*a,floor+eave*.45,z+c/2+.05,a/bays*.7,eave*.7,.12,'door');
+   roof(x,floor+eave,z,a+2.4,c+2.4,2.4);
+  };
+  hall('jangandang',-18,-8,22,10);
+  hall('gonnyeonghap',20,-10,18,9);
+  hall('gonnyeonghap-wing',27,3,8,14);
+  // Okhoru: a raised corner room at the south end of the queen's range.
+  box('okhoru-base',27,.9,13,7.5,1.8,7.5,'stone');rects.push({x:27,z:13,hw:3.75,hd:3.75});
+  for(const sx of [-1,1])for(const sz of [-1,1])post(27+sx*3,13+sz*3,1.8,3.6,'door');
+  box('okhoru-room',27,3.6,13,5.4,3,5.4,'cream');roof(27,5.4,13,8.5,8.5,2.2);
+  hall('boksudang',-20,20,12,7,3.6);
+  // Gwanmungak: Western-style two storeys, brick and cream.
+  box('gwanmungak',-31,4,-22,10,8,9,'brick');rects.push({x:-31,z:-22,hw:5,hd:4.5});
+  for(const y of [2.5,6])for(let i=-1;i<=1;i++)box('gwanmungak-window',-31+i*3,y,-17.4,1.2,1.8,.1,'glass');
+  roof(-31,8,-22,11,10,2.2,1);
+  group.userData.blockingRects=rects;group.userData.gate=[gateX,hd];
  }else if(kind==='legation'){
   if(f.eventEntrance){
    // Interpretive entrance for the private arrival scene; an actual opening, not actors crossing a wall.

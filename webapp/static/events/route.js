@@ -32,12 +32,42 @@ export function buildRoute(api,points){
   if(!safe(p))throw Error(say(`확인 지점 ${i+1}(${r.name})이 건물과 겹칩니다. 경로 점검이 필요합니다.`,`Checkpoint ${i+1} (${r.name_en??r.name}) overlaps an obstacle.`));
   return p;
  });
- const path=[],milestoneIndex=[];
- for(let i=0;i<nodes.length;i++){if(i)path.push(...connect(nodes[i-1],nodes[i],`${points[i-1].name} → ${points[i].name}`).slice(1));else path.push(nodes[i]);milestoneIndex.push(path.length-1)}
+ // Two consecutive points on the same bridge are its two ends: take first the end nearer where the route comes from,
+ // so the route crosses once instead of stepping over and back.
+ for(let i=0;i+1<points.length;i++){
+  const a=points[i],b=points[i+1];if(!a.bridge_id||a.bridge_id!==b.bridge_id)continue;
+  const from=i>0?nodes[i-1]:null,[x,y]=[nodes[i],nodes[i+1]];
+  if(from&&from.distanceTo(y)<from.distanceTo(x)){nodes[i]=y;nodes[i+1]=x}
+ }
+ const clear=(a,b)=>{const n=Math.max(1,Math.ceil(a.distanceTo(b)));for(let k=1;k<n;k++)if(!safe(a.clone().lerp(b,k/n)))return false;return true};
+ // Grid detours are jagged: pull each section taut where a straight line is passable (looking a limited way ahead).
+ function taut(section){
+  const out=[section[0]];let i=0;
+  while(i<section.length-1){let j=Math.min(section.length-1,i+60);while(j>i+1&&!clear(section[i],section[j]))j--;out.push(section[j]);i=j}
+  return out;
+ }
+ let path=[];
+ for(let i=0;i<nodes.length;i++){if(i)path.push(...taut(connect(nodes[i-1],nodes[i],`${points[i-1].name} → ${points[i].name}`)).slice(1));else path.push(nodes[i])}
+ // Smooth the corners between sections too: resample every 2 m, then round corners (Chaikin), keeping any rounded
+ // point only where it is passable, so the group turns in arcs rather than snapping to a new heading at each point.
+ // Even spacing by arc length (short Chaikin segments are merged, long straight ones split).
+ const resample=(pts,step=2)=>{
+  const out=[pts[0].clone()];let carry=0;
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],len=a.distanceTo(b);let t=step-carry;while(t<=len){out.push(a.clone().lerp(b,t/len));t+=step}carry=len-(t-step)}
+  if(out.at(-1).distanceTo(pts.at(-1))>.2)out.push(pts.at(-1).clone());return out};
+ path=resample(path);
+ for(let pass=0;pass<3;pass++){
+  const out=[path[0]];
+  for(let i=0;i<path.length-1;i++){const a=path[i],b=path[i+1],q=a.clone().lerp(b,.25),r=a.clone().lerp(b,.75);out.push(safe(q)?q:a.clone(),safe(r)?r:b.clone())}
+  out.push(path.at(-1));path=resample(out.filter((p,i)=>i===0||p.distanceTo(out[i-1])>.05),2);
+ }
  const lengths=[0];for(let i=1;i<path.length;i++)lengths.push(lengths[i-1]+path[i].distanceTo(path[i-1]));
- const milestones=milestoneIndex.map(i=>lengths[i]),total=lengths.at(-1);
+ // Checkpoints sit where the smoothed route passes closest to each original point, in order.
+ const milestones=[];let from=0;
+ for(const n of nodes){let best=from,bd=Infinity;for(let i=from;i<path.length;i++){const d=path[i].distanceTo(n);if(d<bd){bd=d;best=i}if(d>bd+60)break}milestones.push(lengths[best]);from=best}
+ const total=lengths.at(-1);
  function sample(s){
-  s=Math.max(0,Math.min(s,total));let i=1;while(i<lengths.length-1&&lengths[i]<s)i++;
+  s=Math.max(0,Math.min(s,total));let lo=1,hi=lengths.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(lengths[mid]<s)lo=mid+1;else hi=mid}const i=lo;
   const a=path[i-1],b=path[i],p=a.clone().lerp(b,(s-lengths[i-1])/Math.max(.0001,lengths[i]-lengths[i-1]));return {p,yaw:Math.atan2(b.x-a.x,b.z-a.z)};
  }
  return {path,lengths,milestones,total,sample,nodes};

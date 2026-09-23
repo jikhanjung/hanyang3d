@@ -10,6 +10,13 @@ import {createQuestMarker} from './quest_marker.js';
 //
 // Stage types: 'talk' (walk to one person and hear them out), 'talks' (a sequence of speakers who come to the walker),
 // 'module' (a named module owning one or more checkpoints). Checkpoint 0 is 'started'.
+export function visitKeeps(data,f){
+ const sc=data.scene,y=sc.retain_up_to_year;
+ if((sc.hidden_buildings??[]).includes(f.id))return false;
+ if((sc.retained_buildings??[]).includes(f.id))return true;
+ if(y==null)return false;
+ const e=f.temporal?.existence??{};return (e.start_year==null||e.start_year<=y)&&(e.end_year==null||e.end_year>=y);
+}
 export function createHistoricalEvent({data,modules,scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface,channel}){
  const english=document.documentElement.lang==='en',say=(ko,en)=>english?(en??ko):ko,text=(o,key)=>say(o[key],o[key+'_en']);
  const fp=walking.firstPerson,container=document.getElementById('scene'),dialogue=walking.dialogue,curtain=walking.curtain;
@@ -33,8 +40,11 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
  // ---- scene dressing and lighting ---------------------------------------------------------------------------------
  for(const id of ['people3d','names3d','trams3d'])document.getElementById(id).checked=false;
  document.getElementById('labels').hidden=true;material.opacity=0;
- const keep=new Set(data.scene.retained_buildings);for(const b of buildings)b.visible=keep.has(b.userData.feature.id);
- if(data.scene.hide_people!==false){settlement.group.visible=false;trams.group.visible=false;walking.pedestrians.group.visible=false;walking.stationary.group.visible=false;walking.horseDealer.visible=false}
+ // Which 1907 buildings stand in the visit: an explicit list, or every building already there by `retain_up_to_year`
+ // (start year at or before it, not demolished before it; unknown dates count as standing) plus any listed extras.
+ for(const b of buildings)b.visible=visitKeeps(data,b.userData.feature);
+ const keepSettlement=!!data.scene.show_settlement;
+ if(data.scene.hide_people!==false){if(!keepSettlement)settlement.group.visible=false;trams.group.visible=false;walking.pedestrians.group.visible=false;walking.stationary.group.visible=false;walking.horseDealer.visible=false}
  document.title=text(data,'document_title');
  const lights=[];scene.traverse(o=>{if(o.isHemisphereLight||o.isDirectionalLight)lights.push(o)});
  const presets=data.scene.lighting,color=k=>new THREE.Color(k);
@@ -202,7 +212,7 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
    let saved=await api(restart?'restart':'status');
    if(saved.version!==data.version){finished=true;start.textContent=say('새 버전으로 다시 시작','Restart updated visit');message.textContent=say('회상 내용이 바뀌었습니다. 처음부터 다시 시작해 주세요.','The visit changed. Please restart.');return}
    if(saved.status==='completed'&&!restart){start.textContent=say('처음부터 다시 보기','Replay');finished=true;message.textContent=say('이미 마친 회상입니다. 다시 체험할 수 있습니다.','You have completed this visit. You can replay it.');return}
-   saved=await api('start');checkpoint=saved.checkpoint;saveError=false;finished=false;dialogue.end();setPreset('start');if(data.scene.hide_people!==false)settlement.group.visible=false;talksStep=null;for(const s of stages)s.entered=false;
+   saved=await api('start');checkpoint=saved.checkpoint;saveError=false;finished=false;dialogue.end();setPreset('start');if(data.scene.hide_people!==false&&!keepSettlement)settlement.group.visible=false;talksStep=null;for(const s of stages)s.entered=false;
    for(const m of instances.values())m.reset?.();lastModule=null;
    if(!fp.active)fp.enter();if(!fp.active)throw Error(say('1인칭을 시작하지 못했습니다.','Could not start walking.'));
    fp.setMounted(false);active=true;start.hidden=true;
