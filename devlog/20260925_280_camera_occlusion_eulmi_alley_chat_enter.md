@@ -27,3 +27,5 @@
 - `check_game_hud_browser.py`: 함께 걷기 접속 뒤 엔터로 연 채팅창의 불투명도가 1인지 확인을 더했다. 엔터·채팅·이동 부분은 통과. 같은 검사의 뒤쪽 배치 검사(채팅창 아래끝 ≤ 액션바 위끝)는 변경 전 코드에서도 실패하는 기존 문제다.
 - `check_first_person_controls_browser.py` 통과, `check_unhyeongung_browser.py` 통과. `check_mobile_walk_browser.py`의 조이스틱 정지 검사와 `check_1907_cathedral_browser.py`는 변경 전 코드에서도 실패한다(기존 문제).
 - `manage.py test` 통과.
+
+2026-09-25 웹 v0.5.52로 운영 반영했다([기록 281](20260925_281_deploy_v0552.md)).
