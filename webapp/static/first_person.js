@@ -128,7 +128,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    const turn=unfocusedMotion?.turn??(Number(held('KeyA'))-Number(held('KeyD')));
    yaw+=turn*Math.PI*.65*Math.min(dt,.1);
    // Selling the reins (or logging out) takes the horse away.
-   if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye)))setMounted(false);
+   if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye))){const indoor=!!getInterior(eye);setMounted(false);if(indoor)shop?.notify?.(t('실내라서 말에서 내렸소.'))}
    // Walking (not jumping) stays on the ground when stepping down, so a downhill stride never counts as airborne.
    const grounded=air===0&&vy===0;
    if(!grounded){const step=Math.min(dt,.1);vy-=GRAVITY*step;air=Math.max(0,air+vy*step);if(air===0)vy=0}
@@ -159,7 +159,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    // an edge above, or a jump, leaves the feet in the air here.
    const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){air=air===0&&vy===0?0:Math.max(0,lastGround+air-ground);if(air===0&&vy<0)vy=0;lastGround=ground}
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
-   if(mounted&&getInterior(eye))setMounted(false);
+   if(mounted&&getInterior(eye)){setMounted(false);shop?.notify?.(t('실내라서 말에서 내렸소.'))}
    walker?.update(walked,moved&&!mounted,mounted);
    fishing?.update();
    if(mounted)horse.update(performance.now(),moved,air>0||vy!==0,galloping);
@@ -221,6 +221,8 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   const release=event=>{if(drag?.id===event.pointerId){drag=null;mouseForward=false;mouseChord=false}};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,release);
   // Put the walker at a ground point facing `heading`; used by checks and focus buttons.
   function placeAt(x,z,heading=yaw){const g=groundAt(x,z);if(g===null)return false;air=0;vy=0;eye.set(x,g+eyeHeight(),z);lastGround=g;yaw=heading;if(mounted&&getInterior(eye))setMounted(false);else look();return true}
-  return {get fishing(){return fishing},set fishing(value){fishing=value},get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get galloping(){return mounted&&galloping},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
+  // Turn without moving: placeAt snaps to the highest surface at a point, which under a deck is the deck.
+  function face(heading){yaw=heading;look()}
+  return {face,get fishing(){return fishing},set fishing(value){fishing=value},get active(){return active},get ground(){return lastGround},get eye(){return eye.clone()},get yaw(){return yaw},get lookYaw(){return lookYaw},get autoRun(){return autoRun},get mounted(){return mounted},get galloping(){return mounted&&galloping},get air(){return air},jump,surfaceAt:(x,z,reference=null)=>{const v=surfaceAt(x,z,reference);return v===BLOCKED?'blocked':v},get horse(){return horse},setMounted,get view(){return view},get walker(){return walker},enter,exit,update,placeAt,groundAt,clearInput};
 
 }

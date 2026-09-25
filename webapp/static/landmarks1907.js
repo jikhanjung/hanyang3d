@@ -288,11 +288,24 @@ export function createLandmark1907(f,w,h,d){
  }else if(kind==='hex_pavilion'){
   box('pond-bank',0,.12,0,w,.24,d,'bank');box('pond',0,.26,0,w-3,.08,d-3,'water');cylinder('island',0,.6,0,9,10,1,'stone',24);
   for(let tier=0;tier<2;tier++){
-   const base=1+tier*4.5;cylinder('hex-floor',0,base,0,5,5,.4,'wood',6);
-   for(let i=0;i<6;i++){const a=i*Math.PI/3;post(Math.sin(a)*4.7,Math.cos(a)*4.7,base,3.7)}
-   cylinder('hex-roof',0,base+4.5,0,1.2,7-tier*.6,2.4,'roof',6);
+   // Turned 30° so a flat side, not a corner post, faces the bridge.
+   const base=1+tier*4.5;cylinder('hex-floor',0,base,0,5,5,.4,'wood',6).rotation.y=Math.PI/6;
+   for(let i=0;i<6;i++){const a=i*Math.PI/3+Math.PI/6;post(Math.sin(a)*4.7,Math.cos(a)*4.7,base,3.7)}
+   cylinder('hex-roof',0,base+4.5,0,1.2,7-tier*.6,2.4,'roof',6).rotation.y=Math.PI/6;
   }
-  box('north-bridge',0,1.1,-d*.28,2,.4,d*.42,'wood');for(const side of [-1,1])box('bridge-rail',side*.9,1.8,-d*.28,.15,.25,d*.42,'wood');group.userData.roofTiers=2;group.userData.sides=6;
+  // Chwihyanggyo: the deck (top 1.3 m) starts at the pond edge; two steps lead up to it from the bank (top .24 m).
+  const deckN=-d/2+2,deckS=-5.4;box('north-bridge',0,1.1,(deckN+deckS)/2,2,.4,deckS-deckN,'wood');
+  for(const side of [-1,1])box('bridge-rail',side*.9,1.8,(deckN+deckS)/2,.15,.25,deckS-deckN,'wood');
+  for(const [k,top] of [[0,.95],[1,.6]])box('bridge-step',0,top/2,deckN-.4-k*.8,2,top,.8,'wood');
+  group.userData.roofTiers=2;group.userData.sides=6;
+  // The water blocks; the Chwihyanggyo bridge from the north bank, the island and the pavilion's lower floor are
+  // walkable. The water leaves a 1.5 m strip along the bridge; the pavilion posts block.
+  const pw=(w-3)/2,pd=(d-3)/2,isle=9,bw=.75,blocks=[],rect=(x0,x1,z0,z1)=>{if(x1>x0&&z1>z0)blocks.push({x:(x0+x1)/2,z:(z0+z1)/2,hw:(x1-x0)/2,hd:(z1-z0)/2})};
+  rect(-pw,-isle,-pd,pd);rect(isle,pw,-pd,pd);rect(-isle,isle,isle,pd);rect(-isle,-bw,-pd,-isle);rect(bw,isle,-pd,-isle);
+  for(let i=0;i<6;i++){const a=i*Math.PI/3+Math.PI/6;blocks.push({x:Math.sin(a)*4.7,z:Math.cos(a)*4.7,hw:.3,hd:.3})}
+  group.userData.blockingRects=blocks;
+  group.userData.walkSurfaces=group.children.filter(m=>['pond-bank','island','north-bridge','bridge-step'].includes(m.name)||(m.name==='hex-floor'&&m.position.y<3-h/2));
+  Object.assign(group.userData,{accessYaw:Math.PI,accessFront:d/2,accessHeight:.24});
  }else if(kind==='library'){
   box('platform',0,.4,0,w,.8,d,'stone');box('library',0,4,0,20,7,14,'wood');
   for(const side of [-1,1])box('brick-gable-wall',side*10,4,0,.8,7,14,'stone');roof(0,7.7,0,24,18,3.5,.01);
@@ -325,7 +338,13 @@ export function createLandmark1907(f,w,h,d){
    else cylinder('round-stone-column',x,3.3,z,.5,.5,5.4,'stone');
    post(x,z,6,5.5);
   }
-  box('upper-floor',px,6,pz,45,.6,33,'wood');
+  // Upper floor with a stairwell over the stair run; a straight stair rises east from the island (conceptual —
+  // the position and form of the historic stair are not modelled). Island top 1.2 m, floor top 6.3 m.
+  const hole=[px+3,px+13.6,pz+10.5,pz+13.5],floorParts=[];
+  const slab=(x0,x1,z0,z1)=>{if(x1-x0>.05&&z1-z0>.05)floorParts.push(box('upper-floor',(x0+x1)/2,6,(z0+z1)/2,x1-x0,.6,z1-z0,'wood'))};
+  slab(px-22.5,px+22.5,pz-16.5,hole[2]);slab(px-22.5,px+22.5,hole[3],pz+16.5);slab(px-22.5,hole[0],hole[2],hole[3]);slab(hole[1],px+22.5,hole[2],hole[3]);
+  const treads=[];for(let i=0;i<17;i++){const top=1.2+(i+1)*.3;treads.push(box('pavilion-stair',hole[0]+.4+i*.6,(1.2+top)/2,(hole[2]+hole[3])/2,.62,top-1.2,2.4,'wood'))}
+  for(const side of [-1,1])box('stair-rail',(hole[0]+hole[1])/2,4.3,(hole[2]+hole[3])/2+side*1.25,10.6,.12,.12,'wood');
   for(const side of [-1,1]){box('balustrade',px,7,pz+side*16,45,.25,.25,'wood');box('balustrade',px+side*22,7,pz,.25,.25,32,'wood')}
   for(let i=0;i<=14;i++)for(const side of [-1,1])box('baluster',px-21+i*3,6.65,pz+side*16,.15,1,.15,'wood');
   box('painted-beam',px,11.5,pz,46,.5,34,'trim');roof(px,12,pz,52,40,5);
@@ -335,7 +354,9 @@ export function createLandmark1907(f,w,h,d){
   rect(px-27.5,w/2-2.5,-d/2+2.5,pz-20.5);rect(px-27.5,w/2-2.5,pz+20.5,d/2-2.5);
   rect(px+27.5,w/2-2.5,pz-20.5,pz-2.5);rect(px+27.5,w/2-2.5,pz+2.5,pz+20.5);
   for(const m of group.children.filter(m=>m.name.includes('stone-column')))blocks.push({x:m.position.x,z:m.position.z,hw:.5,hd:.5});
-  Object.assign(group.userData,{blockingRects:blocks,walkSurfaces:group.children.filter(m=>['pond-bank','island','bridge','pond-entry-step'].includes(m.name)),accessYaw:Math.PI/2,accessOffset:[0,pz],accessFront:w/2,accessHeight:.3});
+  Object.assign(group.userData,{blockingRects:blocks,walkSurfaces:[...group.children.filter(m=>['pond-bank','island','bridge','pond-entry-step'].includes(m.name)),...floorParts,...treads],accessYaw:Math.PI/2,accessOffset:[0,pz],accessFront:w/2,accessHeight:.3,
+   // The island, the pavilion and its bridge count as indoors: a rider dismounts there (floor-relative volumes).
+   interior:{volumes:[[px-27.5,0,pz-20.5,px+27.5,14,pz+20.5],[px+27.5,0,pz-2.5,w/2,4,pz+2.5]]}});
  }else if(kind==='shrine'){
   const count=f.shrine_chambers,bay=(w-12)/count,hz=-d*.28;group.userData.anchorOffset=[0,hz];
   box('terrace',0,.5,0,w,1,d,'stone');

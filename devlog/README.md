@@ -18,6 +18,8 @@
 
 ## 작업 기록
 
+- [276 — 경회루 2층·향원정 다리](20260925_276_gyeonghoeru_hyangwonjeong_walk.md)
+
 - [275 — v0.5.50 배포](20260923_275_deploy_v0550.md)
 
 - [274 — 건청궁 계단을 대문 앞으로](20260923_274_geoncheonggung_stairs.md)

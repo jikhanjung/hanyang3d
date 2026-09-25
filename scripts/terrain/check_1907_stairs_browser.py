@@ -23,7 +23,8 @@ with tempfile.TemporaryDirectory() as tmp:
      result=page.evaluate("""async()=>{
       const s=seoul1907,T=await import('/webapp/static/vendor/three/three.module.js');s.renderer.setAnimationLoop(null);s.scene.updateMatrixWorld(true);
       const results=[];
-      for(const b of s.buildings.filter(b=>b.userData.access)){
+      // Pond pavilions (Gyeonghoeru, Hyangwonjeong) have their own route check in check_pavilions_1907_browser.py.
+      for(const b of s.buildings.filter(b=>b.userData.access&&!['gyeonghoeru','hex_pavilion'].includes(b.userData.feature.landmark_kind))){
        const f=b.userData.feature,[w,h,d]=f.symbol_size_m,a=b.userData.access,hall=f.throne_hall;
        const end=hall?b.userData.hallCenterZ+hall.hall_m[1]/2+1.5:Math.max(d*.425,d*.425-3+(f.landmark_kind==='cathedral'?9:5)/2)+1;
        const world=z=>b.localToWorld(new T.Vector3(a.x,-h/2,z));
@@ -39,7 +40,7 @@ with tempfile.TemporaryDirectory() as tmp:
        }
        const side=b.localToWorld(new T.Vector3(w/2-.2,-h/2,0)),sideGround=s.groundAt(side.x,side.z)+.025;
        const sideBlocked=b.userData.groundFloor-sideGround>.7?s.firstPerson.groundAt(side.x,side.z,sideGround)===null:true;
-       const landing=world(end);b.visible=false;const hiddenGround=s.firstPerson.groundAt(landing.x,landing.z);b.visible=true;const hiddenStable=Math.abs(hiddenGround-(s.groundAt(landing.x,landing.z)+.025))<1e-5;const obstacle=b.userData.blockingRects[0],wall=b.localToWorld(new T.Vector3(obstacle.x,0,obstacle.z)),wallBlocked=!!s.walking.collision.hit(wall.x,wall.z,.35);
+       const landing=world(end);b.visible=false;const hiddenGround=s.firstPerson.groundAt(landing.x,landing.z);b.visible=true;const hiddenStable=Math.abs(hiddenGround-(s.groundAt(landing.x,landing.z)+.025))<1e-5;const obstacle=b.userData.blockingRects?.[0],wall=obstacle&&b.localToWorld(new T.Vector3(obstacle.x,0,obstacle.z)),wallBlocked=!obstacle||!!s.walking.collision.hit(wall.x,wall.z,.35);
        results.push({id:f.id,fail,sideBlocked,hiddenStable,wallBlocked,rise:highest-s.groundAt(start.x,start.z),stairs:!!b.getObjectByName('access-stairs')});
       }
       return results;
@@ -49,7 +50,7 @@ with tempfile.TemporaryDirectory() as tmp:
      page.evaluate(LOGIN_JS.replace('terrain3d.shop','seoul1907.walking.shop'),['계단검사'+str(width),'stairs-test-1907'])
      page.evaluate('seoul1907.firstPerson.enter();seoul1907.pedestrians.group.visible=false')
      client=page.context.new_cdp_session(page)
-     ids=page.evaluate('seoul1907.buildings.filter(b=>b.userData.access).map(b=>b.userData.feature.id)')
+     ids=page.evaluate("seoul1907.buildings.filter(b=>b.userData.access&&!['gyeonghoeru','hex_pavilion'].includes(b.userData.feature.landmark_kind)).map(b=>b.userData.feature.id)")
      for id in ids:
       for reverse in [False,True]:
        page.evaluate("""async({id,reverse})=>{const s=seoul1907,b=s.buildings.find(b=>b.userData.feature.id===id),T=await import('/webapp/static/vendor/three/three.module.js'),f=b.userData.feature,[w,h,d]=f.symbol_size_m,a=b.userData.access,hall=f.throne_hall;const end=hall?b.userData.hallCenterZ+hall.hall_m[1]/2+1.5:Math.max(d*.425,d*.425-3+(f.landmark_kind==='cathedral'?9:5)/2)+1;const world=z=>b.localToWorld(new T.Vector3(a.x,-h/2,z));const p=world(reverse?end:a.end+1),q=world(reverse?a.end+1:end);window.stairGoal=q;s.firstPerson.placeAt(p.x,p.z,Math.atan2(-(q.x-p.x),-(q.z-p.z)));s.firstPerson.clearInput()}""",{'id':id,'reverse':reverse})
