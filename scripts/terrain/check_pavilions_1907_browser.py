@@ -38,13 +38,24 @@ with tempfile.TemporaryDirectory() as tmp:
     route=[[w/2+14,pz],[w/2-1,pz],[px+24,pz],[px,pz],[px,pz+12],[px+3.2,pz+12],[px+13.4,pz+12],[px+18,pz+12],[px+18,pz]]
     mounted=page.evaluate(START,['gyeonghoeru-1907',route[0],True])
     page.keyboard.down('w');legs=page.evaluate(LEG,['gyeonghoeru-1907',route,True]);page.keyboard.up('w')
-    note=page.evaluate("document.getElementById('action-message').textContent")
+    note=page.evaluate("document.getElementById('walk-chat-messages').textContent")
     print('GYEONGHOERU',mounted,legs,note,flush=True)
     assert mounted and all(l['left']<.7 for l in legs),legs
-    assert not legs[2]['mounted'] and '실내' in note,(legs,note)
+    assert legs[0]['mounted'] and not legs[2]['mounted'] and '실내' in note,(legs,note)
     assert legs[-1]['floor']>5.9 and legs[4]['floor']<1.6 and legs[6]['floor']>5.9,legs
     page.evaluate("(()=>{const s=seoul1907,b=s.buildings.find(b=>b.userData.feature.id==='gyeonghoeru-1907'),V=s.camera.position.constructor;s.renderer.render(s.scene,s.camera)})()")
     Path('/tmp/gyeonghoeru-upper.png').write_bytes(__import__('base64').b64decode(page.evaluate("(()=>{const s=seoul1907;s.renderer.render(s.scene,s.camera);return s.renderer.domElement.toDataURL()})()").split(',')[1]))
+    # Walking on the ground floor under the upper floor, the third-person camera stays below it (the walker in view).
+    page.evaluate(START,['gyeonghoeru-1907',route[0],False]);page.keyboard.down('w');page.evaluate(LEG,['gyeonghoeru-1907',route[:5],False])
+    cam=page.evaluate("""async([px,pz])=>{const s=seoul1907,fp=s.firstPerson,b=s.buildings.find(b=>b.userData.feature.id==='gyeonghoeru-1907'),T=await import('/webapp/static/vendor/three/three.module.js'),h=b.userData.feature.symbol_size_m[1],gf=b.userData.groundFloor;
+     // On the ground floor under the upper floor (entered again over the bridge), walk west and look about.
+     const W=([x,z])=>b.localToWorld(new T.Vector3(x,-h/2,z)),out=[];
+     for(const pt of [[px-12,pz]]){const g=W(pt);fp.face(Math.atan2(-(g.x-fp.eye.x),-(g.z-fp.eye.z)));for(let i=0;i<600;i++){fp.update(1/30);if(Math.hypot(fp.eye.x-g.x,fp.eye.z-g.z)<.6)break}}
+     for(const yaw of [0,Math.PI/2,Math.PI,-Math.PI/2]){fp.face(yaw);fp.update(1/30);const eye=fp.eye,c=s.camera.position,ray=new T.Raycaster(eye,c.clone().sub(eye).normalize(),0,c.distanceTo(eye));
+      out.push({floor:+(eye.y-1.65-gf).toFixed(2),camera:+(c.y-gf).toFixed(2),boom:+c.distanceTo(eye).toFixed(2),blocked:ray.intersectObject(b,true).filter(x=>x.object.material?.visible!==false).length})}
+     s.renderer.render(s.scene,s.camera);window.underShot=s.renderer.domElement.toDataURL();return out}""",[px,pz]);page.keyboard.up('w')
+    print('CAMERA',cam,flush=True);assert all(c['floor']<1.6 and c['camera']<5.9 and c['blocked']==0 for c in cam),cam
+    Path('/tmp/gyeonghoeru-under.png').write_bytes(__import__('base64').b64decode(page.evaluate('underShot').split(',')[1]))
     # Hyangwonjeong: from the north bank along the bridge onto the pavilion floor.
     h=page.evaluate("(()=>{const f=seoul1907.buildings.find(b=>b.userData.feature.id==='hyangwonjeong-1907').userData.feature;return f.symbol_size_m})()")
     route=[[0,-h[2]/2-10],[0,-h[2]/2+1],[0,-12],[0,-5],[0,0]]

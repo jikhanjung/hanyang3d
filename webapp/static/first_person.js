@@ -52,6 +52,17 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
   // than a step but less than head height above the footing: the side of a terrace is a wall, a deck overhead is not.
   // Solid building foundations also block taller faces; unlike a bridge, there is no passage underneath them.
   const HEADROOM=2.2,BLOCKED=Symbol('blocked');
+  // The underside of the nearest walkable surface above a point (a deck or an upper floor), or null.
+  const up=new THREE.Vector3(0,1,0);
+  function ceilingAbove(x,y,z){
+   let best=null;
+   for(const {object,visible,box} of walkableList()){
+    if(x<box.min.x||x>box.max.x||z<box.min.z||z>box.max.z||box.max.y<=y||!visible())continue;
+    surfaceRay.set(rayOrigin.set(x,y,z),up);
+    for(const hit of surfaceRay.intersectObject(object,true)){if(hit.object.material?.visible===false)continue;if(best===null||hit.point.y<best)best=hit.point.y;break}
+   }
+   return best;
+  }
   function surfaceAt(x,z,reference=null){
    let best=null,blocked=false;
    for(const {object,visible,box} of walkableList()){
@@ -77,18 +88,62 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    if(surface===BLOCKED)return null;
    return surface===null?terrain:Math.max(terrain,surface);
   }
+  // ---- camera occlusion ----------------------------------------------------------------------------------------
+  // Visible meshes of the scene near the walker are candidates, culled by bounding sphere against the eye–camera segment.
+  // People, horses, labels and markers never count; nor do see-through surfaces (water) or the ground itself (very
+  // large meshes such as the terrain, which the floor clamp below handles). Instanced meshes (houses, trees, walls)
+  // are tested per instance against cached world-space instance spheres.
+  const occlusionHits=[],occluderSphere=new THREE.Sphere(),instanceMatrix=new THREE.Matrix4(),instanceProbe=new THREE.Mesh(),instanceCache=new WeakMap(),toCentre=new THREE.Vector3();
+  function segmentReach(centre,radius,from,dir,length){toCentre.copy(centre).sub(from);const t=toCentre.dot(dir);if(t<-radius||t>length+radius)return false;return toCentre.lengthSq()-t*t<=radius*radius}
+  function ignoredByCamera(o){return o.userData.cameraIgnore||o.isSprite||o.isPoints||o.isLine||o===walker?.group||o===horse?.group}
+  function seeThrough(m){const list=Array.isArray(m)?m:[m];return list.every(x=>!x||x.visible===false||(x.transparent&&x.opacity<.6))}
+  function instanceSpheres(m){
+   let c=instanceCache.get(m);const version=m.instanceMatrix.version,world=m.matrixWorld.elements;
+   if(c&&c.version===version&&c.count===m.count&&c.world.every((v,i)=>v===world[i]))return c;
+   if(!m.geometry.boundingSphere)m.geometry.computeBoundingSphere();
+   const local=m.geometry.boundingSphere,data=new Float32Array(m.count*4);
+   for(let i=0;i<m.count;i++){m.getMatrixAt(i,instanceMatrix);instanceMatrix.premultiply(m.matrixWorld);occluderSphere.copy(local).applyMatrix4(instanceMatrix);data.set([occluderSphere.center.x,occluderSphere.center.y,occluderSphere.center.z,occluderSphere.radius],i*4)}
+   c={version,count:m.count,world:[...world],data};instanceCache.set(m,c);return c;
+  }
+  // Candidates near the walker are gathered by walking the scene only when the walker has moved a few metres (or
+  // every second); each frame tests just those, rechecking visibility (LOD swaps) along the parent chain.
+  const NEAR_M=40;let candidates=null,candidateAt=new THREE.Vector3(),candidateTime=0;
+  function shown(o){for(let x=o;x;x=x.parent){if(!x.visible||ignoredByCamera(x))return false}return true}
+  function gather(from){
+   const meshes=[],instances=[];
+   const visit=o=>{if(!o.visible||ignoredByCamera(o))return;
+    if(o.isInstancedMesh){if(!seeThrough(o.material)){const {data}=instanceSpheres(o),near=[];for(let i=0;i<o.count;i++){const k=i*4;if(Math.hypot(data[k]-from.x,data[k+1]-from.y,data[k+2]-from.z)<NEAR_M+data[k+3])near.push(i)}if(near.length)instances.push([o,near])}}
+    else if(o.isMesh&&o.geometry&&!seeThrough(o.material)){const g=o.geometry;if(!g.boundingSphere)g.computeBoundingSphere();occluderSphere.copy(g.boundingSphere).applyMatrix4(o.matrixWorld);if(occluderSphere.radius<=400&&occluderSphere.center.distanceTo(from)<NEAR_M+occluderSphere.radius)meshes.push(o)}
+    for(const c of o.children)visit(c)};
+   visit(scene);candidates={meshes,instances};candidateAt.copy(from);candidateTime=performance.now();
+  }
+  function nearestOccluder(from,dir,length){
+   occlusionHits.length=0;cameraRay.set(from,dir);cameraRay.near=0;cameraRay.far=length;
+   if(!candidates||candidateAt.distanceTo(from)>6||performance.now()-candidateTime>1000)gather(from);
+   for(const o of candidates.meshes){if(!shown(o))continue;occluderSphere.copy(o.geometry.boundingSphere).applyMatrix4(o.matrixWorld);if(segmentReach(occluderSphere.center,occluderSphere.radius,from,dir,length))o.raycast(cameraRay,occlusionHits)}
+   for(const [o,near] of candidates.instances){if(!shown(o))continue;const {data}=instanceSpheres(o);
+    for(const i of near){const k=i*4;if(i>=o.count)continue;occluderSphere.center.set(data[k],data[k+1],data[k+2]);if(!segmentReach(occluderSphere.center,data[k+3],from,dir,length))continue;
+     o.getMatrixAt(i,instanceMatrix);instanceProbe.geometry=o.geometry;instanceProbe.material=o.material;instanceProbe.matrixWorld.multiplyMatrices(o.matrixWorld,instanceMatrix);instanceProbe.raycast(cameraRay,occlusionHits)}}
+   // Camera shells some models provide (invisible boxes) count as well.
+   for(const o of getCameraObstacles())if(o.isMesh)o.raycast(cameraRay,occlusionHits);
+   let best=null;for(const h of occlusionHits)if(h.distance<=length&&(best===null||h.distance<best))best=h.distance;
+   return best;
+  }
   function place(){
    // Third-person boom: the eye stays at walking height and the camera pulls back along the view.
    boom.set(0,0,1).applyEuler(camera.rotation).multiplyScalar(view);
    // Lift with the boom so the character sits low in frame instead of blocking the view.
    camera.position.copy(eye).add(boom);camera.position.y+=view*.22;
-   const obstacles=getCameraObstacles();
-   if(obstacles.length){
-    cameraDirection.copy(camera.position).sub(eye);const length=cameraDirection.length();
-    if(length>.001){cameraRay.set(eye,cameraDirection.normalize());cameraRay.far=length;const hit=cameraRay.intersectObjects(obstacles,true)[0];if(hit)camera.position.copy(eye).addScaledVector(cameraDirection,Math.max(.05,hit.distance-.18))}
-   }
-   const ground=groundAt(camera.position.x,camera.position.z);
+   // Anything solid between the walker and the camera (a building, a wall, a house, a tree, an upper floor) pulls
+   // the camera in front of it, so the walker is never hidden.
+   cameraDirection.copy(camera.position).sub(eye);const length=cameraDirection.length();
+   if(length>.001){cameraDirection.normalize();const hit=nearestOccluder(eye,cameraDirection,length);if(hit!==null)camera.position.copy(eye).addScaledVector(cameraDirection,Math.max(.05,hit-.18))}
+   // Keep the camera between the floor and the ceiling at its own spot: under an upper floor (Gyeonghoeru) the
+   // highest walkable surface is the floor above, so look only at surfaces around the camera's height.
+   const ground=groundAt(camera.position.x,camera.position.z,camera.position.y);
    if(ground!==null)camera.position.y=Math.max(camera.position.y,ground+.6);
+   const ceiling=ceilingAbove(camera.position.x,Math.min(camera.position.y,eye.y),camera.position.z);
+   if(ceiling!==null)camera.position.y=Math.max(Math.min(camera.position.y,ceiling-.25),Math.min(eye.y,ceiling-.25));
    if(walker){
     const feet=eye.y-eyeHeight();
     walker.group.visible=view>=.8;

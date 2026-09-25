@@ -355,8 +355,8 @@ export function createLandmark1907(f,w,h,d){
   rect(px+27.5,w/2-2.5,pz-20.5,pz-2.5);rect(px+27.5,w/2-2.5,pz+2.5,pz+20.5);
   for(const m of group.children.filter(m=>m.name.includes('stone-column')))blocks.push({x:m.position.x,z:m.position.z,hw:.5,hd:.5});
   Object.assign(group.userData,{blockingRects:blocks,walkSurfaces:[...group.children.filter(m=>['pond-bank','island','bridge','pond-entry-step'].includes(m.name)),...floorParts,...treads],accessYaw:Math.PI/2,accessOffset:[0,pz],accessFront:w/2,accessHeight:.3,
-   // The island, the pavilion and its bridge count as indoors: a rider dismounts there (floor-relative volumes).
-   interior:{volumes:[[px-27.5,0,pz-20.5,px+27.5,14,pz+20.5],[px+27.5,0,pz-2.5,w/2,4,pz+2.5]]}});
+   // The island and the pavilion count as indoors (a rider dismounts there); the bridge over the pond does not.
+   interior:{volumes:[[px-27.5,0,pz-20.5,px+27.5,14,pz+20.5]]}});
  }else if(kind==='shrine'){
   const count=f.shrine_chambers,bay=(w-12)/count,hz=-d*.28;group.userData.anchorOffset=[0,hz];
   box('terrace',0,.5,0,w,1,d,'stone');

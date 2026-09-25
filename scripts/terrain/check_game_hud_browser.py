@@ -34,6 +34,8 @@ with tempfile.TemporaryDirectory() as tmp:
     assert page.evaluate('seoul1907.firstPerson.mounted')
     page.keyboard.press('1');assert page.evaluate('!seoul1907.firstPerson.mounted')
     page.keyboard.press('Enter');assert page.locator('#walk-chat-input').evaluate('(e)=>e===document.activeElement')
+    # Opening the chat shows it at once, even after it faded out while quiet.
+    assert page.evaluate("getComputedStyle(document.getElementById('walk-chat')).opacity")=='1'
     page.keyboard.type('123 채팅 검사');assert page.evaluate('!seoul1907.firstPerson.mounted')
     page.keyboard.press('Enter');pages[1].wait_for_function("document.getElementById('walk-chat-messages').textContent.includes('123 채팅 검사')")
     assert page.locator('#walk-chat').is_visible() and not page.locator('#walk-chat-input').is_visible()

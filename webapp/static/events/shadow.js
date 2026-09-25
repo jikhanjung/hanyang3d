@@ -79,7 +79,7 @@ export function createShadow(api){
   p.group.visible=false;scene.add(p.group);return p})}));
  const gateGuard=stops[0]?.defenders[0];
  const rejoin=api.panel.button('historical-event-rejoin',say('무리를 다시 찾기','Find the group again'),()=>{if(fp.active)regroup()});
- let route=null,distance=0,neighborhood=null,closeFor=0,notice=0,waiting=false,appearAt=null,finished=false;
+ let route=null,distance=0,neighborhood=null,closeFor=0,notice=0,waiting=false,appearAt=null,appearIn=null,finished=false;
  const tailOffset=()=>members.at(-1).back+1;let clock=0;
 
  function prepare(){
@@ -136,7 +136,7 @@ export function createShadow(api){
   for(const st of stops){st.state=distance>=route.milestones[st.def.at]?'done':'pending';st.t=0;st.fall=0;for(const d of st.defenders){d.group.visible=st.state==='pending';d.group.rotation.x=0}}
   place(false);
   // Fresh start with an 'appear' point: the group waits unseen beyond it until the walker comes near, then walks in.
-  waiting=!!appearAt&&index===0;
+  waiting=!!appearAt&&index===0;appearIn=null;
   // Waiting, the whole group stands beyond the gate: the leader at the first route point, the rest bunched behind it.
   if(waiting){distance=0;place(false)}
   for(const m of members)m.group.visible=!waiting;
@@ -161,7 +161,10 @@ export function createShadow(api){
   if(finished)return;
   if(waiting){
    const left=Math.hypot(fp.eye.x-appearAt.x,fp.eye.z-appearAt.z);
-   if(left>data.appear.radius_m){api.panel.message(text(data,'wait_hint').replace('{m}',Math.round(left)));return}
+   if(left>data.appear.radius_m){appearIn=null;api.panel.message(text(data,'wait_hint').replace('{m}',Math.round(left)));return}
+   // appear.delay_s: a pause before the group comes into view (the walker has just heard of it and waits).
+   if(appearIn===null){appearIn=data.appear.delay_s??0;if(appearIn>0&&data.appear.delay_text)api.panel.message(text(data.appear,'delay_text'))}
+   if(appearIn>0){appearIn-=dt;return}
    waiting=false;for(const m of members)m.group.visible=true;notice=5;api.panel.message(text(data,'appear_text'));
   }
   const eye=fp.eye,tail=members.at(-1).group.position,lead=members[0].group.position;

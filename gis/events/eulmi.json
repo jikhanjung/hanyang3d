@@ -123,12 +123,12 @@
       "key": "night",
       "type": "talk",
       "walker_start_pixel": [
-        461,
-        2224
+        531,
+        2241
       ],
       "contact_pixel": [
-        467,
-        2230
+        531,
+        2228
       ],
       "contact": {
         "name": "야경꾼",
@@ -138,12 +138,12 @@
         "portrait": "walker",
         "color": "#5b5448"
       },
-      "hint": "큰길가 담 밑의 야경꾼에게 가 보세요. {m}m",
-      "hint_en": "Go to the watchman by the wall at the roadside. {m} m",
+      "hint": "골목 안쪽의 야경꾼에게 가 보세요. {m}m",
+      "hint_en": "Go to the watchman further up the alley. {m} m",
       "nodes": {
         "hello": {
-          "text": "이 새벽에 어딜 그리 다니시오? 요새 도성 안이 뒤숭숭하니 일찍 들어가시오. …방금 서대문 안쪽이 소란하던데. 쉿, 저기 등불 보이오? 이리로 오고 있소.",
-          "text_en": "Where are you off to at this hour? The city is uneasy these days; best get indoors. …There was a stir just inside the West Gate. Hush — see those lanterns? They are coming this way.",
+          "text": "이 새벽에 어딜 그리 다니시오? 요새 도성 안이 뒤숭숭하니 일찍 들어가시오. …방금 서대문 쪽이 소란하던데. 큰길로 나가 보면 알 게요. 다만 몸은 숨기시오.",
+          "text_en": "Where are you off to at this hour? The city is uneasy these days; best get indoors. …There was a stir at the West Gate just now. Go to the mouth of the alley and you will see — but keep yourself hidden.",
           "options": [
             {
               "label": "어떤 무리였소?",
@@ -169,8 +169,8 @@
           ]
         }
       },
-      "after": "돈의문 쪽에서 등불 든 무리가 큰길로 들어섭니다. 길가에서 지켜보세요.",
-      "after_en": "A lantern-lit group turns into the main road from Donuimun. Watch from the roadside."
+      "after": "큰길 쪽을 지켜보세요. 서대문 쪽에서 무언가 다가옵니다.",
+      "after_en": "Watch the main road. Something is coming from the West Gate."
     },
     {
       "key": "shadow",
@@ -207,11 +207,11 @@
       "route": [
         {
           "pixel": [
-            428,
-            2270
+            455,
+            2244
           ],
-          "name": "돈의문 안",
-          "name_en": "Inside Donuimun"
+          "name": "새문안 큰길(돈의문 쪽)",
+          "name_en": "Saemunan main road (Donuimun side)"
         },
         {
           "pixel": [
@@ -385,16 +385,19 @@
       },
       "appear": {
         "pixel": [
-          467,
-          2230
+          531,
+          2228
         ],
-        "radius_m": 40,
-        "free_until_at": 2
+        "radius_m": 45,
+        "free_until_at": 2,
+        "delay_s": 7,
+        "delay_text": "골목 어귀로 나가 큰길 서쪽을 살펴보세요.",
+        "delay_text_en": "Go to the mouth of the alley and look west along the main road."
       },
-      "wait_hint": "야경꾼이 있던 길가로 돌아가 지켜보세요. {m}m",
-      "wait_hint_en": "Go back to the roadside where the watchman stood, and watch. {m} m",
-      "appear_text": "돈의문 쪽에서 등불이 다가온다 — 무리가 큰길을 따라 빠르게 경복궁 쪽으로 간다. 길가에 몸을 붙이고 지켜보세요.",
-      "appear_text_en": "Lanterns come from Donuimun — the group hurries along the main road towards Gyeongbokgung. Keep to the roadside and watch.",
+      "wait_hint": "야경꾼이 있던 골목으로 돌아가 큰길을 지켜보세요. {m}m",
+      "wait_hint_en": "Go back to the watchman's alley and watch the main road. {m} m",
+      "appear_text": "서대문 쪽에서 등불이 다가온다 — 무리가 큰길을 따라 빠르게 경복궁 쪽으로 간다. 골목 어귀에 몸을 숨기고 지켜보세요.",
+      "appear_text_en": "Lanterns come from the West Gate — the group hurries along the main road towards Gyeongbokgung. Keep hidden at the mouth of the alley and watch.",
       "neighborhood": false,
       "stops": [
         {

@@ -46,19 +46,23 @@ with tempfile.TemporaryDirectory() as tmp:
     scene=page.evaluate("""()=>{const s=seoul1907,m=s.historicalEvent.module('shadow'),on=k=>s.buildings.find(b=>b.userData.feature.id===k||b.userData.feature.landmark_kind===k)?.visible;let lane=false;s.scene.traverse(o=>{if(o.name==='estimated-escape-lane')lane=true});
      return {houses:s.settlement.group.visible,lane,geoncheonggung:on('geoncheonggung-1907'),depot:on('tram_depot')??'absent',visible:s.buildings.filter(b=>b.visible).length,rifles:m.members.filter(x=>x.rifle).length,swords:m.members.filter(x=>x.sword).length}}""")
     print('SCENE',scene,flush=True);assert scene['houses'] and not scene['lane'] and scene['geoncheonggung'] and scene['depot'] is not True and scene['visible']>40 and scene['rifles']>=3 and scene['swords']>=6,scene;assert not page.evaluate('''(()=>{let bad=false;seoul1907.scene.traverse(o=>{const a=o.isMesh&&o.geometry.attributes.position?.array;if(a&&a.some(v=>!Number.isFinite(v)))bad=true});return bad})()'''),'NaN geometry'
-    # Right after the watchman's talk, by the roadside west of Saemungogae, the group appears inside Donuimun and
-    # hurries along the main road past the walker (who stands still, off the road) towards Gyeongbokgung.
-    appear=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson;const at=fp.eye.clone();e.update(.1);
-     const first={waiting:m.waiting,shown:m.members[0].group.visible,text:document.querySelector('#historical-event-panel p').textContent,distance:m.distance,start:Math.round(m.route.path[0].distanceTo(new s.firstPerson.eye.constructor(at.x,0,at.z)))};
-     let nearest=Infinity,moved10=null,caught=false;for(let i=0;i<600;i++){fp.placeAt(at.x,at.z,fp.yaw);e.update(.1);if(i===99)moved10=m.distance-first.distance;const l=m.members[0].group.position;nearest=Math.min(nearest,Math.hypot(l.x-at.x,l.z-at.z));if(document.querySelector('#historical-event-panel p').textContent.includes('물러났'))caught=true}
+    # After the watchman's talk in the alley south of the main road, a short pause (the group unseen), then the group
+    # comes into view far to the west (the Donuimun side) and walks along the main road past the alley mouth, where the
+    # walker stands still. It must not be caught there.
+    appear=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson,P=()=>document.querySelector('#historical-event-panel p').textContent;
+     const c=fp.eye.clone();let near=m.route.path[0],nd=Infinity;for(const p of m.route.path){const d=Math.hypot(p.x-c.x,p.z-c.z);if(d<nd){nd=d;near=p}}
+     const k=Math.max(0,(nd-12)/nd),at={x:c.x+(near.x-c.x)*k,z:c.z+(near.z-c.z)*k};fp.placeAt(at.x,at.z,Math.atan2(-(near.x-at.x),-(near.z-at.z)));
+     const pause=[];for(let i=0;i<65;i++){e.update(.1);if(i%10===0)pause.push(m.members.some(x=>x.group.visible))}const pauseText=P();
+     for(let i=0;i<10&&!m.members[0].group.visible;i++)e.update(.1);const lead=m.members[0].group.position,first={shown:m.members[0].group.visible,text:P().slice(0,30),away:Math.round(Math.hypot(lead.x-at.x,lead.z-at.z)),west:lead.x<at.x};
+     const d0=m.distance;let nearest=Infinity,caught=false,t10=null;for(let i=0;i<900;i++){fp.placeAt(at.x,at.z,fp.yaw);e.update(.1);if(i===99)t10=m.distance-d0;for(const x of m.members)nearest=Math.min(nearest,Math.hypot(x.group.position.x-at.x,x.group.position.z-at.z));if(P().includes('물러났'))caught=true}
      s.renderer.render(s.scene,s.camera);window.passShot=s.renderer.domElement.toDataURL();
-     const road=m.route.path.reduce((b,p)=>Math.min(b,Math.hypot(p.x-at.x,p.z-at.z)),Infinity);
-     return {...first,text:first.text.slice(0,40),speed:+(moved10/10).toFixed(2),nearest:Math.round(nearest),road:+road.toFixed(1),caught,after:Math.round(m.distance)}}""")
+     return {alleyToRoad:+nd.toFixed(1),pause,pauseText:pauseText.slice(0,20),...first,speed:+(t10/10).toFixed(2),nearest:Math.round(nearest),caught,after:Math.round(m.distance)}}""")
     print('APPEAR',appear,flush=True)
-    assert not appear['waiting'] and appear['shown'] and '돈의문' in appear['text'] and 4.0<appear['speed']<4.3 and appear['nearest']<25 and appear['road']>8 and not appear['caught'] and appear['start']<200,appear
+    assert appear['alleyToRoad']>12 and not any(appear['pause']) and '골목 어귀' in appear['pauseText'] and '서대문' in appear['text'],appear
+    assert appear['shown'] and appear['west'] and appear['away']>100 and 4.0<appear['speed']<4.3 and appear['nearest']<25 and not appear['caught'],appear
     Path('/tmp/eulmi-pass.png').write_bytes(base64.b64decode(page.evaluate('passShot').split(',')[1]))
     # Remarks: close by someone suspects a follower (Japanese with a translation); later idle small talk.
-    remark=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson;const t=m.members.at(-1).group.position;fp.placeAt(t.x+6,t.z+6,0);e.update(.1);const near=m.remark;
+    remark=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson;for(let i=0;i<80&&m.remark;i++)e.update(.1);const t=m.members.at(-1).group.position;fp.placeAt(t.x+6,t.z+6,0);e.update(.1);const near=m.remark;
      const b=m.route.sample(Math.max(0,m.distance-m.members.at(-1).back-40)).p;fp.placeAt(b.x,b.z,0);let idle=null;for(let i=0;i<300&&!idle;i++){e.update(.1);const r=m.remark;if(r&&r!==near)idle=r}return {near,idle}}""")
     print('REMARK',remark,flush=True);assert remark['near'] and any(k in remark['near'] for k in ['따라','소리','살펴','기분','고양이']) and remark['idle'],remark
     # Too close: stand among the group for a few seconds and the walker is put back into the dark.

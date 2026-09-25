@@ -3,7 +3,7 @@ import * as THREE from 'three';
 // A small horse (a display shape, not a recorded breed). Legs hang from hip pivots so they can gallop; standing still
 // it lowers its head as if grazing and swishes its tail. Used by the horse dealer and as the player's mount.
 export function createHorse({coat:coatColor=0x6b4a2e,mane:maneColor=0x2a1f18}={}){
- const group=new THREE.Group();group.name='horse';
+ const group=new THREE.Group();group.name='horse';group.userData.cameraIgnore=true;
  const material=color=>new THREE.MeshStandardMaterial({color,roughness:1});
  const coat=material(coatColor),mane=material(maneColor);
  const add=(parent,geometry,mat,x,y,z)=>{const mesh=new THREE.Mesh(geometry,mat);mesh.position.set(x,y,z);parent.add(mesh);return mesh};

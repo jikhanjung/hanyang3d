@@ -14,8 +14,9 @@ export function createWalkChat({ scene, firstPerson, send }) {
     <form id="walk-chat-form" style="display:flex;gap:6px"><input id="walk-chat-input" aria-label="${t('채팅 메시지')}" placeholder="${t('메시지 (최대 200자)')}" maxlength="200" autocomplete="off" style="min-width:0;max-width:none;flex:1;font-size:16px"><button type="submit">${t('보내기')}</button></form>
     <p id="walk-chat-error" role="status" style="margin:4px 0 0;color:#9e2820"></p>`;
   scene.append(toggle, panel);
-  // New messages show the log; after a quiet spell it fades out (never while typing or with the pointer over it).
-  if (!document.getElementById('walk-chat-fade-style')) { const style = document.createElement('style'); style.id = 'walk-chat-fade-style'; style.textContent = '#walk-chat{transition:opacity .9s ease}#walk-chat.faded{opacity:0;pointer-events:none}'; document.head.append(style); }
+  // New messages show the log at once; after a quiet spell it fades out (never while typing or with the pointer over
+  // it). Only the fade-out is animated, so opening the chat with Enter never waits on a transition.
+  if (!document.getElementById('walk-chat-fade-style')) { const style = document.createElement('style'); style.id = 'walk-chat-fade-style'; style.textContent = '#walk-chat.faded{opacity:0;transition:opacity .9s ease;pointer-events:none}'; document.head.append(style); }
   const FADE_AFTER_MS = 8000; let fadeTimer = 0;
   function wake() {
     panel.classList.remove('faded'); clearTimeout(fadeTimer);

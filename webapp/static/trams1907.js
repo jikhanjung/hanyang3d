@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 // A single schematic early open car. Dimensions/colour are not surveyed evidence.
 export function createTrams1907(data,surface){
- const group=new THREE.Group();group.name='jongno-tram';
+ const group=new THREE.Group();group.name='jongno-tram';group.userData.cameraIgnore=true;
  const points=data.route.pixels.map(p=>surface(...p)),lengths=[0];
  for(let i=1;i<points.length;i++)lengths.push(lengths[i-1]+Math.hypot(points[i].x-points[i-1].x,points[i].z-points[i-1].z));
  const length=lengths.at(-1);

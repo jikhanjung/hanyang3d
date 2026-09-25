@@ -6,7 +6,7 @@ import {figure,materials} from './guards.js';
 // display estimate. A spear block faces the drill officer and his flag, and a line of archers shoots at the targets.
 // Bodies are merged by material; only the spears are instanced so they can thrust together.
 export function createDrill(feature,w,h,d){
- const model=new THREE.Group();model.name='training-drill';
+ const model=new THREE.Group();model.name='training-drill';model.userData.cameraIgnore=true;
  const mats=materials(),figures=[],y=-h/2+.2,thick=1.2,office=d*.3;
  const fieldTop=-d/2+office+thick,fieldBottom=d/2-thick;
  // Spear block: 5 ranks of 8 in the middle of the field, facing north toward the officer.

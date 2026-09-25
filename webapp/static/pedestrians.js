@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {buildWalkingRoutes,createWalkingSimulation,sampleWalkingRoute,walkingRouteKey} from './walking_simulation.js';
 
 export function createPedestrians(data,sourceSurface,{era=1750,footHeight=null}={}){
- const group=new THREE.Group();group.name='walking-people';
+ const group=new THREE.Group();group.name='walking-people';group.userData.cameraIgnore=true;
  const routes=buildWalkingRoutes(data,sourceSurface),simulation=createWalkingSimulation(routes);
  // Alternating costume variants are illustrative, not a historical population estimate.
  const walkers=simulation.walkers;walkers.forEach(w=>{w.position=new THREE.Vector3(w.position.x,0,w.position.z)});
@@ -83,7 +83,7 @@ export function createPedestrians(data,sourceSurface,{era=1750,footHeight=null}=
 
 // Single non-instanced walker for the player's own character in walk mode.
 export function createWalker(){
- const group=new THREE.Group();group.name='player-walker';
+ const group=new THREE.Group();group.name='player-walker';group.userData.cameraIgnore=true;
  const mat=color=>new THREE.MeshStandardMaterial({color,roughness:1});
  const jacket=mat('#d8cdb2'),skin=mat(0xc5a17e),hair=mat(0x302b28),trouser=mat('#c8c2b1'),trim=mat('#f1e9d5'),sash=mat('#9b8c76'),pupil=mat(0x292522);
  const add=(parent,geometry,material,x,y,z,roll=0)=>{const mesh=new THREE.Mesh(geometry,material);mesh.position.set(x,y,z);if(roll)mesh.rotation.z=roll;parent.add(mesh);return mesh};
