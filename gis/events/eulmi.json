@@ -793,99 +793,177 @@
         "building": "geoncheonggung-1907"
       },
       "spot_local": [
-        -6,
-        26
+        40.3,
+        31.3
       ],
-      "radius_m": 3,
-      "torches": 5,
-      "torch_loop": [
-        [
-          8,
-          0
-        ],
-        [
-          16,
-          -3
-        ],
-        [
-          20,
-          6
-        ],
-        [
-          14,
-          12
-        ],
-        [
-          8,
-          8
-        ]
-      ],
-      "torch_gather": [
-        18,
-        -3
-      ],
-      "torch_exit": [
-        11,
-        40
-      ],
+      "radius_m": 2.6,
       "smoke_local": [
         90,
         -30
       ],
-      "intro": "무리가 건청궁 문 안으로 사라졌습니다. 조심조심 따라 들어가 복수당 옆 어두운 구석에 몸을 숨기세요.",
-      "intro_en": "The group has vanished through the gate of Geoncheonggung. Creep in after them and hide in the dark corner by Boksudang.",
-      "approach": "담 안쪽 어두운 구석까지 {m}m — 횃불을 피해 움직이세요.",
-      "approach_en": "{m} m to the dark corner inside the wall — keep clear of the torches.",
-      "settled": "어두운 구석에 몸을 낮췄습니다. 숨을 죽이고 지켜보세요.",
-      "settled_en": "You crouch in the dark corner. Hold your breath and watch.",
+      "intro": "무리가 건청궁 문 안으로 사라졌습니다. 조심조심 따라 들어가 동남쪽 담 모퉁이 어둠 속에 몸을 숨기세요.",
+      "intro_en": "The group has vanished through the gate of Geoncheonggung. Creep in after them and hide in the dark of the south-east corner of the wall.",
+      "approach": "동남쪽 담 모퉁이까지 {m}m — 횃불을 피해 움직이세요.",
+      "approach_en": "{m} m to the south-east corner of the wall — keep clear of the torches.",
+      "settled": "담 모퉁이 어둠 속에 몸을 낮췄습니다. 숨을 죽이고 지켜보세요.",
+      "settled_en": "You crouch in the dark of the corner. Hold your breath and watch.",
       "stray": "구석에서 너무 나왔습니다. 횃불 빛이 닿을 것 같습니다.",
       "stray_en": "You have left the corner. The torchlight may reach you.",
       "pulled_back": "횃불이 이쪽을 비추었다 — 숨을 삼키며 어둠 속으로 물러났습니다.",
       "pulled_back_en": "A torch swung your way — you held your breath and sank back into the dark.",
-      "duration_s": 60,
-      "leave_after_s": 10,
+      "duration_s": 80,
       "timeline": [
         {
           "t": 2,
-          "torches": "scatter",
-          "text": "횃불 든 이들이 전각 사이로 흩어진다. 문짝 부서지는 소리가 난다.",
-          "text_en": "Men with torches scatter between the halls. A door gives way with a crash.",
+          "crowd": "wander",
+          "text": "낭인들이 횃불을 들고 전각 사이를 이리저리 오가며 방마다 뒤진다.",
+          "text_en": "Ronin with torches go to and fro between the halls, searching room after room.",
           "cue": "doors"
         },
         {
-          "t": 12,
-          "text": "안쪽에서 궁녀들의 비명과 고함이 뒤섞인다. 무언가를 찾는 듯 이 방 저 방을 뒤지는 발소리.",
+          "t": 11,
+          "text": "안쪽에서 궁녀들의 비명과 고함이 뒤섞인다. 누군가를 찾는 듯 이 방 저 방을 뒤지는 발소리.",
           "text_en": "From inside come screams of court women and shouting, and footsteps going from room to room as if searching for someone.",
           "cue": "shouts"
         },
         {
-          "t": 22,
+          "t": 18,
+          "crowd": "storm",
+          "shout": {
+            "ja": "狐はここだ！捕らえろ！",
+            "ko": "여우가 여기 있다! 잡아라!",
+            "en": "The fox is here! Seize her!"
+          },
+          "text": "누군가 곤녕합 옥호루 쪽을 가리키며 외친다. 무리가 한꺼번에 몰려간다.",
+          "text_en": "Someone points towards Okhoru in Gonnyeonghap and shouts. The whole crowd rushes there."
+        },
+        {
+          "t": 38,
           "flash": 0.35,
           "cue": "gunfire",
           "text": "총소리 — 누군가 두 팔을 벌려 막아서다 쓰러졌다는 외침이 들린다.",
           "text_en": "A shot — a cry goes up that someone who stood in the way with arms outspread has fallen."
         },
         {
-          "t": 32,
-          "torches": "gather",
-          "text": "횃불들이 한 전각 앞으로 몰린다. 그곳에서 무슨 일이 일어나는지는 보이지 않는다. 한참 동안 아무 소리도 나지 않는다.",
-          "text_en": "The torches crowd before one hall. What happens there cannot be seen. For a long while there is no sound at all."
+          "t": 48,
+          "crowd": "emerge",
+          "text": "무리가 하나둘 다시 뜰로 나온다. 한참 동안 아무도 말이 없다.",
+          "text_en": "One by one the men come back out into the yard. For a long while nobody speaks."
         },
         {
-          "t": 44,
-          "torches": "leave",
-          "text": "무리가 무언가를 들고 동쪽 숲으로 향한다.",
-          "text_en": "The group heads for the woods to the east, carrying something."
+          "t": 54,
+          "crowd": "gather",
+          "text": "횃불들이 한 전각 앞으로 몰린다. 그곳에서 무슨 일이 일어나는지는 보이지 않는다.",
+          "text_en": "The torches crowd before one hall. What happens there cannot be seen."
         },
         {
-          "t": 52,
+          "t": 60,
+          "crowd": "leave",
+          "text": "큰 무리가 무언가를 들고 건청궁 문을 빠져나간다.",
+          "text_en": "The whole crowd files out through the gate of Geoncheonggung, carrying something."
+        },
+        {
+          "t": 74,
           "light": "dawn",
           "light_s": 14,
           "smoke": true,
-          "text": "날이 희끄무레해진다. 동쪽 숲에서 연기가 오른다… 몸을 낮춘 채 궁을 빠져나가세요.",
-          "text_en": "The sky pales. Smoke rises from the woods to the east… Keep low and get out of the palace."
+          "text": "날이 희끄무레해진다. 동쪽 숲에서 연기가 오른다…",
+          "text_en": "The sky pales. Smoke rises from the woods to the east…"
         }
-      ]
+      ],
+      "crowd": {
+        "count": 24,
+        "torch_every": 3,
+        "grid_m": 3,
+        "avoid_spot_m": 11,
+        "seed": 1895
+      },
+      "door": {
+        "local": [
+          27,
+          15.8
+        ],
+        "front": [
+          27,
+          19.8
+        ],
+        "facing_deg": 0,
+        "width": 2.4,
+        "sill": 2.1,
+        "cue": "doors",
+        "break_text": "우지끈 — 옥호루 문짝이 부서지고, 무리가 안으로 밀려 들어간다.",
+        "break_text_en": "A splintering crash — the door of Okhoru gives way, and the crowd pushes inside."
+      },
+      "gather_local": [
+        22,
+        23
+      ],
+      "exit_local": [
+        11,
+        46
+      ],
+      "calls": [
+        {
+          "ja": "どこだ！",
+          "ko": "어디냐!",
+          "en": "Where is she?"
+        },
+        {
+          "ja": "こっちの部屋は空だ！",
+          "ko": "이쪽 방은 비었다!",
+          "en": "This room's empty!"
+        },
+        {
+          "ja": "探せ、隅々まで探せ！",
+          "ko": "찾아, 구석구석 찾아!",
+          "en": "Search — search every corner!"
+        },
+        {
+          "ja": "女どもを逃がすな！",
+          "ko": "여자들을 놓치지 마라!",
+          "en": "Don't let the women get away!"
+        },
+        {
+          "ja": "灯りを寄こせ！",
+          "ko": "불 좀 이리 줘!",
+          "en": "Bring a light!"
+        },
+        {
+          "ja": "奥の建物だ！",
+          "ko": "안쪽 건물이다!",
+          "en": "The building at the back!"
+        },
+        {
+          "ja": "急げ、夜が明けるぞ！",
+          "ko": "서둘러, 날이 밝는다!",
+          "en": "Hurry, it's getting light!"
+        },
+        {
+          "ja": "戸を蹴破れ！",
+          "ko": "문을 걷어차 부숴!",
+          "en": "Kick the door in!"
+        }
+      ],
+      "discovery": {
+        "radius_m": 4,
+        "line_s": 7,
+        "hint": "연기가 오르는 동쪽 숲으로 가 보세요. {m}m",
+        "hint_en": "Go to the woods to the east where the smoke rises. {m} m",
+        "lines": [
+          {
+            "text": "잿더미 곁, 타다 남은 가지 사이에서 무언가 희미하게 빛난다. 그을린 매듭 끝에 작은 옥이 달린 노리개 한 가닥이다.",
+            "text_en": "Beside the ashes, among half-burnt branches, something glints faintly: a single pendant strand, a small piece of jade at the end of a scorched knot."
+          },
+          {
+            "text": "봇짐 속 그을린 노리개를 꺼내 나란히 대어 본다. 끈의 빛깔도, 매듭을 지은 솜씨도 꼭 같다. 한 벌에서 떨어져 나온 짝이다.",
+            "text_en": "You take the scorched norigae from your pack and hold them side by side. The colour of the cord and the hand that tied the knots are the same. They are two strands of one set."
+          },
+          {
+            "text": "…이 노리개는 이 새벽, 건청궁에서 이 불길까지 옮겨진 무언가와 함께 있었던 것이다. 관리인이 왜 말을 아꼈는지 이제 알 것 같다.",
+            "text_en": "…This norigae was with whatever was carried from Geoncheonggung to this fire at dawn. Now you understand why the caretaker said so little."
+          }
+        ]
+      }
     },
     {
       "key": "market",

@@ -200,7 +200,7 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
  function previousSpot(i){for(let j=i-1;j>=0;j--){const t=talks.get(stages[j].key);if(t)return t.spot}return null}
 
  // ---- lifecycle ---------------------------------------------------------------------------------------------------
- async function begin(restart=false){
+ async function begin(restart=false,{replayIfDone=false}={}){
   if(busy)return;busy=true;start.disabled=true;
   try{
    await walking.shop.whenReady;
@@ -211,6 +211,9 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
    prepareTalks();
    let saved=await api(restart?'restart':'status');
    if(saved.version!==data.version){finished=true;start.textContent=say('새 버전으로 다시 시작','Restart updated visit');message.textContent=say('회상 내용이 바뀌었습니다. 처음부터 다시 시작해 주세요.','The visit changed. Please restart.');return}
+   // Arriving by using the keepsake again replays a completed visit from the start (the first person, first stage);
+   // opening the page otherwise offers the replay button.
+   if(saved.status==='completed'&&!restart&&replayIfDone)saved=await api('restart');
    if(saved.status==='completed'&&!restart){start.textContent=say('처음부터 다시 보기','Replay');finished=true;message.textContent=say('이미 마친 회상입니다. 다시 체험할 수 있습니다.','You have completed this visit. You can replay it.');return}
    saved=await api('start');checkpoint=saved.checkpoint;saveError=false;finished=false;dialogue.end();setPreset('start');if(data.scene.hide_people!==false&&!keepSettlement)settlement.group.visible=false;talksStep=null;for(const s of stages)s.entered=false;
    for(const m of instances.values())m.reset?.();lastModule=null;
@@ -244,7 +247,7 @@ export function createHistoricalEvent({data,modules,scene,camera,walking,buildin
   }).catch(error=>{message.textContent=error.message;start.hidden=false});
  }
  // Arrived behind the curtain from the base scene: begin at once so the first thing seen is the street, not the overview.
- if(curtain.holding)begin().finally(()=>curtain.hide());
+ if(curtain.holding)begin(false,{replayIfDone:true}).finally(()=>curtain.hide());
  // probe(px,py): whether an original-map pixel is passable — for authoring routes and hiding places.
  return {update,begin,quest,stages,panel,probe:(px,py)=>{const p=surface(px,py);p.y=0;return safe(p)},
   regroup:()=>current?.regroup?.(),

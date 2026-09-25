@@ -64,7 +64,7 @@ with tempfile.TemporaryDirectory() as tmp:
     # Remarks: close by someone suspects a follower (Japanese with a translation); later idle small talk.
     remark=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson;for(let i=0;i<80&&m.remark;i++)e.update(.1);const t=m.members.at(-1).group.position;fp.placeAt(t.x+6,t.z+6,0);e.update(.1);const near=m.remark;
      const b=m.route.sample(Math.max(0,m.distance-m.members.at(-1).back-40)).p;fp.placeAt(b.x,b.z,0);let idle=null;for(let i=0;i<300&&!idle;i++){e.update(.1);const r=m.remark;if(r&&r!==near)idle=r}return {near,idle}}""")
-    print('REMARK',remark,flush=True);assert remark['near'] and any(k in remark['near'] for k in ['따라','소리','살펴','기분','고양이']) and remark['idle'],remark
+    print('REMARK',remark,flush=True);assert remark['near'] and any(l['ja'] in remark['near'] for l in json.load(open('gis/events/eulmi.json'))['stages'][1]['chatter']['suspicious']) and remark['idle'],remark
     # Too close: stand among the group for a few seconds and the walker is put back into the dark.
     close=page.evaluate("""()=>{const s=seoul1907,e=s.historicalEvent,m=e.module('shadow'),fp=s.firstPerson;for(let i=0;i<60;i++){const t=m.members.at(-1).group.position;fp.placeAt(t.x+10,t.z+10,0);e.update(.1)}
      const lead=m.members[0].group.position;fp.placeAt(lead.x+.5,lead.z+.5,0);for(let i=0;i<30;i++)e.update(.1);const near=Math.min(...m.members.map(x=>Math.hypot(fp.eye.x-x.group.position.x,fp.eye.z-x.group.position.z)));
@@ -87,14 +87,27 @@ with tempfile.TemporaryDirectory() as tmp:
     stops=page.evaluate('window.stopsDone');print('STOPS',stops,'aimed',page.evaluate('window.aimed'),'fired',page.evaluate('window.fired'),flush=True)
     assert [x['n'] for x in stops]==[9,3,2] and all(x['state']=='done' and x['fallen'] for x in stops) and stops[0]['down']==3 and stops[0]['fled']==6 and page.evaluate('window.aimed') and page.evaluate('window.fired'),stops
     for name in ['gate','palace']:Path(f'/tmp/eulmi-{name}.png').write_bytes(base64.b64decode(page.evaluate(name+'Shot').split(',')[1]))
-    # Hiding: approach the corner, stray out and get pulled back, then sit out the timeline to first light.
-    hide=page.evaluate("""async()=>{const s=seoul1907,e=s.historicalEvent,h=e.module('hide'),fp=s.firstPerson,spot=h.spot;
-     const approach=document.querySelector('#historical-event-panel p').textContent;fp.placeAt(spot.x,spot.z,0);e.update(.1);const settled=h.state;
-     fp.placeAt(spot.x+8,spot.z+8,0);for(let i=0;i<50;i++)e.update(.1);const back=Math.hypot(fp.eye.x-spot.x,fp.eye.z-spot.z);const pulled=document.querySelector('#historical-event-panel p').textContent;
-     const texts=[];let last='',i=0;for(;i<2000&&e.phase==='hide';i++){e.update(.1);const t=document.querySelector('#historical-event-panel p').textContent;if(t!==last){texts.push(t.slice(0,24));last=t}
-      if(!window.hideShot&&h.clock>34){const cam=s.camera;s.renderer.render(s.scene,cam);window.hideShot=s.renderer.domElement.toDataURL()}if(i%100===0)await new Promise(r=>setTimeout(r,0))}
-     return {approach:approach.slice(0,30),settled,back:+back.toFixed(1),pulled:pulled.slice(0,60),texts,lighting:e.lighting,phase:e.phase,smoke:h.smoke.visible}}""")
-    print('HIDE',{k:v for k,v in hide.items() if k!='texts'},hide['texts'][-3:],flush=True);assert hide['settled']=='watch' and hide['back']<1 and '물러났' in hide['pulled'] and len(hide['texts'])>=6 and hide['phase']=='market',hide
+    # Hiding in the far corner: approach, stray out and get pulled back. The crowd (as many as the group) searches the
+    # compound, keeps clear of the corner, storms the east door of Gonnyeonghap with a shout, comes back out, gathers
+    # and leaves by the gate. At first light the walker goes to the smoke and finds the matching strand.
+    hide=page.evaluate("""async()=>{const s=seoul1907,e=s.historicalEvent,h=e.module('hide'),fp=s.firstPerson,spot=h.spot,P=()=>document.querySelector('#historical-event-panel p').textContent;
+     const b=s.buildings.find(b=>b.userData.feature.id==='geoncheonggung-1907'),sl=b.worldToLocal(spot.clone().setY(b.position.y));
+     const approach=P();fp.placeAt(spot.x,spot.z,0);e.update(.1);const settled=h.state;
+     fp.placeAt(spot.x-8,spot.z-8,0);for(let i=0;i<50;i++)e.update(.1);const back=Math.hypot(fp.eye.x-spot.x,fp.eye.z-spot.z);const pulled=P();
+     const seen={wander:0,storm:0,emerge:0,gather:0,leave:0};let nearest=Infinity,shout='',maxInside=0,broke=false;const texts=[];let last='',i=0;
+     for(;i<2400&&h.state==='watch';i++){e.update(.1);const t=P();if(t!==last){texts.push(t.slice(0,24));last=t}
+      const vis=h.men.filter(m=>m.p.group.visible);seen[h.mode]=Math.max(seen[h.mode],vis.length);for(const m of vis)nearest=Math.min(nearest,Math.hypot(m.p.group.position.x-spot.x,m.p.group.position.z-spot.z));
+      if(h.shout&&h.shout.includes('狐'))shout=h.shout;maxInside=Math.max(maxInside,h.men.filter(m=>m.state==='inside').length);if(h.doorBroken)broke=true;
+      if(!window.hideShot&&h.mode==='storm'&&h.clock>24){s.renderer.render(s.scene,s.camera);window.hideShot=s.renderer.domElement.toDataURL()}
+      if(i%100===0)await new Promise(r=>setTimeout(r,0))}
+     e.update(.1);const gone=h.men.filter(m=>m.state==='gone').length,smoke=h.smoke.visible,hint=P();
+     const q=h.smokeAt;fp.placeAt(q.x+2.5,q.z+1,0);const found=[];for(let k=0;k<400&&e.phase==='hide';k++){e.update(.1);const t=P();if(!found.includes(t))found.push(t)}
+     for(let k=0;k<30&&e.saving;k++)await new Promise(r=>setTimeout(r,100));
+     return {corner:[+sl.x.toFixed(1),+sl.z.toFixed(1)],approach:approach.slice(0,30),settled,back:+back.toFixed(1),pulled:pulled.slice(0,40),seen,nearest:+nearest.toFixed(1),shout,maxInside,broke,gone,smoke,hint:hint.slice(0,24),found:found.map(x=>x.slice(0,30)),texts,phase:e.phase,nodes:h.nodes.length}}""")
+    print('HIDE',{k:v for k,v in hide.items() if k not in('texts','found','approach','pulled')},flush=True);print('FOUND',hide['found'],flush=True)
+    assert hide['settled']=='watch' and hide['back']<1 and '물러났' in hide['pulled'] and abs(hide['corner'][0])>38 and hide['corner'][1]>29,hide
+    assert hide['seen']['wander']>=20 and hide['nearest']>7 and '狐' in hide['shout'] and hide['broke'] and hide['maxInside']>=15 and hide['gone']==24 and hide['smoke'],hide
+    assert '연기가 오르는' in hide['hint'] and any('나란히' in f for f in hide['found']) and hide['phase']=='market',hide
     Path('/tmp/eulmi-hide.png').write_bytes(base64.b64decode(page.evaluate('hideShot').split(',')[1]))
     # The next day: the curtain moves the walker to Jongno in daylight; a knot of people murmurs by the road. The walker
     # squeezes in among them and overhears the talk; stepping out pauses it; at the end the crowd breaks up.
@@ -118,6 +131,12 @@ with tempfile.TemporaryDirectory() as tmp:
     Path('/tmp/eulmi-market.png').write_bytes(base64.b64decode(page.evaluate('marketShot').split(',')[1]))
     assert not errors,errors
     print('PASS EULMI',flush=True)
+    # Using the norigae again after finishing: back in 1907, use it from the pack; the visit restarts at the alley.
+    page.goto('http://127.0.0.1:18140/1907/');page.wait_for_function('window.seoul1907?.ready',timeout=180000)
+    page.evaluate("""async()=>{const w=seoul1907.walking;await w.shop.whenReady;await w.shop.refresh();seoul1907.firstPerson.enter();w.shop.openPack();document.querySelector('.pack-items .shop-slot[data-item="eulmi_keepsake"]').dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,button:2}))}""")
+    page.wait_for_url('**/events/eulmi/',timeout=30000);page.wait_for_function('window.seoul1907?.ready',timeout=180000);page.wait_for_function('!seoul1907.walking.curtain.holding',timeout=60000)
+    again=page.evaluate("({phase:seoul1907.historicalEvent.phase,checkpoint:seoul1907.historicalEvent.checkpoint,active:seoul1907.historicalEvent.active,contact:seoul1907.historicalEvent.contacts.night?.p.group.visible})")
+    print('REPLAY',again,flush=True);assert again=={'phase':'night','checkpoint':0,'active':True,'contact':True},again
     # Entry from 1907: the Gyeongbokgung caretaker at Gwanghwamun gives the norigae; using it opens the visit.
     second=browser.new_page(viewport={'width':1280,'height':900});second.goto('http://127.0.0.1:18140/1907/');second.wait_for_function('window.seoul1907?.ready',timeout=180000)
     entry=second.evaluate(f"""async()=>{{const s=seoul1907,w=s.walking,d=w.dialogue,csrf={CSRF};await w.shop.whenReady;

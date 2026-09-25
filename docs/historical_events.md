@@ -43,7 +43,8 @@
 - `module` — 이름으로 등록한 모듈(확인 지점 `checkpoints`개, 없으면 `route` 길이). 나머지 필드는 모듈이 정한다. 지금 있는 모듈:
   - `procession` — 가마 행렬 따라가기와 순찰 회피, 도착 연출(아관파천).
   - `shadow` — 등불 든 무리를 들키지 않게 뒤따르기. `group`(`kinds` 구성·속도·`spread_m`·등불·`seed`), `keep`(너무 가까움·너무 멂 거리), `appear`(다가가야 나타남; `free_until_at`을 주면 그 경로 지점까지는 플레이어와 멀어도 스스로 다가와 지나간다; `delay_s`·`delay_text`를 주면 조건이 맞은 뒤 그만큼 보이지 않게 기다렸다가 나타난다), `gate`·`stops`(멈춤: `defenders`의 `role: commander`·`weapon: rifle`·`fate: fall|flee`와 `flee_pixel`, `beats`의 `aim`·`flash`·`fall`·`flee`·`text`), `chatter`(가까울 때 의심·평소 잡담, 일본어와 번역; 섞은 순서로 되풀이 없이 뽑고, `phases`의 `from` 경로 지점을 지나면 그 구간 말이 섞인다), `neighborhood: false`(경로 곁 추정 민가 끄기), 문구(`intro`·`follow_hint`·`too_close`·`too_close_caught`·`too_far`)(을미사변).
-  - `hide` — 기존 건물(`compound.building`) 또는 담장 두른 개념 모형(`compound`)에 들어가 어두운 구석(`spot_local`, `radius_m`)에 머무는 동안 `timeline`이 문자·섬광·횃불 움직임(`torches`: scatter·gather·leave)·조명·연기로 진행. 구석을 벗어나면 멈추고, 오래 벗어나면 되돌린다(을미사변).
+  - `hide` — 기존 건물(`compound.building`) 또는 담장 두른 개념 모형(`compound`)에 들어가 어두운 구석(`spot_local`, `radius_m`)에 머무는 동안 `timeline`이 진행. `crowd`(`count`·`torch_every`·`grid_m`·`avoid_spot_m`) 인원이 담 안 통행 격자(벽·전각은 막고 숨은 구석 둘레는 비움)를 따라 움직이고, 박자의 `crowd`로 `wander`(이리저리)·`storm`(`shout` 외침 뒤 `door`로 몰려가 문을 부수고 들어감)·`emerge`·`gather`(`gather_local`)·`leave`(대문 밖 `exit_local`)를 바꾼다. `calls`는 무리가 오가며 외치는 말. 박자의 `text`·`flash`·`cue`·`light`·`smoke`. 구석을 벗어나면 멈추고 오래 벗어나면 되돌린다. 끝나면 `discovery`(연기 자리로 가면 `lines`가 차례로 나옴) 뒤 단계가 끝난다(을미사변).
+  - 열쇠 물건을 다시 쓰고 들어오면(커튼 진입) 이미 마친 회상도 처음부터 다시 시작한다.
   - `crowd` — 길 한쪽에 모여 웅성거리는 사람들(`pixel`, `people`, `ring_m`). 멀리서는 `murmurs` 토막말이 머리 위에 떠오르고, `join_radius_m` 안으로 끼어들면 사람들이 비켜서고 `lines`(`who`=말하는 사람 순번)가 차례로 오간다. 플레이어에게 묻지 않고 엿듣는 대화이며 '다음 말 듣기'로 넘길 수 있다. 벗어나면 멈추고, 끝나면 흩어진다. 확인 지점 1개(`checkpoints: 1`)(을미사변 이튿날 저잣거리).
   - 경로를 쓰는 모듈은 `events/route.js`의 `buildRoute`를 함께 쓴다(원도 픽셀·다리 양끝·건물 앞, 막히면 A* 우회, 실패 시 구간 이름을 밝힌 오류).
 
