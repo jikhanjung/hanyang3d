@@ -123,12 +123,12 @@
       "key": "night",
       "type": "talk",
       "walker_start_pixel": [
-        664,
-        2207
+        461,
+        2224
       ],
       "contact_pixel": [
-        652,
-        2201
+        467,
+        2230
       ],
       "contact": {
         "name": "야경꾼",
@@ -138,12 +138,12 @@
         "portrait": "walker",
         "color": "#5b5448"
       },
-      "hint": "골목 끝의 야경꾼에게 가 보세요. {m}m",
-      "hint_en": "Go to the watchman at the end of the lane. {m} m",
+      "hint": "큰길가 담 밑의 야경꾼에게 가 보세요. {m}m",
+      "hint_en": "Go to the watchman by the wall at the roadside. {m} m",
       "nodes": {
         "hello": {
-          "text": "이 새벽에 어딜 그리 다니시오? 요새 도성 안이 뒤숭숭하니 일찍 들어가시오. …방금 서대문 쪽이 소란하던데, 등불 든 무리가 이리로 오는 것 같았소.",
-          "text_en": "Where are you off to at this hour? The city is uneasy these days; best get indoors. …There was a stir at the West Gate just now — a group with lanterns coming this way, it looked like.",
+          "text": "이 새벽에 어딜 그리 다니시오? 요새 도성 안이 뒤숭숭하니 일찍 들어가시오. …방금 서대문 안쪽이 소란하던데. 쉿, 저기 등불 보이오? 이리로 오고 있소.",
+          "text_en": "Where are you off to at this hour? The city is uneasy these days; best get indoors. …There was a stir just inside the West Gate. Hush — see those lanterns? They are coming this way.",
           "options": [
             {
               "label": "어떤 무리였소?",
@@ -158,8 +158,8 @@
           ]
         },
         "who": {
-          "text": "어두워서 똑똑히는 못 봤소. 칼 찬 이들도, 군복 입은 이들도 섞였고… 가마도 하나 있었던 것 같소. 이 새벽에 대궐 쪽으로 가는 행차라니, 좋은 일은 아닐 게요. 가까이 가지 마시오.",
-          "text_en": "Too dark to see clearly. Men with swords, men in uniform, all mixed… and a sedan chair, I think. A party heading for the palace at this hour means no good. Keep away from them.",
+          "text": "어두워서 똑똑히는 못 봤소. 칼 찬 이들도, 군복 입은 이들도 섞였고… 이 새벽에 대궐 쪽으로 가는 걸음이라니, 좋은 일은 아닐 게요. 가까이 가지 마시오.",
+          "text_en": "Too dark to see clearly. Men with swords, men in uniform, all mixed… Heading for the palace at this hour means no good. Keep away from them.",
           "options": [
             {
               "label": "멀찍이 따라가 보겠소.",
@@ -169,8 +169,8 @@
           ]
         }
       },
-      "after": "서대문 쪽에서 무리가 오고 있습니다. 새문고개 쪽으로 가 보세요.",
-      "after_en": "A group is coming from the West Gate. Go towards Saemungogae."
+      "after": "돈의문 쪽에서 등불 든 무리가 큰길로 들어섭니다. 길가에서 지켜보세요.",
+      "after_en": "A lantern-lit group turns into the main road from Donuimun. Watch from the roadside."
     },
     {
       "key": "shadow",
@@ -188,7 +188,7 @@
       "too_far_en": "The lanterns are drawing away. Follow a little closer.",
       "group": {
         "count": 24,
-        "speed_mps": 3.6,
+        "speed_mps": 4.15,
         "lantern_every": 4,
         "kinds": {
           "ronin": 11,
@@ -207,11 +207,19 @@
       "route": [
         {
           "pixel": [
-            574,
-            2214
+            428,
+            2270
           ],
-          "name": "새문고개 서쪽",
-          "name_en": "West of Saemungogae"
+          "name": "돈의문 안",
+          "name_en": "Inside Donuimun"
+        },
+        {
+          "pixel": [
+            500,
+            2223
+          ],
+          "name": "새문안 큰길",
+          "name_en": "Saemunan main road"
         },
         {
           "pixel": [
@@ -240,14 +248,6 @@
           "name_en": "East end of the stream bridge",
           "bridge_id": "saemun-stream-crossing-1895",
           "bridge_side": 1
-        },
-        {
-          "pixel": [
-            700,
-            2206
-          ],
-          "name": "황토현",
-          "name_en": "Hwangtohyeon"
         },
         {
           "pixel": [
@@ -385,15 +385,16 @@
       },
       "appear": {
         "pixel": [
-          598,
-          2207
+          467,
+          2230
         ],
-        "radius_m": 25
+        "radius_m": 40,
+        "free_until_at": 2
       },
-      "wait_hint": "서대문 쪽, 새문고개로 가 보세요. {m}m",
-      "wait_hint_en": "Go west to Saemungogae, towards the West Gate. {m} m",
-      "appear_text": "서대문 쪽에서 등불이 다가온다 — 무리가 새문고개를 넘어온다. 몸을 숨기고 지켜보세요.",
-      "appear_text_en": "Lanterns come from the West Gate — the group crosses Saemungogae. Keep out of sight and watch.",
+      "wait_hint": "야경꾼이 있던 길가로 돌아가 지켜보세요. {m}m",
+      "wait_hint_en": "Go back to the roadside where the watchman stood, and watch. {m} m",
+      "appear_text": "돈의문 쪽에서 등불이 다가온다 — 무리가 큰길을 따라 빠르게 경복궁 쪽으로 간다. 길가에 몸을 붙이고 지켜보세요.",
+      "appear_text_en": "Lanterns come from Donuimun — the group hurries along the main road towards Gyeongbokgung. Keep to the roadside and watch.",
       "neighborhood": false,
       "stops": [
         {
@@ -640,7 +641,9 @@
     },
     {
       "key": "market",
-      "type": "talks",
+      "type": "module",
+      "module": "crowd",
+      "checkpoints": 1,
       "transition": {
         "text": "이튿날 · 종로 저자거리",
         "text_en": "The next day · Jongno market",
@@ -655,147 +658,166 @@
         "lighting": "day",
         "show_settlement": true
       },
-      "speakers": [
+      "pixel": [
+        872,
+        2222
+      ],
+      "join_radius_m": 4.5,
+      "ring_m": 2.4,
+      "intro": "이튿날, 종로 저자거리. 한쪽에 사람들이 모여 웅성거립니다.",
+      "intro_en": "The next day, the Jongno market. People have gathered to one side, murmuring.",
+      "approach": "웅성거리는 사람들 사이에 끼어 보세요. {m}m",
+      "approach_en": "Squeeze in among the murmuring people. {m} m",
+      "joined": "사람들 틈에 끼었습니다. 귀를 기울여 보세요.",
+      "joined_en": "You have squeezed in among them. Listen.",
+      "stray": "이야기가 멀어집니다. 사람들 틈으로 다시 들어가세요.",
+      "stray_en": "The talk is drifting away. Squeeze back in among them.",
+      "outro": "누군가 \"순검 온다!\" 하자 사람들이 슬금슬금 흩어진다.",
+      "outro_en": "Someone hisses \"Police!\" and the people drift apart.",
+      "people": [
         {
-          "key": "cloth",
-          "at": "pixel",
-          "pixel": [
-            870,
-            2221
-          ],
-          "stay": true,
-          "spec": {
-            "name": "포목전 상인",
-            "name_en": "Cloth merchant",
-            "subtitle": "창작 인물",
-            "subtitle_en": "Fictional character",
-            "portrait": "merchant",
-            "color": "#8a7a5c"
-          },
-          "nodes": {
-            "hello": {
-              "text": "들었소? 간밤 새벽에 대궐 쪽에서 총소리가 났다지 않소. 광화문 앞에서 훈련대 연대장 나리가 막아서다 돌아가셨다는 말도 돌고.",
-              "text_en": "Have you heard? Shots from the palace before dawn yesterday, they say. And that the colonel of the Training Corps died barring Gwanghwamun.",
-              "year": "1895",
-              "sources": [
-                {
-                  "title": "한국민족문화대백과 — 홍계훈",
-                  "url": "https://encykorea.aks.ac.kr/Article/E0063970"
-                }
-              ],
-              "options": [
-                {
-                  "label": "다른 이야기도 들어 보겠소.",
-                  "label_en": "I will hear the others.",
-                  "action": "event:done"
-                }
-              ]
-            }
-          }
+          "name": "포목전 상인",
+          "name_en": "Cloth merchant",
+          "color": "#8a7a5c"
         },
         {
-          "key": "porter",
-          "at": "pixel",
-          "pixel": [
-            888,
-            2231
-          ],
-          "stay": true,
-          "spec": {
-            "name": "지게꾼",
-            "name_en": "Porter",
-            "subtitle": "창작 인물",
-            "subtitle_en": "Fictional character",
-            "portrait": "walker1907",
-            "color": "#9c8f78"
-          },
-          "nodes": {
-            "hello": {
-              "text": "훈련대가 들고일어났다고들 하는데, 나는 그리 안 보오. 새벽에 서대문으로 칼 찬 왜인들이 무리 지어 들어가는 걸 본 사람이 있다오. 소문이니 확실한 건 모르지만.",
-              "text_en": "They say the Training Corps rose up, but I doubt it. Someone saw a band of Japanese with swords go in by the West Gate before dawn. Rumour, mind — who knows for certain.",
-              "year": "1895",
-              "sources": [
-                {
-                  "title": "한국민족문화대백과 — 을미사변",
-                  "url": "https://encykorea.aks.ac.kr/Article/E0042948"
-                }
-              ],
-              "options": [
-                {
-                  "label": "듣고 있소.",
-                  "label_en": "I am listening.",
-                  "action": "event:done"
-                }
-              ]
-            }
-          }
+          "name": "젊은 사내",
+          "name_en": "Young man",
+          "color": "#b8ad96"
         },
         {
-          "key": "woman",
-          "at": "pixel",
-          "pixel": [
-            906,
-            2221
-          ],
-          "stay": true,
-          "spec": {
-            "name": "장 보러 나온 아낙",
-            "name_en": "Woman at the market",
-            "subtitle": "창작 인물",
-            "subtitle_en": "Fictional character",
-            "portrait": "walker",
-            "color": "#c9bfae"
-          },
-          "nodes": {
-            "hello": {
-              "text": "중전마마 소식이 없다오. 궁에서 흘러나온 말이 차마 입에 담지 못할 것이라… 나는 그 말을 믿고 싶지 않소.",
-              "text_en": "There is no word of the queen. What has leaked from the palace cannot be spoken aloud… I do not want to believe it.",
-              "options": [
-                {
-                  "label": "…",
-                  "label_en": "…",
-                  "action": "event:done"
-                }
-              ]
-            }
-          }
+          "name": "지게꾼",
+          "name_en": "Porter",
+          "color": "#9c8f78"
         },
         {
-          "key": "scholar",
-          "at": "pixel",
-          "pixel": [
-            924,
-            2231
-          ],
-          "stay": true,
-          "spec": {
-            "name": "늙은 선비",
-            "name_en": "Old scholar",
-            "subtitle": "창작 인물",
-            "subtitle_en": "Fictional character",
-            "portrait": "walker1907",
-            "color": "#dcd6c6"
-          },
-          "nodes": {
-            "hello": {
-              "text": "대원위 대감이 가마를 타고 입궐하셨다 하고, 새 내각이 선다는 말도 있소. 하룻밤 사이에 세상이 뒤집혔소. 두고 보시오, 이 일은 그냥 넘어가지 않을 게요. 백성들도, 전하께서도.",
-              "text_en": "They say the Daewongun entered the palace in a sedan chair, and that a new cabinet will be formed. The world turned over in one night. Mark my words, this will not simply pass — not for the people, nor for His Majesty.",
-              "year": "1895",
-              "sources": [
-                {
-                  "title": "한국민족문화대백과 — 을미사변",
-                  "url": "https://encykorea.aks.ac.kr/Article/E0042948"
-                }
-              ],
-              "options": [
-                {
-                  "label": "그 뒤의 일을 생각해 본다.",
-                  "label_en": "Think on what followed.",
-                  "action": "event:done"
-                }
-              ]
-            }
-          }
+          "name": "장 보러 나온 아낙",
+          "name_en": "Woman at the market",
+          "color": "#c9bfae"
+        },
+        {
+          "name": "늙은 선비",
+          "name_en": "Old scholar",
+          "color": "#dcd6c6"
+        },
+        {
+          "name": "엿장수",
+          "name_en": "Taffy seller",
+          "color": "#7d6a55"
+        },
+        {
+          "name": "물장수",
+          "name_en": "Water carrier",
+          "color": "#6f7468"
+        },
+        {
+          "name": "댕기머리 아이",
+          "name_en": "Boy with a braid",
+          "color": "#a99a80"
+        },
+        {
+          "name": "갓 쓴 중인",
+          "name_en": "Clerk in a gat",
+          "color": "#d6cfbd"
+        }
+      ],
+      "murmurs": [
+        {
+          "ko": "웅성웅성…",
+          "en": "Murmur, murmur…"
+        },
+        {
+          "ko": "들었소?",
+          "en": "Have you heard?"
+        },
+        {
+          "ko": "쉿…",
+          "en": "Hush…"
+        },
+        {
+          "ko": "대궐에서…",
+          "en": "At the palace…"
+        },
+        {
+          "ko": "그게 정말이오?",
+          "en": "Is that true?"
+        },
+        {
+          "ko": "총소리가…",
+          "en": "The shots…"
+        },
+        {
+          "ko": "말도 마시오",
+          "en": "Don't even ask"
+        },
+        {
+          "ko": "왜인들이…",
+          "en": "The Japanese…"
+        },
+        {
+          "ko": "세상에…",
+          "en": "Heavens…"
+        },
+        {
+          "ko": "목소리 낮추시오",
+          "en": "Keep your voice down"
+        }
+      ],
+      "lines": [
+        {
+          "who": 0,
+          "text": "들었소? 간밤 새벽에 대궐 쪽에서 총소리가 났다지 않소.",
+          "text_en": "Have you heard? Shots from the palace before dawn, they say."
+        },
+        {
+          "who": 1,
+          "text": "나도 들었소. 광화문 앞에서 훈련대 연대장 나리가 막아서다 돌아가셨다더이다.",
+          "text_en": "So did I. The colonel of the Training Corps died barring Gwanghwamun, they say."
+        },
+        {
+          "who": 2,
+          "text": "훈련대가 들고일어났다고들 하는데, 나는 그리 안 보오. 새벽에 서대문으로 칼 찬 왜인들이 무리 지어 들어가는 걸 본 사람이 있다오.",
+          "text_en": "They say the Training Corps rose up, but I doubt it. Someone saw a band of Japanese with swords come in by the West Gate before dawn."
+        },
+        {
+          "who": 0,
+          "text": "쉿, 목소리 낮추시오. 누가 듣겠소.",
+          "text_en": "Hush, keep your voice down. Someone will hear."
+        },
+        {
+          "who": 3,
+          "text": "중전마마 소식이 없다오. 궁에서 흘러나온 말이 차마 입에 담지 못할 것이라…",
+          "text_en": "There is no word of the queen. What has leaked from the palace cannot be spoken aloud…"
+        },
+        {
+          "who": 7,
+          "text": "무슨 말인데요?",
+          "text_en": "What did they say?"
+        },
+        {
+          "who": 3,
+          "text": "애들은 몰라도 된다. 나는 그 말을 믿고 싶지 않소.",
+          "text_en": "Not for children. I do not want to believe it."
+        },
+        {
+          "who": 4,
+          "text": "대원위 대감이 가마를 타고 입궐하셨다 하고, 새 내각이 선다는 말도 있소. 하룻밤 사이에 세상이 뒤집혔소.",
+          "text_en": "They say the Daewongun entered the palace in a sedan chair, and that a new cabinet will be formed. The world turned over in one night."
+        },
+        {
+          "who": 8,
+          "text": "주상 전하께서는 무사하시답니까?",
+          "text_en": "And His Majesty — is he safe?"
+        },
+        {
+          "who": 4,
+          "text": "무사하시다고는 하나, 궁 안에 갇히신 것과 다름없다는 말이 도오.",
+          "text_en": "Safe, they say — but as good as a prisoner in his own palace, the talk goes."
+        },
+        {
+          "who": 4,
+          "text": "두고 보시오, 이 일은 그냥 넘어가지 않을 게요. 백성들도, 전하께서도.",
+          "text_en": "Mark my words, this will not simply pass — not for the people, nor for His Majesty."
         }
       ]
     }

@@ -1,6 +1,7 @@
 import {createHistoricalEvent,visitKeeps} from './historical_event.js';
 import {createProcession} from './events/procession.js';
 import {createShadow} from './events/shadow.js';
+import {createCrowd} from './events/crowd.js';
 import {createHide} from './events/hide.js';
 import {createScreenshotMode} from './screenshot_mode.js';
 import {createHerbs} from './herbs.js';
@@ -229,7 +230,7 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
  };
  const herbs=createHerbs({era:1907,scene,camera,canvas:renderer.domElement,firstPerson:walking.firstPerson,shop:walking.shop,dialogue:walking.dialogue,data:JSON.parse(el('npcs').textContent),source:nature.source,groundAt,collision:()=>walking.collision,market:buildings.find(b=>b.userData.feature.id==='bosingak-1907'),visible:()=>el('people3d').checked});
  // Historical visits: the definition picks the stages; modules with moving parts are registered here by name.
- const historicalEvent=eventData?createHistoricalEvent({data:eventData,modules:{procession:createProcession,shadow:createShadow,hide:createHide},scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface,channel}):null;
+ const historicalEvent=eventData?createHistoricalEvent({data:eventData,modules:{procession:createProcession,shadow:createShadow,hide:createHide,crowd:createCrowd},scene,camera,walking,buildings,infrastructure,settlement,trams,material,surface,channel}):null;
  // Coming back from 1896: the page opened behind the curtain; restore the walk first, then lift it.
  const curtainText=walking.curtain.take();if(curtainText)walking.curtain.hold(curtainText);
  if(!eventData&&new URLSearchParams(location.search).has('returnFromAgwan'))walking.shop.whenReady.then(()=>{try{const saved=JSON.parse(sessionStorage.getItem('agwan-return'));if(saved?.name===walking.shop.state.name){walking.firstPerson.enter();walking.firstPerson.setMounted(saved.mounted);sessionStorage.removeItem('agwan-return')}}catch{}finally{if(!eventData)walking.curtain.hide()}});

@@ -128,7 +128,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    const turn=unfocusedMotion?.turn??(Number(held('KeyA'))-Number(held('KeyD')));
    yaw+=turn*Math.PI*.65*Math.min(dt,.1);
    // Selling the reins (or logging out) takes the horse away.
-   if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye))){const indoor=!!getInterior(eye);setMounted(false);if(indoor)shop?.notify?.(t('실내라서 말에서 내렸소.'))}
+   if(mounted&&(!(shop?.state.items[RIDE_ITEM]>0)||getInterior(eye))){const indoor=!!getInterior(eye);setMounted(false);if(indoor)shop?.notify?.(t('실내라서 말에서 내렸소.'),{bar:false})}
    // Walking (not jumping) stays on the ground when stepping down, so a downhill stride never counts as airborne.
    const grounded=air===0&&vy===0;
    if(!grounded){const step=Math.min(dt,.1);vy-=GRAVITY*step;air=Math.max(0,air+vy*step);if(air===0)vy=0}
@@ -159,7 +159,7 @@ export function createFirstPerson({scene,camera,controls,renderer,pedestrians,sh
    // an edge above, or a jump, leaves the feet in the air here.
    const ground=groundAt(eye.x,eye.z,lastGround+air);if(ground!==null){air=air===0&&vy===0?0:Math.max(0,lastGround+air-ground);if(air===0&&vy<0)vy=0;lastGround=ground}
    if(lastGround!==null)eye.y=lastGround+air+eyeHeight();
-   if(mounted&&getInterior(eye)){setMounted(false);shop?.notify?.(t('실내라서 말에서 내렸소.'))}
+   if(mounted&&getInterior(eye)){setMounted(false);shop?.notify?.(t('실내라서 말에서 내렸소.'),{bar:false})}
    walker?.update(walked,moved&&!mounted,mounted);
    fishing?.update();
    if(mounted)horse.update(performance.now(),moved,air>0||vy!==0,galloping);

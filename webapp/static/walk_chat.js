@@ -14,6 +14,13 @@ export function createWalkChat({ scene, firstPerson, send }) {
     <form id="walk-chat-form" style="display:flex;gap:6px"><input id="walk-chat-input" aria-label="${t('채팅 메시지')}" placeholder="${t('메시지 (최대 200자)')}" maxlength="200" autocomplete="off" style="min-width:0;max-width:none;flex:1;font-size:16px"><button type="submit">${t('보내기')}</button></form>
     <p id="walk-chat-error" role="status" style="margin:4px 0 0;color:#9e2820"></p>`;
   scene.append(toggle, panel);
+  // New messages show the log; after a quiet spell it fades out (never while typing or with the pointer over it).
+  if (!document.getElementById('walk-chat-fade-style')) { const style = document.createElement('style'); style.id = 'walk-chat-fade-style'; style.textContent = '#walk-chat{transition:opacity .9s ease}#walk-chat.faded{opacity:0;pointer-events:none}'; document.head.append(style); }
+  const FADE_AFTER_MS = 8000; let fadeTimer = 0;
+  function wake() {
+    panel.classList.remove('faded'); clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(() => { if (!panel.classList.contains('editing') && !panel.matches(':hover')) panel.classList.add('faded'); else wake(); }, FADE_AFTER_MS);
+  }
   // Reserve exactly the visible chat footprint, including the expanded input row.
   function layoutInfo(){
     if(!panel.isConnected)return;
@@ -31,7 +38,7 @@ export function createWalkChat({ scene, firstPerson, send }) {
   // On desktop the panel also stays open as a plain notice log while walking alone; the input only appears when connected.
   function show(open) {
     panel.hidden=desktop()?!(connected||notices):!open;if(open&&!connected)open=false;form.hidden=!open;closeButton.hidden=!open;chatTitle.hidden=desktop();panel.classList.toggle('editing',open);toggle.setAttribute('aria-expanded',String(open));
-    layoutInfo();
+    layoutInfo();wake();
     if (open) { unread = 0; toggle.textContent = t('채팅'); firstPerson.clearInput(); input.focus(); log.scrollTop = log.scrollHeight; }
     else if (connected) scene.querySelector('canvas')?.focus({ preventScroll: true });
   }
@@ -66,6 +73,7 @@ export function createWalkChat({ scene, firstPerson, send }) {
     row.append(swatch, name, document.createTextNode(message.text)); log.append(row);
     while (log.children.length > 50) { seen.delete(Number(log.firstChild.dataset.messageId)); log.firstChild.remove(); }
     if (panel.hidden && !history) toggle.textContent = `${t('채팅')} (${++unread})`;
+    if (!history) wake();
     log.scrollTop = log.scrollHeight;
   }
   // Game notices (mounting a horse, receiving an item…) go into the same log, in a quieter style and without a name.
@@ -77,11 +85,12 @@ export function createWalkChat({ scene, firstPerson, send }) {
     if (panel.hidden && !connected && !desktop()) toggle.hidden = false;
     if (panel.hidden) toggle.textContent = `${t('채팅')} (${++unread})`; else log.scrollTop = log.scrollHeight;
     if (desktop() && !connected) { panel.hidden = false; form.hidden = true; closeButton.hidden = true; chatTitle.hidden = true; layoutInfo(); log.scrollTop = log.scrollHeight; }
+    wake();
   }
   return {
     receive, system,
     error(message) { error.textContent = t(message); if (connected) show(true); },
     connect() {connected=true;toggle.hidden=desktop();show(false)},
-    disconnect() { connected = false; notices = 0; panel.hidden = toggle.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = t('채팅'); unread = 0; log.replaceChildren(); seen.clear(); input.value = ''; error.textContent = ''; },
+    disconnect() { clearTimeout(fadeTimer); panel.classList.remove('faded'); connected = false; notices = 0; panel.hidden = toggle.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = t('채팅'); unread = 0; log.replaceChildren(); seen.clear(); input.value = ''; error.textContent = ''; },
   };
 }

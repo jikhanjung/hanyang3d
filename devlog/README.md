@@ -18,6 +18,8 @@
 
 ## 작업 기록
 
+- [277 — 을미사변 길가 시작·저잣거리 웅성거림·채팅창 흐려짐](20260925_277_eulmi_roadside_market_crowd_chat_fade.md)
+
 - [276 — 경회루 2층·향원정 다리](20260925_276_gyeonghoeru_hyangwonjeong_walk.md)
 
 - [275 — v0.5.50 배포](20260923_275_deploy_v0550.md)

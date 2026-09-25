@@ -100,7 +100,8 @@ export function createShop({container,data,onLogout,onUse,onMessage}){
  function useItem(id){
   const item=data.items[id];if(!item||!(state.items[id]>0))return;
   if(!item.use){packMessage(t('{name}은(는) 쓸 데가 없소.',{name:item.name}));return}
-  const result=onUse?.(id)??'';packMessage(result);actionMessage.textContent=result;onMessage?.(result);renderPack();renderActions();
+  // Mounting and dismounting are reported in the chat notices only, not over the action bar.
+  const result=onUse?.(id)??'';packMessage(result);if(item.use!=='mount')actionMessage.textContent=result;onMessage?.(result);renderPack();renderActions();
  }
  function renderPack(){
   if(packWin.hidden)return;
@@ -243,6 +244,6 @@ export function createShop({container,data,onLogout,onUse,onMessage}){
  refresh();
  function showHud(shown){hudShown=shown;hud.hidden=playerHud.hidden=!state.loggedIn||!hudShown;renderActions();if(!shown)closePack()}
  // A short status line on the action bar and in the pack, for gifts and other non-trade events.
- function notify(text){packMessage(text);actionMessage.textContent=text;onMessage?.(text);clearTimeout(notify.timer);notify.timer=setTimeout(()=>{if(actionMessage.textContent===text)actionMessage.textContent=''},6000)}
+ function notify(text,{bar=true}={}){packMessage(text);if(bar)actionMessage.textContent=text;onMessage?.(text);clearTimeout(notify.timer);notify.timer=setTimeout(()=>{if(actionMessage.textContent===text)actionMessage.textContent=''},6000)}
  return {open,close,refresh,requireLogin,whenReady,showHud,openPack,closePack,togglePack,notify,get packOpen(){return !packWin.hidden},packWindow:packWin,state,get isOpen(){return !!shop},get busy(){return busy},window:win,hud,account};
 }

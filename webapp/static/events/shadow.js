@@ -176,7 +176,10 @@ export function createShadow(api){
   const stop=stops.find(st=>st.state!=='done'&&distance>=route.milestones[st.def.at]);
   if(stop&&stop.state==='pending'){stop.state='running';stop.t=0}
   const holding=!!stop&&updateStop(stop,dt);
-  const moving=!holding&&far<=keep.far_m&&!api.saveError&&distance<route.total;
+  // A lead-in (appear.free_until_at): the group comes along the road towards the walker on its own until it has
+  // passed that route point; after that it only moves while the walker keeps up.
+  const leadIn=data.appear?.free_until_at!=null&&distance<route.milestones[data.appear.free_until_at];
+  const moving=!holding&&(far<=keep.far_m||leadIn)&&!api.saveError&&distance<route.total;
   if(moving)distance=Math.min(route.total,distance+dt*g.speed_mps);
   clock+=dt;
   place(moving);updateRemarks(dt,near,holding);
@@ -185,7 +188,7 @@ export function createShadow(api){
   if(notice>0)notice-=dt;
   if(!holding&&notice<=0){
    const name=data.route[Math.min(index+1,data.route.length-1)];
-   api.panel.message(closeFor>0?text(data,'too_close'):far>keep.far_m?text(data,'too_far'):say(`${name.name} — ${data.follow_hint}`,`${name.name_en} — ${data.follow_hint_en}`));
+   api.panel.message(closeFor>0?text(data,'too_close'):leadIn?text(data,'appear_text'):far>keep.far_m?text(data,'too_far'):say(`${name.name} — ${data.follow_hint}`,`${name.name_en} — ${data.follow_hint_en}`));
   }
   if(distance>=route.total&&far<keep.far_m*.6&&!api.saving){finished=true;api.finish()}
  }
