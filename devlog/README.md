@@ -18,6 +18,8 @@
 
 ## 작업 기록
 
+- [282 — 을미사변 광화문 앞 경비병·무리의 말](20260925_282_eulmi_gate_guards_chatter.md)
+
 - [281 — v0.5.52 배포](20260925_281_deploy_v0552.md)
 
 - [280 — 시점 가림 방지·을미사변 골목 시작·경회루 다리·채팅 엔터](20260925_280_camera_occlusion_eulmi_alley_chat_enter.md)

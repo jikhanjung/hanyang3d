@@ -70,14 +70,20 @@ export function createShadow(api){
  function fire(on){for(const p of members)if(p.muzzle)p.muzzle.visible=on&&!!p.aiming}
  // Stops along the way: the gate and any clashes. Each has defenders who bar the way, are fired on and fall — seen
  // from a distance only. `gate` (a single defender at a pixel) is kept as the first stop for older definitions.
- const stopDefs=[...(data.gate?[{...data.gate,defenders:[{pixel:data.gate.defender_pixel}]}]:[]),...(data.stops??[])].sort((a,b)=>a.at-b.at);
+ // `gate.defenders` (or a single `gate.defender_pixel` in older definitions) and `stops[].defenders`. A defender may
+ // be the `commander` (dark uniform, sword) or a guard with a `rifle` (else a spear), and has a `fate`: 'fall' (shot
+ // down at the 'fall' beat, the default) or 'flee' (runs back to `flee_pixel` at the 'flee' beat and is gone).
+ const stopDefs=[...(data.gate?[{...data.gate,defenders:data.gate.defenders??[{pixel:data.gate.defender_pixel}]}]:[]),...(data.stops??[])].sort((a,b)=>a.at-b.at);
  const capMat=new THREE.MeshStandardMaterial({color:0x2c3a55});
- const stops=stopDefs.map(def=>({def,state:'pending',t:0,fall:0,flashUntil:0,defenders:def.defenders.map(()=>{
-  const p=createWalker();p.group.name='defender';p.group.getObjectByName('walker-body').material.color.set('#3c4d6b');
-  const cap=new THREE.Mesh(new THREE.CylinderGeometry(.19,.18,.12,10),capMat);cap.position.y=1.76;p.group.add(cap);
-  const spear=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,2.2,5),weaponMat.wood);spear.position.set(.36,1.1,.1);p.group.add(spear);
+ const stops=stopDefs.map(def=>({def,state:'pending',t:0,fall:0,flee:0,flashUntil:0,defenders:def.defenders.map(dd=>{
+  const p=createWalker();p.group.name='defender';p.fate=dd.fate??'fall';const commander=dd.role==='commander';
+  p.group.getObjectByName('walker-body').material.color.set(commander?'#23252b':'#3c4d6b');
+  const cap=new THREE.Mesh(new THREE.CylinderGeometry(.19,.18,commander?.2:.12,10),commander?mat('#191a1e'):capMat);cap.position.y=commander?1.8:1.76;p.group.add(cap);
+  if(commander){const sword=new THREE.Mesh(new THREE.BoxGeometry(.04,.9,.05),weaponMat.steel);sword.position.set(-.3,.8,.12);sword.rotation.z=.35;p.group.add(sword)}
+  else if(dd.weapon==='rifle'){const r=new THREE.Mesh(new THREE.BoxGeometry(.06,1.3,.07),weaponMat.wood);r.position.set(.34,1.05,.08);p.group.add(r)}
+  else{const spear=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,2.2,5),weaponMat.wood);spear.position.set(.36,1.1,.1);p.group.add(spear)}
   p.group.visible=false;scene.add(p.group);return p})}));
- const gateGuard=stops[0]?.defenders[0];
+ const gateGuard=stops[0]?.defenders.find((d,k)=>stopDefs[0].defenders[k].role==='commander')??stops[0]?.defenders[0];
  const rejoin=api.panel.button('historical-event-rejoin',say('무리를 다시 찾기','Find the group again'),()=>{if(fp.active)regroup()});
  let route=null,distance=0,neighborhood=null,closeFor=0,notice=0,waiting=false,appearAt=null,appearIn=null,finished=false;
  const tailOffset=()=>members.at(-1).back+1;let clock=0;
@@ -93,7 +99,8 @@ export function createShadow(api){
    st.def.defenders.forEach((dd,k)=>{let p;
     if(dd.pixel)p=api.atPixel(dd.pixel);
     else{const q=route.sample(at+ahead).p,side=(k-(st.def.defenders.length-1)/2)*1.6;p=api.nearestSafe(new THREE.Vector3(q.x+Math.cos(yaw)*side,0,q.z-Math.sin(yaw)*side))}
-    const d=st.defenders[k];d.group.position.set(p.x,fp.groundAt(p.x,p.z),p.z);d.group.rotation.y=yaw+Math.PI;d.update(0,false)});
+    const d=st.defenders[k];d.home=p.clone();d.group.position.set(p.x,fp.groundAt(p.x,p.z),p.z);d.group.rotation.y=yaw+Math.PI;d.update(0,false)});
+   st.fleeTo=st.def.flee_pixel?api.atPixel(st.def.flee_pixel):route.sample(at+(st.def.ahead_m??10)+25).p;
   }
  }
  const {safe}=api;
@@ -102,20 +109,23 @@ export function createShadow(api){
  const chat=data.chatter??null,bubble=document.createElement('div');bubble.id='shadow-remark';bubble.hidden=true;
  bubble.style.cssText='position:absolute;z-index:1040;transform:translate(-50%,-100%);padding:7px 11px;border-radius:10px;background:#fff9e8ee;color:#25231d;max-width:260px;text-align:center;pointer-events:none;font:14px/1.4 sans-serif';
  api.container.append(bubble);
- let speaker=null,bubbleUntil=0,nextIdle=8,suspectCooldown=0;
+ let speaker=null,bubbleUntil=0,nextIdle=8,suspectCooldown=0,lastLine=null;const bags=new Map();
  function say_(member,line){speaker=member;bubbleUntil=clock+3.8;bubble.replaceChildren();const ja=document.createElement('div');ja.textContent=line.ja;ja.lang='ja';const tr=document.createElement('small');tr.style.cssText='display:block;color:#6b6456';tr.textContent=say(line.ko,line.en);bubble.append(ja,tr);bubble.hidden=false}
  function updateRemarks(dt,near,holding){
   if(!chat)return;suspectCooldown-=dt;
   if(speaker&&clock<bubbleUntil){const p=speaker.group.position.clone();p.y+=2.3;p.project(camera);const r=api.container.getBoundingClientRect();bubble.style.left=(p.x*.5+.5)*r.width+'px';bubble.style.top=(-p.y*.5+.5)*r.height+'px';bubble.hidden=p.z>1||p.z<-1}
   else if(speaker){speaker=null;bubble.hidden=true}
   if(holding||speaker)return;
-  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  // Lines are drawn from a shuffled bag per pool, so none repeats until the pool has gone round. Past a route point
+  // named in `chatter.phases` (e.g. nearing the gate, inside the palace), that phase's lines are mixed in, half the time.
+  const pick=a=>{let bag=bags.get(a);if(!bag?.length){bag=[...a].sort(()=>Math.random()-.5);if(bag[0]===lastLine&&bag.length>1)bag.push(bag.shift());bags.set(a,bag)}return lastLine=bag.shift()};
+  const phase=(chat.phases??[]).filter(ph=>api.checkpointIndex>=ph.from).at(-1);
   if(near<chat.near_m&&suspectCooldown<=0){
    // Whoever is closest to the walker turns and speaks.
    let best=members[0],bd=Infinity;for(const m of members){const d=Math.hypot(fp.eye.x-m.group.position.x,fp.eye.z-m.group.position.z);if(d<bd){bd=d;best=m}}
    say_(best,pick(chat.suspicious));suspectCooldown=chat.cooldown_s;return;
   }
-  nextIdle-=dt;if(nextIdle<=0){nextIdle=chat.idle_every_s[0]+Math.random()*(chat.idle_every_s[1]-chat.idle_every_s[0]);say_(pick(members),pick(chat.idle))}
+  nextIdle-=dt;if(nextIdle<=0){nextIdle=chat.idle_every_s[0]+Math.random()*(chat.idle_every_s[1]-chat.idle_every_s[0]);say_(members[Math.floor(Math.random()*members.length)],pick(phase&&Math.random()<.5?phase.idle:chat.idle))}
  }
  function place(moving){
   for(const [i,m] of members.entries()){
@@ -133,7 +143,7 @@ export function createShadow(api){
  function enter(index){
   prepare();root.visible=true;finished=false;rejoin.hidden=false;
   distance=Math.max(tailOffset()+2,route.milestones[Math.max(0,Math.min(route.milestones.length-1,index))]);
-  for(const st of stops){st.state=distance>=route.milestones[st.def.at]?'done':'pending';st.t=0;st.fall=0;for(const d of st.defenders){d.group.visible=st.state==='pending';d.group.rotation.x=0}}
+  for(const st of stops){st.state=distance>=route.milestones[st.def.at]?'done':'pending';st.t=0;st.fall=0;st.flee=0;for(const d of st.defenders){d.group.visible=st.state==='pending';d.group.rotation.x=0;if(d.home)d.group.position.set(d.home.x,fp.groundAt(d.home.x,d.home.z)??d.group.position.y,d.home.z)}}
   place(false);
   // Fresh start with an 'appear' point: the group waits unseen beyond it until the walker comes near, then walks in.
   waiting=!!appearAt&&index===0;appearIn=null;
@@ -146,14 +156,18 @@ export function createShadow(api){
   api.panel.message(text(data,'intro'));api.reach(0);
  }
  function exit(){bubble.hidden=true;speaker=null;root.visible=false;for(const st of stops)for(const d of st.defenders)d.group.visible=false;rejoin.hidden=true;api.markMap(null);fire(false)}
- function reset(){for(const st of stops){st.state='pending';st.t=0;st.fall=0;for(const d of st.defenders)d.group.rotation.x=0}for(const m of members)aim(m,false);fire(false);finished=false;closeFor=0}
+ function reset(){for(const st of stops){st.state='pending';st.t=0;st.fall=0;st.flee=0;for(const d of st.defenders){d.group.rotation.x=0;if(d.home){d.group.visible=true;d.group.position.set(d.home.x,fp.groundAt(d.home.x,d.home.z)??d.group.position.y,d.home.z)}}}for(const m of members)aim(m,false);fire(false);finished=false;closeFor=0}
  function idle(){neighborhood?.setLod(camera.position)}
  // A stop: the group halts, rifles come up, shots flash from the muzzles, the defenders fall, then the group moves on.
  function updateStop(st,dt){
   const sd=st.def;st.t+=dt;
-  for(const beat of sd.beats){if(!beat.done&&st.t>=beat.t){beat.done=true;if(beat.aim)for(const m of members)aim(m,true);if(beat.flash){api.flash(beat.flash);fire(true);st.flashUntil=st.t+.2}if(beat.cue)api.cue(beat.cue);if(beat.text)api.panel.message(text(beat,'text'));if(beat.fall)st.fall=.001}}
+  for(const beat of sd.beats){if(!beat.done&&st.t>=beat.t){beat.done=true;if(beat.aim)for(const m of members)aim(m,true);if(beat.flash){api.flash(beat.flash);fire(true);st.flashUntil=st.t+.2}if(beat.cue)api.cue(beat.cue);if(beat.text)api.panel.message(text(beat,'text'));if(beat.fall)st.fall=.001;if(beat.flee)st.flee=.001}}
   if(st.flashUntil&&st.t>st.flashUntil){fire(false);st.flashUntil=0}
-  if(st.fall>0&&st.fall<1){st.fall=Math.min(1,st.fall+dt/.8);for(const [k,d] of st.defenders.entries())d.group.rotation.x=-Math.PI/2*Math.min(1,st.fall*(1+k*.35))}
+  if(st.fall>0&&st.fall<1){st.fall=Math.min(1,st.fall+dt/.8);let k=0;for(const d of st.defenders)if(d.fate==='fall')d.group.rotation.x=-Math.PI/2*Math.min(1,st.fall*(1+(k++)*.35))}
+  // Those who flee turn and run back (through the gate) and are gone once there.
+  if(st.flee>0){st.flee+=dt;const to=st.fleeTo;
+   for(const [k,d] of st.defenders.entries()){if(d.fate!=='flee'||!d.group.visible||st.flee<k*.15)continue;const pos=d.group.position,dx=to.x-pos.x,dz=to.z-pos.z,dist=Math.hypot(dx,dz);
+    if(dist<1.2){d.group.visible=false;continue}const step=Math.min(dist,dt*3.6);pos.x+=dx/dist*step;pos.z+=dz/dist*step;pos.y=fp.groundAt(pos.x,pos.z)??pos.y;d.group.rotation.y=Math.atan2(dx,dz);d.update(st.flee*2.2+k,true)}}
   if(st.t>=sd.hold_s){st.state='done';for(const beat of sd.beats)beat.done=false;for(const m of members)aim(m,false);fire(false)}
   return st.state!=='done';
  }

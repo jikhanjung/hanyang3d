@@ -332,16 +332,12 @@
       ],
       "gate": {
         "at": 7,
-        "defender_pixel": [
-          758,
-          1920
-        ],
-        "hold_s": 10,
+        "hold_s": 11,
         "beats": [
           {
             "t": 0,
-            "text": "무리가 광화문 앞에서 멈췄다. 문 앞을 막아선 이가 무어라 외친다.",
-            "text_en": "The group halts before Gwanghwamun. Someone barring the gate shouts at them."
+            "text": "무리가 광화문 앞에서 멈췄다. 문 앞을 지키던 병사들이 막아서고, 앞에 선 이가 무어라 외친다.",
+            "text_en": "The group halts before Gwanghwamun. The soldiers at the gate bar the way, and the man at their head shouts at them."
           },
           {
             "t": 1.6,
@@ -361,10 +357,92 @@
             "fall": true
           },
           {
-            "t": 5.5,
-            "text": "문 앞의 사람이 쓰러졌다. 훈련대 연대장 홍계훈이었다고 한다. 문이 열리고 무리가 안으로 몰려 들어간다.",
-            "text_en": "The man at the gate has fallen — Hong Gye-hun, colonel of the Training Corps, it is said. The gate opens and the group pours in."
+            "t": 3.8,
+            "flee": true,
+            "text": "앞에 선 이와 병사 몇이 쓰러지고, 남은 병사들은 문 안으로 흩어져 달아난다.",
+            "text_en": "The man at the front and a few soldiers fall; the rest scatter back through the gate."
+          },
+          {
+            "t": 7,
+            "text": "쓰러진 이는 훈련대 연대장 홍계훈이었다고 한다. 문이 열리고 무리가 안으로 몰려 들어간다.",
+            "text_en": "The fallen man was Hong Gye-hun, colonel of the Training Corps, it is said. The gate opens and the group pours in."
           }
+        ],
+        "defenders": [
+          {
+            "pixel": [
+              758,
+              1920
+            ],
+            "role": "commander",
+            "fate": "fall"
+          },
+          {
+            "pixel": [
+              751,
+              1921
+            ],
+            "weapon": "rifle",
+            "fate": "flee"
+          },
+          {
+            "pixel": [
+              754,
+              1921
+            ],
+            "weapon": "rifle",
+            "fate": "fall"
+          },
+          {
+            "pixel": [
+              762,
+              1921
+            ],
+            "weapon": "rifle",
+            "fate": "fall"
+          },
+          {
+            "pixel": [
+              765,
+              1921
+            ],
+            "weapon": "rifle",
+            "fate": "flee"
+          },
+          {
+            "pixel": [
+              748,
+              1922
+            ],
+            "fate": "flee"
+          },
+          {
+            "pixel": [
+              768,
+              1922
+            ],
+            "fate": "flee"
+          },
+          {
+            "pixel": [
+              754,
+              1914
+            ],
+            "weapon": "rifle",
+            "fate": "flee"
+          },
+          {
+            "pixel": [
+              762,
+              1914
+            ],
+            "weapon": "rifle",
+            "fate": "flee"
+          }
+        ],
+        "flee_pixel": [
+          758,
+          1902
         ]
       },
       "bridge": {
@@ -498,6 +576,31 @@
             "ja": "猫か何かだ。放っておけ。",
             "ko": "고양이 같은 거겠지. 내버려 둬.",
             "en": "A cat or something. Leave it."
+          },
+          {
+            "ja": "物陰に誰かいたぞ。",
+            "ko": "그늘에 누가 있었어.",
+            "en": "There was someone in the shadows."
+          },
+          {
+            "ja": "足音が一つ多くないか？",
+            "ko": "발소리가 하나 더 많지 않나?",
+            "en": "One set of footsteps too many?"
+          },
+          {
+            "ja": "振り返るな、進め。",
+            "ko": "돌아보지 마, 가.",
+            "en": "Don't look back. Keep going."
+          },
+          {
+            "ja": "見られたら面倒だ。",
+            "ko": "들키면 골치 아프다.",
+            "en": "Trouble if we're seen."
+          },
+          {
+            "ja": "提灯をあっちに向けてみろ。",
+            "ko": "초롱을 저쪽으로 비춰 봐.",
+            "en": "Shine the lantern over there."
           }
         ],
         "idle": [
@@ -535,6 +638,148 @@
             "ja": "国の酒が飲みたいもんだ。",
             "ko": "고향 술 한잔 하고 싶군.",
             "en": "I could do with a drink from home."
+          },
+          {
+            "ja": "草履の紐が切れそうだ。",
+            "ko": "짚신 끈이 끊어지겠군.",
+            "en": "My sandal strap's about to snap."
+          },
+          {
+            "ja": "夜明けまでどのくらいだ？",
+            "ko": "날 밝기까지 얼마나 남았나?",
+            "en": "How long till dawn?"
+          },
+          {
+            "ja": "提灯をもっと低く持て。",
+            "ko": "초롱을 더 낮게 들어.",
+            "en": "Hold the lantern lower."
+          },
+          {
+            "ja": "犬が吠えているな。",
+            "ko": "개가 짖는군.",
+            "en": "A dog's barking."
+          },
+          {
+            "ja": "列を乱すな。",
+            "ko": "대열 흐트러뜨리지 마.",
+            "en": "Don't break ranks."
+          },
+          {
+            "ja": "お前、酒の匂いがするぞ。",
+            "ko": "너한테서 술 냄새 난다.",
+            "en": "You smell of drink."
+          },
+          {
+            "ja": "鞘が鳴っているぞ。押さえておけ。",
+            "ko": "칼집 소리 난다. 잡고 있어.",
+            "en": "Your scabbard's rattling. Hold it."
+          },
+          {
+            "ja": "霧が出てきたな。",
+            "ko": "안개가 끼는군.",
+            "en": "Fog's coming in."
+          },
+          {
+            "ja": "口を利くなと言われただろう。",
+            "ko": "입 다물라고 했잖아.",
+            "en": "We were told not to talk."
+          },
+          {
+            "ja": "眠くてたまらん。",
+            "ko": "졸려 죽겠군.",
+            "en": "I can barely keep my eyes open."
+          },
+          {
+            "ja": "石だらけで歩きにくい。",
+            "ko": "돌이 많아 걷기 힘들군.",
+            "en": "Stony road, hard going."
+          },
+          {
+            "ja": "前の連中、速すぎるぞ。",
+            "ko": "앞에 녀석들 너무 빠르다.",
+            "en": "The ones in front are going too fast."
+          },
+          {
+            "ja": "水をくれ。",
+            "ko": "물 좀 줘.",
+            "en": "Give me some water."
+          },
+          {
+            "ja": "帰ったら風呂に入りたい。",
+            "ko": "돌아가면 목욕하고 싶군.",
+            "en": "I want a bath when we get back."
+          },
+          {
+            "ja": "月が隠れたな。",
+            "ko": "달이 숨었군.",
+            "en": "The moon's gone in."
+          },
+          {
+            "ja": "誰だ、咳をしたのは。",
+            "ko": "누구야, 기침한 놈.",
+            "en": "Who coughed?"
+          }
+        ],
+        "phases": [
+          {
+            "from": 5,
+            "idle": [
+              {
+                "ja": "門はもうすぐだ。",
+                "ko": "문이 코앞이다.",
+                "en": "The gate's close now."
+              },
+              {
+                "ja": "ここからは声を立てるな。",
+                "ko": "여기서부턴 소리 내지 마.",
+                "en": "Not a sound from here on."
+              },
+              {
+                "ja": "弾は込めてあるか？",
+                "ko": "장전은 했나?",
+                "en": "Are you loaded?"
+              },
+              {
+                "ja": "合図を待て。",
+                "ko": "신호를 기다려.",
+                "en": "Wait for the signal."
+              },
+              {
+                "ja": "手が震えるな。",
+                "ko": "손이 떨리는군.",
+                "en": "My hands are shaking."
+              }
+            ]
+          },
+          {
+            "from": 8,
+            "idle": [
+              {
+                "ja": "奥だ、奥へ急げ。",
+                "ko": "안쪽이다, 안쪽으로 서둘러.",
+                "en": "Further in — hurry."
+              },
+              {
+                "ja": "道を間違えるな。",
+                "ko": "길 잘못 들지 마.",
+                "en": "Don't take the wrong turn."
+              },
+              {
+                "ja": "松明を消すなよ。",
+                "ko": "횃불 꺼뜨리지 마.",
+                "en": "Don't let the torches go out."
+              },
+              {
+                "ja": "広すぎる。どっちだ？",
+                "ko": "너무 넓다. 어느 쪽이야?",
+                "en": "It's huge. Which way?"
+              },
+              {
+                "ja": "池の向こうだ。",
+                "ko": "연못 건너편이다.",
+                "en": "Past the pond."
+              }
+            ]
           }
         ]
       }

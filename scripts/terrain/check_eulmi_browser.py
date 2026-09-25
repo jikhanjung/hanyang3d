@@ -77,13 +77,15 @@ with tempfile.TemporaryDirectory() as tmp:
       if(m.gateState==='running'){halt++;if(!gateText)gateText='';const t=document.querySelector('#historical-event-panel p').textContent;if(t.includes('홍계훈'))gateText=t;if(m.gateGuard.group.rotation.x<-1.4)fell=true;
        if(halt===40){s.renderer.render(s.scene,s.camera);window.gateShot=s.renderer.domElement.toDataURL()}}
       if(!window.palaceShot&&m.stops[1].state==='running'&&m.stops[1].t>2.1){s.renderer.render(s.scene,s.camera);window.palaceShot=s.renderer.domElement.toDataURL()}
+      if(m.remark)(window.lines??=new Set()).add(m.remark);
       if(i%200===0)await new Promise(r=>setTimeout(r,0))}
      for(let k=0;k<30&&e.saving;k++)await new Promise(r=>setTimeout(r,100));
-     window.stopsDone=m.stops.map(st=>({state:st.state,fallen:st.defenders.every(d=>d.group.rotation.x<-1.4),n:st.defenders.length}));
+     window.stopsDone=m.stops.map(st=>({state:st.state,fallen:st.defenders.filter(d=>d.fate==='fall').every(d=>d.group.rotation.x<-1.4),down:st.defenders.filter(d=>d.group.rotation.x<-1.4).length,fled:st.defenders.filter(d=>d.fate==='flee'&&!d.group.visible).length,n:st.defenders.length}));
      return {frames:i,phase:e.phase,checkpoint:e.checkpoint,halt,fell,gateText:gateText.slice(0,40),minutes:+(i/600).toFixed(1),routeM:Math.round(m.route.total)}}""")
     print('SHADOW',run,flush=True);assert run['phase']=='hide' and run['checkpoint']==16 and run['halt']>50 and run['fell'] and '홍계훈' in run['gateText'],run
+    lines=page.evaluate('[...(window.lines??[])]');print('LINES',len(lines),lines[:6],flush=True);assert len(lines)>=12,lines
     stops=page.evaluate('window.stopsDone');print('STOPS',stops,'aimed',page.evaluate('window.aimed'),'fired',page.evaluate('window.fired'),flush=True)
-    assert [x['n'] for x in stops]==[1,3,2] and all(x['state']=='done' and x['fallen'] for x in stops) and page.evaluate('window.aimed') and page.evaluate('window.fired'),stops
+    assert [x['n'] for x in stops]==[9,3,2] and all(x['state']=='done' and x['fallen'] for x in stops) and stops[0]['down']==3 and stops[0]['fled']==6 and page.evaluate('window.aimed') and page.evaluate('window.fired'),stops
     for name in ['gate','palace']:Path(f'/tmp/eulmi-{name}.png').write_bytes(base64.b64decode(page.evaluate(name+'Shot').split(',')[1]))
     # Hiding: approach the corner, stray out and get pulled back, then sit out the timeline to first light.
     hide=page.evaluate("""async()=>{const s=seoul1907,e=s.historicalEvent,h=e.module('hide'),fp=s.firstPerson,spot=h.spot;
