@@ -18,6 +18,8 @@
 
 ## 작업 기록
 
+- [278 — 1907년 운현궁](20260925_278_unhyeongung_1907.md)
+
 - [277 — 을미사변 길가 시작·저잣거리 웅성거림·채팅창 흐려짐](20260925_277_eulmi_roadside_market_crowd_chat_fade.md)
 
 - [276 — 경회루 2층·향원정 다리](20260925_276_gyeonghoeru_hyangwonjeong_walk.md)

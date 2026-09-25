@@ -426,6 +426,41 @@ export function createLandmark1907(f,w,h,d){
   roof(-31,8,-22,11,10,2.2,1);
   // The access stairs from the ground (building_access1907) lead up to this gate, not to the centre of the wall.
   group.userData.blockingRects=rects;group.userData.gate=[gateX,hd];group.userData.accessX=gateX;
+ }else if(kind==='unhyeongung'){
+  // Unhyeongung: the Heungseon Daewongun's residence, rebuilt on a palace scale in 1864–1870. A walled compound with
+  // an open yard on the west (the gate onto the street, the guards' range Sujiksa) and on the east, south to north,
+  // Aejaedang, Noandang with the raised Yeonghwaru, Norakdang (the largest), Irodang and Yeongnodang, joined on the
+  // east by a long corridor. Unpainted gentry-house manner. Layout and sizes are conceptual.
+  const t=.8,wallH=2.8,gateZ=f.gate_z??10,gateW=5,hw=w/2,hd=d/2,rects=[];
+  const wall=(x,z,a,c)=>{box('compound-wall',x,wallH/2,z,a,wallH,c,'cream');box('wall-cap',x,wallH+.15,z,a+.3,.3,c+.5,'roof');rects.push({x,z,hw:a/2,hd:c/2})};
+  wall(0,-hd,w,t);wall(0,hd,w,t);wall(hw,0,t,d);
+  const northRun=gateZ-gateW/2+hd,southRun=hd-(gateZ+gateW/2);
+  wall(-hw,-hd+northRun/2,t,northRun);wall(-hw,hd-southRun/2,t,southRun);
+  // Inner wall between the yard and the residence, with openings towards Noandang and Norakdang.
+  const inner=(z0,z1)=>wall(0,(z0+z1)/2,t,z1-z0);inner(-hd,5);inner(10,24);inner(28,hd);
+  for(const side of [-1,1])post(-hw,gateZ+side*gateW/2,0,3.2,'door');box('gate-lintel',-hw,3.3,gateZ,1,.4,gateW+1,'door');roof(-hw,3.5,gateZ,3,gateW+2,1.1);
+  const hall=(name,x,z,a,c,eave=3.6,floor=.7)=>{
+   box(name+'-base',x,floor/2,z,a+1.2,floor,c+1.2,'stone');rects.push({x,z,hw:(a+1.2)/2,hd:(c+1.2)/2});
+   box(name+'-wall',x,floor+eave/2,z,a-.6,eave,c-.6,'cream');
+   const bays=Math.max(3,Math.round(a/3));for(let i=0;i<=bays;i++)for(const side of [-1,1])post(x+(i/bays-.5)*a,z+side*c/2,floor,eave,'door');
+   for(let i=0;i<bays;i++)box(name+'-door',x+((i+.5)/bays-.5)*a,floor+eave*.45,z+c/2+.05,a/bays*.7,eave*.7,.12,'door');
+   roof(x,floor+eave,z,a+2.4,c+2.4,2.2);
+  };
+  hall('sujiksa',-20,hd-5,22,5,3);
+  hall('aejaedang',14,38,10,5,3.2);
+  hall('noandang',12,22,20,7);
+  // Yeonghwaru: the raised pavilion room projecting south from Noandang's east end, where guests were received.
+  box('yeonghwaru-base',24,.9,25,6,1.8,7,'stone');rects.push({x:24,z:25,hw:3,hd:3.5});
+  for(const sx of [-1,1])for(const sz of [-1,1])post(24+sx*2.6,25+sz*3.1,1.8,3.2,'door');
+  box('yeonghwaru-room',24,3.4,25,4.4,2.6,5.4,'cream');roof(24,5,25,7.5,8.5,2);
+  hall('norakdang',13,0,24,10,4.2,.9);
+  hall('irodang',13,-22,20,9);
+  hall('yeongnodang',13,-38,12,6,3.2);
+  // The corridor (wollang) running north–south along the east side of the ranges.
+  box('wollang',31,1.6,-4,3,3.2,60,'cream');rects.push({x:31,z:-4,hw:1.5,hd:30});add('roof',hipGableRoof(61,4.6,1.2,.45,.55),31,3.2,-4,'roof',Math.PI/2);
+  group.userData.blockingRects=rects;
+  // The gate is in the west wall: the access stairs (building_access1907), if the plinth needs them, lead to it.
+  Object.assign(group.userData,{accessYaw:-Math.PI/2,accessFront:hw,accessX:gateZ});
  }else if(kind==='legation'){
   if(f.eventEntrance){
    // Interpretive entrance for the private arrival scene; an actual opening, not actors crossing a wall.

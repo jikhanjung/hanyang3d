@@ -92,6 +92,7 @@ v0.5.3은 기존 19개에 13개를 추가해 **32개**다. 2026-09-17 운영에 
 | 1907년 교태전 | 785, 1711 | 1888년 기준 · 1918년경 이전·화재 이전 · approximate_map_reading |
 | 1907년 향원정 | 817, 1600 | 1885년 기준 · 1907년 모습 · approximate_map_reading |
 | 1907년 건청궁 | 820, 1546 | 1873년 기준 · 1909년 철거 전 모습 · approximate_map_reading |
+| 1907년 운현궁 | 1202, 1937 | 1870년 기준 · 1907년 모습 · approximate_map_reading |
 | 1907년 집옥재 | 720, 1504 | 1891년 기준 · 1907년 모습 · estimated_precinct_position |
 | 1907년 중명전 | 505, 2395 | 1901년 기준 · 1925년경 이전·화재 이전 · estimated_precinct_position |
 

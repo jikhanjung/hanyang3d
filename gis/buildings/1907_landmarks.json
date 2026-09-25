@@ -2122,6 +2122,74 @@
       }
     },
     {
+      "id": "unhyeongung-1907",
+      "name": "1907년 운현궁",
+      "name_en": "Unhyeongung (1907)",
+      "category": "궁궐",
+      "scene_year": 1907,
+      "display_model": "landmark_1907",
+      "landmark_kind": "unhyeongung",
+      "symbol_size_m": [
+        76,
+        9,
+        92
+      ],
+      "display_yaw_deg": 0,
+      "gate_z": 10,
+      "source_position": {
+        "source_asset": "asset-0024",
+        "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
+        "pixel": [
+          1202,
+          1937
+        ],
+        "anchor": "compound_center",
+        "method": "manual_map_reading",
+        "note": "원도에서 雲峴宮이 적힌 구획(서쪽 남북 길 동쪽, x 1177~1242, y 1900~1993 부근)을 읽었다. 동쪽의 親衛第二大隊 구획을 빼고 서쪽 길에 붙여 담장 구획을 두었다. 현재 좌표(37.5763, 126.9867)의 환산 위치(1178, 1934)와 맞는다."
+      },
+      "size_status": "estimated_not_measured",
+      "position_status": "approximate_map_reading",
+      "model_note": "단청 없는 사대부가 방식의 궁가. 서쪽은 길로 난 대문·수직사가 있는 빈 마당, 동쪽은 남에서 북으로 아재당, 노안당(동쪽 끝 남으로 내민 영화루), 노락당, 이로당, 영로당을 두고 동쪽 월랑으로 잇는 개념 배치다. 치수·배치는 추정이며, 1912년 무렵 지은 양관은 넣지 않았다.",
+      "temporal": {
+        "existence": {
+          "start_year": 1864,
+          "end_year": null,
+          "status": "documented",
+          "note": "흥선군 사저를 1863년 고종 즉위 뒤 넓혀 1864년 노안당·노락당, 1870년 이로당을 지었다. 일제강점기에 크게 줄었고 1996년 중수했다."
+        },
+        "depiction": {
+          "start_year": 1870,
+          "end_year": 1910,
+          "reference_year": 1907,
+          "status": "simplified_period_model"
+        },
+        "sources": [
+          "https://www.unhyeongung.or.kr/",
+          "https://ko.wikipedia.org/wiki/%EC%9A%B4%ED%98%84%EA%B6%81"
+        ]
+      },
+      "info": {
+        "summary": "흥선대원군의 저택이자 고종이 태어나 열두 살까지 자란 잠저. 고종 즉위 뒤 크게 넓혀 1864년 노안당·노락당, 1870년 이로당을 지었고, 대원군이 10여 년 이곳에서 정사를 보았다. 1866년 고종과 명성황후의 가례가 노락당에서 치러졌다고 전한다. 1882년 임오군란 뒤 대원군이 이곳에서 청으로 끌려갔다. 이름은 서운관 앞 고개 '운현'에서 왔다.",
+        "summary_en": "The Heungseon Daewongun's residence and the house where Gojong was born and lived until he was twelve. Enlarged after Gojong's accession — Noandang and Norakdang in 1864, Irodang in 1870 — it was where the Daewongun governed for a decade. Gojong's wedding to the future Empress Myeongseong is said to have been held in Norakdang in 1866. After the 1882 Imo Incident the Daewongun was taken from here to China. The name comes from Unhyeon, the hill before the Seoungwan observatory.",
+        "period": "1864년 확장 · 1870년 이로당 · 1996년 중수",
+        "period_en": "Enlarged 1864 · Irodang 1870 · restored 1996",
+        "in_1750": "1750년대에는 운현궁이 아직 없다. 이름의 유래인 서운관(관상감) 고개 일대.",
+        "in_1750_en": "Unhyeongung did not yet exist in the 1750s; the area of the observatory hill that gave it its name.",
+        "sources": [
+          {
+            "title": "운현궁 (서울특별시)",
+            "url": "https://www.unhyeongung.or.kr/",
+            "title_en": "Unhyeongung (Seoul Metropolitan Government)"
+          },
+          {
+            "title": "위키백과 — 운현궁",
+            "url": "https://ko.wikipedia.org/wiki/%EC%9A%B4%ED%98%84%EA%B6%81",
+            "title_en": "Korean Wikipedia: Unhyeongung"
+          }
+        ]
+      }
+    },
+    {
       "id": "jibokjae-1907",
       "name": "1907년 집옥재",
       "name_en": "Jibokjae (1907)",
