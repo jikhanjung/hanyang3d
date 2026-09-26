@@ -8,6 +8,57 @@ import {createCathedral1907} from './cathedral1907.js';
 
 // Project-authored, deliberately simplified period models. Dimensions are seed estimates.
 // All models share the existing renderer convention: ground is local y = -h/2.
+// A seated haetae on a stepped pedestal, built from simple solids (facing +z, origin at the foot of the pedestal):
+// braced front legs, folded haunches, a raised chest, a large head with bulging eyes, a mane of curls, a single horn,
+// scale bumps along the flanks and a tail curling up the back. A conceptual likeness, not a copy of the statues.
+function createHaetae(stone,carved){
+ const g=new THREE.Group();g.name='haetae';
+ const shade=new THREE.MeshStandardMaterial({color:0xa9a193,roughness:1});
+ const put=(geo,mat,x,y,z,sx=1,sy=1,sz=1,rx=0,ry=0,rz=0)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.scale.set(sx,sy,sz);m.rotation.set(rx,ry,rz);m.name='haetae-part';g.add(m);return m};
+ const ball=new THREE.SphereGeometry(1,16,12),small=new THREE.SphereGeometry(1,8,6),box=(w,h,d)=>new THREE.BoxGeometry(w,h,d);
+ // Pedestal: plinth, block with a recessed band, capping slab (top at 1.45 m).
+ put(box(1.95,.3,3.05),stone,0,.15,0);put(box(1.62,.95,2.72),stone,0,.775,0);put(box(1.5,.18,2.6),shade,0,.8,0);put(box(1.78,.2,2.9),stone,0,1.35,0);
+ const top=1.45;
+ const white=new THREE.MeshStandardMaterial({color:0xe2dccd,roughness:.9});
+ // Folded haunches and the rear of the body, low on the pedestal.
+ for(const sx of [-1,1]){put(ball,carved,sx*.34,top+.3,-.7,.28,.3,.44);put(ball,carved,sx*.42,top+.09,-.28,.15,.09,.22)}
+ put(ball,carved,0,top+.5,-.55,.44,.42,.56);
+ // Torso rising steeply to a deep chest.
+ put(ball,carved,0,top+.9,-.1,.42,.62,.46,-.5);
+ put(ball,carved,0,top+1.08,.36,.44,.46,.38);
+ // Front legs braced straight from heavy shoulders, with paws and toes.
+ for(const sx of [-1,1]){put(ball,carved,sx*.3,top+1.02,.42,.2,.26,.22);
+  put(new THREE.CylinderGeometry(.11,.14,1.0,10),carved,sx*.28,top+.52,.62);
+  put(ball,carved,sx*.28,top+.08,.74,.16,.09,.22);for(const t of [-1,0,1])put(small,shade,sx*.28+t*.065,top+.06,.94,.032,.028,.035)}
+ // Head, large as on the statues: skull, heavy brows, bulging eyes, broad snout, a grinning mouth with teeth, ears.
+ const hy=top+1.6,hz=.56;
+ put(ball,carved,0,hy,hz,.5,.46,.44);
+ put(ball,carved,0,hy-.1,hz+.4,.36,.24,.28);
+ put(ball,carved,0,hy-.32,hz+.32,.33,.12,.27);
+ put(box(.52,.09,.06),white,0,hy-.23,hz+.6);for(let i=-3;i<=3;i++)put(box(.045,.08,.04),carved,i*.075,hy-.23,hz+.635);
+ for(const sx of [-1,1]){put(ball,shade,sx*.19,hy+.1,hz+.4,.1,.1,.08);put(ball,white,sx*.19,hy+.11,hz+.45,.055,.055,.04);
+  put(ball,carved,sx*.2,hy+.23,hz+.34,.16,.06,.1,0,0,sx*.3);
+  put(small,shade,sx*.08,hy-.02,hz+.66,.045,.04,.03);put(new THREE.ConeGeometry(.09,.22,8),carved,sx*.4,hy+.24,hz-.1,1,1,1,-.3,0,sx*-.6)}
+ // A single horn swept back from the crown.
+ put(new THREE.ConeGeometry(.075,.38,10),carved,0,hy+.58,hz-.12,1,1,1,-.45);
+ // Mane: clumps of curls framing the face and running down the back of the neck; a curled beard under the jaw.
+ for(let ring=0;ring<2;ring++)for(let i=0;i<14;i++){const a=i/14*Math.PI*2,r=.5+ring*.1;put(small,carved,Math.cos(a)*r,hy-.04+Math.sin(a)*r*.88,hz-.14-ring*.13,.1,.1,.08)}
+ for(let k=0;k<4;k++)for(const sx of [-1,0,1])put(small,carved,sx*.16,hy-.1-k*.16,hz-.42-k*.12,.1,.09,.08);
+ for(let i=0;i<5;i++)put(small,carved,(i-2)*.1,hy-.46-Math.abs(i-2)*.02,hz+.3,.075,.085,.065);
+ // Low scale pattern on the flanks.
+ for(const sx of [-1,1])for(let r=0;r<4;r++)for(let i=0;i<5;i++)put(small,shade,sx*(.43-r*.03),top+.56+r*.16+i*.04,-.62+i*.2+r*.05,.022,.045,.06);
+ // Tail curling up the back, ending in a tuft of curls.
+ const tail=new THREE.CatmullRomCurve3([new THREE.Vector3(0,top+.45,-1.08),new THREE.Vector3(0,top+.85,-1.18),new THREE.Vector3(0,top+1.2,-.98),new THREE.Vector3(0,top+1.28,-.72)]);
+ const tube=new THREE.Mesh(new THREE.TubeGeometry(tail,16,.07,8,false),carved);tube.name='haetae-part';g.add(tube);
+ for(const [x,y,z] of [[0,top+1.33,-.66],[.09,top+1.28,-.6],[-.09,top+1.28,-.6]])put(small,carved,x,y,z,.1,.09,.09);
+ // Merge the ~150 small solids into one mesh per material (a few draw calls per statue).
+ const buckets=new Map();
+ for(const m of g.children){m.updateMatrix();const geo=m.geometry.index?m.geometry.toNonIndexed():m.geometry.clone();geo.applyMatrix4(m.matrix);
+  if(!buckets.has(m.material))buckets.set(m.material,{pos:[],nor:[]});const b=buckets.get(m.material);b.pos.push(...geo.attributes.position.array);b.nor.push(...geo.attributes.normal.array);geo.dispose()}
+ g.clear();
+ for(const [mat,b] of buckets){const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(b.pos,3));geo.setAttribute('normal',new THREE.Float32BufferAttribute(b.nor,3));const m=new THREE.Mesh(geo,mat);m.name='haetae-part';g.add(m)}
+ return g;
+}
 // Gwanghwamun's forecourt in 1907 (before 1923): the low stone terrace (월대) in front of the gate and the pair of
 // haetae on pedestals flanking the street, as in the 1890s photographs. The terrace is walkable (lower than a
 // step); the pedestals block. Conceptual forms; the terrace follows the dimensions of the 2023 restoration.
@@ -21,15 +72,9 @@ function addForecourt(model,fc,w,h,d){
   add('woldae-kerb',new THREE.BoxGeometry(W+.5,.18,L+.5),0,H-.02,z,carved);
  }
  if(fc.haetae){const {offset_x_m:X,along_m:Z}=fc.haetae;
-  for(const s of [-1,1]){const x=s*X,z=d/2+Z;
-   add('haetae-pedestal',new THREE.BoxGeometry(1.6,1.5,2.8),x,.75,z,stone);rects.push({x,z,hw:.9,hd:1.5});
-   add('haetae-body',new THREE.BoxGeometry(1.05,1.05,1.9),x,2.05,z-.1,carved);
-   add('haetae-chest',new THREE.SphereGeometry(.62,12,10),x,2.55,z+.75,carved);
-   add('haetae-head',new THREE.SphereGeometry(.5,12,10),x,3.25,z+1.0,carved);
-   add('haetae-horn',new THREE.ConeGeometry(.12,.45,8),x,3.8,z+.95,carved);
-   for(const sx of [-1,1])add('haetae-leg',new THREE.BoxGeometry(.28,.8,.3),x+sx*.35,1.9,z+.95,carved);
-   add('haetae-tail',new THREE.SphereGeometry(.32,10,8),x,2.8,z-1.05,carved);
-  }}
+  // The pair faces each other across the street, as both appear in profile in the 1890s photographs.
+  for(const s of [-1,1]){const statue=createHaetae(stone,carved);statue.position.set(s*X,-h/2,d/2+Z);statue.rotation.y=-s*Math.PI/2;model.add(statue);
+   rects.push({x:s*X,z:d/2+Z,hw:1.5,hd:.95})}}
  model.userData.walkSurfaces=[...(model.userData.walkSurfaces??[]),...walk];
  model.userData.extraBlockingRects=[...(model.userData.extraBlockingRects??[]),...rects];
 }
