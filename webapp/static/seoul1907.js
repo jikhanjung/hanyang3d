@@ -1,6 +1,7 @@
 import {createHistoricalEvent,visitKeeps} from './historical_event.js';
 import {createProcession} from './events/procession.js';
 import {createShadow} from './events/shadow.js';
+import {coverMapOverlay} from './map_overlay_cover.js';
 import {createCrowd} from './events/crowd.js';
 import {createHide} from './events/hide.js';
 import {createScreenshotMode} from './screenshot_mode.js';
@@ -120,6 +121,8 @@ const baseGroundAt=(x,zz)=>{const u=(x/scale+cx-xmin)/(xmax-xmin)*(n-1),v=(ymax-
   const label=document.createElement('button');label.className='building-label';label.textContent=f.name.replace(/^1907년 /,'').replace(/ \(1907\)$/,'');label.onclick=()=>showBuilding(model);el('labels').append(label);labels.push({label,point:hall,owner:model,layer:'building'});prepareLandmarkLod(model);
   const option=document.createElement('option');option.value=f.id;option.textContent=f.name;el('landmark').append(option);
  }
+ // Ground-level parts of the buildings (bases, courts, low terraces) draw after the map layer so it cannot show through.
+ for(const b of buildings)coverMapOverlay(b,{floor:b.userData.groundFloor,order:2});
  await stage(3,t('주요 건물·문 표시 완료 · 성벽과 길·물길을 준비합니다'));
  const surface=(x,y)=>{const p=world(...project(x,y),0);p.y=groundAt(p.x,p.z);if(p.y===null)throw Error('Infrastructure outside terrain');return p};surface.original=originalSurface;surface.ground=(x,z)=>groundAt(x,z);surface.grid={xmin:(xmin-cx)*scale,zmin:-(ymax-cy)*scale,stepX:(xmax-xmin)*scale/(n-1),stepZ:(ymax-ymin)*scale/(n-1),size:n};
  for(const bridge of [eventData?.bridge,...(eventData?.stages??[]).map(st=>st.bridge)].filter(Boolean))infraData.river.bridges.push(bridge);

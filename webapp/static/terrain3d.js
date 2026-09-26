@@ -3,6 +3,7 @@ import {createHerbs} from './herbs.js';
 import {createFishing} from './fishing.js';
 import {drawMinimapLandmarks} from './large_map.js';
 import {createFirstPerson} from './first_person.js';
+import {coverMapOverlay} from './map_overlay_cover.js';
 import * as THREE from 'three';
 import {createGranite} from './granite.js';
 import {setupOrbitNavigation} from './orbit_navigation.js';
@@ -1013,6 +1014,11 @@ async function main(){
  await stage(8,t('모든 요소를 불러왔습니다'));loading.ready=true;el('scene-loading').hidden=true;
  el('status').textContent=t('3D 지형 로드 완료 · 기존 TPS 5점 · 높이 기본 1배 · 북쪽은 초기 화면 위쪽');
  // Read-only diagnostics for browser verification; no point coordinates are modified here.
+ // Ground-level parts of the buildings (footings, courts, low terraces) draw after the map and road layers so they
+ // cannot show through from shallow angles. The far merged proxies are left as they are.
+ {const terrainY=(x,z)=>{try{return cityWall.supportAt(x,z,.3,.3,0).max*exaggeration}catch{return null}};
+  for(const b of buildings.children)for(const part of b.children)if(part.name!=='landmark-lod')coverMapOverlay(part,{groundAt:terrainY,order:3});
+  coverMapOverlay(foundations,{groundAt:terrainY,order:3})}
  // Collision world for walking, built once every layer has placed its buildings.
  collision=createCollision();
  for(const b of buildings.children){

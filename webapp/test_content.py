@@ -193,7 +193,7 @@ class ContentTests(TestCase):
         self.assertEqual([s['title_en'] for s in loaded['stories']], [s['title_en'] for s in source['stories']])
         self.assertTrue(all(s['text_en'] for s in loaded['stories']))
         self.assertEqual(Building.objects.count(), 192)
-        self.assertEqual(Resource.objects.count(), 152)
+        self.assertEqual(Resource.objects.count(), 153)
         self.assertTrue(Resource.objects.filter(path='webapp/static/building_access1907.js').exists())
         originals = json.loads((settings.BASE_DIR / 'gis/buildings/1750_landmarks.json').read_text())['features']
         for original, actual in zip(originals, load_buildings()['features']):

@@ -58,6 +58,7 @@ def public_resource_paths():
         'webapp/static/events/shadow.js',
         'webapp/static/events/hide.js',
         'webapp/static/events/crowd.js',
+        'webapp/static/map_overlay_cover.js',
         'webapp/static/site_marker.js',
         'webapp/static/bell_tower.js',
         'webapp/static/training_ground.js',
