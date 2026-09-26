@@ -18,6 +18,8 @@
 
 ## 작업 기록
 
+- [284 — 광화문·육조거리 사진 자료 추적](20260926_284_gwanghwamun_photo_sources.md)
+
 - [283 — 건청궁 안의 무리·옥호루 문·연기 자리의 노리개·다시 들어가기](20260925_283_eulmi_geoncheonggung_crowd_discovery_replay.md)
 
 - [282 — 을미사변 광화문 앞 경비병·무리의 말](20260925_282_eulmi_gate_guards_chatter.md)
