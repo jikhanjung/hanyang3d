@@ -42,8 +42,9 @@ export function prepareLandmarkLod(model){
   const count=f.shop_units??10,bay=w/count;
   for(let i=0;i<count;i++){const x=-w/2+(i+.5)*bay,two=(i+f.variant)%7===3,top=two?6.7:3.3+(i%3)*.25,depth=d*(.82+(i%3)*.06);box(x,top/2,0,bay-.25,top,depth,two?'brick':'wall');roof(x,top,0,bay+.35,depth+1.2,two?1.4:1.1)}
  }else if(kind==='government_compound'){
-  const wing=(w-8)/2;for(const sign of [-1,1]){const x=sign*(4+wing/2);box(x,1.8,d*.42,wing,3.6,d*.12);roof(x,3.6,d*.42,wing+.7,d*.12+1.4,1.2);box(sign*w*.36,1.7,-d*.02,w*.13,3.4,d*.42);roof(sign*w*.36,3.4,-d*.02,w*.13+2,d*.42+2,2.5)}
-  roof(0,4.4,d*.42,9.5,d*.15+1.6,1.6);box(0,2.75,-d*.24,w*.46,5.5,d*.23);roof(0,5.5,-d*.24,w*.46+2,d*.23+2,2.5);
+  const high=f.street_front==='high',rangeH=high?4.2:3.2,wing=(w-7)/2;
+  for(const sign of [-1,1]){const x=sign*(3.5+wing/2);box(x,rangeH/2,d/2-2.5,wing,rangeH,5);roof(x,rangeH,d/2-2.5,wing+.8,6.6,1.3)}
+  roof(0,rangeH+1.3,d/2-2.5,8.6,7,1.5);const hw=Math.min(w*.42,26),hd=Math.min(12,d*.2),hz=d/2-5-Math.min(22,d*.25)-hd/2;box(0,2.6,hz,hw,5.2,hd);roof(0,5.2,hz,hw+2,hd+2,2.5);
  }else if(kind==='electric_office'){
   box(0,4.5,0,w*.92,9,d*.88,'brick');roof(0,9.3,0,w,d,1.7);box(w*.25,11.7,0,4.5,4.8,4.5);add(new THREE.ConeGeometry(3,1.7,8),w*.25,14.7,0,'roof');
  }else if(kind==='sajik'){

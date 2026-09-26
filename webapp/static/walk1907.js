@@ -49,6 +49,8 @@ export function createWalk1907({scene,camera,controls,renderer,buildings,infrast
     for(let i=0;i<16;i++){const a=a0+(a1-a0)*i/16,b=a0+(a1-a0)*(i+1)/16,m=(a+b)/2,lx=R*Math.sin(m),lz=out*(d/2+R*Math.cos(m));collision.add({x:frame.x+lx*Math.cos(frame.yaw)+lz*Math.sin(frame.yaw),z:frame.z-lx*Math.sin(frame.yaw)+lz*Math.cos(frame.yaw),hw:R*(b-a)/2+.125,hd:.9,yaw:frame.yaw+out*m,visible:shown})}
    }
   }else collision.add({...frame,hw:w/2,hd:d/2,visible:shown});
+  // Solid pieces outside a gate's own footprint (e.g. the haetae pedestals in Gwanghwamun's forecourt).
+  for(const r of b.userData.extraBlockingRects??[])collision.addLocal(frame,r.x,r.z,r.hw,r.hd,shown);
  }
  for(const s of infrastructure.wall.segments)collision.add({x:s.x,z:s.z,hw:infraData.wall.width_m/2,hd:s.length/2,yaw:s.yaw,visible:()=>infrastructure.wall.group.visible});
  for(const wall of infrastructure.palaceWalls)for(const s of wall.segments)collision.add({x:s.x,z:s.z,hw:wall.data.width_m/2,hd:s.length/2,yaw:s.yaw,visible:()=>wall.group.visible});

@@ -23,8 +23,8 @@ with tempfile.TemporaryDirectory() as tmp:
      result=page.evaluate("""async()=>{
       const s=seoul1907,T=await import('/webapp/static/vendor/three/three.module.js');s.renderer.setAnimationLoop(null);s.scene.updateMatrixWorld(true);
       const results=[];
-      // Pond pavilions (Gyeonghoeru, Hyangwonjeong) have their own route check in check_pavilions_1907_browser.py.
-      for(const b of s.buildings.filter(b=>b.userData.access&&!['gyeonghoeru','hex_pavilion'].includes(b.userData.feature.landmark_kind))){
+      // Pond pavilions (Gyeonghoeru, Hyangwonjeong) and Unhyeongung (gate in its west wall) have their own route checks.
+      for(const b of s.buildings.filter(b=>b.userData.access&&!['gyeonghoeru','hex_pavilion','unhyeongung'].includes(b.userData.feature.landmark_kind))){
        const f=b.userData.feature,[w,h,d]=f.symbol_size_m,a=b.userData.access,hall=f.throne_hall;
        const end=hall?b.userData.hallCenterZ+hall.hall_m[1]/2+1.5:Math.max(d*.425,d*.425-3+(f.landmark_kind==='cathedral'?9:5)/2)+1;
        const world=z=>b.localToWorld(new T.Vector3(a.x,-h/2,z));
@@ -50,7 +50,7 @@ with tempfile.TemporaryDirectory() as tmp:
      page.evaluate(LOGIN_JS.replace('terrain3d.shop','seoul1907.walking.shop'),['계단검사'+str(width),'stairs-test-1907'])
      page.evaluate('seoul1907.firstPerson.enter();seoul1907.pedestrians.group.visible=false')
      client=page.context.new_cdp_session(page)
-     ids=page.evaluate("seoul1907.buildings.filter(b=>b.userData.access&&!['gyeonghoeru','hex_pavilion'].includes(b.userData.feature.landmark_kind)).map(b=>b.userData.feature.id)")
+     ids=page.evaluate("seoul1907.buildings.filter(b=>b.userData.access&&!['gyeonghoeru','hex_pavilion','unhyeongung'].includes(b.userData.feature.landmark_kind)).map(b=>b.userData.feature.id)")
      for id in ids:
       for reverse in [False,True]:
        page.evaluate("""async({id,reverse})=>{const s=seoul1907,b=s.buildings.find(b=>b.userData.feature.id===id),T=await import('/webapp/static/vendor/three/three.module.js'),f=b.userData.feature,[w,h,d]=f.symbol_size_m,a=b.userData.access,hall=f.throne_hall;const end=hall?b.userData.hallCenterZ+hall.hall_m[1]/2+1.5:Math.max(d*.425,d*.425-3+(f.landmark_kind==='cathedral'?9:5)/2)+1;const world=z=>b.localToWorld(new T.Vector3(a.x,-h/2,z));const p=world(reverse?end:a.end+1),q=world(reverse?a.end+1:end);window.stairGoal=q;s.firstPerson.placeAt(p.x,p.z,Math.atan2(-(q.x-p.x),-(q.z-p.z)));s.firstPerson.clearInput()}""",{'id':id,'reverse':reverse})

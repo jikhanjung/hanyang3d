@@ -344,8 +344,8 @@
       },
       "model_note": "공식 설명의 유형을 참고한 자체 제작 모형. 치수·높이·장식·부속 시설은 추정이며 실측 복원이 아니다. 문 폭 50m는 남북 대로의 지도상 약 24px 폭에 맞춘 표시용 추정이다.",
       "info": {
-        "summary": "경복궁 남문. 세 홍예 통로와 중층 문루를 표현했다. 1920년대 이전 위치를 원도에서 읽었다. 위치와 치수는 추정한 개념 모형이다.",
-        "summary_en": "The south gate of Gyeongbokgung, with three arched passages and a two-tier pavilion. Position and dimensions are approximate.",
+        "summary": "경복궁 남문. 세 홍예 통로와 중층 문루를 표현했다. 1920년대 이전 위치를 원도에서 읽었다. 위치와 치수는 추정한 개념 모형이다. 문 앞의 낮은 월대(1923년 철거 전)와 대좌 위 해태 한 쌍을 1890년대 사진을 참고해 개념적으로 두었다.",
+        "summary_en": "The south gate of Gyeongbokgung, with three arched passages and a two-tier pavilion. Position and dimensions are approximate. The low terrace (woldae, removed in 1923) and the pair of haetae on pedestals in front of the gate are conceptual, after 1890s photographs.",
         "period": "1867년 이후 존속 · 1907년 기준",
         "period_en": "Present from 1867 · shown for 1907",
         "in_1750": "1907년 전용 객체. 1750년 장면과 별도 관리.",
@@ -369,7 +369,19 @@
         ]
       },
       "gate_identity": "gwanghwamun",
-      "gate_tiers": 2
+      "gate_tiers": 2,
+      "forecourt": {
+        "woldae": {
+          "width_m": 29.7,
+          "length_m": 48.7,
+          "height_m": 0.6
+        },
+        "haetae": {
+          "offset_x_m": 21,
+          "along_m": 52
+        },
+        "note": "월대는 2023년 복원 치수(길이 약 48.7 m, 너비 약 29.7 m)를 따른 낮은 개념 모형(1923년 철거 전). 해태 한 쌍은 1890년대 사진에서 문 앞 좌우 대좌 위에 보이는 자리를 추정했다."
+      }
     },
     {
       "id": "daehanmun-1907",
@@ -3051,25 +3063,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        120,
         9,
-        72
+        110
       ],
       "display_yaw_deg": 93.735,
       "variant": 0,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          692,
-          1950
+          716.5,
+          1952.0
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 1923–1981, 길 쪽 경계 x 743)을 읽어 전면을 길가에 붙였다. 원도 표기는 侍衛第一大隊. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3094,8 +3106,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Guard precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3110,9 +3122,17 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "low",
+      "flagpole": true,
+      "street_poles": true
     },
     {
       "id": "yukjo-police-1907",
@@ -3123,25 +3143,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        64,
         9,
-        72
+        100
       ],
       "display_yaw_deg": 93.735,
       "variant": 1,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          695,
-          2007
+          718.9,
+          2020.5
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2005–2036, 길 쪽 경계 x 743)을 읽어 전면을 길가에 붙였다. 원도 표기는 警部. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3166,8 +3186,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Police precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3182,9 +3202,16 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "low",
+      "street_poles": true
     },
     {
       "id": "yukjo-military-1907",
@@ -3195,25 +3222,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        64,
         9,
-        72
+        100
       ],
       "display_yaw_deg": 93.735,
       "variant": 2,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          697,
-          2060
+          718.9,
+          2052.5
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2037–2068, 길 쪽 경계 x 743)을 읽어 전면을 길가에 붙였다. 원도 표기는 軍部. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3238,8 +3265,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Military ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3254,9 +3281,16 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "low",
+      "street_poles": true
     },
     {
       "id": "yukjo-justice-1907",
@@ -3267,25 +3301,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        64,
         9,
-        72
+        100
       ],
       "display_yaw_deg": 93.735,
       "variant": 3,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          704,
-          2110
+          718.9,
+          2084.5
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2069–2100, 길 쪽 경계 x 743)을 읽어 전면을 길가에 붙였다. 원도 표기는 法部. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3310,8 +3344,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Justice ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3326,9 +3360,16 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "low",
+      "street_poles": true
     },
     {
       "id": "yukjo-communications-1907",
@@ -3339,25 +3380,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        62,
         9,
-        72
+        73
       ],
       "display_yaw_deg": 93.735,
       "variant": 4,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          704,
-          2160
+          725.4,
+          2119.0
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2104–2134, 길 쪽 경계 x 743)을 읽어 전면을 길가에 붙였다. 원도 표기는 通信管理局. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3382,8 +3423,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Communications office. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3398,9 +3439,16 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "low",
+      "street_poles": true
     },
     {
       "id": "yukjo-interior-1907",
@@ -3411,25 +3459,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        150,
         9,
-        72
+        108
       ],
       "display_yaw_deg": -86.265,
       "variant": 0,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          808,
-          1950
+          797.0,
+          1964.0
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 1928–2000, 길 쪽 경계 x 771)을 읽어 전면을 길가에 붙였다. 원도 표기는 內部. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3454,8 +3502,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Interior ministry precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3470,9 +3518,15 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "high"
     },
     {
       "id": "yukjo-legal-1907",
@@ -3483,25 +3537,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        58,
         9,
-        72
+        100
       ],
       "display_yaw_deg": -86.265,
       "variant": 1,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          805,
-          2012
+          795.1,
+          2019.0
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2005–2033, 길 쪽 경계 x 771)을 읽어 전면을 길가에 붙였다. 원도 표기는 (판독 불명확). 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3526,8 +3580,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Legal office. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3542,9 +3596,15 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "high"
     },
     {
       "id": "yukjo-education-1907",
@@ -3555,25 +3615,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        62,
         9,
-        72
+        100
       ],
       "display_yaw_deg": -86.265,
       "variant": 2,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          797,
-          2070
+          795.1,
+          2049.0
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2034–2064, 길 쪽 경계 x 771)을 읽어 전면을 길가에 붙였다. 원도 표기는 學部. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3598,8 +3658,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Education ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3614,9 +3674,15 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "high"
     },
     {
       "id": "yukjo-finance-1907",
@@ -3627,25 +3693,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        73,
         9,
-        72
+        100
       ],
       "display_yaw_deg": -86.265,
       "variant": 3,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          798,
-          2130
+          795.1,
+          2082.5
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2065–2100, 길 쪽 경계 x 771)을 읽어 전면을 길가에 붙였다. 원도 표기는 度支部·地契衙門. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3670,8 +3736,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Finance ministry. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3686,9 +3752,15 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "high"
     },
     {
       "id": "yukjo-lawschool-1907",
@@ -3699,25 +3771,25 @@
       "display_model": "landmark_1907",
       "landmark_kind": "government_compound",
       "symbol_size_m": [
-        85,
+        77,
         9,
-        72
+        93
       ],
       "display_yaw_deg": -86.265,
       "variant": 4,
       "lod_distance_m": 2100,
-      "position_status": "estimated_source_map_block",
+      "position_status": "source_map_block",
       "size_status": "estimated_not_measured",
       "source_position": {
         "source_asset": "asset-0024",
         "source_sha256": "dc58d4256deba8844f3e5e75bd1172a3f3a19ea06bab7a27e48aa9ee054c3fb7",
         "pixel": [
-          789,
-          2180
+          793.4,
+          2121.5
         ],
         "anchor": "compound_center",
-        "method": "estimated_block_from_source_map",
-        "note": "원도의 도로·구획을 참고한 추정 중심. 개별 필지나 건물의 실측 위치가 아님."
+        "method": "source_map_block_reading",
+        "note": "1907년 원도의 블록(y 2103–2140, 길 쪽 경계 x 771)을 읽어 전면을 길가에 붙였다. 원도 표기는 農商工部. 기관명과 남북 순서는 국가기록원 광화문외제관아실측평면도(1907~1909 추정)를 따른다. 깊이는 추정."
       },
       "temporal": {
         "existence": {
@@ -3742,8 +3814,8 @@
       },
       "model_note": "1907년 한 해의 추정 경관 모형. 실제 건물 창건·철거 연도를 의미하지 않으며, 건물의 외형과 부속 배치는 단순화했다.",
       "info": {
-        "summary": "육조거리의 낮은 외행랑·열린 대문·마당·주전각을 단순화했다. 1907~1909년 관아 도면의 기관 순서를 참고한 권역 추정이며 개별 전각 배치는 실측 복원이 아니다. 기관명은 1907년 후반을 참고한다.",
-        "summary_en": "Law school precinct. Estimated position and dimensions; a simplified 1907 streetscape, not a measured reconstruction of individual premises.",
+        "summary": "1907년 원도의 블록에 맞춰 길가에 바로 붙은 긴 행랑과 솟을대문, 마당, 주전각을 단순화했다. 길 쪽 입면은 1890년대 사진(동쪽은 높은 담에 작은 창이 줄지은 행랑, 서쪽은 낮은 행랑)을 참고했다. 기관명과 남북 순서는 1907~1909년 광화문외제관아실측평면도를 따르며, 개별 전각 배치는 실측 복원이 아니다.",
+        "summary_en": "Fitted to its block on the 1907 map: a long street range right at the street edge with a raised gate, a court and a main hall, simplified. The street front follows 1890s photographs (east side: high plastered range with small windows; west side: lower range). Names and north–south order follow the 1907–1909 measured plan of the offices before Gwanghwamun; individual halls are not a measured reconstruction.",
         "period": "1907년 추정 경관 · 개별 건물 존속연대 미확정",
         "period_en": "Estimated streetscape for 1907 only; individual building dates unknown.",
         "in_1750": "1750년 모형의 배치를 복제하지 않은 1907년 추정 경관.",
@@ -3758,9 +3830,15 @@
             "title": "1907년 최신경성전도",
             "title_en": "1907 source map",
             "url": "https://museum.seoul.go.kr/www/relic/RelicView.do?cdLanguage=KOR&mcseqno1=015439&mcseqno2=00000&mcsjgbnc=PS01003026001"
+          },
+          {
+            "title": "1890년대 육조거리 사진(Moffett Korea Collection)",
+            "title_en": "1890s photograph of Yukjo Street (Moffett Korea Collection)",
+            "url": "https://archive.org/details/samuelaustinmoff98unse_95"
           }
         ]
-      }
+      },
+      "street_front": "high"
     },
     {
       "id": "jongno-shops-north-1-1907",

@@ -8,12 +8,37 @@ import {createCathedral1907} from './cathedral1907.js';
 
 // Project-authored, deliberately simplified period models. Dimensions are seed estimates.
 // All models share the existing renderer convention: ground is local y = -h/2.
+// Gwanghwamun's forecourt in 1907 (before 1923): the low stone terrace (월대) in front of the gate and the pair of
+// haetae on pedestals flanking the street, as in the 1890s photographs. The terrace is walkable (lower than a
+// step); the pedestals block. Conceptual forms; the terrace follows the dimensions of the 2023 restoration.
+function addForecourt(model,fc,w,h,d){
+ const stone=new THREE.MeshStandardMaterial({color:0xbdb6a5,roughness:1}),carved=new THREE.MeshStandardMaterial({color:0xcfc8b8,roughness:.95});
+ const add=(name,geo,x,y,z,mat)=>{const m=new THREE.Mesh(geo,mat);m.name=name;m.position.set(x,y-h/2,z);model.add(m);return m};
+ const walk=[],rects=[];
+ if(fc.woldae){const {width_m:W,length_m:L,height_m:H}=fc.woldae,z=d/2+L/2;
+  // Carried a metre below ground so the terrace meets a sloping street without a gap.
+  walk.push(add('woldae',new THREE.BoxGeometry(W,H+1,L),0,(H-1)/2,z,stone));
+  add('woldae-kerb',new THREE.BoxGeometry(W+.5,.18,L+.5),0,H-.02,z,carved);
+ }
+ if(fc.haetae){const {offset_x_m:X,along_m:Z}=fc.haetae;
+  for(const s of [-1,1]){const x=s*X,z=d/2+Z;
+   add('haetae-pedestal',new THREE.BoxGeometry(1.6,1.5,2.8),x,.75,z,stone);rects.push({x,z,hw:.9,hd:1.5});
+   add('haetae-body',new THREE.BoxGeometry(1.05,1.05,1.9),x,2.05,z-.1,carved);
+   add('haetae-chest',new THREE.SphereGeometry(.62,12,10),x,2.55,z+.75,carved);
+   add('haetae-head',new THREE.SphereGeometry(.5,12,10),x,3.25,z+1.0,carved);
+   add('haetae-horn',new THREE.ConeGeometry(.12,.45,8),x,3.8,z+.95,carved);
+   for(const sx of [-1,1])add('haetae-leg',new THREE.BoxGeometry(.28,.8,.3),x+sx*.35,1.9,z+.95,carved);
+   add('haetae-tail',new THREE.SphereGeometry(.32,10,8),x,2.8,z-1.05,carved);
+  }}
+ model.userData.walkSurfaces=[...(model.userData.walkSurfaces??[]),...walk];
+ model.userData.extraBlockingRects=[...(model.userData.extraBlockingRects??[]),...rects];
+}
 export function createLandmark1907(f,w,h,d){
  const kind=f.landmark_kind;
  if(kind==='bookshop')return createBookshop1907(f,w,h,d);
  if(f.id==='myeongdong-cathedral-1907')return createCathedral1907(f,w,h,d);
  if(f.display_model==='throne_hall')return createThroneHall(f,w,h,d);
- if(kind==='city_gate')return createCityGate({...f,id:f.gate_identity},w,h,d);
+ if(kind==='city_gate'){const gate=createCityGate({...f,id:f.gate_identity},w,h,d);if(f.forecourt)addForecourt(gate,f.forecourt,w,h,d);return gate}
  if(kind==='palace_gate')return createPalaceGate(f,w,h,d);
  if(kind==='pagoda')return createPagoda(f,w,h,d);
  if(kind==='garden_pavilion')return createGardenPavilion(f,w,h,d);
@@ -230,23 +255,36 @@ export function createLandmark1907(f,w,h,d){
   }
   group.userData.plan='mixed-shop-frontages';
  }else if(kind==='government_compound'){
-  // Street-facing outer ranges with an open gate and a court behind them.
+  // A Yukjo office on its 1907 map block: the street range (행랑) runs the whole frontage right at the street edge,
+  // broken only by the raised gate (솟을대문); side and back walls close the court; halls stand behind the court.
+  // East side ('high'): a tall plastered range with small high windows, as in the 1890s photographs; west side
+  // ('low'): a lower range with lattice windows. Proportions are estimated, the frontage follows the map.
+  const high=f.street_front==='high',gateW=7,rangeD=5,rangeH=high?4.2:3.2,front=d/2-rangeD/2,wing=(w-gateW)/2;
   box('earth-court',0,.04,0,w,.08,d,'bank');
-  const gateW=8,front=d*.42,wing=(w-gateW)/2;
   for(const sign of [-1,1]){
-   const x=sign*(gateW/2+wing/2);box('outer-range',x,1.8,front,wing,3.6,d*.12,'cream');roof(x,3.6,front,wing+.7,d*.12+1.4,1.2,.01);
-   const bays=Math.max(3,Math.floor(wing/3.5));for(let j=0;j<=bays;j++)box('range-post',x-wing/2+j*wing/bays,1.8,front+d*.06+.08,.18,3.6,.18,'door');
-   for(let j=0;j<bays;j++)box('range-window',x-wing/2+(j+.5)*wing/bays,2,front+d*.06+.1,1.25,1.1,.1,'door');
-   box('side-enclosure',sign*(w/2-.3),1.2,0,.6,2.4,d*.8,'cream');
-   smallHall(sign*w*.36,-d*.02,w*.13,d*.42,3.4);
-   post(sign*gateW*.42,front,0,4.4,'door');
+   const x=sign*(gateW/2+wing/2);box('outer-range',x,rangeH/2,front,wing,rangeH,rangeD,'cream');roof(x,rangeH,front,wing+.8,rangeD+1.6,1.3,.01);
+   const bays=Math.max(3,Math.round(wing/3.2));
+   for(let j=0;j<=bays;j++)box('range-post',x-wing/2+j*wing/bays,rangeH/2,d/2+.06,.2,rangeH,.18,'door');
+   for(let j=0;j<bays;j++){const cx=x-wing/2+(j+.5)*wing/bays;
+    if(high)box('range-window',cx,rangeH-1.05,d/2+.08,.7,.55,.1,'door');else box('range-window',cx,1.9,d/2+.08,1.3,1.1,.1,'door')}
+   box('side-enclosure',sign*(w/2-.3),1.3,-rangeD/2,.6,2.6,d-rangeD,'cream');
+   post(sign*gateW/2,front+rangeD/2,0,rangeH+1.4,'door');
   }
-  roof(0,4.4,front,gateW+1.5,d*.15+1.6,1.6,.01);
-  smallHall(0,-d*.24,w*.46,d*.23,5.5);
-  if(f.variant%2===0)smallHall(-w*.2,-d*.42,w*.24,d*.1,3.6);
-  // Collision follows solid ranges, halls and posts; the gate and courtyard remain open.
-  group.userData.blockingRects=group.children.filter(m=>['outer-range','side-enclosure','hall-base','column'].includes(m.name)).map(m=>{
-   const p=m.geometry.parameters;return {x:m.position.x,z:m.position.z,hw:(p.width??.6)/2,hd:(p.depth??.6)/2};
+  box('back-wall',0,1.3,-d/2+.3,w-1.2,2.6,.6,'cream');
+  roof(0,rangeH+1.3,front,gateW+1.6,rangeD+2,1.5,.01);
+  // Halls behind the court: the main hall on the gate axis, side halls along the flanks on longer blocks.
+  const court=Math.min(22,d*.25),hallW=Math.min(w*.42,26),hallD=Math.min(12,d*.2),hallZ=d/2-rangeD-court-hallD/2;
+  smallHall(0,hallZ,hallW,hallD,5.2);
+  const sideD=Math.min(d*.38,28),sideZ=d/2-rangeD-6-sideD/2;
+  if(w>=58)for(const sign of [-1,1])smallHall(sign*(w/2-6),sideZ,7,sideD,3.4);
+  if(f.variant%2===0&&d>60)smallHall(-w*.18,-d/2+10,Math.min(w*.3,18),8,3.6);
+  // Street furniture on the west side: telegraph poles along the frontage (1906 photograph); a tall flagpole at the
+  // barracks gate (the flag over the west side in the 1890s photograph).
+  if(f.street_poles)for(let x=-w/2+6;x<=w/2-6;x+=30){if(Math.abs(x)<9)continue;post(x,d/2+3.5,0,8.5,'door');box('pole-arm',x,8.1,d/2+3.5,1.6,.12,.12,'door')}
+  if(f.flagpole){post(gateW/2+3,d/2+2.5,0,15,'door');box('flag',gateW/2+3+1.05,13.6,d/2+2.5,2,1.3,.04,'trim')}
+  // Collision follows solid ranges, walls, halls and posts; the gate and courtyard remain open.
+  group.userData.blockingRects=group.children.filter(m=>['outer-range','side-enclosure','back-wall','hall-base','column'].includes(m.name)).map(m=>{
+   const p=m.geometry.parameters;return {x:m.position.x,z:m.position.z,hw:(p.width??p.radiusTop??.3)/2+(m.name==='column'?.1:0),hd:(p.depth??p.radiusTop??.3)/2+(m.name==='column'?.1:0)};
   });
   group.userData.walkSurfaces=group.children.filter(m=>m.name==='earth-court');
   group.userData.plan='street-range-gate-court-hall';group.userData.openGateWidth=gateW;

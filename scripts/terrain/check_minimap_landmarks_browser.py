@@ -31,7 +31,7 @@ with tempfile.TemporaryDirectory() as tmp:
      page.evaluate(LOGIN_JS.replace('terrain3d.shop',key+('.walking.shop' if era==1907 else '.shop')),['미니맵검사'+str(era),'minimap-test-password'])
      page.evaluate(f'{key}.firstPerson.enter()');page.wait_for_function(f'{key}.firstPerson.active')
      courts=page.evaluate('''key=>{const s=window[key],bs=key==='terrain3d'?s.buildings.children:s.buildings,col=key==='terrain3d'?s.collision:s.walking.collision;return bs.filter(b=>['ijo','hojo','yejo','byeongjo','hyeongjo','gongjo','uijeongbu'].includes(b.userData.feature.id)||b.userData.feature.landmark_kind==='government_compound').map(b=>{
-      const d=b.userData.feature.symbol_size_m[2],w=b.userData.feature.symbol_size_m[0],front=key==='terrain3d'?d/2-5:d*.42,points=[];let previous=null;
+      const d=b.userData.feature.symbol_size_m[2],w=b.userData.feature.symbol_size_m[0],front=key==='terrain3d'?d/2-5:d/2-2.5,points=[];let previous=null;
       b.updateMatrixWorld(true);for(let z=front+5;z>=front-9;z-=.25){const p=b.localToWorld(b.position.clone().set(0,0,z)),ground=s.firstPerson.groundAt(p.x,p.z,previous);if(col.hit(p.x,p.z,.35)||ground===null)points.push({z,blocked:!!col.hit(p.x,p.z,.35),ground});previous=ground}
       const wall=b.localToWorld(b.position.clone().set(w/2-.3,0,0));return {id:b.userData.feature.id,blocked:points,wall:!!col.hit(wall.x,wall.z,.35)}
      })}''',key)
